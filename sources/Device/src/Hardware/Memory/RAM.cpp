@@ -1,0 +1,354 @@
+/*
+    Здесь работа с памятью на макете, где не было внешней RAM
+*/
+
+#include "defines.h"
+#include "Display/Console.h"
+#include "Display/Painter.h"
+#include "Hardware/Timer.h"
+#include "Hardware/HAL/HAL.h"
+#include "Hardware/Memory/ExtRAM.h"
+#include "Hardware/Memory/IntRAM.h"
+#include "Hardware/Memory/RAM.h"
+#include "Osci/DeviceSettings.h"
+#include "Osci/Osci.h"
+#include "Utils/Math.h"
+#include <cstring>
+#include <cstdlib>
+
+
+#ifdef OLD_VERSION
+
+#define BEGIN reinterpret_cast<uint>(IntRAM::BeginStorageRAM())
+#define END   reinterpret_cast<uint>(IntRAM::EndStorageRAM())
+
+#else
+
+#define BEGIN reinterpret_cast<uint>(ExtRAM::Begin())
+#define END   reinterpret_cast<uint>(ExtRAM::End())
+
+#endif
+
+
+int16 RAM::currentSignal = 0;
+Packet *RAM::oldest = reinterpret_cast<Packet *>(BEGIN); //-V2571
+Packet *RAM::newest = nullptr;
+
+
+bool RAM::needNewFrame = true;
+
+
+// Записывает по адресу dest. Возвращает адрес первого байта после записи
+static uint *WriteToRAM(uint *dest, const void *src, int size)
+{
+    HAL_BUS::ConfigureToFSMC();
+    
+    uint8 *address = reinterpret_cast<uint8 *>(dest);
+
+    std::memcpy(address, src, static_cast<uint>(size));
+    
+    return reinterpret_cast<uint *>(address + size); //-V2563
+}
+
+
+bool RAM::canTrace = false;
+
+
+struct Packet
+{
+    // Адрес следующего пакета, более "свежего". Если addrNext == 0x00000000, следующего пакета нет, этот пакет самый новый
+    uint addrNewest;
+
+    bool IsValid()
+    {
+        return reinterpret_cast<uint8*>(this) >= ExtRAM::Begin() && reinterpret_cast<uint8*>(this) < ExtRAM::End();
+    }
+
+    void Trace(uint)
+    {
+        if(addrNewest == 0 && RAM::canTrace)
+        {
+            addrNewest = addrNewest; //-V570
+        }
+
+        //LOG_WRITE("%d %x", line, addrNewest);
+    }
+
+    // Упаковать данные по адресу this. Возвращает указатель на пакет, следующий за ним
+    void Pack(const DataSettings *ds)
+    {
+        DataSettings data = *ds;
+        data.dataA = nullptr;
+        data.dataB = nullptr;
+
+        addrNewest = 0x0000000;                                                                         // Указываем, что это самый последний пакет
+
+        uint *address = reinterpret_cast<uint *>(Address() + sizeof(Packet));                           // По этому адресу запишем DataSettings //-V2571
+
+        address = WriteToRAM(address, ds, sizeof(DataSettings));                                        // Записываем DataSettings
+
+        if (ds->enableA)                                                                                // Записываем данные первого канала
+        {
+            data.dataA = reinterpret_cast<uint8 *>(address);
+            address = WriteToRAM(address, ds->dataA, ds->BytesInChannel());
+        }
+
+        if (ds->dataB)                                                                                  // Записываем данные второго канала
+        {
+            data.dataB = reinterpret_cast<uint8 *>(address);
+            WriteToRAM(address, ds->dataB, ds->BytesInChannel());
+        }
+
+        std::memcpy(reinterpret_cast<uint *>(Address() + sizeof(Packet)), &data, sizeof(DataSettings)); // Записываем скорректированные настройки //-V2571
+    }
+    // Подготовить пакет для сохранения данных в соответствии с настройками ds
+    void Prepare(DataSettings *ds)
+    {
+        int bytesInChannel = ds->BytesInChannel();
+
+        addrNewest = 0x00000000;
+        uint *address = reinterpret_cast<uint *>(Address() + sizeof(Packet)); //-V2571
+
+        ds->dataA = nullptr;
+        ds->dataB = nullptr;
+        uint8 *addrData = reinterpret_cast<uint8 *>(reinterpret_cast<uint8 *>(address) + sizeof(DataSettings)); //-V2563
+
+        if (ds->enableA)
+        {
+            ds->dataA = addrData;
+            std::memset(addrData, VALUE::NONE, static_cast<uint>(bytesInChannel));
+            addrData += bytesInChannel; //-V2563
+        }
+
+        if (ds->enableB)
+        {
+            ds->dataB = addrData;
+            std::memset(addrData, VALUE::NONE, static_cast<uint>(bytesInChannel));
+        }
+
+        WriteToRAM(address, ds, sizeof(DataSettings));
+    }
+
+    uint Address() const
+    {
+        return reinterpret_cast<uint>(this); //-V2571
+    };
+    // Возвращает адрес первого следующего за пакетом байта
+    uint End() const
+    {
+        return Address() + Size();
+    }
+    // Возвращает размер памяти, необходимой для хранения данных в соответсвии с настройками ds
+    static int NeedMemoryForPacedData(const DataSettings *ds)
+    {
+        uint size = sizeof(Packet) + sizeof(DataSettings) + ds->NeedMemoryForData();
+
+        return static_cast<int>(size);
+    }
+
+    int Size() const
+    {
+        uint size = sizeof(Packet) + sizeof(DataSettings) + GetDataSettings()->NeedMemoryForData();
+
+        return static_cast<int>(size);
+    }
+
+    DataSettings *GetDataSettings() const
+    {
+        uint address = Address() + sizeof(Packet);
+
+        return reinterpret_cast<DataSettings *>(address); //-V2571
+    }
+};
+
+
+void RAM::Init()
+{
+    oldest = reinterpret_cast<Packet *>(BEGIN); //-V2571
+    newest = nullptr;
+}
+
+
+DataSettings *RAM::PrepareForNewData() //-V2506
+{
+    if(OSCI_IN_MODE_RANDOMIZER &&           // В рандомизаторе иногда будем возвращать указатель на последние считанные данные
+       (NumberDatas() != 0) &&              // Но только если в хранилище они есть
+       !needNewFrame)                       // И если прямо не заявлено подготовить новый фрейм
+    {
+        return Get();
+    }
+
+    DataSettings ds;
+
+    ds.Fill();
+
+    ds.id = NumberDatas() ? Get()->id + 1 : 0;
+
+    uint address = AllocateMemoryForPacket(&ds);    // Находим адрес для записи нового пакета
+
+    if (newest)
+    {
+        newest->addrNewest = address;               // Указываем его в качестве адреса следующего пакета для предыдущего
+    }
+
+    newest = reinterpret_cast<Packet *>(address);   // Устанавилваем этот адрес в качестве новейшего пакета //-V2571
+
+    newest->Prepare(&ds);                           // И упаковываем данные
+
+    DataSettings *result = Get();
+
+    result->timeMS = TIME_MS;
+
+    if(OSCI_IN_MODE_RANDOMIZER && 
+       (NumberDatas() != 0))
+    {
+        if (OSCI_IN_MODE_RANDOMIZER && (SampleType::IsReal() || S_TRIG_START_MODE_IS_SINGLE))
+        {
+            result->Clear();
+        }
+        else
+        {
+            if (result->IsEquals(*Get(1)))
+            {
+                result->CopyDataFrom(Get(1));
+            }
+        }
+
+        needNewFrame = false;
+    }
+
+    return result;
+}
+
+
+DataSettings *RAM::Get(int numFromEnd) //-V2506
+{
+    int number = NumberDatas();
+    
+    if (numFromEnd + 1 > number)
+    {
+        return nullptr;
+    }
+
+    int counter = number - 1 - numFromEnd;
+
+    Packet *packet = oldest;
+
+    while (counter > 0)
+    {
+        packet = reinterpret_cast<Packet *>(packet->addrNewest); //-V2571
+        counter--;
+    }
+
+    return packet->GetDataSettings();
+}
+
+
+int RAM::NumberDatas() //-V2506
+{
+    HAL_BUS::ConfigureToFSMC();
+
+    if (newest == nullptr)
+    {
+        return 0;
+    }
+
+    if (oldest == nullptr)
+    {
+        return 1;
+    }
+
+    int result = 0;
+
+    Packet *packet = oldest;
+
+    while (packet != nullptr)
+    {
+        result++;
+
+        packet = reinterpret_cast<Packet *>(packet->addrNewest); //-V2571
+
+//        if(packet != nullptr && !packet->IsValid())     // \todo Времення затычка. Нужно разобраться, почему память портится и исправить
+//        {
+//            LOG_WRITE("invalid packet 0x%x", packet);
+//            break;
+//        }
+    }
+
+    return result;
+}
+
+uint RAM::AllocateMemoryForPacket(const DataSettings *ds) //-V2506
+{
+    if (newest == nullptr)                                                  // Ещё нет ни одной записи
+    {
+        return BEGIN; //-V2571
+    }
+
+    uint addrFirst = newest->End();                                         // По этому адресу должна быть следующая запись
+    uint addrLast = addrFirst + Packet::NeedMemoryForPacedData(ds);         // А это последний байт следующей записи
+
+    if (addrLast > END) //-V2571
+    {
+        addrLast = BEGIN + Packet::NeedMemoryForPacedData(ds); //-V2571
+        while (reinterpret_cast<uint>(oldest) < addrLast) //-V2571
+        {
+            RemoveOldest();
+        }
+        return BEGIN; //-V2571
+    }
+                                                                            
+    if (newest > oldest)                                                    // Нормальный порядок следования - более новые записи расположены после более старых
+    {                                                                       
+        if (addrLast < END)                                                 // Если хватает памяти для записи //-V2571
+        {
+            return addrFirst;
+        }
+        else                                                                // Если остатка памяти не хватает для сохранения записи
+        {
+            AllocateMemoryFromBegin(Packet::NeedMemoryForPacedData(ds));    // То освобождаем в начале памяти необходимое число байт для хранения пакета
+
+            return BEGIN; //-V2571
+        }
+    }
+
+    if (newest < oldest)                                                    // Более старые записи расположены после более новых
+    {
+        while (addrLast >= reinterpret_cast<uint>(oldest)) //-V2571
+        {
+            RemoveOldest();
+            if (oldest->Address() == BEGIN) //-V2571
+            {
+                break;
+            }
+        }
+    }
+
+    return addrFirst;
+}
+
+
+void RAM::AllocateMemoryFromBegin(int size)
+{
+    while (oldest->Address() - BEGIN < static_cast<uint>(size)) //-V2571
+    {
+        RemoveOldest();
+    }
+}
+
+
+void RAM::RemoveOldest()
+{
+    oldest = reinterpret_cast<Packet *>(oldest->addrNewest); //-V2571
+}
+
+
+bool RAM::LastSettingsEqualsCurrent() //-V2506
+{
+    if(NumberDatas() == 0)
+    {
+        return false;
+    }
+
+    return Get()->EqualsCurrentSettings();
+}

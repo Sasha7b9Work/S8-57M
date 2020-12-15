@@ -1,0 +1,8 @@
+sources/generated/
+sources/ThirdParty/wxWidgets/generated/
+sources/Device/Listings/
+sources/Device/Objects/
+sources/DLoader/Listings/
+sources/DLoader/Objects/
+sources/Panel/Listings/
+sources/Panel/Objects/

@@ -1,0 +1,66 @@
+#include "defines.h"
+#include "Menu/MenuItems.h"
+#include "Osci/Measurements/Measures.h"
+#include "Settings/Settings.h"
+#include "Menu/Pages/Include/PageMeasures.h"
+
+
+
+DEF_CHOICE_2( cIsShow,                                                                                                                             //--- ИЗМЕРЕНИЯ - АВТОМАТ - Показывать ---
+    "Показывать",
+    "Выводить или не выводить измерения на экран",
+    "Нет",
+    "Да",
+    S_MEAS_SHOW, &PageAutoMeasures::self, Item::Active, Choice::Changed, Choice::AfterDraw
+)
+
+
+static bool IsActive_NumberChannels()
+{
+    return S_MEAS_SHOW;
+}
+
+DEF_CHOICE_7( cNumber,                                                                                                                             //--- ИЗМЕРЕНИЯ - АВТОМАТ - Количество ---
+    "Количество"
+    ,
+    "Устанавливает максимальное количество выводимых измерений:\n"
+    "\"1\" - одно измерение\n"
+    "\"2\" - два измерения\n"
+    "\"1х5\" - 1 строка с пятью измерениями\n"
+    "\"2х5\" - 2 строки с пятью измерениями в каждой\n"
+    "\"3х5\" - 3 строки с пятью измерениями в каждой\n"
+    "\"6x1\" - 6 строк по одному измерению в каждой\n"
+    "\"6х2\" - 6 строк по два измерения в каждой"
+    ,
+    "1",
+    "2",
+    "1x5",
+    "2x5",
+    "3x5",
+    "6x1",
+    "6x2",
+    S_MEAS_ON_DISPLAY, &PageAutoMeasures::self, IsActive_NumberChannels, Choice::Changed, Choice::AfterDraw
+)
+
+
+DEF_CHOICE_3( cChannels,                                                                                                                               //--- ИЗМЕРЕНИЯ - АВТОМАТ - Каналы ---
+    "Каналы",
+    "По каким каналам выводить измерения",
+    "1",
+    "2",
+    "1 и 2",
+    S_MEAS_SOURCE, &PageAutoMeasures::self, IsActive_NumberChannels, Choice::Changed, Choice::AfterDraw
+)
+
+
+DEF_PAGE_4( pAuto,                                                                                                                                                 //--- ИЗМЕРЕНИЯ - АВТО --- //-V2567
+    "АВТОМАТ",
+    "Доступ к настройкам автоматических измерений",
+    &cIsShow,
+    &cNumber,
+    &cChannels,
+    PageAutoMeasures::Tune::self,
+    PageName::AutoMeasures, &PageMeasures::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+)
+
+const Page * const PageAutoMeasures::self = static_cast<const Page *>(&pAuto);
