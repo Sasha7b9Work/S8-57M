@@ -7,8 +7,8 @@
 class Display
 {
 public:
-    static const int WIDTH = 320;
-    static const int HEIGHT = 240;
+    static const int WIDTH = 640;
+    static const int HEIGHT = 480;
 
     static void Init();
 
@@ -16,13 +16,9 @@ public:
 
     static uint8 *GetBufferEnd();
 
-    static void ToggleBuffers();
-
 private:
     // Экран
     static uint8 *frontBuffer;
-    // Задний буфер. В нём происходит отрисовка, и затем изображение копируется во frontBuffer
-    static uint8 *backBuffer;
 };
 
 

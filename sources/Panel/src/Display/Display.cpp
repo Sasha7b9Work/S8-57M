@@ -12,7 +12,7 @@
 
 LTDC_HandleTypeDef hltdc;
 
-uint8  front[BUFFER_WIDTH * BUFFER_HEIGHT];
+uint8  front[Display::WIDTH * Display::HEIGHT];
 uint8 *Display::frontBuffer = front;
 
 
@@ -29,48 +29,15 @@ void Display::Init()
 }
 
 
-void Display::ToggleBuffers(void)
-{
-    uint destination = reinterpret_cast<uint>(frontBuffer); //-V2571
-    uint source = reinterpret_cast<uint>(backBuffer); //-V2571
-
-    DMA2D_HandleTypeDef hDMA2D;
-
-    hDMA2D.Init.Mode = DMA2D_M2M;
-    hDMA2D.Init.ColorMode = DMA2D_INPUT_L8;
-    hDMA2D.Init.OutputOffset = 0;
-
-    hDMA2D.XferCpltCallback = 0;
-
-    hDMA2D.LayerCfg[1].AlphaMode = DMA2D_NO_MODIF_ALPHA;
-    hDMA2D.LayerCfg[1].InputAlpha = 0xFF;
-    hDMA2D.LayerCfg[1].InputColorMode = DMA2D_INPUT_L8;
-    hDMA2D.LayerCfg[1].InputOffset = 0;
-
-    hDMA2D.Instance = DMA2D; //-V2571
-
-    if (HAL_DMA2D_Init(&hDMA2D) == HAL_OK)
-    {
-        if (HAL_DMA2D_ConfigLayer(&hDMA2D, 1) == HAL_OK)
-        {
-            if (HAL_DMA2D_Start(&hDMA2D, source, destination, 320, 240) == HAL_OK)
-            {
-                HAL_DMA2D_PollForTransfer(&hDMA2D, 100);
-            }
-        }
-    }
-}
-
-
 uint8 *Display::GetBuffer()
 {
-    return backBuffer;
+    return frontBuffer;
 }
 
 
 uint8 *Display::GetBufferEnd()
 {
-    return backBuffer + BUFFER_WIDTH * BUFFER_HEIGHT; //-V2563
+    return frontBuffer + Display::WIDTH * Display::HEIGHT; //-V2563
 }
 
 

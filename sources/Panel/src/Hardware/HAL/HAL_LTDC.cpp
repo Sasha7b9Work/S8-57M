@@ -101,6 +101,7 @@ void HAL_LTDC::Init(uint front)
     pLayerCfg.Backcolor.Blue = 0;
     pLayerCfg.Backcolor.Green = 0;
     pLayerCfg.Backcolor.Red = 0;
+
     if (HAL_LTDC_ConfigLayer(&handleLTDC, &pLayerCfg, 0) != HAL_OK)
     {
         ERROR_HANDLER();
