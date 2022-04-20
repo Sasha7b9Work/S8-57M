@@ -10,7 +10,6 @@ struct Command
 /* 01 */    ButtonPress,            // 01 |   Item      | TypePress  |             |              |              |        |
 /* 15 */    Display_Brightness,     // 15 | €ркость
 /* 16 */    Screen,                 // 16 |  numRow     |
-/* 17 */    Paint_VPointLine,       // 17 |   x[0:7]    |  x[8:15]   |      y      |   delta      | count        |
 /* 18 */    Paint_HPointLine,       // 18 |   x[0:7]    |  x[8:15]   |      y      |   delta      | count        |
 /* 19 */    Paint_SetMinWidthFont,  // 19 |   width     |
 /* 20 */    Paint_SetTextSpacing,   // 20 |   0 | 1     |

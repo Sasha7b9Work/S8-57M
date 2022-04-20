@@ -75,28 +75,7 @@ void MultiHPointLine::Draw(int x, Color color)
 }
 
 
-void MultiVPointLine::Draw(int y0, Color color)
+void MultiVPointLine::Draw(int , Color )
 {
-    color.SetAsCurrent();
-
-    uint8 buffer[6] =
-    {
-        Command::Paint_VPointLine,
-        0,
-        0,
-        0,
-        static_cast<uint8>(delta),
-        static_cast<uint8>(count)
-    };
-
-    for (int i = 0; i < numLines; i++)
-    {
-        int x = x0[i]; //-V2563
-
-        buffer[1] = static_cast<uint8>(x);
-        buffer[2] = static_cast<uint8>(x >> 8);
-        buffer[3] = static_cast<uint8>(y0);
-
-        HAL_BUS::Panel::Send(buffer, 6);
-    }
+    // todo_paint
 }
