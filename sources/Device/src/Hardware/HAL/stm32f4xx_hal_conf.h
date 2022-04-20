@@ -37,7 +37,7 @@
 #define __STM32F4xx_HAL_CONF_H //-V2573
 
 #ifdef WIN32
-#define __STATIC_INLINE
+#define __STATIC_INLINE inline
 #endif
 
 #ifdef __cplusplus
