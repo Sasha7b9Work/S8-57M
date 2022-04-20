@@ -24,8 +24,6 @@ static bool E(uint8) { return true; }
 
 static bool InButtonPress(uint8);
 
-static bool SetPoint(uint8);
-
 static bool DrawLine(uint8);
 
 static bool DisplayBrightness(uint8);
@@ -54,7 +52,6 @@ void PDecoder::AddData(uint8 data) //-V2506
     {
         E,
         InButtonPress,
-        SetPoint,
         DrawLine,
         DrawTesterPoints,
         DisplayBrightness,
@@ -301,29 +298,6 @@ static bool DrawLine(uint8 data)
         case 4: x1 = data;                          break;
         case 5: x1 += static_cast<int>(data) << 8;  break;
         case 6: Painter::DrawLine(x0, y0, x1, data);
-            result = true;
-            break;
-        default:
-            result = true;
-            break;
-    }
-
-    return result;
-}
-
-
-static bool SetPoint(uint8 data)
-{
-    static int x = 0;
-    
-    bool result = false;
-
-    switch (step)
-    {
-        case 0:                                     break;
-        case 1: x = data;                           break;
-        case 2: x += static_cast<int>(data) << 8;   break;
-        case 3: Painter::SetPoint(x, data);
             result = true;
             break;
         default:

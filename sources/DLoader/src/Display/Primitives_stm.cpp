@@ -30,19 +30,9 @@ void VLine::Draw(int, int, Color)
 }
 
 
-void Pixel::Draw(int x, int y, Color color)
+void Pixel::Draw(int, int, Color)
 {
-    color.SetAsCurrent();
-
-    uint8 buffer[4] =
-    {
-        Command::Paint_SetPoint,
-        static_cast<uint8>(x),
-        static_cast<uint8>(x >> 8),
-        static_cast<uint8>(y)
-    };
-
-    HAL_BUS::Panel::Send(buffer, 4);
+    // todo_paint
 }
 
 
