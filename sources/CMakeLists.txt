@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.4)
+cmake_minimum_required(VERSION 2.8.12)
 
 # Set CMake policy required by UrhoCommon module
 if (COMMAND cmake_policy)
@@ -15,9 +15,13 @@ if (COMMAND cmake_policy)
 endif ()
 
 # Set project name
-project (S8-57)
+project (S8-57M)
 
-set (TARGET_NAME S8-57)
+set (TARGET_NAME S8-57M)
+
+if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
+    add_definitions(-DDEBUG)
+endif()
 
 add_subdirectory(Device)
 add_subdirectory(DLoader)

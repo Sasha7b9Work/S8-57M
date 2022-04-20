@@ -1,6 +1,5 @@
 #pragma once
 
-#define DEBUG
 
 #ifdef WIN32
 #define __attribute(x) //-V2573
