@@ -1,5 +1,5 @@
+// 2022/04/20 16:51:21 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-
 
 
 struct Command
