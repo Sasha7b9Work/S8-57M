@@ -82,19 +82,6 @@ void HAL_LTDC::Init(uint front)
         ERROR_HANDLER();
     }
 
-    SetBuffers(front);
-
-    COLOR(0) = 0;
-    COLOR(1) = 0x00ffffff;
-    COLOR(2) = 0x00a0a0a0;
-    COLOR(3) = 0x000000ff;
-
-    Painter::LoadPalette();
-}
-
-
-void HAL_LTDC::SetBuffers(uint front)
-{
     frontBuffer = front;
 
     LTDC_LayerCfgTypeDef pLayerCfg;
@@ -118,6 +105,13 @@ void HAL_LTDC::SetBuffers(uint front)
     {
         ERROR_HANDLER();
     }
+
+    COLOR(0) = 0;
+    COLOR(1) = 0x00ffffff;
+    COLOR(2) = 0x00a0a0a0;
+    COLOR(3) = 0x000000ff;
+
+    Painter::LoadPalette();
 }
 
 

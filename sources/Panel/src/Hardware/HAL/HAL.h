@@ -41,8 +41,4 @@ private:
 public:
 
     static void SetColors(uint* clut, uint numColors);
-
-private:
-
-    static void SetBuffers(uint frontBuffer);
 };
