@@ -24,8 +24,6 @@ static bool E(uint8) { return true; }
 
 static bool InButtonPress(uint8);
 
-static bool SetColor(uint8);
-
 static bool FillRegion(uint8);
 
 static bool DrawText(uint8);
@@ -70,7 +68,6 @@ void PDecoder::AddData(uint8 data) //-V2506
     {
         E,
         InButtonPress,
-        SetColor,
         FillRegion,
         DrawText,
         SetPalette,
@@ -200,20 +197,6 @@ static bool DisplayBrightness(uint8 data) //-V2506
         HAL_DAC2::SetValue(data);
     }
 
-    return true;
-}
-
-
-static bool SetColor(uint8 data) //-V2506
-{
-    if (step == 0)
-    {
-        return false;
-    }
-    if (step == 1)
-    {
-        Painter::SetColor(static_cast<Color>(data));
-    }
     return true;
 }
 

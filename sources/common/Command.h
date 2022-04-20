@@ -8,7 +8,6 @@ struct Command
     {                                                   
 /* 00 */    None,                   //    |             |            |             |              |              |        |
 /* 01 */    ButtonPress,            // 01 |   Item      | TypePress  |             |              |              |        |
-/* 04 */    Paint_SetColor,         // 04 |   Color     |            |             |              |              |        |
 /* 05 */    Paint_FillRegion,       // 05 |   x[0:7]    |  x[8:15]   |      y      | width[0:7]   | width[8:15]  | height |
 /* 06 */    Paint_DrawText,         // 06 |   x[0:7]    |  x[8:15]   |      y      | num symbols  |              |        |
 /* 07 */    Paint_SetPalette,       // 07 | numColor    | value[0:7] | value[8:15] | value[16:23] | value[24:31] |        |

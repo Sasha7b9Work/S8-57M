@@ -300,16 +300,9 @@ static bool WriteFlashColor()
 }
 
 
-static void WriteToDisplay(Color color)
+static void WriteToDisplay(Color)
 {
-    static Color lastColor = Color::NUMBER;
-
-    if (color != lastColor)
-    {
-        lastColor = color;
-
-        HAL_BUS::Panel::Send(Command::Paint_SetColor, lastColor.value);
-    }
+    // todo_color
 }
 
 
