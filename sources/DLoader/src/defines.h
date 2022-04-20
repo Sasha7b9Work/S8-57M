@@ -1,7 +1,5 @@
 #pragma once
 
-#define DEBUG
-
 #define LANG_RU true
 
 #define VERSION "54-1.0"
