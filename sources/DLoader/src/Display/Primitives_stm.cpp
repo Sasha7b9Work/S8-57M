@@ -50,28 +50,9 @@ int Text::DrawSmall(int, int, Color)
 }
 
 
-void MultiHPointLine::Draw(int x, Color color)
+void MultiHPointLine::Draw(int, Color )
 {
-    color.SetAsCurrent();
-
-    uint8 buffer[6] =
-    {
-        Command::Paint_HPointLine,
-        0,
-        0,
-        0,
-        static_cast<uint8>(delta),
-        static_cast<uint8>(count)
-    };
-
-    for (int i = 0; i < numLines; i++)
-    {
-        buffer[1] = static_cast<uint8>(x);
-        buffer[2] = static_cast<uint8>(x >> 8);
-        buffer[3] = y[i]; //-V2563
-
-        HAL_BUS::Panel::Send(buffer, 6);
-    }
+    // todo_paint
 }
 
 

@@ -26,7 +26,6 @@ static bool InButtonPress(uint8);
 
 static bool DisplayBrightness(uint8);
 
-static bool DrawHPointLine(uint8);
 // Установка моноширинного вывода шрифта
 static bool SetMinWidthFont(uint8);
 // Устанавливает расстояние между символами при выводе текста
@@ -48,7 +47,6 @@ void PDecoder::AddData(uint8 data) //-V2506
         InButtonPress,      // ButtonPress,
         DisplayBrightness,  // Paint_DrawBigText,
         FuncScreen,         // Screen
-        DrawHPointLine,     // Paint_HPointLine
         SetMinWidthFont,    // Paint_SetMonoSpaceFont
         SetTextSpacing,     // Paint_SetTextSpacing
         E,                  // AddToConsole
@@ -125,35 +123,6 @@ static bool FuncScreen(uint8 data) //-V2506
     }
 
     return true;
-}
-
-
-static bool DrawHPointLine(uint8 data)
-{
-    static int y;
-    static int x;
-    static int delta;
-    static int count;
-
-    bool result = false;
-
-    switch (step)
-    {
-    case 0:                                     break;
-    case 1: x = data;                           break;
-    case 2: x += static_cast<int>(data) << 8;   break;
-    case 3: y = data;                           break;
-    case 4: delta = data;                       break;
-    case 5: count = data;
-        Painter::DrawHPointLine(x, y, delta, count);
-        result = true;
-        break;
-    default:
-        result = true;
-        break;
-    }
-
-    return result;
 }
 
 
