@@ -24,8 +24,6 @@ static bool E(uint8) { return true; }
 
 static bool InButtonPress(uint8);
 
-static bool SetPalette(uint8);
-
 static bool DrawRectangle(uint8);
 
 static bool DrawVLine(uint8);
@@ -64,7 +62,6 @@ void PDecoder::AddData(uint8 data) //-V2506
     {
         E,
         InButtonPress,
-        SetPalette,
         DrawRectangle,
         DrawVLine,
         DrawHLine,
@@ -431,33 +428,6 @@ static bool SetPoint(uint8 data)
             break;
     }
 
-    return result;
-}
-
-
-static bool SetPalette(uint8 data)
-{
-    static uint8 numColor;
-    static uint valueColor;
-    
-    bool result = false;
-
-    switch (step)
-    {
-        case 0:                                                 break;
-        case 1: numColor = data;                                break;
-        case 2: valueColor = data;                              break;
-        case 3: valueColor |= static_cast<uint>(data) << 8;     break;
-        case 4: valueColor |= static_cast<uint>(data) << 16;    break;
-        case 5: valueColor |= static_cast<uint>(data) << 24;
-            Painter::SetColorValue(Color(numColor), valueColor);
-            result = true;
-            break;
-        default:
-            result = true;
-            break;
-    }
-    
     return result;
 }
 

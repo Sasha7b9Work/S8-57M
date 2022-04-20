@@ -302,25 +302,13 @@ static bool WriteFlashColor()
 
 static void WriteToDisplay(Color)
 {
-    // todo_color
+    // todo_paint
 }
 
 
 void Color::LoadValueRGB()
 {
-    uint rgb = COLOR(value);
-
-    uint8 buffer[6] = 
-    {
-        Command::Paint_SetPalette,
-        value,
-        static_cast<uint8>(rgb),
-        static_cast<uint8>(rgb >> 8),
-        static_cast<uint8>(rgb >> 16),
-        static_cast<uint8>(rgb >> 24)
-    };
-
-    HAL_BUS::Panel::Send(buffer, 6);
+    // todo_paint
 }
 
 
