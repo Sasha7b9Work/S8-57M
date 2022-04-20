@@ -8,3 +8,5 @@ sources/Panel/Listings/
 sources/Panel/Objects/
 sources/Panel/Listings-Debug/
 sources/Panel/Objects-Debug/
+sources/Panel/DebugConfig/*
+
