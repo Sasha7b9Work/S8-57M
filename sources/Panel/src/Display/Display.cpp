@@ -13,9 +13,7 @@
 LTDC_HandleTypeDef hltdc;
 
 uint8  front[BUFFER_WIDTH * BUFFER_HEIGHT];
-uint8  back[BUFFER_WIDTH * BUFFER_HEIGHT];
 uint8 *Display::frontBuffer = front;
-uint8 *Display::backBuffer = back;
 
 
 static void DrawStartScreen();
@@ -24,7 +22,7 @@ static void DrawStartScreen();
 void Display::Init()
 {
     HAL_DAC2::Init();
-    HAL_LTDC::Init(reinterpret_cast<uint>(frontBuffer), reinterpret_cast<uint>(backBuffer)); //-V2571
+    HAL_LTDC::Init(reinterpret_cast<uint>(frontBuffer)); //-V2571
     Painter::LoadPalette();
 
     DrawStartScreen();

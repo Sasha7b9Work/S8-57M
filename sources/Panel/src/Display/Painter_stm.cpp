@@ -63,8 +63,6 @@ void Painter::EndScene(void)
             sendingString = -1;
         }
     }
-
-    HAL_LTDC::ToggleBuffers();
 }
 
 

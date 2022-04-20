@@ -36,15 +36,13 @@ class HAL_LTDC
 
 private:
 
-    static void Init(uint front, uint back);
+    static void Init(uint front);
 
 public:
 
     static void SetColors(uint* clut, uint numColors);
 
-    static void ToggleBuffers();
-
 private:
 
-    static void SetBuffers(uint frontBuffer, uint backBuffer);
+    static void SetBuffers(uint frontBuffer);
 };
