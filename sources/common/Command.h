@@ -10,7 +10,6 @@ struct Command
 /* 01 */    ButtonPress,            // 01 |   Item      | TypePress  |             |              |              |        |
 /* 15 */    Display_Brightness,     // 15 | €ркость
 /* 16 */    Screen,                 // 16 |  numRow     |
-/* 20 */    Paint_SetTextSpacing,   // 20 |   0 | 1     |
 /* 21 */    AddToConsole,           // 21 | num symb    |  ..... symbols ....
 
             PNT_DirectLine,         // ќтрисовка "пр€мой" линии

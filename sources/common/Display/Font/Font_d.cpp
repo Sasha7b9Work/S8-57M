@@ -104,10 +104,9 @@ void DFont::Pop()
 }
 
 
-void DFont::SetSpacing(int _spacing)
+void DFont::SetSpacing(int)
 {
-    spacing = _spacing;
-    HAL_BUS::Panel::Send(Command::Paint_SetTextSpacing, static_cast<uint8>(spacing));
+    // todo_paint
 }
 
 int DFont::GetSpacing()

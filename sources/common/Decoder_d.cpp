@@ -72,7 +72,6 @@ static void RunStep(uint8 data) //-V2506
         ButtonPress,    // ButtonPress,
         E,              // Paint_DrawBigText,
         E,              // Screen
-        E,              // Paint_SetTextSpacing
         AddToConsole,   // AddToConsole
         E,
         E
