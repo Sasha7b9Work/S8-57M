@@ -21,7 +21,7 @@ void Painter::BeginScene(Color color)
 
 void Painter::EndScene()
 {
-    HAL_BUS::Panel::Send(Command::Paint_EndScene);
+    // todo_paint
 }
 
 

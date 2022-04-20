@@ -24,8 +24,6 @@ static bool E(uint8) { return true; }
 
 static bool InButtonPress(uint8);
 
-static bool EndScene(uint8);
-
 static bool SetColor(uint8);
 
 static bool FillRegion(uint8);
@@ -72,7 +70,6 @@ void PDecoder::AddData(uint8 data) //-V2506
     {
         E,
         InButtonPress,
-        EndScene,
         SetColor,
         FillRegion,
         DrawText,
@@ -203,13 +200,6 @@ static bool DisplayBrightness(uint8 data) //-V2506
         HAL_DAC2::SetValue(data);
     }
 
-    return true;
-}
-
-
-static bool EndScene(uint8)
-{
-    Painter::EndScene();
     return true;
 }
 
