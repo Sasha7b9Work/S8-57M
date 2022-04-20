@@ -93,6 +93,8 @@ void PDecoder::AddData(uint8 data) //-V2506
         DrawHPointLine,
         SetMinWidthFont,
         SetTextSpacing,
+        E,
+        E,
         E
     };
 

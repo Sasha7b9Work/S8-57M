@@ -89,7 +89,9 @@ static void RunStep(uint8 data) //-V2506
         E,              // Paint_HPointLine
         E,              // Paint_SetMonoSpaceFont
         E,              // Paint_SetTextSpacing
-        AddToConsole    // AddToConsole
+        AddToConsole,   // AddToConsole
+        E,
+        E
     };
 
     if (step == 0)
