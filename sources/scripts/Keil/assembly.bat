@@ -3,7 +3,7 @@
 set _COMPILER_=c:\Keil_v5\UV4\UV4
 set _PROJECT_DEVICE_=..\..\Device\Device.uvprojx
 set _PROJECT_PANEL_=..\..\Panel\Panel.uvprojx
-set _PROJECT_LOADER_=..\..\Loader\Loader.uvprojx
+set _PROJECT_LOADER_=..\..\DLoader\DLoader.uvprojx
 
 rem 1, если требуется очистка
 set isClean=0
@@ -62,7 +62,7 @@ echo Cleaning Device ...
 if %isBuild%==0 goto LOADING
 if %need_loader%==0 goto BUILDING_PANEL
 echo Building Loader ...
-%_COMPILER_% -b %_PROJECT_LOADER_% -j0 -o Loader.out
+%_COMPILER_% -b %_PROJECT_LOADER_% -j0 -o DLoader.out
 if %ERRORLEVEL%==0 goto BUILDING_PANEL
 echo ERROR!!! Build failed !!!
 type ..\..\Loader\Loader.out
