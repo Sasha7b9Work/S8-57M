@@ -194,12 +194,5 @@ void Message::Create::DrawHLine(Message &message, int y, int x0, int x1)
 
 void Message::Create::DrawRectangle(Message &message, int x, int y, int width, int height)
 {
-    if (message.Allocate(7))
-    {
-        message.PutByte(Command::Paint_DrawRectangle);
-        message.PutHalfWord(static_cast<uint16>(x));
-        message.PutByte(static_cast<uint8>(y));
-        message.PutHalfWord(static_cast<uint16>(width));
-        message.PutByte(static_cast<uint8>(height));
-    }
+    // todo_paint
 }

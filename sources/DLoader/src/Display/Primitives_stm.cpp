@@ -12,22 +12,9 @@ void Region::Fill(int, int, Color)
 }
 
 
-void Rectangle::Draw(int x, int y, Color color)
+void Rectangle::Draw(int, int, Color)
 {
-    color.SetAsCurrent();
-
-    uint8 buffer[7] =
-    {
-        Command::Paint_DrawRectangle,
-        static_cast<uint8>(x),
-        static_cast<uint8>(x >> 8),
-        static_cast<uint8>(y),
-        static_cast<uint8>(width),
-        static_cast<uint8>(width >> 8),
-        static_cast<uint8>(height)
-    };
-
-    HAL_BUS::Panel::Send(buffer, 7);
+    // todo_paint
 }
 
 
