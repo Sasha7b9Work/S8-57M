@@ -1,3 +1,6 @@
+*.out
+*.bin
+
 sources/generated/
 sources/ThirdParty/wxWidgets/generated/
 sources/Device/Listings/
@@ -9,4 +12,3 @@ sources/Panel/Objects/
 sources/Panel/Listings-Debug/
 sources/Panel/Objects-Debug/
 sources/Panel/DebugConfig/*
-
