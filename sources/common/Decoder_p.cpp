@@ -24,8 +24,6 @@ static bool E(uint8) { return true; }
 
 static bool InButtonPress(uint8);
 
-static bool SetFont(uint8);
-
 static bool SetPoint(uint8);
 
 static bool DrawLine(uint8);
@@ -56,7 +54,6 @@ void PDecoder::AddData(uint8 data) //-V2506
     {
         E,
         InButtonPress,
-        SetFont,
         SetPoint,
         DrawLine,
         DrawTesterPoints,
@@ -335,19 +332,6 @@ static bool SetPoint(uint8 data)
     }
 
     return result;
-}
-
-
-static bool SetFont(uint8 data) //-V2506
-{
-    if (step == 0)
-    {
-        return false;
-    }
-
-    PFont::Set(static_cast<PTypeFont::E>(data));
-
-    return true;
 }
 
 

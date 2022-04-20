@@ -41,15 +41,9 @@ int DFont::GetLengthText(pString text)
 }
 
 
-static void SendTypeFontToPanel(DTypeFont::E type)
+static void SendTypeFontToPanel(DTypeFont::E)
 {
-    static DTypeFont::E prevType = DTypeFont::Count;
-
-    if (prevType != type)
-    {
-        HAL_BUS::Panel::Send(Command::Paint_SetFont, static_cast<uint8>(type));
-        prevType = type;
-    }
+    // todo_paint
 }
 
 

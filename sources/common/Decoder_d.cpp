@@ -70,7 +70,6 @@ static void RunStep(uint8 data) //-V2506
     {
         E,              // None,
         ButtonPress,    // ButtonPress,
-        E,              // Paint_SetFont,
         E,              // Paint_SetPoint,
         E,              // Paint_DrawLine,
         E,              // Paint_TesterLines,
