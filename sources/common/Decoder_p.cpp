@@ -24,8 +24,6 @@ static bool E(uint8) { return true; }
 
 static bool InButtonPress(uint8);
 
-static bool BeginScene(uint8);
-
 static bool EndScene(uint8);
 
 static bool SetColor(uint8);
@@ -74,7 +72,6 @@ void PDecoder::AddData(uint8 data) //-V2506
     {
         E,
         InButtonPress,
-        BeginScene,
         EndScene,
         SetColor,
         FillRegion,
@@ -135,13 +132,6 @@ static bool InButtonPress(uint8) //-V2506
     if (step == 2)
     {
     }
-    return true;
-}
-
-
-static bool BeginScene(uint8)
-{
-    Painter::BeginScene();
     return true;
 }
 

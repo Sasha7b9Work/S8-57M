@@ -6,11 +6,9 @@
 #include "Utils/Buffer.h"
 
 
-void Painter::BeginScene(Color color)
+void Painter::BeginScene(Color)
 {
-    color.SetAsCurrent();
-
-    HAL_BUS::Panel::Send(Command::Paint_BeginScene);
+    // todo_paint
 }
 
 

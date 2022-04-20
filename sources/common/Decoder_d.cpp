@@ -70,7 +70,6 @@ static void RunStep(uint8 data) //-V2506
     {
         E,              // None,
         ButtonPress,    // ButtonPress,
-        E,              // Paint_BeginScene,
         E,              // Paint_EndScene,
         E,              // Paint_SetColor,
         E,              // Paint_FillRegion,

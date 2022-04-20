@@ -15,7 +15,7 @@ void Painter::BeginScene(Color color)
 {
     color.SetAsCurrent();
 
-    HAL_BUS::Panel::Send(Command::Paint_BeginScene);
+    // todo_paint
 }
 
 
