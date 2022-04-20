@@ -39,23 +39,9 @@ void HLine::Draw(int x, int y, Color color)
 }
 
 
-void VLine::Draw(int x, int y, Color color)
+void VLine::Draw(int, int, Color)
 {
-    color.SetAsCurrent();
-
-    int y0 = y;
-    int y1 = y0 + height;
-
-    uint8 buffer[5] =
-    {
-        Command::Paint_DrawVLine,
-        static_cast<uint8>(x),
-        static_cast<uint8>(x >> 8),
-        static_cast<uint8>(y0),
-        static_cast<uint8>(y1)
-    };
-
-    HAL_BUS::Panel::Send(buffer, 5);
+    // todo_paint
 }
 
 
