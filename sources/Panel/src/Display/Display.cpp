@@ -5,7 +5,6 @@
 #include "Display/Text.h"
 #include "Hardware/Controls.h"
 #include "Hardware/CPU.h"
-#include "Hardware/LTDC.h"
 #include "Hardware/HAL/HAL.h"
 #include <cstdlib>
 
@@ -25,7 +24,7 @@ static void DrawStartScreen();
 void Display::Init()
 {
     HAL_DAC2::Init();
-    LTDC_::Init(reinterpret_cast<uint>(frontBuffer), reinterpret_cast<uint>(backBuffer)); //-V2571
+    HAL_LTDC::Init(reinterpret_cast<uint>(frontBuffer), reinterpret_cast<uint>(backBuffer)); //-V2571
     Painter::LoadPalette();
 
     DrawStartScreen();

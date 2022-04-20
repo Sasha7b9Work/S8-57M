@@ -3,7 +3,6 @@
 #include "Display/Averager.h"
 #include "Display/Painter.h"
 #include "Display/Display.h"
-#include "Hardware/LTDC.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Math.h"
 #include <cstring>
@@ -42,7 +41,7 @@ void Painter::SetColorValue(Color color, uint value)
 
 void Painter::LoadPalette()
 {
-    LTDC_::SetColors(&COLOR(0), Color::NUMBER.value);
+    HAL_LTDC::SetColors(&COLOR(0), Color::NUMBER.value);
 }
 
 
@@ -65,7 +64,7 @@ void Painter::EndScene(void)
         }
     }
 
-    LTDC_::ToggleBuffers();
+    HAL_LTDC::ToggleBuffers();
 }
 
 

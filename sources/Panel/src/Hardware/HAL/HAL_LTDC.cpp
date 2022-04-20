@@ -2,7 +2,6 @@
 #include "defines.h"
 #include "Display/Painter.h"
 #include "Hardware/CPU.h"
-#include "Hardware/LTDC.h"
 #include "Hardware/HAL/HAL.h"
 #include "Settings/SettingsTypes.h"
 
@@ -13,7 +12,7 @@ static uint backBuffer = 0;
 
 
 
-void LTDC_::Init(uint front, uint back)
+void HAL_LTDC::Init(uint front, uint back)
 {
     GPIO_InitTypeDef isGPIO =
     {
@@ -94,7 +93,7 @@ void LTDC_::Init(uint front, uint back)
 }
 
 
-void LTDC_::SetBuffers(uint front, uint back)
+void HAL_LTDC::SetBuffers(uint front, uint back)
 {
     frontBuffer = front;
     backBuffer = back;
@@ -123,7 +122,7 @@ void LTDC_::SetBuffers(uint front, uint back)
 }
 
 
-void LTDC_::SetColors(uint *clut, uint numColors)
+void HAL_LTDC::SetColors(uint *clut, uint numColors)
 {
     HAL_LTDC_ConfigCLUT(&handleLTDC, clut, numColors, 0);
 
@@ -131,7 +130,7 @@ void LTDC_::SetColors(uint *clut, uint numColors)
 }
 
 
-void LTDC_::ToggleBuffers()
+void HAL_LTDC::ToggleBuffers()
 {
     DMA2D_HandleTypeDef hDMA2D;
 
