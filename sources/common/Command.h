@@ -8,7 +8,6 @@ struct Command
     {                                                   
 /* 00 */    None,                   //    |             |            |             |              |              |        |
 /* 01 */    ButtonPress,            // 01 |   Item      | TypePress  |             |              |              |        |
-/* 06 */    Paint_DrawText,         // 06 |   x[0:7]    |  x[8:15]   |      y      | num symbols  |              |        |
 /* 07 */    Paint_SetPalette,       // 07 | numColor    | value[0:7] | value[8:15] | value[16:23] | value[24:31] |        |
 /* 08 */    Paint_DrawRectangle,    // 08 |   x[0:7]    |  x[8:15]   |      y      | width[0:7]   | width[8:15]  | height |
 /* 09 */    Paint_DrawVLine,        // 09 |   x[0:7]    |  x[8:15]   |      y0     |      y1      |              |        |

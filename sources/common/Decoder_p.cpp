@@ -24,8 +24,6 @@ static bool E(uint8) { return true; }
 
 static bool InButtonPress(uint8);
 
-static bool DrawText(uint8);
-
 static bool SetPalette(uint8);
 
 static bool DrawRectangle(uint8);
@@ -66,7 +64,6 @@ void PDecoder::AddData(uint8 data) //-V2506
     {
         E,
         InButtonPress,
-        DrawText,
         SetPalette,
         DrawRectangle,
         DrawVLine,
@@ -435,46 +432,6 @@ static bool SetPoint(uint8 data)
     }
 
     return result;
-}
-
-
-static bool DrawText(uint8 data) //-V2506
-{
-    static int x;
-    static int y;
-    static int numSymbols;
-    static int readingSymbols;
-    static char *buffer;
-
-    switch (step)
-    {
-        case 0:                                         break;
-        case 1:     x = data;                           break;
-        case 2:     x += static_cast<int>(data) << 8;   break;
-        case 3:
-            y = data;
-            if (y > 239)
-            {
-                y -= 256;
-            }
-            break;
-        case 4:
-            numSymbols = data;
-            readingSymbols = 0;
-            buffer = new char[static_cast<uint>(numSymbols + 1)]; //-V2511
-            break;
-        default:
-            buffer[readingSymbols++] = static_cast<char>(data); //-V2563
-            if (readingSymbols == numSymbols)
-            {
-                buffer[readingSymbols] = 0; //-V2563
-                Text::Draw(x, y, buffer);
-                delete []buffer; //-V2511
-                return true;
-            }
-            break;
-    }
-    return false;
 }
 
 

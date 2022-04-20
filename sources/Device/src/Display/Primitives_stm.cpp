@@ -107,24 +107,11 @@ void Line::Draw(Color color)
 }
 
 
-int Text::DrawSmall(int x, int y, Color color)
+int Text::DrawSmall(int, int, Color)
 {
-    color.SetAsCurrent();
+    // todo_paint
 
-    int sizeBuffer = 1 + 2 + 1 + 1 + static_cast<int>(std::strlen(text)); //-V2513
-
-    Buffer buffer(sizeBuffer);
-    buffer.data[0] = Command::Paint_DrawText; //-V2563
-    buffer.data[1] = static_cast<uint8>(x); //-V2563
-    buffer.data[2] = static_cast<uint8>(x >> 8); //-V2563
-    buffer.data[3] = static_cast<uint8>(y); //-V2563
-    buffer.data[4] = static_cast<uint8>(std::strlen(text)); //-V1029 //-V2513 //-V2563
-
-    std::memcpy(&buffer.data[5], static_cast<void *>(const_cast<char *>(text)), std::strlen(text)); //-V2513 //-V2563 //-V2567
-
-    HAL_BUS::Panel::Send(buffer.data, sizeBuffer);
-
-    return x + DFont::GetLengthText(text) + 1;
+    return 0;
 }
 
 
