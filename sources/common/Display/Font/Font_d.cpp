@@ -116,9 +116,9 @@ int DFont::GetSpacing()
 }
 
 
-void DFont::SetMinWidth(uint8 width)
+void DFont::SetMinWidth(uint8)
 {
-    HAL_BUS::Panel::Send(Command::Paint_SetMinWidthFont, width);
+    // todo_paint
 }
 
 

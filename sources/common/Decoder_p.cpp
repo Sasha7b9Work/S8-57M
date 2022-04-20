@@ -26,8 +26,6 @@ static bool InButtonPress(uint8);
 
 static bool DisplayBrightness(uint8);
 
-// Установка моноширинного вывода шрифта
-static bool SetMinWidthFont(uint8);
 // Устанавливает расстояние между символами при выводе текста
 static bool SetTextSpacing(uint8);
 // Эту функцию надо вызывать после выполнения последнего шага
@@ -47,7 +45,6 @@ void PDecoder::AddData(uint8 data) //-V2506
         InButtonPress,      // ButtonPress,
         DisplayBrightness,  // Paint_DrawBigText,
         FuncScreen,         // Screen
-        SetMinWidthFont,    // Paint_SetMonoSpaceFont
         SetTextSpacing,     // Paint_SetTextSpacing
         E,                  // AddToConsole
         E,
@@ -120,21 +117,6 @@ static bool FuncScreen(uint8 data) //-V2506
     if (step == 1)
     {
         Painter::SendRow(data);
-    }
-
-    return true;
-}
-
-
-static bool SetMinWidthFont(uint8 data) //-V2506
-{
-    if (step == 0)
-    {
-        return false;
-    }
-    if (step == 1)
-    {
-        Text::SetMinWidthFont(data);
     }
 
     return true;
