@@ -8,14 +8,14 @@ struct Command
     {                                                   
 /* 00 */    None,                   //    |             |            |             |              |              |        |
 /* 01 */    ButtonPress,            // 01 |   Item      | TypePress  |             |              |              |        |
-/* 15 */    Display_Brightness,     // 15 | €ркость
-/* 16 */    Screen,                 // 16 |  numRow     |
-/* 21 */    AddToConsole,           // 21 | num symb    |  ..... symbols ....
+/* 02 */    Display_Brightness,     // 15 | €ркость
+/* 03 */    Screen,                 // 16 |  numRow     |
+/* 04 */    AddToConsole,           // 21 | num symb    |  ..... symbols ....
 
-            PNT_DirectLine,         // ќтрисовка "пр€мой" линии
+/* 05 */    Paint_DirectLine,       // ќтрисовка "пр€мой" линии
             //  код команды [8] | число байт в команде (начина€ со следующего) [8] | номер цвета [8] | количество точек [8]
 
-            PNT_DifferentLine,      // ќтрисовка "разностной" линии
+/* 06 */    Paint_DifferentLine,    // ќтрисовка "разностной" линии
             //  код команды [8] | число баайт в команде (начина€ со следующего) [8] | разность цвета по сравнению с прошлым кадром [8] | количество точек [8]
 
             Count
