@@ -2,8 +2,10 @@
 
 
 #ifdef WIN32
-#define __attribute(x) //-V2573
-#define __attribute__(x) //-V2573
+    #define __attribute(x) //-V2573
+    #define __attribute__(x) //-V2573
+#else
+    #pragma diag_suppress 991
 #endif
 
 
