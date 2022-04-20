@@ -6,3 +6,5 @@ sources/DLoader/Listings/
 sources/DLoader/Objects/
 sources/Panel/Listings/
 sources/Panel/Objects/
+sources/Panel/Listings-Debug/
+sources/Panel/Objects-Debug/
