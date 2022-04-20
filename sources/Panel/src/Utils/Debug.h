@@ -1,12 +1,11 @@
+// 2022/04/20 16:52:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "defines.h"
-
 
 
 // Хорошо использовать для трассировке, если потом в HardFault_Handler() отслеживать эти переменные
 #define DEBUG_POINT Debug::line = __LINE__; Debug::file = __FILE__;
 // #define DEBUG_POINT Debug::size = std::strlen(text);
-
 
 
 class Debug

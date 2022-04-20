@@ -1,9 +1,10 @@
+// 2022/04/20 16:52:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Math.h"
 #include "FPGA/FPGATypes.h"
-#include <math.h>
-#include <stdlib.h>
-#include <string.h>
+#include <cmath>
+#include <cstdlib>
+#include <cstring>
 #include <limits>
 
 
@@ -35,7 +36,7 @@ T Math::Max(T val1, T val2, T val3)
 template<class T>
 bool Math::IsEquals(T x, T y)
 {
-    return fabsf(x - y) < std::numeric_limits<T>::epsilon();
+    return std::fabsf(x - y) < std::numeric_limits<T>::epsilon();
 }
 
 
