@@ -46,15 +46,15 @@ void PDecoder::AddData(uint8 data) //-V2506
     }
     command[Command::Count] =
     {
-        E,
-        InButtonPress,
-        DisplayBrightness,
-        FuncScreen,
-        DrawVPointLine,
-        DrawHPointLine,
-        SetMinWidthFont,
-        SetTextSpacing,
-        E,
+        E,                  // None,
+        InButtonPress,      // ButtonPress,
+        DisplayBrightness,  // Paint_DrawBigText,
+        FuncScreen,         // Screen
+        DrawVPointLine,     // Paint_VPointLine
+        DrawHPointLine,     // Paint_HPointLine
+        SetMinWidthFont,    // Paint_SetMonoSpaceFont
+        SetTextSpacing,     // Paint_SetTextSpacing
+        E,                  // AddToConsole
         E,
         E
     };
