@@ -180,19 +180,13 @@ void Message::Free()
 }
 
 
-void Message::Create::DrawHLine(Message &message, int y, int x0, int x1)
+void Message::Create::DrawHLine(Message &, int , int , int )
 {
-    if (message.Allocate(6))
-    {
-        message.PutByte(Command::Paint_DrawHLine);
-        message.PutByte(static_cast<uint8>(y));
-        message.PutHalfWord(static_cast<uint16>(x0));
-        message.PutHalfWord(static_cast<uint16>(x1));
-    }
+    // todo_paint
 }
 
 
-void Message::Create::DrawRectangle(Message &message, int x, int y, int width, int height)
+void Message::Create::DrawRectangle(Message &, int , int , int , int )
 {
     // todo_paint
 }

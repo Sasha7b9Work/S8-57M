@@ -18,24 +18,9 @@ void Rectangle::Draw(int, int, Color)
 }
 
 
-void HLine::Draw(int x, int y, Color color)
+void HLine::Draw(int, int, Color)
 {
-    color.SetAsCurrent();
-
-    int x0 = x;
-    int x1 = x0 + width;
-
-    uint8 buffer[6] =
-    {
-        Command::Paint_DrawHLine,
-        static_cast<uint8>(y),
-        static_cast<uint8>(x0),
-        static_cast<uint8>(x0 >> 8),
-        static_cast<uint8>(x1),
-        static_cast<uint8>(x1 >> 8)
-    };
-
-    HAL_BUS::Panel::Send(buffer, 6);
+    // todo_paint
 }
 
 
