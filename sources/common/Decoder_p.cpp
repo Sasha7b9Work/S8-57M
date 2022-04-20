@@ -24,8 +24,6 @@ static bool E(uint8) { return true; }
 
 static bool InButtonPress(uint8);
 
-static bool FillRegion(uint8);
-
 static bool DrawText(uint8);
 
 static bool SetPalette(uint8);
@@ -68,7 +66,6 @@ void PDecoder::AddData(uint8 data) //-V2506
     {
         E,
         InButtonPress,
-        FillRegion,
         DrawText,
         SetPalette,
         DrawRectangle,
@@ -214,36 +211,6 @@ static bool FuncScreen(uint8 data) //-V2506
     }
 
     return true;
-}
-
-
-static bool FillRegion(uint8 data)
-{
-    static int x;
-    static int y;
-    static int width;
-    static int height;
-    
-    bool result = false;
-
-    switch (step)
-    {
-        case 0:                                             break;
-        case 1:     x = data;                               break;
-        case 2:     x += static_cast<int>(data) << 8;       break;
-        case 3:     y = data;                               break;
-        case 4:     width = data;                           break;
-        case 5:     width += static_cast<int>(data) << 8;   break;
-        case 6:     height = static_cast<int>(data);
-            Painter::FillRegion(x, y, width, height);
-            result = true;
-            break;
-        default:
-            result = true;
-            break;
-    }
-    
-    return result;
 }
 
 
