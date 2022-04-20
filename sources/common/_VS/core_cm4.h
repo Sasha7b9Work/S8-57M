@@ -26,3 +26,20 @@ extern struct structSCB
     unsigned VTOR;
 } *SCB;
 
+
+#ifndef __STATIC_INLINE
+    #define __STATIC_INLINE inline
+#endif
+
+#ifdef DEVICE
+    inline uint32_t __RBIT(uint32_t value)
+    {
+        return value;
+    }
+#endif
+
+
+#ifndef __CLZ
+	#define __CLZ
+#endif
+
