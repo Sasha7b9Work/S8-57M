@@ -36,22 +36,9 @@ void Pixel::Draw(int, int, Color)
 }
 
 
-void Line::Draw(Color color)
+void Line::Draw(Color)
 {
-    color.SetAsCurrent();
-
-    uint8 buffer[7] =
-    {
-        Command::Paint_DrawLine,
-        static_cast<uint8>(x0),
-        static_cast<uint8>(x0 >> 8),
-        static_cast<uint8>(y0),
-        static_cast<uint8>(x1),
-        static_cast<uint8>(x1 >> 8),
-        static_cast<uint8>(y1)
-    };
-
-    HAL_BUS::Panel::Send(buffer, 7);
+    // todo_paint
 }
 
 
