@@ -1,6 +1,6 @@
 // 2022/04/20 16:52:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Display/Averager.h"
+#include "Display/AveragerTester.h"
 #include "Display/Painter.h"
 #include "Display/Display.h"
 #include "Hardware/HAL/HAL.h"
