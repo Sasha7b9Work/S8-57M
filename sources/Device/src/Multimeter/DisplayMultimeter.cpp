@@ -13,63 +13,72 @@
 #include <cmath>
 
 
-#define SYMBOL_OMEGA '\x01'
+namespace DisplayMultimeter
+{
+    static const char SYMBOL_OMEGA = '\x01';
+
+    char outBuffer[15];      // Данные для вывода.
+    bool received = false;
+    bool needSendToSCPI = false;
 
 
-static char outBuffer[15];      // Данные для вывода.
-static bool received = false;
-static bool needSendToSCPI = false;
+    void PrepareBell(pCHAR);
+    void PrepareVoltageDC(pCHAR);
+    void PrepareVoltageAC(pCHAR);
+    void PrepareCurrentDC(pCHAR);
+    void PrepareCurrentAC(pCHAR);
+    void PrepareResistance(pCHAR);
+    void PrepareTestDiode(pCHAR);
+
+    // Отрисовать значение измерения
+    void DrawSymbols(bool inModeOsci);
+
+    // Отрисовать один символ
+    void DrawChar(int numSymbol, int x, bool inModeOsci);
+
+    // Отрисовать измерение. Если inModeOsci == true, рисовать надо на экране, совмещённом с осциллографом
+    void DrawMeasure(bool inModeOsci);
+
+    // Нарисовать дополнительные изображения на экране, если в этом есть необходимость
+    void DrawGraphics(bool inModeOsci);
+
+    // Отобразить единицы измерения
+    void DrawUnits(bool inModeOsci);
+
+    // Нарисовать линии вправо и влево отностиельно центра с длиной width
+    void Draw2HLinesRelCenter(int center, int y, int width);
+
+    // Отрисовка в режиме осциллографа
+    void UpdateInModeOsci();
+
+    // Отрисовка в режиме мультиметра
+    void UpdateInModeMultimeter();
+
+    // Возвращает координату x для вывода измерения в совмещённом режиме
+    int CalculateX();
+
+    // Возвращает координату y для вывода измерения в совмещённом режиме
+    int CalculateY();
+
+    // Нарисовать символ омеги в заданных координатах
+    void DrawSymbolOMEGA(int x, int y, bool inModeOsci);
+
+    char Symbol(int i);
+
+    // Рассчёт дополнительного смещения для точки и цифры 1 по иксу
+    int CalculateOffsetX(int i, bool inModeOsci);
+
+    bool ResistanceLess100();
+}
 
 
-static void PrepareBell(pCHAR);
-static void PrepareVoltageDC(pCHAR);
-static void PrepareVoltageAC(pCHAR);
-static void PrepareCurrentDC(pCHAR);
-static void PrepareCurrentAC(pCHAR);
-static void PrepareResistance(pCHAR);
-static void PrepareTestDiode(pCHAR);
-
-// Отрисовать значение измерения
-static void DrawSymbols(bool inModeOsci);
-
-// Отрисовать один символ
-static void DrawChar(int numSymbol, int x, bool inModeOsci);
-
-// Отрисовать измерение. Если inModeOsci == true, рисовать надо на экране, совмещённом с осциллографом
-static void DrawMeasure(bool inModeOsci);
-
-// Нарисовать дополнительные изображения на экране, если в этом есть необходимость
-static void DrawGraphics(bool inModeOsci);
-
-// Отобразить единицы измерения
-static void DrawUnits(bool inModeOsci);
-
-// Нарисовать линии вправо и влево отностиельно центра с длиной width
-static void Draw2HLinesRelCenter(int center, int y, int width);
-
-// Отрисовка в режиме осциллографа
-static void UpdateInModeOsci();
-
-// Отрисовка в режиме мультиметра
-static void UpdateInModeMultimeter();
-
-// Возвращает координату x для вывода измерения в совмещённом режиме
-static int CalculateX();
-
-// Возвращает координату y для вывода измерения в совмещённом режиме
-static int CalculateY();
-
-// Нарисовать символ омеги в заданных координатах
-static void DrawSymbolOMEGA(int x, int y, bool inModeOsci);
-
-
-static char Symbol(int i)
+char DisplayMultimeter::Symbol(int i)
 {
     return outBuffer[i];
 }
 
 
-static void DrawChar(int numSymbol, int x, bool inModeOsci)
+void DisplayMultimeter::DrawChar(int numSymbol, int x, bool inModeOsci)
 {
     int y = inModeOsci ? (CalculateY() + 3) : 35;
 
@@ -117,8 +126,7 @@ static void DrawChar(int numSymbol, int x, bool inModeOsci)
 }
 
 
-// Рассчёт дополнительного смещения для точки и цифры 1 по иксу
-static int CalculateOffsetX(int i, bool inModeOsci)
+int DisplayMultimeter::CalculateOffsetX(int i, bool inModeOsci)
 {
     if (Symbol(i) == '.')
     {
@@ -133,7 +141,7 @@ static int CalculateOffsetX(int i, bool inModeOsci)
 }
 
 
-static void DrawSymbols(bool inModeOsci)
+void DisplayMultimeter::DrawSymbols(bool inModeOsci)
 {
     int x0 = 20;
     int x = 48;
@@ -184,7 +192,7 @@ static void DrawSymbols(bool inModeOsci)
 }
 
 
-static void DrawUnits(bool inModeOsci)
+void DisplayMultimeter::DrawUnits(bool inModeOsci)
 {
     int x = 120;
     int y = 125;
@@ -265,7 +273,7 @@ static void DrawUnits(bool inModeOsci)
 }
 
 
-static void DrawSymbolOMEGA(int x, int y, bool inModeOsci)
+void DisplayMultimeter::DrawSymbolOMEGA(int x, int y, bool inModeOsci)
 {
     Color::FILL.SetAsCurrent();
 
@@ -350,14 +358,14 @@ static void DrawSymbolOMEGA(int x, int y, bool inModeOsci)
 }
 
 
-static void Draw2HLinesRelCenter(int center, int y, int width)
+void DisplayMultimeter::Draw2HLinesRelCenter(int center, int y, int width)
 {
     HLine(width).Draw(center, y);
     HLine(width).Draw(center - width, y);
 }
 
 
-static void DrawGraphics(bool inModeOsci)
+void DisplayMultimeter::DrawGraphics(bool inModeOsci)
 {
     int x0 = 10;
     int y0 = 10;
@@ -498,7 +506,7 @@ static void DrawGraphics(bool inModeOsci)
 }
 
 
-static void DrawMeasure(bool inModeOsci)
+void DisplayMultimeter::DrawMeasure(bool inModeOsci)
 {
     if (inModeOsci)
     {
@@ -543,7 +551,7 @@ void DisplayMultimeter::Update()
 }
 
 
-static void UpdateInModeOsci()
+void DisplayMultimeter::UpdateInModeOsci()
 {
     if (!S_MULT_SHOW_ALWAYS)
     {
@@ -554,7 +562,7 @@ static void UpdateInModeOsci()
 }
 
 
-static void UpdateInModeMultimeter()
+void DisplayMultimeter::UpdateInModeMultimeter()
 {
     Painter::BeginScene(Color::BACK);
 
@@ -663,50 +671,50 @@ void DisplayMultimeter::SetMeasure(const uint8 buf[13])
 }
 
 
-static void PrepareTestDiode(pCHAR)
+void DisplayMultimeter::PrepareTestDiode(pCHAR)
 {
     std::strcpy(outBuffer + 7, "  "); //-V2513
 }
 
 
-static void PrepareVoltageDC(pCHAR) //-V524
+void DisplayMultimeter::PrepareVoltageDC(pCHAR) //-V524
 {
     std::strcpy(outBuffer + 7, "V="); //-V2513
 }
 
 
-static void PrepareVoltageAC(pCHAR)
+void DisplayMultimeter::PrepareVoltageAC(pCHAR)
 {
     std::strcpy(outBuffer + 7, "V~"); //-V2513
 }
 
 
-static void PrepareCurrentDC(const char *buf)
+void DisplayMultimeter::PrepareCurrentDC(const char *buf)
 {
     std::strcpy(outBuffer + 7, (buf[10] == '1') ? "A=" : "mA="); //-V2513
 }
 
 
-static void PrepareCurrentAC(const char *buf)
+void DisplayMultimeter::PrepareCurrentAC(const char *buf)
 {
     std::strcpy(outBuffer + 7, (buf[10] == '1') ? "A~" : "mA~"); //-V2513
 }
 
 
-void PrepareResistance(const char *buf)
+void DisplayMultimeter::PrepareResistance(const char *buf)
 {
     outBuffer[7] = buf[8];
     outBuffer[8] = SYMBOL_OMEGA;
 }
 
 
-static bool ResistanceLess100()
+bool DisplayMultimeter::ResistanceLess100()
 {
     return ((outBuffer[1] == '0') && (outBuffer[3] == '0'));
 }
 
 
-static void PrepareBell(pCHAR)
+void DisplayMultimeter::PrepareBell(pCHAR)
 {
     std::strcpy(outBuffer + 7, "  "); //-V2513
 
@@ -721,13 +729,13 @@ static void PrepareBell(pCHAR)
 }
 
 
-static int CalculateX()
+int DisplayMultimeter::CalculateX()
 {
     return Grid::Left();
 }
 
 
-static int CalculateY()
+int DisplayMultimeter::CalculateY()
 {
     return Grid::Top();
 }
