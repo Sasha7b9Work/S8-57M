@@ -262,7 +262,7 @@ int Page::NumSubPages() const
 }
 
 
-int Page::NumItems() const //-V2506
+int Page::NumItems() const
 {
     const Item * const * item = &OwnData()->items[0];
 
@@ -593,7 +593,7 @@ void Governor::ChangeValue(int16 delta)
 }
 
 
-bool Governor::HandlerKey(const KeyEvent &event) //-V2506
+bool Governor::HandlerKey(const KeyEvent &event)
 {
     if (event.IsArrowLeft())
     {
@@ -794,7 +794,7 @@ char Choice::GetSymbol()
 }
 
 
-float Choice::Step() const //-V2506
+float Choice::Step() const
 {
     static const float speed = 0.1F;
     static const int numLines = 12;
@@ -934,7 +934,7 @@ void GovernorColor::HandlerFX(TypePress::E type) const
 }
 
 
-bool GovernorColor::HandlerKey(const KeyEvent &event) //-V2506
+bool GovernorColor::HandlerKey(const KeyEvent &event)
 {
     if (!event.IsRelease() && !event.IsRepeat())
     {

@@ -59,7 +59,7 @@ static bool E(uint8)
 }
 
 
-static void RunStep(uint8 data) //-V2506
+static void RunStep(uint8 data)
 {
     static const struct StructFunc
     {
@@ -108,7 +108,7 @@ static void RunStep(uint8 data) //-V2506
 }
 
 
-static bool ButtonPress(uint8 data) //-V2506
+static bool ButtonPress(uint8 data)
 {
     static Key::E button;
     if (step == 0)
@@ -129,7 +129,7 @@ static bool ButtonPress(uint8 data) //-V2506
 }
 
 
-static bool AddToConsole(uint8 data) //-V2506
+static bool AddToConsole(uint8 data)
 {
     static char *text = nullptr;        // Здесь будет храниться принятая строка
 

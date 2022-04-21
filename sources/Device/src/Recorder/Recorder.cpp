@@ -140,7 +140,7 @@ static void RestoreOsciSettings()
 }
 
 
-void Recorder::OnPressStart() //-V2506
+void Recorder::OnPressStart()
 {
     if(Menu::OpenedPage() != PageRecorder::self)
     {

@@ -30,7 +30,7 @@ static bool DisplayBrightness(uint8);
 static void FinishCommand();
 
 
-void PDecoder::AddData(uint8 data) //-V2506
+void PDecoder::AddData(uint8 data)
 {
     static const struct StructFunc
     {
@@ -72,7 +72,7 @@ void PDecoder::AddData(uint8 data) //-V2506
 }
 
 
-static bool InButtonPress(uint8) //-V2506
+static bool InButtonPress(uint8)
 {
     if (step == 0)
     {
@@ -89,7 +89,7 @@ static bool InButtonPress(uint8) //-V2506
 }
 
 
-static bool DisplayBrightness(uint8 data) //-V2506
+static bool DisplayBrightness(uint8 data)
 {
     if (step == 0)
     {
@@ -104,7 +104,7 @@ static bool DisplayBrightness(uint8 data) //-V2506
 }
 
 
-static bool FuncScreen(uint8 data) //-V2506
+static bool FuncScreen(uint8 data)
 {
     if (step == 0)
     {

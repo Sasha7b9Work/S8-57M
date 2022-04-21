@@ -50,7 +50,7 @@ static void SetPolarity(int i)
 }
 
 
-static pCHAR FuncConduction(pCHAR buffer) //-V2506
+static pCHAR FuncConduction(pCHAR buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(polarity[set.test._polarity]));
 
@@ -98,7 +98,7 @@ static void EnableControl(int i)
 }
 
 
-static pCHAR FuncControl(pCHAR buffer) //-V2506
+static pCHAR FuncControl(pCHAR buffer)
 {
     SCPI_REQUEST(SendAnswerForControl());
 
@@ -106,7 +106,7 @@ static pCHAR FuncControl(pCHAR buffer) //-V2506
 }
 
 
-static pCHAR FuncData(pCHAR buffer) //-V2506
+static pCHAR FuncData(pCHAR buffer)
 {
     SCPI_PROLOG(buffer);
 
@@ -135,7 +135,7 @@ static void DisableTester()
     }
 }
 
-static pCHAR FuncMode(pCHAR buffer) //-V2506
+static pCHAR FuncMode(pCHAR buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(Device::InModeTester() ? " ON" : " OFF"));
 
