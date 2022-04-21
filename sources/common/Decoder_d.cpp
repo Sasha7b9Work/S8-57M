@@ -17,6 +17,7 @@ namespace DDecoder
     const int SIZE_BUFFER = 512;
     uint8 buffer[SIZE_BUFFER];
 
+    bool E(uint8);
 
     void RunStep(uint8 data);
 
@@ -56,7 +57,7 @@ bool DDecoder::Update()
 }
 
 
-static bool E(uint8)
+bool DDecoder::E(uint8)
 {
     return true;
 }
