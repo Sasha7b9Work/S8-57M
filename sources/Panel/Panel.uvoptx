@@ -1358,20 +1358,20 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Display\Averager.cpp</PathWithFileName>
-      <FilenameWithoutPath>Averager.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\src\Display\Painter_stm.cpp</PathWithFileName>
+      <FilenameWithoutPath>Painter_stm.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>8</GroupNumber>
       <FileNumber>73</FileNumber>
-      <FileType>5</FileType>
+      <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Display\Averager.h</PathWithFileName>
-      <FilenameWithoutPath>Averager.h</FilenameWithoutPath>
+      <PathWithFileName>.\src\Display\Text_stm.cpp</PathWithFileName>
+      <FilenameWithoutPath>Text_stm.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1382,20 +1382,20 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Display\Painter_stm.cpp</PathWithFileName>
-      <FilenameWithoutPath>Painter_stm.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\src\Display\AveragerTester.cpp</PathWithFileName>
+      <FilenameWithoutPath>AveragerTester.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>8</GroupNumber>
       <FileNumber>75</FileNumber>
-      <FileType>8</FileType>
+      <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Display\Text_stm.cpp</PathWithFileName>
-      <FilenameWithoutPath>Text_stm.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\src\Display\AveragerTester.h</PathWithFileName>
+      <FilenameWithoutPath>AveragerTester.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
