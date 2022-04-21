@@ -4,6 +4,10 @@
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Buffer.h"
+#include "Display/Display.h"
+
+
+uint8 buffer[Display::WIDTH * Display::HEIGHT / 2];
 
 
 void Painter::Init()
@@ -15,7 +19,7 @@ void Painter::BeginScene(Color color)
 {
     color.SetAsCurrent();
 
-    // todo_paint
+    
 }
 
 
