@@ -10,28 +10,33 @@
 #include <cstdio>
 
 
-static USBH_HandleTypeDef handleUSBH;
-void *FDrive::handle = &handleUSBH;
-static FATFS USBDISKFatFs;
-static char USBDISKPath[4];     // -V112
-static bool isConnected;
-static bool needMount;
-static bool needSaveScreen = false;     // Если true - нажно сохранять экрна на флешку
+namespace FDrive
+{
 
-static void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id);
+    USBH_HandleTypeDef handleUSBH;
+    void* handle = &handleUSBH;
 
-// Устанавливает текущее время для файла nameFile
-static void SetTimeForFile(const char *nameFile);
+    FATFS USBDISKFatFs;
+    char USBDISKPath[4];     // -V112
+    bool isConnected;
+    bool needMount;
+    bool needSaveScreen = false;     // Если true - нажно сохранять экрна на флешку
 
-// Сохранить содержимое экрана на флешку
-static void SaveScreenToFlash();
+    void USBH_UserProcess(USBH_HandleTypeDef*, uint8 id);
 
-static void CreateFileName(char name[256]);
+    // Устанавливает текущее время для файла nameFile
+    void SetTimeForFile(const char* nameFile);
 
-static void ReadRow(uint8 row, uint8 pixels[320]);
+    // Сохранить содержимое экрана на флешку
+    void SaveScreenToFlash();
+
+    void CreateFileName(char name[256]);
+
+    void ReadRow(uint8 row, uint8 pixels[320]);
+}
 
 
-static void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
+void FDrive::USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 {
     switch(id)
     {
@@ -433,7 +438,7 @@ bool FDrive::CloseFile(StructForWrite *structForWrite) // -V2506
 }
 
 
-static void SetTimeForFile(const char *name)
+void FDrive::SetTimeForFile(const char *name)
 {
     FILINFO info;
 
@@ -452,7 +457,7 @@ void FDrive::SaveScreen()
 }
 
 
-static void SaveScreenToFlash()
+void FDrive::SaveScreenToFlash()
 {
     if(!needSaveScreen)
     {
@@ -580,7 +585,7 @@ static void SaveScreenToFlash()
 }
 
 
-static void CreateFileName(char name[256])
+void FDrive::CreateFileName(char name[256])
 {
     for (int i = 0; ; i++)
     {
@@ -594,7 +599,7 @@ static void CreateFileName(char name[256])
 }
 
 
-static void ReadRow(uint8 row, uint8 pixels[320])
+void FDrive::ReadRow(uint8 row, uint8 pixels[320])
 {
     while(DDecoder::Update())                       // Обрабатываем данные, которые приняты на данный момент
     {
