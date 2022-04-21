@@ -2,13 +2,12 @@
 #include "common/Command.h"
 
 
-template<int size_buffer>
+template<int capacity>
 class Message
 {
 private:
 
-    uint8 buffer[size_buffer];
-    int size;
+    uint8 buffer[capacity];
 
 public:
 
@@ -16,11 +15,17 @@ public:
     {
         buffer[0] = (uint8)command;
         buffer[1] = data;
-        size = 2;
+    }
+
+    Message(Command::E command, uint8 byte1, uint8 byte2)
+    {
+        buffer[0] = (uint8)command;
+        buffer[1] = byte1;
+        buffer[2] = byte2;
     }
 
     void Transmit()
     {
-        HAL_BUS::Panel::Send(buffer, size);
+        HAL_BUS::Panel::Send(buffer, capacity);
     }
 };

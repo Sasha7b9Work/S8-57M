@@ -127,6 +127,21 @@ void HAL_BUS::SendToDevice(uint8 *data, uint size)
 }
 
 
+void HAL_BUS::Panel::Send(const uint8* data, int size)
+{
+    while (size > 0)
+    {
+        queueData.Push(*data++);
+        size--;
+    }
+
+    if (queueData.Size())
+    {
+        pinData.SetActive();
+    }
+}
+
+
 void HAL_BUS::Update()
 {
     //while(pinCS.IsActive())
