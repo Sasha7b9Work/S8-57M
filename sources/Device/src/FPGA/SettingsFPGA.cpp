@@ -9,7 +9,7 @@
 #include "Settings/Settings.h"
 #include "Settings/SettingsNRST.h"
 #include "Utils/Math/Math.h"
-#include "Utils/Values.h"
+#include "Utils/Containers/Values.h"
 
 
 void TrigStartMode::Set(TrigStartMode::E v)

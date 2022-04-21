@@ -4831,30 +4831,6 @@
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
-    <File>
-      <GroupNumber>40</GroupNumber>
-      <FileNumber>354</FileNumber>
-      <FileType>8</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Utils\Values.cpp</PathWithFileName>
-      <FilenameWithoutPath>Values.cpp</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>40</GroupNumber>
-      <FileNumber>355</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Utils\Values.h</PathWithFileName>
-      <FilenameWithoutPath>Values.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
   </Group>
 
   <Group>
@@ -4865,7 +4841,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>41</GroupNumber>
-      <FileNumber>356</FileNumber>
+      <FileNumber>354</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -4877,7 +4853,7 @@
     </File>
     <File>
       <GroupNumber>41</GroupNumber>
-      <FileNumber>357</FileNumber>
+      <FileNumber>355</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -4889,7 +4865,7 @@
     </File>
     <File>
       <GroupNumber>41</GroupNumber>
-      <FileNumber>358</FileNumber>
+      <FileNumber>356</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -4901,7 +4877,7 @@
     </File>
     <File>
       <GroupNumber>41</GroupNumber>
-      <FileNumber>359</FileNumber>
+      <FileNumber>357</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -4913,7 +4889,7 @@
     </File>
     <File>
       <GroupNumber>41</GroupNumber>
-      <FileNumber>360</FileNumber>
+      <FileNumber>358</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -4925,13 +4901,37 @@
     </File>
     <File>
       <GroupNumber>41</GroupNumber>
-      <FileNumber>361</FileNumber>
+      <FileNumber>359</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\Utils\Containers\Stack.h</PathWithFileName>
       <FilenameWithoutPath>Stack.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>41</GroupNumber>
+      <FileNumber>360</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Utils\Containers\Values.cpp</PathWithFileName>
+      <FilenameWithoutPath>Values.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>41</GroupNumber>
+      <FileNumber>361</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Utils\Containers\Values.h</PathWithFileName>
+      <FilenameWithoutPath>Values.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

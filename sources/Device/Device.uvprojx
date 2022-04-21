@@ -2394,16 +2394,6 @@
               <FileType>5</FileType>
               <FilePath>.\src\Utils\TablesWindow.h</FilePath>
             </File>
-            <File>
-              <FileName>Values.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Values.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Values.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Values.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -2438,6 +2428,16 @@
               <FileName>Stack.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\Containers\Stack.h</FilePath>
+            </File>
+            <File>
+              <FileName>Values.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Containers\Values.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Values.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Containers\Values.h</FilePath>
             </File>
           </Files>
         </Group>

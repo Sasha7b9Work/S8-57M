@@ -8,7 +8,7 @@
 #include "Osci/Reader.h"
 #include "Settings/Settings.h"
 #include "Tester/Tester.h"
-#include "Utils/Values.h"
+#include "Utils/Containers/Values.h"
 
 
 // В таком массиве хранятся считанные точки тестер-компонента
