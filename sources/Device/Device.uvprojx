@@ -2360,16 +2360,6 @@
               <FilePath>.\src\Utils\Averager.h</FilePath>
             </File>
             <File>
-              <FileName>Buffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Buffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>Buffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Buffer.cpp</FilePath>
-            </File>
-            <File>
               <FileName>CommonFunctions.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\CommonFunctions.h</FilePath>
@@ -2410,16 +2400,6 @@
               <FilePath>.\src\Utils\Math.cpp</FilePath>
             </File>
             <File>
-              <FileName>Queue.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Queue.h</FilePath>
-            </File>
-            <File>
-              <FileName>Queue.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Queue.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Smoother.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\Smoother.h</FilePath>
@@ -2428,16 +2408,6 @@
               <FileName>Smoother.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Utils\Smoother.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Stack.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Stack.h</FilePath>
-            </File>
-            <File>
-              <FileName>Stack.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Stack.cpp</FilePath>
             </File>
             <File>
               <FileName>String.cpp</FileName>
@@ -2483,6 +2453,41 @@
               <FileName>Averager.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Utils\Averager.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Utils/Containers</GroupName>
+          <Files>
+            <File>
+              <FileName>Buffer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Containers\Buffer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Buffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Containers\Buffer.h</FilePath>
+            </File>
+            <File>
+              <FileName>Queue.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Containers\Queue.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Queue.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Containers\Queue.h</FilePath>
+            </File>
+            <File>
+              <FileName>Stack.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Containers\Stack.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Stack.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Containers\Stack.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -6,7 +6,7 @@
 #include "Osci/Osci.h"
 #include "Osci/Math/OsciMath.h"
 #include "Utils/Math.h"
-#include "Utils/Queue.h"
+#include "Utils/Containers/Queue.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cmath>

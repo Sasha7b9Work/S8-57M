@@ -7,7 +7,7 @@
 #include "Keyboard/BufferButtons.h"
 #include "Osci/Osci.h"
 #include "Settings/SettingsNRST.h"
-#include "Utils/Buffer.h"
+#include "Utils/Containers/Buffer.h"
 #include "Utils/Math.h"
 
 

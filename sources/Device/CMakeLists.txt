@@ -136,7 +136,7 @@ file(GLOB SRC                              src/*.h src/*.cpp)
 file(GLOB DISPLAY                          src/Display/*.h src/Display/*.cpp)
 file(GLOB DISPLAY_FONT                     ../common/Display/Font/*)
 file(GLOB FDRIVE                           src/FDrive/*)
-file(GLOB _FPGA                            src/FPGA/*)
+file(GLOB FPGA                             src/FPGA/*)
 file(GLOB FREQMETER                        src/FreqMeter/*)
 file(GLOB KEYBOARD                         src/Keyboard/*)
 file(GLOB MENU                             src/Menu/*.h src/Menu/*.cpp)
@@ -161,7 +161,8 @@ file(GLOB _SCPI                            src/SCPI/*)
 file(GLOB SETTINGS                         src/Settings/*)
 file(GLOB TEST                             src/Test/*)
 file(GLOB TESTER                           src/Tester/*)
-file(GLOB UTILS                            src/Utils/*)
+file(GLOB UTILS                            src/Utils/*.*)
+file(GLOB UTILS_CONTAINERS                 src/Utils/Containers/*.*)
 
 set_source_files_properties(${LIBS_FATFS} ${LIBS_HAL} ${LIBS_USBD} ${LIBS_USBH} PROPERTIES HEADER_FILE_ONLY TRUE)
 
@@ -173,7 +174,7 @@ source_group(src                                 FILES ${SRC})
 source_group(Display                             FILES ${DISPLAY})
 source_group(Display\\Font                       FILES ${DISPLAY_FONT})
 source_group(FDrive                              FILES ${FDRIVE})
-source_group(FPGA                                FILES ${_FPGA})
+source_group(FPGA                                FILES ${FPGA})
 source_group(FreqMeter                           FILES ${FREQMETER})
 source_group(Hardware                            FILES ${HARDWARE})
 source_group(Hardware\\CMSIS                     FILES ${HARDWARE_CMSIS})
@@ -209,14 +210,15 @@ source_group(Settings                            FILES ${SETTINGS})
 source_group(Test                                FILES ${TEST})
 source_group(Tester                              FILES ${TESTER})
 source_group(Utils                               FILES ${UTILS})
+source_group(Utils/Containers                    FILES ${UTILS_CONTAINERS})
 
 add_library(${PROJECT_NAME} ${COMMON} ${DOC} ${VS} ${VS_STD_INCLUDES} ${SRC} ${DISPLAY} ${DISPLAY_FONT} ${FDRIVE}
-                            ${_FPGA} ${FREQMETER} ${HARDWARE} ${HARDWARE_CMSIS} ${HARDWARE_HAL} ${HARDWARE_MEMORY}
+                            ${FPGA} ${FREQMETER} ${HARDWARE} ${HARDWARE_CMSIS} ${HARDWARE_HAL} ${HARDWARE_MEMORY}
                             ${HARDWARE_USBD} ${HARDWARE_USBH} ${LIBS_FATFS} ${LIBS_HAL} ${LIBS_USBD} ${LIBS_USBH}
                             ${KEYBOARD} ${MENU} ${MENU_PAGES} ${MENU_PAGES_INCLUDE} ${MENU_PAGES_PAGEDISPLAY}
                             ${MENU_PAGES_PAGEFUNCTION} ${MENU_PAGES_PAGERECORDER} ${MENU_PAGES_PAGEHELP}
                             ${MENU_PAGES_PAGEMEASURES} ${MENU_PAGES_PAGEMEMORY} ${MENU_PAGES_PAGESERVICE}
                             ${MENU_PAGES_PAGESERVICE_PAGEDEBUG} ${MENU_PAGES_PAGETRIG} ${MULTIMETER} ${_OSCI}
                             ${OSCI_DISPLAY} ${OSCI_MATH} ${OSCI_MEASUREMENTS} ${RECORDER} ${_SCPI} ${SETTINGS}
-                            ${TEST} ${TESTER} ${UTILS}
+                            ${TEST} ${TESTER} ${UTILS} ${UTILS_CONTAINERS}
 )

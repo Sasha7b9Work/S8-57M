@@ -9,7 +9,7 @@
 #include "Osci/Measurements/AutoMeasurements.h"
 #include "SCPI/SCPI.h"
 #include "Settings/Settings.h"
-#include "Utils/Buffer.h"
+#include "Utils/Containers/Buffer.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
 #include <cstdlib>

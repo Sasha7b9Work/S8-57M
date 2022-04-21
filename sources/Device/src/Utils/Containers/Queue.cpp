@@ -1,6 +1,6 @@
 #include "defines.h"
 #include "Display/Warnings.h"
-#include "Utils/Queue.h"
+#include "Utils/Containers/Queue.h"
 
 
 template class Queue<WarningStruct>;

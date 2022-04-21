@@ -1,6 +1,6 @@
 #pragma once
 #include "Settings/Settings.h"
-#include "Utils/Buffer.h"
+#include "Utils/Containers/Buffer.h"
 
 
 #define OSCI_IN_MODE_P2P        (S_TIME_BASE >= TBase::MIN_P2P)
