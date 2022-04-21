@@ -13,6 +13,7 @@
 #include "Osci/Display/DisplayOsci.h"
 #include "Recorder/DisplayRecorder.h"
 #include "Utils/Containers/Values.h"
+#include "common/Message.h"
 #include <cstring>
 
 
@@ -290,7 +291,7 @@ uint ENumSignalsInSec::TimeBetweenFramesMS()
 
 void Display::LoadBrightness()
 {
-    HAL_BUS::Panel::Send(Command::Display_Brightness, static_cast<uint8>(S_DISP_BRIGHTNESS + 10));
+    Message<2>(Command::Display_Brightness, (uint8)(S_DISP_BRIGHTNESS + 10)).Transmit();
 }
 
 

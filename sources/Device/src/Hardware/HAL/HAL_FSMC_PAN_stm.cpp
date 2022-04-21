@@ -159,10 +159,10 @@ exit:
 }
 
 
-void HAL_BUS::Panel::Send(uint8 byte)
-{
-    Send(&byte, 1);
-}
+//void HAL_BUS::Panel::Send(uint8 byte)
+//{
+//    Send(&byte, 1);
+//}
 
 
 void HAL_BUS::Panel::Send(uint8 byte0, uint8 byte1)
