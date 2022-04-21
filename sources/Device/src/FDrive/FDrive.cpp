@@ -600,20 +600,9 @@ void FDrive::CreateFileName(char name[256])
 }
 
 
-void FDrive::ReadRow(uint8 row, uint8 pixels[320])
+void FDrive::ReadRow(uint8, uint8 [320])
 {
-    while(DDecoder::Update())                       // ќбрабатываем данные, которые прин€ты на данный момент
-    {
-    }
-
-    Message<2>(Command::Screen, row).Transmit();
-
-    while(DDecoder::BytesInBuffer() < 322)          // ќжидаем, пока панель пришлЄт запрошенные байты
-    {
-        HAL_BUS::Panel::Receive();
-    }
-
-    std::memcpy(pixels, DDecoder::Buffer() + 2, 320);
+    // todo_paint
 }
 
 

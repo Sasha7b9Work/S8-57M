@@ -10,9 +10,6 @@
 
 #include "Painter_common.h"
 
-// Установленное в true значение означает, что скриншот нужно заслать в устройство
-static int sendingString = -1;
-
 
 void Painter::SetColorValue(Color color, uint value)
 {
@@ -30,22 +27,7 @@ void Painter::LoadPalette()
 
 void Painter::EndScene(void)
 {
-    if (sendingString >= 0)                                               // Если нужно отправить картинку
-    {
-#define SIZE  (SIZE_STRING + 2)
-
-        uint8 buffer[SIZE] = { Command::Screen, static_cast<uint8>(sendingString) };
-
-        std::memcpy(buffer + 2, Display::GetBuffer() + sendingString * SIZE_STRING, SIZE_STRING);
-
-        HAL_BUS::SendToDevice(buffer, SIZE_STRING);
-
-        sendingString++;
-        if (sendingString == 120)
-        {
-            sendingString = -1;
-        }
-    }
+    // todo_paint
 }
 
 
@@ -232,15 +214,9 @@ void Painter::SetPoint(int x, int y)
 }
 
 
-void Painter::SendRow(int row)
+void Painter::SendRow(int)
 {
-    uint8 *points = Display::GetBuffer() + row * Display::WIDTH;
-
-    uint8 data[322] = { Command::Screen, static_cast<uint8>(row) };
-
-    std::memcpy(&data[2], points, 320);
-
-    HAL_BUS::SendToDevice(data, 322);
+    // todo_paint
 }
 
 
@@ -258,5 +234,4 @@ uint Painter::ReduceBrightness(uint colorValue, float newBrightness)
 
 void Painter::SendScreenToDevice()
 {
-    sendingString = 0;
 }
