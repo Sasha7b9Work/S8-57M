@@ -5,10 +5,10 @@
 class Message
 {
 public:
-    explicit Message(uint size, uint8, uint8);
-    explicit Message(uint size, uint8, uint16, uint8);
-    explicit Message(uint size, uint8, uint8, uint);
-    explicit Message(uint size, uint8, uint16, uint8, uint8);
+//    explicit Message(uint size, uint8, uint8);
+//    explicit Message(uint size, uint8, uint16, uint8);
+//    explicit Message(uint size, uint8, uint8, uint);
+//    explicit Message(uint size, uint8, uint16, uint8, uint8);
     explicit Message(uint8, uint8, uint8, uint8 *, uint16, uint8 *, uint16);
     explicit Message(uint size, uint8, uint16, uint8, uint16, uint8);
     explicit Message(uint8, uint16, uint8, char *);

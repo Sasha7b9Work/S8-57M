@@ -6,48 +6,48 @@
 #include <cstring>
 
 
-Message::Message(uint size, uint8 v0, uint8 v1) : allocated(0), used(0), data(0)
-{
-    if (Allocate(size))
-    {
-        PutByte(v0);
-        PutByte(v1);
-    }
-}
+//Message::Message(uint size, uint8 v0, uint8 v1) : allocated(0), used(0), data(0)
+//{
+//    if (Allocate(size))
+//    {
+//        PutByte(v0);
+//        PutByte(v1);
+//    }
+//}
 
 
-Message::Message(uint size, uint8 v0, uint16 v1, uint8 v2) : allocated(0), used(0), data(0)
-{
-    if (Allocate(size))
-    {
-        PutByte(v0);
-        PutHalfWord(v1);
-        PutByte(v2);
-    }
-}
+//Message::Message(uint size, uint8 v0, uint16 v1, uint8 v2) : allocated(0), used(0), data(0)
+//{
+//    if (Allocate(size))
+//    {
+//        PutByte(v0);
+//        PutHalfWord(v1);
+//        PutByte(v2);
+//    }
+//}
 
 
-Message::Message(uint size, uint8 v0, uint8 v1, uint v2) : allocated(0), used(0), data(0)
-{
-    if (Allocate(size))
-    {
-        PutByte(v0);    // -V525
-        PutByte(v1);    // -V525
-        PutWord(v2);
-    }
-}
+//Message::Message(uint size, uint8 v0, uint8 v1, uint v2) : allocated(0), used(0), data(0)
+//{
+//    if (Allocate(size))
+//    {
+//        PutByte(v0);    // -V525
+//        PutByte(v1);    // -V525
+//        PutWord(v2);
+//    }
+//}
 
 
-Message::Message(uint size, uint8 v0, uint16 v1, uint8 v2, uint8 v3) : allocated(0), used(0), data(0)
-{
-    if (Allocate(size))
-    {
-        PutByte(v0);
-        PutHalfWord(v1);
-        PutByte(v2);
-        PutByte(v3);
-    }
-}
+//Message::Message(uint size, uint8 v0, uint16 v1, uint8 v2, uint8 v3) : allocated(0), used(0), data(0)
+//{
+//    if (Allocate(size))
+//    {
+//        PutByte(v0);
+//        PutHalfWord(v1);
+//        PutByte(v2);
+//        PutByte(v3);
+//    }
+//}
 
 
 Message::Message(uint8 v0, uint8 v1, uint8 v2, uint8 *b0, uint16 s0, uint8 *b1, uint16 s1) : allocated(0), used(0), data(0)
