@@ -6,12 +6,6 @@
 #include <cstring>
 
 
-Message::Message() : allocated(0), used(0), data(0)
-{
-
-}
-
-
 Message::Message(uint size, uint8 v0) : allocated(0), used(0), data(0)
 {
     if (Allocate(size))
