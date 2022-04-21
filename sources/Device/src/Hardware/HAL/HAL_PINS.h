@@ -38,20 +38,6 @@ struct HPin
 };
 
 
-#ifdef OLD_VERSION
-#define PIN_A2         HPort::_D, HPin::_11
-#define PIN_A3         HPort::_D, HPin::_12
-#define PIN_A4         HPort::_D, HPin::_13
-#define PIN_LF1        HPort::_G, HPin::_2
-#define PIN_LF2        HPort::_G, HPin::_3
-#define PIN_LF3        HPort::_G, HPin::_4      // A1S
-#define PIN_A0S        HPort::_G, HPin::_5
-#define PIN_P2P         HPort::_G, HPin::_1
-#define PIN_TESTER_ON   HPort::_F, HPin::_13
-#define PIN_TESTER_I    HPort::_G, HPin::_0
-#define PIN_TESTER_U    HPort::_F, HPin::_15
-#define PIN_TESTER_PNP  HPort::_F, HPin::_14
-#else
 #define PIN_A2         HPort::_B, HPin::_13
 #define PIN_A3         HPort::_G, HPin::_8
 #define PIN_A4         HPort::_C, HPin::_6
@@ -64,7 +50,7 @@ struct HPin
 #define PIN_TESTER_I    HPort::_B, HPin::_2
 #define PIN_TESTER_U    HPort::_B, HPin::_0
 #define PIN_TESTER_PNP  HPort::_A, HPin::_6
-#endif
+
 
 #define PIN_TESTER_STR  HPort::_C, HPin::_9
 #define PIN_TESTER_DAC  HPort::_A, HPin::_5
