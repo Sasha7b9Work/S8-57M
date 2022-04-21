@@ -16,14 +16,4 @@ namespace ExtRAM
     void Read(uint8* buffer, int size, const uint8* address);
 
     void Fill(uint8* begin = 0, uint8 value = 0, int size = 0);
-
-    // Возвращает сколько процентов данных считанных неправильно.
-    float Test1();
-    float Test2();
-
-    // Возвращает время в секундах, которое занимает запись/чтение sizekB килобайт во внешнюю память. Возвращает -1, если произошла ошибка
-    float TestTime(int sizekB);
-
-    // Тест скорости записи/чтение 1кБ внешней RAM
-    float TestTime1kB(uint8* address);
 };
