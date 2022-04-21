@@ -7,7 +7,6 @@
 // Указатель на массив кнопок, которые разрешены для обработки. Если == 0, то разрешены все кнопки
 static const Key::E *allowedKeys = 0;
 
-
 pString Key::Name()
 {
     static const pString names[Key::Count] =
