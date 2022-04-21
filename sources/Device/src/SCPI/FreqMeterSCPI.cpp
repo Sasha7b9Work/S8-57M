@@ -4,7 +4,6 @@
 #include "Settings/Settings.h"
 
 
-
 // :FREQMETER:AVEPERIODS
 static pCHAR FuncAvePeriods(pCHAR);
 static void HintAvePeriods(String *);

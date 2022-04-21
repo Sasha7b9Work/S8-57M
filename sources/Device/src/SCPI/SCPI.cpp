@@ -10,10 +10,10 @@
 // Рекурсивная функция обработки массива структур StructSCPI.
 // В случае успешного выполнения возвращает адрес символа, расположенного за последним обработанным символом.
 // В случае неуспешного завершения - возвращает nullptr. Код ошибки находится в *error
-static const char *Process(const char *buffer, const StructSCPI structs[]); //-V2504
+static const char *Process(const char *buffer, const StructSCPI structs[]);
 
                                                                             // Рекурсивная функция тестирования
-static bool ProcessTest(const StructSCPI strct[]); //-V2504
+static bool ProcessTest(const StructSCPI strct[]);
 
                                                    // Обработка узла дерева node
 static const char *ProcessNode(const char *begin, const StructSCPI *node);
@@ -78,7 +78,7 @@ void SCPI::Update()
 }
 
 
-static const char *Process(const char *buffer, const StructSCPI strct[]) //-V2504
+static const char *Process(const char *buffer, const StructSCPI strct[])
 {
     while (!strct->IsEmpty())
     {
@@ -260,7 +260,7 @@ bool SCPI::Test()
 }
 
 
-static bool ProcessTest(const StructSCPI strct[]) //-V2504
+static bool ProcessTest(const StructSCPI strct[])
 {
     while(!strct->IsEmpty())
     {
