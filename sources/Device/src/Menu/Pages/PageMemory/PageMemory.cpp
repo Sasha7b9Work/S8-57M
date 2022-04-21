@@ -3,12 +3,12 @@
 #include "Display/Grid.h"
 #include "Display/Primitives.h"
 #include "Display/Symbols.h"
-#include "FlashDrive/FileManager.h"
-#include "FlashDrive/FlashDrive.h"
 #include "Hardware/Beeper.h"
 #include "Osci/Osci.h"
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
+#include "FDrive/FileManager.h"
+#include "FDrive/FDrive.h"
 
 
 int ENumPointsFPGA::BytesInChannel()

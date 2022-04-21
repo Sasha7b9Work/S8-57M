@@ -2,7 +2,6 @@
 #include "device.h"
 #include "common/Decoder_d.h"
 #include "Display/Console.h"
-#include "FlashDrive/FlashDrive.h"
 #include "FPGA/FPGA.h"
 #include "Hardware/Battery.h"
 #include "Hardware/Beeper.h"
@@ -16,6 +15,7 @@
 #include "Recorder/Sensor.h"
 #include "SCPI/SCPI.h"
 #include "Settings/SettingsNRST.h"
+#include "FDrive/FDrive.h"
 #include <cstdlib>
 
 

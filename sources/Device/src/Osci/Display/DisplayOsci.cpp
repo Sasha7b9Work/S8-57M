@@ -4,7 +4,6 @@
 #include "Display/Painter.h"
 #include "Display/Primitives.h"
 #include "Display/Warnings.h"
-#include "FlashDrive/FlashDrive.h"
 #include "FreqMeter/DisplayFreqMeter.h"
 #include "Hardware/Battery.h"
 #include "Hardware/Timer.h"
@@ -17,6 +16,7 @@
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
 #include "Utils/Values.h"
+#include "FDrive/FDrive.h"
 
 
 bool DisplayOsci::needRedraw = false;

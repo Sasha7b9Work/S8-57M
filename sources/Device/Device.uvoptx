@@ -1447,7 +1447,7 @@
 
   <Group>
     <GroupName>Hardware/CMSIS</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -2682,7 +2682,7 @@
   </Group>
 
   <Group>
-    <GroupName>FlashDrive</GroupName>
+    <GroupName>FDrive</GroupName>
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
@@ -2694,8 +2694,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\FlashDrive\FileManager.cpp</PathWithFileName>
-      <FilenameWithoutPath>FileManager.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\src\FDrive\FDrive.cpp</PathWithFileName>
+      <FilenameWithoutPath>FDrive.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2706,8 +2706,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\FlashDrive\FileManager.h</PathWithFileName>
-      <FilenameWithoutPath>FileManager.h</FilenameWithoutPath>
+      <PathWithFileName>.\src\FDrive\FDrive.h</PathWithFileName>
+      <FilenameWithoutPath>FDrive.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2718,8 +2718,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\FlashDrive\FlashDrive.cpp</PathWithFileName>
-      <FilenameWithoutPath>FlashDrive.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\src\FDrive\FileManager.cpp</PathWithFileName>
+      <FilenameWithoutPath>FileManager.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2730,8 +2730,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\FlashDrive\FlashDrive.h</PathWithFileName>
-      <FilenameWithoutPath>FlashDrive.h</FilenameWithoutPath>
+      <PathWithFileName>.\src\FDrive\FileManager.h</PathWithFileName>
+      <FilenameWithoutPath>FileManager.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

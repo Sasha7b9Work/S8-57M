@@ -1457,27 +1457,27 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>FlashDrive</GroupName>
+          <GroupName>FDrive</GroupName>
           <Files>
+            <File>
+              <FileName>FDrive.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\FDrive\FDrive.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FDrive.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\FDrive\FDrive.h</FilePath>
+            </File>
             <File>
               <FileName>FileManager.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\FlashDrive\FileManager.cpp</FilePath>
+              <FilePath>.\src\FDrive\FileManager.cpp</FilePath>
             </File>
             <File>
               <FileName>FileManager.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\FlashDrive\FileManager.h</FilePath>
-            </File>
-            <File>
-              <FileName>FlashDrive.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\FlashDrive\FlashDrive.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>FlashDrive.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\FlashDrive\FlashDrive.h</FilePath>
+              <FilePath>.\src\FDrive\FileManager.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2495,5 +2495,14 @@
     <components/>
     <files/>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>Device</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>

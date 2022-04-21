@@ -135,7 +135,7 @@ file(GLOB COMMON                           ../common/Command.h
 file(GLOB SRC                              src/*.h src/*.cpp)
 file(GLOB DISPLAY                          src/Display/*.h src/Display/*.cpp)
 file(GLOB DISPLAY_FONT                     ../common/Display/Font/*)
-file(GLOB FLASHDRIVE                       src/FlashDrive/*)
+file(GLOB FDRIVE                           src/FDrive/*)
 file(GLOB _FPGA                            src/FPGA/*)
 file(GLOB FREQMETER                        src/FreqMeter/*)
 file(GLOB KEYBOARD                         src/Keyboard/*)
@@ -172,7 +172,7 @@ source_group(_VS\\std_includes                   FILES ${VS_STD_INCLUDES})
 source_group(src                                 FILES ${SRC})
 source_group(Display                             FILES ${DISPLAY})
 source_group(Display\\Font                       FILES ${DISPLAY_FONT})
-source_group(FDrive                              FILES ${FLASHDRIVE})
+source_group(FDrive                              FILES ${FDRIVE})
 source_group(FPGA                                FILES ${_FPGA})
 source_group(FreqMeter                           FILES ${FREQMETER})
 source_group(Hardware                            FILES ${HARDWARE})
@@ -210,8 +210,13 @@ source_group(Test                                FILES ${TEST})
 source_group(Tester                              FILES ${TESTER})
 source_group(Utils                               FILES ${UTILS})
 
-add_library(Device ${COMMON} ${DOC} ${VS} ${VS_STD_INCLUDES} ${SRC} ${DISPLAY} ${DISPLAY_FONT} ${FLASHDRIVE} ${_FPGA} ${FREQMETER} ${HARDWARE} ${HARDWARE_CMSIS} ${HARDWARE_HAL}
-                   ${HARDWARE_MEMORY} ${HARDWARE_USBD} ${HARDWARE_USBH} ${LIBS_FATFS} ${LIBS_HAL} ${LIBS_USBD} ${LIBS_USBH} ${KEYBOARD} ${MENU} ${MENU_PAGES} ${MENU_PAGES_INCLUDE} ${MENU_PAGES_PAGEDISPLAY}
-                   ${MENU_PAGES_PAGEFUNCTION} ${MENU_PAGES_PAGERECORDER} ${MENU_PAGES_PAGEHELP} ${MENU_PAGES_PAGEMEASURES} ${MENU_PAGES_PAGEMEMORY}
-                   ${MENU_PAGES_PAGESERVICE} ${MENU_PAGES_PAGESERVICE_PAGEDEBUG} ${MENU_PAGES_PAGETRIG} ${MULTIMETER} ${_OSCI} ${OSCI_DISPLAY} ${OSCI_MATH}
-                   ${OSCI_MEASUREMENTS} ${RECORDER} ${_SCPI} ${SETTINGS} ${TEST} ${TESTER} ${UTILS})
+add_library(${PROJECT_NAME} ${COMMON} ${DOC} ${VS} ${VS_STD_INCLUDES} ${SRC} ${DISPLAY} ${DISPLAY_FONT} ${FDRIVE}
+                            ${_FPGA} ${FREQMETER} ${HARDWARE} ${HARDWARE_CMSIS} ${HARDWARE_HAL} ${HARDWARE_MEMORY}
+                            ${HARDWARE_USBD} ${HARDWARE_USBH} ${LIBS_FATFS} ${LIBS_HAL} ${LIBS_USBD} ${LIBS_USBH}
+                            ${KEYBOARD} ${MENU} ${MENU_PAGES} ${MENU_PAGES_INCLUDE} ${MENU_PAGES_PAGEDISPLAY}
+                            ${MENU_PAGES_PAGEFUNCTION} ${MENU_PAGES_PAGERECORDER} ${MENU_PAGES_PAGEHELP}
+                            ${MENU_PAGES_PAGEMEASURES} ${MENU_PAGES_PAGEMEMORY} ${MENU_PAGES_PAGESERVICE}
+                            ${MENU_PAGES_PAGESERVICE_PAGEDEBUG} ${MENU_PAGES_PAGETRIG} ${MULTIMETER} ${_OSCI}
+                            ${OSCI_DISPLAY} ${OSCI_MATH} ${OSCI_MEASUREMENTS} ${RECORDER} ${_SCPI} ${SETTINGS}
+                            ${TEST} ${TESTER} ${UTILS}
+)
