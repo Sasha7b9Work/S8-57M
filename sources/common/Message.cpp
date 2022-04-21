@@ -162,7 +162,7 @@ void Message::PutWord(uint v)
 bool Message::Allocate(uint size)
 {
     Free();
-    data = static_cast<uint8 *>(std::malloc(static_cast<uint>(size)));  // -V106 //-V2511
+    data = static_cast<uint8 *>(std::malloc(static_cast<uint>(size)));  // -V106
     if (data)
     {
         allocated = size;
@@ -175,7 +175,7 @@ void Message::Free()
 {
     if (allocated)
     {
-        std::free(data); //-V2511
+        std::free(data);
     }
 }
 

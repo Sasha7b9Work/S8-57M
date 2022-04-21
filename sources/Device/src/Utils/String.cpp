@@ -146,7 +146,7 @@ void String::Append(char symbol)
 
 String::~String()
 {
-    std::free(buffer); //-V2511
+    std::free(buffer);
 }
 
 
@@ -154,7 +154,7 @@ void String::Free()
 {
     if(buffer)
     {
-        std::free(buffer); //-V2511
+        std::free(buffer);
         buffer = nullptr;
         Set(TypeConversionString::None, "");
     }
@@ -169,8 +169,8 @@ char *String::c_str() const
 
 bool String::Allocate(int size)
 {
-    std::free(buffer); //-V2511
-    buffer = static_cast<char *>(std::malloc(static_cast<uint>(size))); //-V2511
+    std::free(buffer);
+    buffer = static_cast<char *>(std::malloc(static_cast<uint>(size)));
     if (buffer)
     {
         return true;

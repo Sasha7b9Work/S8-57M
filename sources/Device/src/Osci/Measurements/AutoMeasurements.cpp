@@ -473,7 +473,7 @@ int CalculatePeriodAccurately(Chan::E ch)
 {
     static int period[2];
 
-    int *sums = static_cast<int *>(std::malloc(static_cast<uint>(nBytes))); //-V2511
+    int *sums = static_cast<int *>(std::malloc(static_cast<uint>(nBytes)));
 
     if (sums == 0)
     {
@@ -490,7 +490,7 @@ int CalculatePeriodAccurately(Chan::E ch)
 
         if(pic == Float::ERROR) //-V550 //-V2550
         {
-            EXIT_FROM_PERIOD_ACCURACY //-V2511
+            EXIT_FROM_PERIOD_ACCURACY
         }
         int delta = static_cast<int>(pic * 5.0F);
         sums[firstByte] = dataIn[firstByte];
@@ -505,7 +505,7 @@ int CalculatePeriodAccurately(Chan::E ch)
             uint8 point = *data++;
             if(point < VALUE::MIN || point >= VALUE::MAX)
             {
-                EXIT_FROM_PERIOD_ACCURACY //-V2511
+                EXIT_FROM_PERIOD_ACCURACY
             }
             *pSum = *(pSum - 1) + point;
             pSum++;
@@ -560,7 +560,7 @@ int CalculatePeriodAccurately(Chan::E ch)
         periodAccurateIsCalculating[static_cast<int>(ch)] = true;
     }
 
-    std::free(sums); //-V2511
+    std::free(sums);
 
     return period[static_cast<int>(ch)];
 }
@@ -1223,7 +1223,7 @@ void InterpolationSinX_X(uint8 *data, int numPoints, TBase::E tBase)
     static const int deltas[5] = {100, 50, 20, 10, 5};
     int delta = deltas[static_cast<int>(tBase)];
 
-    uint8 *signedData = static_cast<uint8 *>(std::malloc(static_cast<uint>(numPoints) / 2U)); //-V2511
+    uint8 *signedData = static_cast<uint8 *>(std::malloc(static_cast<uint>(numPoints) / 2U));
     if (signedData == 0)
     {
         return;
@@ -1305,7 +1305,7 @@ void InterpolationSinX_X(uint8 *data, int numPoints, TBase::E tBase)
         pos--;
     }
 
-    std::free(signedData); //-V2511
+    std::free(signedData);
 }
 
 

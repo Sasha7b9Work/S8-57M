@@ -10,7 +10,7 @@
 
 void CF::LogBufferU8_HEX(const uint8 *buffer, int num)
 {
-    char *message = static_cast<char *>(malloc(static_cast<uint>(num * 3))); //-V2511
+    char *message = static_cast<char *>(malloc(static_cast<uint>(num * 3)));
 
     if (message == nullptr)
     {
@@ -31,13 +31,13 @@ void CF::LogBufferU8_HEX(const uint8 *buffer, int num)
 
     LOG_WRITE(message);
 
-    free(message); //-V2511
+    free(message);
 }
 
 
 void CF::LogBufferU8_DEC(const uint8 *buffer, int num)
 {
-    char *message = static_cast<char *>(malloc(static_cast<uint>(num * 3))); //-V2511
+    char *message = static_cast<char *>(malloc(static_cast<uint>(num * 3)));
 
     if (message == nullptr)
     {
@@ -59,7 +59,7 @@ void CF::LogBufferU8_DEC(const uint8 *buffer, int num)
 
     LOG_WRITE(message);
 
-    free(message); //-V2511
+    free(message);
 }
 
 

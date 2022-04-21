@@ -36,7 +36,7 @@ void Buffer::Fill(uint8 value)
 
 void Buffer::Free()
 {
-    std::free(data); //-V2511
+    std::free(data);
     data = nullptr;
     size = 0U;
 }
@@ -46,7 +46,7 @@ void Buffer::Malloc(int s)
 {
     if (s > 0)
     {
-        data = static_cast<uint8 *>(std::malloc(static_cast<uint>(s))); //-V2511
+        data = static_cast<uint8 *>(std::malloc(static_cast<uint>(s)));
         size = (data) ? s : 0;
 
         if(!data)
