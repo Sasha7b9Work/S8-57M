@@ -17,23 +17,22 @@
 #include <cstring>
 
 
-static void EmptyFunc() { }
-
-
-static pFuncVV funcOnHand = nullptr;
-static uint timeStart = 0;
-static const char *textWait = 0;
-static bool clearBackground = false;
-volatile static pFuncVV funcAdditionDraw = EmptyFunc;   // Дополнительная функция рисования. Выполняется после стандартной отрисовки, но перед вызовом EndScene;
-static bool inStateDraw = false;                        // true означает, что происходит процесс отрисовки
-static pFuncVV funcAfterUpdateOnce = EmptyFunc;
-
-// Выполняет функцию, определённую для выполнения после отрисовки
-static void ExecuteFuncAfterUpdateOnce();
-
-
 namespace Display
 {
+    static void EmptyFunc() { }
+
+
+    static pFuncVV funcOnHand = nullptr;
+    static uint timeStart = 0;
+    static const char* textWait = 0;
+    static bool clearBackground = false;
+    volatile static pFuncVV funcAdditionDraw = EmptyFunc;   // Дополнительная функция рисования. Выполняется после стандартной отрисовки, но перед вызовом EndScene;
+    static bool inStateDraw = false;                        // true означает, что происходит процесс отрисовки
+    static pFuncVV funcAfterUpdateOnce = EmptyFunc;
+
+    // Выполняет функцию, определённую для выполнения после отрисовки
+    static void ExecuteFuncAfterUpdateOnce();
+
     namespace Message
     {
         static void Func();
@@ -111,7 +110,7 @@ bool Display::InProcess()
 }
 
 
-static void ExecuteFuncAfterUpdateOnce()
+void Display::ExecuteFuncAfterUpdateOnce()
 {
     funcAfterUpdateOnce();
     funcAfterUpdateOnce = EmptyFunc;
