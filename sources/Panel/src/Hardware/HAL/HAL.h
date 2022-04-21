@@ -24,8 +24,6 @@ struct HAL_BUS
 {
     static void Init();
 
-    static void SendToDevice(uint8 *data, uint size);
-
     static void Update();
 
     struct Panel

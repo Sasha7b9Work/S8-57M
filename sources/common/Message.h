@@ -54,6 +54,14 @@ public:
         }
     }
 
+    void PushByte(uint8 position, uint8 byte)
+    {
+        if (position < capacity)
+        {
+            buffer[position] = byte;
+        }
+    }
+
     void Transmit()
     {
         HAL_BUS::Panel::Send(buffer, size);
