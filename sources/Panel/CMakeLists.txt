@@ -52,8 +52,8 @@ file(GLOB LIBS_HAL        ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driv
                           ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dac_ex.h
                           ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac_ex.c)
 file(GLOB COMMON          ../common/Command.h
-                          ../common/Decoder_p.h
-                          ../common/Decoder_p.cpp)
+                          ../common/Decoder_p.*
+                          ../common/Message.*)
 file(GLOB SRC             src/*.h src/*.cpp)
 file(GLOB DISPLAY         src/Display/*.h src/Display/*.cpp)
 file(GLOB DISPLAY_FONT    src/Display/Font/*)
