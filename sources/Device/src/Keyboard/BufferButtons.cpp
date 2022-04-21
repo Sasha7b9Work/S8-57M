@@ -7,16 +7,19 @@
 #include "Menu/Pages/Include/PageService.h"
 
 
-static const int SIZE = 100;
+namespace BufferButtons
+{
+    const int SIZE = 10;
 
-static KeyEvent buffer[SIZE];               // Здесь хранятся все события
-static KeyEvent prevPushEvent;              // Предыдущее попавшее в буфер событие клавиатуры
-static int end;                             // Позиция первого свободного места в буфере. Когда end == 0, буфер пустой
-static int start;                           // Позиция первого значащего события в буфере.
-static uint timeLastControl = 0xFFFFFFFFU;  // Возвращает время
+    KeyEvent buffer[SIZE];               // Здесь хранятся все события
+    KeyEvent prevPushEvent;              // Предыдущее попавшее в буфер событие клавиатуры
+    int end;                             // Позиция первого свободного места в буфере. Когда end == 0, буфер пустой
+    int start;                           // Позиция первого значащего события в буфере.
+    uint timeLastControl = 0xFFFFFFFFU;  // Возвращает время
 
-// Возвращаемое значение true означает, что идёт процесс обработки события электропитания - не нужно обрабатывать код клавиши
-static bool IsBeingProcessedPower(KeyEvent event);
+    // Возвращаемое значение true означает, что идёт процесс обработки события электропитания - не нужно обрабатывать код клавиши
+    bool IsBeingProcessedPower(KeyEvent event);
+}
 
 
 void BufferButtons::Push(const KeyEvent &event)
@@ -80,7 +83,7 @@ uint BufferButtons::TimeAfterControlMS()
 }
 
 
-static bool IsBeingProcessedPower(KeyEvent event)
+bool BufferButtons::IsBeingProcessedPower(KeyEvent event)
 {
     static bool inProcessPowerOn = false;   // Установленное в true значение означает, что идёт процесс включения питания дисплея - нужно дождаться отпускания клавиши и не передавать
                                             // коды клавиш для отработки
