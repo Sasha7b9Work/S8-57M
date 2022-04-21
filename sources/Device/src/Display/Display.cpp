@@ -297,7 +297,7 @@ void Display::LoadBrightness()
 
 void Display::Breaker::PowerOff()
 {
-    HAL_BUS::Panel::Send(Command::Display_Brightness, 0);
+    ::Message<2>(Command::Display_Brightness, 0).Transmit();
 
     powerOn = false;
 }
