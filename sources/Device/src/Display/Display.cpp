@@ -20,8 +20,6 @@
 static void EmptyFunc() { }
 
 
-bool Display::Message::waitKey = false;
-volatile bool Display::Message::running = false;
 bool Display::Breaker::powerOn = true;
 
 
@@ -35,6 +33,19 @@ static pFuncVV funcAfterUpdateOnce = EmptyFunc;
 
 // Выполняет функцию, определённую для выполнения после отрисовки
 static void ExecuteFuncAfterUpdateOnce();
+
+
+namespace Display
+{
+    namespace Message
+    {
+        static void Func();
+
+        static bool waitKey = false;
+
+        static volatile bool running = false;
+    }
+}
 
 
 void Display::Init()

@@ -73,22 +73,15 @@ namespace Display
 
     void LoadBrightness();
 
-    struct Message
+    namespace Message
     {
         // Выводит на экран сообщение. Для удаления нунжно вызвать функцию Stop()
-        static void Show(const char* text, bool eraseBackground);
+        void Show(const char* text, bool eraseBackground);
 
         // Выводит на экран сообщение и ожидает нажатия кнопки. По нажатии сообщение исчезает с экрана
-        static void ShowAndWaitKey(const char* text, bool eraseBackground);
+        void ShowAndWaitKey(const char* text, bool eraseBackground);
 
-        static void Hide();
-
-    private:
-        static void Func();
-
-        static bool waitKey;
-
-        static volatile bool running;
+        void Hide();
     };
 
     struct Breaker
