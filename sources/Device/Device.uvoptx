@@ -4134,18 +4134,6 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Osci\Math\Averager.cpp</PathWithFileName>
-      <FilenameWithoutPath>Averager.cpp</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>33</GroupNumber>
-      <FileNumber>301</FileNumber>
-      <FileType>8</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
       <PathWithFileName>.\src\Osci\Math\InterpolatorLinear.cpp</PathWithFileName>
       <FilenameWithoutPath>InterpolatorLinear.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
@@ -4153,7 +4141,7 @@
     </File>
     <File>
       <GroupNumber>33</GroupNumber>
-      <FileNumber>302</FileNumber>
+      <FileNumber>301</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -4165,13 +4153,25 @@
     </File>
     <File>
       <GroupNumber>33</GroupNumber>
-      <FileNumber>303</FileNumber>
+      <FileNumber>302</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\Osci\Math\OsciMath.h</PathWithFileName>
       <FilenameWithoutPath>OsciMath.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>33</GroupNumber>
+      <FileNumber>303</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Osci\Math\AveragerOSCI.cpp</PathWithFileName>
+      <FilenameWithoutPath>AveragerOSCI.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
