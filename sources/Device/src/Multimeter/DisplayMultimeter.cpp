@@ -648,7 +648,7 @@ void DisplayMultimeter::SetMeasure(const uint8 buf[13]) //-V2506
         PrepareBell
     };
 
-    MultimeterMeasure::E meas = MultimeterMeasure::GetCode(reinterpret_cast<const char *>(buf)); //-V2571
+    MultimeterMeasure::E meas = MultimeterMeasure::GetCode(reinterpret_cast<const char *>(buf));
 
     if (meas >= MultimeterMeasure::Count)
     {

@@ -217,7 +217,7 @@ public:
 
     virtual void Draw(int x, int y, bool opened) const;
 
-    const DataPage *OwnData() const { return static_cast<const DataPage *>(data->ad); } //-V2571
+    const DataPage *OwnData() const { return static_cast<const DataPage *>(data->ad); }
 
     const Item *ItemForFuncKey(Key::E key) const;
 
@@ -248,7 +248,7 @@ public:
     
     virtual void HandlerFX(TypePress::E type) const;
     
-    const DataButton *OwnData() const { return static_cast<const DataButton *>(data->ad); } //-V2571
+    const DataButton *OwnData() const { return static_cast<const DataButton *>(data->ad); }
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// GraphButton ///
@@ -277,7 +277,7 @@ public:
     
     virtual void HandlerFX(TypePress::E type) const;
     
-    const DataGraphButton *OwnData() const { return static_cast<const DataGraphButton *>(data->ad); } //-V2571
+    const DataGraphButton *OwnData() const { return static_cast<const DataGraphButton *>(data->ad); }
     
     int NumHints() const;
 };
@@ -346,7 +346,7 @@ public:
 
     static void AfterDraw(int, int) { };
 
-    const DataGovernor *OwnData() const { return static_cast<const DataGovernor *>(data->ad); } //-V2571
+    const DataGovernor *OwnData() const { return static_cast<const DataGovernor *>(data->ad); }
 
 private:
 
@@ -415,7 +415,7 @@ public:
 
     virtual int HeightOpened() const;
 
-    const DataChoice *OwnData() const { return static_cast<const DataChoice *>(data->ad); } //-V2571
+    const DataChoice *OwnData() const { return static_cast<const DataChoice *>(data->ad); }
 
     static void Changed(bool) {};
 

@@ -19,7 +19,7 @@ uint8 *Display::frontBuffer = front;
 void Display::Init()
 {
     HAL_DAC2::Init();
-    HAL_LTDC::Init(reinterpret_cast<uint>(frontBuffer)); //-V2571
+    HAL_LTDC::Init(reinterpret_cast<uint>(frontBuffer));
     Painter::LoadPalette();
 }
 

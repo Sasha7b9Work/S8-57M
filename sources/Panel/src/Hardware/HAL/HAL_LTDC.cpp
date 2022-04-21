@@ -22,45 +22,45 @@ void HAL_LTDC::Init(uint front)
         GPIO_SPEED_FREQ_LOW,
         GPIO_AF9_LTDC
     };
-    HAL_GPIO_Init(GPIOB, &isGPIO); //-V2571
+    HAL_GPIO_Init(GPIOB, &isGPIO);
 
     //              B5          VSYNC         G2            R4          R5
     isGPIO.Pin = GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_6 | GPIO_PIN_11 | GPIO_PIN_12;
     isGPIO.Alternate = GPIO_AF14_LTDC;
-    HAL_GPIO_Init(GPIOA, &isGPIO); //-V2571
+    HAL_GPIO_Init(GPIOA, &isGPIO);
 
     //              G4             G5            B6          B7
     isGPIO.Pin = GPIO_PIN_10 | GPIO_PIN_11 | GPIO_PIN_8 | GPIO_PIN_9;
-    HAL_GPIO_Init(GPIOB, &isGPIO); //-V2571
+    HAL_GPIO_Init(GPIOB, &isGPIO);
 
     //              HSYNC         G6           R2
     isGPIO.Pin = GPIO_PIN_6 | GPIO_PIN_7 | GPIO_PIN_10;
-    HAL_GPIO_Init(GPIOC, &isGPIO); //-V2571
+    HAL_GPIO_Init(GPIOC, &isGPIO);
 
     //                B3          G7          B2
     isGPIO.Pin = GPIO_PIN_10 | GPIO_PIN_3 | GPIO_PIN_6;
-    HAL_GPIO_Init(GPIOD, &isGPIO); //-V2571
+    HAL_GPIO_Init(GPIOD, &isGPIO);
 
     //               G3             B4           DE            CLK           R7
     isGPIO.Pin = GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15;
-    HAL_GPIO_Init(GPIOE, &isGPIO); //-V2571
+    HAL_GPIO_Init(GPIOE, &isGPIO);
 
     GPIO_InitTypeDef initStr;
     initStr.Pin = GPIO_PIN_5;
     initStr.Mode = GPIO_MODE_OUTPUT_PP;
     initStr.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOA, &initStr); //-V2571
+    HAL_GPIO_Init(GPIOA, &initStr);
 
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);     // Включение подсветки //-V2571
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);     // Включение подсветки
 
     //                R/L         U/D
     initStr.Pin = GPIO_PIN_11 | GPIO_PIN_12;
-    HAL_GPIO_Init(GPIOC, &initStr); //-V2571
-    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, GPIO_PIN_RESET);      // Выбор горизонтальной ориентации //-V2571
-    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_SET);        // Выбор вертикальной ориентации //-V2571
+    HAL_GPIO_Init(GPIOC, &initStr);
+    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, GPIO_PIN_RESET);      // Выбор горизонтальной ориентации
+    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_SET);        // Выбор вертикальной ориентации
 
 
-    handleLTDC.Instance = LTDC; //-V2571
+    handleLTDC.Instance = LTDC;
     handleLTDC.Init.HSPolarity = LTDC_HSPOLARITY_AL;
     handleLTDC.Init.VSPolarity = LTDC_VSPOLARITY_AL;
     handleLTDC.Init.DEPolarity = LTDC_DEPOLARITY_AL;

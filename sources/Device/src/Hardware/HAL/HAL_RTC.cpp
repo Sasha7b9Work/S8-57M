@@ -13,7 +13,7 @@
 
 static RTC_HandleTypeDef handleRTC =
 {
-    RTC, //-V2571
+    RTC,
     {
         RTC_HOURFORMAT_24,          // HourFormat
         RTC_ASYNCH_PREDIV,          // AsynchPrediv
@@ -31,7 +31,7 @@ void HAL_RTC::Init()
     RCC_OscInitTypeDef        RCC_OscInitStruct;
     RCC_PeriphCLKInitTypeDef  PeriphClkInitStruct;
 
-    __HAL_RCC_PWR_CLK_ENABLE(); //-V2571
+    __HAL_RCC_PWR_CLK_ENABLE();
 
     HAL_PWR_EnableBkUpAccess();
 
@@ -53,7 +53,7 @@ void HAL_RTC::Init()
         ERROR_HANDLER();
     }
     
-    __HAL_RCC_RTC_ENABLE(); //-V2571
+    __HAL_RCC_RTC_ENABLE();
 
     if(HAL_RTC_Init(&handleRTC) != HAL_OK)
     {

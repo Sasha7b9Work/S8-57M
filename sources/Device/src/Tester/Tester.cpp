@@ -259,7 +259,7 @@ void Tester::ReadData()
 
     RecountPoints(x, y);
 
-    DisplayTester::SetPoints(halfStep, x, y); //-V2571
+    DisplayTester::SetPoints(halfStep, x, y);
 }
 
 

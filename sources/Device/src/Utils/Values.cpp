@@ -53,7 +53,7 @@ char* Hex::ToBin(int depth, char buffer[36]) const
 
     while (byte >= 0)
     {
-        BinToString8(static_cast<uint8>(value >> (byte * 8)), pointer); //-V2571
+        BinToString8(static_cast<uint8>(value >> (byte * 8)), pointer);
         if (byte > 0)
         {
             *(pointer + 8) = ' ';

@@ -4,12 +4,12 @@
 #include <stm32f4xx_hal.h>
 
 
-static DAC_HandleTypeDef handle = { DAC }; //-V2571
+static DAC_HandleTypeDef handle = { DAC };
 
 
 void HAL_DAC2::Init()
 {
-    RCC->APB1ENR |= RCC_APB1ENR_DACEN;      // Включаем ЦАП //-V2571
+    RCC->APB1ENR |= RCC_APB1ENR_DACEN;      // Включаем ЦАП
 
     if (HAL_DAC_Init(&handle) != HAL_OK)
     {
