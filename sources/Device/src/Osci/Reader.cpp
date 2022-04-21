@@ -10,7 +10,7 @@
 
 
 // Это пространство CCM-памяти
-static uint8 ccm[8][8 * 1024] __attribute__((section("CCM_DATA")));
+static uint8 ccm[4][8 * 1024] __attribute__((section("CCM_DATA")));
 
 // Это указатели на считанные данные
 uint8 *dataIN[2] = { ccm[0], ccm[1] };

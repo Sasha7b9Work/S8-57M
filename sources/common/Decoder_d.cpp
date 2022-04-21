@@ -12,7 +12,7 @@
 static int pointer = 0;
 static pFuncBU8 curFunc = nullptr;  // Выполняемая функция
 static int step = 0;                // Текущий байт выполняемой функции
-static const int SIZE_BUFFER = 1024;
+static const int SIZE_BUFFER = 512;
 static uint8 buffer[SIZE_BUFFER];
 
 

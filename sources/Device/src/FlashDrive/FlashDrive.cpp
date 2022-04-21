@@ -151,18 +151,6 @@ bool FDrive::AppendStringToFile(pCHAR)
 
 
 
-/*
-static void WriteToFile(FIL *file, char *string)
-{
-    //    uint bytesWritten;
-    f_open(file, "list.txt", FA_OPEN_EXISTING);
-    //f_write(file, string, strlen(string), (void *)&bytesWritten);
-    f_puts(string, file);
-    f_close(file);
-}
-*/
-
-
 void FDrive::GetNumDirsAndFiles(const char *fullPath, int *numDirs, int *numFiles)
 {
     FILINFO fno;

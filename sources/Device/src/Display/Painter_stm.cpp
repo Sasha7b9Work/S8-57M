@@ -13,7 +13,7 @@ namespace Painter
     static const int SIZE_BUFFER = Display::WIDTH * Display::HEIGHT / 2;
 
     uint8 buffer[SIZE_BUFFER];
-    uint8 front[10 * 1024];
+    uint8 front[SIZE_BUFFER - 2 * 1024];
 }
 
 

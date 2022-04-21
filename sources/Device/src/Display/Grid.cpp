@@ -211,7 +211,7 @@ void DrawGridSpectrum()
     if (S_FFT_SCALE_IS_LOG)
     {
         static const int nums[] = {4, 6, 8};
-        static pString strs[] = {"0", "-10", "-20", "-30", "-40", "-50", "-60", "-70"};
+        static const pString strs[] = {"0", "-10", "-20", "-30", "-40", "-50", "-60", "-70"};
         int numParts = nums[S_FFT_MAX_DB];
         float scale = static_cast<float>(Grid::MathHeight()) / numParts; //-V2564
         for (int i = 1; i < numParts; i++)
@@ -229,7 +229,7 @@ void DrawGridSpectrum()
     }
     else // SCALE_FFT_IS_LINEAR
     {
-        static pString strs[] = {"1.0", "0.8", "0.6", "0.4", "0.2"};
+        static const pString strs[] = {"1.0", "0.8", "0.6", "0.4", "0.2"};
         float scale = static_cast<float>(Grid::MathHeight()) / 5; //-V2564
         for (int i = 1; i < 5; i++)
         {
