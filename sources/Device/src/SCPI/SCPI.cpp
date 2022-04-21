@@ -2,8 +2,8 @@
 #include "Hardware/VCP.h"
 #include "SCPI/SCPI.h"
 #include "Utils/Containers/Buffer.h"
-#include "Utils/String.h"
-#include "Utils/StringUtils.h"
+#include "Utils/Text/String.h"
+#include "Utils/Text/StringUtils.h"
 #include <cstring>
 
 

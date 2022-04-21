@@ -4870,54 +4870,6 @@
     <File>
       <GroupNumber>40</GroupNumber>
       <FileNumber>357</FileNumber>
-      <FileType>8</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Utils\String.cpp</PathWithFileName>
-      <FilenameWithoutPath>String.cpp</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>40</GroupNumber>
-      <FileNumber>358</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Utils\String.h</PathWithFileName>
-      <FilenameWithoutPath>String.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>40</GroupNumber>
-      <FileNumber>359</FileNumber>
-      <FileType>8</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Utils\StringUtils.cpp</PathWithFileName>
-      <FilenameWithoutPath>StringUtils.cpp</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>40</GroupNumber>
-      <FileNumber>360</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Utils\StringUtils.h</PathWithFileName>
-      <FilenameWithoutPath>StringUtils.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>40</GroupNumber>
-      <FileNumber>361</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -4929,7 +4881,7 @@
     </File>
     <File>
       <GroupNumber>40</GroupNumber>
-      <FileNumber>362</FileNumber>
+      <FileNumber>358</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -4941,7 +4893,7 @@
     </File>
     <File>
       <GroupNumber>40</GroupNumber>
-      <FileNumber>363</FileNumber>
+      <FileNumber>359</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -4953,7 +4905,7 @@
     </File>
     <File>
       <GroupNumber>40</GroupNumber>
-      <FileNumber>364</FileNumber>
+      <FileNumber>360</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -4965,7 +4917,7 @@
     </File>
     <File>
       <GroupNumber>40</GroupNumber>
-      <FileNumber>365</FileNumber>
+      <FileNumber>361</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -4985,7 +4937,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>41</GroupNumber>
-      <FileNumber>366</FileNumber>
+      <FileNumber>362</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -4997,7 +4949,7 @@
     </File>
     <File>
       <GroupNumber>41</GroupNumber>
-      <FileNumber>367</FileNumber>
+      <FileNumber>363</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -5009,7 +4961,7 @@
     </File>
     <File>
       <GroupNumber>41</GroupNumber>
-      <FileNumber>368</FileNumber>
+      <FileNumber>364</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -5021,7 +4973,7 @@
     </File>
     <File>
       <GroupNumber>41</GroupNumber>
-      <FileNumber>369</FileNumber>
+      <FileNumber>365</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -5033,7 +4985,7 @@
     </File>
     <File>
       <GroupNumber>41</GroupNumber>
-      <FileNumber>370</FileNumber>
+      <FileNumber>366</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -5045,13 +4997,69 @@
     </File>
     <File>
       <GroupNumber>41</GroupNumber>
-      <FileNumber>371</FileNumber>
+      <FileNumber>367</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\Utils\Containers\Stack.h</PathWithFileName>
       <FilenameWithoutPath>Stack.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+  </Group>
+
+  <Group>
+    <GroupName>Utils/Text</GroupName>
+    <tvExp>0</tvExp>
+    <tvExpOptDlg>0</tvExpOptDlg>
+    <cbSel>0</cbSel>
+    <RteFlg>0</RteFlg>
+    <File>
+      <GroupNumber>42</GroupNumber>
+      <FileNumber>368</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Utils\Text\String.cpp</PathWithFileName>
+      <FilenameWithoutPath>String.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>42</GroupNumber>
+      <FileNumber>369</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Utils\Text\String.h</PathWithFileName>
+      <FilenameWithoutPath>String.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>42</GroupNumber>
+      <FileNumber>370</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Utils\Text\StringUtils.cpp</PathWithFileName>
+      <FilenameWithoutPath>StringUtils.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>42</GroupNumber>
+      <FileNumber>371</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Utils\Text\StringUtils.h</PathWithFileName>
+      <FilenameWithoutPath>StringUtils.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

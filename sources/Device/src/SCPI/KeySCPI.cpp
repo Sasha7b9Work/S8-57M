@@ -1,7 +1,7 @@
 #include "defines.h"
 #include "Keyboard/BufferButtons.h"
 #include "SCPI/SCPI.h"
-#include "Utils/String.h"
+#include "Utils/Text/String.h"
 
 
 // :KEY:PRESS:

@@ -2410,26 +2410,6 @@
               <FilePath>.\src\Utils\Smoother.cpp</FilePath>
             </File>
             <File>
-              <FileName>String.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\String.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>String.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\String.h</FilePath>
-            </File>
-            <File>
-              <FileName>StringUtils.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\StringUtils.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>StringUtils.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\StringUtils.h</FilePath>
-            </File>
-            <File>
               <FileName>tableslog.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\tableslog.h</FilePath>
@@ -2488,6 +2468,31 @@
               <FileName>Stack.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\Containers\Stack.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Utils/Text</GroupName>
+          <Files>
+            <File>
+              <FileName>String.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Text\String.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>String.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Text\String.h</FilePath>
+            </File>
+            <File>
+              <FileName>StringUtils.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Text\StringUtils.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>StringUtils.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Text\StringUtils.h</FilePath>
             </File>
           </Files>
         </Group>

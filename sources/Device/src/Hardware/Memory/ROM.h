@@ -1,5 +1,5 @@
 #pragma once
-#include "Utils/String.h"
+#include "Utils/Text/String.h"
 
 
 struct DataSettings;

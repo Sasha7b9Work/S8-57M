@@ -1,7 +1,7 @@
 #include "defines.h"
 #include "Utils/Containers/Buffer.h"
 #include "Utils/Containers/Stack.h"
-#include "Utils/StringUtils.h"
+#include "Utils/Text/StringUtils.h"
 #include "Utils/Values.h"
 #include <iomanip>
 #include <cstring>

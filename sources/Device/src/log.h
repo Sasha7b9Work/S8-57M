@@ -1,5 +1,5 @@
 #pragma once
-#include "Utils/String.h"
+#include "Utils/Text/String.h"
 
 
 #define LOG_WRITE(...)          Log::Message(String(__VA_ARGS__).c_str())

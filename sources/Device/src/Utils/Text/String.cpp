@@ -1,6 +1,6 @@
 #include "defines.h"
 #include "Display/Primitives.h"
-#include "Utils/StringUtils.h"
+#include "Utils/Text/StringUtils.h"
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>

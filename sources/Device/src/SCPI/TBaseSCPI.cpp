@@ -2,7 +2,7 @@
 #include "Osci/ParametersOsci.h"
 #include "SCPI/SCPI.h"
 #include "Settings/Settings.h"
-#include "Utils/StringUtils.h"
+#include "Utils/Text/StringUtils.h"
 
 
 // :TIMEBASE:MODE

@@ -8,7 +8,7 @@
 #include "Settings/Settings.h"
 #include "Utils/Values.h"
 #include "Utils/Containers/Stack.h"
-#include "Utils/StringUtils.h"
+#include "Utils/Text/StringUtils.h"
 #include <cstring>
 
 

@@ -7,7 +7,7 @@
 #include "Hardware/Timer.h"
 #include "SCPI/SCPI.h"
 #include "Settings/Settings.h"
-#include "Utils/StringUtils.h"
+#include "Utils/Text/StringUtils.h"
 #include "Utils/Values.h"
 #include <cstring>
 

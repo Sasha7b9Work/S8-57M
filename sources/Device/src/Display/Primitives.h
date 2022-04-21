@@ -1,5 +1,5 @@
 #pragma once
-#include "Utils/String.h"
+#include "Utils/Text/String.h"
 #include "Display/Symbols.h"
 #include "common/Display/Font/Font_d.h"
 

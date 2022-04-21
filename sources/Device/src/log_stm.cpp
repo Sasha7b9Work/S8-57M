@@ -1,7 +1,7 @@
 #include "defines.h"
 #include "log.h"
 #include "Display/Console.h"
-#include "Utils/String.h"
+#include "Utils/Text/String.h"
 
 
 #define SIZE_BUFFER 100
