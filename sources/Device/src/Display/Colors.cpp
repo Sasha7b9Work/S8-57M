@@ -5,7 +5,7 @@
 #include "Utils/Math.h"
 
 
-uint GlobalColors[256] =
+uint GlobalColors[32] =
 {
     /* 0  */    MAKE_COLOR(0x00, 0x00, 0x00),       // BLACK
     /* 1  */    MAKE_COLOR(0xff, 0xff, 0xff),       // WHITE
