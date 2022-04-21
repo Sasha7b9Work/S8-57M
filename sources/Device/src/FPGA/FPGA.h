@@ -19,7 +19,6 @@ struct FPGA
     friend struct TrigPolarity;
     friend struct TShift;
     friend struct TrigLevel;
-    friend struct Osci;
 
     friend class Tester;
 
@@ -57,17 +56,17 @@ struct FPGA
 
     static void Init();
 
+    // True, если дан принудительный запуск
+    static bool forcedStart;
+
+    static uint16 post;
+    static uint16 pred;
+
+    static bool isRunning;
+
+    static void Reset();
+
 private:
 
     static void OnPressStart();
-    
-    static void Reset();
-
-    static uint16 post;
-    static uint16 pred;   
-
-    static bool isRunning;
-   
-    // True, если дан принудительный запуск
-    static bool forcedStart;
 };

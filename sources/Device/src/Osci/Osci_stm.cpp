@@ -6,6 +6,17 @@
 #include "Osci/Osci.h"
 
 
+namespace Osci
+{
+    extern uint16 addrRead;
+
+    // „итать данные канала в пам€ить data
+    bool ReadDataChannel(Chan::E ch, uint8* data);
+
+    bool ReadDataChannelRand(uint8* address, uint8* data);
+}
+
+
 bool Osci::ReadDataChannel(Chan::E ch, uint8 *data)
 {
     int numPoints = ENumPointsFPGA::PointsInChannel();

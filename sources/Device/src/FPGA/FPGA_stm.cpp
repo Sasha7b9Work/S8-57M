@@ -11,9 +11,6 @@
 #include "Utils/Math.h"
 
 
-uint16 Osci::addrRead = 0xffff;
-
-
 void FPGA::Init()
 {
     forcedStart = false;
