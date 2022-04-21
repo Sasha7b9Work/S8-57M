@@ -19,13 +19,16 @@
 #include <cstdlib>
 
 
-// Настроить устройство в соответствии с установленным режимом
-static void SetCurrentMode();
-// Установить режим работы mode, если открыта страница page или в числе предков открытой страницы есть page
-static bool SetCurrentMode(const Page *page, Device::Mode::E mode);
+namespace Device
+{
+    // Настроить устройство в соответствии с установленным режимом
+    void SetCurrentMode();
 
-static Device::Mode::E currentMode = Device::Mode::Osci;
+    // Установить режим работы mode, если открыта страница page или в числе предков открытой страницы есть page
+    bool SetCurrentMode(const Page* page, Device::Mode::E mode);
 
+    Device::Mode::E currentMode = Device::Mode::Osci;
+}
 
 
 void Device::Init()
@@ -68,15 +71,13 @@ void Device::Init()
 
     FDrive::Init();
 
-    //Sensor::Init();
-
     SetCurrentMode();
 
     //HAL_TIM5::Init();
 }
 
 
-void SetCurrentMode()
+void Device::SetCurrentMode()
 {
     if (!SetCurrentMode(PageMultimeter::self, Device::Mode::Multimeter))
     {
@@ -91,7 +92,7 @@ void SetCurrentMode()
 }
 
 
-bool SetCurrentMode(const Page *page, Device::Mode::E mode)
+bool Device::SetCurrentMode(const Page *page, Device::Mode::E mode)
 {
     Item *opened = Menu::OpenedItem();
 

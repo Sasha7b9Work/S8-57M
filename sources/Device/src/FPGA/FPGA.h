@@ -12,7 +12,6 @@ struct FPGA
     friend struct Randomizer;
 
     friend struct Bandwidth;
-    friend struct Device;
     friend struct Range;
     friend struct RShift;
     friend struct TBase;
@@ -56,9 +55,9 @@ struct FPGA
         static bool PeriodInProcess();
     };
 
-private:
-
     static void Init();
+
+private:
 
     static void OnPressStart();
     
