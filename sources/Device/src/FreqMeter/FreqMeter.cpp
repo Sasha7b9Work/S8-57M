@@ -48,6 +48,13 @@ namespace FreqMeter
     float PeriodSetToFreq(const BitSet32* period);
 }
 
+
+namespace DisplayFreqMeter
+{
+    void DrawDebugInfo();
+}
+
+
 void FreqMeter::Init()
 {
     FPGA::LoadSettings();
