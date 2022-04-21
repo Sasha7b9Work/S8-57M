@@ -6,15 +6,6 @@
 #include <cstring>
 
 
-Message::Message(uint size, uint8 v0) : allocated(0), used(0), data(0)
-{
-    if (Allocate(size))
-    {
-        PutByte(v0);
-    }
-}
-
-
 Message::Message(uint size, uint8 v0, uint8 v1) : allocated(0), used(0), data(0)
 {
     if (Allocate(size))
