@@ -8,17 +8,12 @@
 #include "Hardware/HAL/HAL.h"
 
 
-
 typedef bool(*pFuncBU8)(uint8);
 // Выполняемая функция
 static pFuncBU8 curFunc;
 // Текущий байт выполняемой функции
 static int step = 0;
 
-
-
-// Обработка запроса на изображение экрана
-static bool FuncScreen(uint8);
 
 static bool E(uint8) { return true; }
 
@@ -42,7 +37,6 @@ void PDecoder::AddData(uint8 data)
         E,                  // None,
         InButtonPress,      // ButtonPress,
         DisplayBrightness,  // Paint_DrawBigText,
-        FuncScreen,         // Screen
         E,                  // AddToConsole
         E,
         E
@@ -98,22 +92,6 @@ static bool DisplayBrightness(uint8 data)
     if (step == 1)
     {
         HAL_DAC2::SetValue(data);
-    }
-
-    return true;
-}
-
-
-static bool FuncScreen(uint8 data)
-{
-    if (step == 0)
-    {
-        return false;
-    }
-
-    if (step == 1)
-    {
-        Painter::SendRow(data);
     }
 
     return true;

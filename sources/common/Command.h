@@ -9,7 +9,6 @@ struct Command
 /* 00 */    None,                   //    |             |            |             |              |              |        |
 /* 01 */    ButtonPress,            // 01 |   Item      | TypePress  |             |              |              |        |
 /* 02 */    Display_Brightness,     // 02 | €ркость
-/* 03 */    CScreen,                 // 03 |  numRow     |
 /* 04 */    AddToConsole,           // 04 | num symb    |  ..... symbols ....
 
 /* 05 */    Paint_DirectLine,       // ќтрисовка "пр€мой" линии

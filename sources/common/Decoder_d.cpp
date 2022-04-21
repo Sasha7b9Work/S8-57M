@@ -75,7 +75,6 @@ void DDecoder::RunStep(uint8 data)
         E,              // None,
         ButtonPress,    // ButtonPress,
         E,              // Paint_DrawBigText,
-        E,              // Screen
         AddToConsole,   // AddToConsole
         E,
         E
