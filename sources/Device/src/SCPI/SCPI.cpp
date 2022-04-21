@@ -217,7 +217,7 @@ static bool RemoveSeparatorsSequenceFromBegin()
 
 void SCPI::SendAnswer(pCHAR message)
 {
-    if(message[std::strlen(message) - 1] != 0x0D) //-V2513
+    if(message[std::strlen(message) - 1] != 0x0D)
     {
         String msg(message);
         msg.Append(0x0D);

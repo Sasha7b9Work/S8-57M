@@ -167,8 +167,8 @@ void FDrive::GetNumDirsAndFiles(const char *fullPath, int *numDirs, int *numFile
     
 
     char nameDir[_MAX_LFN + 1];
-    std::memcpy(nameDir, fullPath, std::strlen(fullPath)); //-V2513
-    nameDir[std::strlen(fullPath)] = '\0'; //-V2513
+    std::memcpy(nameDir, fullPath, std::strlen(fullPath));
+    nameDir[std::strlen(fullPath)] = '\0';
 
     if (f_opendir(&dir, nameDir) == FR_OK)
     {
@@ -210,8 +210,8 @@ void FDrive::GetNumDirsAndFiles(const char *fullPath, int *numDirs, int *numFile
 
 bool FDrive::GetNameDir(const char *fullPath, int numDir, char *nameDirOut, StructForReadDir *s) // -V2506
 {
-    std::memcpy(s->nameDir, fullPath, std::strlen(fullPath)); //-V2513
-    s->nameDir[std::strlen(fullPath)] = '\0'; //-V2513
+    std::memcpy(s->nameDir, fullPath, std::strlen(fullPath));
+    s->nameDir[std::strlen(fullPath)] = '\0';
 
     DIR *pDir = &s->dir;
     if (f_opendir(pDir, s->nameDir) == FR_OK)
@@ -239,7 +239,7 @@ bool FDrive::GetNameDir(const char *fullPath, int numDir, char *nameDirOut, Stru
             }
             if ((numDir == numDirs) && ((pFNO->fattrib & AM_DIR) != 0))
             {
-                std::strcpy(nameDirOut, static_cast<const char *>(pFNO->fname)); //-V2513
+                std::strcpy(nameDirOut, static_cast<const char *>(pFNO->fname));
                 f_closedir(pDir);
                 return true;
             }
@@ -281,7 +281,7 @@ bool FDrive::GetNextNameDir(char *nameDirOut, StructForReadDir *s) // -V2506
         {
             if (pFNO->fattrib & AM_DIR)
             {
-                std::strcpy(nameDirOut, static_cast<const char *>(pFNO->fname)); //-V2513
+                std::strcpy(nameDirOut, static_cast<const char *>(pFNO->fname));
                 return true;
             }
         }
@@ -299,8 +299,8 @@ void FDrive::CloseCurrentDir(StructForReadDir *s)
 
 bool FDrive::GetNameFile(const char *fullPath, int numFile, char *nameFileOut, StructForReadDir *s) // -V2506
 {
-    std::memcpy(s->nameDir, fullPath, std::strlen(fullPath)); //-V2513
-    s->nameDir[std::strlen(fullPath)] = '\0'; //-V2513
+    std::memcpy(s->nameDir, fullPath, std::strlen(fullPath));
+    s->nameDir[std::strlen(fullPath)] = '\0';
 
     DIR *pDir = &s->dir;
     FILINFO *pFNO = &s->fno;
@@ -328,7 +328,7 @@ bool FDrive::GetNameFile(const char *fullPath, int numFile, char *nameFileOut, S
             }
             if (numFile == numFiles && (pFNO->fattrib & AM_DIR) == 0)
             {
-                std::strcpy(nameFileOut, static_cast<const char *>(pFNO->fname)); //-V2513
+                std::strcpy(nameFileOut, static_cast<const char *>(pFNO->fname));
                 f_closedir(pDir);
                 return true;
             }
@@ -369,7 +369,7 @@ bool FDrive::GetNextNameFile(char *nameFileOut, StructForReadDir *s) // -V2506
         {
             if ((pFNO->fattrib & AM_DIR) == 0 && pFNO->fname[0] != '.')
             {
-                std::strcpy(nameFileOut, static_cast<const char *>(pFNO->fname)); //-V2513
+                std::strcpy(nameFileOut, static_cast<const char *>(pFNO->fname));
                 return true;
             }
         }
@@ -384,7 +384,7 @@ bool FDrive::OpenNewFileForWrite(const char *fullPathToFile, StructForWrite *str
     {
         return false;
     }
-    std::strcpy(structForWrite->name, const_cast<char *>(fullPathToFile)); //-V2513 //-V2567
+    std::strcpy(structForWrite->name, const_cast<char *>(fullPathToFile)); //-V2567
     structForWrite->sizeData = 0;
     return true;
 }
@@ -621,7 +621,7 @@ bool FDrive::ExistFile(const char *fullPath, const char *fileName)
     {
         GetNameFile(fullPath, i, nameFile, &sfrd);
 
-        if (std::strcmp(fileName, nameFile) == 0) //-V2513
+        if (std::strcmp(fileName, nameFile) == 0)
         {
             return true;
         }

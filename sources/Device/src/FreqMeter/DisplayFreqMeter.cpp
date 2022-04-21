@@ -113,15 +113,15 @@ static float ConvertFrequencyToAbs(const char *strFreq)
 {
     float result = SU::StringToFloat(strFreq);
 
-    if(std::strcmp(&strFreq[std::strlen(strFreq) - 3], "ћ√ц") == 0) //-V2513
+    if(std::strcmp(&strFreq[std::strlen(strFreq) - 3], "ћ√ц") == 0)
     {
         result *= 1e6F;
     }
-    else if(std::strcmp(&strFreq[std::strlen(strFreq) - 3], "к√ц") == 0) //-V2513
+    else if(std::strcmp(&strFreq[std::strlen(strFreq) - 3], "к√ц") == 0)
     {
         result *= 1e3F;
     }
-    else if(std::strcmp(&strFreq[std::strlen(strFreq) - 3], "м√ц") == 0) //-V2513 //-V2516
+    else if(std::strcmp(&strFreq[std::strlen(strFreq) - 3], "м√ц") == 0) //-V2516
     {
         result *= 1e-3F;
     }
@@ -152,7 +152,7 @@ void DisplayFreqMeter::DrawFrequencyMode(int x, int _y)
     dX = 32;
 
     char strFreq[50];
-    std::strcpy(strFreq, FreqSetToString(&FreqMeter::freqActual)); //-V2513
+    std::strcpy(strFreq, FreqSetToString(&FreqMeter::freqActual));
 
     Text(strFreq).DrawDigitsMonospace(x + dX, yF, DFont::GetWidth('0'));
 
@@ -191,15 +191,15 @@ static float ConvertPeriodToAbs(const char *strPeriod)
 {
     float result = SU::StringToFloat(strPeriod);
 
-    if(std::strcmp(&strPeriod[std::strlen(strPeriod) - 2], "нс") == 0) //-V2513
+    if(std::strcmp(&strPeriod[std::strlen(strPeriod) - 2], "нс") == 0)
     {
         result *= 1e-9F;
     }
-    else if(std::strcmp(&strPeriod[std::strlen(strPeriod) - 3], "мкс") == 0) //-V2513
+    else if(std::strcmp(&strPeriod[std::strlen(strPeriod) - 3], "мкс") == 0)
     {
         result *= 1e-6F;
     }
-    else if(std::strcmp(&strPeriod[std::strlen(strPeriod) - 2], "мс") == 0) //-V2513 //-V2516
+    else if(std::strcmp(&strPeriod[std::strlen(strPeriod) - 2], "мс") == 0) //-V2516
     {
         result *= 1e-3F;
     }
@@ -231,7 +231,7 @@ void DisplayFreqMeter::DrawPeriodMode(int x, int _y)
     dX = 32;
 
     char strPeriod[50];
-    std::strcpy(strPeriod, PeriodSetToString(&FreqMeter::periodActual)); //-V2513
+    std::strcpy(strPeriod, PeriodSetToString(&FreqMeter::periodActual));
 
     Text(strPeriod).DrawDigitsMonospace(x + dX, yT, DFont::GetWidth('0'));
 
@@ -242,7 +242,7 @@ void DisplayFreqMeter::DrawPeriodMode(int x, int _y)
 
     Text strFreq(strPeriod);
 
-    if((std::strcmp(strPeriod, EMPTY_STRING) != 0) && (std::strcmp(strPeriod, OVERFLOW_STRING) != 0)) //-V2513
+    if((std::strcmp(strPeriod, EMPTY_STRING) != 0) && (std::strcmp(strPeriod, OVERFLOW_STRING) != 0))
     {
         float period = ConvertPeriodToAbs(strPeriod);
 
@@ -324,7 +324,7 @@ pString DisplayFreqMeter::FreqSetToString(const BitSet32 *fr)
 
         giverFreq *= 100;
 
-        WRITE_SUFFIX("к√ц"); //-V2513
+        WRITE_SUFFIX("к√ц");
 
         if(giverFreq < _1MHz)                       // ћеньше 1 ћ√ц
         {
@@ -344,7 +344,7 @@ pString DisplayFreqMeter::FreqSetToString(const BitSet32 *fr)
 
         giverFreq *= 10;
 
-        WRITE_SUFFIX("√ц"); //-V2513
+        WRITE_SUFFIX("√ц");
 
         if(giverFreq < _1MHz)                      // ћеньше 1 ћ√ц
         {
@@ -367,7 +367,7 @@ pString DisplayFreqMeter::FreqSetToString(const BitSet32 *fr)
 
     case FreqMeter::TimeCounting::_10s:
 
-        WRITE_SUFFIX("√ц"); //-V2513
+        WRITE_SUFFIX("√ц");
 
         if(freq < _1MHz)                       // ћеньше 1 ћ√ц
         {
@@ -563,7 +563,7 @@ void DisplayFreqMeter::WriteStackToBuffer(Stack<uint> *stack, int point, const c
         buffer[i] = static_cast<char>(stack->Pop()) | 0x30;
     }
 
-    std::strcpy(&buffer[7], suffix); //-V2513
+    std::strcpy(&buffer[7], suffix);
 }
 
 

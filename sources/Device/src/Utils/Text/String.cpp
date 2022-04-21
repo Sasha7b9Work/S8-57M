@@ -20,9 +20,9 @@ String::String(const String &rhs) : buffer(nullptr)
 {
     Set(TypeConversionString::None, "");
 
-    if (Allocate(static_cast<int>(std::strlen(rhs.c_str()) + 1))) //-V2513
+    if (Allocate(static_cast<int>(std::strlen(rhs.c_str()) + 1)))
     {
-        std::strcpy(buffer, rhs.c_str()); //-V2513
+        std::strcpy(buffer, rhs.c_str());
     }
 }
 
@@ -62,11 +62,11 @@ String::String(const char *format, ...) : buffer(nullptr)
 
     if (numSymbols < 0 || numSymbols > SIZE)
     {
-        std::strcpy(buffer, "Буфер слишком мал"); //-V2513
+        std::strcpy(buffer, "Буфер слишком мал");
     }
-    else if (Allocate(static_cast<int>(std::strlen(buf) + 1))) //-V2513 //-V2516
+    else if (Allocate(static_cast<int>(std::strlen(buf) + 1))) //-V2516
     {
-        std::strcpy(buffer, buf); //-V2513
+        std::strcpy(buffer, buf);
     }
 }
 
@@ -87,11 +87,11 @@ void String::Set(TypeConversionString::E conv, const char *format, ...)
 
         if(numSymbols < 0 || numSymbols > SIZE)
         {
-            std::strcpy(buffer, "Буфер слишком мал"); //-V2513
+            std::strcpy(buffer, "Буфер слишком мал");
         }
-        else if(Allocate(static_cast<int>(std::strlen(buf) + 1))) //-V2513 //-V2516
+        else if(Allocate(static_cast<int>(std::strlen(buf) + 1))) //-V2516
         {
-            std::strcpy(buffer, buf); //-V2513
+            std::strcpy(buffer, buf);
             Conversion(conv);
         }
     }
@@ -109,10 +109,10 @@ void String::Append(const char *str)
 
     Free();
 
-    Allocate(static_cast<int>(old.Size() + std::strlen(str) + 1)); //-V2513
+    Allocate(static_cast<int>(old.Size() + std::strlen(str) + 1));
 
-    std::strcpy(buffer, old.c_str()); //-V2513
-    std::strcat(buffer, str); //-V2513
+    std::strcpy(buffer, old.c_str());
+    std::strcat(buffer, str);
 }
 
 
@@ -131,7 +131,7 @@ void String::Append(const char *str, int numSymbols)
 
     Allocate(size);
 
-    std::strcpy(buffer, old.c_str()); //-V2513
+    std::strcpy(buffer, old.c_str());
     std::memcpy(buffer + old.Size(), str, static_cast<uint>(numSymbols));
     buffer[size - 1] = '\0';
 }
@@ -210,7 +210,7 @@ void String::Conversion(TypeConversionString::E conv)
 
 void String::RemoveFromBegin(int numSymbols)
 {
-    if (std::strlen(buffer) == static_cast<uint>(numSymbols)) //-V2513
+    if (std::strlen(buffer) == static_cast<uint>(numSymbols))
     {
         Free();
     }
@@ -222,7 +222,7 @@ void String::RemoveFromBegin(int numSymbols)
 
         Allocate(old.Size() - numSymbols + 1);
 
-        std::strcpy(buffer, old.c_str() + numSymbols); //-V2513
+        std::strcpy(buffer, old.c_str() + numSymbols);
     }
 }
 
@@ -243,7 +243,7 @@ int String::Size() const
         return 0;
     }
 
-    return static_cast<int>(std::strlen(buffer)); //-V2513
+    return static_cast<int>(std::strlen(buffer));
 }
 
 

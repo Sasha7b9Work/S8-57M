@@ -57,7 +57,7 @@ int Text::DrawChar(int eX, int eY, uint8 symbol, Color color)
 
 int Text::Draw(int x, int y, const char *text)
 {
-    uint numSymbols = std::strlen(text); //-V2513
+    uint numSymbols = std::strlen(text);
     for (uint i = 0; i < numSymbols; ++i)
     {
         int prevX = x;

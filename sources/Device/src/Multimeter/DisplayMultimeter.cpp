@@ -627,7 +627,7 @@ void DisplayMultimeter::ChangedMode()
 
     outBuffer[position[S_MULT_MEASURE][GetRange()]] = '.';
     
-    std::strcpy(&outBuffer[7], suffix[S_MULT_MEASURE][GetRange()]); //-V2513
+    std::strcpy(&outBuffer[7], suffix[S_MULT_MEASURE][GetRange()]);
     
     if(S_MULT_MEASURE_IS_RESISTANCE)
     {
@@ -673,31 +673,31 @@ void DisplayMultimeter::SetMeasure(const uint8 buf[13])
 
 void DisplayMultimeter::PrepareTestDiode(pCHAR)
 {
-    std::strcpy(outBuffer + 7, "  "); //-V2513
+    std::strcpy(outBuffer + 7, "  ");
 }
 
 
 void DisplayMultimeter::PrepareVoltageDC(pCHAR) //-V524
 {
-    std::strcpy(outBuffer + 7, "V="); //-V2513
+    std::strcpy(outBuffer + 7, "V=");
 }
 
 
 void DisplayMultimeter::PrepareVoltageAC(pCHAR)
 {
-    std::strcpy(outBuffer + 7, "V~"); //-V2513
+    std::strcpy(outBuffer + 7, "V~");
 }
 
 
 void DisplayMultimeter::PrepareCurrentDC(const char *buf)
 {
-    std::strcpy(outBuffer + 7, (buf[10] == '1') ? "A=" : "mA="); //-V2513
+    std::strcpy(outBuffer + 7, (buf[10] == '1') ? "A=" : "mA=");
 }
 
 
 void DisplayMultimeter::PrepareCurrentAC(const char *buf)
 {
-    std::strcpy(outBuffer + 7, (buf[10] == '1') ? "A~" : "mA~"); //-V2513
+    std::strcpy(outBuffer + 7, (buf[10] == '1') ? "A~" : "mA~");
 }
 
 
@@ -716,7 +716,7 @@ bool DisplayMultimeter::ResistanceLess100()
 
 void DisplayMultimeter::PrepareBell(pCHAR)
 {
-    std::strcpy(outBuffer + 7, "  "); //-V2513
+    std::strcpy(outBuffer + 7, "  ");
 
     if (ResistanceLess100())
     {

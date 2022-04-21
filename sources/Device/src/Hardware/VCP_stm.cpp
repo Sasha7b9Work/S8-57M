@@ -84,7 +84,7 @@ void VCP::SendDataSynch(const void *_buffer, int size)
         char *buffer = static_cast<char *>(const_cast<void *>(_buffer)); //-V2567
         if (size == 0)
         {
-            size = static_cast<int>(std::strlen(buffer)); //-V2513
+            size = static_cast<int>(std::strlen(buffer));
         }
 
         volatile USBD_CDC_HandleTypeDef *pCDC = static_cast<USBD_CDC_HandleTypeDef *>(hUSBD.pClassData);
@@ -118,13 +118,13 @@ void VCP::SendDataSynch(const void *_buffer, int size)
 
 void VCP::SendStringAsynch(const char *data)
 {
-    SendDataAsynch(reinterpret_cast<uint8 *>(const_cast<char *>(data)), static_cast<int>(std::strlen(data))); //-V2513 //-V2567
+    SendDataAsynch(reinterpret_cast<uint8 *>(const_cast<char *>(data)), static_cast<int>(std::strlen(data))); //-V2567
 }
 
 
 void VCP::SendStringSynch(char *data)
 {
-    SendDataSynch(reinterpret_cast<uint8 *>(data), static_cast<int>(std::strlen(data))); //-V2513
+    SendDataSynch(reinterpret_cast<uint8 *>(data), static_cast<int>(std::strlen(data)));
 }
 
 
@@ -137,8 +137,8 @@ void VCP::SendFormatStringAsynch(char *format, ...)
         va_start(args, format); //-V2528
         std::vsprintf(buffer, format, args);
         va_end(args);
-        std::strcat(buffer, "\r\n"); //-V2513
-        SendDataAsynch(reinterpret_cast<uint8 *>(buffer), static_cast<int>(std::strlen(buffer))); //-V2513
+        std::strcat(buffer, "\r\n");
+        SendDataAsynch(reinterpret_cast<uint8 *>(buffer), static_cast<int>(std::strlen(buffer)));
     }
 }
 
@@ -150,8 +150,8 @@ void VCP::SendFormatStringSynch(char *format, ...)
     va_start(args, format); //-V2528
     std::vsprintf(buffer, format, args);
     va_end(args);
-    std::strcat(buffer, "\r\n"); //-V2513
-    SendDataSynch(reinterpret_cast<uint8 *>(buffer), static_cast<int>(std::strlen(buffer))); //-V2513
+    std::strcat(buffer, "\r\n");
+    SendDataSynch(reinterpret_cast<uint8 *>(buffer), static_cast<int>(std::strlen(buffer)));
 }
 
 

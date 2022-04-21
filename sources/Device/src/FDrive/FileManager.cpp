@@ -42,7 +42,7 @@ ModeRedrawFM::E ModeRedrawFM::modeRedraw = ModeRedrawFM::Full;
 
 void FileManager::Init()
 {
-    std::strcpy(currentDir, "\\"); //-V2513
+    std::strcpy(currentDir, "\\");
     numFirstDir = 0;
     numFirstFile = 0;
     numCurDir = 0;
@@ -204,11 +204,11 @@ void FileManager::Press_LevelDown()
     StructForReadDir sfrd;
     if (FDrive::GetNameDir(currentDir, numCurDir, nameDir, &sfrd))
     {
-        if (std::strlen(currentDir) + std::strlen(nameDir) < 250) //-V2513
+        if (std::strlen(currentDir) + std::strlen(nameDir) < 250)
         {
             FDrive::CloseCurrentDir(&sfrd);
-            std::strcat(currentDir, "\\"); //-V2513
-            std::strcat(currentDir, nameDir); //-V2513
+            std::strcat(currentDir, "\\");
+            std::strcat(currentDir, nameDir);
             numFirstDir = 0;
             numFirstFile = 0;
             numCurDir = 0;
@@ -224,11 +224,11 @@ void FileManager::Press_LevelUp()
 {
     ModeRedrawFM::Set(ModeRedrawFM::Full);
 
-    if (std::strlen(currentDir) == 1) //-V2513
+    if (std::strlen(currentDir) == 1)
     {
         return;
     }
-    char *pointer = currentDir + std::strlen(currentDir); //-V2513
+    char *pointer = currentDir + std::strlen(currentDir);
     while (*pointer != '\\')
     {
         pointer--;
@@ -351,10 +351,10 @@ bool FileManager::GetNameForNewFile(char name[255])
 {
     static int number = 0;
 
-    std::strcpy(name, currentDir); //-V2513
-    std::strcat(name, "\\"); //-V2513
+    std::strcpy(name, currentDir);
+    std::strcat(name, "\\");
 
-    int size = static_cast<int>(std::strlen(S_MEM_FILE_NAME)); //-V2513
+    int size = static_cast<int>(std::strlen(S_MEM_FILE_NAME));
     if (size == 0)
     {
         return false;
@@ -363,9 +363,9 @@ bool FileManager::GetNameForNewFile(char name[255])
     if (S_MEM_FILE_NAMING_MODE_IS_MANUALLY)
     {
         LIMITATION(size, 1, 95);
-        std::strcat(name, S_MEM_FILE_NAME); //-V2513
-        std::strcat(name, "."); //-V2513
-        std::strcat(name, S_MEM_MODE_SAVE_SIGNAL_IS_BMP ? "bmp" : "txt"); //-V2513
+        std::strcat(name, S_MEM_FILE_NAME);
+        std::strcat(name, ".");
+        std::strcat(name, S_MEM_MODE_SAVE_SIGNAL_IS_BMP ? "bmp" : "txt");
         return true;
     }
     else
@@ -395,8 +395,8 @@ bool FileManager::GetNameForNewFile(char name[255])
                 {
                     number++;
                     char *strNumber = Integer(number).ToString(false, *(ch + 1)).c_str();
-                    std::strcpy(wr, strNumber); //-V2513
-                    wr += std::strlen(strNumber); //-V2513
+                    std::strcpy(wr, strNumber);
+                    wr += std::strlen(strNumber);
                     ch++;
                 }
                 else
@@ -404,8 +404,8 @@ bool FileManager::GetNameForNewFile(char name[255])
                     if (*ch >= 0x01 && *ch <= 0x06)
                     {
                         char *strValue = Integer(static_cast<int>(values[*ch])).ToString(false, 2).c_str();
-                        std::strcpy(wr, strValue); //-V2513
-                        wr += std::strlen(strValue); //-V2513
+                        std::strcpy(wr, strValue);
+                        wr += std::strlen(strValue);
                     }
                 }
             }
@@ -415,7 +415,7 @@ bool FileManager::GetNameForNewFile(char name[255])
         *wr = '.';
         *(wr + 1) = '\0';
 
-        std::strcat(name, S_MEM_MODE_SAVE_SIGNAL_IS_BMP ? "bmp" : "txt"); //-V2513
+        std::strcat(name, S_MEM_MODE_SAVE_SIGNAL_IS_BMP ? "bmp" : "txt");
 
         return true;
     }

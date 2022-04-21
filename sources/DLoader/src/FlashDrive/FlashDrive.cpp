@@ -203,21 +203,21 @@ bool FDrive::FileExist(const char *fileName)
 {
     char nameFile[255];
     char f[255];
-    strcpy(f, fileName); //-V2513
+    strcpy(f, fileName);
     ToLower(f);
     StructForReadDir strd;
 
     if(GetNameFile("\\", 0, nameFile, &strd))
     {
         ToLower(nameFile);
-        if(strcmp(f, nameFile) == 0) //-V2513
+        if(strcmp(f, nameFile) == 0)
         {
             return true;
         }
         while(GetNextNameFile(nameFile, &strd))
         {
             ToLower(nameFile);
-            if(strcmp(f, nameFile) == 0) //-V2513
+            if(strcmp(f, nameFile) == 0)
             {
                 return true;
             }
@@ -231,8 +231,8 @@ bool FDrive::FileExist(const char *fileName)
 
 static bool GetNameFile(const char *fullPath, int numFile, char *nameFileOut, StructForReadDir *s)
 {
-    memcpy(reinterpret_cast<uint8 *>(s->nameDir), const_cast<char *>(fullPath), strlen(fullPath)); //-V2513 //-V2567
-    s->nameDir[strlen(fullPath)] = '\0'; //-V2513
+    memcpy(reinterpret_cast<uint8 *>(s->nameDir), const_cast<char *>(fullPath), strlen(fullPath)); //-V2567
+    s->nameDir[strlen(fullPath)] = '\0';
 
     DIR *pDir = &s->dir;
     FILINFO *pFNO = &s->fno;
@@ -260,7 +260,7 @@ static bool GetNameFile(const char *fullPath, int numFile, char *nameFileOut, St
             }
             if(numFile == numFiles && (pFNO->fattrib & AM_DIR) == 0)
             {
-                strcpy(nameFileOut, pFNO->fname); //-V2513
+                strcpy(nameFileOut, pFNO->fname);
                 return true;
             }
             if((pFNO->fattrib & AM_DIR) == 0 && (pFNO->fname[0] != '.'))
@@ -300,7 +300,7 @@ static bool GetNextNameFile(char *nameFileOut, StructForReadDir *s)
         {
             if((pFNO->fattrib & AM_DIR) == 0 && pFNO->fname[0] != '.')
             {
-                strcpy(nameFileOut, pFNO->fname); //-V2513
+                strcpy(nameFileOut, pFNO->fname);
                 return true;
             }
         }

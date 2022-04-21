@@ -31,7 +31,7 @@ bool String2Int(char *str, int *value)
     {
         str++;
     }
-    uint length = std::strlen(str); //-V2513
+    uint length = std::strlen(str);
     if (length == 0)
     {
         return false;
@@ -63,8 +63,8 @@ bool String2Int(char *str, int *value)
 char *SU::Db2String(float value, int numDigits, char bufferOut[20])
 {
     bufferOut[0] = 0;
-    std::strcat(bufferOut, Float(value).ToString(false, numDigits).c_str()); //-V2513
-    std::strcat(bufferOut, "Да"); //-V2513
+    std::strcat(bufferOut, Float(value).ToString(false, numDigits).c_str());
+    std::strcat(bufferOut, "Да");
     return bufferOut;
 }
 
@@ -215,7 +215,7 @@ bool SU::EqualsStrings(void *_str1, void *_str2, int size)
 
 bool SU::EqualsStrings(const char *str1, const char *str2)
 {
-    uint size = std::strlen(str1); //-V2513
+    uint size = std::strlen(str1);
 
     for (uint i = 0; i < size; i++)
     {
@@ -303,7 +303,7 @@ float SU::StringToFloat(const char *string)
 
 char *SU::ToUpper(char *str)
 {
-    return ToUpper(str, static_cast<int>(std::strlen(str))); //-V2513
+    return ToUpper(str, static_cast<int>(std::strlen(str)));
 }
 
 
@@ -421,9 +421,9 @@ bool SU::StringToDouble(double *value, const char *str)
 
 bool SU::String2Int(const char *buffer, int *value, char **end)
 {
-    Buffer string(static_cast<int>(std::strlen(buffer)) + 1); //-V2513
+    Buffer string(static_cast<int>(std::strlen(buffer)) + 1);
 
-    std::strcpy(string.DataChar(), buffer); //-V2513
+    std::strcpy(string.DataChar(), buffer);
 
     *value = std::strtol(string.DataChar(), end, 10);
 
@@ -444,9 +444,9 @@ bool SU::String2Int(const char *buffer, int *value, char **end)
 
 int strcpy_s(char *dest, uint dest_size, const char *src)
 {
-    if (std::strlen(src) + 1 < dest_size) //-V2513
+    if (std::strlen(src) + 1 < dest_size)
     {
-        std::strcpy(dest, src); //-V2513
+        std::strcpy(dest, src);
         return 0;
     }
 

@@ -168,7 +168,7 @@ DEF_GRAPH_BUTTON( bMask_Delete,                                                 
 
 static void OnPress_Mask_Backspace()
 {
-    int size = static_cast<int>(std::strlen(S_MEM_FILE_NAME_MASK)); //-V2513
+    int size = static_cast<int>(std::strlen(S_MEM_FILE_NAME_MASK));
     if (size > 0)
     {
         if (size > 1 && S_MEM_FILE_NAME_MASK[size - 2] == 0x07)
@@ -197,7 +197,7 @@ DEF_GRAPH_BUTTON( bMask_Backspace,                                              
 static void OnPress_Mask_Insert()
 {
     int index = S_MEM_INDEX_CUR_SYMBOL_MASK;
-    uint size = std::strlen(S_MEM_FILE_NAME_MASK); //-V2513
+    uint size = std::strlen(S_MEM_FILE_NAME_MASK);
     if (size == MAX_SYMBOLS_IN_FILE_NAME - 1)
     {
         return;
@@ -516,7 +516,7 @@ DEF_GRAPH_BUTTON( bSetName_Delete,                                              
 
 static void OnPress_SetName_Backspace()
 {
-    uint size = std::strlen(S_MEM_FILE_NAME); //-V2513
+    uint size = std::strlen(S_MEM_FILE_NAME);
     if (size != 0)
     {
         S_MEM_FILE_NAME[size - 1] = '\0';
@@ -532,7 +532,7 @@ DEF_GRAPH_BUTTON( bSetName_Backspace,                                           
 
 static void OnPress_SetName_Insert()
 {
-    uint size = std::strlen(S_MEM_FILE_NAME); //-V2513
+    uint size = std::strlen(S_MEM_FILE_NAME);
     if (size < MAX_SYMBOLS_IN_FILE_NAME - 1)
     {
         S_MEM_FILE_NAME[size] = Tables::Get(S_MEM_INDEX_CUR_SYMBOL_MASK)[0];
