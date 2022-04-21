@@ -1294,16 +1294,6 @@
               <FileType>8</FileType>
               <FilePath>..\common\Decoder_d.cpp</FilePath>
             </File>
-            <File>
-              <FileName>Message.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Message.h</FilePath>
-            </File>
-            <File>
-              <FileName>Message.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Message.cpp</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
