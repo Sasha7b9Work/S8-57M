@@ -291,7 +291,7 @@ uint ENumSignalsInSec::TimeBetweenFramesMS()
 
 void Display::LoadBrightness()
 {
-    Message<2>(Command::Display_Brightness, (uint8)(S_DISP_BRIGHTNESS + 10)).Transmit();
+    ::Message<2>(Command::Display_Brightness, (uint8)(S_DISP_BRIGHTNESS + 10)).Transmit();
 }
 
 
