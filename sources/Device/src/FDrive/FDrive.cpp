@@ -7,6 +7,7 @@
 #include "Menu/Menu.h"
 #include "Osci/DeviceSettings.h"
 #include "usbh_diskio.h"
+#include "common/Message.h"
 #include <cstdio>
 
 
@@ -605,7 +606,7 @@ void FDrive::ReadRow(uint8 row, uint8 pixels[320])
     {
     }
 
-    HAL_BUS::Panel::Send(Command::Screen, row);
+    Message<2>(Command::Screen, row).Transmit();
 
     while(DDecoder::BytesInBuffer() < 322)          // ќжидаем, пока панель пришлЄт запрошенные байты
     {
