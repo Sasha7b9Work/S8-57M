@@ -75,7 +75,7 @@ void Log::Trace(TypeTrace type, const char *module, const char *func, int numLin
 
 static void AddToConsole(pchar text)
 {
-    DynamicMessage<1024> message(Command::CAddToConsole);
+    DynamicMessage<1024> message(Command::AddToConsole);
 
     message.PushByte((uint8)std::strlen(text));
 

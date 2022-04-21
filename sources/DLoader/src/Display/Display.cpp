@@ -73,7 +73,7 @@ void Display::Init()
         Color(i).LoadValueRGB();
     }
 
-    Message<2>(Command::CDisplay_Brightness, 110).Transmit();
+    Message<2>(Command::Display_Brightness, 110).Transmit();
 
     Painter::BeginScene(Color::BACK);
 
