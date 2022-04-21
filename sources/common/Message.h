@@ -29,3 +29,33 @@ public:
         HAL_BUS::Panel::Send(buffer, capacity);
     }
 };
+
+
+template<int capacity>
+class DynamicMessage
+{
+private:
+
+    uint8 buffer[capacity];
+    int size;
+
+public:
+
+    DynamicMessage(Command::E command) : size(0)
+    {
+        PushByte((uint8)command);
+    }
+
+    void PushByte(uint8 byte)
+    {
+        if (size < capacity)
+        {
+            buffer[size++] = byte;
+        }
+    }
+
+    void Transmit()
+    {
+        HAL_BUS::Panel::Send(buffer, size);
+    }
+};
