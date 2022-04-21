@@ -2375,16 +2375,6 @@
               <FilePath>.\src\Utils\Debug.cpp</FilePath>
             </File>
             <File>
-              <FileName>Exceptions.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Exceptions.h</FilePath>
-            </File>
-            <File>
-              <FileName>Exceptions.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Exceptions.cpp</FilePath>
-            </File>
-            <File>
               <FileName>tableslog.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\tableslog.h</FilePath>
