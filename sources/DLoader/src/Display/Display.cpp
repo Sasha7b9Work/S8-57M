@@ -8,6 +8,7 @@
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Math.h"
+#include "common/Message.h"
 #include <ff.h>
 #include <cmath>
 #include <cstdlib>
@@ -72,7 +73,7 @@ void Display::Init()
         Color(i).LoadValueRGB();
     }
 
-    HAL_BUS::Panel::Send(Command::Display_Brightness, 110);
+    Message<2>(Command::CDisplay_Brightness, 110).Transmit();
 
     Painter::BeginScene(Color::BACK);
 

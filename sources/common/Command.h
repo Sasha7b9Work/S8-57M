@@ -6,9 +6,9 @@ struct Command
 {           //  смещение               0  |     1       |     2      |      3      |     4        |      5       |   6    |         –азмер
     enum E                                              
     {                                                   
-/* 00 */    None,                   //    |             |            |             |              |              |        |
-/* 01 */    ButtonPress,            // 01 |   Item      | TypePress  |             |              |              |        |
-/* 02 */    Display_Brightness,     // 02 | €ркость
+/* 00 */    CNone,                   //    |             |            |             |              |              |        |
+/* 01 */    CButtonPress,            // 01 |   Item      | TypePress  |             |              |              |        |
+/* 02 */    CDisplay_Brightness,     // 02 | €ркость
 /* 04 */    AddToConsole,           // 04 | num symb    |  ..... symbols ....
 
 /* 05 */    Paint_DirectLine,       // ќтрисовка "пр€мой" линии

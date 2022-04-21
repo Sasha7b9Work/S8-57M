@@ -199,7 +199,7 @@ void Keyboard::Update()
 
 static void SendCommand(Control control, Control::Action::E action)
 {
-    Message<3>(Command::ButtonPress, (uint8)control, (uint8)action).Transmit();
+    Message<3>(Command::CButtonPress, (uint8)control, (uint8)action).Transmit();
 }
 
 
