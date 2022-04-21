@@ -3,6 +3,7 @@
 #include "log.h"
 #include "common/Command.h"
 #include "Hardware/HAL/HAL.h"
+#include "common/Message.h"
 #include <Display/Display.h>
 #include <Hardware/CPU.h>
 #include <stdarg.h>
@@ -72,8 +73,21 @@ void Log::Trace(TypeTrace type, const char *module, const char *func, int numLin
 }
 
 
-static void AddToConsole(const char *text)
+static void AddToConsole(pchar text)
 {
+    DynamicMessage<1024> message(Command::CAddToConsole);
+
+    message.PushByte(std::strlen(text));
+
+    while (*text)
+    {
+        message.PushByte(*text);
+        text++;
+    }
+
+    message.Transmit();
+
+
     uint8 *buffer = static_cast<uint8 *>(std::malloc(std::strlen(text) + 3U)); //-V2513
 
     if (buffer)

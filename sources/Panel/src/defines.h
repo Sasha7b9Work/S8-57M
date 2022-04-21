@@ -18,6 +18,7 @@ typedef signed short int    int16;
 typedef unsigned char       uint8;
 typedef unsigned char       uchar;
 typedef signed char         int8;
+typedef const char         *pchar;
 
 typedef void(*pFuncVV)(void);
 
