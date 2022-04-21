@@ -12,7 +12,7 @@
 #include "Hardware/Memory/RAM.h"
 #include "Osci/DeviceSettings.h"
 #include "Osci/Osci.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 #include <cstring>
 #include <cstdlib>
 

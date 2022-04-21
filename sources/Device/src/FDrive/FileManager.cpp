@@ -10,7 +10,7 @@
 #include "Menu/Menu.h"
 #include "Menu/Pages/Include/PageMemory.h"
 #include "Osci/DeviceSettings.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 #include "Utils/Values.h"
 #include "Settings/Settings.h"
 #include <cstring>

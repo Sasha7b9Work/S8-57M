@@ -2355,11 +2355,6 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>Averager.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Averager.h</FilePath>
-            </File>
-            <File>
               <FileName>CommonFunctions.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\CommonFunctions.h</FilePath>
@@ -2390,26 +2385,6 @@
               <FilePath>.\src\Utils\Exceptions.cpp</FilePath>
             </File>
             <File>
-              <FileName>Math.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Math.h</FilePath>
-            </File>
-            <File>
-              <FileName>Math.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Math.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Smoother.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Smoother.h</FilePath>
-            </File>
-            <File>
-              <FileName>Smoother.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Smoother.cpp</FilePath>
-            </File>
-            <File>
               <FileName>tableslog.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\tableslog.h</FilePath>
@@ -2428,11 +2403,6 @@
               <FileName>Values.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\Values.h</FilePath>
-            </File>
-            <File>
-              <FileName>Averager.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Averager.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -2493,6 +2463,41 @@
               <FileName>StringUtils.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\Text\StringUtils.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Utils/Math</GroupName>
+          <Files>
+            <File>
+              <FileName>Averager.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Math\Averager.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Averager.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Math\Averager.h</FilePath>
+            </File>
+            <File>
+              <FileName>Math.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Math\Math.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Math.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Math\Math.h</FilePath>
+            </File>
+            <File>
+              <FileName>Smoother.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Math\Smoother.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Smoother.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Math\Smoother.h</FilePath>
             </File>
           </Files>
         </Group>

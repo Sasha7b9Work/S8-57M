@@ -3,7 +3,7 @@
 #include "Hardware/Beeper.h"
 #include "Osci/Measurements/CursorsMeasurements.h"
 #include "Settings/Settings.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 #include <cmath>
 
 

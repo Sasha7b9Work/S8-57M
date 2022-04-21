@@ -3,7 +3,7 @@
 #include "Display/Primitives.h"
 #include "Osci/Osci.h"
 #include "Osci/Display/DisplayOsci.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 
 
 bool SampleType::IsReal()

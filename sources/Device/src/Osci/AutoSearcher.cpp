@@ -6,7 +6,7 @@
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Osci/Osci.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 
 
 static void DisplayUpdate();

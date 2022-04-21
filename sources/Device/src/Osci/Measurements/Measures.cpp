@@ -1,7 +1,7 @@
 #include "defines.h"
 #include "Osci/Measurements/AutoMeasurements.h"
 #include "Settings/Settings.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 
 
 struct StructMeasure

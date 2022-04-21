@@ -1,7 +1,7 @@
 #include "defines.h"
 #include "Beeper.h"
 #include "Timer.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 #include "Hardware/HAL/HAL.h"
 #include "Settings/Settings.h"
 #include <cmath>

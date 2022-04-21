@@ -16,7 +16,7 @@
 #include "Osci/Measurements/AutoMeasurements.h"
 #include "SCPI/SCPI.h"
 #include "Settings/SettingsNRST.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 #include "Utils/Values.h"
 #include <cstring>
 #include <cstdio>

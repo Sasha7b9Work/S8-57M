@@ -14,7 +14,7 @@
 #include "Osci/Measurements/AutoMeasurements.h"
 #include "Osci/Measurements/CursorsMeasurements.h"
 #include "Settings/Settings.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 #include "Utils/Values.h"
 #include "FDrive/FDrive.h"
 

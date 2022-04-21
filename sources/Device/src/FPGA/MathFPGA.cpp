@@ -6,7 +6,7 @@
 #include "Osci/Display/DisplayOsci.h"
 #include "SCPI/SCPI.h"
 #include "Settings/Settings.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 #include <cmath>
 #include <cstdio>
 #include <cstring>

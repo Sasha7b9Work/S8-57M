@@ -1,7 +1,7 @@
 #include "defines.h"
 #include "Menu/Menu.h"
 #include "Menu/MenuItems.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 #include "Utils/Values.h"
 #include "Hardware/Beeper.h"
 #include "Osci/Display/DisplayOsci.h"

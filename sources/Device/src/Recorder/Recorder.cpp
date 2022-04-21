@@ -7,7 +7,7 @@
 #include "Recorder/Sensor.h"
 #include "Recorder/StorageRecorder.h"
 #include "Settings/Settings.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 
 
 namespace Recorder

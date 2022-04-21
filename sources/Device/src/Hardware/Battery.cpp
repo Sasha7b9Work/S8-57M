@@ -5,7 +5,7 @@
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Settings/Settings.h"
-#include "Utils/Averager.h"
+#include "Utils/Math/Averager.h"
 
 
 static const float MAX_ADC_REL = static_cast<float>((1 << 12) - 1);     // Максимальное значение, которое возможно считать с АЦП

@@ -5,7 +5,7 @@
 #include "Keyboard/Keyboard.h"
 #include "Hardware/Beeper.h"
 #include "Menu/Menu.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 #include "Utils/CommonFunctions.h"
 #include <cmath>
 #include <cstring>

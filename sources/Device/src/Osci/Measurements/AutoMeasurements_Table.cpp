@@ -3,7 +3,7 @@
 #include "Display/Primitives.h"
 #include "Osci/Measurements/AutoMeasurements.h"
 #include "Settings/Settings.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 
 
 // Верхняя координата y выводимой таблицы автоматических измерений

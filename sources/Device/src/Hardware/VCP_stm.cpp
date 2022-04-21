@@ -3,7 +3,7 @@
 #include "usbd_cdc_interface.h"
 #include "Hardware/VCP.h"
 #include "usbd_desc.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 #include <cstring>
 #include <cstdarg>
 #include <usbd_core.h>

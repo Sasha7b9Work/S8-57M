@@ -8,7 +8,7 @@
 #include "Osci/Display/DisplayOsci.h"
 #include "Settings/Settings.h"
 #include "Settings/SettingsNRST.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 #include "Utils/Values.h"
 
 

@@ -4,7 +4,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Settings/SettingsNRST.h"
 #include "Utils/Debug.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 #include <stm32f4xx_hal.h>
 
 

@@ -6,7 +6,7 @@
 #include "Hardware/Memory/IntRAM.h"
 #include "Osci/Osci.h"
 #include "Osci/Reader.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 #include <cstring>
 
 

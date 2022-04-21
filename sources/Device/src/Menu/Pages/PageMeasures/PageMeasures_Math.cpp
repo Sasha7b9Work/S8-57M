@@ -4,7 +4,7 @@
 #include "FPGA/MathFPGA.h"
 #include "Hardware/Beeper.h"
 #include "Settings/Settings.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 
 
 static void OnPress_Screen()

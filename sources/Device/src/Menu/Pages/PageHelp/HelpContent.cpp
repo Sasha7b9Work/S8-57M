@@ -4,7 +4,7 @@
 #include "Menu/Pages/Include/HelpContent.h"
 #include "Menu/Pages/Include/HelpContentPages.h"
 #include "Settings/Settings.h"
-#include "Utils/Math.h"
+#include "Utils/Math/Math.h"
 
 
 static int currentParagraph = 0;   // ≈сли TypePage(currentPage) == TypePage_Content, то указывает не текущий раздел оглавлени€

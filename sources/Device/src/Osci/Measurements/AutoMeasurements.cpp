@@ -5,8 +5,8 @@
 #include "Osci/Measurements/AutoMeasurements.h"
 #include "SCPI/SCPI.h"
 #include "Settings/Settings.h"
-#include "Utils/Math.h"
-#include "Utils/Smoother.h"
+#include "Utils/Math/Math.h"
+#include "Utils/Math/Smoother.h"
 #include "Utils/Values.h"
 #include <cmath>
 #include <cstdlib>

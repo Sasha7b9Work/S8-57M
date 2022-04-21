@@ -152,7 +152,7 @@ file(GLOB MENU_PAGES_PAGESERVICE           src/Menu/Pages/PageService/*.h src/Me
 file(GLOB MENU_PAGES_PAGESERVICE_PAGEDEBUG src/Menu/Pages/PageService/PageDebug/*)
 file(GLOB MENU_PAGES_PAGETRIG              src/Menu/Pages/PageTrig/*)
 file(GLOB MULTIMETER                       src/Multimeter/*)
-file(GLOB OSCI                             src/Osci/*.h src/Osci/*.cpp)
+file(GLOB OSCI                             src/Osci/*.*)
 file(GLOB OSCI_DISPLAY                     src/Osci/Display/*)
 file(GLOB OSCI_MATH                        src/Osci/Math/*)
 file(GLOB OSCI_MEASUREMENTS                src/Osci/Measurements/*)
@@ -163,6 +163,7 @@ file(GLOB TEST                             src/Test/*)
 file(GLOB TESTER                           src/Tester/*)
 file(GLOB UTILS                            src/Utils/*.*)
 file(GLOB UTILS_CONTAINERS                 src/Utils/Containers/*.*)
+file(GLOB UTILS_MATH                       src/Utils/Math/*.*)
 file(GLOB UTILS_TEXT                       src/Utils/Text/*.*)
 
 set_source_files_properties(${LIBS_FATFS} ${LIBS_HAL} ${LIBS_USBD} ${LIBS_USBH} PROPERTIES HEADER_FILE_ONLY TRUE)
@@ -212,6 +213,7 @@ source_group(Test                               FILES ${TEST})
 source_group(Tester                             FILES ${TESTER})
 source_group(Utils                              FILES ${UTILS})
 source_group(Utils/Containers                   FILES ${UTILS_CONTAINERS})
+source_group(Utils/Math                         FILES ${UTILS_MATH})
 source_group(Utils/Text                         FILES ${UTILS_TEXT})
 
 add_library(${PROJECT_NAME} ${COMMON} ${DOC} ${VS} ${VS_STD_INCLUDES} ${SRC} ${DISPLAY} ${DISPLAY_FONT} ${FDRIVE}
@@ -222,5 +224,5 @@ add_library(${PROJECT_NAME} ${COMMON} ${DOC} ${VS} ${VS_STD_INCLUDES} ${SRC} ${D
                             ${MENU_PAGES_PAGEMEASURES} ${MENU_PAGES_PAGEMEMORY} ${MENU_PAGES_PAGESERVICE}
                             ${MENU_PAGES_PAGESERVICE_PAGEDEBUG} ${MENU_PAGES_PAGETRIG} ${MULTIMETER} ${OSCI}
                             ${OSCI_DISPLAY} ${OSCI_MATH} ${OSCI_MEASUREMENTS} ${RECORDER} ${SCPI} ${SETTINGS}
-                            ${TEST} ${TESTER} ${UTILS} ${UTILS_CONTAINERS} ${UTILS_TEXT}
+                            ${TEST} ${TESTER} ${UTILS} ${UTILS_CONTAINERS} ${UTILS_MATH} ${UTILS_TEXT}
 )
