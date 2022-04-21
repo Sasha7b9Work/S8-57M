@@ -150,7 +150,7 @@ static bool AddToConsole(uint8 data) //-V2506
         return false;
     }
 
-    text[recvSymbols++] = static_cast<char>(data); //-V2563
+    text[recvSymbols++] = static_cast<char>(data);
 
     if (recvSymbols == allSymbols)
     {

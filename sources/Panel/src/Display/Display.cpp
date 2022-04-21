@@ -32,5 +32,5 @@ uint8 *Display::GetBuffer()
 
 uint8 *Display::GetBufferEnd()
 {
-    return frontBuffer + Display::WIDTH * Display::HEIGHT; //-V2563
+    return frontBuffer + Display::WIDTH * Display::HEIGHT;
 }

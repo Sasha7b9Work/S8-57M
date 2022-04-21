@@ -36,7 +36,7 @@ void Painter::EndScene(void)
 
         uint8 buffer[SIZE] = { Command::Screen, static_cast<uint8>(sendingString) };
 
-        std::memcpy(buffer + 2, Display::GetBuffer() + sendingString * SIZE_STRING, SIZE_STRING); //-V2563
+        std::memcpy(buffer + 2, Display::GetBuffer() + sendingString * SIZE_STRING, SIZE_STRING);
 
         HAL_BUS::SendToDevice(buffer, SIZE_STRING);
 
@@ -60,7 +60,7 @@ void Painter::DrawHLine(int y, int x0, int x1)
         Math::Swap(&x0, &x1);
     }
 
-    uint8 *address = Display::GetBuffer() + x0 + y * Display::WIDTH; //-V2563
+    uint8 *address = Display::GetBuffer() + x0 + y * Display::WIDTH;
     uint8 *end = Display::GetBufferEnd();
 
     uint8 value = currentColor.value;
@@ -155,7 +155,7 @@ void Painter::DrawVLine(int x, int y0, int y1)
         Math::Swap(&y0, &y1);
     }
 
-    uint8 *address = Display::GetBuffer() + x + y0 * Display::WIDTH; //-V2563
+    uint8 *address = Display::GetBuffer() + x + y0 * Display::WIDTH;
     uint8 *end = Display::GetBufferEnd();
 
     uint8 value = currentColor.value;
@@ -168,7 +168,7 @@ void Painter::DrawVLine(int x, int y0, int y1)
         }
 
         *address = value;
-        address += Display::WIDTH; //-V2563
+        address += Display::WIDTH;
     }
 }
 
@@ -209,7 +209,7 @@ void Painter::DrawTesterData(uint8 mode, Color color, const uint16 _x[TESTER_NUM
     {
         for(int i = 1; i < TESTER_NUM_POINTS - 1; i++)
         {
-            FillRegion(x[i], y[i], 2, 2); //-V2563
+            FillRegion(x[i], y[i], 2, 2);
             //*(Display::GetBuffer() + y[i] * BUFFER_WIDTH + x[i]) = currentColor.value;
         }
     }
@@ -217,7 +217,7 @@ void Painter::DrawTesterData(uint8 mode, Color color, const uint16 _x[TESTER_NUM
     {
         for(int i = 1; i < TESTER_NUM_POINTS - 1; i++)
         {
-            DrawLine(x[i], y[i], x[i + 1], y[i + 1]); //-V2563
+            DrawLine(x[i], y[i], x[i + 1], y[i + 1]);
         }
     }
 }
@@ -227,14 +227,14 @@ void Painter::SetPoint(int x, int y)
 {
     if (x >= 0 && x < Display::WIDTH && y >= 0 && y < Display::HEIGHT)
     {
-        *(Display::GetBuffer() + y * Display::WIDTH + x) = currentColor.value; //-V2563
+        *(Display::GetBuffer() + y * Display::WIDTH + x) = currentColor.value;
     }
 }
 
 
 void Painter::SendRow(int row)
 {
-    uint8 *points = Display::GetBuffer() + row * Display::WIDTH; //-V2563
+    uint8 *points = Display::GetBuffer() + row * Display::WIDTH;
 
     uint8 data[322] = { Command::Screen, static_cast<uint8>(row) };
 

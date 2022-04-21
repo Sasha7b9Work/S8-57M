@@ -27,7 +27,7 @@ uint8 *ExtRAM::Begin()
 
 uint8 *ExtRAM::End()
 {
-    return Begin() + SIZE_RAM; //-V2563
+    return Begin() + SIZE_RAM;
 }
 
 

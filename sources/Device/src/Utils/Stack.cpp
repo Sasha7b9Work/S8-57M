@@ -27,7 +27,7 @@ void Stack<T>::Push(T elem)
 {
     if(numElements < size)
     {
-        buffer[numElements] = elem; //-V2563
+        buffer[numElements] = elem;
         numElements++;
     }
 }
@@ -39,7 +39,7 @@ T Stack<T>::Pop() //-V2506
     if(numElements != 0)
     {
         numElements--;
-        return buffer[numElements]; //-V2563
+        return buffer[numElements];
     }
 
     return (T)0;
@@ -67,7 +67,7 @@ int Stack<T>::NumFirstZeros() const
 
     for(int i = 0; i < size; i++)
     {
-        if(buffer[i] != 0) //-V2563
+        if(buffer[i] != 0)
         {
             break;
         }
