@@ -5,9 +5,15 @@
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Buffer.h"
 #include "Display/Display.h"
+#include <cstring>
 
 
-uint8 buffer[Display::WIDTH * Display::HEIGHT / 2];
+namespace Painter
+{
+    static const int SIZE_BUFFER = Display::WIDTH * Display::HEIGHT / 2;
+
+    uint8 buffer[SIZE_BUFFER];
+}
 
 
 void Painter::Init()
@@ -19,7 +25,7 @@ void Painter::BeginScene(Color color)
 {
     color.SetAsCurrent();
 
-    
+    std::memset(buffer, Color::GetCurent().value, SIZE_BUFFER);
 }
 
 
