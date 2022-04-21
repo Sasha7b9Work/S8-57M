@@ -128,7 +128,7 @@ char *CF::GetWord(char *string, int n, char *out, int size)
 
     if (length + 1 > size)
     {
-        return reinterpret_cast<char *>(0xffffffffU);   // Не хватит места в выходном буфере - выходим с соответствующим кодом //-V566
+        return reinterpret_cast<char *>(0xffffffffU);   // Не хватит места в выходном буфере - выходим с соответствующим кодом
     }
 
     for (int i = 0; i < length; i++)
