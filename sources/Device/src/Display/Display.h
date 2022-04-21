@@ -84,13 +84,10 @@ namespace Display
         void Hide();
     };
 
-    struct Breaker
+    namespace Breaker
     {
-        static void PowerOff();
+        void PowerOff();
 
-        static bool PowerOn();      // Возвращает true, если включение действительно было (вызов при выключенном был)
-
-    private:
-        static bool powerOn;        // Установленное в false значение означает, что дисплей находится в выключенном состоянии (яркость равна нулю)
+        bool PowerOn();      // Возвращает true, если включение действительно было (вызов при выключенном был)
     };
 };

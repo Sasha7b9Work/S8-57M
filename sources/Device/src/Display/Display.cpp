@@ -20,9 +20,6 @@
 static void EmptyFunc() { }
 
 
-bool Display::Breaker::powerOn = true;
-
-
 static pFuncVV funcOnHand = nullptr;
 static uint timeStart = 0;
 static const char *textWait = 0;
@@ -44,6 +41,12 @@ namespace Display
         static bool waitKey = false;
 
         static volatile bool running = false;
+    }
+
+    namespace Breaker
+    {
+        // Установленное в false значение означает, что дисплей находится в выключенном состоянии (яркость равна нулю)
+        static bool powerOn = true;
     }
 }
 
