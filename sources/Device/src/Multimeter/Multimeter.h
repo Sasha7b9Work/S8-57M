@@ -58,6 +58,7 @@ struct MultimeterMeasure
         Bell,
         Count
     };
+
     static char Symbol();
 
     // Получить код измерения из принятого буфера

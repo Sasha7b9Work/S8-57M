@@ -5,14 +5,14 @@
 #include "Settings/Settings.h"
 
 
-class USART3_
+namespace USART3_
 {
-public:
-    static void Init(pFuncVV recvCallback)
+    void Init(pFuncVV recvCallback)
     {
         HAL_USART3::Init(recvCallback);
     }
-    static void Transmit(void *_buffer, uint timeout)
+
+    void Transmit(void *_buffer, uint timeout)
     {
         uint8 *pointer = static_cast<uint8 *>(_buffer);
 
@@ -25,21 +25,18 @@ public:
 
         HAL_USART3::Transmit(_buffer, size + 1, timeout);
     }
-    static void StartReceiveIT(void *_buffer)
+
+    void StartReceiveIT(void *_buffer)
     {
         HAL_USART3::StartReceiveIT(_buffer, 13);
     }
 };
 
 
-
 // В этот буфер записывается информация в обработчике прерывания приёма
 static uint8 bufferUART[20];
 
-
-
 static void ReceiveCallback();
-
 
 
 void Multimeter::ChangeMode()
