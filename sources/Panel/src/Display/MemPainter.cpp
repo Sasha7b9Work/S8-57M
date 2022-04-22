@@ -80,13 +80,5 @@ void MemPainter::DrawHLine(int y, int x1, int x2)
         Math::Swap(&x1, &x2);
     }
 
-    uint8 *address = buffer + y * width + x1;
-    uint8 *end = address + x2 - x1;
-
-    uint8 value = currentColor.value;
-
-    while (address < end)
-    {
-        *address++ = value;
-    }
+    std::memset(buffer + y * width + x1, currentColor.value, (uint)(x2 - x1));
 }
