@@ -46,10 +46,12 @@ public:
     static Color BorderMenu(bool shade);    // Цвет окантовки меню
     static Color LightShadingText();        // Светлый цвет в тени.
     static Color Contrast(Color color);     // Возвращает цвет, контрастный к color. Может быть белым или чёрным.
-    
+
     uint8 value;
 
-    Color& operator=(const Color &color);
+    Color &operator=(const Color &color);
+
+    void SetValue(uint);
 
     void SetAsCurrent() { if (value != COLOR_NUMBER) { current.value = value; } }
     static Color GetCurrent() { return current; }

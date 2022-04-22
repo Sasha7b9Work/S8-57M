@@ -9,9 +9,6 @@
 
 struct Painter
 {
-    // Устанавливает цвету заданное значение. Загружается в дисплей LoadPalette() или SetPalette()
-    static void SetColorValue(Color color, uint value);
-
     // Загружает в дисплей все цвета
     static void LoadPalette();
 
@@ -28,7 +25,4 @@ struct Painter
 
     // Пишет строку в позиции x, y
     static int DrawFormText(int x, int y, Color color, pString text, ...);
-
-    // Посылает строку изображения numString в устройство
-    static void SendScreenToDevice();
 };

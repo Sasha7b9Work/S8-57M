@@ -6,18 +6,9 @@
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Math.h"
 #include "Display/MemPainter.h"
+#include "Painter_common.h"
 #include <cstring>
 #include <cmath>
-
-#include "Painter_common.h"
-
-
-void Painter::SetColorValue(Color color, uint value)
-{
-    COLOR(color.value) = value;
-
-    LoadPalette();
-}
 
 
 void Painter::LoadPalette()
@@ -66,9 +57,4 @@ uint Painter::ReduceBrightness(uint colorValue, float newBrightness)
     int blue = static_cast<int>(static_cast<float>(B_FROM_COLOR(colorValue)) * newBrightness);
     LIMITATION(blue, 0, 0xff); //-V2516
     return MAKE_COLOR(red, green, blue);
-}
-
-
-void Painter::SendScreenToDevice()
-{
 }

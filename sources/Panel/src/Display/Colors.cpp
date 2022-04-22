@@ -261,3 +261,11 @@ Color& Color::operator=(const Color &color)
     value = color.value;
     return *this;
 }
+
+
+void Color::SetValue(uint _value)
+{
+    COLOR(value) = _value;
+
+    Painter::LoadPalette();
+}
