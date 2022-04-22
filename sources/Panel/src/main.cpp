@@ -30,10 +30,10 @@ int main()
             prevTime = TIME_MS;
         }
 
-        MemPainter::BeginPaint(640, 480);
+        MemPainter::BeginPaint(0, 0, 640, 480);
 
         MemPainter::Fill();
 
-        MemPainter::EndPaint(0, 0);
+        MemPainter::EndPaint();
     }
 }

@@ -4,11 +4,13 @@
 
 namespace MemPainter
 {
-    void BeginPaint(int width, int height);
+    // Задаёт область на экране для рисования.
+    // Запись вне области, очерченной этим прямогульником, запрещена
+    void BeginPaint(int x, int y, int width, int height);
 
     void SetPoint(int x, int y);
 
     void Fill();
 
-    void EndPaint(int x, int y);
+    void EndPaint();
 }

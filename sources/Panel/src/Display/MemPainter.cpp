@@ -14,20 +14,38 @@ namespace MemPainter
 {
     uint8 buffer[64 * 1024] __attribute__((section("CCM_DATA")));;
 
+    int x0 = 0;
+    int y0 = 0;
     int width = 0;
     int height = 0;
 }
 
 
-void MemPainter::BeginPaint(int w, int h)
+void MemPainter::BeginPaint(int x, int y, int w, int h)
 {
-    width = Math::Limitation(w, w, 640);
-    height = Math::Limitation(h, h, 480);
+    x0 = Math::Limitation(x, 0, Display::WIDTH - 1);
+    y0 = Math::Limitation(y, 0, Display::HEIGHT - 1);
+
+    width = Math::Limitation(w, 0, 640);
+    height = Math::Limitation(h, 0, 480);
+
+    if (width + x0 >= Display::WIDTH)
+    {
+        width = Display::WIDTH - x0;
+    }
+
+    if (height + y0 >= Display::HEIGHT)
+    {
+        height = Display::HEIGHT - y0;
+    }
 }
 
 
 void MemPainter::SetPoint(int x, int y)
 {
+    x -= x0;
+    y -= y0;
+
     *(buffer + y * Display::WIDTH * y + x) = currentColor.value;
 }
 
@@ -38,7 +56,7 @@ void MemPainter::Fill()
 }
 
 
-void MemPainter::EndPaint(int x, int y)
+void MemPainter::EndPaint()
 {
-    HAL_LTDC::CopyImage(buffer, x, y, width, height);
+    HAL_LTDC::CopyImage(buffer, x0, y0, width, height);
 }
