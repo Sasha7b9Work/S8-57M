@@ -10,6 +10,10 @@
 #include <cstring>
 
 
+#define CALCULATE_X()  x -= x0; if (x < 0) { return; } if (x >= width)  { return; }
+#define CALCULATE_Y()  y -= y0; if (y < 0) { return; } if (y >= height) { return; }
+
+
 namespace MemPainter
 {
     uint8 buffer[64 * 1024] __attribute__((section("CCM_DATA")));;
@@ -43,8 +47,8 @@ void MemPainter::BeginPaint(int x, int y, int w, int h)
 
 void MemPainter::SetPoint(int x, int y)
 {
-    x -= x0;
-    y -= y0;
+    CALCULATE_X();
+    CALCULATE_Y();
 
     *(buffer + y * Display::WIDTH * y + x) = currentColor.value;
 }
