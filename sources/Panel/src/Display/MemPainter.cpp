@@ -8,6 +8,7 @@
 #include "Display/Font/Font_p.h"
 #include "Display/Painter_common.h"
 #include <cstring>
+#include <cmath>
 
 
 #define CALCULATE_X()  x -= x_shift; if (x < 0) { return; } if (x >= width)  { return; }
@@ -149,5 +150,68 @@ void MemPainter::FillRegion(int x, int y, int w, int h)
     for (int i = y; i <= y + h; ++i)
     {
         DrawHLine(i, x, x + w);
+    }
+}
+
+
+void MemPainter::DrawLine(int x1, int y1, int x2, int y2)
+{
+    if (x1 == x2 && y1 == y2)
+    {
+        SetPoint(x1, y1);
+        return;
+    }
+    else if (x1 == x2)
+    {
+        DrawVLine(x1, y1, y2);
+        return;
+    }
+    else if (y1 == y2) //-V2516
+    {
+        DrawHLine(y1, x1, x2);
+        return;
+    }
+
+    int x = x1;
+    int y = y1;
+    int dx = static_cast<int>(std::fabsf(static_cast<float>(x2 - x1)));
+    int dy = static_cast<int>(std::fabsf(static_cast<float>(y2 - y1)));
+    int s1 = Math::Sign(x2 - x1);
+    int s2 = Math::Sign(y2 - y1);
+    int temp;
+    int exchange = 0;
+    if (dy > dx)
+    {
+        temp = dx;
+        dx = dy;
+        dy = temp;
+        exchange = 1;
+    }
+    int e = 2 * dy - dx;
+    int i = 0;
+    for (; i <= dx; i++)
+    {
+        MemPainter::SetPoint(x, y);
+        while (e >= 0)
+        {
+            if (exchange)
+            {
+                x += s1;
+            }
+            else
+            {
+                y += s2;
+            }
+            e = e - 2 * dx;
+        }
+        if (exchange)
+        {
+            y += s2;
+        }
+        else
+        {
+            x += s1;
+        }
+        e = e + 2 * dy;
     }
 }

@@ -8,6 +8,10 @@ namespace MemPainter
     // Запись вне области, очерченной этим прямогульником, запрещена
     void BeginPaint(int x, int y, int width, int height);
 
+    void Fill();
+
+    void EndPaint();
+
     void SetPoint(int x, int y);
 
     void DrawHLine(int y, int x1, int x2);
@@ -22,7 +26,6 @@ namespace MemPainter
 
     void FillRegion(int x, int y, int width, int height);
 
-    void Fill();
-
-    void EndPaint();
+    // Нарисовать произвольную линию
+    void DrawLine(int x1, int y1, int x2, int y2);
 }

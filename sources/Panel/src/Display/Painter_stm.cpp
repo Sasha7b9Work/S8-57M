@@ -32,69 +32,6 @@ void Painter::EndScene(void)
 }
 
 
-void Painter::DrawLine(int x1, int y1, int x2, int y2)
-{
-    if (x1 == x2 && y1 == y2)
-    {
-        MemPainter::SetPoint(x1, y1);
-        return;
-    }
-    else if (x1 == x2)
-    {
-        MemPainter::DrawVLine(x1, y1, y2);
-        return;
-    }
-    else if (y1 == y2) //-V2516
-    {
-        MemPainter::DrawHLine(y1, x1, x2);
-        return;
-    }
-
-    int x = x1;
-    int y = y1;
-    int dx = static_cast<int>(std::fabsf(static_cast<float>(x2 - x1)));
-    int dy = static_cast<int>(std::fabsf(static_cast<float>(y2 - y1)));
-    int s1 = Math::Sign(x2 - x1);
-    int s2 = Math::Sign(y2 - y1);
-    int temp;
-    int exchange = 0;
-    if (dy > dx)
-    {
-        temp = dx;
-        dx = dy;
-        dy = temp;
-        exchange = 1;
-    }
-    int e = 2 * dy - dx;
-    int i = 0;
-    for (; i <= dx; i++)
-    {
-        MemPainter::SetPoint(x, y);
-        while (e >= 0)
-        {
-            if (exchange)
-            {
-                x += s1;
-            }
-            else
-            {
-                y += s2;
-            }
-            e = e - 2 * dx;
-        }
-        if (exchange)
-        {
-            y += s2;
-        }
-        else
-        {
-            x += s1;
-        }
-        e = e + 2 * dy;
-    }
-}
-
-
 void Painter::SetColor(Color color)
 {
     if (color.value != Color::NUMBER.value)
@@ -129,7 +66,7 @@ void Painter::DrawTesterData(uint8 mode, Color color, const uint16 _x[TESTER_NUM
     {
         for(int i = 1; i < TESTER_NUM_POINTS - 1; i++)
         {
-            DrawLine(x[i], y[i], x[i + 1], y[i + 1]);
+            MemPainter::DrawLine(x[i], y[i], x[i + 1], y[i + 1]);
         }
     }
 }
