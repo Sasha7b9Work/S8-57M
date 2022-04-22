@@ -9,9 +9,6 @@
 
 struct Painter
 {
-    // Пересылает строку в панель
-    static void SendRow(int row);
-
     static void SetColor(Color color);
 
     // Устанавливает цвету заданное значение. Загружается в дисплей LoadPalette() или SetPalette()

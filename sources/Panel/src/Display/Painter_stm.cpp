@@ -66,12 +66,6 @@ void Painter::DrawTesterData(uint8 mode, Color color, const uint16 _x[TESTER_NUM
 }
 
 
-void Painter::SendRow(int)
-{
-    // todo_paint
-}
-
-
 uint Painter::ReduceBrightness(uint colorValue, float newBrightness)
 {
     int red = static_cast<int>(static_cast<float>(R_FROM_COLOR(colorValue)) * newBrightness);
