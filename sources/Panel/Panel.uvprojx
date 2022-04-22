@@ -1211,11 +1211,6 @@
               <FilePath>.\src\Hardware\HAL\stm32f4xx_hal_conf.h</FilePath>
             </File>
             <File>
-              <FileName>stm32f4xx_it.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\Hardware\HAL\stm32f4xx_it.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f4xx_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\HAL\stm32f4xx_it.h</FilePath>
@@ -1234,21 +1229,6 @@
               <FileName>CPU.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\HAL\CPU.h</FilePath>
-            </File>
-            <File>
-              <FileName>CPU_IT.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\CPU_IT.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>stm429.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\stm429.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>stm429.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Hardware\HAL\stm429.h</FilePath>
             </File>
             <File>
               <FileName>Timer4XX.cpp</FileName>
@@ -2684,11 +2664,6 @@
               <FilePath>.\src\Hardware\HAL\stm32f4xx_hal_conf.h</FilePath>
             </File>
             <File>
-              <FileName>stm32f4xx_it.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\src\Hardware\HAL\stm32f4xx_it.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f4xx_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\HAL\stm32f4xx_it.h</FilePath>
@@ -2707,21 +2682,6 @@
               <FileName>CPU.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\HAL\CPU.h</FilePath>
-            </File>
-            <File>
-              <FileName>CPU_IT.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\CPU_IT.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>stm429.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\stm429.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>stm429.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Hardware\HAL\stm429.h</FilePath>
             </File>
             <File>
               <FileName>Timer4XX.cpp</FileName>

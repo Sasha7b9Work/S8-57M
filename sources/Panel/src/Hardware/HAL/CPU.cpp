@@ -5,30 +5,29 @@
 #include <stm32f4xx.h>
 
 
-
-void CPU::Init()
+void HAL_MspInit()
 {
-    SystemClockConfig();
+    HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
 
-    STM429::Init();
-
-    __HAL_RCC_GPIOA_CLK_ENABLE();
-    __HAL_RCC_GPIOB_CLK_ENABLE();
-    __HAL_RCC_GPIOC_CLK_ENABLE();
-    __HAL_RCC_GPIOD_CLK_ENABLE();
-    __HAL_RCC_GPIOE_CLK_ENABLE();
-
-    __HAL_RCC_DMA2D_CLK_ENABLE();
-    __HAL_RCC_LTDC_CLK_ENABLE();
-    __HAL_RCC_TIM4_CLK_ENABLE();
-
-    HAL_BUS::Init();
-
-    HAL_LTDC::Init();
+    /* System interrupt init*/
+    /* MemoryManagement_IRQn interrupt configuration */
+    HAL_NVIC_SetPriority(MemoryManagement_IRQn, 0, 0);
+    /* BusFault_IRQn interrupt configuration */
+    HAL_NVIC_SetPriority(BusFault_IRQn, 0, 0);
+    /* UsageFault_IRQn interrupt configuration */
+    HAL_NVIC_SetPriority(UsageFault_IRQn, 0, 0);
+    /* SVCall_IRQn interrupt configuration */
+    HAL_NVIC_SetPriority(SVCall_IRQn, 0, 0);
+    /* DebugMonitor_IRQn interrupt configuration */
+    HAL_NVIC_SetPriority(DebugMonitor_IRQn, 0, 0);
+    /* PendSV_IRQn interrupt configuration */
+    HAL_NVIC_SetPriority(PendSV_IRQn, 0, 0);
+    /* SysTick_IRQn interrupt configuration */
+    HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 }
 
 
-void CPU::SystemClockConfig()
+static void SystemClockConfig()
 {
     RCC_OscInitTypeDef RCC_OscInitStruct;
     RCC_ClkInitTypeDef RCC_ClkInitStruct;
@@ -51,6 +50,7 @@ void CPU::SystemClockConfig()
     RCC_OscInitStruct.PLL.PLLN = 360;
     RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
     RCC_OscInitStruct.PLL.PLLQ = 4;
+
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
     {
         ERROR_HANDLER();
@@ -96,3 +96,28 @@ void CPU::SystemClockConfig()
     /* SysTick_IRQn interrupt configuration */
     HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 }
+
+
+void CPU::Init()
+{
+    SystemClockConfig();
+
+    HAL_Init();
+
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOB_CLK_ENABLE();
+    __HAL_RCC_GPIOC_CLK_ENABLE();
+    __HAL_RCC_GPIOD_CLK_ENABLE();
+    __HAL_RCC_GPIOE_CLK_ENABLE();
+
+    __HAL_RCC_DMA2D_CLK_ENABLE();
+    __HAL_RCC_LTDC_CLK_ENABLE();
+    __HAL_RCC_TIM4_CLK_ENABLE();
+
+    HAL_BUS::Init();
+
+    HAL_LTDC::Init();
+}
+
+
+
