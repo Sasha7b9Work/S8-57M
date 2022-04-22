@@ -10,9 +10,9 @@ namespace MemPainter
 
     void SetPoint(int x, int y);
 
-    void DrawHLine(int y, int x0, int x1);
+    void DrawHLine(int y, int x1, int x2);
 
-    void DrawVLine(int x, int y0, int y1);
+    void DrawVLine(int x, int x1, int y1);
 
     void Fill();
 

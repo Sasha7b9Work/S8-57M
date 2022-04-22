@@ -68,8 +68,9 @@ void MemPainter::EndPaint()
 
 void MemPainter::DrawHLine(int y, int x1, int x2)
 {
-    if (y < 0 || y >= Display::HEIGHT) { return; }
+    if (y < 0 || y >= height) { return; }
     if (x1 < 0 && x2 < 0) { return; }
+    if (x1 >= width && x2 >= width) { return; }
     if (x1 < 0) { x1 = 0; }
     if (x2 < 0) { x2 = 0; }
     if (x1 >= width) { x1 = width - 1; }
@@ -81,4 +82,34 @@ void MemPainter::DrawHLine(int y, int x1, int x2)
     }
 
     std::memset(buffer + y * width + x1, currentColor.value, (uint)(x2 - x1));
+}
+
+
+void MemPainter::DrawVLine(int x, int y1, int y2)
+{
+    if (x < 0 || x >= width) { return; }
+    if (y1 < 0 && y2 < 0) { return; }
+    if (y1 >= width && y2 >= width) { return; }
+    if (y1 < 0) { y1 = 0; }
+    if (y2 < 0) { y2 = 0; }
+    if (y1 >= height) { y1 = height - 1; }
+    if (y2 >= height) { y2 = height - 1; }
+
+    if (y1 > y2)
+    {
+        Math::Swap(&y1, &y2);
+    }
+
+    uint8 *address = buffer + y1 * width + x;
+
+    uint8 color = currentColor.value;
+
+    int length = y2 - y1;
+
+    while (length-- > 0)
+    {
+        *address = color;
+
+        address += width;
+    }
 }

@@ -41,7 +41,7 @@ void Painter::DrawLine(int x1, int y1, int x2, int y2)
     }
     else if (x1 == x2)
     {
-        DrawVLine(x1, y1, y2);
+        MemPainter::DrawVLine(x1, y1, y2);
         return;
     }
     else if (y1 == y2) //-V2516
@@ -99,33 +99,8 @@ void Painter::DrawRectangle(int x, int y, int width, int height)
 {
     MemPainter::DrawHLine(y, x, x + width);
     MemPainter::DrawHLine(y + height, x, x + width);
-    DrawVLine(x, y, y + height);
-    DrawVLine(x + width, y, y + height);
-}
-
-
-void Painter::DrawVLine(int x, int y0, int y1)
-{
-    if(y0 > y1)
-    {
-        Math::Swap(&y0, &y1);
-    }
-
-    uint8 *address = Display::GetBuffer() + x + y0 * Display::WIDTH;
-    uint8 *end = Display::GetBufferEnd();
-
-    uint8 value = currentColor.value;
-
-    for (int y = y0; y <= y1; ++y)
-    {
-        if (address > end)
-        {
-            break;
-        }
-
-        *address = value;
-        address += Display::WIDTH;
-    }
+    MemPainter::DrawVLine(x, y, y + height);
+    MemPainter::DrawVLine(x + width, y, y + height);
 }
 
 
