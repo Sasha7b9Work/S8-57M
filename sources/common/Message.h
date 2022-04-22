@@ -41,7 +41,7 @@ private:
 
 public:
 
-    DynamicMessage(Command::E command) : size(0)
+    DynamicMessage(Command::E command) : size(0) //-V1077
     {
         PushByte((uint8)command);
     }
@@ -54,7 +54,7 @@ public:
         }
     }
 
-    void PushByte(uint8 position, uint8 byte)
+    void PushByte(int position, uint8 byte)
     {
         if (position < capacity)
         {
