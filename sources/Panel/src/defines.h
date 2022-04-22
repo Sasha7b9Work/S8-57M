@@ -36,3 +36,7 @@ typedef void(*pFuncVV)(void);
 #endif
 
 void EmptyFuncVV(void);
+
+
+static const int DISPLAY_WIDTH = 640;
+static const int DISPLAY_HEIGHT = 480;

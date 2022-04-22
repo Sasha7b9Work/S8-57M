@@ -8,7 +8,7 @@
 
 
 static LTDC_HandleTypeDef handleLTDC;
-static uint8  front[Display::WIDTH * Display::HEIGHT];
+static uint8  front[DISPLAY_WIDTH * DISPLAY_HEIGHT];
 
 
 
@@ -97,8 +97,8 @@ void HAL_LTDC::Init()
     pLayerCfg.BlendingFactor1 = LTDC_BLENDING_FACTOR1_CA;
     pLayerCfg.BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
     pLayerCfg.FBStartAdress = (uint)front;
-    pLayerCfg.ImageWidth = Display::WIDTH;
-    pLayerCfg.ImageHeight = Display::HEIGHT;
+    pLayerCfg.ImageWidth = DISPLAY_WIDTH;
+    pLayerCfg.ImageHeight = DISPLAY_HEIGHT;
     pLayerCfg.Backcolor.Blue = 0;
     pLayerCfg.Backcolor.Green = 0;
     pLayerCfg.Backcolor.Red = 0;
@@ -146,7 +146,7 @@ void HAL_LTDC::CopyImage(uint8 *image, int x, int y, int width, int height)
     {
         if (HAL_DMA2D_ConfigLayer(&hDMA2D, 1) == HAL_OK)
         {
-            if (HAL_DMA2D_Start(&hDMA2D, (uint)image, (uint)(front + Display::WIDTH * y + x), (uint)width, (uint)height) == HAL_OK)
+            if (HAL_DMA2D_Start(&hDMA2D, (uint)image, (uint)(front + DISPLAY_WIDTH * y + x), (uint)width, (uint)height) == HAL_OK)
             {
                 HAL_DMA2D_PollForTransfer(&hDMA2D, 100);
             }

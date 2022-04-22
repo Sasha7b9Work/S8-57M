@@ -29,20 +29,20 @@ namespace MemPainter
 
 void MemPainter::BeginPaint(int x, int y, int w, int h)
 {
-    x_shift = Math::Limitation(x, 0, Display::WIDTH - 1);
-    y_shift = Math::Limitation(y, 0, Display::HEIGHT - 1);
+    x_shift = Math::Limitation(x, 0, DISPLAY_WIDTH - 1);
+    y_shift = Math::Limitation(y, 0, DISPLAY_HEIGHT - 1);
 
     width = Math::Limitation(w, 0, 640);
     height = Math::Limitation(h, 0, 480);
 
-    if (width + x_shift >= Display::WIDTH)
+    if (width + x_shift >= DISPLAY_WIDTH)
     {
-        width = Display::WIDTH - x_shift;
+        width = DISPLAY_WIDTH - x_shift;
     }
 
-    if (height + y_shift >= Display::HEIGHT)
+    if (height + y_shift >= DISPLAY_HEIGHT)
     {
-        height = Display::HEIGHT - y_shift;
+        height = DISPLAY_HEIGHT - y_shift;
     }
 }
 
@@ -52,7 +52,7 @@ void MemPainter::SetPoint(int x, int y)
     CALCULATE_X();
     CALCULATE_Y();
 
-    *(buffer + y * Display::WIDTH * y + x) = Color::GetCurrent().value;
+    *(buffer + y * DISPLAY_WIDTH * y + x) = Color::GetCurrent().value;
 }
 
 
