@@ -4,6 +4,7 @@
 #include "Display/Painter.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
+#include "Hardware/HAL/HAL.h"
 
 
 uint colors[32] =
@@ -267,5 +268,5 @@ void Color::SetValue(uint _value)
 {
     COLOR(value) = _value;
 
-    Painter::LoadPalette();
+    HAL_LTDC::LoadPalette();
 }

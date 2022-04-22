@@ -11,12 +11,6 @@
 #include <cmath>
 
 
-void Painter::LoadPalette()
-{
-    HAL_LTDC::SetColors(&COLOR(0), Color::NUMBER.value);
-}
-
-
 void Painter::DrawTesterData(uint8 mode, Color color, const uint16 _x[TESTER_NUM_POINTS], const uint8 _y[TESTER_NUM_POINTS]) //-V2009
 {
     color.SetAsCurrent();

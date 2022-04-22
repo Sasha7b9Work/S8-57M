@@ -23,6 +23,8 @@ void CPU::Init()
     __HAL_RCC_TIM4_CLK_ENABLE();
 
     HAL_BUS::Init();
+
+    HAL_LTDC::Init();
 }
 
 

@@ -9,6 +9,4 @@ class Display
 public:
     static const int WIDTH = 640;
     static const int HEIGHT = 480;
-
-    static void Init();
 };

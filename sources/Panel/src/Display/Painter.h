@@ -9,9 +9,6 @@
 
 struct Painter
 {
-    // Загружает в дисплей все цвета
-    static void LoadPalette();
-
     // Нарисовать данные тестер-компонента. В младшем бите - линиями или точками рисовать. В старшей тетраде - количество усреднений
     static void DrawTesterData(uint8 mode, Color color, const uint16 x[TESTER_NUM_POINTS], const uint8 y[TESTER_NUM_POINTS]);
 

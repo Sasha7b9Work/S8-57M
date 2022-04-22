@@ -33,16 +33,9 @@ struct HAL_BUS
 };
 
 
-class HAL_LTDC
+struct HAL_LTDC
 {
-    friend class Display;
-
-private:
-
-    static void Init(uint front);
-
-public:
-
-    static void SetColors(uint *clut, uint numColors);
+    static void Init();
+    static void LoadPalette();
     static void CopyImage(uint8 *image, int x, int y, int width, int height);
 };

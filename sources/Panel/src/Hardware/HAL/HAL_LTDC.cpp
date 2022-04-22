@@ -8,12 +8,14 @@
 
 
 static LTDC_HandleTypeDef handleLTDC;
-static uint frontBuffer = 0;
+static uint8  front[Display::WIDTH * Display::HEIGHT];
 
 
 
-void HAL_LTDC::Init(uint front)
+void HAL_LTDC::Init()
 {
+    HAL_DAC2::Init();
+
     GPIO_InitTypeDef isGPIO =
     {
         //  R3         R6
@@ -83,8 +85,6 @@ void HAL_LTDC::Init(uint front)
         ERROR_HANDLER();
     }
 
-    frontBuffer = front;
-
     LTDC_LayerCfgTypeDef pLayerCfg;
 
     pLayerCfg.WindowX0 = 0;
@@ -96,7 +96,7 @@ void HAL_LTDC::Init(uint front)
     pLayerCfg.Alpha0 = 255;
     pLayerCfg.BlendingFactor1 = LTDC_BLENDING_FACTOR1_CA;
     pLayerCfg.BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
-    pLayerCfg.FBStartAdress = frontBuffer;
+    pLayerCfg.FBStartAdress = (uint)front;
     pLayerCfg.ImageWidth = Display::WIDTH;
     pLayerCfg.ImageHeight = Display::HEIGHT;
     pLayerCfg.Backcolor.Blue = 0;
@@ -113,13 +113,13 @@ void HAL_LTDC::Init(uint front)
     COLOR(2) = 0x00a0a0a0;
     COLOR(3) = 0x000000ff;
 
-    Painter::LoadPalette();
+    LoadPalette();
 }
 
 
-void HAL_LTDC::SetColors(uint *clut, uint numColors)
+void HAL_LTDC::LoadPalette()
 {
-    HAL_LTDC_ConfigCLUT(&handleLTDC, clut, numColors, 0);
+    HAL_LTDC_ConfigCLUT(&handleLTDC, &COLOR(0), Color::NUMBER.value, 0);
 
     HAL_LTDC_EnableCLUT(&handleLTDC, 0);
 }
@@ -146,7 +146,7 @@ void HAL_LTDC::CopyImage(uint8 *image, int x, int y, int width, int height)
     {
         if (HAL_DMA2D_ConfigLayer(&hDMA2D, 1) == HAL_OK)
         {
-            if (HAL_DMA2D_Start(&hDMA2D, (uint)image, frontBuffer + Display::WIDTH * y + x, (uint)width, (uint)height) == HAL_OK)
+            if (HAL_DMA2D_Start(&hDMA2D, (uint)image, (uint)(front + Display::WIDTH * y + x), (uint)width, (uint)height) == HAL_OK)
             {
                 HAL_DMA2D_PollForTransfer(&hDMA2D, 100);
             }

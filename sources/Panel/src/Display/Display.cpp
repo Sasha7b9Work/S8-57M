@@ -7,14 +7,3 @@
 #include "Hardware/CPU.h"
 #include "Hardware/HAL/HAL.h"
 #include <cstdlib>
-
-
-uint8  front[Display::WIDTH * Display::HEIGHT];
-
-
-void Display::Init()
-{
-    HAL_DAC2::Init();
-    HAL_LTDC::Init(reinterpret_cast<uint>(front));
-    Painter::LoadPalette();
-}
