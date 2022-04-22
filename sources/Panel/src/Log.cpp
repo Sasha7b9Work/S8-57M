@@ -4,7 +4,6 @@
 #include "common/Command.h"
 #include "Hardware/HAL/HAL.h"
 #include "common/Message.h"
-#include <Display/Display.h>
 #include <Hardware/CPU.h>
 #include <stdarg.h>
 #include <cstring>

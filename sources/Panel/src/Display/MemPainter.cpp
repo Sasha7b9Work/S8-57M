@@ -3,7 +3,6 @@
 #include "Display/MemPainter.h"
 #include "Utils/Math.h"
 #include "Hardware/HAL/HAL.h"
-#include "Display/Display.h"
 #include "Display/Colors.h"
 #include "Display/Font/Font_p.h"
 #include "Display/Painter_common.h"
