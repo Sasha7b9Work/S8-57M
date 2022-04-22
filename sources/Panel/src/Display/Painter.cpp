@@ -6,13 +6,14 @@
 #include "Hardware/Timer.h"
 #include "Utils/Math.h"
 #include "Painter_common.h"
+#include "Display/MemPainter.h"
 
 
 void Painter::DrawVPointLine(int x, int y, int delta, int count)
 {
     for (int i = 0; i < count; i++)
     {
-        SetPoint(x, y);
+        MemPainter::SetPoint(x, y);
         y += delta;
     }
 }
@@ -22,7 +23,7 @@ void Painter::DrawHPointLine(int x, int y, int delta, int count)
 {
     for (int i = 0; i < count; i++)
     {
-        SetPoint(x, y);
+        MemPainter::SetPoint(x, y);
         x += delta;
     }
 }

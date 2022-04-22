@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "Text.h"
 #include "Painter.h"
+#include "Display/MemPainter.h"
 #include <cstring>
 
 
@@ -44,7 +45,7 @@ int Text::DrawChar(int eX, int eY, uint8 symbol, Color color)
             {
                 if (PFont::BitIsExist(symbol, row, bit))
                 {
-                    Painter::SetPoint(x, y);
+                    MemPainter::SetPoint(x, y);
                 }
                 x++;
             }

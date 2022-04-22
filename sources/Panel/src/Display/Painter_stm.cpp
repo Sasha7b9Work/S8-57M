@@ -5,6 +5,7 @@
 #include "Display/Display.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Math.h"
+#include "Display/MemPainter.h"
 #include <cstring>
 #include <cmath>
 
@@ -62,7 +63,7 @@ void Painter::DrawLine(int x1, int y1, int x2, int y2)
 {
     if (x1 == x2 && y1 == y2)
     {
-        SetPoint(x1, y1);
+        MemPainter::SetPoint(x1, y1);
         return;
     }
     else if (x1 == x2)
@@ -95,7 +96,7 @@ void Painter::DrawLine(int x1, int y1, int x2, int y2)
     int i = 0;
     for (; i <= dx; i++)
     {
-        SetPoint(x, y);
+        MemPainter::SetPoint(x, y);
         while (e >= 0)
         {
             if (exchange)
@@ -201,15 +202,6 @@ void Painter::DrawTesterData(uint8 mode, Color color, const uint16 _x[TESTER_NUM
         {
             DrawLine(x[i], y[i], x[i + 1], y[i + 1]);
         }
-    }
-}
-
-
-void Painter::SetPoint(int x, int y)
-{
-    if (x >= 0 && x < Display::WIDTH && y >= 0 && y < Display::HEIGHT)
-    {
-        *(Display::GetBuffer() + y * Display::WIDTH + x) = currentColor.value;
     }
 }
 
