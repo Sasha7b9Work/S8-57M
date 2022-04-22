@@ -142,3 +142,12 @@ void MemPainter::DrawRectangle(int x, int y, int w, int h)
     DrawVLine(x, y, y + h);
     DrawVLine(x + w, y, y + h);
 }
+
+
+void MemPainter::FillRegion(int x, int y, int w, int h)
+{
+    for (int i = y; i <= y + h; ++i)
+    {
+        DrawHLine(i, x, x + w);
+    }
+}

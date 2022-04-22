@@ -20,6 +20,8 @@ namespace MemPainter
 
     void DrawRectangle(int x, int y, int width, int height);
 
+    void FillRegion(int x, int y, int width, int height);
+
     void Fill();
 
     void EndPaint();

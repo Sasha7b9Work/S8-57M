@@ -95,15 +95,6 @@ void Painter::DrawLine(int x1, int y1, int x2, int y2)
 }
 
 
-void Painter::FillRegion(int x, int y, int width, int height)
-{
-    for (int i = y; i <= y + height; ++i)
-    {
-        MemPainter::DrawHLine(i, x, x + width);
-    }
-}
-
-
 void Painter::SetColor(Color color)
 {
     if (color.value != Color::NUMBER.value)
@@ -131,8 +122,7 @@ void Painter::DrawTesterData(uint8 mode, Color color, const uint16 _x[TESTER_NUM
     {
         for(int i = 1; i < TESTER_NUM_POINTS - 1; i++)
         {
-            FillRegion(x[i], y[i], 2, 2);
-            //*(Display::GetBuffer() + y[i] * BUFFER_WIDTH + x[i]) = currentColor.value;
+            MemPainter::FillRegion(x[i], y[i], 2, 2);
         }
     }
     else
