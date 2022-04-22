@@ -28,7 +28,7 @@ void Text::SetSpacing(uint8 space)
 
 int Text::DrawChar(int eX, int eY, uint8 symbol, Color color)
 {
-    Painter::SetColor(color);
+    color.SetAsCurrent();
     
     uint8 width = PFont::GetWidth(symbol);
     uint8 height = PFont::GetHeight();

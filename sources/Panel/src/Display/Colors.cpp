@@ -6,7 +6,7 @@
 #include "Settings/Settings.h"
 
 
-uint colors[256] =
+uint colors[32] =
 {
     /* 0  */    MAKE_COLOR(0x00, 0x00, 0x00),       // BLACK
     /* 1  */    MAKE_COLOR(0xff, 0xff, 0xff),       // WHITE
@@ -64,14 +64,8 @@ Color Color::FILL(COLOR_WHITE);
 Color Color::BACK(COLOR_BLACK);
 Color Color::GRID(COLOR_GRID);
 
+Color Color::current = Color(Color::NUMBER);
 
-
-void Color::Log(Color)
-{
-//#define colorVal (COLOR(color.value))
-
-//    LOG_WRITE("Color %d R=%d, G=%d, B=%d", color.value, R_FROM_COLOR(colorVal), G_FROM_COLOR(colorVal), B_FROM_COLOR(colorVal));
-}
 
 
 Color Color::Cursors(Chan ch)

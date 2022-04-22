@@ -9,8 +9,6 @@
 
 struct Painter
 {
-    static void SetColor(Color color);
-
     // Устанавливает цвету заданное значение. Загружается в дисплей LoadPalette() или SetPalette()
     static void SetColorValue(Color color, uint value);
 

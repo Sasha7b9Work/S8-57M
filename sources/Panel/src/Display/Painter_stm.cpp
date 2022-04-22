@@ -26,18 +26,9 @@ void Painter::LoadPalette()
 }
 
 
-void Painter::SetColor(Color color)
-{
-    if (color.value != Color::NUMBER.value)
-    {
-        currentColor = color;
-    }
-}
-
-
 void Painter::DrawTesterData(uint8 mode, Color color, const uint16 _x[TESTER_NUM_POINTS], const uint8 _y[TESTER_NUM_POINTS]) //-V2009
 {
-    SetColor(color);
+    color.SetAsCurrent();
 
     int step = EXTRACT_STEP(mode);
 

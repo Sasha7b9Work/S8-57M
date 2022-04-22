@@ -49,9 +49,10 @@ public:
     
     uint8 value;
 
-    static void Log(Color color);
-
     Color& operator=(const Color &color);
+
+    void SetAsCurrent() { if (value != COLOR_NUMBER) { current.value = value; } }
+    static Color GetCurrent() { return current; }
 
     enum
     {
@@ -89,6 +90,9 @@ public:
 
         COLOR_NUMBER = 32
     };
+
+private:
+    static Color current;
 };
 
 bool operator!=(const Color &left, const Color &right);
@@ -137,6 +141,6 @@ private:
 #define G_FROM_COLOR(color) ((static_cast<uint>(color) >> 8)  & 0xff)
 #define B_FROM_COLOR(color) ((static_cast<uint>(color))       & 0xff)
 
-extern uint colors[256];
+extern uint colors[32];
 
 #define COLOR(x) colors[x]

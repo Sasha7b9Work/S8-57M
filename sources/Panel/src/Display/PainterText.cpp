@@ -22,7 +22,7 @@ int Painter::DrawFormatText(int x, int y, char *format, ...)
 
 int Painter::DrawFormText(int x, int y, Color color, pString text, ...)
 {
-    Painter::SetColor(color);
+    color.SetAsCurrent();
 
 #define SIZE_BUFFER_DRAW_FORM_TEXT 200
     char buffer[SIZE_BUFFER_DRAW_FORM_TEXT];

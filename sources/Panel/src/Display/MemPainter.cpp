@@ -51,13 +51,13 @@ void MemPainter::SetPoint(int x, int y)
     CALCULATE_X();
     CALCULATE_Y();
 
-    *(buffer + y * Display::WIDTH * y + x) = currentColor.value;
+    *(buffer + y * Display::WIDTH * y + x) = Color::GetCurrent().value;
 }
 
 
 void MemPainter::Fill()
 {
-    std::memset(buffer, currentColor.value, (uint)(width * height));
+    std::memset(buffer, Color::GetCurrent().value, (uint)(width * height));
 }
 
 
@@ -82,7 +82,7 @@ void MemPainter::DrawHLine(int y, int x1, int x2)
         Math::Swap(&x1, &x2);
     }
 
-    std::memset(buffer + y * width + x1, currentColor.value, (uint)(x2 - x1));
+    std::memset(buffer + y * width + x1, Color::GetCurrent().value, (uint)(x2 - x1));
 }
 
 
@@ -103,7 +103,7 @@ void MemPainter::DrawVLine(int x, int y1, int y2)
 
     uint8 *address = buffer + y1 * width + x;
 
-    uint8 color = currentColor.value;
+    uint8 color = Color::GetCurrent().value;
 
     int length = y2 - y1;
 
