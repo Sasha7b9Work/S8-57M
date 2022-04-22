@@ -2,7 +2,6 @@
 #include "defines.h"
 #include "Painter.h"
 #include "Display/Colors.h"
-#include "Hardware/CPU.h"
 #include "Hardware/Timer.h"
 #include "Utils/Math.h"
 #include "Painter_common.h"

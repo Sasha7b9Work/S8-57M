@@ -2,11 +2,11 @@
 #include "defines.h"
 #include "common/Decoder_d.h"
 #include "Display/Painter.h"
-#include "Hardware/CPU.h"
 #include "Hardware/Timer.h"
 #include "Hardware/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
 #include "Display/MemPainter.h"
+#include "Hardware/HAL/CPU.h"
 #include <cstdlib>
 
 

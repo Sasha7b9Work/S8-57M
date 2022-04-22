@@ -4,10 +4,9 @@
 #include "common/Command.h"
 #include "Hardware/HAL/HAL.h"
 #include "common/Message.h"
-#include <Hardware/CPU.h>
-#include <stdarg.h>
+#include <cstdarg>
 #include <cstring>
-#include <stdio.h>
+#include <cstdio>
 #include <cstdlib>
 
 
@@ -29,9 +28,10 @@ void Log::Write(TypeTrace type, const char *format, ...)
         while (*pointer++) {};
         ++pointer;
     }
-    va_list args;
+
+    std::va_list args;
     va_start(args, format); //-V2528 //-V2567
-    vsprintf(pointer, format, args);
+    std::vsprintf(pointer, format, args);
     va_end(args);
     AddToConsole(buffer);
 }
@@ -41,13 +41,13 @@ void Log::Trace(TypeTrace type, const char *module, const char *func, int numLin
 {
     char buffer[SIZE_BUFFER_LOG];
     char message[SIZE_BUFFER_LOG];
-    va_list args;
+    std::va_list args;
     va_start(args, format); //-V2528
-    vsprintf(buffer, format, args);
+    std::vsprintf(buffer, format, args);
     va_end(args);
     const int SIZE = 20;
     char numBuffer[SIZE];
-    snprintf(numBuffer, 19, ":%d", numLine);
+    std::snprintf(numBuffer, 19, ":%d", numLine);
     message[0] = 0;
 
     if (type == TypeTrace_Error)

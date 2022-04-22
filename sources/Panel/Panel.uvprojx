@@ -1141,21 +1141,6 @@
           <GroupName>Hardware</GroupName>
           <Files>
             <File>
-              <FileName>CPU.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\CPU.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>CPU.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Hardware\CPU.h</FilePath>
-            </File>
-            <File>
-              <FileName>CPU_IT.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\CPU_IT.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Controls.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\Controls.h</FilePath>
@@ -1240,30 +1225,40 @@
               <FileType>8</FileType>
               <FilePath>.\src\Hardware\HAL\HAL_LTDC.cpp</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Hardware/stm32</GroupName>
-          <Files>
+            <File>
+              <FileName>CPU.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\HAL\CPU.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>CPU.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\HAL\CPU.h</FilePath>
+            </File>
+            <File>
+              <FileName>CPU_IT.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\HAL\CPU_IT.cpp</FilePath>
+            </File>
             <File>
               <FileName>stm429.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\stm32\stm429.cpp</FilePath>
+              <FilePath>.\src\Hardware\HAL\stm429.cpp</FilePath>
             </File>
             <File>
               <FileName>stm429.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\stm32\stm429.h</FilePath>
+              <FilePath>.\src\Hardware\HAL\stm429.h</FilePath>
             </File>
             <File>
               <FileName>Timer4XX.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\stm32\Timer4XX.cpp</FilePath>
+              <FilePath>.\src\Hardware\HAL\Timer4XX.cpp</FilePath>
             </File>
             <File>
               <FileName>Timer4XX.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\stm32\Timer4XX.h</FilePath>
+              <FilePath>.\src\Hardware\HAL\Timer4XX.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2619,21 +2614,6 @@
           <GroupName>Hardware</GroupName>
           <Files>
             <File>
-              <FileName>CPU.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\CPU.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>CPU.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Hardware\CPU.h</FilePath>
-            </File>
-            <File>
-              <FileName>CPU_IT.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\CPU_IT.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Controls.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\Controls.h</FilePath>
@@ -2718,30 +2698,40 @@
               <FileType>8</FileType>
               <FilePath>.\src\Hardware\HAL\HAL_LTDC.cpp</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Hardware/stm32</GroupName>
-          <Files>
+            <File>
+              <FileName>CPU.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\HAL\CPU.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>CPU.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\HAL\CPU.h</FilePath>
+            </File>
+            <File>
+              <FileName>CPU_IT.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\HAL\CPU_IT.cpp</FilePath>
+            </File>
             <File>
               <FileName>stm429.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\stm32\stm429.cpp</FilePath>
+              <FilePath>.\src\Hardware\HAL\stm429.cpp</FilePath>
             </File>
             <File>
               <FileName>stm429.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\stm32\stm429.h</FilePath>
+              <FilePath>.\src\Hardware\HAL\stm429.h</FilePath>
             </File>
             <File>
               <FileName>Timer4XX.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\stm32\Timer4XX.cpp</FilePath>
+              <FilePath>.\src\Hardware\HAL\Timer4XX.cpp</FilePath>
             </File>
             <File>
               <FileName>Timer4XX.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\stm32\Timer4XX.h</FilePath>
+              <FilePath>.\src\Hardware\HAL\Timer4XX.h</FilePath>
             </File>
           </Files>
         </Group>
