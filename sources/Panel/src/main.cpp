@@ -6,14 +6,12 @@
 #include "Hardware/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
 #include "Display/MemPainter.h"
-#include "Hardware/HAL/CPU.h"
 #include <cstdlib>
-
 
 
 int main()
 {
-    CPU::Init();
+    HAL::Init();
 
     Keyboard::Init();
 

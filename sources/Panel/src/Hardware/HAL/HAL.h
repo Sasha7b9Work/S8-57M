@@ -7,6 +7,7 @@
 
 struct HAL
 {
+    static void Init();
     static void ErrorHandler(const char *, int);
 };
 
