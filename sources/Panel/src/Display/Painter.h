@@ -33,9 +33,6 @@ struct Painter
 
     static void DrawHPointLine(int x, int y, int delta, int count);
 
-    // Нарисовать вертикальную линию
-    static void DrawVLine(int x, int y0, int y1);
-
     // Нарисовать произвольную линию
     static void DrawLine(int x0, int y0, int x1, int y1);
 

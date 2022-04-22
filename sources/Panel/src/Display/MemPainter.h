@@ -10,8 +10,9 @@ namespace MemPainter
 
     void SetPoint(int x, int y);
 
-    // Нарисовать горизонтальную линию
     void DrawHLine(int y, int x0, int x1);
+
+    void DrawVLine(int x, int y0, int y1);
 
     void Fill();
 
