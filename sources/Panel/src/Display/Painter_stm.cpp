@@ -26,12 +26,6 @@ void Painter::LoadPalette()
 }
 
 
-void Painter::EndScene(void)
-{
-    // todo_paint
-}
-
-
 void Painter::SetColor(Color color)
 {
     if (color.value != Color::NUMBER.value)

@@ -9,9 +9,6 @@
 
 struct Painter
 {
-    // Вызывается в конце отрисовки каждого кадра. Переносит содержимое буфера на экран
-    static void EndScene();
-
     // Пересылает строку в панель
     static void SendRow(int row);
 
