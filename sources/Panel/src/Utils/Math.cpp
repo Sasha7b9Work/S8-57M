@@ -9,7 +9,8 @@
 
 
 
-template void Math::Limitation<float>(float *, float, float);
+template float Math::Limitation<float>(float, float, float);
+template int Math::Limitation<int>(int, int, int);
 template void Math::Swap<int>(int *, int *);
 template int Math::Sign<int>(int);
 template float Math::Max<float>(float, float, float);
@@ -41,16 +42,18 @@ bool Math::IsEquals(T x, T y)
 
 
 template<class T>
-void Math::Limitation(T *value, T min, T max)
+T Math::Limitation(T value, T min, T max)
 {
-    if (*value < min)
+    if (value < min)
     {
-        *value = min;
+        return min;
     }
-    else if (*value > max) //-V2516
+    else if (value > max) //-V2516
     {
-        *value = max;
+        return max;
     }
+
+    return value;
 }
 
 

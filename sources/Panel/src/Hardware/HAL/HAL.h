@@ -43,5 +43,6 @@ private:
 
 public:
 
-    static void SetColors(uint* clut, uint numColors);
+    static void SetColors(uint *clut, uint numColors);
+    static void CopyImage(uint8 *image, int x, int y, int width, int height);
 };

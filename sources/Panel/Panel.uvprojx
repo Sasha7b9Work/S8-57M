@@ -1405,6 +1405,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Display\AveragerTester.h</FilePath>
             </File>
+            <File>
+              <FileName>MemPainter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\MemPainter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MemPainter.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\MemPainter.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2882,6 +2892,16 @@
               <FileName>AveragerTester.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Display\AveragerTester.h</FilePath>
+            </File>
+            <File>
+              <FileName>MemPainter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\MemPainter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MemPainter.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\MemPainter.h</FilePath>
             </File>
           </Files>
         </Group>

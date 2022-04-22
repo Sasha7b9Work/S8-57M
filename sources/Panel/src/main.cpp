@@ -7,6 +7,7 @@
 #include "Hardware/Timer.h"
 #include "Hardware/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
+#include "Display/MemPainter.h"
 #include <cstdlib>
 
 
@@ -17,16 +18,22 @@ int main()
     Display::Init();
     Keyboard::Init();
 
-    while(1)
+    while (1)
     {
         static uint prevTime = 0;
 
         HAL_BUS::Update();
 
-        if(TIME_MS - prevTime > 2)
+        if (TIME_MS - prevTime > 2)
         {
             Keyboard::Update();
             prevTime = TIME_MS;
         }
+
+        MemPainter::BeginPaint(640, 480);
+
+        MemPainter::Fill();
+
+        MemPainter::EndPaint(0, 0);
     }
 }

@@ -17,5 +17,5 @@ public:
     
     template<class T> static int  Sign(T x);
     
-    template<class T> static void Limitation(T *value, T min, T max);
+    template<class T> static T Limitation(T value, T min, T max);
 };

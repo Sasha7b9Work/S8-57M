@@ -253,7 +253,7 @@ void ColorType::ComponentChange(int delta)
     if (index >= 1 && index <= 3)
     {
         *(pointers[index]) += static_cast<float>(Math::Sign(delta));
-        Math::Limitation<float>(pointers[index], 0.0F, maxs[index]);
+        *(pointers[index]) = Math::Limitation<float>(*(pointers[index]), 0.0F, maxs[index]);
     }
 
     SetColor();
