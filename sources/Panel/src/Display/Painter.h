@@ -33,9 +33,6 @@ struct Painter
     // dStart указывает смещение первой рисуемой точки относительно начала штриха.
     static void DrawDashedHLine(int y, int x0, int x1, int dFill, int dEmpty, int dStart);
 
-    // Рисует прерывистую вертикальную линию.
-    static void DrawDashedVLine(int x, int y0, int y1, int dFill, int dEmpty, int dStart);
-
     static uint ReduceBrightness(uint colorValue, float newBrightness);
 
     static int DrawFormatText(int x, int y, char* format, ...);

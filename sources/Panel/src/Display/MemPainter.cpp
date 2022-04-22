@@ -180,6 +180,7 @@ void MemPainter::DrawLine(int x1, int y1, int x2, int y2)
     int s2 = Math::Sign(y2 - y1);
     int temp;
     int exchange = 0;
+
     if (dy > dx)
     {
         temp = dx;
@@ -187,11 +188,14 @@ void MemPainter::DrawLine(int x1, int y1, int x2, int y2)
         dy = temp;
         exchange = 1;
     }
+
     int e = 2 * dy - dx;
     int i = 0;
+
     for (; i <= dx; i++)
     {
-        MemPainter::SetPoint(x, y);
+        SetPoint(x, y);
+
         while (e >= 0)
         {
             if (exchange)
@@ -212,6 +216,33 @@ void MemPainter::DrawLine(int x1, int y1, int x2, int y2)
         {
             x += s1;
         }
+
         e = e + 2 * dy;
+    }
+}
+
+
+void MemPainter::DrawDashedVLine(int x, int y0, int y2, int deltaFill, int deltaEmtpy, int deltaStart)
+{
+    if (deltaStart < 0 || deltaStart >= (deltaFill + deltaEmtpy))
+    {
+        return;
+    }
+
+    int y = y0;
+
+    if (deltaStart != 0)                 // Если линию нужно рисовать не с начала штриха
+    {
+        y += (deltaFill + deltaEmtpy - deltaStart);
+        if (deltaStart < deltaFill)     // Если начало линии приходится на штрих
+        {
+            DrawVLine(x, y0, y - 1);
+        }
+    }
+
+    while (y < y2)
+    {
+        DrawVLine(x, y, y + deltaFill - 1);
+        y += (deltaFill + deltaEmtpy);
     }
 }

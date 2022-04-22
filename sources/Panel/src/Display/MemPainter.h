@@ -26,6 +26,7 @@ namespace MemPainter
 
     void FillRegion(int x, int y, int width, int height);
 
-    // Нарисовать произвольную линию
     void DrawLine(int x1, int y1, int x2, int y2);
+
+    void DrawDashedVLine(int x, int y0, int y1, int dFill, int dEmpty, int dStart);
 }

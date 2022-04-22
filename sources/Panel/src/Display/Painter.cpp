@@ -34,31 +34,6 @@ void Painter::DrawDashedHLine(int y, int x0, int x1, int deltaFill, int deltaEmp
 }
 
 
-void Painter::DrawDashedVLine(int x, int y0, int y1, int deltaFill, int deltaEmtpy, int deltaStart)
-{
-    if (deltaStart < 0 || deltaStart >= (deltaFill + deltaEmtpy))
-    {
-//        LOG_ERROR_TRACE("Неправильный аргумент deltaStart = %d", deltaStart);
-        return;
-    }
-    int y = y0;
-    if (deltaStart != 0)                 // Если линию нужно рисовать не с начала штриха
-    {
-        y += (deltaFill + deltaEmtpy - deltaStart);
-        if (deltaStart < deltaFill)     // Если начало линии приходится на штрих
-        {
-            MemPainter::DrawVLine(x, y0, y - 1);
-        }
-    }
-
-    while (y < y1)
-    {
-        MemPainter::DrawVLine(x, y, y + deltaFill - 1);
-        y += (deltaFill + deltaEmtpy);
-    }
-}
-
-
 Color Painter::GetColor()
 {
     return currentColor;
