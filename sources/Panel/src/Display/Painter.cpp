@@ -9,16 +9,6 @@
 #include "Display/MemPainter.h"
 
 
-void Painter::DrawHPointLine(int x, int y, int delta, int count)
-{
-    for (int i = 0; i < count; i++)
-    {
-        MemPainter::SetPoint(x, y);
-        x += delta;
-    }
-}
-
-
 void Painter::DrawDashedHLine(int y, int x0, int x1, int deltaFill, int deltaEmpty, int deltaStart)
 {
     if (deltaStart < 0 || deltaStart >= (deltaFill + deltaEmpty))

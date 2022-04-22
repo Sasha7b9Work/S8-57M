@@ -16,6 +16,8 @@ namespace MemPainter
 
     void DrawVPointLine(int x, int y, int delta, int count);
 
+    void DrawHPointLine(int x, int y, int delta, int count);
+
     void Fill();
 
     void EndPaint();

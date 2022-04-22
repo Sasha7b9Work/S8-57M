@@ -119,8 +119,18 @@ void MemPainter::DrawVPointLine(int x, int y, int delta, int count)
 {
     for (int i = 0; i < count; i++)
     {
-        MemPainter::SetPoint(x, y);
+        SetPoint(x, y);
         y += delta;
+    }
+}
+
+
+void MemPainter::DrawHPointLine(int x, int y, int delta, int count)
+{
+    for (int i = 0; i < count; i++)
+    {
+        SetPoint(x, y);
+        x += delta;
     }
 }
 
