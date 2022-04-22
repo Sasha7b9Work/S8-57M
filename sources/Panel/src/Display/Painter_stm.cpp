@@ -95,15 +95,6 @@ void Painter::DrawLine(int x1, int y1, int x2, int y2)
 }
 
 
-void Painter::DrawRectangle(int x, int y, int width, int height)
-{
-    MemPainter::DrawHLine(y, x, x + width);
-    MemPainter::DrawHLine(y + height, x, x + width);
-    MemPainter::DrawVLine(x, y, y + height);
-    MemPainter::DrawVLine(x + width, y, y + height);
-}
-
-
 void Painter::FillRegion(int x, int y, int width, int height)
 {
     for (int i = y; i <= y + height; ++i)

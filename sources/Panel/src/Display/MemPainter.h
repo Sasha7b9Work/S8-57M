@@ -18,6 +18,8 @@ namespace MemPainter
 
     void DrawHPointLine(int x, int y, int delta, int count);
 
+    void DrawRectangle(int x, int y, int width, int height);
+
     void Fill();
 
     void EndPaint();

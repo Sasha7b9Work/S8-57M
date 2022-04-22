@@ -39,8 +39,6 @@ struct Painter
     // Рисует прерывистую вертикальную линию.
     static void DrawDashedVLine(int x, int y0, int y1, int dFill, int dEmpty, int dStart);
 
-    static void DrawRectangle(int x, int y, int width, int height);
-
     static void FillRegion(int x, int y, int width, int height);
 
     static uint ReduceBrightness(uint colorValue, float newBrightness);

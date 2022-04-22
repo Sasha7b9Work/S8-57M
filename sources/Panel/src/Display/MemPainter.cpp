@@ -134,3 +134,11 @@ void MemPainter::DrawHPointLine(int x, int y, int delta, int count)
     }
 }
 
+
+void MemPainter::DrawRectangle(int x, int y, int w, int h)
+{
+    DrawHLine(y, x, x + w);
+    DrawHLine(y + h, x, x + w);
+    DrawVLine(x, y, y + h);
+    DrawVLine(x + w, y, y + h);
+}
