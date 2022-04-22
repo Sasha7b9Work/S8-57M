@@ -113,3 +113,14 @@ void MemPainter::DrawVLine(int x, int y1, int y2)
         address += width;
     }
 }
+
+
+void MemPainter::DrawVPointLine(int x, int y, int delta, int count)
+{
+    for (int i = 0; i < count; i++)
+    {
+        MemPainter::SetPoint(x, y);
+        y += delta;
+    }
+}
+

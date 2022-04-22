@@ -9,16 +9,6 @@
 #include "Display/MemPainter.h"
 
 
-void Painter::DrawVPointLine(int x, int y, int delta, int count)
-{
-    for (int i = 0; i < count; i++)
-    {
-        MemPainter::SetPoint(x, y);
-        y += delta;
-    }
-}
-
-
 void Painter::DrawHPointLine(int x, int y, int delta, int count)
 {
     for (int i = 0; i < count; i++)
