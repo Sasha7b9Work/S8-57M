@@ -32,9 +32,3 @@ void Painter::DrawDashedHLine(int y, int x0, int x1, int deltaFill, int deltaEmp
         x += (deltaFill + deltaEmpty);
     }
 }
-
-
-Color Painter::GetColor()
-{
-    return currentColor;
-}

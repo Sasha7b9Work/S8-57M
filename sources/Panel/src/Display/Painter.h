@@ -17,9 +17,6 @@ struct Painter
 
     static void SetColor(Color color);
 
-    // Возвращает текущий цвет рисования
-    static Color GetColor();
-
     // Устанавливает цвету заданное значение. Загружается в дисплей LoadPalette() или SetPalette()
     static void SetColorValue(Color color, uint value);
 

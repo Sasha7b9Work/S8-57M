@@ -11,11 +11,4 @@ public:
     static const int HEIGHT = 480;
 
     static void Init();
-
-private:
-    // Ёкран
-    static uint8 *frontBuffer;
 };
-
-
-extern LTDC_HandleTypeDef hltdc;

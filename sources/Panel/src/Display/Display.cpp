@@ -9,16 +9,12 @@
 #include <cstdlib>
 
 
-
-LTDC_HandleTypeDef hltdc;
-
 uint8  front[Display::WIDTH * Display::HEIGHT];
-uint8 *Display::frontBuffer = front;
 
 
 void Display::Init()
 {
     HAL_DAC2::Init();
-    HAL_LTDC::Init(reinterpret_cast<uint>(frontBuffer));
+    HAL_LTDC::Init(reinterpret_cast<uint>(front));
     Painter::LoadPalette();
 }
