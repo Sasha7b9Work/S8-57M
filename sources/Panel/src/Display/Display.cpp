@@ -24,12 +24,6 @@ void Display::Init()
 }
 
 
-uint8 *Display::GetBuffer()
-{
-    return frontBuffer;
-}
-
-
 uint8 *Display::GetBufferEnd()
 {
     return frontBuffer + Display::WIDTH * Display::HEIGHT;

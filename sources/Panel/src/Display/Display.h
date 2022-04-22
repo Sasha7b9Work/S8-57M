@@ -12,8 +12,6 @@ public:
 
     static void Init();
 
-    static uint8 *GetBuffer();
-
     static uint8 *GetBufferEnd();
 
 private:
