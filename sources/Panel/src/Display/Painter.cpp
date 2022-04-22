@@ -42,13 +42,13 @@ void Painter::DrawDashedHLine(int y, int x0, int x1, int deltaFill, int deltaEmp
         x += (deltaFill + deltaEmpty - deltaStart);
         if (deltaStart < deltaFill)     // Если начало линии приходится на штрих
         {
-            DrawHLine(y, x0, x - 1);
+            MemPainter::DrawHLine(y, x0, x - 1);
         }
     }
 
     while (x < x1)
     {
-        DrawHLine(y, x, x + deltaFill - 1);
+        MemPainter::DrawHLine(y, x, x + deltaFill - 1);
         x += (deltaFill + deltaEmpty);
     }
 }

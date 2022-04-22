@@ -32,33 +32,6 @@ void Painter::EndScene(void)
 }
 
 
-void Painter::DrawHLine(int y, int x0, int x1)
-{
-    if (x0 < 0) { x0 = 0; }
-    if (x1 < 0) { x1 = 0; }
-    if (y < 0)  { y = 0;  }
-    
-    if(x0 > x1)
-    {
-        Math::Swap(&x0, &x1);
-    }
-
-    uint8 *address = Display::GetBuffer() + x0 + y * Display::WIDTH;
-    uint8 *end = Display::GetBufferEnd();
-
-    uint8 value = currentColor.value;
-
-    for (int x = x0; x <= x1; ++x)
-    {
-        if (address >= end)
-        {
-            break;
-        }
-        *address++ = value;
-    }
-}
-
-
 void Painter::DrawLine(int x1, int y1, int x2, int y2)
 {
     if (x1 == x2 && y1 == y2)
@@ -73,7 +46,7 @@ void Painter::DrawLine(int x1, int y1, int x2, int y2)
     }
     else if (y1 == y2) //-V2516
     {
-        DrawHLine(y1, x1, x2);
+        MemPainter::DrawHLine(y1, x1, x2);
         return;
     }
 
@@ -124,8 +97,8 @@ void Painter::DrawLine(int x1, int y1, int x2, int y2)
 
 void Painter::DrawRectangle(int x, int y, int width, int height)
 {
-    DrawHLine(y, x, x + width);
-    DrawHLine(y + height, x, x + width);
+    MemPainter::DrawHLine(y, x, x + width);
+    MemPainter::DrawHLine(y + height, x, x + width);
     DrawVLine(x, y, y + height);
     DrawVLine(x + width, y, y + height);
 }
@@ -160,7 +133,7 @@ void Painter::FillRegion(int x, int y, int width, int height)
 {
     for (int i = y; i <= y + height; ++i)
     {
-        DrawHLine(i, x, x + width);
+        MemPainter::DrawHLine(i, x, x + width);
     }
 }
 

@@ -10,16 +10,16 @@
 #include <cstring>
 
 
-#define CALCULATE_X()  x -= x0; if (x < 0) { return; } if (x >= width)  { return; }
-#define CALCULATE_Y()  y -= y0; if (y < 0) { return; } if (y >= height) { return; }
+#define CALCULATE_X()  x -= x_shift; if (x < 0) { return; } if (x >= width)  { return; }
+#define CALCULATE_Y()  y -= y_shift; if (y < 0) { return; } if (y >= height) { return; }
 
 
 namespace MemPainter
 {
     uint8 buffer[64 * 1024] __attribute__((section("CCM_DATA")));;
 
-    int x0 = 0;
-    int y0 = 0;
+    int x_shift = 0;
+    int y_shift = 0;
     int width = 0;
     int height = 0;
 }
@@ -27,20 +27,20 @@ namespace MemPainter
 
 void MemPainter::BeginPaint(int x, int y, int w, int h)
 {
-    x0 = Math::Limitation(x, 0, Display::WIDTH - 1);
-    y0 = Math::Limitation(y, 0, Display::HEIGHT - 1);
+    x_shift = Math::Limitation(x, 0, Display::WIDTH - 1);
+    y_shift = Math::Limitation(y, 0, Display::HEIGHT - 1);
 
     width = Math::Limitation(w, 0, 640);
     height = Math::Limitation(h, 0, 480);
 
-    if (width + x0 >= Display::WIDTH)
+    if (width + x_shift >= Display::WIDTH)
     {
-        width = Display::WIDTH - x0;
+        width = Display::WIDTH - x_shift;
     }
 
-    if (height + y0 >= Display::HEIGHT)
+    if (height + y_shift >= Display::HEIGHT)
     {
-        height = Display::HEIGHT - y0;
+        height = Display::HEIGHT - y_shift;
     }
 }
 
@@ -62,5 +62,31 @@ void MemPainter::Fill()
 
 void MemPainter::EndPaint()
 {
-    HAL_LTDC::CopyImage(buffer, x0, y0, width, height);
+    HAL_LTDC::CopyImage(buffer, x_shift, y_shift, width, height);
+}
+
+
+void MemPainter::DrawHLine(int y, int x1, int x2)
+{
+    if (y < 0 || y >= Display::HEIGHT) { return; }
+    if (x1 < 0 && x2 < 0) { return; }
+    if (x1 < 0) { x1 = 0; }
+    if (x2 < 0) { x2 = 0; }
+    if (x1 >= width) { x1 = width - 1; }
+    if (x2 >= width) { x2 = width - 1; }
+
+    if (x1 > x2)
+    {
+        Math::Swap(&x1, &x2);
+    }
+
+    uint8 *address = buffer + y * width + x1;
+    uint8 *end = address + x2 - x1;
+
+    uint8 value = currentColor.value;
+
+    while (address < end)
+    {
+        *address++ = value;
+    }
 }
