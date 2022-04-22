@@ -22,9 +22,3 @@ void Display::Init()
     HAL_LTDC::Init(reinterpret_cast<uint>(frontBuffer));
     Painter::LoadPalette();
 }
-
-
-uint8 *Display::GetBufferEnd()
-{
-    return frontBuffer + Display::WIDTH * Display::HEIGHT;
-}

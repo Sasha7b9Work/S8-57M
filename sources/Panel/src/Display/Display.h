@@ -12,8 +12,6 @@ public:
 
     static void Init();
 
-    static uint8 *GetBufferEnd();
-
 private:
     // Ёкран
     static uint8 *frontBuffer;
