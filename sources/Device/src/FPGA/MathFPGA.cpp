@@ -56,8 +56,8 @@ float MathFPGA::TimeCursor(float shiftCurT, TBase::E tBase)
 */
 
 #ifndef DEBUG
-#include "TablesWindow.h"
-#include "TablesLog.h"
+#include "Utils/TablesWindow.h"
+#include "Utils/TablesLog.h"
 
 static float const *Koeff(int numPoints)
 {
@@ -77,7 +77,7 @@ static float const *Koeff(int numPoints)
         row = 2;
     }
 
-    return tables[row][PageServiceMath_GetWindowFFT()];
+    return tables[row][S_FFT_WINDOW];
 }
 
 #endif
