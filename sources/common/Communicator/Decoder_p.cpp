@@ -7,29 +7,29 @@
 #include "common/Communicator/Message_.h"
 
 
-typedef bool(*pFuncBU8)(uint8);
+typedef bool(*pFuncBU)(uint);
 // Выполняемая функция
-static pFuncBU8 curFunc;
+static pFuncBU curFunc;
 // Текущий байт выполняемой функции
 static int step = 0;
 
 
-static bool E(uint8) { return true; }
+static bool E(uint) { return true; }
 
-static bool InButtonPress(uint8);
+static bool InButtonPress(uint);
 
-static bool DisplayBrightness(uint8);
+static bool DisplayBrightness(uint);
 
 // Эту функцию надо вызывать после выполнения последнего шага
 static void FinishCommand();
 
 
-void PDecoder::AddData(uint8 data)
+void PDecoder::AddData(uint data)
 {
     static const struct StructFunc
     {
-        pFuncBU8 func;
-        StructFunc(pFuncBU8 f) : func(f) {};
+        pFuncBU func;
+        StructFunc(pFuncBU f) : func(f) {};
     }
     command[Command::Count] =
     {
@@ -65,7 +65,7 @@ void PDecoder::AddData(uint8 data)
 }
 
 
-static bool InButtonPress(uint8)
+static bool InButtonPress(uint)
 {
     if (step == 0)
     {
@@ -82,7 +82,7 @@ static bool InButtonPress(uint8)
 }
 
 
-static bool DisplayBrightness(uint8 data)
+static bool DisplayBrightness(uint data)
 {
     if (step == 0)
     {
@@ -90,7 +90,7 @@ static bool DisplayBrightness(uint8 data)
     }
     if (step == 1)
     {
-        HAL_DAC2::SetValue(data);
+        HAL_DAC2::SetValue((uint8)data);
     }
 
     return true;

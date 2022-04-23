@@ -143,7 +143,7 @@ void HAL_BUS::Update()
         if((GPIOD->IDR & GPIO_PIN_5) == 0)
         {
             //uint8 data = DataBus::Read();
-            uint8 data = (uint8)GPIOE->IDR;
+            uint data = GPIOE->IDR;
 
             //pinReady.SetPassive();
             GPIOC->BSRR = GPIO_PIN_14;
