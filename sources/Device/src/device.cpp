@@ -1,6 +1,5 @@
 #include "defines.h"
 #include "device.h"
-#include "common/Decoder_d.h"
 #include "Display/Console.h"
 #include "FPGA/FPGA.h"
 #include "Hardware/Battery.h"
@@ -16,6 +15,7 @@
 #include "SCPI/SCPI.h"
 #include "Settings/SettingsNRST.h"
 #include "FDrive/FDrive.h"
+#include "common/Communicator/Decoder_d.h"
 #include <cstdlib>
 
 

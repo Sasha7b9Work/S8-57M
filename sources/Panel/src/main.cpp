@@ -1,6 +1,5 @@
 // 2022/04/20 16:50:49 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "common/Decoder_d.h"
 #include "Hardware/Timer.h"
 #include "Hardware/Keyboard.h"
 #include "Hardware/HAL/HAL.h"

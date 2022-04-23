@@ -1,5 +1,4 @@
 #include "defines.h"
-#include "common/Command.h"
 #include "Display/Primitives.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Buffer.h"

@@ -29,13 +29,16 @@ file(GLOB COMMON          ../common/Command.h
                           ../common/Decoder_p.*
                           ../common/Message.*)
 file(GLOB SRC             src/*.h src/*.cpp)
+file(GLOB COMMUNICATOR    ../common/Communicator/Command_.h
+                          ../common/Communicator/Message_.h
+                          ../common/Communicator/Decoder_p.*)
 file(GLOB DISPLAY         src/Display/*.h src/Display/*.cpp)
-file(GLOB DISPLAY_FONT    src/Display/Font/*)
+file(GLOB DISPLAY_FONT    src/Display/Font/*.*)
 file(GLOB HARDWARE        src/Hardware/*.h src/Hardware/*.cpp)
-file(GLOB HARDWARE_CMSIS  src/Hardware/CMSIS/*)
-file(GLOB HARDWARE_HAL    src/Hardware/HAL/*)
-file(GLOB SETTINGS        src/Settings/*)
-file(GLOB UTILS           src/Utils/*)
+file(GLOB HARDWARE_CMSIS  src/Hardware/CMSIS/*.*)
+file(GLOB HARDWARE_HAL    src/Hardware/HAL/*.*)
+file(GLOB SETTINGS        src/Settings/*.*)
+file(GLOB UTILS           src/Utils/*.*)
 file(GLOB VS              ../common/_VS/*.h)
 file(GLOB VS_STD_INCLUDES ../common/_VS/std_includes/*)
 file(GLOB VS_CMSIS        ../common/_VS/CMSIS/*)
@@ -45,6 +48,7 @@ set_source_files_properties(${LIBS_HAL} PROPERTIES HEADER_FILE_ONLY TRUE)
 source_group(libs\\HAL         FILES ${LIBS_HAL})
 source_group(common            FILES ${COMMON})
 source_group(src               FILES ${SRC})
+source_group(Communicator      FILES ${COMMUNICATOR})
 source_group(Display           FILES ${DISPLAY})
 source_group(Display\\Font     FILES ${DISPLAY_FONT})
 source_group(Hardware          FILES ${HARDWARE})
@@ -56,6 +60,6 @@ source_group(_VS               FILES ${VS})
 source_group(_VS\\std_includes FILES ${VS_STD_INCLUDES})
 source_group(_VS\\CMSIS        FILES ${VS_CMSIS})
 
-add_library(Panel ${LIBS_HAL} ${COMMON} ${SRC} ${DISPLAY} ${DISPLAY_FONT} ${HARDWARE} ${HARDWARE_CMSIS} ${HARDWARE_HAL}
+add_library(Panel ${LIBS_HAL} ${COMMON} ${SRC} ${COMMUNICATOR} ${DISPLAY} ${DISPLAY_FONT} ${HARDWARE} ${HARDWARE_CMSIS} ${HARDWARE_HAL}
                   ${SETTINGS} ${UTILS} ${VS} ${VS_STD_INCLUDES} ${VS_CMSIS}
 )

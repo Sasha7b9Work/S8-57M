@@ -1,6 +1,5 @@
 #include "defines.h"
 #include "device.h"
-#include "common/Decoder_d.h"
 #include "Display/Console.h"
 #include "Display/Display.h"
 #include "Display/Painter.h"
@@ -13,7 +12,7 @@
 #include "Osci/Display/DisplayOsci.h"
 #include "Recorder/DisplayRecorder.h"
 #include "Utils/Containers/Values.h"
-#include "common/Message.h"
+#include "common/Communicator/Decoder_d.h"
 #include <cstring>
 
 

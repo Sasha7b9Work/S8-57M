@@ -1,11 +1,10 @@
 #include "defines.h"
-#include "common/Command.h"
 #include "Display/Painter.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Containers/Buffer.h"
 #include "Display/Display.h"
-#include "common/Message.h"
+#include "common/Communicator/Message_.h"
 #include <cstring>
 
 

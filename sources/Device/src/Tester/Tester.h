@@ -1,7 +1,7 @@
 #pragma once
-#include "common/Command.h"
 #include "Hardware/HAL/HAL_PIO.h"
 #include "Menu/Pages/Include/PageDisplay.h"
+#include "common/Communicator/Message_.h"
 
 
 class Tester

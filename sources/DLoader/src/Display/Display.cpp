@@ -1,5 +1,4 @@
 #include "defines.h"
-#include "common/Command.h"
 #include "Display.h"
 #include "Display/Painter.h"
 #include "Display/Primitives.h"
@@ -8,7 +7,7 @@
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Math.h"
-#include "common/Message.h"
+#include "common/Communicator/Message_.h"
 #include <ff.h>
 #include <cmath>
 #include <cstdlib>

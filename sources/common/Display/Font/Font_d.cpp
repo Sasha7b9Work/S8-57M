@@ -1,8 +1,6 @@
 #include "defines.h"
 #include "Font_d.h"
 #include "AdvancedFont_d.h"
-#include "common/Command.h"
-#include "common/Decoder_d.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "font8.inc"

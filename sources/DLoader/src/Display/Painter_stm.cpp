@@ -1,5 +1,4 @@
 #include "defines.h"
-#include "common/Command.h"
 #include "Display/Painter.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"

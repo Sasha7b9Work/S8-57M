@@ -1,9 +1,9 @@
 #include "defines.h"
 #include "Device.h"
-#include "common/Decoder_d.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Hardware/HAL/HAL_PIO.h"
+#include "common/Communicator/Decoder_d.h"
 #include <stm32f4xx_hal.h>
 #ifdef DEVICE
 #include "Osci/Osci.h"

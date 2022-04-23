@@ -1,0 +1,102 @@
+#pragma once
+
+
+struct Command
+{           //  смещение               0  |     1       |     2      |      3      |     4        |      5       |   6    |         –азмер
+    enum E
+    {
+        /* 00 */    None,                   //    |             |            |             |              |              |        |
+        /* 01 */    ButtonPress,            // 01 |   Item      | TypePress  |             |              |              |        |
+        /* 02 */    Display_Brightness,     // 02 | €ркость
+        /* 04 */    AddToConsole,           // 04 | num symb    |  ..... symbols ....
+
+        /* 05 */    Paint_DirectLine,       // ќтрисовка "пр€мой" линии
+                    //  код команды [8] | число отрезков в команде (начина€ со следующего) [8] | номер цвета [8] | количество точек [8] | ...
+
+        /* 06 */    Paint_DifferentLine,    // ќтрисовка "разностной" линии
+                    //  код команды [8] | число баайт в команде (начина€ со следующего) [8] | разность цвета по сравнению с прошлым кадром [8] | количество точек [8] | ...
+
+                    Count
+    };
+};
+
+
+#define TESTER_NUM_POINTS 120
+
+
+#define SIZE_STRING (320)
+
+
+// »звлекает режим рисовани€ - лини€ми (1) или точками (0)
+#define BUILD_MODE(modeDraw, step, enumAverage) ((uint8)(((enumAverage) << 4) + ((step) << 1) + (modeDraw)))
+
+#define EXTRACT_MODE_DRAW(x)    ((x) & 0x01)
+#define EXTRACT_STEP(x)         (((x) >> 1) & 0x07)
+#define EXTRACT_ENUM_AVERAGE(x) (((x) >> 4) & 0x0f)
+
+
+template<int capacity>
+class Message
+{
+private:
+
+    uint8 buffer[capacity];
+
+public:
+
+    Message(Command::E command, uint8 data)
+    {
+        buffer[0] = (uint8)command;
+        buffer[1] = data;
+    }
+
+    Message(Command::E command, uint8 byte1, uint8 byte2)
+    {
+        buffer[0] = (uint8)command;
+        buffer[1] = byte1;
+        buffer[2] = byte2;
+    }
+
+    void Transmit()
+    {
+        HAL_BUS::Panel::Send(buffer, capacity);
+    }
+};
+
+
+template<int capacity>
+class DynamicMessage
+{
+private:
+
+    uint8 buffer[capacity];
+    int size;
+
+public:
+
+    DynamicMessage(Command::E command) : size(0) //-V1077
+    {
+        PushByte((uint8)command);
+    }
+
+    void PushByte(uint8 byte)
+    {
+        if (size < capacity)
+        {
+            buffer[size++] = byte;
+        }
+    }
+
+    void PushByte(int position, uint8 byte)
+    {
+        if (position < capacity)
+        {
+            buffer[position] = byte;
+        }
+    }
+
+    void Transmit()
+    {
+        HAL_BUS::Panel::Send(buffer, size);
+    }
+};

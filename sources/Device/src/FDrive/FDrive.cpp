@@ -1,5 +1,4 @@
 #include "defines.h"
-#include "common/Decoder_d.h"
 #include "FDrive/FileManager.h"
 #include "FDrive/FDrive.h"
 #include "Hardware/Timer.h"
@@ -7,7 +6,6 @@
 #include "Menu/Menu.h"
 #include "Osci/DeviceSettings.h"
 #include "usbh_diskio.h"
-#include "common/Message.h"
 #include <cstdio>
 
 

@@ -1,9 +1,8 @@
 // 2022/04/20 16:52:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "common/Command.h"
 #include "Hardware/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
-#include "common/Message.h"
+#include "common/Communicator/Message_.h"
 
 
 #define SL0 GPIO_PIN_14

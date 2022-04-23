@@ -1,7 +1,6 @@
 // 2022/04/20 16:52:00 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "AdvancedFont_p.h"
-#include "common/Command.h"
 #include "Hardware/HAL/HAL.h"
 #include "font8.inc"
 #include "font5.inc"

@@ -4,6 +4,7 @@
 #include "Display/Text.h"
 #include "Hardware/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
+#include "common/Communicator/Message_.h"
 
 
 typedef bool(*pFuncBU8)(uint8);
