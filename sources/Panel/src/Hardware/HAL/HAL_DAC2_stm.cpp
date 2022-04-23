@@ -4,7 +4,10 @@
 #include <stm32f4xx_hal.h>
 
 
-static DAC_HandleTypeDef handle = { DAC };
+namespace HAL_DAC2
+{
+    static DAC_HandleTypeDef handle = { DAC };
+}
 
 
 void HAL_DAC2::Init()

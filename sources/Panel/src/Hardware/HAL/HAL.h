@@ -2,13 +2,6 @@
 #pragma once
 
 
-#ifdef DEBUG
-    #define ERROR_HANDLER()  ::HAL::ErrorHandler(__FILE__, __LINE__)
-#else
-    #define ERROR_HANDLER()
-#endif
-
-
 namespace HAL
 {
     void Init();
@@ -17,23 +10,24 @@ namespace HAL
 
 
 // »спользуетс€ дл€ управлени€ €ркостью диспле€
-struct HAL_DAC2
+namespace HAL_DAC2
 {
-    static void Init();
+    void Init();
+    
     // «начение value от 0 до 100
-    static void SetValue(int value);
+    void SetValue(int value);
 };
 
 
-struct HAL_BUS
+namespace HAL_BUS
 {
-    static void Init();
+    void Init();
 
-    static void Update();
+    void Update();
 
-    struct Panel
+    namespace Panel
     {
-        static void Send(const uint8* data, int size);
+        void Send(const uint8* data, int size);
     };
 };
 
@@ -44,3 +38,10 @@ struct HAL_LTDC
     static void LoadPalette();
     static void CopyImage(uint8 *image, int x, int y, int width, int height);
 };
+
+
+#ifdef DEBUG
+#define ERROR_HANDLER()  ::HAL::ErrorHandler(__FILE__, __LINE__)
+#else
+#define ERROR_HANDLER()
+#endif

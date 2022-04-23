@@ -8,6 +8,8 @@
 #include <stm32f4xx_hal.h>
 
 
+namespace HAL_BUS
+{
 #define PORT_READY  GPIOC
 #define PIN_READY   GPIO_PIN_14
 #define READY       PORT_READY, PIN_READY
@@ -29,71 +31,76 @@
 #define RD          PORT_RD, PIN_RD
 
 
-struct OutPin
-{
-    OutPin(GPIO_TypeDef *_gpio, uint16 _pin) : gpio(_gpio), pin(_pin) {};
-
-    void Init()
+    struct OutPin
     {
-        GPIO_InitTypeDef is = { pin, GPIO_MODE_OUTPUT_PP, GPIO_PULLUP };
+        OutPin(GPIO_TypeDef *_gpio, uint16 _pin) : gpio(_gpio), pin(_pin) {};
 
-        HAL_GPIO_Init(gpio, &is);
+        void Init()
+        {
+            GPIO_InitTypeDef is = { pin, GPIO_MODE_OUTPUT_PP, GPIO_PULLUP };
 
-        SetPassive();
-    }
+            HAL_GPIO_Init(gpio, &is);
 
-    void SetActive()  { HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_RESET); }
+            SetPassive();
+        }
 
-    void SetPassive() { HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_SET); }
+        void SetActive() { HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_RESET); }
 
-    GPIO_TypeDef *gpio;
-    uint16 pin;
-};
+        void SetPassive() { HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_SET); }
+
+        GPIO_TypeDef *gpio;
+        uint16 pin;
+    };
 
 
-struct InPin
-{
-    InPin(GPIO_TypeDef *_gpio, uint16 _pin) : gpio(_gpio), pin(_pin) {};
-
-    void Init()
+    struct InPin
     {
-        GPIO_InitTypeDef is = { pin, GPIO_MODE_INPUT, GPIO_PULLUP };
+        InPin(GPIO_TypeDef *_gpio, uint16 _pin) : gpio(_gpio), pin(_pin) {};
 
-        HAL_GPIO_Init(gpio, &is);
-    }
+        void Init()
+        {
+            GPIO_InitTypeDef is = { pin, GPIO_MODE_INPUT, GPIO_PULLUP };
 
-    bool IsActive()    { return HAL_GPIO_ReadPin(gpio, pin) == GPIO_PIN_RESET; }
+            HAL_GPIO_Init(gpio, &is);
+        }
 
-    bool IsPassive()   { return HAL_GPIO_ReadPin(gpio, pin) == GPIO_PIN_SET; }
+        bool IsActive() { return HAL_GPIO_ReadPin(gpio, pin) == GPIO_PIN_RESET; }
 
-    void WaitPassive() { while(IsActive()) { } }
+        bool IsPassive() { return HAL_GPIO_ReadPin(gpio, pin) == GPIO_PIN_SET; }
 
-    void WaitActive()  { while(IsPassive()) { } }
+        void WaitPassive() { while (IsActive()) {} }
 
-    GPIO_TypeDef *gpio;
-    uint16 pin;
-};
+        void WaitActive() { while (IsPassive()) {} }
 
-
-// На этом выводе будем выставлять признак готовности к коммуникации и признак подтверждения
-static OutPin pinReady(READY);
-// Здесь будем выставлять признак готовности данных для передачи в устройство
-static OutPin pinData(DATA);
-// По этому сигналу от основого МК начинаем транзакцию чтения/записи
-static InPin  pinCS(CS);
-// Признак того, что основной МК осуществляет операцию записи в панель
-static InPin  pinWR(WR);
-// Признак того, что основной МК осуществляет операцию чтения из панели
-static InPin  pinRD(RD);
-
-static Queue<uint8> queueData;
+        GPIO_TypeDef *gpio;
+        uint16 pin;
+    };
 
 
-struct DataBus
-{
-    // Первоначальная инициализация
-    static void Init();
-};
+    // На этом выводе будем выставлять признак готовности к коммуникации и признак подтверждения
+    static OutPin pinReady(READY);
+    // Здесь будем выставлять признак готовности данных для передачи в устройство
+    static OutPin pinData(DATA);
+    // По этому сигналу от основого МК начинаем транзакцию чтения/записи
+    static InPin  pinCS(CS);
+    // Признак того, что основной МК осуществляет операцию записи в панель
+    static InPin  pinWR(WR);
+    // Признак того, что основной МК осуществляет операцию чтения из панели
+    static InPin  pinRD(RD);
+
+    static Queue<uint8> queueData;
+
+
+    struct DataBus
+    {
+        // Первоначальная инициализация
+        static void Init()
+        {
+            // Конфигурируем ШД на чтение
+            GPIOE->MODER &= 0xffff0000U;
+        }
+    };
+}
 
 
 void HAL_BUS::Init()
@@ -178,11 +185,4 @@ void HAL_BUS::Update()
             GPIOE->MODER &= 0xffff0000U;
         }
     }
-}
-
-
-void DataBus::Init()
-{
-    // Конфигурируем ШД на чтение
-    GPIOE->MODER &= 0xffff0000U;
 }
