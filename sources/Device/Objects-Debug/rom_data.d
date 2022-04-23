@@ -1,0 +1,9 @@
+.\objects-debug\rom_data.o: src\Hardware\Memory\ROM_Data.cpp
+.\objects-debug\rom_data.o: .\src\defines.h
+.\objects-debug\rom_data.o: .\src\Hardware/HAL/HAL.h
+.\objects-debug\rom_data.o: .\src\Hardware/Memory/Sector.h
+.\objects-debug\rom_data.o: .\src\Hardware/Memory/ROM.h
+.\objects-debug\rom_data.o: .\src\Utils/Text/String.h
+.\objects-debug\rom_data.o: .\src\Display/Colors.h
+.\objects-debug\rom_data.o: .\src\Osci/DeviceSettings.h
+.\objects-debug\rom_data.o: .\src\Osci/ParametersOsci.h

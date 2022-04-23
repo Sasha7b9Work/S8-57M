@@ -1,0 +1,13 @@
+.\objects-debug\timer.o: src\Hardware\Timer.cpp
+.\objects-debug\timer.o: .\src\defines.h
+.\objects-debug\timer.o: .\src\log.h
+.\objects-debug\timer.o: .\src\Utils/Text/String.h
+.\objects-debug\timer.o: .\src\Display/Colors.h
+.\objects-debug\timer.o: src\Hardware\Timer.h
+.\objects-debug\timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\climits
+.\objects-debug\timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\limits.h
+.\objects-debug\timer.o: .\src\Hardware/HAL/HAL.h
+.\objects-debug\timer.o: .\src\Hardware/Memory/Sector.h
+.\objects-debug\timer.o: .\src\Hardware/Memory/ROM.h
+.\objects-debug\timer.o: .\src\Osci/DeviceSettings.h
+.\objects-debug\timer.o: .\src\Osci/ParametersOsci.h

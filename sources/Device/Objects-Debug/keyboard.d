@@ -1,0 +1,11 @@
+.\objects-debug\keyboard.o: src\Keyboard\Keyboard.cpp
+.\objects-debug\keyboard.o: .\src\defines.h
+.\objects-debug\keyboard.o: .\src\Keyboard/BufferButtons.h
+.\objects-debug\keyboard.o: .\src\Keyboard/Keyboard.h
+.\objects-debug\keyboard.o: .\src\Menu/Menu.h
+.\objects-debug\keyboard.o: .\src\Menu/MenuItems.h
+.\objects-debug\keyboard.o: .\src\Display/Display.h
+.\objects-debug\keyboard.o: .\src\Display/Colors.h
+.\objects-debug\keyboard.o: .\src\Utils/Text/String.h
+.\objects-debug\keyboard.o: .\src\Menu/MenuItemsDefs.h
+.\objects-debug\keyboard.o: .\src\Utils/CommonFunctions.h

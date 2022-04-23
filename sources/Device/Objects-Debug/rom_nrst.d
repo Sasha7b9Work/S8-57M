@@ -1,0 +1,10 @@
+.\objects-debug\rom_nrst.o: src\Hardware\Memory\ROM_NRST.cpp
+.\objects-debug\rom_nrst.o: .\src\defines.h
+.\objects-debug\rom_nrst.o: .\src\Hardware/HAL/HAL.h
+.\objects-debug\rom_nrst.o: .\src\Hardware/Memory/Sector.h
+.\objects-debug\rom_nrst.o: .\src\Hardware/Memory/ROM.h
+.\objects-debug\rom_nrst.o: .\src\Utils/Text/String.h
+.\objects-debug\rom_nrst.o: .\src\Display/Colors.h
+.\objects-debug\rom_nrst.o: .\src\Osci/DeviceSettings.h
+.\objects-debug\rom_nrst.o: .\src\Osci/ParametersOsci.h
+.\objects-debug\rom_nrst.o: .\src\Settings/SettingsNRST.h

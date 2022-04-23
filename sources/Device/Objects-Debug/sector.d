@@ -1,0 +1,9 @@
+.\objects-debug\sector.o: src\Hardware\Memory\Sector.cpp
+.\objects-debug\sector.o: .\src\defines.h
+.\objects-debug\sector.o: .\src\Hardware/HAL/HAL.h
+.\objects-debug\sector.o: .\src\Hardware/Memory/Sector.h
+.\objects-debug\sector.o: .\src\Hardware/Memory/ROM.h
+.\objects-debug\sector.o: .\src\Utils/Text/String.h
+.\objects-debug\sector.o: .\src\Display/Colors.h
+.\objects-debug\sector.o: .\src\Osci/DeviceSettings.h
+.\objects-debug\sector.o: .\src\Osci/ParametersOsci.h

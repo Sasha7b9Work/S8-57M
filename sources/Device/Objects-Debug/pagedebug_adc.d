@@ -1,0 +1,12 @@
+.\objects-debug\pagedebug_adc.o: src\Menu\Pages\PageService\PageDebug\PageDebug_ADC.cpp
+.\objects-debug\pagedebug_adc.o: .\src\defines.h
+.\objects-debug\pagedebug_adc.o: .\src\Menu/Pages/Include/DebugPage.h
+.\objects-debug\pagedebug_adc.o: .\src\Menu/MenuItems.h
+.\objects-debug\pagedebug_adc.o: .\src\Display/Display.h
+.\objects-debug\pagedebug_adc.o: .\src\Keyboard/Keyboard.h
+.\objects-debug\pagedebug_adc.o: .\src\Display/Colors.h
+.\objects-debug\pagedebug_adc.o: .\src\Utils/Text/String.h
+.\objects-debug\pagedebug_adc.o: .\src\Menu/MenuItemsDefs.h
+.\objects-debug\pagedebug_adc.o: .\src\Utils/CommonFunctions.h
+.\objects-debug\pagedebug_adc.o: .\src\Settings/SettingsNRST.h
+.\objects-debug\pagedebug_adc.o: .\src\Osci/ParametersOsci.h

@@ -1,0 +1,12 @@
+.\objects-debug\primitives.o: src\Display\Primitives.cpp
+.\objects-debug\primitives.o: .\src\defines.h
+.\objects-debug\primitives.o: src\Display\Primitives.h
+.\objects-debug\primitives.o: .\src\Utils/Text/String.h
+.\objects-debug\primitives.o: .\src\Display/Colors.h
+.\objects-debug\primitives.o: .\src\Display/Symbols.h
+.\objects-debug\primitives.o: ..\common/Display/Font/Font_d.h
+.\objects-debug\primitives.o: .\src\Utils/Math/Math.h
+.\objects-debug\primitives.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\cmath
+.\objects-debug\primitives.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects-debug\primitives.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\cstring
+.\objects-debug\primitives.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
