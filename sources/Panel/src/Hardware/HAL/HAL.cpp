@@ -3,6 +3,12 @@
 #include "Hardware/HAL/HAL.h"
 
 
+namespace HAL
+{
+    static void SystemClockConfig();
+}
+
+
 void HAL_MspInit()
 {
     HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
@@ -25,7 +31,29 @@ void HAL_MspInit()
 }
 
 
-static void SystemClockConfig()
+void HAL::Init()
+{
+    SystemClockConfig();
+
+    HAL_Init();
+
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOB_CLK_ENABLE();
+    __HAL_RCC_GPIOC_CLK_ENABLE();
+    __HAL_RCC_GPIOD_CLK_ENABLE();
+    __HAL_RCC_GPIOE_CLK_ENABLE();
+
+    __HAL_RCC_DMA2D_CLK_ENABLE();
+    __HAL_RCC_LTDC_CLK_ENABLE();
+    __HAL_RCC_TIM4_CLK_ENABLE();
+
+    HAL_BUS::Init();
+
+    HAL_LTDC::Init();
+}
+
+
+void HAL::SystemClockConfig()
 {
     RCC_OscInitTypeDef RCC_OscInitStruct;
     RCC_ClkInitTypeDef RCC_ClkInitStruct;
@@ -78,6 +106,7 @@ static void SystemClockConfig()
     PeriphClkInitStruct.PLLSAI.PLLSAIN = 100;
     PeriphClkInitStruct.PLLSAI.PLLSAIR = 2;
     PeriphClkInitStruct.PLLSAIDivR = RCC_PLLSAIDIVR_2;
+
     if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
     {
         ERROR_HANDLER();
@@ -94,29 +123,6 @@ static void SystemClockConfig()
     /* SysTick_IRQn interrupt configuration */
     HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 }
-
-
-void HAL::Init()
-{
-    SystemClockConfig();
-
-    HAL_Init();
-
-    __HAL_RCC_GPIOA_CLK_ENABLE();
-    __HAL_RCC_GPIOB_CLK_ENABLE();
-    __HAL_RCC_GPIOC_CLK_ENABLE();
-    __HAL_RCC_GPIOD_CLK_ENABLE();
-    __HAL_RCC_GPIOE_CLK_ENABLE();
-
-    __HAL_RCC_DMA2D_CLK_ENABLE();
-    __HAL_RCC_LTDC_CLK_ENABLE();
-    __HAL_RCC_TIM4_CLK_ENABLE();
-
-    HAL_BUS::Init();
-
-    HAL_LTDC::Init();
-}
-
 
 
 void HAL::ErrorHandler(const char *, int)

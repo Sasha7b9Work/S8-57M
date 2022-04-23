@@ -2,13 +2,17 @@
 #pragma once
 
 
-#define ERROR_HANDLER()  ::HAL::ErrorHandler(__FILE__, __LINE__)
+#ifdef DEBUG
+    #define ERROR_HANDLER()  ::HAL::ErrorHandler(__FILE__, __LINE__)
+#else
+    #define ERROR_HANDLER()
+#endif
 
 
-struct HAL
+namespace HAL
 {
-    static void Init();
-    static void ErrorHandler(const char *, int);
+    void Init();
+    void ErrorHandler(const char *, int);
 };
 
 
