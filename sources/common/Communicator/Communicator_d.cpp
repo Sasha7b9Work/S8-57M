@@ -1,5 +1,4 @@
 #include "defines.h"
-#include "Decoder_d.h"
 #ifdef DEVICE
 #include "Menu/Menu.h"
 #endif
@@ -7,6 +6,7 @@
 #include "Display/Painter.h"
 #include "Keyboard/BufferButtons.h"
 #include "common/Communicator/Message_.h"
+#include "common/Communicator/Communicator_.h"
 #include <cstdlib>
 
 
@@ -32,11 +32,11 @@ namespace DDecoder
 }
 
 
-void DDecoder::AddData(uint8 data)
+void DDecoder::AddData(uint data)
 {
     if (pointer < SIZE_BUFFER)
     {
-        buffer[pointer++] = data;
+        buffer[pointer++] = (uint8)data;
     }
 }
 

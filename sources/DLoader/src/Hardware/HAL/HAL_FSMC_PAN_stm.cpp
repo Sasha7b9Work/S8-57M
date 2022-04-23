@@ -2,7 +2,7 @@
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Hardware/HAL/HAL_PIO.h"
-#include "common/Communicator/Decoder_d.h"
+#include "common/Communicator/Communicator_.h"
 #include <stm32f4xx_hal.h>
 
 

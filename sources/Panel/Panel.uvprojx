@@ -1276,14 +1276,14 @@
               <FilePath>..\common\Communicator\Message_.h</FilePath>
             </File>
             <File>
-              <FileName>Decoder_p.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Communicator\Decoder_p.cpp</FilePath>
+              <FileName>Communicator_.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Communicator\Communicator_.h</FilePath>
             </File>
             <File>
-              <FileName>Decoder_p.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Communicator\Decoder_p.h</FilePath>
+              <FileName>Communicator_p.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Communicator\Communicator_p.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -2679,14 +2679,14 @@
               <FilePath>..\common\Communicator\Message_.h</FilePath>
             </File>
             <File>
-              <FileName>Decoder_p.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Communicator\Decoder_p.cpp</FilePath>
+              <FileName>Communicator_.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Communicator\Communicator_.h</FilePath>
             </File>
             <File>
-              <FileName>Decoder_p.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Communicator\Decoder_p.h</FilePath>
+              <FileName>Communicator_p.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Communicator\Communicator_p.cpp</FilePath>
             </File>
           </Files>
         </Group>

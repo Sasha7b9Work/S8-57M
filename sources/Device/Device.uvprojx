@@ -1275,19 +1275,19 @@
           <GroupName>Communicator</GroupName>
           <Files>
             <File>
-              <FileName>Decoder_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Communicator\Decoder_d.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Decoder_d.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Communicator\Decoder_d.h</FilePath>
-            </File>
-            <File>
               <FileName>Message_.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Communicator\Message_.h</FilePath>
+            </File>
+            <File>
+              <FileName>Communicator_.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Communicator\Communicator_.h</FilePath>
+            </File>
+            <File>
+              <FileName>Communicator_d.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Communicator\Communicator_d.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -3747,19 +3747,19 @@
           <GroupName>Communicator</GroupName>
           <Files>
             <File>
-              <FileName>Decoder_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Communicator\Decoder_d.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Decoder_d.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Communicator\Decoder_d.h</FilePath>
-            </File>
-            <File>
               <FileName>Message_.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Communicator\Message_.h</FilePath>
+            </File>
+            <File>
+              <FileName>Communicator_.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Communicator\Communicator_.h</FilePath>
+            </File>
+            <File>
+              <FileName>Communicator_d.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Communicator\Communicator_d.cpp</FilePath>
             </File>
           </Files>
         </Group>

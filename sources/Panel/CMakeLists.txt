@@ -26,9 +26,9 @@ add_compile_options(/wd26812)   #The enum type %type% is unscoped. Prefer 'enum 
 file(GLOB LIBS_HAL        ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.*
                           ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.*)
 file(GLOB SRC             src/*.h src/*.cpp)
-file(GLOB COMMUNICATOR    ../common/Communicator/Command_.h
-                          ../common/Communicator/Message_.h
-                          ../common/Communicator/Decoder_p.*)
+file(GLOB COMMUNICATOR    ../common/Communicator/Message_.h
+                          ../common/Communicator/Communicator_.h
+                          ../common/Communicator/Communicator_p.cpp)
 file(GLOB DISPLAY         src/Display/*.h src/Display/*.cpp)
 file(GLOB DISPLAY_FONT    src/Display/Font/*.*)
 file(GLOB HARDWARE        src/Hardware/*.h src/Hardware/*.cpp)

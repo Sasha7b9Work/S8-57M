@@ -15,7 +15,7 @@
 #include "SCPI/SCPI.h"
 #include "Settings/SettingsNRST.h"
 #include "FDrive/FDrive.h"
-#include "common/Communicator/Decoder_d.h"
+#include "common/Communicator/Communicator_.h"
 #include <cstdlib>
 
 

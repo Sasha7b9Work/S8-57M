@@ -4,7 +4,7 @@
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Queue.h"
-#include "common/Communicator/Decoder_p.h"
+#include "common/Communicator/Communicator_.h"
 #include <stm32f4xx_hal.h>
 
 
@@ -148,7 +148,7 @@ void HAL_BUS::Update()
             //pinReady.SetPassive();
             GPIOC->BSRR = GPIO_PIN_14;
 
-            PDecoder::AddData(data);        // \todo Сейчас недостаток - пока не отработает PDecoder::AddData(), устройство не пойдёт дальше
+            DDecoder::AddData(data);        // \todo Сейчас недостаток - пока не отработает PDecoder::AddData(), устройство не пойдёт дальше
 
             //while(pinCS.IsActive()) {};
             //while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == GPIO_PIN_RESET) { }

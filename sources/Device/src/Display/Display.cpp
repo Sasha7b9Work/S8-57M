@@ -12,7 +12,7 @@
 #include "Osci/Display/DisplayOsci.h"
 #include "Recorder/DisplayRecorder.h"
 #include "Utils/Containers/Values.h"
-#include "common/Communicator/Decoder_d.h"
+#include "common/Communicator/Communicator_.h"
 #include <cstring>
 
 

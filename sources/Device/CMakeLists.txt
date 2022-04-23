@@ -75,9 +75,9 @@ file(GLOB HARDWARE_MEMORY                  src/Hardware/Memory/*)
 file(GLOB HARDWARE_USBD                    src/Hardware/USBD/*)
 file(GLOB HARDWARE_USBH                    src/Hardware/USBH/*)
 file(GLOB DOC                              ../doc/*)
-file(GLOB COMMUNICATOR               ../common/Communicator/Command_.h
-                                     ../common/Communicator/Message_.h
-                                     ../common/Communicator/Decoder_d.*)
+file(GLOB COMMUNICATOR               ../common/Communicator/Message_.h
+                                     ../common/Communicator/Communicator_.h
+                                     ../common/Communicator/Communicator_d.cpp)
 file(GLOB SRC                              src/*.h src/*.cpp)
 file(GLOB DISPLAY                          src/Display/*.h src/Display/*.cpp)
 file(GLOB DISPLAY_FONT                     ../common/Display/Font/*)

@@ -51,9 +51,9 @@ file(GLOB LIBS_USBH          ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_US
                              ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc_scsi.h
                              ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_scsi.c)
 file(GLOB SRC                src/*.h src/*.cpp)
-file(GLOB COMMUNICATOR       ../common/Communicator/Command_.h
-                             ../common/Communicator/Message_.h
-                             ../common/Communicator/Decoder_d.*)
+file(GLOB COMMUNICATOR       ../common/Communicator/Message_.h
+                             ../common/Communicator/Communicator_.h
+                             ../common/Communicator/Communicator_d.cpp)
 file(GLOB DISPLAY            src/Display/*)
 file(GLOB DISPLAY_FONT       ../common/Display/Font/Font_d.h
                              ../common/Display/Font/Font_d.cpp

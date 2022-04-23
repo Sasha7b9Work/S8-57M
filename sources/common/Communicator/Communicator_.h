@@ -6,7 +6,7 @@ typedef bool(*pFuncBU8)(uint8);
 
 namespace DDecoder
 {
-    void AddData(uint8 data);
+    void AddData(uint data);
 
     // Возвращает true, если была обработка
     bool Update();
