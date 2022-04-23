@@ -1,20 +1,21 @@
 #pragma once
+#include "Log.h"
 #include <cstring>
 
 
-template<class T, int size_buffer>
+template<class T, int capacity>
 class Buffer
 {
 public:
 
-    Buffer() : size(size_buffer), MAX_SIZE(size_buffer) {};
+    Buffer() : size(capacity) {};
 
-    Buffer(int _size) : size(size_buffer), MAX_SIZE(size_buffer)
+    Buffer(int _size) : size(capacity)
     {
         Realloc(_size);
     }
 
-    Buffer(int _size, T value) : size(size_buffer), MAX_SIZE(size_buffer)
+    Buffer(int _size, T value) : size(capacity)
     {
         Realloc(_size);
         Fill(value);
@@ -28,9 +29,9 @@ public:
         }
     }
 
-    T *Data() { return buffer; }
+    T *First() { return buffer; }
 
-    const T *DataConst() const { return buffer; }
+    const T *First() const { return buffer; }
 
     T *Last()
     {
@@ -41,10 +42,10 @@ public:
     {
         size = _size;
 
-        if (size > MAX_SIZE)
+        if (size > capacity)
         {
-            LOG_ERROR("%s:%d : Very small buffer %d, need %d", __FILE__, __LINE__, MAX_SIZE, size);
-            size = MAX_SIZE;
+            LOG_ERROR("%s:%d : Very small buffer %d, need %d", __FILE__, __LINE__, capacity, size);
+            size = capacity;
         }
     }
 
@@ -63,10 +64,10 @@ public:
     {
         size = _size;
 
-        if (size > MAX_SIZE)
+        if (size > capacity)
         {
-            LOG_ERROR("%s:%d : Very small buffer %d, need %d", __FILE__, __LINE__, MAX_SIZE, size);
-            size = MAX_SIZE;
+            LOG_ERROR("%s:%d : Very small buffer %d, need %d", __FILE__, __LINE__, capacity, size);
+            size = capacity;
         }
 
         for (int i = 0; i < size; i++)
@@ -80,7 +81,7 @@ public:
     {
         if (_size > Size())
         {
-            LOG_ERROR("%s:%d : Very small buffer %d, need %d", __FILE__, __LINE__, MAX_SIZE, _size);
+            LOG_ERROR("%s:%d : Very small buffer %d, need %d", __FILE__, __LINE__, capacity, _size);
             _size = Size();
         }
 
@@ -98,10 +99,10 @@ public:
 
     int Capacity() const
     {
-        return size_buffer;
+        return capacity;
     }
 
-    void Append(const void *data, int _size)
+    void Append(const T *data, int _size)
     {
         if (Size() + _size > Capacity())
         {
@@ -109,8 +110,16 @@ public:
         }
         else
         {
-            std::memcpy(&buffer[size], data, (uint)_size);
+            std::memcpy(&buffer[size], data, (uint)(_size * sizeof(T)));
             size += _size;
+        }
+    }
+
+    void Append(T data)
+    {
+        if (Size() < capacity)
+        {
+            buffer[size++] = data;
         }
     }
 
@@ -142,9 +151,7 @@ protected:
 
     int size;
 
-    const int MAX_SIZE;
-
-    T buffer[size_buffer];
+    T buffer[capacity];
 };
 
 
