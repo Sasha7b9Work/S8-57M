@@ -11,9 +11,7 @@ struct Painter
 {
 
 
-    // \brief Рисует прерывистую горизонтальную линию. dFill - длина штриха, dEmpty - расст. между штрихами. Линия всегда начинается со штриха. 
-    // dStart указывает смещение первой рисуемой точки относительно начала штриха.
-    static void DrawDashedHLine(int y, int x0, int x1, int dFill, int dEmpty, int dStart);
+
 
     static uint ReduceBrightness(uint colorValue, float newBrightness);
 

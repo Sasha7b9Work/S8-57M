@@ -32,6 +32,10 @@ namespace MemPainter
 
     void DrawDashedVLine(int x, int y0, int y1, int dFill, int dEmpty, int dStart);
 
+    // Рисует прерывистую горизонтальную линию. dFill - длина штриха, dEmpty - расст. между штрихами. Линия всегда начинается со штриха. 
+    // dStart указывает смещение первой рисуемой точки относительно начала штриха.
+    void DrawDashedHLine(int y, int x0, int x1, int dFill, int dEmpty, int dStart);
+
     // Нарисовать данные тестер-компонента. В младшем бите - линиями или точками рисовать. В старшей тетраде - количество усреднений
     void DrawTesterData(uint8 mode, Color color, const uint16 x[TESTER_NUM_POINTS], const uint8 y[TESTER_NUM_POINTS]);
 }

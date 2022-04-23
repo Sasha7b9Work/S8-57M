@@ -277,3 +277,28 @@ void MemPainter::DrawTesterData(uint8 mode, Color color, const uint16 _x[TESTER_
         }
     }
 }
+
+
+void MemPainter::DrawDashedHLine(int y, int x1, int x2, int deltaFill, int deltaEmpty, int deltaStart)
+{
+    if (deltaStart < 0 || deltaStart >= (deltaFill + deltaEmpty))
+    {
+        //        LOG_ERROR_TRACE("Неправильный аргумент deltaStart = %d", deltaStart);
+        return;
+    }
+    int x = x1;
+    if (deltaStart != 0)                // Если линию нужно рисовать не с начала штриха
+    {
+        x += (deltaFill + deltaEmpty - deltaStart);
+        if (deltaStart < deltaFill)     // Если начало линии приходится на штрих
+        {
+            MemPainter::DrawHLine(y, x1, x - 1);
+        }
+    }
+
+    while (x < x2)
+    {
+        MemPainter::DrawHLine(y, x, x + deltaFill - 1);
+        x += (deltaFill + deltaEmpty);
+    }
+}
