@@ -7,21 +7,24 @@
 #include "common/Communicator/Communicator_.h"
 
 
-typedef bool(*pFuncBU)(uint);
-// Выполняемая функция
-static pFuncBU curFunc;
-// Текущий байт выполняемой функции
-static int step = 0;
+namespace Communicator
+{
+    typedef bool(*pFuncBU)(uint);
+    // Выполняемая функция
+    static pFuncBU curFunc;
+    // Текущий байт выполняемой функции
+    static int step = 0;
 
 
-static bool E(uint) { return true; }
+    static bool E(uint) { return true; }
 
-static bool InButtonPress(uint);
+    static bool InButtonPress(uint);
 
-static bool DisplayBrightness(uint);
+    static bool DisplayBrightness(uint);
 
-// Эту функцию надо вызывать после выполнения последнего шага
-static void FinishCommand();
+    // Эту функцию надо вызывать после выполнения последнего шага
+    static void FinishCommand();
+}
 
 
 void Communicator::AddData(uint data)
@@ -65,7 +68,7 @@ void Communicator::AddData(uint data)
 }
 
 
-static bool InButtonPress(uint)
+bool Communicator::InButtonPress(uint)
 {
     if (step == 0)
     {
@@ -82,7 +85,7 @@ static bool InButtonPress(uint)
 }
 
 
-static bool DisplayBrightness(uint data)
+bool Communicator::DisplayBrightness(uint data)
 {
     if (step == 0)
     {
@@ -97,7 +100,7 @@ static bool DisplayBrightness(uint data)
 }
 
 
-static void FinishCommand()
+void Communicator::FinishCommand()
 {
     step = 0;
     curFunc = 0;
