@@ -9,8 +9,12 @@ namespace HAL
 }
 
 
-void HAL_MspInit()
+void HAL::Init()
 {
+    SystemClockConfig();
+
+    HAL_Init();
+
     HAL_NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4);
 
     /* System interrupt init*/
@@ -28,14 +32,6 @@ void HAL_MspInit()
     HAL_NVIC_SetPriority(PendSV_IRQn, 0, 0);
     /* SysTick_IRQn interrupt configuration */
     HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
-}
-
-
-void HAL::Init()
-{
-    SystemClockConfig();
-
-    HAL_Init();
 
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
