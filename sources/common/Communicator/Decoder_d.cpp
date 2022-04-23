@@ -6,6 +6,7 @@
 #include "Display/Display.h"
 #include "Display/Painter.h"
 #include "Keyboard/BufferButtons.h"
+#include "common/Communicator/Message_.h"
 #include <cstdlib>
 
 

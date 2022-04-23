@@ -782,21 +782,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>common</GroupName>
-          <Files>
-            <File>
-              <FileName>Decoder_d.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Decoder_d.h</FilePath>
-            </File>
-            <File>
-              <FileName>Decoder_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Decoder_d.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>Display</GroupName>
           <Files>
             <File>
@@ -943,6 +928,26 @@
               <FileName>String.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Utils\String.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Communicator</GroupName>
+          <Files>
+            <File>
+              <FileName>Decoder_d.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Communicator\Decoder_d.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Decoder_d.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Communicator\Decoder_d.h</FilePath>
+            </File>
+            <File>
+              <FileName>Message_.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Communicator\Message_.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1724,21 +1729,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>common</GroupName>
-          <Files>
-            <File>
-              <FileName>Decoder_d.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Decoder_d.h</FilePath>
-            </File>
-            <File>
-              <FileName>Decoder_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Decoder_d.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>Display</GroupName>
           <Files>
             <File>
@@ -1885,6 +1875,26 @@
               <FileName>String.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Utils\String.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Communicator</GroupName>
+          <Files>
+            <File>
+              <FileName>Decoder_d.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Communicator\Decoder_d.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Decoder_d.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Communicator\Decoder_d.h</FilePath>
+            </File>
+            <File>
+              <FileName>Message_.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Communicator\Message_.h</FilePath>
             </File>
           </Files>
         </Group>

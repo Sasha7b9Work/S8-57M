@@ -281,7 +281,7 @@
         <LExpSel>0</LExpSel>
       </OPTXL>
       <OPTFL>
-        <tvExp>1</tvExp>
+        <tvExp>0</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
         <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>
@@ -1078,8 +1078,8 @@
   </Group>
 
   <Group>
-    <GroupName>common</GroupName>
-    <tvExp>1</tvExp>
+    <GroupName>Communicator</GroupName>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1090,32 +1090,32 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Command.h</PathWithFileName>
-      <FilenameWithoutPath>Command.h</FilenameWithoutPath>
+      <PathWithFileName>..\common\Communicator\Message_.h</PathWithFileName>
+      <FilenameWithoutPath>Message_.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
       <FileNumber>52</FileNumber>
-      <FileType>5</FileType>
+      <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Decoder_p.h</PathWithFileName>
-      <FilenameWithoutPath>Decoder_p.h</FilenameWithoutPath>
+      <PathWithFileName>..\common\Communicator\Decoder_p.cpp</PathWithFileName>
+      <FilenameWithoutPath>Decoder_p.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
       <FileNumber>53</FileNumber>
-      <FileType>8</FileType>
+      <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Decoder_p.cpp</PathWithFileName>
-      <FilenameWithoutPath>Decoder_p.cpp</FilenameWithoutPath>
+      <PathWithFileName>..\common\Communicator\Decoder_p.h</PathWithFileName>
+      <FilenameWithoutPath>Decoder_p.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

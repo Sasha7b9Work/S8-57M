@@ -6,7 +6,7 @@
   <Header>### uVision Project, (C) Keil Software</Header>
 
   <PrjGuiSettings>
-    <LastAddFilePath></LastAddFilePath>
+    <LastAddFilePath>D:\My\GitHub\_work\S8-57M\sources\common\Communicator</LastAddFilePath>
   </PrjGuiSettings>
 
   <ViewPool/>
@@ -15,7 +15,7 @@
     <View>
       <WinId>38003</WinId>
       <ViewName>Registers</ViewName>
-      <TableColWidths>158 144</TableColWidths>
+      <TableColWidths>188 114</TableColWidths>
     </View>
     <View>
       <WinId>346</WinId>
