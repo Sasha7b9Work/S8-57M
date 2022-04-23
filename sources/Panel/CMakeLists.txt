@@ -25,9 +25,6 @@ add_compile_options(/wd26812)   #The enum type %type% is unscoped. Prefer 'enum 
 
 file(GLOB LIBS_HAL        ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.*
                           ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.*)
-file(GLOB COMMON          ../common/Command.h
-                          ../common/Decoder_p.*
-                          ../common/Message.*)
 file(GLOB SRC             src/*.h src/*.cpp)
 file(GLOB COMMUNICATOR    ../common/Communicator/Command_.h
                           ../common/Communicator/Message_.h
@@ -46,7 +43,6 @@ file(GLOB VS_CMSIS        ../common/_VS/CMSIS/*)
 set_source_files_properties(${LIBS_HAL} PROPERTIES HEADER_FILE_ONLY TRUE)
 
 source_group(libs\\HAL         FILES ${LIBS_HAL})
-source_group(common            FILES ${COMMON})
 source_group(src               FILES ${SRC})
 source_group(Communicator      FILES ${COMMUNICATOR})
 source_group(Display           FILES ${DISPLAY})
@@ -60,6 +56,6 @@ source_group(_VS               FILES ${VS})
 source_group(_VS\\std_includes FILES ${VS_STD_INCLUDES})
 source_group(_VS\\CMSIS        FILES ${VS_CMSIS})
 
-add_library(Panel ${LIBS_HAL} ${COMMON} ${SRC} ${COMMUNICATOR} ${DISPLAY} ${DISPLAY_FONT} ${HARDWARE} ${HARDWARE_CMSIS} ${HARDWARE_HAL}
+add_library(Panel ${LIBS_HAL} ${SRC} ${COMMUNICATOR} ${DISPLAY} ${DISPLAY_FONT} ${HARDWARE} ${HARDWARE_CMSIS} ${HARDWARE_HAL}
                   ${SETTINGS} ${UTILS} ${VS} ${VS_STD_INCLUDES} ${VS_CMSIS}
 )

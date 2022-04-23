@@ -34,34 +34,8 @@ file(GLOB LIBS_FATFS         ../common/libs/STM32Cube_F4/Middlewares/Third_Party
                              ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/ff_gen_drv.*
                              ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/option/ccsbcs.c
                              ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/option/syscall.c)
-file(GLOB LIBS_HAL           ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hcd.h
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_hcd.c
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sram.c
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fmc.h
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fmc.c
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
-                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c)
+file(GLOB LIBS_HAL           ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.*
+                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.*)
 file(GLOB LIBS_USBH          ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h
                              ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_core.c
                              ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h
@@ -77,9 +51,9 @@ file(GLOB LIBS_USBH          ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_US
                              ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc_scsi.h
                              ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_scsi.c)
 file(GLOB SRC                src/*.h src/*.cpp)
-file(GLOB COMMON             ../common/Command.h
-                             ../common/Decoder_d.h
-                             ../common/Decoder_d.cpp)
+file(GLOB COMMUNICATOR       ../common/Communicator/Command_.h
+                             ../common/Communicator/Message_.h
+                             ../common/Communicator/Decoder_d.*)
 file(GLOB DISPLAY            src/Display/*)
 file(GLOB DISPLAY_FONT       ../common/Display/Font/Font_d.h
                              ../common/Display/Font/Font_d.cpp
@@ -101,7 +75,7 @@ source_group(libs\\FatFS     FILES ${LIBS_FATFS})
 source_group(libs\\HAL       FILES ${LIBS_HAL})
 source_group(libs\\USBH      FILES ${LIBS_USBH})
 source_group(src             FILES ${SRC})
-source_group(commmon         FILES ${COMMON})
+source_group(Communicator    FILES ${COMMUNICATOR})
 source_group(Display         FILES ${DISPLAY})
 source_group(Display\\Font   FILES ${DISPLAY_FONT})
 source_group(FDrive          FILES ${FDRIVE})
@@ -114,5 +88,5 @@ source_group(Hardware\\USBH  FILES ${HARDWARE_USBH})
 source_group(Keyboard        FILES ${KEYBOARD})
 source_group(Utils           FILES ${UTILS})
 
-add_library(DLoader ${LIBS_FATFS} ${LIBS_HAL} ${LIBS_USBH} ${SRC} ${COMMON} ${DISPLAY} ${DISPLAY_FONT} ${FDRIVE} ${HARDWARE} ${HARDWARE_CMSIS}
+add_library(DLoader ${LIBS_FATFS} ${LIBS_HAL} ${LIBS_USBH} ${SRC} ${COMMUNICATOR} ${DISPLAY} ${DISPLAY_FONT} ${FDRIVE} ${HARDWARE} ${HARDWARE_CMSIS}
                     ${HARDWARE_FATFS} ${HARDWARE_HAL} ${HARDWARE_STM32} ${HARDWARE_USBH} ${KEYBOARD} ${UTILS})

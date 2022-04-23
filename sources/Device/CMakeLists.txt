@@ -40,8 +40,8 @@ file(GLOB LIBS_FATFS                       ../common/libs/STM32Cube_F4/Middlewar
                                            ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/option/ccsbcs.c
                                            ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/option/syscall.c)
 
-file(GLOB LIBS_HAL                         ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.*
-                                           ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.*)
+file(GLOB LIBS_HAL                         ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.*
+                                           ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.*)
 
 file(GLOB LIBS_USBD                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
                                            ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c
@@ -75,12 +75,9 @@ file(GLOB HARDWARE_MEMORY                  src/Hardware/Memory/*)
 file(GLOB HARDWARE_USBD                    src/Hardware/USBD/*)
 file(GLOB HARDWARE_USBH                    src/Hardware/USBH/*)
 file(GLOB DOC                              ../doc/*)
-file(GLOB COMMON                           ../common/Command.h
-                                           ../common/common_defines.h
-                                           ../common/Decoder_d.h
-                                           ../common/Decoder_d.cpp
-                                           ../common/Message.h
-                                           ../common/Message.cpp)
+file(GLOB COMMUNICATOR               ../common/Communicator/Command_.h
+                                     ../common/Communicator/Message_.h
+                                     ../common/Communicator/Decoder_d.*)
 file(GLOB SRC                              src/*.h src/*.cpp)
 file(GLOB DISPLAY                          src/Display/*.h src/Display/*.cpp)
 file(GLOB DISPLAY_FONT                     ../common/Display/Font/*)
@@ -122,6 +119,7 @@ source_group(doc                                FILES ${DOC})
 source_group(_VS                                FILES ${VS})
 source_group(_VS/std_includes                   FILES ${VS_STD_INCLUDES})
 source_group(src                                FILES ${SRC})
+source_group(Communicator                       FILES ${COMMUNICATOR})
 source_group(Display                            FILES ${DISPLAY})
 source_group(Display/Font                       FILES ${DISPLAY_FONT})
 source_group(FDrive                             FILES ${FDRIVE})
@@ -165,7 +163,8 @@ source_group(Utils/Containers                   FILES ${UTILS_CONTAINERS})
 source_group(Utils/Math                         FILES ${UTILS_MATH})
 source_group(Utils/Text                         FILES ${UTILS_TEXT})
 
-add_library(${PROJECT_NAME} ${COMMON} ${DOC} ${VS} ${VS_STD_INCLUDES} ${SRC} ${DISPLAY} ${DISPLAY_FONT} ${FDRIVE}
+add_library(${PROJECT_NAME} ${COMMON} ${DOC} ${VS} ${VS_STD_INCLUDES} ${SRC}
+                            ${COMMUNICATOR} ${DISPLAY} ${DISPLAY_FONT} ${FDRIVE}
                             ${FPGA} ${FREQMETER} ${HARDWARE} ${HARDWARE_CMSIS} ${HARDWARE_HAL} ${HARDWARE_MEMORY}
                             ${HARDWARE_USBD} ${HARDWARE_USBH} ${LIBS_FATFS} ${LIBS_HAL} ${LIBS_USBD} ${LIBS_USBH}
                             ${KEYBOARD} ${MENU} ${MENU_PAGES} ${MENU_PAGES_INCLUDE} ${MENU_PAGES_PAGEDISPLAY}
