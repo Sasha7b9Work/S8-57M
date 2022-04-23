@@ -5,7 +5,6 @@
 #include "Hardware/HAL/HAL.h"
 #include "Display/Colors.h"
 #include "Display/Font/Font_p.h"
-#include "Display/Painter_common.h"
 #include "Display/AveragerTester.h"
 #include <cstring>
 #include <cmath>

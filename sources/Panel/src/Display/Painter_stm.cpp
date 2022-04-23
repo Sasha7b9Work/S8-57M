@@ -4,7 +4,6 @@
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Math.h"
 #include "Display/MemPainter.h"
-#include "Painter_common.h"
 #include <cstring>
 #include <cmath>
 
