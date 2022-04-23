@@ -4,6 +4,7 @@
 #include "Hardware/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
 #include "Display/MemPainter.h"
+#include "common/Communicator/Communicator_.h"
 #include <cstdlib>
 
 
@@ -24,6 +25,8 @@ int main()
             Keyboard::Update();
             prevTime = TIME_MS;
         }
+
+        Communicator::Panel::Update();
 
         MemPainter::BeginPaint(0, 0, 640, 480);
 

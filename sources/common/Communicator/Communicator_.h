@@ -8,6 +8,11 @@ namespace Communicator
 {
     void AddData(uint data);
 
+    namespace Panel
+    {
+        void Update();
+    }
+
     namespace Device
     {
         // Возвращает true, если была обработка
