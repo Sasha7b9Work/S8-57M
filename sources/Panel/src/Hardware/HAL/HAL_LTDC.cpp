@@ -1,8 +1,8 @@
 // 2022/04/20 16:52:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Display/Painter.h"
 #include "Hardware/HAL/HAL.h"
 #include "Settings/SettingsTypes.h"
+#include "Display/Colors.h"
 
 
 static LTDC_HandleTypeDef handleLTDC;

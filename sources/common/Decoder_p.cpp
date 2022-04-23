@@ -1,7 +1,6 @@
 // 2022/04/20 16:51:29 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "structs.h"
 #include "Decoder_p.h"
-#include "Display/Painter.h"
 #include "Display/Text.h"
 #include "Hardware/Keyboard.h"
 #include "Hardware/HAL/HAL.h"

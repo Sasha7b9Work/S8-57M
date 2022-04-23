@@ -56,6 +56,8 @@ public:
     void SetAsCurrent() { if (value != COLOR_NUMBER) { current.value = value; } }
     static Color GetCurrent() { return current; }
 
+    static uint ReduceBrightness(uint colorValue, float newBrightness);
+
     enum
     {
         COLOR_BLACK = 0,
