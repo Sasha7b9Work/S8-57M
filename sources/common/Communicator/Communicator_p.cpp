@@ -2,6 +2,12 @@
 #include "common/Communicator/Communicator_.h"
 
 
+namespace Communicator
+{
+
+}
+
+
 void Communicator::AddData(uint)
 {
 

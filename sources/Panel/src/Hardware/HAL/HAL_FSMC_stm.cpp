@@ -88,7 +88,7 @@ namespace HAL_BUS
     // Признак того, что основной МК осуществляет операцию чтения из панели
     static InPin  pinRD(RD);
 
-    static Queue<uint8> queueData;
+    static Queue<uint8, 64> queueData;
 
 
     struct DataBus

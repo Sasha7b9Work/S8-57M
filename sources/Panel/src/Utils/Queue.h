@@ -1,36 +1,70 @@
-// 2022/04/20 16:52:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Utils/Mutex.h"
+#include <cstdlib>
+#include <cstring>
 
 
-template<typename T>
-class Queue
+// Очередь с фиксированым размером, который задаётся при создании объекта
+template<typename T, int capacity>
+struct Queue
 {
-public:
-    Queue();
+    Queue() : pointer(0) { }
 
-    ~Queue();
+    void Clear() { pointer = 0; }
 
-    void Push(T elem);
+    void Push(T elem)
+    {
+        if (pointer < capacity)
+        {
+            buffer[pointer++] = elem;
+        }
+    }
 
-    T Front();
+    int Size() const { return pointer; }
 
-    T Back();
+    int Capacity() const { return capacity; }
 
-    int Size() const;
+    bool Empty() const { return (pointer == 0); }
 
-    bool IsEmpty() const;
+    // Возвращает самый старый положенный элемент
+    T Back()
+    {
+        if (pointer == 0)
+        {
+            return T(0);
+        }
 
-    T &operator[](int n);
+        if (pointer == 1)
+        {
+            pointer = 0;
+            return buffer[0];
+        }
+
+        T result = buffer[0];
+
+        pointer--;
+
+        std::memmove(&buffer[0], &buffer[1], sizeof(T) * pointer);
+
+        return result;
+    }
+
+    // Возвращает самый новый положенный элемент
+    T Front()
+    {
+        if (pointer == 0)
+        {
+            return T(0);
+        }
+
+        return buffer[--pointer];
+    }
+
+    Mutex mutex;
+
 private:
 
-    void Destroy();
-    // Указатель на массив элементов
-    T *pointer;
-    // Индекс первого элемента
-    int iFront;
-    // Индекс элемента за последним
-    int iBack;
-
-    // Размер единократно выделяемой памяти
-    static const int sizeChunk = 128;
+    T buffer[capacity];
+    int pointer;                        // Здесь позиция элемента, в который будет производиться сохранение
 };

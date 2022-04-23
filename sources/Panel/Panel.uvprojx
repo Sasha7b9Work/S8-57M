@@ -1376,19 +1376,9 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>Math.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Math.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Math.h</FileName>
+              <FileName>Buffer.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Utils\Math.h</FilePath>
-            </File>
-            <File>
-              <FileName>Debug.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Debug.cpp</FilePath>
+              <FilePath>.\src\Utils\Buffer.h</FilePath>
             </File>
             <File>
               <FileName>Debug.h</FileName>
@@ -1396,9 +1386,24 @@
               <FilePath>.\src\Utils\Debug.h</FilePath>
             </File>
             <File>
-              <FileName>Queue.cpp</FileName>
+              <FileName>Debug.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Utils\Queue.cpp</FilePath>
+              <FilePath>.\src\Utils\Debug.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Math.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Math.h</FilePath>
+            </File>
+            <File>
+              <FileName>Math.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Math.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Mutex.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Mutex.h</FilePath>
             </File>
             <File>
               <FileName>Queue.h</FileName>
@@ -2779,19 +2784,9 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>Math.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Math.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Math.h</FileName>
+              <FileName>Buffer.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Utils\Math.h</FilePath>
-            </File>
-            <File>
-              <FileName>Debug.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Debug.cpp</FilePath>
+              <FilePath>.\src\Utils\Buffer.h</FilePath>
             </File>
             <File>
               <FileName>Debug.h</FileName>
@@ -2799,9 +2794,24 @@
               <FilePath>.\src\Utils\Debug.h</FilePath>
             </File>
             <File>
-              <FileName>Queue.cpp</FileName>
+              <FileName>Debug.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Utils\Queue.cpp</FilePath>
+              <FilePath>.\src\Utils\Debug.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Math.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Math.h</FilePath>
+            </File>
+            <File>
+              <FileName>Math.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Utils\Math.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Mutex.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Utils\Mutex.h</FilePath>
             </File>
             <File>
               <FileName>Queue.h</FileName>
