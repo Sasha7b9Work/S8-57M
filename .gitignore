@@ -3,12 +3,21 @@
 
 sources/generated/
 sources/ThirdParty/wxWidgets/generated/
+
 sources/Device/Listings/
 sources/Device/Objects/
+sources/Device/Listings-Debug/
+sources/Device/Objects-Debug/
+sources/Device/DebugConfig/
+
 sources/DLoader/Listings/
 sources/DLoader/Objects/
+sources/DLoader/Listings-Debug/
+sources/DLoader/Objects-Debug/
+sources/DLoader/DebugConfig/
+
 sources/Panel/Listings/
 sources/Panel/Objects/
 sources/Panel/Listings-Debug/
 sources/Panel/Objects-Debug/
-sources/Panel/DebugConfig/*
+sources/Panel/DebugConfig/

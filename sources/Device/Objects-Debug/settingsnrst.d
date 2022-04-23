@@ -1,9 +1,0 @@
-.\objects-debug\settingsnrst.o: src\Settings\SettingsNRST.cpp
-.\objects-debug\settingsnrst.o: .\src\defines.h
-.\objects-debug\settingsnrst.o: .\src\Hardware/Memory/ROM.h
-.\objects-debug\settingsnrst.o: .\src\Utils/Text/String.h
-.\objects-debug\settingsnrst.o: .\src\Display/Colors.h
-.\objects-debug\settingsnrst.o: .\src\Settings/SettingsNRST.h
-.\objects-debug\settingsnrst.o: .\src\Osci/ParametersOsci.h
-.\objects-debug\settingsnrst.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\cstring
-.\objects-debug\settingsnrst.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
