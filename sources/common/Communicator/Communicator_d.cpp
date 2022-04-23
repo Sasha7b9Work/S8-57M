@@ -41,7 +41,7 @@ void Communicator::AddData(uint data)
 }
 
 
-bool Communicator::Update()
+bool Communicator::Device::Update()
 {
     bool result = (pointer != 0);
 
@@ -172,13 +172,13 @@ void Communicator::FinishCommand()
 }
 
 
-int Communicator::BytesInBuffer()
+int Communicator::Device::BytesInBuffer()
 {
     return pointer;
 }
 
 
-uint8 *Communicator::Buffer()
+uint8 *Communicator::Device::Buffer()
 {
     return buffer;
 }

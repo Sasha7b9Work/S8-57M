@@ -129,7 +129,7 @@ void Device::Update()
 
     SCPI::Update();
 
-    Communicator::Update();
+    Communicator::Device::Update();
 
     Menu::Update();
 
