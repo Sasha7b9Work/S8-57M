@@ -97,6 +97,11 @@ public:
         return size;
     }
 
+    int Empty()
+    {
+        return Size() == 0;
+    }
+
     int Capacity() const
     {
         return capacity;
@@ -121,6 +126,11 @@ public:
         {
             buffer[size++] = data;
         }
+    }
+
+    void Clear()
+    {
+        size = 0;
     }
 
     T &operator[](uint i)
