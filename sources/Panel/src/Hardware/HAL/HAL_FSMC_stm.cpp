@@ -148,7 +148,7 @@ void HAL_BUS::Update()
             //pinReady.SetPassive();
             GPIOC->BSRR = GPIO_PIN_14;
 
-            DDecoder::AddData(data);        // \todo Сейчас недостаток - пока не отработает PDecoder::AddData(), устройство не пойдёт дальше
+            Communicator::AddData(data);        // \todo Сейчас недостаток - пока не отработает PDecoder::AddData(), устройство не пойдёт дальше
 
             //while(pinCS.IsActive()) {};
             //while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == GPIO_PIN_RESET) { }

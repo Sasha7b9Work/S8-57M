@@ -10,7 +10,7 @@
 #include <cstdlib>
 
 
-namespace DDecoder
+namespace Communicator
 {
     int pointer = 0;
     pFuncBU8 curFunc = nullptr;  // Выполняемая функция
@@ -32,7 +32,7 @@ namespace DDecoder
 }
 
 
-void DDecoder::AddData(uint data)
+void Communicator::AddData(uint data)
 {
     if (pointer < SIZE_BUFFER)
     {
@@ -41,7 +41,7 @@ void DDecoder::AddData(uint data)
 }
 
 
-bool DDecoder::Update()
+bool Communicator::Update()
 {
     bool result = (pointer != 0);
 
@@ -58,13 +58,13 @@ bool DDecoder::Update()
 }
 
 
-bool DDecoder::E(uint8)
+bool Communicator::E(uint8)
 {
     return true;
 }
 
 
-void DDecoder::RunStep(uint8 data)
+void Communicator::RunStep(uint8 data)
 {
     static const struct StructFunc
     {
@@ -112,7 +112,7 @@ void DDecoder::RunStep(uint8 data)
 }
 
 
-bool DDecoder::ButtonPress(uint8 data)
+bool Communicator::ButtonPress(uint8 data)
 {
     static Key::E button;
     if (step == 0)
@@ -133,7 +133,7 @@ bool DDecoder::ButtonPress(uint8 data)
 }
 
 
-bool DDecoder::AddToConsole(uint8 data)
+bool Communicator::AddToConsole(uint8 data)
 {
     static char *text = nullptr;        // Здесь будет храниться принятая строка
 
@@ -165,20 +165,20 @@ bool DDecoder::AddToConsole(uint8 data)
 }
 
 
-void DDecoder::FinishCommand()
+void Communicator::FinishCommand()
 {
     step = 0;
     curFunc = 0;
 }
 
 
-int DDecoder::BytesInBuffer()
+int Communicator::BytesInBuffer()
 {
     return pointer;
 }
 
 
-uint8 *DDecoder::Buffer()
+uint8 *Communicator::Buffer()
 {
     return buffer;
 }

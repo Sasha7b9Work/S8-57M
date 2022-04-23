@@ -121,7 +121,7 @@ bool HAL_BUS::Panel::Receive()
     //                                                 4,5,6,7              2,3                          0,1
     data = static_cast<uint8>((GPIOE->IDR >> 3) & 0xF0 | (GPIOD->IDR << 2) & 0x0C | (GPIOD->IDR >> 14));
 
-    DDecoder::AddData(data);
+    Communicator::AddData(data);
     
 exit:
     

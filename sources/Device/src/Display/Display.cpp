@@ -207,7 +207,7 @@ void Display::Message::Func()
     {
         while (HAL_BUS::Panel::Receive()) {};
 
-        DDecoder::Update();
+        Communicator::Update();
 
         while (!BufferButtons::IsEmpty())
         {

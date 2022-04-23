@@ -24,7 +24,7 @@ static bool DisplayBrightness(uint);
 static void FinishCommand();
 
 
-void DDecoder::AddData(uint data)
+void Communicator::AddData(uint data)
 {
     static const struct StructFunc
     {

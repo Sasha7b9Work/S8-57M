@@ -4,7 +4,7 @@
 typedef bool(*pFuncBU8)(uint8);
 
 
-namespace DDecoder
+namespace Communicator
 {
     void AddData(uint data);
 
