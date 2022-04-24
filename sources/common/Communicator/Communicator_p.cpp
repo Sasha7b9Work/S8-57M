@@ -1,6 +1,7 @@
 #include "defines.h"
 #include "common/Communicator/Communicator_.h"
 #include "Utils/Buffer.h"
+#include <cstring>
 
 
 namespace Communicator
@@ -16,16 +17,44 @@ namespace Communicator
             {
                 return false;
             }
-        }
 
-        bool FindSequence(uint8 *sequency, int size)
-        {
-            if (Size() < size)
+            static const uint8 marker[4] = { 0xff, 0xff, 0xff, 0xff };
+
+            uint8 *seq = FindSequence(marker, 4);
+
+            if (!seq)
             {
                 return false;
             }
 
-            гшт
+            seq += 4;
+
+        }
+
+        // Возвращает адрес первого символа
+        uint8 *FindSequence(const uint8 *sequency, int sz)
+        {
+            if (Size() < sz)
+            {
+                return false;
+            }
+
+            uint8 *byte = First();
+
+            uint8 *last = Last() - sz;
+
+            while (byte < last)
+            {
+                if (*sequency == *byte)
+                {
+                    if (std::strcmp(sequency + 1, byte + 1) == 0)
+                    {
+                        return byte;
+                    }
+                }
+            }
+
+            return nullptr;
         }
     };
 

@@ -38,6 +38,11 @@ public:
         return buffer + Size();
     }
 
+    T *Pointer(int pos)
+    {
+        return buffer + pos;
+    }
+
     void Realloc(int _size)
     {
         size = _size;
