@@ -14,38 +14,6 @@ void HAL_LTDC::Init()
 {
     HAL_DAC2::Init();
 
-    GPIO_InitTypeDef isGPIO =
-    {
-        //  R3         R6
-        GPIO_PIN_0 | GPIO_PIN_1,
-        GPIO_MODE_AF_PP,
-        GPIO_NOPULL,
-        GPIO_SPEED_FREQ_LOW,
-        GPIO_AF9_LTDC
-    };
-    HAL_GPIO_Init(GPIOB, &isGPIO);
-
-    //              B5          VSYNC         G2            R4          R5
-    isGPIO.Pin = GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_6 | GPIO_PIN_11 | GPIO_PIN_12;
-    isGPIO.Alternate = GPIO_AF14_LTDC;
-    HAL_GPIO_Init(GPIOA, &isGPIO);
-
-    //              G4             G5            B6          B7
-    isGPIO.Pin = GPIO_PIN_10 | GPIO_PIN_11 | GPIO_PIN_8 | GPIO_PIN_9;
-    HAL_GPIO_Init(GPIOB, &isGPIO);
-
-    //              HSYNC         G6           R2
-    isGPIO.Pin = GPIO_PIN_6 | GPIO_PIN_7 | GPIO_PIN_10;
-    HAL_GPIO_Init(GPIOC, &isGPIO);
-
-    //                B3          G7          B2
-    isGPIO.Pin = GPIO_PIN_10 | GPIO_PIN_3 | GPIO_PIN_6;
-    HAL_GPIO_Init(GPIOD, &isGPIO);
-
-    //               G3             B4           DE            CLK           R7
-    isGPIO.Pin = GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15;
-    HAL_GPIO_Init(GPIOE, &isGPIO);
-
     GPIO_InitTypeDef initStr;
     initStr.Pin = GPIO_PIN_5;
     initStr.Mode = GPIO_MODE_OUTPUT_PP;

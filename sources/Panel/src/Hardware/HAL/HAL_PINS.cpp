@@ -38,7 +38,35 @@ struct PinLTDC : public Pin
 
 void HAL_PINS::Init()
 {
-    PinLTDC(A, 3).Init();      // B5
+    PinLTDC(A, 4).Init();       // VSYNC
+    PinLTDC(C, 6).Init();       // HSYNC
+    PinLTDC(E, 13).Init();      // DE
+    PinLTDC(E, 14).Init();      // CKL
+
+    PinLTDC(C, 10).Init();      // R2
+    PinLTDC(B, 0).Init();       // R3
+    PinLTDC(A, 11).Init();      // R4
+    PinLTDC(A, 12).Init();      // R5
+    PinLTDC(B, 6).Init();       // R6
+    PinLTDC(E, 15).Init();      // R7
+
+    PinLTDC(A, 6).Init();       // G2
+    PinLTDC(E, 11).Init();      // G3
+    PinLTDC(B, 10).Init();      // G4
+    PinLTDC(B, 11).Init();      // G5
+    PinLTDC(C, 7).Init();       // G6
+    PinLTDC(D, 3).Init();       // G7
+
+    PinLTDC(D, 6).Init();       // B2
+    PinLTDC(D, 10).Init();      // B3
+    PinLTDC(E, 12).Init();      // B4
+    PinLTDC(A, 3).Init();       // B5
+    PinLTDC(B, 8).Init();       // B6
+    PinLTDC(B, 9).Init();       // B7
+
+    Pin pinDisplayOn(PinMode::_Output, A, PinPin::_5);
+    pinDisplayOn.Init();
+    pinDisplayOn.Set();
 }
 
 
@@ -48,7 +76,16 @@ void Pin::Init()
 
     isGPIO.Pull = GPIO_PULLUP;
 
-    if (mode == PinMode::_LTDC)
+    if (mode == PinMode::_Input)
+    {
+        isGPIO.Mode = GPIO_MODE_INPUT;
+    }
+    else if (mode == PinMode::_Output)
+    {
+        isGPIO.Mode = GPIO_MODE_OUTPUT_PP;
+        isGPIO.Speed = GPIO_SPEED_HIGH;
+    }
+    else if (mode == PinMode::_LTDC)
     {
         isGPIO.Pull = GPIO_PULLDOWN;
         isGPIO.Mode = GPIO_MODE_AF_PP;
@@ -57,4 +94,16 @@ void Pin::Init()
     }
 
     HAL_GPIO_Init((GPIO_TypeDef *)(const_cast<GPIO_TypeDef *>(HAL_PINS::ports[port])), &isGPIO);
+}
+
+
+void Pin::Set()
+{
+    HAL_GPIO_WritePin((GPIO_TypeDef *)HAL_PINS::ports[port], HAL_PINS::pins[pin], GPIO_PIN_SET);
+}
+
+
+void Pin::Reset()
+{
+    HAL_GPIO_WritePin((GPIO_TypeDef *)HAL_PINS::ports[port], HAL_PINS::pins[pin], GPIO_PIN_RESET);
 }

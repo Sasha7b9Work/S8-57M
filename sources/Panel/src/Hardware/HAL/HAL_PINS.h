@@ -46,6 +46,8 @@ struct PinPin { enum E
 struct PinMode {
     enum E
     {
+        _Input,
+        _Output,
         _LTDC
     };
 };
