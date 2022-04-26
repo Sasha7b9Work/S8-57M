@@ -29,6 +29,7 @@ namespace Communicator
 
             seq += 4;
 
+            return false;
         }
 
         // Возвращает адрес первого символа
@@ -47,7 +48,7 @@ namespace Communicator
             {
                 if (*sequency == *byte)
                 {
-                    if (std::strcmp(sequency + 1, byte + 1) == 0)
+                    if (std::memcmp((void *)(sequency + 1), byte + 1, sz - 1) == 0)
                     {
                         return byte;
                     }

@@ -1225,6 +1225,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\HAL\Timer4XX.h</FilePath>
             </File>
+            <File>
+              <FileName>HAL_PINS.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\HAL\HAL_PINS.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>HAL_PINS.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\HAL\HAL_PINS.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2632,6 +2642,16 @@
               <FileName>Timer4XX.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\HAL\Timer4XX.h</FilePath>
+            </File>
+            <File>
+              <FileName>HAL_PINS.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\HAL\HAL_PINS.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>HAL_PINS.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\HAL\HAL_PINS.h</FilePath>
             </File>
           </Files>
         </Group>

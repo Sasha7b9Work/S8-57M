@@ -1,6 +1,7 @@
 // 2022/04/20 16:52:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
+#include "Hardware/HAL/HAL_PINS.h"
 
 
 namespace HAL
@@ -38,10 +39,16 @@ void HAL::Init()
     __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOD_CLK_ENABLE();
     __HAL_RCC_GPIOE_CLK_ENABLE();
+    __HAL_RCC_GPIOF_CLK_ENABLE();
+    __HAL_RCC_GPIOG_CLK_ENABLE();
+    __HAL_RCC_GPIOH_CLK_ENABLE();
+    __HAL_RCC_GPIOI_CLK_ENABLE();
 
     __HAL_RCC_DMA2D_CLK_ENABLE();
     __HAL_RCC_LTDC_CLK_ENABLE();
     __HAL_RCC_TIM4_CLK_ENABLE();
+
+    HAL_PINS::Init();
 
     HAL_BUS::Init();
 
