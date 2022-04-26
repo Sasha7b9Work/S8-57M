@@ -22,27 +22,6 @@ enum Port
 };
 
 
-struct PinPin { enum E
-{
-    _0,
-    _1,
-    _2,
-    _3,
-    _4,
-    _5,
-    _6,
-    _7,
-    _8,
-    _9,
-    _10,
-    _11,
-    _12,
-    _13,
-    _14,
-    _15
-}; };
-
-
 struct PinMode {
     enum E
     {
@@ -55,7 +34,7 @@ struct PinMode {
 
 struct Pin
 {
-    Pin(PinMode::E _mode, Port _port, PinPin::E _pin) : port(_port), pin(_pin), mode(_mode) { };
+    Pin(PinMode::E _mode, Port _port, int _pin) : port(_port), pin(_pin), mode(_mode) { };
     void Init();
     void Write(int state);
     void Set();
@@ -64,7 +43,7 @@ struct Pin
 
 private:
     Port port;
-    PinPin::E  pin;
+    int  pin;
     PinMode::E mode;
 };
 

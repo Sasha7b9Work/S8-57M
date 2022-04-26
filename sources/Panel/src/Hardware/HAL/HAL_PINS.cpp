@@ -32,7 +32,7 @@ namespace HAL_PINS
 
 struct PinLTDC : public Pin
 {
-    PinLTDC(int port, int pin) : Pin(PinMode::_LTDC, (Port)(port), (PinPin::E)(pin)) { }
+    PinLTDC(int port, int pin) : Pin(PinMode::_LTDC, (Port)(port), pin) { }
 };
 
 
@@ -64,9 +64,18 @@ void HAL_PINS::Init()
     PinLTDC(B, 8).Init();       // B6
     PinLTDC(B, 9).Init();       // B7
 
-    Pin pinDisplayOn(PinMode::_Output, A, PinPin::_5);
+    Pin pinDisplayOn(PinMode::_Output, A, 5);
     pinDisplayOn.Init();
     pinDisplayOn.Set();
+
+    Pin pinRL(PinMode::_Output, C, 11);         // Горизонтальная ориентация дисплея
+    pinRL.Init();
+
+    Pin pinUD(PinMode::_Output, C, 12);         // Вертикальная ориентация дисплея
+    pinUD.Init();
+
+    pinRL.Reset();
+    pinUD.Set();
 }
 
 

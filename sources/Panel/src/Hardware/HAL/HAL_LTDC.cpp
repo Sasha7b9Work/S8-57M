@@ -14,21 +14,6 @@ void HAL_LTDC::Init()
 {
     HAL_DAC2::Init();
 
-    GPIO_InitTypeDef initStr;
-    initStr.Pin = GPIO_PIN_5;
-    initStr.Mode = GPIO_MODE_OUTPUT_PP;
-    initStr.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOA, &initStr);
-
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);     // Включение подсветки
-
-    //                R/L         U/D
-    initStr.Pin = GPIO_PIN_11 | GPIO_PIN_12;
-    HAL_GPIO_Init(GPIOC, &initStr);
-    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, GPIO_PIN_RESET);      // Выбор горизонтальной ориентации
-    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_SET);        // Выбор вертикальной ориентации
-
-
     handleLTDC.Instance = LTDC;
     handleLTDC.Init.HSPolarity = LTDC_HSPOLARITY_AL;
     handleLTDC.Init.VSPolarity = LTDC_VSPOLARITY_AL;
