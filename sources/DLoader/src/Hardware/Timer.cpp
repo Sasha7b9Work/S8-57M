@@ -270,7 +270,7 @@ uint Timer::LogPointUS(char *)
 extern "C" {
 #endif
 
-    //---------------------------
+
     void TIM3_IRQHandler()
     {
         if ((TIM3->SR & TIM_SR_UIF) == TIM_SR_UIF)
