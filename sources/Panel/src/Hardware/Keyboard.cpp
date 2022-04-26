@@ -5,23 +5,6 @@
 #include "common/Communicator/Message_.h"
 
 
-#define SL0 GPIO_PIN_14
-#define SL1 GPIO_PIN_13
-#define SL2 GPIO_PIN_15
-#define SL3 GPIO_PIN_12
-#define SL4 GPIO_PIN_8
-#define SL5 GPIO_PIN_8
-#define SL6 GPIO_PIN_9
-#define SL7 GPIO_PIN_9
-
-#define RL0 GPIO_PIN_13
-#define RL1 GPIO_PIN_8
-#define RL2 GPIO_PIN_9
-#define RL3 GPIO_PIN_11
-#define RL4 GPIO_PIN_10
-#define RL5 GPIO_PIN_12
-
-
 static const Control controls[Keyboard::NUM_RL][Keyboard::NUM_SL] =
 { //          SL0/SL6                SL1/SL7                  SL2                     SL3                     SL4                     SL5              
     {Control::K_None,       Control::B_3,            Control::B_Down,        Control::K_None,        Control::B_TrigLevLess, Control::B_TrigLevMore,
@@ -43,6 +26,21 @@ static const Control controls[Keyboard::NUM_RL][Keyboard::NUM_SL] =
      Control::K_None,       Control::K_None}                                                                                                    // RL5
 };               
 
+#define SL0 GPIO_PIN_14
+#define SL1 GPIO_PIN_13
+#define SL2 GPIO_PIN_15
+#define SL3 GPIO_PIN_12
+#define SL4 GPIO_PIN_8
+#define SL5 GPIO_PIN_8
+#define SL6 GPIO_PIN_9
+#define SL7 GPIO_PIN_9
+
+#define RL0 GPIO_PIN_13
+#define RL1 GPIO_PIN_8
+#define RL2 GPIO_PIN_9
+#define RL3 GPIO_PIN_11
+#define RL4 GPIO_PIN_10
+#define RL5 GPIO_PIN_12
 
 static uint16 sls[Keyboard::NUM_SL]             = {SL0,   SL1,   SL2,   SL3,   SL4,   SL5,   SL6,   SL7};
 static GPIO_TypeDef* slsPorts[Keyboard::NUM_SL] = {GPIOB, GPIOB, GPIOB, GPIOB, GPIOD, GPIOC, GPIOD, GPIOC};
