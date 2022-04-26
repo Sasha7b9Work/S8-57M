@@ -47,3 +47,14 @@ private:
     PinMode::E mode;
 };
 
+
+struct PinOut : public Pin
+{
+    PinOut(Port, int pin);
+};
+
+
+struct PinIn : public Pin
+{
+    PinIn(Port, int pin);
+};

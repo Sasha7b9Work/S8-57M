@@ -36,6 +36,18 @@ struct PinLTDC : public Pin
 };
 
 
+PinOut::PinOut(Port _port, int pin) : Pin(PinMode::_Output, _port, pin)
+{
+    Init();
+}
+
+
+PinIn::PinIn(Port _port, int pin) : Pin(PinMode::_Input, _port, pin)
+{
+    Init();
+}
+
+
 void HAL_PINS::Init()
 {
     PinLTDC(A, 4).Init();       // VSYNC
@@ -64,15 +76,11 @@ void HAL_PINS::Init()
     PinLTDC(B, 8).Init();       // B6
     PinLTDC(B, 9).Init();       // B7
 
-    Pin pinDisplayOn(PinMode::_Output, A, 5);
-    pinDisplayOn.Init();
+    PinOut pinDisplayOn(A, 5);
     pinDisplayOn.Set();
 
-    Pin pinRL(PinMode::_Output, C, 11);         // Горизонтальная ориентация дисплея
-    pinRL.Init();
-
-    Pin pinUD(PinMode::_Output, C, 12);         // Вертикальная ориентация дисплея
-    pinUD.Init();
+    PinOut pinRL(C, 11);         // Горизонтальная ориентация дисплея
+    PinOut pinUD(C, 12);         // Вертикальная ориентация дисплея
 
     pinRL.Reset();
     pinUD.Set();
