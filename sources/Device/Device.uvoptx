@@ -75,7 +75,7 @@
       <OPTFL>
         <tvExp>0</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
-        <IsCurrentTarget>0</IsCurrentTarget>
+        <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>
       <CpuCode>18</CpuCode>
       <DebugOpt>
@@ -103,7 +103,7 @@
         <bEvRecOn>1</bEvRecOn>
         <bSchkAxf>0</bSchkAxf>
         <bTchkAxf>0</bTchkAxf>
-        <nTsel>4</nTsel>
+        <nTsel>6</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -114,9 +114,19 @@
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
         <tIfile></tIfile>
-        <pMon>Segger\JL2CM3.dll</pMon>
+        <pMon>STLink\ST-LINKIII-KEIL_SWO.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>DLGUARM</Key>
+          <Name>(105=-1,-1,-1,-1,0)</Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>ST-LINKIII-KEIL_SWO</Key>
+          <Name>-U57FF6D064985515629220387 -O206 -SF4000 -C0 -A0 -I0 -HNlocalhost -HP7184 -P1 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8004 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO11 -FD20000000 -FC1000 -FN1 -FF0STM32F4xx_2048.FLM -FS08000000 -FL0200000 -FP0($$Device:STM32F437ZITx$CMSIS\Flash\STM32F4xx_2048.FLM)</Name>
+        </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>ARMRTXEVENTFLAGS</Key>
@@ -147,82 +157,34 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>259</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134424460</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\My\GitHub\_work\S8-57M\sources\DLoader\src\Menu\Menu.cpp</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\S8_57\src/Menu/Menu.cpp\259</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
           <LineNumber>256</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134424456</Address>
+          <Address>134427672</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\My\GitHub\_work\S8-57M\sources\DLoader\src\Menu\Menu.cpp</Filename>
+          <Filename>&lt;1&gt;.\src\Menu\Menu.cpp</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\S8_57\src/Menu/Menu.cpp\256</Expression>
         </Bp>
         <Bp>
-          <Number>2</Number>
+          <Number>1</Number>
           <Type>0</Type>
           <LineNumber>536</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134487476</Address>
+          <Address>134492358</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\My\GitHub\_work\S8-57M\sources\DLoader\src\Menu\Menu.cpp</Filename>
+          <Filename>&lt;1&gt;.\src\Menu\Menu.cpp</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\S8_57\src/Menu/Menu.cpp\536</Expression>
-        </Bp>
-        <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
-          <LineNumber>540</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134487492</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\My\GitHub\_work\S8-57M\sources\DLoader\src\Menu\Menu.cpp</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\S8_57\src/Menu/Menu.cpp\540</Expression>
-        </Bp>
-        <Bp>
-          <Number>4</Number>
-          <Type>0</Type>
-          <LineNumber>544</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134487504</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\My\GitHub\_work\S8-57M\sources\DLoader\src\Menu\Menu.cpp</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\S8_57\src/Menu/Menu.cpp\544</Expression>
         </Bp>
       </Breakpoint>
       <Tracepoint>
@@ -331,7 +293,7 @@
       <OPTFL>
         <tvExp>0</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
-        <IsCurrentTarget>1</IsCurrentTarget>
+        <IsCurrentTarget>0</IsCurrentTarget>
       </OPTFL>
       <CpuCode>18</CpuCode>
       <DebugOpt>
@@ -359,7 +321,7 @@
         <bEvRecOn>1</bEvRecOn>
         <bSchkAxf>0</bSchkAxf>
         <bTchkAxf>0</bTchkAxf>
-        <nTsel>4</nTsel>
+        <nTsel>6</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -370,9 +332,19 @@
         <tDlgDll></tDlgDll>
         <tDlgPa></tDlgPa>
         <tIfile></tIfile>
-        <pMon>Segger\JL2CM3.dll</pMon>
+        <pMon>STLink\ST-LINKIII-KEIL_SWO.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>DLGUARM</Key>
+          <Name>(105=-1,-1,-1,-1,0)</Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>ST-LINKIII-KEIL_SWO</Key>
+          <Name>-U57FF6D064985515629220387 -O206 -SF4000 -C0 -A0 -I0 -HNlocalhost -HP7184 -P1 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO11 -FD20000000 -FC1000 -FN1 -FF0STM32F4xx_2048.FLM -FS08000000 -FL0200000 -FP0($$Device:STM32F437ZITx$CMSIS\Flash\STM32F4xx_2048.FLM)</Name>
+        </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>ARMRTXEVENTFLAGS</Key>
@@ -403,82 +375,34 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>259</LineNumber>
+          <LineNumber>256</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134424460</Address>
+          <Address>134472086</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\My\GitHub\_work\S8-57M\sources\DLoader\src\Menu\Menu.cpp</Filename>
+          <Filename>&lt;1&gt;.\src\Menu\Menu.cpp</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\S8_57\src/Menu/Menu.cpp\259</Expression>
+          <Expression>\\\src/Menu/Menu.cpp\256</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>256</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134424456</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\My\GitHub\_work\S8-57M\sources\DLoader\src\Menu\Menu.cpp</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\S8_57\src/Menu/Menu.cpp\256</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
           <LineNumber>536</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134487476</Address>
+          <Address>134470278</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\My\GitHub\_work\S8-57M\sources\DLoader\src\Menu\Menu.cpp</Filename>
+          <Filename>&lt;1&gt;.\src\Menu\Menu.cpp</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\S8_57\src/Menu/Menu.cpp\536</Expression>
-        </Bp>
-        <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
-          <LineNumber>540</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134487492</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\My\GitHub\_work\S8-57M\sources\DLoader\src\Menu\Menu.cpp</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\S8_57\src/Menu/Menu.cpp\540</Expression>
-        </Bp>
-        <Bp>
-          <Number>4</Number>
-          <Type>0</Type>
-          <LineNumber>544</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134487504</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\My\GitHub\_work\S8-57M\sources\DLoader\src\Menu\Menu.cpp</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\S8_57\src/Menu/Menu.cpp\544</Expression>
+          <Expression>\\\src/Menu/Menu.cpp\536</Expression>
         </Bp>
       </Breakpoint>
       <Tracepoint>
