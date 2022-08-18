@@ -15,3 +15,5 @@ Thank you.
 
 In case of an issue with the ST online support tool, please share the details with ols_support_center_coppell@st.com.
 В случае возникновения проблем с онлайн-инструментом поддержки ST, сообщите подробности по адресу ols_support_center_coppell@st.com.
+
+https://community.st.com/s/case/5003W00000JR3lVQAT/stm32f479vit6
