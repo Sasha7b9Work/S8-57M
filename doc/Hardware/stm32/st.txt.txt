@@ -1,0 +1,19 @@
+Hello.
+We purchased several stm32f479vit6 chips for our projects.
+During the setup process, it was suggested that there is another microcircuit in the case marked as in the attached photo (the power circuits do not ring among themselves, and pins 75 and 100 are short-circuited in the case). All 5 chips from the batch behave the same.
+According to the QR code from the package, we found out that the microcircuit has the code VIT652137.
+Please provide clarification on this situation. Is this an isolated case, our mistake, or have you already encountered something similar?
+Thank you.
+
+Здравствуйте.
+Приобрели несколько микросхем stm32f479vit6 для своих проектов.
+В процессе наладки возникло предположение, что в корпусе с маркировкой как на прикрепленном фото находится другая микросхема (цепи питания не звонятся между собой, а выводы 75 и 100 замкнуты накоротко в корпусе). Все 5 микросхем из партии ведут себя одинаково.
+По QR-коду с упаковки узнали, что микросхема имеет код VIT652137.
+Прошу дать пояснения по данной ситуации. Единичный ли это случай, наша ошибка, либо вы уже сталкивались с подобным?
+Спасибо.
+
+
+In case of an issue with the ST online support tool, please share the details with ols_support_center_coppell@st.com.
+В случае возникновения проблем с онлайн-инструментом поддержки ST, сообщите подробности по адресу ols_support_center_coppell@st.com.
+
+https://community.st.com/s/case/5003W00000JR3lVQAT/stm32f479vit6
