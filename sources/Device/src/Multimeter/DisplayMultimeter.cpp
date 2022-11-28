@@ -605,13 +605,13 @@ void DisplayMultimeter::ChangedMode()
 
     static const int position[MultimeterMeasure::Count][4] =
     {
-        {2, 3, 4},      // VoltageDC
-        {2, 3, 4},      // VoltageAC
-        {3, 2},         // CurrentDC
-        {3, 2},         // CurrentAC
+        {2, 3, 4, 0},   // VoltageDC
+        {2, 3, 4, 0},   // VoltageAC
+        {3, 2, 0, 0},   // CurrentDC
+        {3, 2, 0, 0},   // CurrentAC
         {2, 3, 4, 3},   // Resistance
-        {2},            // TestDiode
-        (2),            // Bell
+        {2, 0, 0, 0},   // TestDiode
+        {2, 0, 0, 0}    // Bell
     };
     
     static const pString suffix[MultimeterMeasure::Count][4] =

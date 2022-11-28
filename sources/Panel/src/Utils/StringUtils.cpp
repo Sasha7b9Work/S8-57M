@@ -3,7 +3,7 @@
 #include "Utils/StringUtils.h"
 
 
-uint8 *SU::FindSequency(uint8 *begin, uint8 *end, uint8 *sequency_begin, uint8 *sequency_end)
+uint8 *SU::FindSequency(uint8 *, uint8 *, uint8 *, uint8 *)
 {
     return nullptr;
 }
