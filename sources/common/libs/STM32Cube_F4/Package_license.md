@@ -148,7 +148,7 @@ STM32 Utilities                   STMicroelectronics                            
 :::
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section3" aria-hidden="true">
+<input type="checkbox" id="collapse-section3" checked aria-hidden="true">
 <label for="collapse-section3" aria-hidden="true">__ANNEX 2: Independant_JPEG_Group Specific Terms__</label>
 <div>
 
@@ -238,7 +238,7 @@ GIF decoders.
 :::
 
 ::: {.collapse}
-<input type="checkbox" id="collapse-section4" aria-hidden="true">
+<input type="checkbox" id="collapse-section4" checked aria-hidden="true">
 <label for="collapse-section4" aria-hidden="true">__ANNEX 3: SLA0047 Specific Terms__</label>
 <div>
 
