@@ -43,6 +43,12 @@
 #define __weak __attribute((weak)) //-V2573
 #define __packed __attribute((packed)) //-V2573
 
+#ifdef WIN32
+    #define __STATIC_INLINE inline
+    #define __RBIT(x)   0
+    #define __CLZ
+#endif
+
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 
