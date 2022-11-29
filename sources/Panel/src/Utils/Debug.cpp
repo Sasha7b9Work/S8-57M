@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "log.h"
 #include "Debug.h"
 #include "Hardware/Timer.h"
