@@ -62,8 +62,6 @@ void Painter::EndScene(void)
             sendingString = -1;
         }
     }
-
-//    LTDC_::ToggleBuffers();
 }
 
 
