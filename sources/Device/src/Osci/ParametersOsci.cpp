@@ -14,6 +14,7 @@
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
 #include "Utils/Values.h"
+#include "Hardware/HAL/HAL_PIO.h"
 
 
 #ifdef WIN32

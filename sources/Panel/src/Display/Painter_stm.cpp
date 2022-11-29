@@ -1,5 +1,4 @@
 #include "defines.h"
-#include "Display/Averager.h"
 #include "Display/Painter.h"
 #include "Display/Display.h"
 #include "Hardware/LTDC.h"
@@ -206,38 +205,6 @@ void Painter::SetColor(Color color)
     if (color.value != Color::NUMBER.value)
     {
         currentColor = color;
-    }
-}
-
-
-void Painter::DrawTesterData(uint8 mode, Color color, const uint16 _x[TESTER_NUM_POINTS], const uint8 _y[TESTER_NUM_POINTS]) //-V2009
-{
-    SetColor(color);
-
-    int step = EXTRACT_STEP(mode);
-
-    int numAverage = EXTRACT_ENUM_AVERAGE(mode);
-   
-    AveragerTester::SetCount(numAverage);
-    AveragerTester::Process(_x, _y, step);
-
-    uint16 *x = AveragerTester::X();
-    uint8 *y = AveragerTester::Y();
-    
-    if(EXTRACT_MODE_DRAW(mode))
-    {
-        for(int i = 1; i < TESTER_NUM_POINTS - 1; i++)
-        {
-            FillRegion(x[i], y[i], 2, 2); //-V2563
-            //*(Display::GetBuffer() + y[i] * BUFFER_WIDTH + x[i]) = currentColor.value;
-        }
-    }
-    else
-    {
-        for(int i = 1; i < TESTER_NUM_POINTS - 1; i++)
-        {
-            DrawLine(x[i], y[i], x[i + 1], y[i + 1]); //-V2563
-        }
     }
 }
 

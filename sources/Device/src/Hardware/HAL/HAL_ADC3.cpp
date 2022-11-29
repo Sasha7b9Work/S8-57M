@@ -5,7 +5,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Settings/Settings.h"
 #include "Osci/Osci.h"
-
+#include "Hardware/HAL/HAL_PIO.h"
 
 
 static ADC_HandleTypeDef handle;

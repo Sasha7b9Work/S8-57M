@@ -7,6 +7,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Osci/Osci.h"
 #include "Settings/SettingsNRST.h"
+#include "Hardware/HAL/HAL_PIO.h"
 #include <cmath>
 #include <cstring>
 #include <cstdio>

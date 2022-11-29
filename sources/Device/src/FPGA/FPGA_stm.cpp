@@ -9,6 +9,7 @@
 #include "Settings/SettingsNRST.h"
 #include "Utils/Buffer.h"
 #include "Utils/Math.h"
+#include "Hardware/HAL/HAL_PIO.h"
 
 
 uint16 Osci::addrRead = 0xffff;

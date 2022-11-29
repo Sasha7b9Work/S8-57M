@@ -72,8 +72,8 @@ void Display::Update() //-V2506
     static const pFuncVV funcs[Device::Mode::Count] =
     {
         DisplayOsci::Update,
-        DisplayTester::Update,
-        DisplayMultimeter::Update,
+        EmptyFuncVV,
+        EmptyFuncVV,
         DisplayRecorder::Update
     };
 

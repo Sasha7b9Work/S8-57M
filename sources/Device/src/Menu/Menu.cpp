@@ -69,12 +69,9 @@ void Menu::Update()
 
     if (!saved && TIME_MS - lastModified > 5000)
     {
-        if(!Device::InModeTester())
-        {
-            Settings::Save();
-            setNRST.Save();
-            saved = true;
-        }
+        Settings::Save();
+        setNRST.Save();
+        saved = true;
     }
 }
 
@@ -247,23 +244,12 @@ Item *Menu::OpenedItem()
 }
 
 
+/*
 static void CloseDebugPages()
 {
     const Page *mainPage = Menu::GetMainPage();
 
     Menu::SetMainPage(PageFunction::self);
-
-    PageMultimeter::EnablePageCalibrate();
-
-    if(Menu::OpenedItem()->ExistKeeper(PageMultimeter::self))
-    {
-        while (Menu::OpenedPage() != PageMultimeter::self)
-        {
-            Menu::CloseOpenedItem();
-        }
-    }
-
-    PageMultimeter::DisablePageCalibrate();
 
     Menu::SetMainPage(PageService::self);
 
@@ -281,23 +267,15 @@ static void CloseDebugPages()
 
     Menu::SetMainPage(mainPage);
 }
+*/
 
 
 void Menu::Init()
 {
-    PageMultimeter::Init();
     PageFreqMeter::Init();
-    PageTester::Init();
     PageDisplay::Settings::Colors::Init();
 
-    if (static_cast<Page *>(LastOpened(const_cast<Page *>(PageFunction::self))) == PageMultimeter::self) //-V1027 //-V2567
-    {
-        ClosePage(const_cast<Page *>(PageMultimeter::self)); //-V2567
-    }
-
     CloseAllBadOpenedPages();
-
-//    CloseDebugPages();
 }
 
 
@@ -505,9 +483,7 @@ void Menu::CloseAllBadOpenedPages()
 {
     Page *opened = static_cast<Page *>(LastOpened(const_cast<Page *>(PageFunction::self))); //-V1027 //-V2567
 
-    CloseIfSubPage(const_cast<Page *>(PageMultimeter::self), opened); //-V2567
     CloseIfSubPage(const_cast<Page *>(PageRecorder::self), opened); //-V2567
-    CloseIfSubPage(const_cast<Page *>(PageTester::self), opened); //-V2567
     CloseIfSubPage(const_cast<Page *>(PageFreqMeter::self), opened); //-V2567
     CloseIfSubPage(const_cast<Page *>(PageFFT::self), opened); //-V2567
     CloseIfSubPage(const_cast<Page *>(PageMemory::self), opened); //-V2567

@@ -7,6 +7,7 @@
 #include "Osci/Osci.h"
 #include "Osci/Reader.h"
 #include "Utils/Math.h"
+#include "Hardware/HAL/HAL_PIO.h"
 #include <cstring>
 
 

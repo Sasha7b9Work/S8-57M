@@ -6,8 +6,6 @@ class Recorder
 public:
     static void Init();
 
-    static void Update();
-
     static void DeInit();
 
     static void OnPressStart();

@@ -1,5 +1,4 @@
 #pragma once
-#include "Tester/Tester.h"
 #include "Menu/Pages/Include/PageChannels.h"
 #include "Menu/Pages/Include/DebugPage.h"
 #include "Menu/Pages/Include/PageDisplay.h"
@@ -8,10 +7,8 @@
 #include "Menu/Pages/Include/PageFunction.h"
 #include "Menu/Pages/Include/PageMeasures.h"
 #include "Menu/Pages/Include/PageMemory.h"
-#include "Menu/Pages/Include/PageMultimeter.h"
 #include "Menu/Pages/Include/PageRecorder.h"
 #include "Menu/Pages/Include/PageService.h"
-#include "Menu/Pages/Include/PageTester.h"
 #include "Menu/Pages/Include/PageTime.h"
 #include "Menu/Pages/Include/PageTrig.h"
 
@@ -44,13 +41,11 @@ public:
     SettingsMath            math;
     SettingsFFT             fft;
     SettingsFreqMeter       freq;
-    SettingsTester          test;   // Настройки тестера компонентов
-    SettingsMultimeter      mult;
     SettingsRecorder        rec;
     SettingsService         serv;
     SettingsDebug           dbg;
-    uint           notUsed[2];
-    uint notDeleted;                // Эту переменную удалять нельзя. Нужна для корректного расчёта контрольной суммы
+    uint                    notUsed[2];
+    uint                    notDeleted;                // Эту переменную удалять нельзя. Нужна для корректного расчёта контрольной суммы
 };
 #pragma pack(pop)
 

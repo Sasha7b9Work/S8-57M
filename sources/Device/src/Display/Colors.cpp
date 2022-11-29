@@ -3,6 +3,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
+#include "common/Command.h"
 
 
 uint GlobalColors[256] =

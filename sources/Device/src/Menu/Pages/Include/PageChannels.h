@@ -1,5 +1,6 @@
 #pragma once
 #include "Menu/MenuItems.h"
+#include "Osci/ParametersOsci.h"
 
 
 #define S_RSHIFT(channel)       set.ch[channel]._rShift

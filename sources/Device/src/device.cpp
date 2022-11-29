@@ -13,7 +13,6 @@
 #include "Keyboard/BufferButtons.h"
 #include "Menu/MenuItems.h"
 #include "Recorder/Recorder.h"
-#include "Recorder/Sensor.h"
 #include "SCPI/SCPI.h"
 #include "Settings/SettingsNRST.h"
 #include <cstdlib>
@@ -46,8 +45,6 @@ void Device::Init()
 
     VCP::Init();
 
-    Tester::Init();
-
     FPGA::Init();
 
     ROM::Init();
@@ -64,11 +61,7 @@ void Device::Init()
 
     Menu::Init();
 
-    Multimeter::Init();
-
     FDrive::Init();
-
-    //Sensor::Init();
 
     SetCurrentMode();
 
@@ -78,15 +71,9 @@ void Device::Init()
 
 void SetCurrentMode()
 {
-    if (!SetCurrentMode(PageMultimeter::self, Device::Mode::Multimeter))
+    if (!SetCurrentMode(PageRecorder::self, Device::Mode::Recorder))
     {
-        if (!SetCurrentMode(PageTester::self, Device::Mode::Tester))
-        {
-            if (!SetCurrentMode(PageRecorder::self, Device::Mode::Recorder))
-            {
-                Device::SetMode(Device::Mode::Osci);
-            }
-        }
+        Device::SetMode(Device::Mode::Osci);
     }
 }
 
@@ -114,13 +101,7 @@ void Device::Update()
 
     Display::Update();
 
-    Tester::Update();
-
-    Recorder::Update();
-
     FDrive::Update();
-
-    //Sensor::Update();
 
     while (HAL_BUS::Panel::Receive())
     {
@@ -149,8 +130,6 @@ void Device::SetMode(Mode::E mode)
         currentMode = mode;
 
         Osci::DeInit();
-        Tester::Disable();
-        Multimeter::DeInit();
         Recorder::DeInit();
 
         switch (CurrentMode())
@@ -172,8 +151,6 @@ void Device::SetMode(Mode::E mode)
             };
 
             Keyboard::Lock(keys);
-            Tester::Init();
-            Tester::Enable();
             break;
         }
 
@@ -187,7 +164,6 @@ void Device::SetMode(Mode::E mode)
             };
 
             Keyboard::Lock(keys);
-            Multimeter::Init();
             break;
         }
 
@@ -200,18 +176,6 @@ void Device::SetMode(Mode::E mode)
             break;
         }
     }
-}
-
-
-bool Device::InModeTester()
-{
-    return (CurrentMode() == Device::Mode::Tester);
-}
-
-
-bool Device::InModeMultimeter()
-{
-    return (CurrentMode() == Device::Mode::Multimeter);
 }
 
 

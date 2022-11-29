@@ -1,7 +1,5 @@
 #pragma once
-#include "Multimeter/Multimeter.h"
 #include "Osci/Osci.h"
-#include "Tester/Tester.h"
 
 
 
@@ -25,14 +23,12 @@ struct Device
     static void Update();
 
     static void Reset();
+
     // Устанавливает режим работы
     static void SetMode(Mode::E mode);
+
     // Возвращает текущий режим работы
     static Mode::E CurrentMode();
-
-    static bool InModeTester();
-
-    static bool InModeMultimeter();
 
     static bool InModeRecorder();
 

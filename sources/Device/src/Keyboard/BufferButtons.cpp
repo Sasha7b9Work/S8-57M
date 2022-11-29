@@ -3,7 +3,6 @@
 #include "Hardware/Beeper.h"
 #include "Hardware/Timer.h"
 #include "Menu/Pages/Include/PageFunction.h"
-#include "Menu/Pages/Include/PageMultimeter.h"
 #include "Menu/Pages/Include/PageService.h"
 
 
@@ -34,8 +33,6 @@ void BufferButtons::Push(const KeyEvent &event) //-V2506
     {
         return;                                         // то пропустим это событие - кнопка уже отработала
     }
-
-    PageMultimeter::DecodePassword(event);
 
     PageService::DecodePassword(event);
 

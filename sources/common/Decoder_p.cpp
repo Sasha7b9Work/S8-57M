@@ -49,8 +49,6 @@ static bool DrawHLine(uint8);
 
 static bool DisplayBrightness(uint8);
 
-static bool DrawTesterPoints(uint8);
-
 static bool DrawVPointLine(uint8);
 
 static bool DrawHPointLine(uint8);
@@ -85,7 +83,7 @@ void PDecoder::AddData(uint8 data) //-V2506
         SetFont,
         SetPoint,
         DrawLine,
-        DrawTesterPoints,
+        E,
         DisplayBrightness,
         FuncScreen,
         DrawVPointLine,
@@ -140,62 +138,6 @@ static bool BeginScene(uint8)
 {
     Painter::BeginScene();
     return true;
-}
-
-
-static bool DrawTesterPoints(uint8 data) //-V2506
-{
-    // Количество полных принятых иксов
-    static int numX = 0;
-    // Количество принятых игреков
-    static int numY = 0;
-    static Color color = Color::FILL;
-    static uint8 mode = 0;
-
-    static uint8 buffer[TESTER_NUM_POINTS * 3] __attribute__((aligned(2)));
-
-    if(step == 0)
-    {
-        numX = 0;
-        numY = 0;
-    }
-    else if(step == 1)
-    {
-        mode = data;
-    }
-    else if(step == 2)
-    {
-        color = Color(data);
-    }
-    else
-    {
-        if (numX < TESTER_NUM_POINTS)   // Если первые точки, то это иксы - ложим их в младшие байты полуслов
-        {
-            static uint8 xLo;
-
-            if (step % 2)               // Если чётный шаг - старший байт икса
-            {
-                xLo = data;
-            }
-            else
-            {
-                buffer[numX * 2] = xLo;
-                buffer[numX * 2 + 1] = data;
-                numX++;
-            }
-        }
-        else
-        {
-            buffer[TESTER_NUM_POINTS * 2 + numY++] = data;
-        }
-
-        if(numY == TESTER_NUM_POINTS)
-        {
-            Painter::DrawTesterData(mode, color, reinterpret_cast<uint16 *>(buffer), buffer + TESTER_NUM_POINTS * 2); //-V1032 //-V2563 //-V2571
-            return true;
-        }
-    }
-    return false;
 }
 
 

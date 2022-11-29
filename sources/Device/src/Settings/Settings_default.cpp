@@ -165,28 +165,6 @@ const Settings Settings::defaultSettings =
         FreqMeter::NumberPeriods::_10       // numberPeriods
     },
 
-    // Настройки тестер-компонента
-    {
-        Tester::Control::Voltage,       // control
-        Tester::Polarity::Positive,     // polarity
-        Tester::StepU::_600mV,          // stepU
-        Tester::StepI::_4uA,            // stepI
-        ENumAverage::_1,                // smooth
-        Tester::ViewMode::Lines         // viewMode
-    },
-
-    // Настройки мультиметра
-    {
-        ModeAVP::Off,                   // avp
-        MultimeterMeasure::VoltageDC,   // meas
-        RangeVoltageDC::_2V,            // rangeCV
-        RangeVoltageAC::_2V,            // rangeVV
-        RangeCurrentAC::_2A,            // rangeCurrentAC
-        RangeCurrentDC::_2A,            // rangeCurrentDC
-        RangeResistance::_10M,          // rangeResist
-        false                           // showAlways
-    },
-
     // Настройки регистратора
     {
         true,                           // sourceChanA

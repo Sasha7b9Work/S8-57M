@@ -80,13 +80,6 @@ struct HAL_DAC1
 };
 
 
-struct HAL_DAC2
-{
-    static void Init();
-    static void SetValue(uint value);
-};
-
-
 struct HAL_BUS
 {
     static void Init();

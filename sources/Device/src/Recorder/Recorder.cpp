@@ -4,10 +4,10 @@
 #include "Osci/Osci.h"
 #include "Recorder/DisplayRecorder.h"
 #include "Recorder/Recorder.h"
-#include "Recorder/Sensor.h"
 #include "Recorder/StorageRecorder.h"
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
+#include "Hardware/HAL/HAL_PIO.h"
 
 
 // Состояние осциллографа перед переходом в режим регистратора
@@ -76,12 +76,6 @@ void Recorder::DeInit()
 
         initialized = false;
     }
-}
-
-
-void Recorder::Update()
-{
-    Sensor::Update();
 }
 
 

@@ -371,11 +371,7 @@ static void OnTime()
 
 static void OnStart()
 {
-    if (Device::InModeTester())
-    {
-        Tester::StartStop();
-    }
-    else if(Device::InModeRecorder())
+    if(Device::InModeRecorder())
     {
         Recorder::OnPressStart();
     }

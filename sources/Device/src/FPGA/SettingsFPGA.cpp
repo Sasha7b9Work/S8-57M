@@ -10,6 +10,7 @@
 #include "Settings/SettingsNRST.h"
 #include "Utils/Math.h"
 #include "Utils/Values.h"
+#include "Hardware/HAL/HAL_PIO.h"
 
 
 void TrigStartMode::Set(TrigStartMode::E v)
@@ -85,11 +86,6 @@ void RShift::Load(Chan::E ch) //-V2506
     int16 shift = S_RSHIFT(ch) + HARDWARE_ZERO;
 
     shift += NRST_EX_SHIFT(ch, S_RANGE(ch));
-
-    if ((ch == ChanA) && Device::InModeTester())
-    {
-        shift -= Tester::DeltaRShiftA();
-    }
 
     Osci::InputController::Write(PIN_SPI3_CS1, static_cast<uint16>(mask[ch] | (shift << 2)));
 
@@ -197,20 +193,6 @@ void TShift::Change(const int delta) //-V2506
 }
 
 
-// Ограничить range для режима тестер-компонента
-static void LimitForTester(Range::E *range)
-{
-    if(*range > Range::_5V)
-    {
-        *range = Range::_5V;
-    }
-    else if(*range < Range::_200mV) //-V2516
-    {
-        *range = Range::_200mV;
-    }
-}
-
-
 void Range::Change(Chan::E ch, int16 delta) //-V2506
 {
     if (Recorder::InRecordingMode())
@@ -227,11 +209,6 @@ void Range::Change(Chan::E ch, int16 delta) //-V2506
     else
     {
         ::Math::LimitationDecrease<uint8>(reinterpret_cast<uint8 *>(&S_RANGE(ch)), 0);  // -V206
-    }
-
-    if(Device::InModeTester())
-    {
-        LimitForTester(&S_RANGE(ch));
     }
 
     Range::LoadBoth();
