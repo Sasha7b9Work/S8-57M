@@ -23,6 +23,20 @@
 #include <cstdio>
 
 
+namespace Osci
+{
+    static void SendDataToSCPI(Chan::E ch);
+
+    // Читать данные канала в памяить data
+    bool ReadDataChannel(Chan::E ch, uint8 *data);
+
+    bool ReadDataChannelRand(uint8 *address, uint8 *data);
+
+    // Здесь хранится адрес, начиная с которого будем читать данные по каналам. Если addrRead == 0xffff, то адрес вначале нужно считать
+    uint16 addrRead = 0xffff;
+}
+
+
 // Структура для хранения информации, необходимой для чтения в режиме рандомизатора
 struct StructReadRand
 {

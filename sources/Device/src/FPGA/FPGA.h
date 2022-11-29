@@ -20,7 +20,6 @@ struct FPGA
     friend struct TrigPolarity;
     friend struct TShift;
     friend struct TrigLevel;
-    friend struct Osci;
 
     friend class Tester;
 
@@ -37,6 +36,16 @@ struct FPGA
     static void ForcedStart();
 
     static void LoadRegUPR();
+
+    static void Reset();
+
+    // True, если дан принудительный запуск
+    static bool forcedStart;
+
+    static uint16 post;
+    static uint16 pred;
+
+    static bool isRunning;
 
     struct Flag
     {
@@ -61,14 +70,4 @@ private:
     static void Init();
 
     static void OnPressStart();
-    
-    static void Reset();
-
-    static uint16 post;
-    static uint16 pred;   
-
-    static bool isRunning;
-   
-    // True, если дан принудительный запуск
-    static bool forcedStart;
 };
