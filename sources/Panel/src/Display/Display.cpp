@@ -39,20 +39,17 @@ void Display::ClearBuffer(Color color)
     DMA2D_HandleTypeDef hDMA2D;
 
     hDMA2D.Init.Mode = DMA2D_R2M;
-    hDMA2D.Init.ColorMode = DMA2D_RGB888;
+    hDMA2D.Init.ColorMode = DMA2D_ARGB8888;
     hDMA2D.Init.OutputOffset = 0;
 
     hDMA2D.Instance = DMA2D;
 
     if (HAL_DMA2D_Init(&hDMA2D) == HAL_OK)
     {
-        if (HAL_DMA2D_ConfigLayer(&hDMA2D, 0) == HAL_OK)
-        {
-            if (HAL_DMA2D_Start(&hDMA2D, COLOR(color.value), (uint)buffer, Display::WIDTH, Display::HEIGHT) == HAL_OK)
-            {
-                HAL_DMA2D_PollForTransfer(&hDMA2D, 100);
-            }
-        }
+    if (HAL_DMA2D_Start(&hDMA2D, COLOR(color.value), (uint)buffer, Display::WIDTH, Display::HEIGHT) == HAL_OK)
+    {
+        HAL_DMA2D_PollForTransfer(&hDMA2D, 100);
+    }
     }
 }
 
@@ -111,7 +108,7 @@ void Display::Update()
 //        Painter::FillRegion(x, y, width, height);
 //    }
 //
-//    HAL_Delay(2);
+//    HAL_Delay(10);
 
     Update1();
 }
