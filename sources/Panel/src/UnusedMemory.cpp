@@ -14,6 +14,6 @@ void UnusedMemory::Init()
 {
     for (int i = 0; i < SIZE; i++)
     {
-        memory[i] = (uint8)i / 2;
+        memory[i] = (uint8)(i / 2);
     }
 }

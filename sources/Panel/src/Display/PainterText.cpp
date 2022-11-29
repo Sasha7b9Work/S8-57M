@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "Painter.h"
 #include "Display/Font/Font_p.h"
 #include "Display/Text.h"

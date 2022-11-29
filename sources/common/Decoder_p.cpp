@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "structs.h"
 #include "Decoder_p.h"
 #include "Display/Display.h"
