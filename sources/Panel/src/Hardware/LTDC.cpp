@@ -64,8 +64,8 @@ void LTDC_::Init(uint _buffer)
     handleLTDC.Init.VerticalSync = 0;
     handleLTDC.Init.AccumulatedHBP = 160;
     handleLTDC.Init.AccumulatedVBP = 45;
-    handleLTDC.Init.AccumulatedActiveW = 640;
-    handleLTDC.Init.AccumulatedActiveH = 480;
+    handleLTDC.Init.AccumulatedActiveW = 800;
+    handleLTDC.Init.AccumulatedActiveH = 525;
     handleLTDC.Init.TotalWidth = 800;
     handleLTDC.Init.TotalHeigh = 525;
     handleLTDC.Init.Backcolor.Blue = 255;
