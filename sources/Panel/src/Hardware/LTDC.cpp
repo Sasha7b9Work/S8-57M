@@ -7,8 +7,13 @@
 #include "Display/Display.h"
 
 
-static LTDC_HandleTypeDef handleLTDC;
-static uint buffer = 0;
+namespace LTDC_
+{
+    static LTDC_HandleTypeDef handleLTDC;
+    static uint buffer = 0;
+
+    static void SetBuffer(uint buffer);
+}
 
 
 void LTDC_::Init(uint _buffer)

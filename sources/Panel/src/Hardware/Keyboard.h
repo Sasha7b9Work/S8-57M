@@ -3,15 +3,18 @@
 #include "defines.h"
 
 
-struct Keyboard
+namespace Keyboard
 {
-    static void Init();
+    void Init();
 
-    static void Update();
+    void Update();
+
     //  оличество выводов RL дл€ опроса клавиатуры
-    static const int NUM_RL = 6;
+    const int NUM_RL = 6;
+
     //  оличество выводов SL дл€ опроса клавиатуры
-    static const int NUM_SL = 8;
+    const int NUM_SL = 8;
+
     // ¬озращает им€ органа управлени€
-    static const char *ControlName(Control control);
+    const char *ControlName(Control control);
 };
