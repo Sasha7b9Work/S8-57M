@@ -3,7 +3,10 @@
 #include <stm32f4xx_hal.h>
 
 
-static CRC_HandleTypeDef handle = { CRC }; //-V2571
+namespace HAL_CRC32
+{
+    static CRC_HandleTypeDef handle = { CRC }; //-V2571
+}
 
 
 void HAL_CRC32::Init()

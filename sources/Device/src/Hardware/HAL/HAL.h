@@ -55,28 +55,28 @@ struct HAL_ADC1
 
 
 // Исользуется в режиме рандомизатора
-struct HAL_ADC3
+namespace HAL_ADC3
 {
-    static void Init();
-    static uint16 ValueRandomizer();
+    void Init();
+    uint16 ValueRandomizer();
 };
 
 
-struct HAL_CRC32
+namespace HAL_CRC32
 {
-    static void Init();
+    void Init();
 
     // Расчитывает контрольную сумму последовательности байт из buffer. Если size не кратно четырём, последние байты не участвуют в вычислении контрольной суммы
-    static uint Calculate8bit(uint8 *buffer, int size);
+    uint Calculate8bit(uint8 *buffer, int size);
 };
 
 
-struct HAL_DAC1
+namespace HAL_DAC1
 {
-    static void Init();
-    static void StartDMA(void *points, uint numPoints);
-    static void StopDMA();
-    static void ConfigTIM7(uint16 prescaler, uint16 period);
+    void Init();
+    void StartDMA(void *points, uint numPoints);
+    void StopDMA();
+    void ConfigTIM7(uint16 prescaler, uint16 period);
 };
 
 
