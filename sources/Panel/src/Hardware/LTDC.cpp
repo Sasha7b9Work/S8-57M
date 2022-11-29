@@ -4,6 +4,7 @@
 #include "Hardware/LTDC.h"
 #include "Hardware/HAL/HAL.h"
 #include "Settings/SettingsTypes.h"
+#include "Display/Display.h"
 
 
 static LTDC_HandleTypeDef handleLTDC;
@@ -12,37 +13,32 @@ static uint buffer = 0;
 
 void LTDC_::Init(uint _buffer)
 {
-    GPIO_InitTypeDef isGPIO =
+    GPIO_InitTypeDef is =
     {
-        //  R3         R6
-        GPIO_PIN_0 | GPIO_PIN_1,
+        //  R5           G6           DEN
+        GPIO_PIN_0 | GPIO_PIN_7 | GPIO_PIN_9,
         GPIO_MODE_AF_PP,
         GPIO_NOPULL,
         GPIO_SPEED_FREQ_LOW,
-        GPIO_AF9_LTDC
+        GPIO_AF14_LTDC
     };
-    HAL_GPIO_Init(GPIOB, &isGPIO);
+    HAL_GPIO_Init(GPIOC, &is);
 
-    //              B5          VSYNC         G2            R4          R5
-    isGPIO.Pin = GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_6 | GPIO_PIN_11 | GPIO_PIN_12;
-    isGPIO.Alternate = GPIO_AF14_LTDC;
-    HAL_GPIO_Init(GPIOA, &isGPIO);
+    //           R2           B5           G2           R4
+    is.Pin = GPIO_PIN_1 | GPIO_PIN_3 | GPIO_PIN_6 | GPIO_PIN_11;
+    HAL_GPIO_Init(GPIOA, &is);
 
-    //              G4             G5            B6          B7
-    isGPIO.Pin = GPIO_PIN_10 | GPIO_PIN_11 | GPIO_PIN_8 | GPIO_PIN_9;
-    HAL_GPIO_Init(GPIOB, &isGPIO);
+    //           R3           R6           G4            G5            B6           B7
+    is.Pin = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_10 | GPIO_PIN_11 | GPIO_PIN_8 | GPIO_PIN_9;
+    HAL_GPIO_Init(GPIOB, &is);
 
-    //              HSYNC         G6           R2
-    isGPIO.Pin = GPIO_PIN_6 | GPIO_PIN_7 | GPIO_PIN_10;
-    HAL_GPIO_Init(GPIOC, &isGPIO);
+    //           G3            B4            DE            CLK           R7
+    is.Pin = GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15;
+    HAL_GPIO_Init(GPIOE, &is);
 
-    //                B3          G7          B2
-    isGPIO.Pin = GPIO_PIN_10 | GPIO_PIN_3 | GPIO_PIN_6;
-    HAL_GPIO_Init(GPIOD, &isGPIO);
-
-    //               G3             B4           DE            CLK           R7
-    isGPIO.Pin = GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15;
-    HAL_GPIO_Init(GPIOE, &isGPIO);
+    //           B3            G7           B2
+    is.Pin = GPIO_PIN_10 | GPIO_PIN_3 | GPIO_PIN_6;
+    HAL_GPIO_Init(GPIOD, &is);
 
     GPIO_InitTypeDef initStr;
     initStr.Pin = GPIO_PIN_5;
@@ -53,10 +49,10 @@ void LTDC_::Init(uint _buffer)
     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);     // Включение подсветки
 
     //                R/L         U/D
-    initStr.Pin = GPIO_PIN_11 | GPIO_PIN_12;
-    HAL_GPIO_Init(GPIOC, &initStr);
-    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_11, GPIO_PIN_RESET);      // Выбор горизонтальной ориентации
-    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_12, GPIO_PIN_SET);        // Выбор вертикальной ориентации
+    initStr.Pin = GPIO_PIN_8 | GPIO_PIN_9;
+    HAL_GPIO_Init(GPIOA, &initStr);
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);      // Выбор горизонтальной ориентации
+    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_9, GPIO_PIN_SET);        // Выбор вертикальной ориентации
 
 
     handleLTDC.Instance = LTDC;
@@ -98,19 +94,19 @@ void LTDC_::SetBuffer(uint _buffer)
     LTDC_LayerCfgTypeDef pLayerCfg;
 
     pLayerCfg.WindowX0 = 0;
-    pLayerCfg.WindowX1 = 320;
+    pLayerCfg.WindowX1 = Display::WIDTH;
     pLayerCfg.WindowY0 = 0;
-    pLayerCfg.WindowY1 = 240;
+    pLayerCfg.WindowY1 = Display::HEIGHT;
     pLayerCfg.PixelFormat = LTDC_PIXEL_FORMAT_L8;
     pLayerCfg.Alpha = 255;
     pLayerCfg.Alpha0 = 255;
     pLayerCfg.BlendingFactor1 = LTDC_BLENDING_FACTOR1_CA;
     pLayerCfg.BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
     pLayerCfg.FBStartAdress = buffer;
-    pLayerCfg.ImageWidth = 320;
-    pLayerCfg.ImageHeight = 240;
-    pLayerCfg.Backcolor.Blue = 0;
-    pLayerCfg.Backcolor.Green = 0;
+    pLayerCfg.ImageWidth = Display::WIDTH;
+    pLayerCfg.ImageHeight = Display::HEIGHT;
+    pLayerCfg.Backcolor.Blue = 128;
+    pLayerCfg.Backcolor.Green = 128;
     pLayerCfg.Backcolor.Red = 0;
 
     if (HAL_LTDC_ConfigLayer(&handleLTDC, &pLayerCfg, 0) != HAL_OK)

@@ -14,18 +14,20 @@ int main()
 {
     CPU::Init();
     Display::Init();
-    Keyboard::Init();
+//    Keyboard::Init();
 
     while(1)
     {
-        static uint prevTime = 0;
+        Display::Update();
 
-        HAL_BUS::Update();
-
-        if(TIME_MS - prevTime > 2)
-        {
-            Keyboard::Update();
-            prevTime = TIME_MS;
-        }
+//        static uint prevTime = 0;
+//
+//        HAL_BUS::Update();
+//
+//        if(TIME_MS - prevTime > 2)
+//        {
+//            Keyboard::Update();
+//            prevTime = TIME_MS;
+//        }
     }
 }

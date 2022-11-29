@@ -6,6 +6,7 @@
 #include "Hardware/CPU.h"
 #include "Hardware/LTDC.h"
 #include "Hardware/HAL/HAL.h"
+#include "Display/Colors.h"
 #include <cstdlib>
 
 
@@ -104,4 +105,26 @@ void Display::DrawStartScreen()
     Text::Draw(x1, y1, "Ñ8-57");
 
     Painter::EndScene();
+}
+
+
+void Display::Update()
+{
+    for (int i = 0; i < 32; i++)
+    {
+        COLOR(i) = (uint8)std::rand();
+    }
+
+    for (int x = 0; x < Display::WIDTH; x++)
+    {
+        for (int y = 0; y < Display::HEIGHT; y++)
+        {
+            Painter::SetColor(Color((uint8)std::rand()));
+            Painter::SetPoint(x, y);
+        }
+    }
+
+//    Painter::SetColor(Color::WHITE);
+
+//    Painter::FillRegion(10, 10, 100, 100);
 }

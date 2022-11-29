@@ -10,11 +10,11 @@ namespace Display
 
     void Init();
 
+    void Update();
+
     uint8 *GetBuffer();
 
     uint8 *GetBufferEnd();
-
-//    void ToggleBuffers();
 
     extern LTDC_HandleTypeDef hltdc;
 };
