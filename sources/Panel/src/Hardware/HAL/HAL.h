@@ -30,7 +30,7 @@ namespace HAL_BUS
 };
 
 
-namespace LTDC_
+namespace HAL_LTDC
 {
     void Init(uint buffer);
 

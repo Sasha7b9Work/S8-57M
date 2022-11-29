@@ -39,7 +39,7 @@ void Painter::SetColorValue(Color color, uint value)
 
 void Painter::LoadPalette()
 {
-    LTDC_::SetColors(&COLOR(0), Color::NUMBER.value);
+    HAL_LTDC::SetColors(&COLOR(0), Color::NUMBER.value);
 }
 
 

@@ -26,7 +26,7 @@ namespace Display
 void Display::Init()
 {
     HAL_DAC2::Init();
-    LTDC_::Init(reinterpret_cast<uint>(buffer));
+    HAL_LTDC::Init(reinterpret_cast<uint>(buffer));
     Painter::LoadPalette();
 
     DrawStartScreen();

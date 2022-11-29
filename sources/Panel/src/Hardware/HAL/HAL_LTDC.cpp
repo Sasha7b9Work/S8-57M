@@ -6,7 +6,7 @@
 #include "Display/Display.h"
 
 
-namespace LTDC_
+namespace HAL_LTDC
 {
     static LTDC_HandleTypeDef handleLTDC;
     static uint buffer = 0;
@@ -15,7 +15,7 @@ namespace LTDC_
 }
 
 
-void LTDC_::Init(uint _buffer)
+void HAL_LTDC::Init(uint _buffer)
 {
     GPIO_InitTypeDef is =
     {
@@ -91,7 +91,7 @@ void LTDC_::Init(uint _buffer)
 }
 
 
-void LTDC_::SetBuffer(uint _buffer)
+void HAL_LTDC::SetBuffer(uint _buffer)
 {
     buffer = _buffer;
 
@@ -120,7 +120,7 @@ void LTDC_::SetBuffer(uint _buffer)
 }
 
 
-void LTDC_::SetColors(uint *clut, uint numColors)
+void HAL_LTDC::SetColors(uint *clut, uint numColors)
 {
     HAL_LTDC_ConfigCLUT(&handleLTDC, clut, numColors, 0);
 
