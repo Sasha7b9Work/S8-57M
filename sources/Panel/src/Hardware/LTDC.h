@@ -4,13 +4,8 @@
 
 class LTDC_
 {
-friend class Display;
-
-private:
-
-    static void Init(uint front, uint back);
-
 public:
+    static void Init(uint front, uint back);
 
     static void SetColors(uint *clut, uint numColors);
 

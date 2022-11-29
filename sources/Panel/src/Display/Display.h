@@ -3,26 +3,19 @@
 
 
 
-class Display
+namespace Display
 {
-public:
     static const int WIDTH = 320;
     static const int HEIGHT = 240;
 
-    static void Init();
+    void Init();
 
-    static uint8 *GetBuffer();
+    uint8 *GetBuffer();
 
-    static uint8 *GetBufferEnd();
+    uint8 *GetBufferEnd();
 
-    static void ToggleBuffers();
+    void ToggleBuffers();
 
-private:
-    // Экран
-    static uint8 *frontBuffer;
-    // Задний буфер. В нём происходит отрисовка, и затем изображение копируется во frontBuffer
-    static uint8 *backBuffer;
+    extern LTDC_HandleTypeDef hltdc;
 };
 
-
-extern LTDC_HandleTypeDef hltdc;

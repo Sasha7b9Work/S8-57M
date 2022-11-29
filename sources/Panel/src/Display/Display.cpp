@@ -10,15 +10,19 @@
 
 
 
-LTDC_HandleTypeDef hltdc;
+namespace Display
+{
+    LTDC_HandleTypeDef hltdc;
 
-uint8  front[BUFFER_WIDTH * BUFFER_HEIGHT];
-uint8  back[BUFFER_WIDTH * BUFFER_HEIGHT];
-uint8 *Display::frontBuffer = front;
-uint8 *Display::backBuffer = back;
+    uint8  front[BUFFER_WIDTH * BUFFER_HEIGHT];
+    uint8  back[BUFFER_WIDTH * BUFFER_HEIGHT];
 
+    uint8 *frontBuffer = front;
+    // Задний буфер. В нём происходит отрисовка, и затем изображение копируется во frontBuffer
+    uint8 *backBuffer = back;
 
-static void DrawStartScreen();
+    static void DrawStartScreen();
+}
 
 
 void Display::Init()
@@ -76,7 +80,7 @@ uint8 *Display::GetBufferEnd()
 }
 
 
-static void DrawStartScreen()
+void Display::DrawStartScreen()
 {
     Painter::SetColor(Color::BACK);
 
