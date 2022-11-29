@@ -19,7 +19,7 @@ void Painter::BeginScene()
 
     uint *address = reinterpret_cast<uint *>(Display::GetBuffer());
 
-    uint *end = address + (BUFFER_HEIGHT * BUFFER_WIDTH) / 4;
+    uint *end = address + (Display::WIDTH * Display::HEIGHT) / 4;
 
     uint value = static_cast<uint>(col.value) + static_cast<uint>(col.value << 8) + static_cast<uint>(col.value << 16) + static_cast<uint>(col.value << 24);
 
@@ -78,7 +78,7 @@ void Painter::DrawHLine(int y, int x0, int x1)
         Math::Swap(&x0, &x1);
     }
 
-    uint8 *address = Display::GetBuffer() + x0 + y * BUFFER_WIDTH;
+    uint8 *address = Display::GetBuffer() + x0 + y * Display::WIDTH;
     uint8 *end = Display::GetBufferEnd();
 
     uint8 value = currentColor.value;
@@ -173,7 +173,7 @@ void Painter::DrawVLine(int x, int y0, int y1)
         Math::Swap(&y0, &y1);
     }
 
-    uint8 *address = Display::GetBuffer() + x + y0 * BUFFER_WIDTH;
+    uint8 *address = Display::GetBuffer() + x + y0 * Display::WIDTH;
     uint8 *end = Display::GetBufferEnd();
 
     uint8 value = currentColor.value;
@@ -186,7 +186,7 @@ void Painter::DrawVLine(int x, int y0, int y1)
         }
 
         *address = value;
-        address += BUFFER_WIDTH;
+        address += Display::WIDTH;
     }
 }
 
@@ -211,16 +211,16 @@ void Painter::SetColor(Color color)
 
 void Painter::SetPoint(int x, int y)
 {
-    if (x >= 0 && x < BUFFER_WIDTH && y >= 0 && y < BUFFER_HEIGHT)
+    if (x >= 0 && x < Display::WIDTH && y >= 0 && y < Display::HEIGHT)
     {
-        *(Display::GetBuffer() + y * BUFFER_WIDTH + x) = currentColor.value;
+        *(Display::GetBuffer() + y * Display::WIDTH + x) = currentColor.value;
     }
 }
 
 
 void Painter::SendRow(int row)
 {
-    uint8 *points = Display::GetBuffer() + row * BUFFER_WIDTH;
+    uint8 *points = Display::GetBuffer() + row * Display::WIDTH;
 
     uint8 data[322] = { Command::Screen, static_cast<uint8>(row) };
 

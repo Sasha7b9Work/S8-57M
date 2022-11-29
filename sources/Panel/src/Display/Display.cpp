@@ -14,7 +14,7 @@ namespace Display
 {
     LTDC_HandleTypeDef hltdc;
 
-    uint8  front[BUFFER_WIDTH * BUFFER_HEIGHT];
+    uint8  front[Display::WIDTH * Display::HEIGHT];
 
     uint8 *buffer = front;
 
@@ -75,7 +75,7 @@ uint8 *Display::GetBuffer()
 
 uint8 *Display::GetBufferEnd()
 {
-    return buffer + BUFFER_WIDTH * BUFFER_HEIGHT;
+    return buffer + Display::WIDTH * Display::HEIGHT;
 }
 
 
