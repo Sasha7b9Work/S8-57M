@@ -6,78 +6,81 @@
 #include "Utils/StringUtils.h"
 
 
-// :TRIG:INPUT
-static pCHAR FuncInput(pCHAR);
-static void HintInput(String *);
-static bool TestInput();
-
-// :TRIG:LEVEL
-static pCHAR FuncLevel(pCHAR);
-static void HintLevel(String *);
-static bool TestLevel();
-
-// :TRIG:MODE
-static pCHAR Trig_FuncMode(pCHAR);
-static void Trig_HintMode(String *);
-static bool Trig_TestMode();
-
-// :TRIG:POLARITY
-static pCHAR FuncPolarity(pCHAR);
-static void HintPolarity(String *);
-static bool TestPolarity();
-
-// :TRIG:SOURCE
-static pCHAR FuncSource(pCHAR);
-static void HintSource(String *);
-static bool TestSource();
-
-
-static pString inputs[] =
+namespace SCPI_TRIG
 {
-    " FULL",
-    " HF",
-    " LF",
-    ""
-};
+    // :TRIG:INPUT
+    static pCHAR FuncInput(pCHAR);
+    static void HintInput(String *);
+    static bool TestInput();
+
+    // :TRIG:LEVEL
+    static pCHAR FuncLevel(pCHAR);
+    static void HintLevel(String *);
+    static bool TestLevel();
+
+    // :TRIG:MODE
+    static pCHAR FuncMode(pCHAR);
+    static void HintMode(String *);
+    static bool TestMode();
+
+    // :TRIG:POLARITY
+    static pCHAR FuncPolarity(pCHAR);
+    static void HintPolarity(String *);
+    static bool TestPolarity();
+
+    // :TRIG:SOURCE
+    static pCHAR FuncSource(pCHAR);
+    static void HintSource(String *);
+    static bool TestSource();
 
 
-static pString trig_modes[] =
-{
-    " AUTO",
-    " NORMAL",
-    " SINGLE",
-    ""
-};
+    static pString inputs[] =
+    {
+        " FULL",
+        " HF",
+        " LF",
+        ""
+    };
 
 
-static pString polarities[] =
-{
-    " RISE",
-    " FALL",
-    ""
-};
+    static pString trig_modes[] =
+    {
+        " AUTO",
+        " NORMAL",
+        " SINGLE",
+        ""
+    };
 
 
-static pString sources[] =
-{
-    " 1",
-    " 2",
-    ""
-};
+    static pString polarities[] =
+    {
+        " RISE",
+        " FALL",
+        ""
+    };
+
+
+    static pString sources[] =
+    {
+        " 1",
+        " 2",
+        ""
+    };
+}
 
 
 const StructSCPI SCPI::trigger[] =
 {
-    SCPI_LEAF(":INPUT",    FuncInput,     TestInput,     "Filter selection by synchronization", HintInput),
-    SCPI_LEAF(":LEVEL",    FuncLevel,     TestLevel,     "",                                    HintLevel),
-    SCPI_LEAF(":MODE",     Trig_FuncMode, Trig_TestMode, "Set or query the trigger mode",       Trig_HintMode),
-    SCPI_LEAF(":POLARITY", FuncPolarity,  TestPolarity,  "Sync polarity selection",             HintPolarity),
-    SCPI_LEAF(":SOURCE",   FuncSource,    TestSource,    "Source selection",                    HintSource),
+    SCPI_LEAF(":INPUT",    SCPI_TRIG::FuncInput,    SCPI_TRIG::TestInput,    "Filter selection by synchronization", SCPI_TRIG::HintInput),
+    SCPI_LEAF(":LEVEL",    SCPI_TRIG::FuncLevel,    SCPI_TRIG::TestLevel,    "",                                    SCPI_TRIG::HintLevel),
+    SCPI_LEAF(":MODE",     SCPI_TRIG::FuncMode,     SCPI_TRIG::TestMode,     "Set or query the trigger mode",       SCPI_TRIG::HintMode),
+    SCPI_LEAF(":POLARITY", SCPI_TRIG::FuncPolarity, SCPI_TRIG::TestPolarity, "Sync polarity selection",             SCPI_TRIG::HintPolarity),
+    SCPI_LEAF(":SOURCE",   SCPI_TRIG::FuncSource,   SCPI_TRIG::TestSource,   "Source selection",                    SCPI_TRIG::HintSource),
     SCPI_EMPTY()
 };
 
 
-static pCHAR FuncInput(pCHAR buffer) //-V2506
+pCHAR SCPI_TRIG::FuncInput(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(inputs[S_TRIG_INPUT]));
 
@@ -91,7 +94,7 @@ static void SendAnswerLevel()
     SCPI::SendAnswer(answer.c_str());
 }
 
-static pCHAR FuncLevel(pCHAR buffer) //-V2506
+pCHAR SCPI_TRIG::FuncLevel(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SendAnswerLevel());
 
@@ -110,7 +113,7 @@ static pCHAR FuncLevel(pCHAR buffer) //-V2506
 }
 
 
-static pCHAR Trig_FuncMode(pCHAR buffer) //-V2506
+pCHAR SCPI_TRIG::FuncMode(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(trig_modes[S_TRIG_START_MODE]));
 
@@ -118,7 +121,7 @@ static pCHAR Trig_FuncMode(pCHAR buffer) //-V2506
 }
 
 
-static pCHAR FuncPolarity(pCHAR buffer) //-V2506
+pCHAR SCPI_TRIG::FuncPolarity(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(polarities[S_TRIG_POLARITY]));
 
@@ -126,7 +129,7 @@ static pCHAR FuncPolarity(pCHAR buffer) //-V2506
 }
 
 
-static pCHAR FuncSource(pCHAR buffer) //-V2506
+pCHAR SCPI_TRIG::FuncSource(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(sources[S_TRIG_SOURCE]));
 
@@ -134,61 +137,61 @@ static pCHAR FuncSource(pCHAR buffer) //-V2506
 }
 
 
-static void HintInput(String *message)
+void SCPI_TRIG::HintInput(String *message)
 {
     SCPI::ProcessHint(message, inputs);
 }
 
 
-static void HintLevel(String *)
+void SCPI_TRIG::HintLevel(String *)
 {
 
 }
 
 
-static void Trig_HintMode(String *message)
+void SCPI_TRIG::HintMode(String *message)
 {
     SCPI::ProcessHint(message, trig_modes);
 }
 
 
-static void HintPolarity(String *message)
+void SCPI_TRIG::HintPolarity(String *message)
 {
     SCPI::ProcessHint(message, polarities);
 }
 
 
-static void HintSource(String *message)
+void SCPI_TRIG::HintSource(String *message)
 {
     SCPI::ProcessHint(message, sources);
 }
 
 
-static bool TestInput()
+bool SCPI_TRIG::TestInput()
 {
     return false;
 }
 
 
-static bool TestLevel()
+bool SCPI_TRIG::TestLevel()
 {
     return false;
 }
 
 
-static bool Trig_TestMode()
+bool SCPI_TRIG::TestMode()
 {
     return false;
 }
 
 
-static bool TestPolarity()
+bool SCPI_TRIG::TestPolarity()
 {
     return false;
 }
 
 
-static bool TestSource()
+bool SCPI_TRIG::TestSource()
 {
     return false;
 }

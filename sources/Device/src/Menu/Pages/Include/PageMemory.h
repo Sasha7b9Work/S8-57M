@@ -148,15 +148,15 @@ struct SettingsMemory
 };
 
 
-struct PageMemory
+namespace PageMemory
 {
-    static void OnChanged_LengthMemoryChannel(bool active);
+    void OnChanged_LengthMemoryChannel(bool active);
 
-    static void OnOpenClose_Drive_Manager(bool enter = true);
+    void OnOpenClose_Drive_Manager(bool enter = true);
 
-    static void SaveSignalToFlashDrive();
+    void SaveSignalToFlashDrive();
 
-    static const Page * const self;
+    extern const Page * const self;
 };
 
 
