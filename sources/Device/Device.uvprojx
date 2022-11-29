@@ -975,11 +975,6 @@
               <FilePath>.\src\Hardware\HAL\HAL_DAC1.cpp</FilePath>
             </File>
             <File>
-              <FileName>HAL_DAC2_stm.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_DAC2_stm.cpp</FilePath>
-            </File>
-            <File>
               <FileName>HAL_FSMC_stm.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Hardware\HAL\HAL_FSMC_stm.cpp</FilePath>
@@ -1794,16 +1789,6 @@
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageFunction\PageFunction.cpp</FilePath>
             </File>
-            <File>
-              <FileName>PageMultimeter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageFunction\PageMultimeter.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageTester.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageFunction\PageTester.cpp</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -1972,26 +1957,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Multimeter</GroupName>
-          <Files>
-            <File>
-              <FileName>Multimeter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Multimeter\Multimeter.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Multimeter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Multimeter\Multimeter.h</FilePath>
-            </File>
-            <File>
-              <FileName>DisplayMultimeter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Multimeter\DisplayMultimeter.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>Osci</GroupName>
           <Files>
             <File>
@@ -2090,11 +2055,6 @@
           <GroupName>Osci/Math</GroupName>
           <Files>
             <File>
-              <FileName>Averager.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Osci\Math\Averager.cpp</FilePath>
-            </File>
-            <File>
               <FileName>InterpolatorLinear.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Osci\Math\InterpolatorLinear.cpp</FilePath>
@@ -2108,6 +2068,11 @@
               <FileName>OsciMath.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Osci\Math\OsciMath.h</FilePath>
+            </File>
+            <File>
+              <FileName>AveragerOSCI.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Osci\Math\AveragerOSCI.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -2180,16 +2145,6 @@
               <FilePath>.\src\Recorder\Recorder.cpp</FilePath>
             </File>
             <File>
-              <FileName>Sensor.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Recorder\Sensor.h</FilePath>
-            </File>
-            <File>
-              <FileName>Sensor.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Recorder\Sensor.cpp</FilePath>
-            </File>
-            <File>
               <FileName>StorageRecorder.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Recorder\StorageRecorder.h</FilePath>
@@ -2250,19 +2205,9 @@
               <FilePath>.\src\SCPI\MeasuresSCPI.cpp</FilePath>
             </File>
             <File>
-              <FileName>MultimeterSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\MultimeterSCPI.cpp</FilePath>
-            </File>
-            <File>
               <FileName>TBaseSCPI.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\SCPI\TBaseSCPI.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>TesterSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\TesterSCPI.cpp</FilePath>
             </File>
             <File>
               <FileName>TriggerSCPI.cpp</FileName>
@@ -2328,26 +2273,6 @@
               <FileName>Test_Memory.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Test\Test_Memory.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Tester</GroupName>
-          <Files>
-            <File>
-              <FileName>Tester.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Tester\Tester.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Tester.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Tester\Tester.h</FilePath>
-            </File>
-            <File>
-              <FileName>DisplayTester.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Tester\DisplayTester.cpp</FilePath>
             </File>
           </Files>
         </Group>

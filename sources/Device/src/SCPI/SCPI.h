@@ -120,11 +120,7 @@ namespace SCPI
 
     extern const StructSCPI measures[];     //-V2504
 
-    extern const StructSCPI multimeter[];   //-V2504
-
     extern const StructSCPI tBase[];        //-V2504
-
-    extern const StructSCPI tester[];       //-V2504
 
     extern const StructSCPI trigger[];      //-V2504
 
