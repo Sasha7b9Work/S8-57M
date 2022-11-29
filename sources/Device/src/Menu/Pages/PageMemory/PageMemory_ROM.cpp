@@ -37,7 +37,7 @@ namespace PageMemory
 
 DEF_GRAPH_BUTTON
 (
-    bNext,
+    bMemoryNext,
     "Следующий",
     "Перейти к следующему сигналу",
     &PageROM::self, Item::Active, PageMemory::OnPress_Next, PageMemory::Draw_Next
@@ -60,35 +60,39 @@ namespace PageMemory
 
 DEF_GRAPH_BUTTON
 (
-    bPrev,
+    bMemoryPrev,
     "Предыдущий",
     "Перейти к предыдущему сигналу",
     &PageROM::self, Item::Active, PageMemory::OnPress_Prev, PageMemory::Draw_Prev
 )
 
 
-static void OnPress_Delete()
+namespace PageMemory
 {
-    Display::Message::Show("Удаляю сохранённые данные", false);
+    static void OnPress_Delete()
+    {
+        Display::Message::Show("Удаляю сохранённые данные", false);
 
-    ROM::Data::Erase(NUM_ROM_SIGNAL);
+        ROM::Data::Erase(NUM_ROM_SIGNAL);
 
-    Display::Message::Hide();
+        Display::Message::Hide();
 
-    Color::ChangeFlash(true);
+        Color::ChangeFlash(true);
+    }
+
+    static void Draw_Delete(int x, int y)
+    {
+        Char(SymbolUGO2::DELETE).Draw4SymbolsInRect(x + 2, y + 1);
+    }
 }
 
-static void Draw_Delete(int x, int y)
-{
-    Char(SymbolUGO2::DELETE).Draw4SymbolsInRect(x + 2, y + 1);
-}
 
 DEF_GRAPH_BUTTON                                                                                                                                        //--- ПАМЯТЬ - ВНУТР ЗУ - Удалить ---
 (
     bDelete,
     "Удалить",
     "Удаляет выбранный сигнал из внутреннего запоминающего устройства",
-    &PageROM::self, Item::Active, OnPress_Delete, Draw_Delete
+    &PageROM::self, Item::Active, PageMemory::OnPress_Delete, PageMemory::Draw_Delete
 )
 
 
@@ -249,8 +253,8 @@ DEF_PAGE_5                                                                      
     pROM,
     "ВНУТР ЗУ",
     "Переход в режим работы с внутренней памятью",
-    &bPrev,
-    &bNext,
+    &bMemoryPrev,
+    &bMemoryNext,
     &bSave,
     &bDelete,
     &bTypeSignal,

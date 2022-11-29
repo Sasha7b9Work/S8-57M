@@ -49,7 +49,7 @@ DEF_GRAPH_BUTTON( bLeft,
 )
 
 
-DEF_PAGE_3(pCursors, //-V2567
+DEF_PAGE_3(pRecorderCursors, //-V2567
     "КУРСОРЫ",
     "Работа курсорами",
     &cChoice,
@@ -59,4 +59,4 @@ DEF_PAGE_3(pCursors, //-V2567
     &PageRecorder::Show::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page *const PageRecorder::Show::Cursors::self = static_cast<const Page *>(&pCursors);
+const Page *const PageRecorder::Show::Cursors::self = static_cast<const Page *>(&pRecorderCursors);
