@@ -9,8 +9,8 @@
 #include <cstring>
 
 
-const PFont *fonts[PTypeFont::Count] = {&font5, &font8, &fontUGO, &fontUGO2, nullptr};
-const PFont *font = &font8;
+const PFont *PFont::fonts[PTypeFont::Count] = {&font5, &font8, &fontUGO, &fontUGO2, nullptr};
+const PFont *PFont::font = &font8;
 
 PTypeFont::E pushedFont = PTypeFont::_8;
 PTypeFont::E currentFont = PTypeFont::_8;

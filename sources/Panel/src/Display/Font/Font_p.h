@@ -43,4 +43,8 @@ public:
     static bool BitIsExist(uint8 symbol, int row, int bit);
     // Устанавливает количество пустых пикселей между символами.
     static void SetSpacing(int spacing);
+
+private:
+    static const PFont *fonts[PTypeFont::Count];
+    static const PFont *font;
 };
