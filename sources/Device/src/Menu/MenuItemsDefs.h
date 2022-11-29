@@ -230,7 +230,7 @@ static const Page name(&di##name);
 
 #define DEF_CHOICE_2(name, title, hint, name1, name2, cell, keeper, funcActive, funcChanged, funcAfterDraw)                                                                                 \
 static const pString n##name[] = { name1, name2, nullptr };                                                                                                                                 \
-static const DataChoice dc##name[] = {{ (int8 *)&cell, {n##name}, funcChanged, funcAfterDraw }};                                                                                            \
+static const DataChoice dc##name[] = {{ (int8 *)&cell, n##name, funcChanged, funcAfterDraw }};                                                                                            \
 static const DataItem di##name = { TypeItem::Choice, title, hint, keeper, funcActive, &dc##name };                                                                                          \
 static const Choice name(&di##name);
 
