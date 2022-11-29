@@ -16,21 +16,23 @@
 #include "Utils/Values.h"
 
 
-// Нарисовать одну ячейчку памяти
-static void DrawMemoryCell(int num, bool exist);
-
-static bool HandlerKey_ROM(const KeyEvent &event);
-
-
-
-static void OnPress_Next()
+namespace PageMemory
 {
-    HandlerKey_ROM(KeyEvent(Key::Right, TypePress::Release));
-}
+    // Нарисовать одну ячейчку памяти
+    static void DrawMemoryCell(int num, bool exist);
 
-static void Draw_Next(int x, int y)
-{
-    Char(SymbolUGO2::ARROW_RIGHT).Draw4SymbolsInRect(x + 2, y + 2);
+    static bool HandlerKey_ROM(const KeyEvent &event);
+
+
+    static void OnPress_Next()
+    {
+        HandlerKey_ROM(KeyEvent(Key::Right, TypePress::Release));
+    }
+
+    static void Draw_Next(int x, int y)
+    {
+        Char(SymbolUGO2::ARROW_RIGHT).Draw4SymbolsInRect(x + 2, y + 2);
+    }
 }
 
 DEF_GRAPH_BUTTON
@@ -38,26 +40,30 @@ DEF_GRAPH_BUTTON
     bNext,
     "Следующий",
     "Перейти к следующему сигналу",
-    &PageROM::self, Item::Active, OnPress_Next, Draw_Next
+    &PageROM::self, Item::Active, PageMemory::OnPress_Next, PageMemory::Draw_Next
 )
 
 
-static void OnPress_Prev()
+namespace PageMemory
 {
-    HandlerKey_ROM(KeyEvent(Key::Left, TypePress::Release));
+    static void OnPress_Prev()
+    {
+        HandlerKey_ROM(KeyEvent(Key::Left, TypePress::Release));
+    }
+
+    static void Draw_Prev(int x, int y)
+    {
+        Char(SymbolUGO2::ARROW_LEFT).Draw4SymbolsInRect(x + 2, y + 2);
+    }
 }
 
-static void Draw_Prev(int x, int y)
-{
-    Char(SymbolUGO2::ARROW_LEFT).Draw4SymbolsInRect(x + 2, y + 2);
-}
 
 DEF_GRAPH_BUTTON
 (
     bPrev,
     "Предыдущий",
     "Перейти к предыдущему сигналу",
-    &PageROM::self, Item::Active, OnPress_Prev, Draw_Prev
+    &PageROM::self, Item::Active, PageMemory::OnPress_Prev, PageMemory::Draw_Prev
 )
 
 
@@ -156,83 +162,87 @@ DEF_GRAPH_BUTTON_HINTS_3                                                        
 )
 
 
-static void OnOpenClose_ROM(bool open)
+namespace PageMemory
 {
-    if(open)
+    static void OnOpenClose_ROM(bool open)
     {
-        Color::ChangeFlash(true);
-    }
-
-    S_MEM_MODE_WORK = open ? ModeWork::ROM : ModeWork::Dir;
-}
-
-static void AfterDraw_ROM()
-{
-    // Теперь нарисуем состояние памяти
-
-    bool exist[ROM::Data::MAX_NUM_SAVED_WAVES] = { false };
-
-    ROM::Data::GetInfo(exist);
-
-    for (int i = 0; i < ROM::Data::MAX_NUM_SAVED_WAVES; i++)
-    {
-        DrawMemoryCell(i, exist[i]);
-    }
-}
-
-static void DrawMemoryCell(int num, bool exist)
-{
-    int x = Grid::Left() + 2 + num * 12;
-    int y = Grid::FullBottom() - 13;
-    int width = 12;
-    Region(width, 10).Fill(x, y, num == NUM_ROM_SIGNAL ? Color::FLASH_10 : Color::BACK);
-    Rectangle(width, 10).Draw(x, y, Color::FILL);
-
-    Color((num == NUM_ROM_SIGNAL) ? Color::FLASH_01 : Color::FILL).SetAsCurrent();
-
-    if (exist)
-    {
-        Integer(num + 1).ToString(false, 2).Draw(x + 2, y + 1);
-    }
-    else
-    {
-        String(Symbol8::CROSS).Draw(x + 3, y + 1);
-    }
-}
-
-static bool HandlerKey_ROM(const KeyEvent &event)
-{
-    bool result = false;
-
-    if (event.IsRelease() || event.IsLong())
-    {
-        Beeper::RegulatorSwitchRotate();
-
-        if (event.IsDecrease())
+        if (open)
         {
-            Math::CircleDecrease<int8>((int8 *)&NUM_ROM_SIGNAL, 0, ROM::Data::MAX_NUM_SAVED_WAVES - 1); //-V2567
-
             Color::ChangeFlash(true);
-
-            result = true;
         }
-        else if (event.IsIncrease()) //-V2516
-        {
-            Math::CircleIncrease<int8>((int8 *)&NUM_ROM_SIGNAL, 0, ROM::Data::MAX_NUM_SAVED_WAVES - 1); //-V2567
 
-            Color::ChangeFlash(true);
-
-            result = true;
-        }       
+        S_MEM_MODE_WORK = open ? ModeWork::ROM : ModeWork::Dir;
     }
 
-    return result;
+    static void AfterDraw_ROM()
+    {
+        // Теперь нарисуем состояние памяти
+
+        bool exist[ROM::Data::MAX_NUM_SAVED_WAVES] = { false };
+
+        ROM::Data::GetInfo(exist);
+
+        for (int i = 0; i < ROM::Data::MAX_NUM_SAVED_WAVES; i++)
+        {
+            DrawMemoryCell(i, exist[i]);
+        }
+    }
+
+    static void DrawMemoryCell(int num, bool exist)
+    {
+        int x = Grid::Left() + 2 + num * 12;
+        int y = Grid::FullBottom() - 13;
+        int width = 12;
+        Region(width, 10).Fill(x, y, num == NUM_ROM_SIGNAL ? Color::FLASH_10 : Color::BACK);
+        Rectangle(width, 10).Draw(x, y, Color::FILL);
+
+        Color((num == NUM_ROM_SIGNAL) ? Color::FLASH_01 : Color::FILL).SetAsCurrent();
+
+        if (exist)
+        {
+            Integer(num + 1).ToString(false, 2).Draw(x + 2, y + 1);
+        }
+        else
+        {
+            String(Symbol8::CROSS).Draw(x + 3, y + 1);
+        }
+    }
+
+    static bool HandlerKey_ROM(const KeyEvent &event)
+    {
+        bool result = false;
+
+        if (event.IsRelease() || event.IsLong())
+        {
+            Beeper::RegulatorSwitchRotate();
+
+            if (event.IsDecrease())
+            {
+                Math::CircleDecrease<int8>((int8 *)&NUM_ROM_SIGNAL, 0, ROM::Data::MAX_NUM_SAVED_WAVES - 1); //-V2567
+
+                Color::ChangeFlash(true);
+
+                result = true;
+            }
+            else if (event.IsIncrease()) //-V2516
+            {
+                Math::CircleIncrease<int8>((int8 *)&NUM_ROM_SIGNAL, 0, ROM::Data::MAX_NUM_SAVED_WAVES - 1); //-V2567
+
+                Color::ChangeFlash(true);
+
+                result = true;
+            }
+        }
+
+        return result;
+    }
+
+    static bool NormalTitle_ROM()
+    {
+        return false;
+    }
 }
 
-static bool NormalTitle_ROM()
-{
-    return false;
-}
 
 DEF_PAGE_5                                                                                                                                                        //--- ПАМЯТЬ - ВНУТР ЗУ --- //-V2567
 (
@@ -245,7 +255,7 @@ DEF_PAGE_5                                                                      
     &bDelete,
     &bTypeSignal,
     PageName::Memory_Internal,
-    &PageMemory::self, Item::Active, NormalTitle_ROM, OnOpenClose_ROM, AfterDraw_ROM, HandlerKey_ROM
+    &PageMemory::self, Item::Active, PageMemory::NormalTitle_ROM, PageMemory::OnOpenClose_ROM, PageMemory::AfterDraw_ROM, PageMemory::HandlerKey_ROM
 )
 
 const Page *const PageROM::self = static_cast<const Page *>(&pROM);
