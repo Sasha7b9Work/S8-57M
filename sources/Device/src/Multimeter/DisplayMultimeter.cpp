@@ -603,7 +603,7 @@ void DisplayMultimeter::ChangedMode()
         {3, 2},         // CurrentAC
         {2, 3, 4, 3},   // Resistance
         {2},            // TestDiode
-        (2),            // Bell
+        {2},            // Bell
     };
     
     static const pString suffix[MultimeterMeasure::Count][4] =

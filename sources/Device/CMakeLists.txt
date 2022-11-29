@@ -1,5 +1,7 @@
 project (Device)
 
+set(CMAKE_UNITY_BUILD OFF)
+
 include_directories(..
                     ../common/_VS
                     ../common/_VS/std_includes
@@ -16,7 +18,7 @@ include_directories(..
                     src/Hardware/FatFS
                     src/Hardware/USBH
                     src/Hardware/USBD)
-                    
+
 add_definitions(-DSTM32F437xx -DDEVICE -DVS_KEIL)
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -Wall")
