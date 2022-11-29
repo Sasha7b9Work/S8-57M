@@ -1,10 +1,6 @@
 #pragma once
 
 
-
-#define WIDTH_SCREEN    320
-#define HEIGHT_SCREEN   240
-
 #define HEIGHT_TITLE    19
 #define WIDTH_ITEM      69
 #define HEIGHT_ITEM     ((HEIGHT_SCREEN - HEIGHT_TITLE - 1) / 4)
