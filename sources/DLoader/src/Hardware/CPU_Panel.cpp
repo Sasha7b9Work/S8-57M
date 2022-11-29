@@ -8,7 +8,7 @@
 #include <string.h>
 
 
-////////////////////////////////////
+//////////
 #define MAX_DATA            20
 
 #define LED_CHANA_ENABLE    129
