@@ -1391,7 +1391,7 @@ static float Divide(float val1, float val2)
 {
     float result = val1 / val2;
 
-    if(result == std::numeric_limits<float>::infinity())
+    if(result == std::numeric_limits<float>::infinity()) //-V550
     {
         result = Float::ERROR;
     }

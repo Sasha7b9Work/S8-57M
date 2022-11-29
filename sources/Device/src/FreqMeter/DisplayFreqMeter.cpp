@@ -151,7 +151,7 @@ void DisplayFreqMeter::DrawFrequencyMode(int x, int _y)
 
     Time time(1.0F / freq);
 
-    if(time.Value() == std::numeric_limits<float>::infinity())
+    if(time.Value() == std::numeric_limits<float>::infinity()) //-V550
     {
         Text(EMPTY_STRING).DrawDigitsMonospace(x + dX, yT, DFont::GetWidth('0'));
 
