@@ -118,19 +118,13 @@ int Grid::ChannelHeight()
 }
 
 
-static void EmptyFunc()
-{
-
-}
-
-
 void Grid::Draw()
 {
     static const pFuncVV funcs[4] =
     {
         DrawOsci,
         DrawTester,
-        EmptyFunc,
+        EmptyFuncVV,
         DrawRecorder
     };
 

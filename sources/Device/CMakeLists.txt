@@ -166,7 +166,7 @@ file(GLOB SETTINGS                         src/Settings/*)
 file(GLOB TEST                             src/Test/*)
 file(GLOB UTILS                            src/Utils/*)
 
-set_source_files_properties(${LIBS_FATFS} ${LIBS_HAL} ${LIBS_USBD} ${LIBS_USBH} PROPERTIES HEADER_FILE_ONLY TRUE)
+set_source_files_properties(${LIBS_FATFS} ${LIBS_HAL} ${LIBS_USBD} ${LIBS_USBH} ${HARDWARE_USBD} PROPERTIES HEADER_FILE_ONLY TRUE)
 
 source_group(common                              FILES ${COMMON})
 source_group(doc                                 FILES ${DOC})
