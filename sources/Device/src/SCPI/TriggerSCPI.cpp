@@ -17,9 +17,9 @@ static void HintLevel(String *);
 static bool TestLevel();
 
 // :TRIG:MODE
-static pCHAR FuncMode(pCHAR);
-static void HintMode(String *);
-static bool TestMode();
+static pCHAR Trig_FuncMode(pCHAR);
+static void Trig_HintMode(String *);
+static bool Trig_TestMode();
 
 // :TRIG:POLARITY
 static pCHAR FuncPolarity(pCHAR);
@@ -41,7 +41,7 @@ static pString inputs[] =
 };
 
 
-static pString modes[] =
+static pString trig_modes[] =
 {
     " AUTO",
     " NORMAL",
@@ -68,11 +68,11 @@ static pString sources[] =
 
 const StructSCPI SCPI::trigger[] =
 {
-    SCPI_LEAF(":INPUT",    FuncInput,    TestInput,    "Filter selection by synchronization", HintInput),
-    SCPI_LEAF(":LEVEL",    FuncLevel,    TestLevel,    "",                                    HintLevel),
-    SCPI_LEAF(":MODE",     FuncMode,     TestMode,     "Set or query the trigger mode",       HintMode),
-    SCPI_LEAF(":POLARITY", FuncPolarity, TestPolarity, "Sync polarity selection",             HintPolarity),
-    SCPI_LEAF(":SOURCE",   FuncSource,   TestSource,   "Source selection",                    HintSource),
+    SCPI_LEAF(":INPUT",    FuncInput,     TestInput,     "Filter selection by synchronization", HintInput),
+    SCPI_LEAF(":LEVEL",    FuncLevel,     TestLevel,     "",                                    HintLevel),
+    SCPI_LEAF(":MODE",     Trig_FuncMode, Trig_TestMode, "Set or query the trigger mode",       Trig_HintMode),
+    SCPI_LEAF(":POLARITY", FuncPolarity,  TestPolarity,  "Sync polarity selection",             HintPolarity),
+    SCPI_LEAF(":SOURCE",   FuncSource,    TestSource,    "Source selection",                    HintSource),
     SCPI_EMPTY()
 };
 
@@ -110,11 +110,11 @@ static pCHAR FuncLevel(pCHAR buffer) //-V2506
 }
 
 
-static pCHAR FuncMode(pCHAR buffer) //-V2506
+static pCHAR Trig_FuncMode(pCHAR buffer) //-V2506
 {
-    SCPI_REQUEST(SCPI::SendAnswer(modes[S_TRIG_START_MODE]));
+    SCPI_REQUEST(SCPI::SendAnswer(trig_modes[S_TRIG_START_MODE]));
 
-    SCPI_PROCESS_ARRAY(modes, TrigStartMode::Set(static_cast<TrigStartMode::E>(i))); //-V2563
+    SCPI_PROCESS_ARRAY(trig_modes, TrigStartMode::Set(static_cast<TrigStartMode::E>(i))); //-V2563
 }
 
 
@@ -146,9 +146,9 @@ static void HintLevel(String *)
 }
 
 
-static void HintMode(String *message)
+static void Trig_HintMode(String *message)
 {
-    SCPI::ProcessHint(message, modes);
+    SCPI::ProcessHint(message, trig_modes);
 }
 
 
@@ -176,7 +176,7 @@ static bool TestLevel()
 }
 
 
-static bool TestMode()
+static bool Trig_TestMode()
 {
     return false;
 }

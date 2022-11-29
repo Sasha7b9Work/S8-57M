@@ -20,7 +20,7 @@ static void OnPress_Right()
 
 }
 
-static void Draw_Right(int x, int y)
+static void Cursors_Draw_Right(int x, int y)
 {
     Char(SymbolUGO2::TRIANGLE_RIGHT).Draw4SymbolsInRect(x + 6, y + 2);
 }
@@ -28,7 +28,7 @@ static void Draw_Right(int x, int y)
 DEF_GRAPH_BUTTON( bRight,
     "Вправо",
     "Перемещение курсора вправо",
-    &PageRecorder::Show::Cursors::self, Item::Active, OnPress_Right, Draw_Right
+    &PageRecorder::Show::Cursors::self, Item::Active, OnPress_Right, Cursors_Draw_Right
 )
 
 
@@ -37,7 +37,7 @@ static void OnPress_Left()
 
 }
 
-static void Draw_Left(int x, int y)
+static void FFT_Draw_Left(int x, int y)
 {
     Char(SymbolUGO2::TRIANGLE_LEFT).Draw4SymbolsInRect(x + 6, y + 2);
 }
@@ -45,7 +45,7 @@ static void Draw_Left(int x, int y)
 DEF_GRAPH_BUTTON( bLeft,
     "Влево",
     "Перемещение курсора влево",
-    &PageRecorder::Show::Cursors::self, Item::Active, OnPress_Left, Draw_Left
+    &PageRecorder::Show::Cursors::self, Item::Active, OnPress_Left, FFT_Draw_Left
 )
 
 

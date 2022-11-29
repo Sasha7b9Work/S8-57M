@@ -13,7 +13,7 @@ static void Draw_Enter(int x, int y)
 }
 
 
-static void Draw_Leave(int x, int y)
+static void Help_Draw_Leave(int x, int y)
 {
     Char(SymbolUGO2::LEAVE).Draw4SymbolsInRect(x + 2, y + 1);
 }
@@ -25,7 +25,7 @@ static void Draw_Prev(int x, int y)
 }
 
 
-static void Draw_Next(int x, int y)
+static void Help_Draw_Next(int x, int y)
 {
     Char(SymbolUGO2::TRIANGLE_DOWN).Draw4SymbolsInRect(x + 2, y + 5);
 }
@@ -44,10 +44,10 @@ DEF_GRAPH_BUTTON( bEnter,                                                       
 )
 
 
-DEF_GRAPH_BUTTON( bLeave,                                                                                                                                          //--- ПОМОЩЬ - Закрыть ---
+DEF_GRAPH_BUTTON( bHelpLeave,                                                                                                                                          //--- ПОМОЩЬ - Закрыть ---
      "Закрыть",
      "Закрывает раздел справки",
-    &PageHelp::self, HelpContent::LeaveParagraphIsActive, HelpContent::LeaveParagraph, Draw_Leave
+    &PageHelp::self, HelpContent::LeaveParagraphIsActive, HelpContent::LeaveParagraph, Help_Draw_Leave
 )
 
 
@@ -58,19 +58,19 @@ DEF_GRAPH_BUTTON( bPrev,                                                        
 )
 
 
-DEF_GRAPH_BUTTON( bNext,                                                                                                                                  //--- ПОМОЩЬ - Следующий раздел ---
+DEF_GRAPH_BUTTON( bHelpNext,                                                                                                                                  //--- ПОМОЩЬ - Следующий раздел ---
     "Следующий раздел",
     "Выбрать следующий раздел справки",
-    &PageHelp::self, Item::Active, HelpContent::NextParagraph, Draw_Next
+    &PageHelp::self, Item::Active, HelpContent::NextParagraph, Help_Draw_Next
 )
 
 DEF_PAGE_4( pHelp,                                                                                                                                                           //--- ПОМОЩЬ --- //-V2567
     "ПОМОЩЬ",
     "Открыть разделы помощи",
     &bEnter,
-    &bLeave,
+    &bHelpLeave,
     &bPrev,
-    &bNext,
+    &bHelpNext,
     PageName::Help, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, HelpContent::Draw, HandlerKey_Help
 )
 

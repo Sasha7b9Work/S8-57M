@@ -1,7 +1,7 @@
 #include "defines.h"
 #include "log.h"
 #include "CommonFunctions.h"
-#include <stdlib.h>
+#include <cstdlib>
 #include <cstring>
 #include <algorithm>
 #include <cstdio>
@@ -10,7 +10,7 @@
 
 void CF::LogBufferU8_HEX(const uint8 *buffer, int num) //-V2506
 {
-    char *message = static_cast<char *>(malloc(static_cast<uint>(num * 3))); //-V2511
+    char *message = static_cast<char *>(std::malloc(static_cast<uint>(num * 3))); //-V2511
 
     if (message == nullptr)
     {
@@ -31,13 +31,13 @@ void CF::LogBufferU8_HEX(const uint8 *buffer, int num) //-V2506
 
     LOG_WRITE(message);
 
-    free(message); //-V2511
+    std::free(message); //-V2511
 }
 
 
 void CF::LogBufferU8_DEC(const uint8 *buffer, int num) //-V2506
 {
-    char *message = static_cast<char *>(malloc(static_cast<uint>(num * 3))); //-V2511
+    char *message = static_cast<char *>(std::malloc(static_cast<uint>(num * 3))); //-V2511
 
     if (message == nullptr)
     {
@@ -59,7 +59,7 @@ void CF::LogBufferU8_DEC(const uint8 *buffer, int num) //-V2506
 
     LOG_WRITE(message);
 
-    free(message); //-V2511
+    std::free(message); //-V2511
 }
 
 

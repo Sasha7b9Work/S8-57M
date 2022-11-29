@@ -15,7 +15,7 @@ struct StructMeasure
 
 #define DEF_STRUCT_MEASURE(name, ugo) {name, ugo, 0, 0, 0}
 
-static const StructMeasure sMeas[TypeMeasure::Count] =
+static const StructMeasure s_meas[TypeMeasure::Count] =
 {
     DEF_STRUCT_MEASURE("",            '\x00'),
     DEF_STRUCT_MEASURE("U макс",      '\x20'),
@@ -45,7 +45,7 @@ static const StructMeasure sMeas[TypeMeasure::Count] =
 
 String TypeMeasure::GetName(TypeMeasure::E type)
 {
-    return String(sMeas[type].name);
+    return String(s_meas[type].name);
 }
 
 
@@ -67,7 +67,7 @@ void Measure::SetActive(int row, int col)
 
 char Measure::GetChar(TypeMeasure::E measure)
 {
-    return sMeas[measure].UGO;
+    return s_meas[measure].UGO;
 }
 
 
@@ -107,7 +107,7 @@ String Measure::Name()
 {
     TypeMeasure::E type = GetType();
 
-    return (type > TypeMeasure::None && type < TypeMeasure::Count) ? String(sMeas[type].name) : String("");
+    return (type > TypeMeasure::None && type < TypeMeasure::Count) ? String(s_meas[type].name) : String("");
 }
 
 

@@ -4,19 +4,19 @@
 #include "Settings/Settings.h"
 
 // :FFT:DATA?
-static pCHAR FuncData(pCHAR);
-static void HintData(String *);
-static bool TestData();
+static pCHAR FFT_FuncData(pCHAR);
+static void FFT_HintData(String *);
+static bool FFT_TestData();
 
 // :FFT:DISPLAY
-static pCHAR FuncDisplay(pCHAR);
-static void HintDisplay(String *);
-static bool TestDisplay();
+static pCHAR FFT_FuncDisplay(pCHAR);
+static void FFT_HintDisplay(String *);
+static bool FFT_TestDisplay();
 
 // :FFT:SCALE
-static pCHAR FuncScale(pCHAR);
-static void HintScale(String *);
-static bool TestScale();
+static pCHAR FFT_FuncScale(pCHAR);
+static void FFT_HintScale(String *);
+static bool FFT_TestScale();
 
 // :FFT:SOUCRE
 static pCHAR FuncSource(pCHAR);
@@ -31,16 +31,16 @@ static bool TestWindow();
 
 const StructSCPI SCPI::fft[] =
 {
-    SCPI_LEAF(":DATA?",   FuncData,    TestData,    "", HintData),
-    SCPI_LEAF(":DISPLAY", FuncDisplay, TestDisplay, "", HintDisplay),
-    SCPI_LEAF(":SCALE",   FuncScale,   TestScale,   "", HintScale),
+    SCPI_LEAF(":DATA?",   FFT_FuncData,    FFT_TestData,    "", FFT_HintData),
+    SCPI_LEAF(":DISPLAY", FFT_FuncDisplay, FFT_TestDisplay, "", FFT_HintDisplay),
+    SCPI_LEAF(":SCALE",   FFT_FuncScale,   FFT_TestScale,   "", FFT_HintScale),
     SCPI_LEAF(":SOURCE",  FuncSource,  TestSource,  "", HintSource),
     SCPI_LEAF(":WINDOW",  FuncWindow,  TestWindow,  "", HintWindow),
     SCPI_EMPTY()
 };
 
 
-static pCHAR FuncData(pCHAR buffer) //-V2506
+static pCHAR FFT_FuncData(pCHAR buffer) //-V2506
 {
     SCPI_PROLOG(buffer);
 
@@ -62,7 +62,7 @@ static void EnableFFT(int i)
     S_FFT_ENABLED = (i == 0);
 }
 
-static pCHAR FuncDisplay(pCHAR buffer) //-V2506
+static pCHAR FFT_FuncDisplay(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(display[S_FFT_ENABLED ? 0 : 1]));
 
@@ -77,7 +77,7 @@ static pString scale[] =
     ""
 };
 
-static pCHAR FuncScale(pCHAR buffer) //-V2506
+static pCHAR FFT_FuncScale(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(scale[S_FFT_SCALE]));
 
@@ -118,19 +118,19 @@ static pCHAR FuncWindow(pCHAR buffer) //-V2506
 }
 
 
-static bool TestData()
+static bool FFT_TestData()
 {
     return false;
 }
 
 
-static bool TestDisplay()
+static bool FFT_TestDisplay()
 {
     return false;
 }
 
 
-static bool TestScale()
+static bool FFT_TestScale()
 {
     return false;
 }
@@ -148,19 +148,19 @@ static bool TestWindow()
 }
 
 
-static void HintData(String *)
+static void FFT_HintData(String *)
 {
 
 }
 
 
-static void HintDisplay(String *)
+static void FFT_HintDisplay(String *)
 {
 
 }
 
 
-static void HintScale(String *)
+static void FFT_HintScale(String *)
 {
 
 }

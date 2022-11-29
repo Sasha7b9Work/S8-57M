@@ -57,4 +57,9 @@ public:
     
     // Возвращает количество пустых пикселей между символами
     static int GetSpacing();
+
+private:
+
+    static const DFont *fonts[DTypeFont::Count];
+    static const DFont *font;
 };
