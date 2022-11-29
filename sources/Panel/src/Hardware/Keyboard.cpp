@@ -1,8 +1,24 @@
-// 2022/04/20 16:52:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
+#include "common/Command.h"
 #include "Hardware/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
-#include "common/Communicator/Message_.h"
+
+
+#define SL0 GPIO_PIN_14
+#define SL1 GPIO_PIN_13
+#define SL2 GPIO_PIN_15
+#define SL3 GPIO_PIN_12
+#define SL4 GPIO_PIN_8
+#define SL5 GPIO_PIN_8
+#define SL6 GPIO_PIN_9
+#define SL7 GPIO_PIN_9
+
+#define RL0 GPIO_PIN_13
+#define RL1 GPIO_PIN_8
+#define RL2 GPIO_PIN_9
+#define RL3 GPIO_PIN_11
+#define RL4 GPIO_PIN_10
+#define RL5 GPIO_PIN_12
 
 
 static const Control controls[Keyboard::NUM_RL][Keyboard::NUM_SL] =
@@ -26,27 +42,12 @@ static const Control controls[Keyboard::NUM_RL][Keyboard::NUM_SL] =
      Control::K_None,       Control::K_None}                                                                                                    // RL5
 };               
 
-#define SL0 GPIO_PIN_14
-#define SL1 GPIO_PIN_13
-#define SL2 GPIO_PIN_15
-#define SL3 GPIO_PIN_12
-#define SL4 GPIO_PIN_8
-#define SL5 GPIO_PIN_8
-#define SL6 GPIO_PIN_9
-#define SL7 GPIO_PIN_9
-
-#define RL0 GPIO_PIN_13
-#define RL1 GPIO_PIN_8
-#define RL2 GPIO_PIN_9
-#define RL3 GPIO_PIN_11
-#define RL4 GPIO_PIN_10
-#define RL5 GPIO_PIN_12
 
 static uint16 sls[Keyboard::NUM_SL]             = {SL0,   SL1,   SL2,   SL3,   SL4,   SL5,   SL6,   SL7};
-static GPIO_TypeDef* slsPorts[Keyboard::NUM_SL] = {GPIOB, GPIOB, GPIOB, GPIOB, GPIOD, GPIOC, GPIOD, GPIOC};
+static GPIO_TypeDef* slsPorts[Keyboard::NUM_SL] = {GPIOB, GPIOB, GPIOB, GPIOB, GPIOD, GPIOC, GPIOD, GPIOC}; //-V2571
 
 static uint16 rls[Keyboard::NUM_RL]             = {RL0,   RL1,   RL2,   RL3,   RL4,   RL5};
-static GPIO_TypeDef* rlsPorts[Keyboard::NUM_RL] = {GPIOD, GPIOA, GPIOA, GPIOD, GPIOA, GPIOD};
+static GPIO_TypeDef* rlsPorts[Keyboard::NUM_RL] = {GPIOD, GPIOA, GPIOA, GPIOD, GPIOA, GPIOD}; //-V2571
 
 #define SET_SL(n)   HAL_GPIO_WritePin(slsPorts[n], sls[n], GPIO_PIN_SET);
 #define SET_ALL_SL  HAL_GPIO_WritePin(GPIOB, SL0 | SL1 | SL2 | SL3, GPIO_PIN_SET);  \
@@ -91,29 +92,29 @@ void Keyboard::Init()
     isGPIO.Pin = RL1 | RL2 | RL4;
     isGPIO.Mode = GPIO_MODE_INPUT;
     isGPIO.Pull = GPIO_PULLUP;
-    HAL_GPIO_Init(GPIOA, &isGPIO);
+    HAL_GPIO_Init(GPIOA, &isGPIO); //-V2571
 
     isGPIO.Pin = RL0 | RL5 | RL3;
-    HAL_GPIO_Init(GPIOD, &isGPIO);
+    HAL_GPIO_Init(GPIOD, &isGPIO); //-V2571
 
     // порты вывода
     isGPIO.Pin = SL0 | SL1 | SL2 | SL3;
     isGPIO.Mode = GPIO_MODE_OUTPUT_PP;
-    HAL_GPIO_Init(GPIOB, &isGPIO);
+    HAL_GPIO_Init(GPIOB, &isGPIO); //-V2571
 
     isGPIO.Pin = SL5 | SL7;
-    HAL_GPIO_Init(GPIOC, &isGPIO);
+    HAL_GPIO_Init(GPIOC, &isGPIO); //-V2571
 
     isGPIO.Pin = SL4 | SL6;
-    HAL_GPIO_Init(GPIOD, &isGPIO);
+    HAL_GPIO_Init(GPIOD, &isGPIO); //-V2571
 
-    SET_ALL_SL;
+    SET_ALL_SL; //-V2571
 
     init = true;
 }
 
 
-void Keyboard::Update()
+void Keyboard::Update() //-V2506
 {
     if (!init)
     {
@@ -187,17 +188,24 @@ void Keyboard::Update()
             }
         }
 
-        SET_ALL_SL;
+        SET_ALL_SL; //-V2571
     }
 
-    SET_ALL_SL;
+    SET_ALL_SL; //-V2571
 }
 
 
 static void SendCommand(Control control, Control::Action::E action)
 {
-    Message<3>(Command::ButtonPress, (uint8)control, (uint8)action).Transmit();
-}
+    uint8 data[3] =
+    {
+        Command::ButtonPress,
+        static_cast<uint8>(control),
+        static_cast<uint8>(action)
+    };
+
+    HAL_BUS::SendToDevice(data, 3);
+}   
 
 
 const char *Keyboard::ControlName(Control control)

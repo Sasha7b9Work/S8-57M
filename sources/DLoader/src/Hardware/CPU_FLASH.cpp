@@ -15,7 +15,7 @@
 
 void CPU::FLASH_::Prepare()
 {
-    CLEAR_FLASH_FLAGS;
+    CLEAR_FLASH_FLAGS; //-V2571
 
     HAL_FLASH_Unlock();
 
@@ -35,7 +35,7 @@ void CPU::FLASH_::Prepare()
 
 void CPU::FLASH_::WriteData(uint address, uint8 *data, int size)
 {
-    CLEAR_FLASH_FLAGS;
+    CLEAR_FLASH_FLAGS; //-V2571
 
     HAL_FLASH_Unlock();
 
@@ -45,7 +45,7 @@ void CPU::FLASH_::WriteData(uint address, uint8 *data, int size)
         for (int i = 0; i < size; i++)
         {
             uint *data32 = reinterpret_cast<uint *>(data);
-            HAL_FLASH_Program(TYPEPROGRAM_WORD, address, static_cast<uint64_t>(data32[i]));
+            HAL_FLASH_Program(TYPEPROGRAM_WORD, address, static_cast<uint64_t>(data32[i])); //-V2563
             address += 4;
         }
     }
@@ -53,7 +53,7 @@ void CPU::FLASH_::WriteData(uint address, uint8 *data, int size)
     {
         for (int i = 0; i < size; i++)
         {
-            HAL_FLASH_Program(TYPEPROGRAM_BYTE, address++, static_cast<uint64_t>(data[i]));
+            HAL_FLASH_Program(TYPEPROGRAM_BYTE, address++, static_cast<uint64_t>(data[i])); //-V2563
         }
     }
 

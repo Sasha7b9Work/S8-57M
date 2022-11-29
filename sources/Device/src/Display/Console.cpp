@@ -7,27 +7,11 @@
 #include <cstdio>
 
 
-namespace Console
-{
-    char buffer[29][100];
-
-    // true означает, что идЄт процесс вывода консоли и добавл€ть в неЄ новые строки нельз€ (это происходит, когда добавление идЄт из прерывани€)
-    bool inProcessDraw = false;
-
-    // true, если происходит процесс добавлени€ строки
-    bool inProcessAddingString = false;
-
-    //  оличество заполненных строк в консоли
-    int stringInConsole = 0;
-
-    // «десь сохран€етс€ предыдущее значение максимального количества строк в консоли
-    int16 prevMaxStrinsInConsole = - 1;
-
-    void DeleteFirstString();
-
-    // ¬озвращает true, если консоль зан€та и с ней нельз€ производить работу
-    bool IsBusy();
-}
+char Console::buffer[33][100];
+bool Console::inProcessDraw = false;
+bool Console::inProcessAddingString = false;
+int Console::stringInConsole = 0;
+int16 Console::prevMaxStrinsInConsole = -1;
 
 
 void Console::Init()
@@ -39,7 +23,7 @@ void Console::Init()
 }
 
 
-void Console::Draw()
+void Console::Draw() //-V2506
 {
     if (prevMaxStrinsInConsole == -1)
     {
@@ -75,13 +59,13 @@ void Console::DeleteFirstString()
 {
     for (int16 i = 1; i < stringInConsole; i++)
     {
-        std::strcpy(buffer[i - 1], buffer[i]);
+        std::strcpy(buffer[i - 1], buffer[i]); //-V2513
     }
     stringInConsole--;
 }
 
 
-void Console::AddString(const char* string)
+void Console::AddString(const char *string)
 {
     // \todo ћы пропускаем некоторые строки. —делать отложенное добавление
 
@@ -123,6 +107,7 @@ void Console::OnChanged_MaxStringsInConsole()
 
 
 }
+
 
 bool Console::IsBusy()
 {

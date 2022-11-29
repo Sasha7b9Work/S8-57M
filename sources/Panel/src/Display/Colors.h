@@ -1,4 +1,3 @@
-// 2022/04/20 16:52:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "defines.h"
 #include "Settings/SettingsTypes.h"
@@ -46,17 +45,12 @@ public:
     static Color BorderMenu(bool shade);    // Цвет окантовки меню
     static Color LightShadingText();        // Светлый цвет в тени.
     static Color Contrast(Color color);     // Возвращает цвет, контрастный к color. Может быть белым или чёрным.
-
+    
     uint8 value;
 
-    Color &operator=(const Color &color);
+    static void Log(Color color);
 
-    void SetValue(uint);
-
-    void SetAsCurrent() { if (value != COLOR_NUMBER) { current.value = value; } }
-    static Color GetCurrent() { return current; }
-
-    static uint ReduceBrightness(uint colorValue, float newBrightness);
+    Color& operator=(const Color &color);
 
     enum
     {
@@ -94,9 +88,6 @@ public:
 
         COLOR_NUMBER = 32
     };
-
-private:
-    static Color current;
 };
 
 bool operator!=(const Color &left, const Color &right);
@@ -145,6 +136,6 @@ private:
 #define G_FROM_COLOR(color) ((static_cast<uint>(color) >> 8)  & 0xff)
 #define B_FROM_COLOR(color) ((static_cast<uint>(color))       & 0xff)
 
-extern uint colors[32];
+extern uint colors[256];
 
 #define COLOR(x) colors[x]

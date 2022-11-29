@@ -74,10 +74,10 @@ void *FDrive::GetHandleUSBH()
 
 void FDrive::Init()
 {
-    __GPIOB_CLK_ENABLE();
-    __USB_OTG_HS_CLK_ENABLE(); //-V760
-    __HAL_RCC_USB_OTG_HS_CLK_ENABLE();
-    __SYSCFG_CLK_ENABLE();
+    __GPIOB_CLK_ENABLE(); //-V2571
+    __USB_OTG_HS_CLK_ENABLE(); //-V760 //-V2571
+    __HAL_RCC_USB_OTG_HS_CLK_ENABLE(); //-V2571
+    __SYSCFG_CLK_ENABLE(); //-V2571
 
     HAL_PIO::Init(PIN_HCD_DM, HMode::AF_PP, HPull::No, HSpeed::High, HAlternate::AF12_OTG_HS_FS);
     HAL_PIO::Init(PIN_HCD_DP, HMode::AF_PP, HPull::No, HSpeed::High, HAlternate::AF12_OTG_HS_FS);
@@ -168,7 +168,7 @@ void FDrive::AttemptUpdate()
 
 
 
-static bool Process()
+static bool Process() //-V2506
 {
     USBH_Process(&handleUSBH);
     if(stateDisk == StateDisk::Start)
@@ -199,25 +199,25 @@ static void ToLower(char *str)
 
 
 
-bool FDrive::FileExist(const char *fileName)
+bool FDrive::FileExist(const char *fileName) //-V2506
 {
     char nameFile[255];
     char f[255];
-    strcpy(f, fileName);
+    strcpy(f, fileName); //-V2513
     ToLower(f);
     StructForReadDir strd;
 
     if(GetNameFile("\\", 0, nameFile, &strd))
     {
         ToLower(nameFile);
-        if(strcmp(f, nameFile) == 0)
+        if(strcmp(f, nameFile) == 0) //-V2513
         {
             return true;
         }
         while(GetNextNameFile(nameFile, &strd))
         {
             ToLower(nameFile);
-            if(strcmp(f, nameFile) == 0)
+            if(strcmp(f, nameFile) == 0) //-V2513
             {
                 return true;
             }
@@ -229,10 +229,10 @@ bool FDrive::FileExist(const char *fileName)
 
 
 
-static bool GetNameFile(const char *fullPath, int numFile, char *nameFileOut, StructForReadDir *s)
+static bool GetNameFile(const char *fullPath, int numFile, char *nameFileOut, StructForReadDir *s) //-V2506
 {
-    memcpy(reinterpret_cast<uint8 *>(s->nameDir), const_cast<char *>(fullPath), strlen(fullPath)); //-V2567
-    s->nameDir[strlen(fullPath)] = '\0';
+    memcpy(reinterpret_cast<uint8 *>(s->nameDir), const_cast<char *>(fullPath), strlen(fullPath)); //-V2513 //-V2567
+    s->nameDir[strlen(fullPath)] = '\0'; //-V2513
 
     DIR *pDir = &s->dir;
     FILINFO *pFNO = &s->fno;
@@ -260,7 +260,7 @@ static bool GetNameFile(const char *fullPath, int numFile, char *nameFileOut, St
             }
             if(numFile == numFiles && (pFNO->fattrib & AM_DIR) == 0)
             {
-                strcpy(nameFileOut, pFNO->fname);
+                strcpy(nameFileOut, pFNO->fname); //-V2513
                 return true;
             }
             if((pFNO->fattrib & AM_DIR) == 0 && (pFNO->fname[0] != '.'))
@@ -274,7 +274,7 @@ static bool GetNameFile(const char *fullPath, int numFile, char *nameFileOut, St
 
 
 
-static bool GetNextNameFile(char *nameFileOut, StructForReadDir *s)
+static bool GetNextNameFile(char *nameFileOut, StructForReadDir *s) //-V2506
 {
     FILINFO *pFNO = &s->fno;
     bool alreadyNull = false;
@@ -300,7 +300,7 @@ static bool GetNextNameFile(char *nameFileOut, StructForReadDir *s)
         {
             if((pFNO->fattrib & AM_DIR) == 0 && pFNO->fname[0] != '.')
             {
-                strcpy(nameFileOut, pFNO->fname);
+                strcpy(nameFileOut, pFNO->fname); //-V2513
                 return true;
             }
         }
@@ -308,7 +308,7 @@ static bool GetNextNameFile(char *nameFileOut, StructForReadDir *s)
 }
 
 
-int FDrive::OpenFileForRead(const char *fileName)
+int FDrive::OpenFileForRead(const char *fileName) //-V2506
 {
     if(f_open(&file, fileName, FA_READ) == FR_OK)
     {
@@ -318,7 +318,7 @@ int FDrive::OpenFileForRead(const char *fileName)
 }
 
 
-int FDrive::ReadFromFile(int numBytes, uint8 *buffer)
+int FDrive::ReadFromFile(int numBytes, uint8 *buffer) //-V2506
 {
     uint readed = 0;
     if(f_read(&file, buffer, static_cast<UINT>(numBytes), &readed) == FR_OK)
@@ -337,9 +337,9 @@ void FDrive::CloseOpenedFile()
 
 void FDrive::LL_::InitHCD(void *host)
 {
-    USBH_HandleTypeDef *phost = static_cast<USBH_HandleTypeDef *>(host);
+    USBH_HandleTypeDef *phost = static_cast<USBH_HandleTypeDef *>(host); //-V2571
 
-    handleHCD.Instance = USB_OTG_HS;
+    handleHCD.Instance = USB_OTG_HS; //-V2571
     handleHCD.Init.speed = HCD_SPEED_HIGH;
     handleHCD.Init.Host_channels = 12;
     handleHCD.Init.dma_enable = 0;

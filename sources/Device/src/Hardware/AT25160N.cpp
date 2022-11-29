@@ -2,7 +2,7 @@
 #include "log.h"
 #include "AT25160N.h"
 #include "Hardware/HAL/HAL_PIO.h"
-#include "Utils/Containers/Values.h"
+#include "Utils/Values.h"
 #include <cstdlib>
 
 
@@ -138,7 +138,7 @@ void AT25160N::WriteData(uint address, uint8 *data, int size)
         }
         Write32BytesOrLess(address, data, 32);
         address += 32;
-        data += 32;
+        data += 32; //-V2563
         size -= 32;    
     }
 }
@@ -298,7 +298,7 @@ void AT25160N::ReadData(uint address, uint8 *data, int size)
 
     for(int i = 0; i < size; i++) //-V756
     {
-        data[i] = 0;
+        data[i] = 0; //-V2563
 
         for (int j = 0; j < 8; j++)
         {

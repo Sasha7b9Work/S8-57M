@@ -7,8 +7,11 @@
 #include "Keyboard/BufferButtons.h"
 #include "Osci/Osci.h"
 #include "Settings/SettingsNRST.h"
-#include "Utils/Containers/Buffer.h"
-#include "Utils/Math/Math.h"
+#include "Utils/Buffer.h"
+#include "Utils/Math.h"
+
+
+uint16 Osci::addrRead = 0xffff;
 
 
 void FPGA::Init()

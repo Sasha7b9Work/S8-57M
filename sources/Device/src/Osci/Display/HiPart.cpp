@@ -10,7 +10,7 @@
 #include "Osci/Measurements/AutoMeasurements.h"
 #include "Osci/Measurements/CursorsMeasurements.h"
 #include "Settings/Settings.h"
-#include "Utils/Containers/Values.h"
+#include "Utils/Values.h"
 #include <cmath>
 #include <cstring>
 #include <cstdio>
@@ -146,8 +146,8 @@ static int DrawMainParameters(int _x, int _y)
 
         static const pString filtr[] = { "\xb5\xb6", "\xb3\xb4", "\xb1\xb2" };
 
-        Char(filtr[S_TRIG_INPUT][0]).Draw(x + 45, y1);
-        Char(filtr[S_TRIG_INPUT][1]).Draw(x + 53, y1);
+        Char(filtr[S_TRIG_INPUT][0]).Draw(x + 45, y1); //-V2563
+        Char(filtr[S_TRIG_INPUT][1]).Draw(x + 53, y1); //-V2563
     }
 
     buffer[0] = '\0';
@@ -184,7 +184,7 @@ static int DrawMainParameters(int _x, int _y)
 }
 
 
-static void WriteTextVoltage(Chan::E ch, int x, int y)
+static void WriteTextVoltage(Chan::E ch, int x, int y) //-V2506
 {
     if (!S_CHANNEL_ENABLED(ch))
     {
@@ -237,7 +237,7 @@ static void WriteStringAndNumber(const char *text, int x, int y, int number, pSt
 }
 
 
-static void DrawTime(int x, int y)
+static void DrawTime(int x, int y) //-V2506
 {
     int dField = 10;
     int dSeparator = 2;
@@ -287,11 +287,11 @@ static void DrawFrequency(int x, int y)
         float freq = FreqMeter::GetFrequency();
         if (freq == -1.0F) //-V550 //-V2550
         {
-            std::strcat(mesFreq, "******");
+            std::strcat(mesFreq, "******"); //-V2513
         }
         else
         {
-            std::strcat(mesFreq, Frequency(freq).ToString().c_str());
+            std::strcat(mesFreq, Frequency(freq).ToString().c_str()); //-V2513
         }
 
         String(mesFreq).Draw(x, y, Color::FILL); //-V2007

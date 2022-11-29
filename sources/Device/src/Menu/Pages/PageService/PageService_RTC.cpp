@@ -7,8 +7,8 @@
 #include "Hardware/HAL/HAL.h"
 #include "Menu/MenuItems.h"
 #include "Settings/Settings.h"
-#include "Utils/Math/Math.h"
-#include "Utils/Containers/Values.h"
+#include "Utils/Math.h"
+#include "Utils/Values.h"
 
 
 // Структура используется при работе со страницей установки текущего времени
@@ -184,11 +184,11 @@ static void OnOpenClose_Set(bool open)
 {
     if (open)
     {
-        psRTC = new StructRTC();
+        psRTC = new StructRTC(); //-V2511
     }
     else
     {
-        delete psRTC;
+        delete psRTC; //-V2511
     }
 }
 
@@ -204,7 +204,7 @@ static void BeforeDraw_Set()
     DrawTime();
 }
 
-static bool HandlerKey_Set(const KeyEvent &event)
+static bool HandlerKey_Set(const KeyEvent &event) //-V2506
 {
     if (event.IsRelease())
     {

@@ -21,10 +21,10 @@ struct Packet
     Packet *Next();
     
     // Адрес первого байта в пакете
-    uint Begin() { return reinterpret_cast<uint>(this);  }
+    uint Begin() { return reinterpret_cast<uint>(this);  } //-V2571
     
     // Возвращает адрес первого байта за этим пакетом
-    uint End()   { return reinterpret_cast<uint>(Next()); }
+    uint End()   { return reinterpret_cast<uint>(Next()); } //-V2571
     
     // Возвращает true, если в пакете нет данных (пакет находится за последним записанным пакетом)
     bool IsEmpty() const;
@@ -56,7 +56,7 @@ static const SectorNRST sector1 = { HAL_ROM::sectors[Sector::_03_NRST_1] };
 static const SectorNRST sector2 = { HAL_ROM::sectors[Sector::_04_NRST_2] };
 
 
-SettingsNRST *ROM::NRST::GetSaved()
+SettingsNRST *ROM::NRST::GetSaved() //-V2506
 {
     if(sector2.GetSaved())          // Если во втором секторе сохранены настройки
     {
@@ -91,11 +91,11 @@ SettingsNRST *SectorNRST::GetSaved() const
 
 Packet *SectorNRST::CreatePacket() const
 {
-    return reinterpret_cast<Packet *>(sector.address);
+    return reinterpret_cast<Packet *>(sector.address); //-V2571
 }
 
 
-Packet *SectorNRST::LastPacket() const
+Packet *SectorNRST::LastPacket() const //-V2506
 {
     Packet *packet = CreatePacket();
 
@@ -124,13 +124,13 @@ bool Packet::IsEmpty() const
 }
 
 
-bool SectorNRST::SaveSettings(SettingsNRST *nrst) const
+bool SectorNRST::SaveSettings(SettingsNRST *nrst) const //-V2506
 {
     Packet *last = LastPacket();                            // Находим последний сохранённый в секторе пакет
 
     if(last == nullptr)                                     // Если пакетов ещё нету
     {
-        last = reinterpret_cast<Packet *>(sector.address);  // то он будет в самом начале сектора
+        last = reinterpret_cast<Packet *>(sector.address);  // то он будет в самом начале сектора //-V2571
 
         return last->SaveSettings(nrst);                    // В него и сохраняем
     }
@@ -139,7 +139,7 @@ bool SectorNRST::SaveSettings(SettingsNRST *nrst) const
 }
 
 
-bool Packet::SaveSettings(SettingsNRST *nrst)
+bool Packet::SaveSettings(SettingsNRST *nrst) //-V2506
 {
     const Sector &sector = Sector::Get(Begin());
 
@@ -158,14 +158,14 @@ bool Packet::SaveSettings(SettingsNRST *nrst)
 }
 
 
-Packet *Packet::Next()
+Packet *Packet::Next() //-V2506
 {
     if(size == 0xFFFFFFFFU)
     {
         return nullptr;
     }
 
-    return reinterpret_cast<Packet *>(Begin() + size);
+    return reinterpret_cast<Packet *>(Begin() + size); //-V2571
 }
 
 

@@ -7,44 +7,35 @@
 #include "Hardware/Timer.h"
 #include "SCPI/SCPI.h"
 #include "Settings/Settings.h"
-#include "Utils/Text/StringUtils.h"
-#include "Utils/Containers/Values.h"
+#include "Utils/StringUtils.h"
+#include "Utils/Values.h"
 #include <cstring>
+#include <limits>
+
+#define EMPTY_STRING    "---.---"
+#define OVERFLOW_STRING ">>>"
 
 
-namespace DisplayFreqMeter
-{
-    const pString EMPTY_STRING    = "---.---";
-    const pString OVERFLOW_STRING = ">>>";
+//                         0    1    2    3    4    5    6 
+static char buffer[11] = { '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0 };
 
-    //                         0    1    2    3    4    5    6 
-    char buffer[11] = { '0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0 };
+bool DisplayFreqMeter::needSendToSCPI = false;
 
-    pString FreqSetToString(const BitSet32* fr);
+static pString FreqSetToString(const BitSet32 *fr);
 
-    pString PeriodSetToString(const BitSet32* pr);
+static pString PeriodSetToString(const BitSet32 *pr);
 
-    // Возвращает порядок младшего разряда считанного значения счётчика периода при данных настройках
-    int LowOrder(FreqMeter::FreqClc::E freqCLC, FreqMeter::NumberPeriods::E numPeriods);
+// Возвращает порядок младшего разряда считанного значения счётчика периода при данных настройках
+static int LowOrder(FreqMeter::FreqClc::E freqCLC, FreqMeter::NumberPeriods::E numPeriods);
 
-    // Преобразует 6 разрядов числа, хранящиеся в стеке, в текстовую строку периода. Младший значащий разряд хранится на вершине стека. order - его порядок
-    pString StackToString(Stack<uint>* stack, int order);
+// Преобразует 6 разрядов числа, хранящиеся в стеке, в текстовую строку периода. Младший значащий разряд хранится на вершине стека. order - его порядок
+static pString StackToString(Stack<uint> *stack, int order);
 
-    // Записывает 6 разрядов из стека stack в буфер buffer. Младший разряд на вершине стека. Точку ставить на point позиции, начиная с buffer[0]
-    void WriteStackToBuffer(Stack<uint>* stack, int point, const char* suffix);
-
-    // Выводит отладочную информацию
-    void DrawDebugInfo();
-
-    void DrawFrequencyMode(int x, int _y);
-
-    void DrawPeriodMode(int x, int y);
-
-    bool needSendToSCPI = false;;
-}
+// Записывает 6 разрядов из стека stack в буфер buffer. Младший разряд на вершине стека. Точку ставить на point позиции, начиная с buffer[0]
+static void WriteStackToBuffer(Stack<uint> *stack, int point, const char *suffix);
 
 
-void DisplayFreqMeter::Update()
+void DisplayFreqMeter::Update() //-V2506
 {
     // \todo В этой строке точку ставить не где придётся, а в той позиции, где она стояла последний раз
 
@@ -113,15 +104,15 @@ static float ConvertFrequencyToAbs(const char *strFreq)
 {
     float result = SU::StringToFloat(strFreq);
 
-    if(std::strcmp(&strFreq[std::strlen(strFreq) - 3], "МГц") == 0)
+    if(std::strcmp(&strFreq[std::strlen(strFreq) - 3], "МГц") == 0) //-V2513 //-V2563
     {
         result *= 1e6F;
     }
-    else if(std::strcmp(&strFreq[std::strlen(strFreq) - 3], "кГц") == 0)
+    else if(std::strcmp(&strFreq[std::strlen(strFreq) - 3], "кГц") == 0) //-V2513 //-V2563
     {
         result *= 1e3F;
     }
-    else if(std::strcmp(&strFreq[std::strlen(strFreq) - 3], "мГц") == 0) //-V2516
+    else if(std::strcmp(&strFreq[std::strlen(strFreq) - 3], "мГц") == 0) //-V2513 //-V2516 //-V2563
     {
         result *= 1e-3F;
     }
@@ -152,7 +143,7 @@ void DisplayFreqMeter::DrawFrequencyMode(int x, int _y)
     dX = 32;
 
     char strFreq[50];
-    std::strcpy(strFreq, FreqSetToString(&FreqMeter::freqActual));
+    std::strcpy(strFreq, FreqSetToString(&FreqMeter::freqActual)); //-V2513
 
     Text(strFreq).DrawDigitsMonospace(x + dX, yF, DFont::GetWidth('0'));
 
@@ -191,15 +182,15 @@ static float ConvertPeriodToAbs(const char *strPeriod)
 {
     float result = SU::StringToFloat(strPeriod);
 
-    if(std::strcmp(&strPeriod[std::strlen(strPeriod) - 2], "нс") == 0)
+    if(std::strcmp(&strPeriod[std::strlen(strPeriod) - 2], "нс") == 0) //-V2513 //-V2563
     {
         result *= 1e-9F;
     }
-    else if(std::strcmp(&strPeriod[std::strlen(strPeriod) - 3], "мкс") == 0)
+    else if(std::strcmp(&strPeriod[std::strlen(strPeriod) - 3], "мкс") == 0) //-V2513 //-V2563
     {
         result *= 1e-6F;
     }
-    else if(std::strcmp(&strPeriod[std::strlen(strPeriod) - 2], "мс") == 0) //-V2516
+    else if(std::strcmp(&strPeriod[std::strlen(strPeriod) - 2], "мс") == 0) //-V2513 //-V2516 //-V2563
     {
         result *= 1e-3F;
     }
@@ -231,7 +222,7 @@ void DisplayFreqMeter::DrawPeriodMode(int x, int _y)
     dX = 32;
 
     char strPeriod[50];
-    std::strcpy(strPeriod, PeriodSetToString(&FreqMeter::periodActual));
+    std::strcpy(strPeriod, PeriodSetToString(&FreqMeter::periodActual)); //-V2513
 
     Text(strPeriod).DrawDigitsMonospace(x + dX, yT, DFont::GetWidth('0'));
 
@@ -242,7 +233,7 @@ void DisplayFreqMeter::DrawPeriodMode(int x, int _y)
 
     Text strFreq(strPeriod);
 
-    if((std::strcmp(strPeriod, EMPTY_STRING) != 0) && (std::strcmp(strPeriod, OVERFLOW_STRING) != 0))
+    if((std::strcmp(strPeriod, EMPTY_STRING) != 0) && (std::strcmp(strPeriod, OVERFLOW_STRING) != 0)) //-V2513
     {
         float period = ConvertPeriodToAbs(strPeriod);
 
@@ -258,7 +249,7 @@ void DisplayFreqMeter::DrawPeriodMode(int x, int _y)
 }
 
 
-pString DisplayFreqMeter::FreqSetToString(const BitSet32 *fr)
+static pString FreqSetToString(const BitSet32 *fr) //-V2506
 {
     if(fr->word < 2)
     {
@@ -324,19 +315,19 @@ pString DisplayFreqMeter::FreqSetToString(const BitSet32 *fr)
 
         giverFreq *= 100;
 
-        WRITE_SUFFIX("кГц");
+        WRITE_SUFFIX("кГц"); //-V2513 //-V2563
 
         if(giverFreq < _1MHz)                       // Меньше 1 МГц
         {
             if(freq >= _10Hz)                       // Больше или равно 10 Гц
             {
-                std::memmove(buffer, buffer + 1, 5);
+                std::memmove(buffer, buffer + 1, 5); //-V2563
             }
             buffer[4] = '.';
         }
         else
         {
-            HIGH_FREQ;
+            HIGH_FREQ; //-V2563
         }
         break;
 
@@ -344,52 +335,52 @@ pString DisplayFreqMeter::FreqSetToString(const BitSet32 *fr)
 
         giverFreq *= 10;
 
-        WRITE_SUFFIX("Гц");
+        WRITE_SUFFIX("Гц"); //-V2513 //-V2563
 
         if(giverFreq < _1MHz)                      // Меньше 1 МГц
         {
             if(giverFreq < _1kHz)                   // Меньше 1 кГц
             {
-                std::memmove(buffer, buffer + 1, 6);
+                std::memmove(buffer, buffer + 1, 6); //-V2563
                 buffer[6] = '.';
             }
             else
             {
-                std::memmove(buffer, buffer + 1, 4);
+                std::memmove(buffer, buffer + 1, 4); //-V2563
                 buffer[3] = '.';
             }
         }
         else
         {
-            HIGH_FREQ;
+            HIGH_FREQ; //-V2563
         }
         break;
 
     case FreqMeter::TimeCounting::_10s:
 
-        WRITE_SUFFIX("Гц");
+        WRITE_SUFFIX("Гц"); //-V2513 //-V2563
 
         if(freq < _1MHz)                       // Меньше 1 МГц
         {
             if(giverFreq < _1kHz)              // Меньше 1 кГц
             {
-                std::memmove(buffer, buffer + 1, 5);
+                std::memmove(buffer, buffer + 1, 5); //-V2563
                 buffer[5] = '.';
             }
             else if(giverFreq < _100kHz)
             {
-                std::memmove(buffer, buffer + 1, 3);
+                std::memmove(buffer, buffer + 1, 3); //-V2563
                 buffer[2] = '.';
             }
             else
             {
-                std::memmove(buffer, buffer + 1, 3);
+                std::memmove(buffer, buffer + 1, 3); //-V2563
                 buffer[3] = '.';
             }
         }
         else
         {
-            HIGH_FREQ;
+            HIGH_FREQ; //-V2563
         }
         break;
     case FreqMeter::TimeCounting::Count:
@@ -401,7 +392,7 @@ pString DisplayFreqMeter::FreqSetToString(const BitSet32 *fr)
 }
 
 
-int DisplayFreqMeter::LowOrder(FreqMeter::FreqClc::E freqCLC, FreqMeter::NumberPeriods::E numPeriods)
+static int LowOrder(FreqMeter::FreqClc::E freqCLC, FreqMeter::NumberPeriods::E numPeriods)
 {
     /*
         Измеряемое значение | Принимаемое значение | Вывод на экран | последний значащий разряд
@@ -455,7 +446,7 @@ int DisplayFreqMeter::LowOrder(FreqMeter::FreqClc::E freqCLC, FreqMeter::NumberP
 }
 
 
-pString DisplayFreqMeter::PeriodSetToString(const BitSet32 *pr)
+static pString PeriodSetToString(const BitSet32 *pr) //-V2506
 {
     if(pr->word == 0)
     {
@@ -508,7 +499,7 @@ pString DisplayFreqMeter::PeriodSetToString(const BitSet32 *pr)
 }
 
 
-pString DisplayFreqMeter::StackToString(Stack<uint> *stack, int order)
+static pString StackToString(Stack<uint> *stack, int order)
 {
     static const struct StructOrder
     {
@@ -551,7 +542,7 @@ pString DisplayFreqMeter::StackToString(Stack<uint> *stack, int order)
 }
 
 
-void DisplayFreqMeter::WriteStackToBuffer(Stack<uint> *stack, int point, const char *suffix)
+static void WriteStackToBuffer(Stack<uint> *stack, int point, const char *suffix)
 {
     for(int i = 6; i >= 0; i--)
     {
@@ -563,7 +554,7 @@ void DisplayFreqMeter::WriteStackToBuffer(Stack<uint> *stack, int point, const c
         buffer[i] = static_cast<char>(stack->Pop()) | 0x30;
     }
 
-    std::strcpy(&buffer[7], suffix);
+    std::strcpy(&buffer[7], suffix); //-V2513
 }
 
 

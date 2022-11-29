@@ -42,11 +42,11 @@ static void DisplayMeasures(int i)
     S_MEAS_SHOW = (i == 1);
 }
 
-static pCHAR FuncDisplay(pCHAR buffer)
+static pCHAR FuncDisplay(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(S_MEAS_SHOW ? " ON" : " OFF"));
 
-    SCPI_PROCESS_ARRAY(display, DisplayMeasures(i));
+    SCPI_PROCESS_ARRAY(display, DisplayMeasures(i)); //-V2563
 }
 
 
@@ -58,11 +58,11 @@ static pString source[] =
     ""
 };
 
-static pCHAR FuncSource(pCHAR buffer)
+static pCHAR FuncSource(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(source[S_MEAS_SOURCE]));
 
-    SCPI_PROCESS_ARRAY(source, S_MEAS_SOURCE = static_cast<MeasuresSource::E>(i));
+    SCPI_PROCESS_ARRAY(source, S_MEAS_SOURCE = static_cast<MeasuresSource::E>(i)); //-V2563
 }
 
 
@@ -94,7 +94,7 @@ static pString values[] =
     ""
 };
 
-static pCHAR FuncValue(pCHAR buffer)
+static pCHAR FuncValue(pCHAR buffer) //-V2506
 {
     pCHAR end = nullptr;
 
@@ -110,7 +110,7 @@ static pCHAR FuncValue(pCHAR buffer)
 
     SCPI_RUN_IF_END(AutoMeasuresSender::DesignateForSending(TypeMeasure::TimeNarastaniya));
 
-    SCPI_PROCESS_ARRAY(values, AutoMeasuresSender::DesignateForSending(static_cast<TypeMeasure::E>(i)));
+    SCPI_PROCESS_ARRAY(values, AutoMeasuresSender::DesignateForSending(static_cast<TypeMeasure::E>(i))); //-V2563
 }
 
 

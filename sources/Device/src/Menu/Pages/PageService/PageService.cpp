@@ -68,7 +68,7 @@ DEF_PAGE_8_VAR( pService,                                                       
 const Page * const PageService::self = static_cast<const Page *>(&pService);
 
 
-void PageService::DecodePassword(const KeyEvent &event)
+void PageService::DecodePassword(const KeyEvent &event) //-V2506
 {
 #define NUM_SYMBOLS 10
 
@@ -115,7 +115,7 @@ void PageService::EnablePageDebug()
 
     Item **items = const_cast<Item **>(page->OwnData()->items); //-V2567
 
-    items[7] = const_cast<Page *>(PageDebug::self); //-V2567
+    items[7] = const_cast<Page *>(PageDebug::self); //-V2563 //-V2567
 }
 
 
@@ -125,5 +125,5 @@ void PageService::DisablePageDebug()
 
     Item **items = const_cast<Item **>(page->OwnData()->items); //-V2567
 
-    items[7] = &Item::empty;
+    items[7] = &Item::empty; //-V2563
 }

@@ -1,5 +1,5 @@
 #pragma once
-#include "Utils/Text/String.h"
+#include "Utils/String.h"
 
 
 struct WarningStruct

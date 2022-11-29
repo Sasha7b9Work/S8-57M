@@ -1,12 +1,11 @@
-// 2022/04/20 16:52:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Display/Colors.h"
+#include "Display/Painter.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
-#include "Hardware/HAL/HAL.h"
 
 
-uint colors[32] =
+uint colors[256] =
 {
     /* 0  */    MAKE_COLOR(0x00, 0x00, 0x00),       // BLACK
     /* 1  */    MAKE_COLOR(0xff, 0xff, 0xff),       // WHITE
@@ -64,8 +63,14 @@ Color Color::FILL(COLOR_WHITE);
 Color Color::BACK(COLOR_BLACK);
 Color Color::GRID(COLOR_GRID);
 
-Color Color::current = Color(Color::NUMBER);
 
+
+void Color::Log(Color)
+{
+//#define colorVal (COLOR(color.value))
+
+//    LOG_WRITE("Color %d R=%d, G=%d, B=%d", color.value, R_FROM_COLOR(colorVal), G_FROM_COLOR(colorVal), B_FROM_COLOR(colorVal));
+}
 
 
 Color Color::Cursors(Chan ch)
@@ -97,7 +102,7 @@ Color Color::MenuItem(bool shade)
     return shade ? Color(COLOR_MENU_ITEM_DARK) : Color(COLOR_MENU_ITEM);
 }
 
-Color Color::Contrast(Color color)
+Color Color::Contrast(Color color) //-V2506
 {
     uint colorValue = COLOR(color.value);
     if (R_FROM_COLOR(colorValue) > 16 || G_FROM_COLOR(colorValue) > 32 || B_FROM_COLOR(colorValue) > 16)
@@ -197,7 +202,7 @@ void ColorType::SetBrightness(float bright)
 */
 
 
-void ColorType::BrightnessChange(int delta)
+void ColorType::BrightnessChange(int delta) //-V2506
 {
     if ((delta > 0 && brightness == 1.0F) || (delta < 0 && brightness == 0.0F)) // -V550 //-V2550 //-V550
     {
@@ -247,7 +252,7 @@ void ColorType::ComponentChange(int delta)
     if (index >= 1 && index <= 3)
     {
         *(pointers[index]) += static_cast<float>(Math::Sign(delta));
-        *(pointers[index]) = Math::Limitation<float>(*(pointers[index]), 0.0F, maxs[index]);
+        Math::Limitation<float>(pointers[index], 0.0F, maxs[index]);
     }
 
     SetColor();
@@ -260,23 +265,4 @@ Color& Color::operator=(const Color &color)
 {
     value = color.value;
     return *this;
-}
-
-
-void Color::SetValue(uint _value)
-{
-    COLOR(value) = _value;
-
-    HAL_LTDC::LoadPalette();
-}
-
-uint Color::ReduceBrightness(uint colorValue, float newBrightness)
-{
-    int red = static_cast<int>(static_cast<float>(R_FROM_COLOR(colorValue)) * newBrightness);
-    LIMITATION(red, 0, 0xff); //-V2516
-    int green = static_cast<int>(static_cast<float>(G_FROM_COLOR(colorValue)) * newBrightness);
-    LIMITATION(green, 0, 0xff); //-V2516
-    int blue = static_cast<int>(static_cast<float>(B_FROM_COLOR(colorValue)) * newBrightness);
-    LIMITATION(blue, 0, 0xff); //-V2516
-    return MAKE_COLOR(red, green, blue);
 }

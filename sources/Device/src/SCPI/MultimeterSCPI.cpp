@@ -50,7 +50,7 @@ static void TuneAVP(int i)
 }
 
 
-static pCHAR FuncAVP(pCHAR buffer)
+static pCHAR FuncAVP(pCHAR buffer) //-V2506
 {
     static pString avp[] =
     {
@@ -61,7 +61,7 @@ static pCHAR FuncAVP(pCHAR buffer)
 
     SCPI_REQUEST(SCPI::SendAnswer(String(avp[set.mult._avp]).c_str()));
 
-    SCPI_PROCESS_ARRAY(avp, TuneAVP(i));
+    SCPI_PROCESS_ARRAY(avp, TuneAVP(i)); //-V2563
 }
 
 
@@ -166,11 +166,11 @@ static void EnableMeasure(int i)
 }
 
 
-static pCHAR FuncMeasure(pCHAR buffer)
+static pCHAR FuncMeasure(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SendAnswerForMeasure());
 
-    SCPI_PROCESS_ARRAY(measures, EnableMeasure(i));
+    SCPI_PROCESS_ARRAY(measures, EnableMeasure(i)); //-V2563
 }
 
 
@@ -198,7 +198,7 @@ static void DisableMultimeter()
 }
 
 
-static pCHAR FuncMode(pCHAR buffer)
+static pCHAR FuncMode(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(Device::InModeMultimeter() ? " ON" : " OFF"));
 
@@ -210,7 +210,7 @@ static pCHAR FuncMode(pCHAR buffer)
 }
 
 
-static pCHAR FuncValue(pCHAR buffer)
+static pCHAR FuncValue(pCHAR buffer) //-V2506
 {
     SCPI_PROLOG(buffer);
 
@@ -220,7 +220,7 @@ static pCHAR FuncValue(pCHAR buffer)
 }
 
 
-static pCHAR FuncZero(pCHAR buffer)
+static pCHAR FuncZero(pCHAR buffer) //-V2506
 {
     static pString zero[] =
     {
@@ -231,7 +231,7 @@ static pCHAR FuncZero(pCHAR buffer)
 
     SCPI_REQUEST(SCPI::SendAnswer(String(PageMultimeter::ZeroEnabled() ? " ON" : " OFF").c_str()));
 
-    SCPI_PROCESS_ARRAY(zero, PageMultimeter::EnableZero(i != 0));
+    SCPI_PROCESS_ARRAY(zero, PageMultimeter::EnableZero(i != 0)); //-V2563
 }
 
 

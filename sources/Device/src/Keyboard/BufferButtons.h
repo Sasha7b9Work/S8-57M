@@ -2,19 +2,19 @@
 #include "Keyboard/Keyboard.h"
 
 
-namespace BufferButtons
+struct BufferButtons
 {
     // Функция вызывается при нажатии, повторе и отпускании кнопки
-    void Push(const KeyEvent& str);
-
+    static void Push(const KeyEvent &str);
+    
     // Извлекает событие из очереди
-    KeyEvent Extract();
-
+    static KeyEvent Extract();
+    
     // Возвращает true, если очередь событий пуста
-    bool IsEmpty();
+    static bool IsEmpty();
 
-    inline void Clear() { while (!IsEmpty()) { Extract(); } }
-
+    static void Clear() { while (!IsEmpty()) { Extract(); } }
+    
     // Возвращает количество миллисекунд, прошедщих после последнего события клавиатуры
-    uint TimeAfterControlMS();
+    static uint TimeAfterControlMS();
 };

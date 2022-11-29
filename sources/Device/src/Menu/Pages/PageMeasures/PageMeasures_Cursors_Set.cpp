@@ -3,7 +3,7 @@
 #include "Hardware/Beeper.h"
 #include "Osci/Measurements/CursorsMeasurements.h"
 #include "Settings/Settings.h"
-#include "Utils/Math/Math.h"
+#include "Utils/Math.h"
 #include <cmath>
 
 
@@ -315,7 +315,7 @@ DEF_GRAPH_BUTTON_HINTS_2( bMovement,                                            
 )
 
 
-bool PageCursorsMeasures::Set::HandlerKey(const KeyEvent &event)
+bool PageCursorsMeasures::Set::HandlerKey(const KeyEvent &event) //-V2506
 {
     TypePress::E type = event.type;
 

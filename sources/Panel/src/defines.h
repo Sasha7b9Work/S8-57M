@@ -1,4 +1,3 @@
-// 2022/04/20 16:52:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
 #ifdef WIN32
@@ -18,7 +17,6 @@ typedef signed short int    int16;
 typedef unsigned char       uint8;
 typedef unsigned char       uchar;
 typedef signed char         int8;
-typedef const char         *pchar;
 
 typedef void(*pFuncVV)(void);
 
@@ -36,7 +34,3 @@ typedef void(*pFuncVV)(void);
 #endif
 
 void EmptyFuncVV(void);
-
-
-static const int DISPLAY_WIDTH = 640;
-static const int DISPLAY_HEIGHT = 480;

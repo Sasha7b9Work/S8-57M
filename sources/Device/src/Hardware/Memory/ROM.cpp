@@ -131,7 +131,7 @@ void ROM::Settings::Save()
     set.number = lastSaved ? (lastSaved->set.number + 1) : 0;                // ≈сли запись пуста€, то номер будет равен 0 = 0xFFFFFFFF + 1
     set.crc32 = set.CalcWriteCRC32();
 
-    HAL_ROM::WriteBufferBytes(reinterpret_cast<uint>(record), &set, sizeof(set));
+    HAL_ROM::WriteBufferBytes(reinterpret_cast<uint>(record), &set, sizeof(set)); //-V2571
 }
 
 
@@ -169,7 +169,7 @@ bool OTP::SaveSerialNumber(char *servialNumber)
 }
 
 
-static Record *LastSaved()
+static Record *LastSaved() //-V2506
 {
     Record *saved1 = sectorFirst.LastSaved();
     Record *saved2 = sectorSecond.LastSaved();
@@ -203,7 +203,7 @@ Record *Record::Next()
 {
     uint8 *addressThis = reinterpret_cast<uint8 *>(this);
 
-    uint8 *addressNext = addressThis + SIZE_RECORD;
+    uint8 *addressNext = addressThis + SIZE_RECORD; //-V2563
 
     return reinterpret_cast<Record *>(addressNext);
 }
@@ -215,7 +215,7 @@ bool Record::IsFree()
 }
 
 
-SectorSet *Record::GetSector()
+SectorSet *Record::GetSector() //-V2506
 {
     if(sectorFirst.Contains(this))
     {
@@ -231,7 +231,7 @@ SectorSet *Record::GetSector()
 }
 
 
-SectorSet *Record::GetAnotherSector()
+SectorSet *Record::GetAnotherSector() //-V2506
 {
     if(sectorFirst.Contains(this))
     {
@@ -259,10 +259,10 @@ uint *Record::FirstDowbleWord()
 }
 
 
-bool Record::IsCorrect()
+bool Record::IsCorrect() //-V2506
 {
-    uint *start = FirstDowbleWord() + 1;
-    uint *end = FirstDowbleWord() + SIZE_RECORD / 4;
+    uint *start = FirstDowbleWord() + 1; //-V2563
+    uint *end = FirstDowbleWord() + SIZE_RECORD / 4; //-V2563
 
     if (set.crc32 == 0xFFFFFFFFU)
     {
@@ -295,25 +295,25 @@ bool Record::IsCorrect()
 
 void Record::Erase()
 {
-    HAL_ROM::Fill(reinterpret_cast<uint>(this), 0, SIZE_RECORD);
+    HAL_ROM::Fill(reinterpret_cast<uint>(this), 0, SIZE_RECORD); //-V2571
 }
 
 
 Record *SectorSet::FirstRecord()
 {
-    return reinterpret_cast<Record *>(sector.address);
+    return reinterpret_cast<Record *>(sector.address); //-V2571
 }
 
 
 bool SectorSet::Contains(Record *record)
 {
-    uint addressRecord = reinterpret_cast<uint>(record);
+    uint addressRecord = reinterpret_cast<uint>(record); //-V2571
 
     return addressRecord >= sector.address && addressRecord < sector.End();
 }
 
 
-Record *SectorSet::NextFree(Record *record)
+Record *SectorSet::NextFree(Record *record) //-V2506
 {
     record = record->Next();
 
@@ -367,7 +367,7 @@ Record *SectorSet::LastSaved()
 }
 
 
-Record *SectorSet::FirstFree()
+Record *SectorSet::FirstFree() //-V2506
 {
     Record *record = FirstRecord();
 

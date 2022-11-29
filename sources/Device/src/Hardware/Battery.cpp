@@ -5,7 +5,7 @@
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Settings/Settings.h"
-#include "Utils/Math/Averager.h"
+#include "Utils/Averager.h"
 
 
 static const float MAX_ADC_REL = static_cast<float>((1 << 12) - 1);     // Максимальное значение, которое возможно считать с АЦП
@@ -69,7 +69,7 @@ float Battery::GetVoltageAverage()
 }
 
 
-static float CalculatePercents(float volts)
+static float CalculatePercents(float volts) //-V2506
 {
     if (volts >= Voltage100())
     {

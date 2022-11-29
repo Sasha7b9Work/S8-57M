@@ -1,6 +1,7 @@
 #include "defines.h"
 #include "device.h"
 #include "Display/Primitives.h"
+#include "FlashDrive/FlashDrive.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Hardware/Memory/RAM.h"
@@ -11,7 +12,6 @@
 #include "Osci/Display/DisplayOsci.h"
 #include "Settings/Settings.h"
 #include "Settings/SettingsNRST.h"
-#include "FDrive/FDrive.h"
 #include <cstdio>
 
 
@@ -297,7 +297,7 @@ void Menu::Init()
 
     CloseAllBadOpenedPages();
 
-    CloseDebugPages();
+//    CloseDebugPages();
 }
 
 
@@ -525,7 +525,7 @@ int8 &Menu::Position::ActItem(PageName::E name)
 }
 
 
-Page *Menu::PageFromName(PageName::E name)
+Page *Menu::PageFromName(PageName::E name) //-V2506
 {
     for(int i = 0; true; i++)
     {

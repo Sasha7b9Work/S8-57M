@@ -19,9 +19,9 @@ String::String(const String &rhs) : buffer(nullptr)
 {
     Set(TypeConversionString::None, "");
 
-    if (Allocate(std::strlen(rhs.c_str()) + 1))
+    if (Allocate(std::strlen(rhs.c_str()) + 1)) //-V2513
     {
-        std::strcpy(buffer, rhs.c_str());
+        std::strcpy(buffer, rhs.c_str()); //-V2513
     }
 }
 
@@ -32,13 +32,13 @@ String::String(char symbol) : buffer(nullptr)
 
     if (Allocate(2))
     {
-        buffer[0] = symbol;
-        buffer[1] = 0;
+        buffer[0] = symbol; //-V2563
+        buffer[1] = 0; //-V2563
     }
 }
 
 
-String::String(const char *format, ...) : buffer(nullptr)
+String::String(const char *format, ...) : buffer(nullptr) //-V2506
 {
     Set(TypeConversionString::None, "");
 
@@ -57,11 +57,11 @@ String::String(const char *format, ...) : buffer(nullptr)
 
     if (numSymbols < 0 || numSymbols > SIZE)
     {
-        std::strcpy(buffer, "Буфер слишком мал");
+        std::strcpy(buffer, "Буфер слишком мал"); //-V2513
     }
-    else if (Allocate(std::strlen(buf) + 1))
+    else if (Allocate(std::strlen(buf) + 1)) //-V2513
     {
-        std::strcpy(buffer, buf);
+        std::strcpy(buffer, buf); //-V2513
     }
     else
     {
@@ -86,11 +86,11 @@ void String::Set(TypeConversionString::E /*conv*/, const char *format, ...)
 
         if(numSymbols < 0 || numSymbols > SIZE)
         {
-            std::strcpy(buffer, "Буфер слишком мал");
+            std::strcpy(buffer, "Буфер слишком мал"); //-V2513
         }
-        else if(Allocate(std::strlen(buf) + 1))
+        else if(Allocate(std::strlen(buf) + 1)) //-V2513
         {
-            std::strcpy(buffer, buf);
+            std::strcpy(buffer, buf); //-V2513
         }
         else
         {
@@ -100,7 +100,7 @@ void String::Set(TypeConversionString::E /*conv*/, const char *format, ...)
 }
 
 
-void String::Append(const char *str)
+void String::Append(const char *str) //-V2506
 {
     if (!str || *str == '\0')
     {
@@ -111,14 +111,14 @@ void String::Append(const char *str)
 
     Free();
 
-    Allocate(old.Size() + std::strlen(str) + 1);
+    Allocate(old.Size() + std::strlen(str) + 1); //-V2513
 
-    std::strcpy(buffer, old.c_str());
-    std::strcat(buffer, str);
+    std::strcpy(buffer, old.c_str()); //-V2513
+    std::strcat(buffer, str); //-V2513
 }
 
 
-void String::Append(const char *str, uint numSymbols)
+void String::Append(const char *str, uint numSymbols) //-V2506
 {
     if (!str || *str == '\0')
     {
@@ -133,9 +133,9 @@ void String::Append(const char *str, uint numSymbols)
 
     Allocate(size);
 
-    std::strcpy(buffer, old.c_str());
-    std::memcpy(buffer + old.Size(), str, numSymbols);
-    buffer[size - 1] = '\0';
+    std::strcpy(buffer, old.c_str()); //-V2513
+    std::memcpy(buffer + old.Size(), str, numSymbols); //-V2563
+    buffer[size - 1] = '\0'; //-V2563
 }
 
 
@@ -148,7 +148,7 @@ void String::Append(char symbol)
 
 String::~String()
 {
-    std::free(buffer);
+    std::free(buffer); //-V2511
 }
 
 
@@ -156,7 +156,7 @@ void String::Free()
 {
     if(buffer)
     {
-        std::free(buffer);
+        std::free(buffer); //-V2511
         buffer = nullptr;
         Set(TypeConversionString::None, "");
     }
@@ -169,10 +169,10 @@ char *String::c_str() const
 }
 
 
-bool String::Allocate(uint size)
+bool String::Allocate(uint size) //-V2506
 {
-    std::free(buffer);
-    buffer = static_cast<char *>(std::malloc(size));
+    std::free(buffer); //-V2511
+    buffer = static_cast<char *>(std::malloc(size)); //-V2511
     if (buffer)
     {
         return true;
@@ -191,7 +191,7 @@ int String::Draw(int x, int y, Color color) const
 
 void String::RemoveFromBegin(uint numSymbols)
 {
-    if (std::strlen(buffer) == numSymbols)
+    if (std::strlen(buffer) == numSymbols) //-V2513
     {
         Free();
     }
@@ -203,7 +203,7 @@ void String::RemoveFromBegin(uint numSymbols)
 
         Allocate(old.Size() - numSymbols + 1);
 
-        std::strcpy(buffer, old.c_str() + numSymbols);
+        std::strcpy(buffer, old.c_str() + numSymbols); //-V2513 //-V2563
     }
 }
 
@@ -212,23 +212,23 @@ void String::RemoveFromEnd()
 {
     if(Size() > 0)
     {
-        buffer[Size() - 1] = '\0';
+        buffer[Size() - 1] = '\0'; //-V2563
     }
 }
 
 
-uint String::Size() const
+uint String::Size() const //-V2506
 {
     if (buffer == nullptr)
     {
         return 0;
     }
 
-    return std::strlen(buffer);
+    return std::strlen(buffer); //-V2513
 }
 
 
-char &String::operator[](uint i)
+char &String::operator[](uint i) //-V2506
 {
     static char result = 0;
 
@@ -237,5 +237,5 @@ char &String::operator[](uint i)
         return result;
     }
 
-    return buffer[i];
+    return buffer[i]; //-V2563
 }

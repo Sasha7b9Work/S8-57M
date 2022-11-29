@@ -59,7 +59,7 @@ DAdvancedFont::DAdvancedFont(DTypeFont::E t)
 }
 
 
-bool DAdvancedFont::RowNotEmpty(uint8 s, int r)
+bool DAdvancedFont::RowNotEmpty(uint8 s, int r) //-V2506
 {
     HeaderFont *header = HeaderFont::Sefl();
 
@@ -78,7 +78,7 @@ bool DAdvancedFont::RowNotEmpty(uint8 s, int r)
         {
             for (int i = 0; i < symbol->BytesInRow(); i++)
             {
-                if (row[i] != 0)
+                if (row[i] != 0) //-V2563
                 {
                     return true;
                 }
@@ -136,7 +136,7 @@ int NativeSymbol::BytesInRow()
 }
 
 
-uint8 *NativeSymbol::GetRow(int row)
+uint8 *NativeSymbol::GetRow(int row) //-V2506
 {
     if (row > height - 1)
     {
@@ -148,11 +148,11 @@ uint8 *NativeSymbol::GetRow(int row)
         return nullptr;
     }
 
-    return Data() + (row - firstRow) * BytesInRow();
+    return Data() + (row - firstRow) * BytesInRow(); //-V2563
 }
 
 
-NativeSymbol *HeaderFont::GetSymbol(uint8 num)
+NativeSymbol *HeaderFont::GetSymbol(uint8 num) //-V2506
 {
     HeaderFont *header = HeaderFont::Sefl();
 
@@ -161,7 +161,7 @@ NativeSymbol *HeaderFont::GetSymbol(uint8 num)
         return nullptr;
     }
 
-    uint8 *offset = reinterpret_cast<uint8 *>(header) + header->offsets[num];
+    uint8 *offset = reinterpret_cast<uint8 *>(header) + header->offsets[num]; //-V2563
 
     return reinterpret_cast<NativeSymbol *>(offset);
 }
@@ -175,7 +175,7 @@ HeaderFont *HeaderFont::Sefl()
 
 uint8 *NativeSymbol::Data()
 {
-    return reinterpret_cast<uint8 *>(this) + sizeof(*this);
+    return reinterpret_cast<uint8 *>(this) + sizeof(*this); //-V2563
 }
 
 
@@ -187,7 +187,7 @@ bool DAdvancedFont::BitIsExist(uint8 s, int row, int bit)
 }
 
 
-bool NativeSymbol::BitIsExist(int r, int b)
+bool NativeSymbol::BitIsExist(int r, int b) //-V2506
 {
     uint8 *row = GetRow(r);
 

@@ -1,16 +1,14 @@
-// 2022/04/20 16:52:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Math.h"
 #include "FPGA/FPGATypes.h"
-#include <cmath>
-#include <cstdlib>
-#include <cstring>
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
 #include <limits>
 
 
 
-template float Math::Limitation<float>(float, float, float);
-template int Math::Limitation<int>(int, int, int);
+template void Math::Limitation<float>(float *, float, float);
 template void Math::Swap<int>(int *, int *);
 template int Math::Sign<int>(int);
 template float Math::Max<float>(float, float, float);
@@ -37,23 +35,21 @@ T Math::Max(T val1, T val2, T val3)
 template<class T>
 bool Math::IsEquals(T x, T y)
 {
-    return std::fabsf(x - y) < std::numeric_limits<T>::epsilon();
+    return fabsf(x - y) < std::numeric_limits<T>::epsilon();
 }
 
 
 template<class T>
-T Math::Limitation(T value, T min, T max)
+void Math::Limitation(T *value, T min, T max)
 {
-    if (value < min)
+    if (*value < min)
     {
-        return min;
+        *value = min;
     }
-    else if (value > max) //-V2516
+    else if (*value > max) //-V2516
     {
-        return max;
+        *value = max;
     }
-
-    return value;
 }
 
 
@@ -65,7 +61,7 @@ void Math::Swap(T *value0, T *value1)
 
 
 template<class T>
-int Math::Sign(T x)
+int Math::Sign(T x) //-V2506
 {
     if (x > (T)(0))
     {

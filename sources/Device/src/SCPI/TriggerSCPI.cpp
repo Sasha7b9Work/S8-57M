@@ -2,8 +2,8 @@
 #include "Menu/Pages/Include/PageTrig.h"
 #include "SCPI/SCPI.h"
 #include "Settings/Settings.h"
-#include "Utils/Math/Math.h"
-#include "Utils/Text/StringUtils.h"
+#include "Utils/Math.h"
+#include "Utils/StringUtils.h"
 
 
 // :TRIG:INPUT
@@ -77,11 +77,11 @@ const StructSCPI SCPI::trigger[] =
 };
 
 
-static pCHAR FuncInput(pCHAR buffer)
+static pCHAR FuncInput(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(inputs[S_TRIG_INPUT]));
 
-    SCPI_PROCESS_ARRAY(inputs, TrigInput::Set(static_cast<TrigInput::E>(i)));
+    SCPI_PROCESS_ARRAY(inputs, TrigInput::Set(static_cast<TrigInput::E>(i))); //-V2563
 }
 
 
@@ -91,7 +91,7 @@ static void SendAnswerLevel()
     SCPI::SendAnswer(answer.c_str());
 }
 
-static pCHAR FuncLevel(pCHAR buffer)
+static pCHAR FuncLevel(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SendAnswerLevel());
 
@@ -103,34 +103,34 @@ static pCHAR FuncLevel(pCHAR buffer)
     {
         TrigLevel::Set(S_TRIG_SOURCE, static_cast<int16>(value * 2));
 
-        return end_str + 1;
+        return end_str + 1; //-V2563
     }
 
     return nullptr;
 }
 
 
-static pCHAR FuncMode(pCHAR buffer)
+static pCHAR FuncMode(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(modes[S_TRIG_START_MODE]));
 
-    SCPI_PROCESS_ARRAY(modes, TrigStartMode::Set(static_cast<TrigStartMode::E>(i)));
+    SCPI_PROCESS_ARRAY(modes, TrigStartMode::Set(static_cast<TrigStartMode::E>(i))); //-V2563
 }
 
 
-static pCHAR FuncPolarity(pCHAR buffer)
+static pCHAR FuncPolarity(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(polarities[S_TRIG_POLARITY]));
 
-    SCPI_PROCESS_ARRAY(polarities, TrigPolarity::Set(static_cast<TrigPolarity::E>(i)));
+    SCPI_PROCESS_ARRAY(polarities, TrigPolarity::Set(static_cast<TrigPolarity::E>(i))); //-V2563
 }
 
 
-static pCHAR FuncSource(pCHAR buffer)
+static pCHAR FuncSource(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(sources[S_TRIG_SOURCE]));
 
-    SCPI_PROCESS_ARRAY(sources, TrigSource::Set(static_cast<Chan::E>(i)));
+    SCPI_PROCESS_ARRAY(sources, TrigSource::Set(static_cast<Chan::E>(i))); //-V2563
 }
 
 

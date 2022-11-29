@@ -1,8 +1,8 @@
 #include "defines.h"
 #include "Menu/Menu.h"
 #include "Menu/MenuItems.h"
-#include "Utils/Math/Math.h"
-#include "Utils/Containers/Values.h"
+#include "Utils/Math.h"
+#include "Utils/Values.h"
 #include "Hardware/Beeper.h"
 #include "Osci/Display/DisplayOsci.h"
 #include "Hardware/Timer.h"
@@ -243,7 +243,7 @@ int Item::PositionInKeeperList() const
     {
         for (int i = 0; i < parent->NumItems(); i++)
         {
-            if (this == parent->OwnData()->items[i])
+            if (this == parent->OwnData()->items[i]) //-V2563
             {
                 result = i;
                 break;
@@ -262,9 +262,9 @@ int Page::NumSubPages() const
 }
 
 
-int Page::NumItems() const
+int Page::NumItems() const //-V2506
 {
-    const Item * const * item = &OwnData()->items[0];
+    const Item * const * item = &OwnData()->items[0]; //-V2563
 
     int result = 0;
 
@@ -385,7 +385,7 @@ Item *Page::GetItem(int numItem) const
 
     if (numItem < NumItems())
     {
-        result = const_cast<Item *>(OwnData()->items[numItem]); //-V2567
+        result = const_cast<Item *>(OwnData()->items[numItem]); //-V2563 //-V2567
     }
 
     return result;
@@ -593,7 +593,7 @@ void Governor::ChangeValue(int16 delta)
 }
 
 
-bool Governor::HandlerKey(const KeyEvent &event)
+bool Governor::HandlerKey(const KeyEvent &event) //-V2506
 {
     if (event.IsArrowLeft())
     {
@@ -794,7 +794,7 @@ char Choice::GetSymbol()
 }
 
 
-float Choice::Step() const
+float Choice::Step() const //-V2506
 {
     static const float speed = 0.1F;
     static const int numLines = 12;
@@ -845,7 +845,7 @@ float Choice::Step() const
 
 String Choice::NameCurrentSubItem() const
 {
-    return (OwnData()->cell == 0) ? String("") : String(NAME_FROM_INDEX(*OwnData()->cell));
+    return (OwnData()->cell == 0) ? String("") : String(NAME_FROM_INDEX(*OwnData()->cell)); //-V2563
 }
 
 
@@ -862,7 +862,7 @@ const char *Choice::NameNextSubItem() const
             index = 0;
         }
 
-        result = NAME_FROM_INDEX(index);
+        result = NAME_FROM_INDEX(index); //-V2563
     }
 
     return result;
@@ -882,7 +882,7 @@ const char *Choice::NamePrevSubItem() const
             index = NumChoices() - 1;
         }
 
-        result = NAME_FROM_INDEX(index);
+        result = NAME_FROM_INDEX(index); //-V2563
     }
 
     return result;
@@ -891,7 +891,7 @@ const char *Choice::NamePrevSubItem() const
 
 String Choice::NameSubItem(int i) const
 {
-    return String(NAME_FROM_INDEX(i));
+    return String(NAME_FROM_INDEX(i)); //-V2563
 }
 
 
@@ -934,7 +934,7 @@ void GovernorColor::HandlerFX(TypePress::E type) const
 }
 
 
-bool GovernorColor::HandlerKey(const KeyEvent &event)
+bool GovernorColor::HandlerKey(const KeyEvent &event) //-V2506
 {
     if (!event.IsRelease() && !event.IsRepeat())
     {
@@ -992,5 +992,11 @@ bool GovernorColor::HandlerKey(const KeyEvent &event)
 
 const DataGovernorColor *GovernorColor::OwnData() const
 {
-    return static_cast<const DataGovernorColor *>(data->ad);
+    return static_cast<const DataGovernorColor *>(data->ad); //-V2571
+}
+
+
+const DataPage* Page::OwnData() const
+{
+    return static_cast<const DataPage*>(data->ad);
 }

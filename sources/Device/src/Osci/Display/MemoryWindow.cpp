@@ -15,7 +15,7 @@ static void DrawDataInRect(int x, int y, int width, int height, const uint8 *dat
 static void DrawScreenArea();
 
 
-void DisplayOsci::MemoryWindow::Draw()
+void DisplayOsci::MemoryWindow::Draw() //-V2506
 {
     if (CursorsMeasurements::NecessaryDraw())
     {
@@ -64,19 +64,19 @@ static void DrawDataInRect(int x, int y, int width, int height, const uint8 *dat
 
         for (int j = start; j <= end; j++)
         {
-            if(data[j] == VALUE::NONE)
+            if(data[j] == VALUE::NONE) //-V2563
             {
                 needDraw = false;
                 break;
             }
                 
-            if (data[j] < min)
+            if (data[j] < min) //-V2563
             {
-                min = data[j];
+                min = data[j]; //-V2563
             }
-            if (data[j] > max)
+            if (data[j] > max) //-V2563
             {
-                max = data[j];
+                max = data[j]; //-V2563
             }
         }
 

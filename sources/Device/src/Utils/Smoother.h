@@ -1,0 +1,53 @@
+#pragma once
+#include "Settings/Settings.h"
+#include <cstring>
+
+
+// Специальный класс для сглаживающего фильтра
+class Smoother
+{
+public:
+    // Сгладить данные in и положить их в out
+    static void Run(const uint8 *in, uint8 *out, uint numBytes, int _numSmooth)
+    {
+        numSmooth = _numSmooth;
+        size = static_cast<int>(numBytes);
+        data = in;
+
+        if (numSmooth < 2)
+        {
+            std::memcpy(out, in, numBytes);
+        }
+        else
+        {
+            for (uint i = 0; i < numBytes; i++)
+            {
+                out[i] = CalculatePoint(static_cast<int>(i)); //-V2563
+            }
+        }
+    }
+private:
+    // Рассчитывает одну сглаженную точку
+    static uint8 CalculatePoint(int index)
+    {
+        uint sum = 0U;          // Здесь будет храниться сумма
+
+        int parts = 0;        // Здесь количество уже просуммированных точек
+
+        index -= numSmooth / 2;
+
+        do
+        {
+            if (index >= 0 && index < size)
+            {
+                sum += data[index++]; //-V2563
+            }
+        } while (++parts < numSmooth);
+
+        return static_cast<uint8>(static_cast<float>(sum) / parts + 0.5F); //-V2564
+    }
+
+    static int size;
+    const static uint8 *data;
+    static int numSmooth;
+};

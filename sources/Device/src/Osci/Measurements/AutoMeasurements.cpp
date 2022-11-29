@@ -5,13 +5,13 @@
 #include "Osci/Measurements/AutoMeasurements.h"
 #include "SCPI/SCPI.h"
 #include "Settings/Settings.h"
-#include "Utils/Math/Math.h"
-#include "Utils/Math/Smoother.h"
-#include "Utils/Containers/Values.h"
+#include "Utils/Math.h"
+#include "Utils/Smoother.h"
+#include "Utils/Values.h"
 #include <cmath>
 #include <cstdlib>
 #include <cstring>
-
+#include <limits>
 
 static float CalculateVoltageMax(Chan::E ch);
 static float CalculateVoltageMin(Chan::E ch);
@@ -131,7 +131,7 @@ static bool picIsCalculating[2] = {false, false};
 #define CHOICE_BUFFER (OUT(ch))
 
 
-void AutoMeasurements::CalculateMeasures()
+void AutoMeasurements::CalculateMeasures() //-V2506
 {
     if(!S_MEAS_SHOW || !isSet)
     {
@@ -222,7 +222,7 @@ void AutoMeasurements::CalculateMeasures()
 
 
 
-float CalculateVoltageMax(Chan::E ch)
+float CalculateVoltageMax(Chan::E ch) //-V2506
 {
     float max = CalculateMaxRel(ch);
     EXIT_IF_ERROR_FLOAT(max); //-V2507
@@ -242,7 +242,7 @@ float CalculateVoltageMax(Chan::E ch)
 
 
 
-float CalculateVoltageMin(Chan::E ch)
+float CalculateVoltageMin(Chan::E ch) //-V2506
 {
     float min = CalculateMinRel(ch);
     EXIT_IF_ERROR_FLOAT(min); //-V2507
@@ -256,7 +256,7 @@ float CalculateVoltageMin(Chan::E ch)
 
 
 
-float CalculateVoltagePic(Chan::E ch)
+float CalculateVoltagePic(Chan::E ch) //-V2506
 {
     float max = CalculateVoltageMax(ch);
     float min = CalculateVoltageMin(ch);
@@ -273,7 +273,7 @@ float CalculateVoltagePic(Chan::E ch)
 
 
 
-float CalculateVoltageMinSteady(Chan::E ch)
+float CalculateVoltageMinSteady(Chan::E ch) //-V2506
 {
     float min = CalculateMinSteadyRel(ch);
     EXIT_IF_ERROR_FLOAT(min); //-V2507
@@ -287,7 +287,7 @@ float CalculateVoltageMinSteady(Chan::E ch)
 
 
 
-float CalculateVoltageMaxSteady(Chan::E ch)
+float CalculateVoltageMaxSteady(Chan::E ch) //-V2506
 {
     float max = CalculateMaxSteadyRel(ch);
 
@@ -303,7 +303,7 @@ float CalculateVoltageMaxSteady(Chan::E ch)
 
 
 
-float CalculateVoltageVybrosPlus(Chan::E ch)
+float CalculateVoltageVybrosPlus(Chan::E ch) //-V2506
 {
     float max = CalculateMaxRel(ch);
     float maxSteady = CalculateMaxSteadyRel(ch);
@@ -322,7 +322,7 @@ float CalculateVoltageVybrosPlus(Chan::E ch)
 
 
 
-float CalculateVoltageVybrosMinus(Chan::E ch)
+float CalculateVoltageVybrosMinus(Chan::E ch) //-V2506
 {
     float min = CalculateMinRel(ch);
     float minSteady = CalculateMinSteadyRel(ch);
@@ -340,7 +340,7 @@ float CalculateVoltageVybrosMinus(Chan::E ch)
 
 
 
-float CalculateVoltageAmpl(Chan::E ch)
+float CalculateVoltageAmpl(Chan::E ch) //-V2506
 {
     float max = CalculateVoltageMaxSteady(ch);
     float min = CalculateVoltageMinSteady(ch);
@@ -357,7 +357,7 @@ float CalculateVoltageAmpl(Chan::E ch)
 
 
 
-float CalculateVoltageAverage(Chan::E ch)
+float CalculateVoltageAverage(Chan::E ch) //-V2506
 {
     int period = CalculatePeriodAccurately(ch);
 
@@ -365,7 +365,7 @@ float CalculateVoltageAverage(Chan::E ch)
 
     int sum = 0;
 
-    uint8 *data = &CHOICE_BUFFER[firstByte];
+    uint8 *data = &CHOICE_BUFFER[firstByte]; //-V2563
 
     for(int i = 0; i < period; i++)
     {
@@ -384,7 +384,7 @@ float CalculateVoltageAverage(Chan::E ch)
 
 
 
-float CalculateVoltageRMS(Chan::E ch)
+float CalculateVoltageRMS(Chan::E ch) //-V2506
 {
     int period = CalculatePeriodAccurately(ch);
 
@@ -395,11 +395,11 @@ float CalculateVoltageRMS(Chan::E ch)
     Range::E range = RANGE_DS(ch);
     int16 rShift = RSHIFT_DS(ch);
 
-    uint8 *dataIn = &CHOICE_BUFFER[firstByte];
+    uint8 *dataIn = &CHOICE_BUFFER[firstByte]; //-V2563
 
     for(int i = firstByte; i < firstByte + period; i++)
     {
-        float volts = VALUE::ToVoltage(dataIn[i], range, rShift);
+        float volts = VALUE::ToVoltage(dataIn[i], range, rShift); //-V2563
         rms +=  volts * volts;
     }
 
@@ -415,7 +415,7 @@ float CalculateVoltageRMS(Chan::E ch)
 
 
 
-float CalculatePeriod(Chan::E ch)
+float CalculatePeriod(Chan::E ch) //-V2506
 {
     static float period[2] = {0.0F, 0.0F};
 
@@ -469,11 +469,11 @@ float CalculatePeriod(Chan::E ch)
 
 
 
-int CalculatePeriodAccurately(Chan::E ch)
+int CalculatePeriodAccurately(Chan::E ch) //-V2506
 {
     static int period[2];
 
-    int *sums = static_cast<int *>(std::malloc(static_cast<uint>(nBytes)));
+    int *sums = static_cast<int *>(std::malloc(static_cast<uint>(nBytes))); //-V2511
 
     if (sums == 0)
     {
@@ -490,24 +490,24 @@ int CalculatePeriodAccurately(Chan::E ch)
 
         if(pic == Float::ERROR) //-V550 //-V2550
         {
-            EXIT_FROM_PERIOD_ACCURACY
+            EXIT_FROM_PERIOD_ACCURACY //-V2511
         }
         int delta = static_cast<int>(pic * 5.0F);
-        sums[firstByte] = dataIn[firstByte];
+        sums[firstByte] = dataIn[firstByte]; //-V2563
 
         int i = firstByte + 1;
-        int *pSum = &sums[i];
-        uint8 *data = &dataIn[i];
-        uint8 *end = &dataIn[lastByte];
+        int *pSum = &sums[i]; //-V2563
+        uint8 *data = &dataIn[i]; //-V2563
+        uint8 *end = &dataIn[lastByte]; //-V2563
 
         while (data < end)
         {
             uint8 point = *data++;
             if(point < VALUE::MIN || point >= VALUE::MAX)
             {
-                EXIT_FROM_PERIOD_ACCURACY
+                EXIT_FROM_PERIOD_ACCURACY //-V2511
             }
-            *pSum = *(pSum - 1) + point;
+            *pSum = *(pSum - 1) + point; //-V2563
             pSum++;
         }
 
@@ -516,16 +516,16 @@ int CalculatePeriodAccurately(Chan::E ch)
 
         for(int nextPeriod = 10; nextPeriod < maxPeriod; nextPeriod++)
         {
-            int sum = sums[addShift + nextPeriod];
+            int sum = sums[addShift + nextPeriod]; //-V2563
 
             int maxDelta = 0;
             int maxStart = nBytes - nextPeriod;
 
-            int *pSums = &sums[firstByte + 1];
+            int *pSums = &sums[firstByte + 1]; //-V2563
 
             for(int start = 1; start < maxStart; start++)
             {
-                int nextSum = *(pSums + nextPeriod) - (*pSums);
+                int nextSum = *(pSums + nextPeriod) - (*pSums); //-V2563
                 pSums++;
 
                 int nextDelta = nextSum - sum;
@@ -560,7 +560,7 @@ int CalculatePeriodAccurately(Chan::E ch)
         periodAccurateIsCalculating[static_cast<int>(ch)] = true;
     }
 
-    std::free(sums);
+    std::free(sums); //-V2511
 
     return period[static_cast<int>(ch)];
 }
@@ -576,20 +576,20 @@ float CalculateFreq(Chan::E ch)
 
 
 
-float FindIntersectionWithHorLine(Chan::E ch, int numIntersection, bool downToUp, uint8 yLine)
+float FindIntersectionWithHorLine(Chan::E ch, int numIntersection, bool downToUp, uint8 yLine) //-V2506
 {
     int num = 0;
     int x = firstByte;
     int compValue = lastByte - 1;
     int step = PEAKDET_ENABLED(DS) ? 2 : 1;
 
-    uint8 *data = &CHOICE_BUFFER[0];
+    uint8 *data = &CHOICE_BUFFER[0]; //-V2563
 
     if(downToUp)
     {
         while((num < numIntersection) && (x < compValue))
         {
-            if(data[x] < yLine && data[x + step] >= yLine)
+            if(data[x] < yLine && data[x + step] >= yLine) //-V2563
             {
                 num++;
             }
@@ -600,7 +600,7 @@ float FindIntersectionWithHorLine(Chan::E ch, int numIntersection, bool downToUp
     {
         while((num < numIntersection) && (x < compValue))
         {
-            if(data[x] > yLine && data[x + step] <= yLine)
+            if(data[x] > yLine && data[x + step] <= yLine) //-V2563
             {
                 num++;
             }
@@ -614,12 +614,12 @@ float FindIntersectionWithHorLine(Chan::E ch, int numIntersection, bool downToUp
         return Float::ERROR;
     }
     
-    return ::Math::GetIntersectionWithHorizontalLine(x, data[x], x + step, data[x + step], yLine);
+    return ::Math::GetIntersectionWithHorizontalLine(x, data[x], x + step, data[x + step], yLine); //-V2563
 }
 
 
 
-float CalculateDurationPlus(Chan::E ch)
+float CalculateDurationPlus(Chan::E ch) //-V2506
 {
     float aveValue = CalculateAverageRel(ch);
     EXIT_IF_ERROR_FLOAT(aveValue); //-V2507
@@ -647,7 +647,7 @@ float CalculateDurationPlus(Chan::E ch)
 
 
 
-float CalculateDurationMinus(Chan::E ch)
+float CalculateDurationMinus(Chan::E ch) //-V2506
 {
     float aveValue = CalculateAverageRel(ch);
     EXIT_IF_ERROR_FLOAT(aveValue); //-V2507
@@ -675,7 +675,7 @@ float CalculateDurationMinus(Chan::E ch)
 
 
 
-float CalculateTimeNarastaniya(Chan::E ch)   /** \todo Здесь, возможно, нужно увеличить точность - брать не целые значени расстояний между 
+float CalculateTimeNarastaniya(Chan::E ch)   /** \todo Здесь, возможно, нужно увеличить точность - брать не целые значени расстояний между  //-V2506
                                               отсчётами по времени, а рассчитывать пересечения линий. */
 {
     float maxSteady = CalculateMaxSteadyRel(ch);
@@ -714,7 +714,7 @@ float CalculateTimeNarastaniya(Chan::E ch)   /** \todo Здесь, возможно, нужно ув
 
 
 
-float CalculateTimeSpada(Chan::E ch)        // \todo Аналогично времени нарастания
+float CalculateTimeSpada(Chan::E ch)        // \todo Аналогично времени нарастания //-V2506
 {
     float maxSteady = CalculateMaxSteadyRel(ch);
     float minSteady = CalculateMinSteadyRel(ch);
@@ -752,7 +752,7 @@ float CalculateTimeSpada(Chan::E ch)        // \todo Аналогично времени нарастан
 
 
 
-float CalculateSkvaznostPlus(Chan::E ch)
+float CalculateSkvaznostPlus(Chan::E ch) //-V2506
 {
     float period = CalculatePeriod(ch);
     float duration = CalculateDurationPlus(ch);
@@ -764,7 +764,7 @@ float CalculateSkvaznostPlus(Chan::E ch)
 
 
 
-float CalculateSkvaznostMinus(Chan::E ch)
+float CalculateSkvaznostMinus(Chan::E ch) //-V2506
 {
     float period = CalculatePeriod(ch);
     float duration = CalculateDurationMinus(ch);
@@ -794,8 +794,8 @@ float CalculateMinSteadyRel(Chan::E ch)
             int sum = 0;
             int numSums = 0;
 
-            uint8 *data = &dataIn[firstByte];
-            const uint8 * const end = &dataIn[lastByte];
+            uint8 *data = &dataIn[firstByte]; //-V2563
+            const uint8 * const end = &dataIn[lastByte]; //-V2563
             while(data <= end)
             {
                 uint8 d = *data++;
@@ -820,7 +820,7 @@ float CalculateMinSteadyRel(Chan::E ch)
 
                 float value = pic / 9.0F;
 
-                data = &dataIn[firstByte];
+                data = &dataIn[firstByte]; //-V2563
                 float _min = min[static_cast<int>(ch)];
                 while (data <= end)
                 {
@@ -874,8 +874,8 @@ float CalculateMaxSteadyRel(Chan::E ch)
         {
             int sum = 0;
             int numSums = 0;
-            uint8 *data = &dataIn[firstByte];
-            const uint8 * const end = &dataIn[lastByte];
+            uint8 *data = &dataIn[firstByte]; //-V2563
+            const uint8 * const end = &dataIn[lastByte]; //-V2563
             while (data <= end)
             {
                 uint8 d = *data++;
@@ -901,7 +901,7 @@ float CalculateMaxSteadyRel(Chan::E ch)
 
                 float value = pic / 9.0F;
 
-                data = &dataIn[firstByte];
+                data = &dataIn[firstByte]; //-V2563
                 uint8 _max = static_cast<uint8>(max[static_cast<int>(ch)]);
 
                 while (data <= end)
@@ -1002,7 +1002,7 @@ float CalculatePicRel(Chan::E ch)
 
 
 
-float CalculateDelayPlus(Chan::E ch)
+float CalculateDelayPlus(Chan::E ch) //-V2506
 {
     float periodA = CalculatePeriod(ChanA);
     float periodB = CalculatePeriod(ChanB);
@@ -1040,7 +1040,7 @@ float CalculateDelayPlus(Chan::E ch)
 
 
 
-float CalculateDelayMinus(Chan::E ch)
+float CalculateDelayMinus(Chan::E ch) //-V2506
 {
     float period0 = CalculatePeriod(ChanA);
     float period1 = CalculatePeriod(ChanB);
@@ -1087,7 +1087,7 @@ float CalculateDelayMinus(Chan::E ch)
 
 
 
-float CalculatePhazaPlus(Chan::E ch)
+float CalculatePhazaPlus(Chan::E ch) //-V2506
 {
     float delay = CalculateDelayPlus(ch);
     float period = CalculatePeriod(ch);
@@ -1116,7 +1116,7 @@ float CalculatePhazaMinus(Chan::E ch)
 }
 
 
-float Measure::CalculateCursorU(Chan::E ch, float posCurT)
+float Measure::CalculateCursorU(Chan::E ch, float posCurT) //-V2506
 {
     if(!CHOICE_BUFFER)
     {
@@ -1125,7 +1125,7 @@ float Measure::CalculateCursorU(Chan::E ch, float posCurT)
     
     BitSet64 points = DisplayOsci::PainterData::PointsOnDisplay();
 
-    int rel = static_cast<int>((CHOICE_BUFFER)[static_cast<int>(points.word0) + ROUND(int, posCurT)]) - VALUE::MIN;
+    int rel = static_cast<int>((CHOICE_BUFFER)[static_cast<int>(points.word0) + ROUND(int, posCurT)]) - VALUE::MIN; //-V2563
 
 #define SCALE (200.0F / (VALUE::MAX - VALUE::MIN))
 
@@ -1136,7 +1136,7 @@ float Measure::CalculateCursorU(Chan::E ch, float posCurT)
 
 
 
-float Measure::CalculateCursorT(Chan::E ch, float posCurU, int numCur)
+float Measure::CalculateCursorT(Chan::E ch, float posCurU, int numCur) //-V2506
 {
     uint8 *dataIn = CHOICE_BUFFER;
 
@@ -1150,13 +1150,13 @@ float Measure::CalculateCursorT(Chan::E ch, float posCurU, int numCur)
     
     BitSet64 points = DisplayOsci::PainterData::PointsOnDisplay();
 
-    int prevData = 200 - dataIn[FIRST_POINT] + VALUE::MIN;
+    int prevData = 200 - dataIn[FIRST_POINT] + VALUE::MIN; //-V2563
 
     int numIntersections = 0;
 
     for(int i = FIRST_POINT + 1; i < LAST_POINT; i++)
     {
-        int curData = 200 - (dataIn)[i] + VALUE::MIN;
+        int curData = 200 - (dataIn)[i] + VALUE::MIN; //-V2563
 
         if(curData <= posCurU && prevData > posCurU) //-V2564
         {
@@ -1205,7 +1205,7 @@ float Measure::CalculateCursorT(Chan::E ch, float posCurU, int numCur)
 
 
 
-void InterpolationSinX_X(uint8 *data, int numPoints, TBase::E tBase)
+void InterpolationSinX_X(uint8 *data, int numPoints, TBase::E tBase) //-V2506
 {
 /*
      Последовательности x в sin(x)   // Это, наверное, неправильно
@@ -1223,7 +1223,7 @@ void InterpolationSinX_X(uint8 *data, int numPoints, TBase::E tBase)
     static const int deltas[5] = {100, 50, 20, 10, 5};
     int delta = deltas[static_cast<int>(tBase)];
 
-    uint8 *signedData = static_cast<uint8 *>(std::malloc(static_cast<uint>(numPoints) / 2U));
+    uint8 *signedData = static_cast<uint8 *>(std::malloc(static_cast<uint>(numPoints) / 2U)); //-V2511
     if (signedData == 0)
     {
         return;
@@ -1232,9 +1232,9 @@ void InterpolationSinX_X(uint8 *data, int numPoints, TBase::E tBase)
     
     for (int pos = 0; pos < numPoints; pos++)
     {
-        if (data[pos] > 0)
+        if (data[pos] > 0) //-V2563
         {
-            signedData[numSignedPoints++] = data[pos];
+            signedData[numSignedPoints++] = data[pos]; //-V2563
         }
     }
 
@@ -1243,7 +1243,7 @@ void InterpolationSinX_X(uint8 *data, int numPoints, TBase::E tBase)
     int shift = 0;
     for (int pos = 0; pos < numPoints; pos++)
     {
-        if (data[pos] > 0)
+        if (data[pos] > 0) //-V2563
         {
             shift = pos;
             break;
@@ -1260,7 +1260,7 @@ void InterpolationSinX_X(uint8 *data, int numPoints, TBase::E tBase)
         x0 += stepX0;
         if((i % delta) == 0)
         {
-            data[i] = signedData[i / delta];
+            data[i] = signedData[i / delta]; //-V2563
         }
         else
         {
@@ -1277,10 +1277,10 @@ void InterpolationSinX_X(uint8 *data, int numPoints, TBase::E tBase)
 
                 for (int n = 0; n < numSignedPoints; n++)
                 {
-                    value += signedData[n] * sinXint / (x - n * deltaXint);
+                    value += signedData[n] * sinXint / (x - n * deltaXint); //-V2563
                     sinXint = -sinXint;
                 }
-                data[i] = (uint8)(value * KOEFF); //-V2564
+                data[i] = (uint8)(value * KOEFF); //-V2563 //-V2564
             }
             else                                    // На этих развёртках арифметика с плавающей запятой даёт приемлемое быстродействие
             {
@@ -1290,10 +1290,10 @@ void InterpolationSinX_X(uint8 *data, int numPoints, TBase::E tBase)
                 for (int n = 0; n < numSignedPoints; n++)
                 {
                     x -= deltaX;
-                    value += signedData[n] * sinX / x; //-V2564
+                    value += signedData[n] * sinX / x; //-V2563 //-V2564
                     sinX = -sinX;
                 }
-                data[i] = static_cast<uint8>(value);
+                data[i] = static_cast<uint8>(value); //-V2563
             }
         }
     }
@@ -1301,16 +1301,16 @@ void InterpolationSinX_X(uint8 *data, int numPoints, TBase::E tBase)
     int pos = numPoints - 1;
     while (pos > shift)
     {
-        data[pos] = data[pos - shift];
+        data[pos] = data[pos - shift]; //-V2563
         pos--;
     }
 
-    std::free(signedData);
+    std::free(signedData); //-V2511
 }
 
 
 
-String Measure::GetStringMeasure(Chan::E ch, char* buffer, int lenBuf)
+String Measure::GetStringMeasure(Chan::E ch, char* buffer, int lenBuf) //-V2506
 {
     TypeMeasure::E type = GetType();
 
@@ -1319,12 +1319,12 @@ String Measure::GetStringMeasure(Chan::E ch, char* buffer, int lenBuf)
         return String("");
     }
 
-    buffer[0] = '\0';
-    std::strcpy(buffer, (ch == ChanA) ? "1: " : "2: ");
+    buffer[0] = '\0'; //-V2563
+    std::strcpy(buffer, (ch == ChanA) ? "1: " : "2: "); //-V2513
 
     if(!isSet || values[static_cast<int>(type)].value[static_cast<int>(ch)] == Float::ERROR) //-V550 //-V2550
     {
-        std::strcat(buffer, "-.-");
+        std::strcat(buffer, "-.-"); //-V2513
     }
     else if(sMeas[static_cast<int>(type)].FuncCalculate)
     {
@@ -1338,10 +1338,10 @@ String Measure::GetStringMeasure(Chan::E ch, char* buffer, int lenBuf)
         }
                
         char *text = func(value, sMeas[static_cast<int>(type)].showSign, bufferForFunc);
-        int len = static_cast<int>(std::strlen(text)) + static_cast<int>(std::strlen(buffer)) + 1;
+        int len = static_cast<int>(std::strlen(text)) + static_cast<int>(std::strlen(buffer)) + 1; //-V2513
         if (len + 1 <= lenBuf)
         {
-            std::strcat(buffer, text);
+            std::strcat(buffer, text); //-V2513
         }
     }
     else
@@ -1355,21 +1355,21 @@ String Measure::GetStringMeasure(Chan::E ch, char* buffer, int lenBuf)
 
 char* AutoMeasurements::Freq2String(float freq, bool, char buffer[20])
 {
-    std::strcpy(buffer, Frequency(freq).ToString().c_str());
+    std::strcpy(buffer, Frequency(freq).ToString().c_str()); //-V2513
     return buffer;
 }
 
 
 char* Time2String(float time, bool always, char buffer[20])
 {
-    std::strcpy(buffer, Time(time).ToString(always).c_str());
+    std::strcpy(buffer, Time(time).ToString(always).c_str()); //-V2513
     return buffer;
 }
 
 
 char* Voltage2String(float voltage, bool always, char buffer[20])
 {
-    std::strcpy(buffer, Voltage(voltage).ToString(always).c_str());
+    std::strcpy(buffer, Voltage(voltage).ToString(always).c_str()); //-V2513
     return buffer;
 }
 
@@ -1382,7 +1382,7 @@ char* Phase2String(float phase, bool, char buffer[20])
 
 char* AutoMeasurements::Float2String(float value, bool always, char buffer[20])
 {
-    std::strcpy(buffer, Float(value).ToString(always, 4).c_str());
+    std::strcpy(buffer, Float(value).ToString(always, 4).c_str()); //-V2513
     return buffer;
 }
 
@@ -1427,7 +1427,7 @@ void AutoMeasurements::SetData()
         {
             for (int i = static_cast<int>(BYTES_IN_CHANNEL_DS - 1); i >= 0; --i)
             {
-                if (IN_A[i] != VALUE::NONE)                // Если это значение считано
+                if (IN_A[i] != VALUE::NONE)                // Если это значение считано //-V2563
                 {
                     lastByte = i;
                     firstByte = lastByte - nBytes;
@@ -1512,8 +1512,8 @@ void AutoMeasurements::CountedToCurrentRShift(Chan::E ch, uint numBytes, const u
     {
         for(uint i = 0; i < numBytes; i++)
         {
-            float voltage = VALUE::ToVoltage(in[i], rangeDS, shiftDS);
-            out[i] = VALUE::FromVoltage(voltage, rangeSET, shiftSET);
+            float voltage = VALUE::ToVoltage(in[i], rangeDS, shiftDS); //-V2563
+            out[i] = VALUE::FromVoltage(voltage, rangeSET, shiftSET); //-V2563
         }
     }
 }

@@ -1,1 +1,2 @@
-start ../../S8-57M.uvmpw
+@echo on
+start ../../S8-57.uvmpw

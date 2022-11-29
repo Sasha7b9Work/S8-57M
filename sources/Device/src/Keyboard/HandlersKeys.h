@@ -8,7 +8,8 @@ typedef void (*pFuncVCh)(Chan::E);
 typedef void (*pFuncVI)(int);
 
 
-namespace Handlers
+class Handlers
 {
-    void Process(KeyEvent);
+public:
+    static void Process(KeyEvent);
 };

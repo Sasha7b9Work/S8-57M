@@ -1,15 +1,12 @@
-// 2022/04/20 16:52:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
+#include "common/Decoder_p.h"
 #include "Hardware/Keyboard.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Queue.h"
-#include "common/Communicator/Communicator_.h"
 #include <stm32f4xx_hal.h>
 
 
-namespace HAL_BUS
-{
 #define PORT_READY  GPIOC
 #define PIN_READY   GPIO_PIN_14
 #define READY       PORT_READY, PIN_READY
@@ -31,76 +28,71 @@ namespace HAL_BUS
 #define RD          PORT_RD, PIN_RD
 
 
-    struct OutPin
+struct OutPin
+{
+    OutPin(GPIO_TypeDef *_gpio, uint16 _pin) : gpio(_gpio), pin(_pin) {};
+
+    void Init()
     {
-        OutPin(GPIO_TypeDef *_gpio, uint16 _pin) : gpio(_gpio), pin(_pin) {};
+        GPIO_InitTypeDef is = { pin, GPIO_MODE_OUTPUT_PP, GPIO_PULLUP };
 
-        void Init()
-        {
-            GPIO_InitTypeDef is = { pin, GPIO_MODE_OUTPUT_PP, GPIO_PULLUP };
+        HAL_GPIO_Init(gpio, &is);
 
-            HAL_GPIO_Init(gpio, &is);
+        SetPassive();
+    }
 
-            SetPassive();
-        }
+    void SetActive()  { HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_RESET); }
 
-        void SetActive() { HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_RESET); }
+    void SetPassive() { HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_SET); }
 
-        void SetPassive() { HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_SET); }
-
-        GPIO_TypeDef *gpio;
-        uint16 pin;
-    };
+    GPIO_TypeDef *gpio;
+    uint16 pin;
+};
 
 
-    struct InPin
+struct InPin
+{
+    InPin(GPIO_TypeDef *_gpio, uint16 _pin) : gpio(_gpio), pin(_pin) {};
+
+    void Init()
     {
-        InPin(GPIO_TypeDef *_gpio, uint16 _pin) : gpio(_gpio), pin(_pin) {};
+        GPIO_InitTypeDef is = { pin, GPIO_MODE_INPUT, GPIO_PULLUP };
 
-        void Init()
-        {
-            GPIO_InitTypeDef is = { pin, GPIO_MODE_INPUT, GPIO_PULLUP };
+        HAL_GPIO_Init(gpio, &is);
+    }
 
-            HAL_GPIO_Init(gpio, &is);
-        }
+    bool IsActive()    { return HAL_GPIO_ReadPin(gpio, pin) == GPIO_PIN_RESET; }
 
-        bool IsActive() { return HAL_GPIO_ReadPin(gpio, pin) == GPIO_PIN_RESET; }
+    bool IsPassive()   { return HAL_GPIO_ReadPin(gpio, pin) == GPIO_PIN_SET; }
 
-        bool IsPassive() { return HAL_GPIO_ReadPin(gpio, pin) == GPIO_PIN_SET; }
+    void WaitPassive() { while(IsActive()) { } }
 
-        void WaitPassive() { while (IsActive()) {} }
+    void WaitActive()  { while(IsPassive()) { } }
 
-        void WaitActive() { while (IsPassive()) {} }
-
-        GPIO_TypeDef *gpio;
-        uint16 pin;
-    };
+    GPIO_TypeDef *gpio;
+    uint16 pin;
+};
 
 
-    // На этом выводе будем выставлять признак готовности к коммуникации и признак подтверждения
-    static OutPin pinReady(READY);
-    // Здесь будем выставлять признак готовности данных для передачи в устройство
-    static OutPin pinData(DATA);
-    // По этому сигналу от основого МК начинаем транзакцию чтения/записи
-    static InPin  pinCS(CS);
-    // Признак того, что основной МК осуществляет операцию записи в панель
-    static InPin  pinWR(WR);
-    // Признак того, что основной МК осуществляет операцию чтения из панели
-    static InPin  pinRD(RD);
+// На этом выводе будем выставлять признак готовности к коммуникации и признак подтверждения
+static OutPin pinReady(READY); //-V2571
+// Здесь будем выставлять признак готовности данных для передачи в устройство
+static OutPin pinData(DATA); //-V2571
+// По этому сигналу от основого МК начинаем транзакцию чтения/записи
+static InPin  pinCS(CS); //-V2571
+// Признак того, что основной МК осуществляет операцию записи в панель
+static InPin  pinWR(WR); //-V2571
+// Признак того, что основной МК осуществляет операцию чтения из панели
+static InPin  pinRD(RD); //-V2571
 
-    static Queue<uint8, 64> queueData;
+static Queue<uint8> queueData;
 
 
-    struct DataBus
-    {
-        // Первоначальная инициализация
-        static void Init()
-        {
-            // Конфигурируем ШД на чтение
-            GPIOE->MODER &= 0xffff0000U;
-        }
-    };
-}
+struct DataBus
+{
+    // Первоначальная инициализация
+    static void Init();
+};
 
 
 void HAL_BUS::Init()
@@ -119,15 +111,15 @@ void HAL_BUS::Init()
 }
 
 
-void HAL_BUS::Panel::Send(const uint8* data, int size)
+void HAL_BUS::SendToDevice(uint8 *data, uint size)
 {
-    while (size > 0)
+    while(size > 0)
     {
         queueData.Push(*data++);
         size--;
     }
 
-    if (queueData.Size())
+    if(queueData.Size())
     {
         pinData.SetActive();
     }
@@ -137,38 +129,38 @@ void HAL_BUS::Panel::Send(const uint8* data, int size)
 void HAL_BUS::Update()
 {
     //while(pinCS.IsActive())
-    while((GPIOC->IDR & GPIO_PIN_13) == 0)
+    while((GPIOC->IDR & GPIO_PIN_13) == 0) //-V2571
     {
         //if(pinWR.IsActive())                            // Чтение байта из устройства
-        if((GPIOD->IDR & GPIO_PIN_5) == 0)
+        if((GPIOD->IDR & GPIO_PIN_5) == 0) //-V2571
         {
             //uint8 data = DataBus::Read();
-            uint data = GPIOE->IDR;
+            uint8 data = (uint8)GPIOE->IDR; //-V2571
 
             //pinReady.SetPassive();
-            GPIOC->BSRR = GPIO_PIN_14;
+            GPIOC->BSRR = GPIO_PIN_14; //-V2571
 
-            Communicator::AddData(data);        // \todo Сейчас недостаток - пока не отработает PDecoder::AddData(), устройство не пойдёт дальше
+            PDecoder::AddData(data);        // \todo Сейчас недостаток - пока не отработает PDecoder::AddData(), устройство не пойдёт дальше
 
             //while(pinCS.IsActive()) {};
             //while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == GPIO_PIN_RESET) { }
-            volatile uint state = GPIOC->IDR & GPIO_PIN_13;
+            volatile uint state = GPIOC->IDR & GPIO_PIN_13; //-V2571
             while(state == 0)
             {
-                state = GPIOC->IDR & GPIO_PIN_13;
+                state = GPIOC->IDR & GPIO_PIN_13; //-V2571
             }
 
             //pinReady.SetActive();
-            GPIOC->BSRR = (uint)GPIO_PIN_14 << 16U;
+            GPIOC->BSRR = (uint)GPIO_PIN_14 << 16U; //-V2571
         }
         else if(pinRD.IsActive() && queueData.Size())   // Запись байта в устройсто //-V2570 //-V2516
         {
             // Конфигурируем ШД на запись
-            GPIOE->MODER &= 0xffff0000U;
-            GPIOE->MODER |= 0x00005555U;
+            GPIOE->MODER &= 0xffff0000U; //-V2571
+            GPIOE->MODER |= 0x00005555U; //-V2571
 
             // Устанавливаем данные на ШД
-            GPIOE->ODR = (GPIOD->ODR & 0xffff0000U) + static_cast<uint16>(queueData.Front());
+            GPIOE->ODR = (GPIOD->ODR & 0xffff0000U) + static_cast<uint16>(queueData.Front()); //-V2571
 
             pinReady.SetPassive();
 
@@ -182,7 +174,14 @@ void HAL_BUS::Update()
             }
 
             // Конфигурируем ШД на чтение
-            GPIOE->MODER &= 0xffff0000U;
+            GPIOE->MODER &= 0xffff0000U; //-V2571
         }
     }
+}
+
+
+void DataBus::Init()
+{
+    // Конфигурируем ШД на чтение
+    GPIOE->MODER &= 0xffff0000U; //-V2571
 }

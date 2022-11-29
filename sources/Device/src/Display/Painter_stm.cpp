@@ -1,29 +1,9 @@
 #include "defines.h"
+#include "common/Command.h"
 #include "Display/Painter.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
-#include "Utils/Containers/Buffer.h"
-#include "Display/Display.h"
-#include "common/Communicator/Message_.h"
-#include <cstring>
-
-
-namespace Painter
-{
-    static const int SIZE_BUFFER = Display::WIDTH * Display::HEIGHT / 2;
-
-    uint8 buffer1[SIZE_BUFFER];
-    uint8 buffer2[SIZE_BUFFER];
-
-    uint8 *prev = nullptr;      // Указатель на буфер, отрисованный в прошлом кадре
-    uint8 *draw = nullptr;      // В этом буфере рисуем в текущем буфере
-                                // Используетя для расчёта дельты перед передачей в дисплей
-
-    // Подготовить буфера к новому кадру
-    void ToggleBuffers();
-
-    void SendDirectLines();
-}
+#include "Utils/Buffer.h"
 
 
 void Painter::Init()
@@ -33,119 +13,37 @@ void Painter::Init()
 
 void Painter::BeginScene(Color color)
 {
-    ToggleBuffers();
-
     color.SetAsCurrent();
 
-    std::memset(draw, Color::GetCurent().value, SIZE_BUFFER);
+    HAL_BUS::Panel::Send(Command::Paint_BeginScene);
 }
 
 
 void Painter::EndScene()
 {
-    if (prev == nullptr)    // Нет предыдущей отрисовки - передаём нарисованный буфер
-    {
-        SendDirectLines();
-    }
-    else                    // Если есть буфер, отрисованный в прошлом кадре, то пересылаем дельту
-    {
-
-    }
+    HAL_BUS::Panel::Send(Command::Paint_EndScene);
 }
 
 
-void Painter::SendDirectLines()
+void Painter::DrawTesterData(uint8 mode, Color color, const uint16 *x, const uint8 *y)
 {
-    for (int y = 0; y < Display::HEIGHT; y++)
+    Buffer buffer(3 + TESTER_NUM_POINTS * 2 + TESTER_NUM_POINTS);
+    buffer.data[0] = Command::Paint_TesterLines; //-V2563
+    buffer.data[1] = mode; //-V2563
+    buffer.data[2] = color.value; //-V2563
+
+    uint16 *pointer16 = reinterpret_cast<uint16 *>(buffer.data + 3); //-V2563
+    for (int i = 0; i < TESTER_NUM_POINTS; i++)
     {
-        uint8 num_segments = 0;
-        uint8 color = 0;
-        uint8 num_points = 0;
-
-        uint8* line = draw + y * Display::WIDTH / 2;                  // Указатель на очередную передаваемую линию
-        uint8* end = line + Display::WIDTH / 2;
-
-        DynamicMessage<1024> message(Command::Paint_DirectLine);
-
-        message.PushByte(0);                            // Сюда потом положим размер
-
-        uint8 points = *line;
-
-        {
-            color = (uint8)(points & 0x0f);
-            message.PushByte(color);
-            num_points = 1;
-            num_segments = 1;
-
-            if ((points >> 4) == color)
-            {
-                num_points++;
-            }
-            else
-            {
-                message.PushByte(num_points);
-                color = (uint8)(points >> 4);
-                message.PushByte(color);
-                num_points = 1;
-                num_segments++;
-            }
-        }
-
-        line++;
-
-        while (line != end)
-        {
-            points = *line;
-
-            if ((points & 0x0f) == color)
-            {
-                num_points++;
-            }
-            else
-            {
-                message.PushByte(num_points);
-                color = (uint8)(points & 0x0f);
-                num_points = 1;
-                num_segments++;
-            }
-
-            if ((points >> 4) == color)
-            {
-                num_points++;
-            }
-            else
-            {
-                message.PushByte(num_points);
-                color = (uint8)(points >> 4);
-                message.PushByte(color);
-                num_points = 1;
-                num_segments++;
-            }
-        }
-
-        message.PushByte(num_points);
-
-        message.PushByte(1, num_segments);
+        *pointer16++ = x[i]; //-V2563
     }
+
+    uint8 *pointer8 = reinterpret_cast<uint8 *>(pointer16);
+    for (int i = 0; i < TESTER_NUM_POINTS; i++)
+    {
+        *pointer8++ = y[i]; //-V2563
+    }
+
+    HAL_BUS::Panel::Send(buffer.data, buffer.Size());
 }
 
-
-void Painter::DrawTesterData(uint8 , Color , const uint16 *, const uint8 *)
-{
-    // todo_paint
-}
-
-
-void Painter::ToggleBuffers()
-{
-    if (prev == nullptr && draw == nullptr)
-    {
-        draw = buffer1;
-    }
-    else
-    {
-        prev = draw;
-
-        draw = (prev == buffer1) ? buffer2 : buffer1;
-    }
-}

@@ -3,13 +3,13 @@
 #include "common/Display/Font/Font_d.h"
 
 
-namespace Painter
+struct Painter
 {
-    void Init();
+    static void Init();
 
-    void BeginScene(Color);
+    static void BeginScene(Color color);
 
-    void EndScene();
+    static void EndScene();
 
-    void DrawTesterData(uint8 mode, Color, const uint16 *x, const uint8 *y);
+    static void DrawTesterData(uint8 mode, Color color, const uint16 *x, const uint8 *y);
 };

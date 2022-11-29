@@ -3,7 +3,7 @@
 #include "Menu/Pages/Include/PageDisplay.h"
 #include "SCPI/SCPI.h"
 #include "Settings/Settings.h"
-#include "Utils/Text/StringUtils.h"
+#include "Utils/StringUtils.h"
 #include <cstring>
 
 
@@ -89,13 +89,13 @@ static pString accumulationDirect[] =
 };
 
 
-static pCHAR FuncAccumulation(pCHAR buffer)
+static pCHAR FuncAccumulation(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(accumulationDirect[S_DISP_ENUM_ACCUM]));
 
     SCPI_IF_BEGIN_WITH_THEN(" CLEAR", PageDisplay::Accumulation::OnPress_Accumulation_Clear());
 
-    SCPI_PROCESS_ARRAY(accumulationDirect, S_DISP_ENUM_ACCUM = static_cast<ENumAccum::E>(i));
+    SCPI_PROCESS_ARRAY(accumulationDirect, S_DISP_ENUM_ACCUM = static_cast<ENumAccum::E>(i)); //-V2563
 }
 
 
@@ -119,17 +119,17 @@ static void SetAverage(int i)
 
 static pString averagesDirect[] = { " 1", " 2", " 4", " 8", " 16", " 32", " 64", " 128", " 256", "" };
 
-static pCHAR FuncAverages(pCHAR buffer)
+static pCHAR FuncAverages(pCHAR buffer) //-V2506
 {
     static pString averages[] = { " 128", " 16", " 256", " 8", " 2", " 32", " 64", " 1", " 4", "" };
 
     SCPI_REQUEST(SCPI::SendAnswer(averagesDirect[S_OSCI_ENUM_AVERAGE]));
 
-    SCPI_PROCESS_ARRAY(averages, SetAverage(i));
+    SCPI_PROCESS_ARRAY(averages, SetAverage(i)); //-V2563
 }
 
 
-static pCHAR FuncBrightness(pCHAR buffer)
+static pCHAR FuncBrightness(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(String("%d", set.disp._brightness).c_str()));
 
@@ -140,7 +140,7 @@ static pCHAR FuncBrightness(pCHAR buffer)
     if (SU::String2Int(buffer, &value, &end_str))
     {
         PageDisplay::SetBrightness(value);
-        return end_str + 1;
+        return end_str + 1; //-V2563
     }
 
     return nullptr;
@@ -157,27 +157,27 @@ static pString fps[] =
     ""
 };
 
-static pCHAR FuncFPS(pCHAR buffer)
+static pCHAR FuncFPS(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(fps[S_DISP_ENUM_FPS]));
 
-    SCPI_PROCESS_ARRAY(fps, S_DISP_ENUM_FPS = static_cast<ENumSignalsInSec::E>(i));
+    SCPI_PROCESS_ARRAY(fps, S_DISP_ENUM_FPS = static_cast<ENumSignalsInSec::E>(i)); //-V2563
 }
 
 
-static const char *FuncGrid(const char *buffer)
+static const char *FuncGrid(const char *buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(grids[S_DISP_TYPE_GRID]));
 
-    SCPI_PROCESS_ARRAY(grids, PageDisplay::SetTypeGrid(static_cast<TypeGrid::E>(i)));
+    SCPI_PROCESS_ARRAY(grids, PageDisplay::SetTypeGrid(static_cast<TypeGrid::E>(i))); //-V2563
 }
 
 
-static pCHAR FuncMapping(pCHAR buffer)
+static pCHAR FuncMapping(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(mapping[S_DISP_MAPPING]));
 
-    SCPI_PROCESS_ARRAY(mapping, S_DISP_MAPPING = static_cast<DisplayMapping::E>(i));
+    SCPI_PROCESS_ARRAY(mapping, S_DISP_MAPPING = static_cast<DisplayMapping::E>(i)); //-V2563
 }
 
 
@@ -217,13 +217,13 @@ static void SetSmoothing(int i)
 }
 
 
-static pCHAR FuncSmoothing(pCHAR buffer)
+static pCHAR FuncSmoothing(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(smoothingsDirect[S_DISP_ENUM_SMOOTH]));
 
     static pString smoothings[] = { " 10", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " 1", "" };
 
-    SCPI_PROCESS_ARRAY(smoothings, SetSmoothing(i));
+    SCPI_PROCESS_ARRAY(smoothings, SetSmoothing(i)); //-V2563
 }
 
 
@@ -299,21 +299,21 @@ static bool TestGrid()
 }
 
 
-static bool TestMapping()
+static bool TestMapping() //-V2506
 {
     String commandLines(":DISPLAY:MAPPING LINEs%c", 0x0D);
     String commandDots(":DISPLAY:MApping dots%c", 0x0D);
 
     for (int i = 0; i < 10; i++)
     {
-        SCPI_APPEND_STRING(commandLines); //-V814
+        SCPI_APPEND_STRING(commandLines); //-V814 //-V2513
 
         if (!S_DISP_MAPPING_IS_LINES)
         {
             SCPI_EXIT_ERROR();
         }
 
-        SCPI_APPEND_STRING(commandDots); //-V814
+        SCPI_APPEND_STRING(commandDots); //-V814 //-V2513
 
         if (!S_DISP_MAPPING_IS_DOTS)
         {

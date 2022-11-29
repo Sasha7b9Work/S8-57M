@@ -7,6 +7,7 @@
 // Указатель на массив кнопок, которые разрешены для обработки. Если == 0, то разрешены все кнопки
 static const Key::E *allowedKeys = 0;
 
+
 pString Key::Name()
 {
     static const pString names[Key::Count] =
@@ -132,7 +133,7 @@ void Keyboard::Unlock()
 }
 
 
-bool Keyboard::KeyIsActive(Key::E key)
+bool Keyboard::KeyIsActive(Key::E key) //-V2506
 {
     if (allowedKeys == 0)
     {

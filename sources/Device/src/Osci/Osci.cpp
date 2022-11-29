@@ -16,24 +16,10 @@
 #include "Osci/Measurements/AutoMeasurements.h"
 #include "SCPI/SCPI.h"
 #include "Settings/SettingsNRST.h"
-#include "Utils/Math/Math.h"
-#include "Utils/Containers/Values.h"
+#include "Utils/Math.h"
+#include "Utils/Values.h"
 #include <cstring>
 #include <cstdio>
-
-
-namespace Osci
-{
-    // Здесь хранится адрес, начиная с которого будем читать данные по каналам. Если addrRead == 0xffff, то адрес вначале нужно считать
-    uint16 addrRead = 0xffff;
-
-    void SendDataToSCPI(Chan::E ch);
-
-    // Читать данные канала в памяить data
-    bool ReadDataChannel(Chan::E ch, uint8* data);
-
-    bool ReadDataChannelRand(uint8* address, uint8* data);
-}
 
 
 // Структура для хранения информации, необходимой для чтения в режиме рандомизатора
@@ -142,7 +128,7 @@ void Osci::Restart()
 }
 
 
-void Osci::Update()
+void Osci::Update() //-V2506
 {
     if(!Device::InModeOsci())
     {
@@ -384,7 +370,7 @@ void Osci::ReadData()
 }
 
 
-bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *data)
+bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *data) //-V2506
 {
     ShiftPoint Tsm = gates.CalculateShiftPoint();
 
@@ -397,17 +383,17 @@ bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *data)
 
     int step = infoRead.step;
 
-    uint8 *dataWrite = data + infoRead.posFirst;                                // Сюда запишем первую считанную точку
+    uint8 *dataWrite = data + infoRead.posFirst;                                // Сюда запишем первую считанную точку //-V2563
 
-    uint8 *interpolated = IntRAM::DataRand(ChanA) + infoRead.posFirst;
+    uint8 *interpolated = IntRAM::DataRand(ChanA) + infoRead.posFirst; //-V2563
 
-    uint8 *last = data + ENumPointsFPGA::PointsInChannel();
+    uint8 *last = data + ENumPointsFPGA::PointsInChannel(); //-V2563
 
     HAL_BUS::FPGA::SetAddrData(addr);
 
     if(S_OSCI_AVERAGING_IS_ENABLED)
     {
-        uint8 *dataPointer = &data[infoRead.posFirst];              // Указатель в переданном массиве
+        uint8 *dataPointer = &data[infoRead.posFirst];              // Указатель в переданном массиве //-V2563
 
         while(dataWrite < last)
         {
@@ -415,9 +401,9 @@ bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *data)
             *dataPointer = *dataWrite;
             *interpolated = *dataWrite;
             
-            dataWrite += step;
-            dataPointer += step;
-            interpolated += step;
+            dataWrite += step; //-V2563
+            dataPointer += step; //-V2563
+            interpolated += step; //-V2563
         }
     }
     else
@@ -427,8 +413,8 @@ bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *data)
             *dataWrite = HAL_BUS::FPGA::ReadA0();
             *interpolated = *dataWrite;
 
-            dataWrite += step;
-            interpolated += step;
+            dataWrite += step; //-V2563
+            interpolated += step; //-V2563
 
         }
     }
@@ -437,7 +423,7 @@ bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *data)
 }
 
 
-ShiftPoint Gates::CalculateShiftPoint()
+ShiftPoint Gates::CalculateShiftPoint() //-V2506
 {
     ShiftPoint result(ShiftPoint::READED, 0);
 
@@ -523,7 +509,7 @@ StructReadRand RandShift::GetInfoForReadRand(ShiftPoint Tsm, const uint8 *addres
 }
 
 
-bool Gates::Calculate(uint16 value, uint16 *min, uint16 *max) 
+bool Gates::Calculate(uint16 value, uint16 *min, uint16 *max)  //-V2506
 {
     if(value < 250 || value > 4000)
     {
@@ -595,7 +581,7 @@ void Gates::CalculateWithoutGates(uint16 *min, uint16 *max)
 }
 
 
-OsciStateWork::E OsciStateWork::Current()
+OsciStateWork::E OsciStateWork::Current() //-V2506
 {
     if (!Osci::IsRunning())
     {
@@ -613,7 +599,7 @@ void Osci::SendDataToSCPI()
 }
 
 
-void Osci::SendDataToSCPI(Chan::E ch)
+void Osci::SendDataToSCPI(Chan::E ch) //-V2506
 {
     if (!SCPI::Sender::osci[ch] || ENABLE_CH_DS(ch) == 0)
     {
@@ -632,10 +618,10 @@ void Osci::SendDataToSCPI(Chan::E ch)
 
     for (int i = 0; i < numBytes - 1; i++)
     {
-        std::sprintf(buffer, "%d ", data[i]);
+        std::sprintf(buffer, "%d ", data[i]); //-V2563
         SCPI::SendData(buffer);
     }
 
-    std::sprintf(buffer, "%d", data[numBytes - 1]);
+    std::sprintf(buffer, "%d", data[numBytes - 1]); //-V2563
     SCPI::SendAnswer(buffer);
 }

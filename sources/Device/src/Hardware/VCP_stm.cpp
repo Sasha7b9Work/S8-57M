@@ -3,7 +3,7 @@
 #include "usbd_cdc_interface.h"
 #include "Hardware/VCP.h"
 #include "usbd_desc.h"
-#include "Utils/Math/Math.h"
+#include "Utils/Math.h"
 #include <cstring>
 #include <cstdarg>
 #include <usbd_core.h>
@@ -36,7 +36,7 @@ void VCP::Init()
 
 static bool PrevSendingComplete()
 {
-    USBD_CDC_HandleTypeDef *pCDC = static_cast<USBD_CDC_HandleTypeDef *>(hUSBD.pClassData);
+    USBD_CDC_HandleTypeDef *pCDC = static_cast<USBD_CDC_HandleTypeDef *>(hUSBD.pClassData); //-V2571
     return pCDC->TxState == 0;
 }
 
@@ -64,7 +64,7 @@ void VCP::Flush()
 {
     if (sizeBuffer)
     {
-        volatile USBD_CDC_HandleTypeDef *pCDC = static_cast<USBD_CDC_HandleTypeDef *>(hUSBD.pClassData);
+        volatile USBD_CDC_HandleTypeDef *pCDC = static_cast<USBD_CDC_HandleTypeDef *>(hUSBD.pClassData); //-V2571
 
         while (pCDC->TxState == 1) {}; //-V712
 
@@ -81,13 +81,13 @@ void VCP::SendDataSynch(const void *_buffer, int size)
 {
     if (VCP::connectedToUSB)
     {
-        char *buffer = static_cast<char *>(const_cast<void *>(_buffer)); //-V2567
+        char *buffer = static_cast<char *>(const_cast<void *>(_buffer)); //-V2567 //-V2571
         if (size == 0)
         {
-            size = static_cast<int>(std::strlen(buffer));
+            size = static_cast<int>(std::strlen(buffer)); //-V2513
         }
 
-        volatile USBD_CDC_HandleTypeDef *pCDC = static_cast<USBD_CDC_HandleTypeDef *>(hUSBD.pClassData);
+        volatile USBD_CDC_HandleTypeDef *pCDC = static_cast<USBD_CDC_HandleTypeDef *>(hUSBD.pClassData); //-V2571
     
         do 
         {
@@ -98,16 +98,16 @@ void VCP::SendDataSynch(const void *_buffer, int size)
 
                 while (pCDC->TxState == 1) {}; //-V712
 
-                std::memcpy(buffSend + sizeBuffer, static_cast<void *>(buffer), static_cast<uint>(reqBytes));
+                std::memcpy(buffSend + sizeBuffer, static_cast<void *>(buffer), static_cast<uint>(reqBytes)); //-V2563
                 USBD_CDC_SetTxBuffer(&hUSBD, buffSend, SIZE_BUFFER_VCP);
                 USBD_CDC_TransmitPacket(&hUSBD);
                 size -= reqBytes;
-                buffer += reqBytes;
+                buffer += reqBytes; //-V2563
                 sizeBuffer = 0;
             }
             else
             {
-                std::memcpy(buffSend + sizeBuffer, static_cast<void *>(buffer), static_cast<uint>(size));
+                std::memcpy(buffSend + sizeBuffer, static_cast<void *>(buffer), static_cast<uint>(size)); //-V2563
                 sizeBuffer += size;
                 size = 0;
             }
@@ -118,13 +118,13 @@ void VCP::SendDataSynch(const void *_buffer, int size)
 
 void VCP::SendStringAsynch(const char *data)
 {
-    SendDataAsynch(reinterpret_cast<uint8 *>(const_cast<char *>(data)), static_cast<int>(std::strlen(data))); //-V2567
+    SendDataAsynch(reinterpret_cast<uint8 *>(const_cast<char *>(data)), static_cast<int>(std::strlen(data))); //-V2513 //-V2567
 }
 
 
 void VCP::SendStringSynch(char *data)
 {
-    SendDataSynch(reinterpret_cast<uint8 *>(data), static_cast<int>(std::strlen(data)));
+    SendDataSynch(reinterpret_cast<uint8 *>(data), static_cast<int>(std::strlen(data))); //-V2513
 }
 
 
@@ -137,8 +137,8 @@ void VCP::SendFormatStringAsynch(char *format, ...)
         va_start(args, format); //-V2528
         std::vsprintf(buffer, format, args);
         va_end(args);
-        std::strcat(buffer, "\r\n");
-        SendDataAsynch(reinterpret_cast<uint8 *>(buffer), static_cast<int>(std::strlen(buffer)));
+        std::strcat(buffer, "\r\n"); //-V2513
+        SendDataAsynch(reinterpret_cast<uint8 *>(buffer), static_cast<int>(std::strlen(buffer))); //-V2513
     }
 }
 
@@ -150,8 +150,8 @@ void VCP::SendFormatStringSynch(char *format, ...)
     va_start(args, format); //-V2528
     std::vsprintf(buffer, format, args);
     va_end(args);
-    std::strcat(buffer, "\r\n");
-    SendDataSynch(reinterpret_cast<uint8 *>(buffer), static_cast<int>(std::strlen(buffer)));
+    std::strcat(buffer, "\r\n"); //-V2513
+    SendDataSynch(reinterpret_cast<uint8 *>(buffer), static_cast<int>(std::strlen(buffer))); //-V2513
 }
 
 

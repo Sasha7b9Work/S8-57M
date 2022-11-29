@@ -12,8 +12,8 @@
 #include "Osci/Reader.h"
 #include "Osci/Display/DisplayOsci.h"
 #include "Settings/Settings.h"
-#include "Utils/Math/Math.h"
-#include "Utils/Containers/Values.h"
+#include "Utils/Math.h"
+#include "Utils/Values.h"
 
 
 #ifdef WIN32
@@ -155,7 +155,7 @@ static uint8 ValueForRange(Chan::E ch);
 //}
 
 
-void TBase::Change(int delta)
+void TBase::Change(int delta) //-V2506
 {
     TBase::E old = S_TIME_BASE;
 
@@ -597,7 +597,7 @@ int16 RShift::ToRel(float rShiftAbs, Range::E range)
 }
 
 
-bool RShift::ChangeMath(int delta)
+bool RShift::ChangeMath(int delta) //-V2506
 {
     int16 prevRShift = S_RSHIFT_MATH;
     int16 rShift = prevRShift;
@@ -650,7 +650,7 @@ void VALUE::PointsToVoltage(const uint8 *points, int numPoints, Range::E range, 
     float koeff = 1.0F / 20e3F;
     for (int i = 0; i < numPoints; i++)
     {
-        voltage[i] = (points[i] * voltInPixel - diff) * koeff; //-V636 //-V2564
+        voltage[i] = (points[i] * voltInPixel - diff) * koeff; //-V636 //-V2563 //-V2564
     }
 }
 
@@ -699,20 +699,20 @@ void VALUE::PointsFromVoltage(const float *voltage, int numPoints, Range::E rang
 
     for (int i = 0; i < numPoints; i++)
     {
-        int value = static_cast<int>(voltage[i] * voltInPixel + delta);
+        int value = static_cast<int>(voltage[i] * voltInPixel + delta); //-V2563
 
         if (value < 0)
         {
-            points[i] = 0;
+            points[i] = 0; //-V2563
             continue;
         }
         else if (value > 255) //-V2516
         {
-            points[i] = 255;
+            points[i] = 255; //-V2563
             continue;
         }
 
-        points[i] = static_cast<uint8>(value);
+        points[i] = static_cast<uint8>(value); //-V2563
     }
 }
 

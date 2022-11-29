@@ -42,7 +42,7 @@ static void SetAttributeConnected()
 
 static int8_t CDC_Itf_Init()
 {
-    USBD_CDC_SetRxBuffer(reinterpret_cast<USBD_HandleTypeDef *>(VCP::handleUSBD), UserRxBuffer);
+    USBD_CDC_SetRxBuffer(reinterpret_cast<USBD_HandleTypeDef *>(VCP::handleUSBD), UserRxBuffer); //-V2571
     Timer::SetAndStartOnce(TypeTimer::USB, SetAttributeConnected, 100);   /** \todo Задержка введена для того, чтобы не было ложных срабатываний в 
                                                                  usbd_conf.c:HAL_PCD_SetupStageCallback при определении подключения хоста */
     return (USBD_OK);
@@ -78,20 +78,20 @@ static int8_t CDC_Itf_Control (uint8 cmd, uint8* pbuf, uint16)
         break;
 
     case CDC_SET_LINE_CODING:
-        LineCoding.bitrate    = static_cast<uint32_t>(pbuf[0] | (pbuf[1] << 8) | (pbuf[2] << 16) | (pbuf[3] << 24));
-        LineCoding.format     = pbuf[4];
-        LineCoding.paritytype = pbuf[5];
-        LineCoding.datatype   = pbuf[6];
+        LineCoding.bitrate    = static_cast<uint32_t>(pbuf[0] | (pbuf[1] << 8) | (pbuf[2] << 16) | (pbuf[3] << 24)); //-V2563
+        LineCoding.format     = pbuf[4]; //-V2563
+        LineCoding.paritytype = pbuf[5]; //-V2563
+        LineCoding.datatype   = pbuf[6]; //-V2563
         break;
 
     case CDC_GET_LINE_CODING:
-        pbuf[0] = static_cast<uint8_t>(LineCoding.bitrate);
-        pbuf[1] = static_cast<uint8_t>(LineCoding.bitrate >> 8);
-        pbuf[2] = static_cast<uint8_t>(LineCoding.bitrate >> 16);
-        pbuf[3] = static_cast<uint8_t>(LineCoding.bitrate >> 24);
-        pbuf[4] = LineCoding.format;
-        pbuf[5] = LineCoding.paritytype;
-        pbuf[6] = LineCoding.datatype;
+        pbuf[0] = static_cast<uint8_t>(LineCoding.bitrate); //-V2563
+        pbuf[1] = static_cast<uint8_t>(LineCoding.bitrate >> 8); //-V2563
+        pbuf[2] = static_cast<uint8_t>(LineCoding.bitrate >> 16); //-V2563
+        pbuf[3] = static_cast<uint8_t>(LineCoding.bitrate >> 24); //-V2563
+        pbuf[4] = LineCoding.format; //-V2563
+        pbuf[5] = LineCoding.paritytype; //-V2563
+        pbuf[6] = LineCoding.datatype; //-V2563
         break;
 
     case CDC_SET_CONTROL_LINE_STATE:
@@ -109,7 +109,7 @@ static int8_t CDC_Itf_Receive(uint8 *buffer, uint *length) //-V2009 //-V2558
 {
     SCPI::AppendNewData(reinterpret_cast<const char *>(buffer), *reinterpret_cast<int *>(length));
 
-    USBD_CDC_ReceivePacket(reinterpret_cast<USBD_HandleTypeDef *>(VCP::handleUSBD));
+    USBD_CDC_ReceivePacket(reinterpret_cast<USBD_HandleTypeDef *>(VCP::handleUSBD)); //-V2571
 
     return (USBD_OK);
 }

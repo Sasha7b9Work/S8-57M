@@ -1,4 +1,5 @@
 #include "defines.h"
+#include "common/common_defines.h"
 #include "Display/Painter.h"
 #include "Display/Primitives.h"
 #include "Menu/Menu.h"

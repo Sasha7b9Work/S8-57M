@@ -1,37 +1,39 @@
 #pragma once
-#include "Utils/Containers/Stack.h"
+#include "Utils/Stack.h"
 
 
-namespace FreqMeter
+class FreqMeter
 {
+public:
+    
     // Инициализация.
-    void Init();
-
+    static void Init();
+    
     // Заслать настройки для счётчика частоты
-    void LoadFreqSettings();
-
+    static void LoadFreqSettings();
+    
     // Заслать настрйки для счётчика периода
-    void LoadPeriodSettings();
+    static void LoadPeriodSettings();
 
-    void Update();
-
+    static void Update();
+    
     // Возвращает измеренное значение частоты
-    float GetFrequency();
+    static float GetFrequency();
 
     // При поиске частоты нужно вначале вызывать эту функцию, чтобы очистить измерение. Пока не будет получено измерение, значение, воззвращаемое функцией GetFreq(), будет равно 0.0F
-    void ClearMeasure();
+    static void ClearMeasure();
 
     // Возвращает true, если есть измеренное значение частоты
-    bool FrequencyIsFound();
+    static bool FrequencyIsFound();
 
-    extern BitSet32 freqActual;             // Здесь хранится последнее действительное значение частоты. Для вывода в режиме частотомера. 0 означает, что значение выводить не надо
-    extern BitSet32 periodActual;           // Здесь хранится последнее действительное значение периода. Для вывода в режиме частотомера. 0 означает, что значение выводить не надо
-    extern uint     timeStartMeasureFreq;   // Время начала измерения частоты
-    extern uint     timeStartMeasurePeriod; // Время начала измерения периода
-    extern uint     lastFreqRead;           // Последнее время разрешшения чтения частоты
-    extern uint     lastPeriodRead;         // Последнее время разрешения чтения периода
-    extern uint     lastFreqOver;           // Последнее время переполнения частоты
-    extern uint     lastPeriodOver;         // Последнее время переполения периода
+    static BitSet32 freqActual;             // Здесь хранится последнее действительное значение частоты. Для вывода в режиме частотомера. 0 означает, что значение выводить не надо
+    static BitSet32 periodActual;           // Здесь хранится последнее действительное значение периода. Для вывода в режиме частотомера. 0 означает, что значение выводить не надо
+    static uint     timeStartMeasureFreq;   // Время начала измерения частоты
+    static uint     timeStartMeasurePeriod; // Время начала измерения периода
+    static uint     lastFreqRead;           // Последнее время разрешшения чтения частоты
+    static uint     lastPeriodRead;         // Последнее время разрешения чтения периода
+    static uint     lastFreqOver;           // Последнее время переполнения частоты
+    static uint     lastPeriodOver;         // Последнее время переполения периода
 
     struct FPGA
     {
@@ -42,6 +44,24 @@ namespace FreqMeter
         static BitSet32 ReadCounterPeriod();
     };
 
+private:
+    
+    // Установить состояние лампочек счётчиков в состояние, соответствующее текущему моменту
+    static void SetStateLamps();
+
+    static void SetStateLampFreq();
+
+    static void SetStateLampPeriod();
+
+    static void ReadFreq();
+
+    static void ReadPeriod();
+
+    static float FreqSetToFreq(const BitSet32 *fr);
+
+    static float PeriodSetToFreq(const BitSet32 *period);
+
+public:
 
     // Частота заполняющих импульсов для счёта частоты.
     struct FreqClc

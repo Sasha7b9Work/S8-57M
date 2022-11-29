@@ -1,12 +1,10 @@
 #pragma once
-#include "common/defines_.h"
 
+#define DEBUG
 
 #ifdef WIN32
-    #define __attribute(x) //-V2573
-    #define __attribute__(x) //-V2573
-#else
-    #pragma diag_suppress 991
+#define __attribute(x) //-V2573
+#define __attribute__(x) //-V2573
 #endif
 
 
@@ -87,6 +85,12 @@ void EmptyFuncVB(bool);
 #define HEX_FROM_2(hex1, hex0) ((uint)(0x##hex1) << 16 | (uint)0x##hex0)
 
 #define MAX_UINT 0xffffffffU
+
+
+// Для определения задания буферов лучше пользоваться этими макросами, чтобы потом легче было отследить, где можно памяти освободить
+#define CHAR_BUF(name, size)            char name[size]
+#define CHAR_BUF2(name, size1, size2)   char name[size1][size2]
+
 
 #define ENABLE_RU "Вкл"
 

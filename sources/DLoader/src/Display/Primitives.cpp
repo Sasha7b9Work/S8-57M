@@ -120,7 +120,7 @@ int Text::Draw(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
-    if (text[0] != '\0')
+    if (text[0] != '\0') //-V2563
     {
         x = DrawSmall(x, y);
     }
@@ -190,11 +190,11 @@ int Text::DrawDigitsMonospace(int x, int y, int width, Color color)
 {
     color.SetAsCurrent();
 
-    uint size = std::strlen(text);
+    uint size = std::strlen(text); //-V2513
 
     for (uint i = 0; i < size; i++)
     {
-        char symbol = text[i];
+        char symbol = text[i]; //-V2563
 
         int dX = 0;
 
@@ -315,11 +315,11 @@ static bool IsConsonant(char symbol)
 }
 
 
-static bool CompareArrays(const bool *array1, const bool *array2, int numElems)
+static bool CompareArrays(const bool *array1, const bool *array2, int numElems) //-V2506
 {
     for (int i = 0; i < numElems; i++)
     {
-        if (array1[i] != array2[i])
+        if (array1[i] != array2[i]) //-V2563
         {
             return false;
         }
@@ -330,15 +330,15 @@ static bool CompareArrays(const bool *array1, const bool *array2, int numElems)
 
 /// \brief Находит следующий перенос. C letters начинается часть слово, где нужно найти перенос, в lettersInSyllable будет записано число букв в 
 /// найденном слоге. Если слово закончилось, функция возвращает false
-static bool FindNextTransfer(const char *letters, int8 *lettersInSyllable)
+static bool FindNextTransfer(const char *letters, int8 *lettersInSyllable) //-V2506
 {
 
 #define VOWEL       0   // Гласная
 #define CONSONANT   1   // Согласная
 
-    *lettersInSyllable = static_cast<int8>(std::strlen(letters)); //-V1029
+    *lettersInSyllable = static_cast<int8>(std::strlen(letters)); //-V1029 //-V2513
 
-    if (std::strlen(letters) <= 3) //-V1051
+    if (std::strlen(letters) <= 3) //-V2513 //-V1051
     {
         return false;
     }
@@ -354,11 +354,11 @@ static bool FindNextTransfer(const char *letters, int8 *lettersInSyllable)
 
     bool consonant[20];
 
-    int size = static_cast<int>(std::strlen(letters));
+    int size = static_cast<int>(std::strlen(letters)); //-V2513
 
     for (int i = 0; i < size; i++)
     {
-        consonant[i] = IsConsonant(letters[i]);
+        consonant[i] = IsConsonant(letters[i]); //-V2563
     }
 
     if (CompareArrays(template1, consonant, 3))
@@ -373,7 +373,7 @@ static bool FindNextTransfer(const char *letters, int8 *lettersInSyllable)
         return true;
     }
 
-    if (std::strlen(letters) < 5)
+    if (std::strlen(letters) < 5) //-V2513
     {
         return false;
     }
@@ -385,7 +385,7 @@ static bool FindNextTransfer(const char *letters, int8 *lettersInSyllable)
         return true;
     }
 
-    if (std::strlen(letters) < 6)
+    if (std::strlen(letters) < 6) //-V2513
     {
         return false;
     }
@@ -413,17 +413,17 @@ static int8 *BreakWord(char *word)
     char *position = word;
     while (FindNextTransfer(position, &(lengthSyllables[num])))
     {
-        position += lengthSyllables[num];
+        position += lengthSyllables[num]; //-V2563
         num++;
     }
     lengthSyllables[num + 1] = 0;
 
-    if (std::strcmp(word, "структуру") == 0)
+    if (std::strcmp(word, "структуру") == 0) //-V2513
     {
         int8 lengths[] = { 5, 2, 2, 0 };
         std::memcpy(lengthSyllables, lengths, 4);
     }
-    else if (std::strcmp(word, "соответствующей") == 0)
+    else if (std::strcmp(word, "соответствующей") == 0) //-V2513
     {
         int8 lenghts[] = { 4, 3, 4, 5, 3, 0 };
         std::memcpy(lengthSyllables, lenghts, 6);
@@ -443,7 +443,7 @@ static char *PartWordForTransfer(char *word, const int8 *lengthSyllables, int nu
     uint length = 0;
     for (int i = 0; i <= numSyllable; i++)
     {
-        length += static_cast<uint>(lengthSyllables[i]);
+        length += static_cast<uint>(lengthSyllables[i]); //-V2563
     }
     std::memcpy(static_cast<void *>(buffer), static_cast<void *>(word), length);
     buffer[length] = '-';
@@ -453,7 +453,7 @@ static char *PartWordForTransfer(char *word, const int8 *lengthSyllables, int nu
 
 
 // Если draw == false, то рисовать символ не надо, фунция используется только для вычислений
-static int DrawPartWord(char *word, int x, int y, int xRight, bool draw)
+static int DrawPartWord(char *word, int x, int y, int xRight, bool draw) //-V2506
 {
     int8 *lengthSyllables = BreakWord(word);
     int numSyllabels = 0;
@@ -477,7 +477,7 @@ static int DrawPartWord(char *word, int x, int y, int xRight, bool draw)
             {
                 String(subString).Draw(x, y);
             }
-            return static_cast<int>(std::strlen(subString) - 1);
+            return static_cast<int>(std::strlen(subString) - 1); //-V2513
         }
     }
 
@@ -495,7 +495,7 @@ int Text::DrawInRectWithTransfers(int eX, int eY, int eWidth, int eHeight, Color
     int bottom = eY + eHeight;
 
     char buffer[20];
-    int numSymbols = static_cast<int>(std::strlen(text));
+    int numSymbols = static_cast<int>(std::strlen(text)); //-V2513
 
     int y = top - 1;
     int x = left;
@@ -507,11 +507,11 @@ int Text::DrawInRectWithTransfers(int eX, int eY, int eWidth, int eHeight, Color
         while (x < right - 1 && curSymbol < numSymbols)
         {
             int length = 0;
-            char *word = GetWord(text + curSymbol, &length, buffer);
+            char *word = GetWord(text + curSymbol, &length, buffer); //-V2563
 
             if (length <= 1)                            // Нет буквенных символов или один, т.е. слово не найдено
             {
-                char symbol = text[curSymbol++];
+                char symbol = text[curSymbol++]; //-V2563
                 if (symbol == '\n')
                 {
                     x = right;
@@ -552,7 +552,7 @@ int Text::DrawInRectWithTransfers(int eX, int eY, int eWidth, int eHeight, Color
 static bool GetHeightTextWithTransfers(int left, int top, int right, const char *text, int *height)
 {
     char buffer[20];
-    int numSymbols = static_cast<int>(std::strlen(text));
+    int numSymbols = static_cast<int>(std::strlen(text)); //-V2513
 
     int y = top - 1;
     int x = left;
@@ -564,11 +564,11 @@ static bool GetHeightTextWithTransfers(int left, int top, int right, const char 
         while (x < right - 1 && curSymbol < numSymbols)
         {
             int length = 0;
-            char *word = GetWord(text + curSymbol, &length, buffer);
+            char *word = GetWord(text + curSymbol, &length, buffer); //-V2563
 
             if (length <= 1)                            // Нет буквенных символов или один, т.е. слово не найдено
             {
-                char symbol = text[curSymbol++];
+                char symbol = text[curSymbol++]; //-V2563
                 if (symbol == '\n')
                 {
                     x = right;
@@ -647,7 +647,7 @@ DashedVLine::DashedVLine(int _height, int _deltaFill, int _deltaEmpty, int _delt
 }
 
 
-void DashedVLine::Draw(int x, int y0)
+void DashedVLine::Draw(int x, int y0) //-V2506
 {
     if (deltaStart < 0 || deltaStart >= (deltaFill + deltaEmpty))
     {
@@ -681,7 +681,7 @@ DashedHLine::DashedHLine(int _width, int _deltaFill, int _deltaEmpty, int _delta
 }
 
 
-void DashedHLine::Draw(int x0, int y)
+void DashedHLine::Draw(int x0, int y) //-V2506
 {
     if (deltaStart < 0 || deltaStart >= (deltaFill + deltaEmpty))
     {

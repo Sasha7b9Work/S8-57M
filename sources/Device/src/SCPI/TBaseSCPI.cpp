@@ -2,7 +2,7 @@
 #include "Osci/ParametersOsci.h"
 #include "SCPI/SCPI.h"
 #include "Settings/Settings.h"
-#include "Utils/Text/StringUtils.h"
+#include "Utils/StringUtils.h"
 
 
 // :TIMEBASE:MODE
@@ -108,11 +108,11 @@ static void SetSampleType(int i)
     PageTime::SetSampleTime(static_cast<SampleType::E>(i));
 }
 
-static pCHAR FuncMode(pCHAR buffer)
+static pCHAR FuncMode(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(modes[S_RAND_SAMPLE_TYPE]));
 
-    SCPI_PROCESS_ARRAY(modes, SetSampleType(i));
+    SCPI_PROCESS_ARRAY(modes, SetSampleType(i)); //-V2563
 }
 
 
@@ -122,7 +122,7 @@ static void AnswerOffsetBase()
     SCPI::SendAnswer(answer.c_str());
 }
 
-static pCHAR FuncOffsetBase(pCHAR buffer)
+static pCHAR FuncOffsetBase(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(AnswerOffsetBase());
 
@@ -134,34 +134,34 @@ static pCHAR FuncOffsetBase(pCHAR buffer)
     {
         TShift::Set(value);
 
-        return end_str + 1;
+        return end_str + 1; //-V2563
     }
 
     return nullptr;
 }
 
 
-static pCHAR FuncPeakDet(pCHAR buffer)
+static pCHAR FuncPeakDet(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(peakdets[S_PEAK_DET]));
 
-    SCPI_PROCESS_ARRAY(peakdets, PeakDetMode::Set(static_cast<PeakDetMode::E>(i)));
+    SCPI_PROCESS_ARRAY(peakdets, PeakDetMode::Set(static_cast<PeakDetMode::E>(i))); //-V2563
 }
 
 
-static pCHAR FuncScale(pCHAR buffer)
+static pCHAR FuncScale(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(tBaseNames[S_TIME_BASE]));
 
-    SCPI_PROCESS_ARRAY(tBaseNames, TBase::Set(static_cast<TBase::E>(i)));
+    SCPI_PROCESS_ARRAY(tBaseNames, TBase::Set(static_cast<TBase::E>(i))); //-V2563
 }
 
 
-static pCHAR FuncTPos(pCHAR buffer)
+static pCHAR FuncTPos(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(tposes[S_TPOS]));
 
-    SCPI_PROCESS_ARRAY(tposes, TPos::Set(static_cast<TPos::E>(i)));
+    SCPI_PROCESS_ARRAY(tposes, TPos::Set(static_cast<TPos::E>(i))); //-V2563
 }
 
 

@@ -1,11 +1,8 @@
-// 2022/04/20 16:52:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Display/Text.h"
-#include "Display/MemPainter.h"
-#include "Display/Font/Font_p.h"
+#include "Text.h"
+#include "Painter.h"
 #include <cstring>
-#include <cstdarg>
-#include <cstdio>
+
 
 
 // Если true - текст будет моноширинным
@@ -29,7 +26,7 @@ void Text::SetSpacing(uint8 space)
 
 int Text::DrawChar(int eX, int eY, uint8 symbol, Color color)
 {
-    color.SetAsCurrent();
+    Painter::SetColor(color);
     
     uint8 width = PFont::GetWidth(symbol);
     uint8 height = PFont::GetHeight();
@@ -46,7 +43,7 @@ int Text::DrawChar(int eX, int eY, uint8 symbol, Color color)
             {
                 if (PFont::BitIsExist(symbol, row, bit))
                 {
-                    MemPainter::SetPoint(x, y);
+                    Painter::SetPoint(x, y);
                 }
                 x++;
             }
@@ -59,11 +56,11 @@ int Text::DrawChar(int eX, int eY, uint8 symbol, Color color)
 
 int Text::Draw(int x, int y, const char *text)
 {
-    uint numSymbols = std::strlen(text);
+    uint numSymbols = std::strlen(text); //-V2513
     for (uint i = 0; i < numSymbols; ++i)
     {
         int prevX = x;
-        x = DrawChar(x, y, static_cast<uint8>(text[i]));
+        x = DrawChar(x, y, static_cast<uint8>(text[i])); //-V2563
 
         if (x - prevX < minWidth)
         {
@@ -74,29 +71,4 @@ int Text::Draw(int x, int y, const char *text)
     }
 
     return x;
-}
-
-
-int Text::DrawFormatText(int x, int y, char *format, ...)
-{
-    char buffer[200];
-    std::va_list args;
-    va_start(args, format); //-V2528
-    std::vsprintf(buffer, format, args);
-    va_end(args);
-    return Text::Draw(x, y, buffer);
-}
-
-
-int Text::DrawFormText(int x, int y, Color color, pString text, ...)
-{
-    color.SetAsCurrent();
-
-#define SIZE_BUFFER_DRAW_FORM_TEXT 200
-    char buffer[SIZE_BUFFER_DRAW_FORM_TEXT];
-    std::va_list args;
-    va_start(args, text); //-V2528
-    std::vsprintf(buffer, const_cast<char *>(text), args);
-    va_end(args);
-    return Text::Draw(x, y, buffer);
 }

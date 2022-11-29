@@ -5,8 +5,8 @@
 #include "Osci/DeviceSettings.h"
 #include "Osci/Osci.h"
 #include "Osci/Math/OsciMath.h"
-#include "Utils/Math/Math.h"
-#include "Utils/Containers/Queue.h"
+#include "Utils/Math.h"
+#include "Utils/Queue.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cmath>
@@ -15,7 +15,7 @@
 static void InterpolateChannel(uint8 *data, int numPoints, uint tBase);
 
 
-void InterpolatorSinX_X::Run(DataSettings *ds)
+void InterpolatorSinX_X::Run(DataSettings *ds) //-V2506
 {
     if (!OSCI_IN_MODE_RANDOMIZER)
     {
@@ -56,14 +56,14 @@ static void InterpolateChannel(uint8 *data, int numPoints, uint tBase)
     static const int deltas[5] = { 50, 20, 10, 5, 2 };
     int delta = deltas[tBase];
 
-    uint8 *signedData = reinterpret_cast<uint8 *>(std::malloc(static_cast<uint>(numPoints) / 2U));
+    uint8 *signedData = reinterpret_cast<uint8 *>(std::malloc(static_cast<uint>(numPoints) / 2U)); //-V2511
     int numSignedPoints = 0;
 
     for (int pos = 0; pos < numPoints; pos++)
     {
-        if (data[pos] > 0)
+        if (data[pos] > 0) //-V2563
         {
-            signedData[numSignedPoints++] = data[pos]; //-V522
+            signedData[numSignedPoints++] = data[pos]; //-V522 //-V2563
         }
     }
 
@@ -72,7 +72,7 @@ static void InterpolateChannel(uint8 *data, int numPoints, uint tBase)
     int shift = 0;
     for (int pos = 0; pos < numPoints; pos++)
     {
-        if (data[pos] > 0)
+        if (data[pos] > 0) //-V2563
         {
             shift = pos;
             break;
@@ -89,7 +89,7 @@ static void InterpolateChannel(uint8 *data, int numPoints, uint tBase)
         x0 += stepX0;
         if ((i % delta) == 0)
         {
-            data[i] = signedData[i / delta];
+            data[i] = signedData[i / delta]; //-V2563
         }
         else
         {
@@ -106,10 +106,10 @@ static void InterpolateChannel(uint8 *data, int numPoints, uint tBase)
 
                 for (int n = 0; n < numSignedPoints; n++)
                 {
-                    value += signedData[n] * sinXint / (x - n * deltaXint);
+                    value += signedData[n] * sinXint / (x - n * deltaXint); //-V2563
                     sinXint = -sinXint;
                 }
-                data[i] = (uint8)(value * KOEFF); //-V2564
+                data[i] = (uint8)(value * KOEFF); //-V2563 //-V2564
             }
             else                                    // На этих развёртках арифметика с плавающей запятой даёт приемлемое быстродействие
             {
@@ -119,10 +119,10 @@ static void InterpolateChannel(uint8 *data, int numPoints, uint tBase)
                 for (int n = 0; n < numSignedPoints; n++)
                 {
                     x -= deltaX;
-                    value += signedData[n] * sinX / x; //-V2564
+                    value += signedData[n] * sinX / x; //-V2563 //-V2564
                     sinX = -sinX;
                 }
-                data[i] = static_cast<uint8>(value);
+                data[i] = static_cast<uint8>(value); //-V2563
             }
         }
     }
@@ -130,9 +130,9 @@ static void InterpolateChannel(uint8 *data, int numPoints, uint tBase)
     int pos = numPoints - 1;
     while (pos > shift)
     {
-        data[pos] = data[pos - shift];
+        data[pos] = data[pos - shift]; //-V2563
         pos--;
     }
 
-    std::free(signedData);
+    std::free(signedData); //-V2511
 }

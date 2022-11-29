@@ -6,8 +6,8 @@
 #include "Menu/MenuItems.h"
 #include "Osci/Osci.h"
 #include "Settings/Settings.h"
-#include "Utils/Math/Math.h"
-#include "Utils/Containers/Values.h"
+#include "Utils/Math.h"
+#include "Utils/Values.h"
 
 
 static void OnPress_Next()

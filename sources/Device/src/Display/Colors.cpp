@@ -2,10 +2,10 @@
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Settings/Settings.h"
-#include "Utils/Math/Math.h"
+#include "Utils/Math.h"
 
 
-uint GlobalColors[32] =
+uint GlobalColors[256] =
 {
     /* 0  */    MAKE_COLOR(0x00, 0x00, 0x00),       // BLACK
     /* 1  */    MAKE_COLOR(0xff, 0xff, 0xff),       // WHITE
@@ -300,15 +300,34 @@ static bool WriteFlashColor()
 }
 
 
-static void WriteToDisplay(Color)
+static void WriteToDisplay(Color color)
 {
-    // todo_paint
+    static Color lastColor = Color::NUMBER;
+
+    if (color != lastColor)
+    {
+        lastColor = color;
+
+        HAL_BUS::Panel::Send(Command::Paint_SetColor, lastColor.value);
+    }
 }
 
 
 void Color::LoadValueRGB()
 {
-    // todo_paint
+    uint rgb = COLOR(value);
+
+    uint8 buffer[6] = 
+    {
+        Command::Paint_SetPalette,
+        value,
+        static_cast<uint8>(rgb),
+        static_cast<uint8>(rgb >> 8),
+        static_cast<uint8>(rgb >> 16),
+        static_cast<uint8>(rgb >> 24)
+    };
+
+    HAL_BUS::Panel::Send(buffer, 6);
 }
 
 
@@ -326,7 +345,7 @@ void Color::SetAsCurrent()
 }
 
 
-void Color::ChangeFlash(bool reset)
+void Color::ChangeFlash(bool reset) //-V2506
 {
     static uint time = 0;
 

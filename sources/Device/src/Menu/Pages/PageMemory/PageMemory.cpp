@@ -3,12 +3,12 @@
 #include "Display/Grid.h"
 #include "Display/Primitives.h"
 #include "Display/Symbols.h"
+#include "FlashDrive/FileManager.h"
+#include "FlashDrive/FlashDrive.h"
 #include "Hardware/Beeper.h"
 #include "Osci/Osci.h"
 #include "Settings/Settings.h"
-#include "Utils/Math/Math.h"
-#include "FDrive/FileManager.h"
-#include "FDrive/FDrive.h"
+#include "Utils/Math.h"
 
 
 int ENumPointsFPGA::BytesInChannel()
@@ -40,7 +40,7 @@ static bool IsActive_Points()
     return !PeakDetMode().IsEnabled();
 }
 
-void PageMemory::OnChanged_LengthMemoryChannel(bool active)
+void PageMemory::OnChanged_LengthMemoryChannel(bool active) //-V2506
 {
     // Если включен пиковый детектор, то не можем переключать память
     if (PeakDetMode().IsEnabled() && !active)
@@ -168,7 +168,7 @@ DEF_GRAPH_BUTTON( bMask_Delete,                                                 
 
 static void OnPress_Mask_Backspace()
 {
-    int size = static_cast<int>(std::strlen(S_MEM_FILE_NAME_MASK));
+    int size = static_cast<int>(std::strlen(S_MEM_FILE_NAME_MASK)); //-V2513
     if (size > 0)
     {
         if (size > 1 && S_MEM_FILE_NAME_MASK[size - 2] == 0x07)
@@ -194,17 +194,17 @@ DEF_GRAPH_BUTTON( bMask_Backspace,                                              
 )
 
 
-static void OnPress_Mask_Insert()
+static void OnPress_Mask_Insert() //-V2506
 {
     int index = S_MEM_INDEX_CUR_SYMBOL_MASK;
-    uint size = std::strlen(S_MEM_FILE_NAME_MASK);
+    uint size = std::strlen(S_MEM_FILE_NAME_MASK); //-V2513
     if (size == MAX_SYMBOLS_IN_FILE_NAME - 1)
     {
         return;
     }
     if (index < 0x41)
     {
-        S_MEM_FILE_NAME_MASK[size] = Tables::Get(index)[0];
+        S_MEM_FILE_NAME_MASK[size] = Tables::Get(index)[0]; //-V2563
         S_MEM_FILE_NAME_MASK[size + 1] = '\0';
     }
     else
@@ -276,7 +276,7 @@ static void DrawSetMask()
     int deltaY = 12;
 
     // Рисуем большие буквы английского алфавита
-    while (Tables::Get(index)[0] != ' ')
+    while (Tables::Get(index)[0] != ' ') //-V2563
     {
         Tables::DrawStr(index, x0 + deltaX + position * 7, y0 + deltaY0);
         index++;
@@ -285,7 +285,7 @@ static void DrawSetMask()
 
     // Теперь рисуем цифры и пробел
     position = 0;
-    while (Tables::Get(index)[0] != 'a')
+    while (Tables::Get(index)[0] != 'a') //-V2563
     {
         Tables::DrawStr(index, x0 + deltaX + 50 + position * 7, y0 + deltaY0 + deltaY);
         index++;
@@ -294,7 +294,7 @@ static void DrawSetMask()
 
     // Теперь рисуем малые буквы алфавита
     position = 0;
-    while (Tables::Get(index)[0] != '%')
+    while (Tables::Get(index)[0] != '%') //-V2563
     {
         Tables::DrawStr(index, x0 + deltaX + position * 7, y0 + deltaY0 + deltaY * 2);
         index++;
@@ -344,7 +344,7 @@ static void DrawFileMask(int x, int y)
             if (*ch == 0x07)
             {
                 x = Char('%').Draw(x, y);
-                x = Char(0x30 | *(ch + 1)).Draw(x, y);
+                x = Char(0x30 | *(ch + 1)).Draw(x, y); //-V2563
                 x = Char('N').Draw(x, y);
                 ch++;
             }
@@ -358,7 +358,7 @@ static void DrawFileMask(int x, int y)
     Region(5, 8).Fill(x, y, Color::FLASH_10);
 }
 
-static bool HandlerKey_Mask(const KeyEvent &event)
+static bool HandlerKey_Mask(const KeyEvent &event) //-V2506
 {
     if(event.IsArrowUp() || event.IsArrowRight())
     {
@@ -450,7 +450,7 @@ static void DrawSetName()
     int deltaY = 12;
 
     // Рисуем большие буквы английского алфавита
-    while (Tables::Get(index)[0] != ' ')
+    while (Tables::Get(index)[0] != ' ') //-V2563
     {
         Tables::DrawStr(index, x0 + deltaX + position * 7, y0 + deltaY0);
         index++;
@@ -459,7 +459,7 @@ static void DrawSetName()
 
     // Теперь рисуем цифры и пробел
     position = 0;
-    while (Tables::Get(index)[0] != 'a')
+    while (Tables::Get(index)[0] != 'a') //-V2563
     {
         Tables::DrawStr(index, x0 + deltaX + 50 + position * 7, y0 + deltaY0 + deltaY);
         index++;
@@ -468,7 +468,7 @@ static void DrawSetName()
 
     // Теперь рисуем малые буквы алфавита
     position = 0;
-    while (Tables::Get(index)[0] != '%')
+    while (Tables::Get(index)[0] != '%') //-V2563
     {
         Tables::DrawStr(index, x0 + deltaX + position * 7, y0 + deltaY0 + deltaY * 2);
         index++;
@@ -516,7 +516,7 @@ DEF_GRAPH_BUTTON( bSetName_Delete,                                              
 
 static void OnPress_SetName_Backspace()
 {
-    uint size = std::strlen(S_MEM_FILE_NAME);
+    uint size = std::strlen(S_MEM_FILE_NAME); //-V2513
     if (size != 0)
     {
         S_MEM_FILE_NAME[size - 1] = '\0';
@@ -532,10 +532,10 @@ DEF_GRAPH_BUTTON( bSetName_Backspace,                                           
 
 static void OnPress_SetName_Insert()
 {
-    uint size = std::strlen(S_MEM_FILE_NAME);
+    uint size = std::strlen(S_MEM_FILE_NAME); //-V2513
     if (size < MAX_SYMBOLS_IN_FILE_NAME - 1)
     {
-        S_MEM_FILE_NAME[size] = Tables::Get(S_MEM_INDEX_CUR_SYMBOL_MASK)[0];
+        S_MEM_FILE_NAME[size] = Tables::Get(S_MEM_INDEX_CUR_SYMBOL_MASK)[0]; //-V2563
         S_MEM_FILE_NAME[size + 1] = '\0';
     }
 }

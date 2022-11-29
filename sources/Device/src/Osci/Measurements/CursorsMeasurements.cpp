@@ -4,7 +4,7 @@
 #include "FPGA/FPGA.h"
 #include "Osci/Measurements/CursorsMeasurements.h"
 #include "Settings/Settings.h"
-#include "Utils/Containers/Values.h"
+#include "Utils/Values.h"
 #include <cstring>
 #include <cmath>
 

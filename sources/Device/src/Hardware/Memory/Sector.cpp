@@ -4,29 +4,29 @@
 #include "Osci/DeviceSettings.h"
 
 
-const DataSettings *PacketROM::UnPack() const
+const DataSettings *PacketROM::UnPack() const //-V2506
 {
     if (!IsValid() || !IsData())
     {
         return nullptr;
     }
 
-    return const_cast<DataSettings *>(reinterpret_cast<const DataSettings *>(reinterpret_cast<const uint8 *>(this) + sizeof(PacketROM))); //-V2567
+    return const_cast<DataSettings *>(reinterpret_cast<const DataSettings *>(reinterpret_cast<const uint8 *>(this) + sizeof(PacketROM))); //-V2563 //-V2567
 }
 
 
-PacketROM *PacketROM::Next() const
+PacketROM *PacketROM::Next() const //-V2506
 {
     if (IsFree())
     {
         return nullptr;
     }
 
-    return reinterpret_cast<PacketROM *>(reinterpret_cast<uint8 *>(const_cast<PacketROM *>(this)) + size);
+    return reinterpret_cast<PacketROM *>(reinterpret_cast<uint8 *>(const_cast<PacketROM *>(this)) + size); //-V2563
 }
 
 
-int PacketROM::Size() const
+int PacketROM::Size() const //-V2506
 {
     if (IsFree())
     {
@@ -37,7 +37,7 @@ int PacketROM::Size() const
 }
 
 
-bool PacketROM::WriteToSector(const Sector *sector) const
+bool PacketROM::WriteToSector(const Sector *sector) const //-V2506
 {
     if(UnPack() == nullptr)
     {
@@ -51,7 +51,7 @@ bool PacketROM::WriteToSector(const Sector *sector) const
         dest = dest->Next();
     }
 
-    uint addressWrite = reinterpret_cast<uint>(dest);       // По этому адресу будет производиться запись пакета
+    uint addressWrite = reinterpret_cast<uint>(dest);       // По этому адресу будет производиться запись пакета //-V2571
 
     uint lastAddress = addressWrite + size;                 // А это последний адрес записи
 
@@ -67,14 +67,14 @@ bool PacketROM::WriteToSector(const Sector *sector) const
 
     if (ds.enableA)
     {
-        ds.dataA = reinterpret_cast<uint8 *>(addressWrite) + sizeof(PacketROM) + sizeof(DataSettings);
+        ds.dataA = reinterpret_cast<uint8 *>(addressWrite) + sizeof(PacketROM) + sizeof(DataSettings); //-V2563 //-V2571
     }
     if (ds.enableB)
     {
-        ds.dataB = reinterpret_cast<uint8 *>(addressWrite) + sizeof(PacketROM) + sizeof(DataSettings);
+        ds.dataB = reinterpret_cast<uint8 *>(addressWrite) + sizeof(PacketROM) + sizeof(DataSettings); //-V2563 //-V2571
         if (ds.enableA)
         {
-            ds.dataB += ds.BytesInChannel();
+            ds.dataB += ds.BytesInChannel(); //-V2563
         }
     }
 
@@ -167,12 +167,12 @@ static void WriteToROM(uint *address, const void *data, int size)
 
 void Sector::TranslateAddressToROM(const DataSettings *ds, const PacketROM *packet)
 {
-    uint8 *addressData = reinterpret_cast<uint8 *>(packet->Address() + sizeof(PacketROM) + sizeof(DataSettings)); // По этому адресу будут записаны данные первого из записываемых каналов
+    uint8 *addressData = reinterpret_cast<uint8 *>(packet->Address() + sizeof(PacketROM) + sizeof(DataSettings)); // По этому адресу будут записаны данные первого из записываемых каналов //-V2571
 
     if (ds->enableA)
     {
         const_cast<DataSettings *>(ds)->dataA = addressData; //-V2567
-        addressData += ds->BytesInChannel();
+        addressData += ds->BytesInChannel(); //-V2563
     }
 
     if (ds->enableB)
@@ -182,7 +182,7 @@ void Sector::TranslateAddressToROM(const DataSettings *ds, const PacketROM *pack
 }
 
 
-const PacketROM *Sector::WriteData(uint numInROM, const DataSettings *ds) const
+const PacketROM *Sector::WriteData(uint numInROM, const DataSettings *ds) const //-V2506
 {
     const PacketROM *packet = FirstFreePacket();
 
@@ -241,7 +241,7 @@ const PacketROM *Sector::WriteData(uint numInROM, const DataSettings *ds) const
 }
 
 
-const PacketROM *Sector::FindValidPacket(uint numInROM) const
+const PacketROM *Sector::FindValidPacket(uint numInROM) const //-V2506
 {
     const PacketROM *packet = FirstPacket();
 
@@ -257,14 +257,14 @@ const PacketROM *Sector::FindValidPacket(uint numInROM) const
                 {
                     if (ds->enableA)
                     {
-                        if (ds->dataA[j] != static_cast<uint8>(j))
+                        if (ds->dataA[j] != static_cast<uint8>(j)) //-V2563
                         {
                             return packet;
                         }
                     }
                     if (ds->enableB)
                     {
-                        if (ds->dataB[j] != static_cast<uint8>(j))
+                        if (ds->dataB[j] != static_cast<uint8>(j)) //-V2563
                         {
                             return packet;
                         }
@@ -282,7 +282,7 @@ const PacketROM *Sector::FindValidPacket(uint numInROM) const
 }
 
 
-const DataSettings *Sector::ReadData(uint numInROM) const
+const DataSettings *Sector::ReadData(uint numInROM) const //-V2506
 {
     const PacketROM *packet = FindValidPacket(numInROM);
 
@@ -295,7 +295,7 @@ const DataSettings *Sector::ReadData(uint numInROM) const
 }
 
 
-const PacketROM *Sector::DeleteData(uint numInROM) const
+const PacketROM *Sector::DeleteData(uint numInROM) const //-V2506
 {
     const PacketROM *packet = FindValidPacket(numInROM);
 
@@ -311,11 +311,11 @@ const PacketROM *Sector::DeleteData(uint numInROM) const
 
 const PacketROM *Sector::FirstPacket() const
 {
-    return reinterpret_cast<const PacketROM *>(address);
+    return reinterpret_cast<const PacketROM *>(address); //-V2571
 }
 
 
-const PacketROM *Sector::FirstFreePacket() const
+const PacketROM *Sector::FirstFreePacket() const //-V2506
 {
     const PacketROM *packet = FirstPacket();
 
@@ -372,7 +372,7 @@ uint Sector::GetNumberWornBytes() const
 }
 
 
-const PacketROM *Sector::GetFirstPacketWithData() const
+const PacketROM *Sector::GetFirstPacketWithData() const //-V2506
 {
     const PacketROM *result = FirstPacket();
 
@@ -390,7 +390,7 @@ const PacketROM *Sector::GetFirstPacketWithData() const
 }
 
 
-int Sector::Number(uint address)
+int Sector::Number(uint address) //-V2506
 {
     if (address < ADDR_SECTOR(0))
     {
@@ -421,7 +421,7 @@ const Sector &Sector::Get(Sector::E number)
 }
 
 
-char *TypePacket(const PacketROM *packet)
+char *TypePacket(const PacketROM *packet) //-V2506
 {
     if (packet == nullptr)
     {
@@ -446,7 +446,7 @@ char *TypePacket(const PacketROM *packet)
     return "not determinated";
 }
 
-int NumberPacket(const PacketROM *packet)
+int NumberPacket(const PacketROM *packet) //-V2506
 {
     const DataSettings *ds = packet->UnPack();
 

@@ -4,8 +4,8 @@
 #include "Osci/ParametersOsci.h"
 #include "SCPI/SCPI.h"
 #include "Settings/Settings.h"
-#include "Utils/Math/Math.h"
-#include "Utils/Text/StringUtils.h"
+#include "Utils/Math.h"
+#include "Utils/StringUtils.h"
 #include <cstdlib>
 #include <cstring>
 
@@ -103,9 +103,9 @@ const StructSCPI SCPI::channels[] =
 };
 
 
-static pCHAR FuncBalance(pCHAR buffer)
+static pCHAR FuncBalance(pCHAR buffer) //-V2506
 {
-    EXTRACT_CHANNEL(9);
+    EXTRACT_CHANNEL(9); //-V2563
 
     SCPI_PROLOG(buffer);
 
@@ -130,13 +130,13 @@ static void SetBandwidth(Chan::E ch, int i)
 }
 
 
-static pCHAR FuncBandwidth(pCHAR buffer)
+static pCHAR FuncBandwidth(pCHAR buffer) //-V2506
 {
-    EXTRACT_CHANNEL(11);
+    EXTRACT_CHANNEL(11); //-V2563
 
     SCPI_REQUEST(SCPI::SendAnswer(bandwidth[S_BANDWIDTH(ch)]));
 
-    SCPI_PROCESS_ARRAY(bandwidth, SetBandwidth(ch, i));
+    SCPI_PROCESS_ARRAY(bandwidth, SetBandwidth(ch, i)); //-V2563
 }
 
 
@@ -149,19 +149,19 @@ static pString couple[] =
 };
 
 
-static pCHAR FuncCoupling(pCHAR buffer)
+static pCHAR FuncCoupling(pCHAR buffer) //-V2506
 {
-    EXTRACT_CHANNEL(10);
+    EXTRACT_CHANNEL(10); //-V2563
 
     SCPI_REQUEST(SCPI::SendAnswer(couple[S_MODE_COUPLE(ch)]));
 
-    SCPI_PROCESS_ARRAY(couple, ModeCouple::Set(ch, static_cast<ModeCouple::E>(i)));
+    SCPI_PROCESS_ARRAY(couple, ModeCouple::Set(ch, static_cast<ModeCouple::E>(i))); //-V2563
 }
 
 
-static pCHAR FuncData(pCHAR buffer)
+static pCHAR FuncData(pCHAR buffer) //-V2506
 {
-    EXTRACT_CHANNEL(7);
+    EXTRACT_CHANNEL(7); //-V2563
 
     SCPI_PROLOG(buffer);
 
@@ -171,13 +171,13 @@ static pCHAR FuncData(pCHAR buffer)
 }
 
 
-static pCHAR FuncDisplay(pCHAR buffer)
+static pCHAR FuncDisplay(pCHAR buffer) //-V2506
 {
-    EXTRACT_CHANNEL(9);
+    EXTRACT_CHANNEL(9); //-V2563
 
     SCPI_REQUEST(SCPI::SendAnswer(displays[S_CHANNEL_ENABLED(ch)]));
 
-    SCPI_PROCESS_ARRAY(displays, PageChannel::Enable(ch, i));
+    SCPI_PROCESS_ARRAY(displays, PageChannel::Enable(ch, i)); //-V2563
 }
 
 
@@ -187,9 +187,9 @@ static void SendAnswerForOffst(Chan::E ch)
     SCPI::SendAnswer(answer.c_str());
 }
 
-static pCHAR FuncOffset(pCHAR buffer)
+static pCHAR FuncOffset(pCHAR buffer) //-V2506
 {
-    EXTRACT_CHANNEL(8);
+    EXTRACT_CHANNEL(8); //-V2563
 
     SCPI_REQUEST(SendAnswerForOffst(ch));
 
@@ -201,7 +201,7 @@ static pCHAR FuncOffset(pCHAR buffer)
     {
         RShift::Set(ch, static_cast<int16>(value * 2));
 
-        return end_str + 1;
+        return end_str + 1; //-V2563
     }
 
     return nullptr;
@@ -216,9 +216,9 @@ static pString probe[] =
 };
 
 
-static pCHAR FuncProbe(pCHAR buffer)
+static pCHAR FuncProbe(pCHAR buffer) //-V2506
 {
-    EXTRACT_CHANNEL(7);
+    EXTRACT_CHANNEL(7); //-V2563
 
     SCPI_REQUEST(SCPI::SendAnswer(probe[S_DIVIDER(ch)]));
 
@@ -243,13 +243,13 @@ static pCHAR FuncProbe(pCHAR buffer)
 }
 
 
-static pCHAR FuncScale(pCHAR buffer)
+static pCHAR FuncScale(pCHAR buffer) //-V2506
 {
-    EXTRACT_CHANNEL(7);
+    EXTRACT_CHANNEL(7); //-V2563
 
     SCPI_REQUEST(SCPI::SendAnswer(rangeName[S_RANGE(ch)]));
 
-    SCPI_PROCESS_ARRAY(rangeName, Range::Set(ch, static_cast<Range::E>(i)))
+    SCPI_PROCESS_ARRAY(rangeName, Range::Set(ch, static_cast<Range::E>(i))) //-V2563
 }
 
 
@@ -343,14 +343,14 @@ static bool TestProbe()
 }
 
 
-static bool TestScale()
+static bool TestScale() //-V2506
 {
     for(int i = 0; i < 5; i++)
     {
         Range::E range = static_cast<Range::E>(std::rand() % Range::Count);
         String commandA(":channel1:range%s%c", rangeName[range], 0x0D);
 
-        SCPI_APPEND_STRING(commandA);
+        SCPI_APPEND_STRING(commandA); //-V2513
 
         if(S_RANGE_A != range)
         {
@@ -360,7 +360,7 @@ static bool TestScale()
         range = static_cast<Range::E>(std::rand() % Range::Count);
         String commandB(":channel2:range%s%c", rangeName[range], 0x0D);
 
-        SCPI_APPEND_STRING(commandB);
+        SCPI_APPEND_STRING(commandB); //-V2513
 
         if(S_RANGE_B != range)
         {

@@ -4,6 +4,7 @@
 #include "Display/Grid.h"
 #include "Display/Painter.h"
 #include "Display/Symbols.h"
+#include "FlashDrive/FlashDrive.h"
 #include "Hardware/Memory/ROM.h"
 #include "Hardware/Beeper.h"
 #include "Menu/MenuItems.h"
@@ -11,8 +12,8 @@
 #include "Osci/Osci.h"
 #include "Osci/Reader.h"
 #include "Settings/Settings.h"
-#include "Utils/Math/Math.h"
-#include "Utils/Containers/Values.h"
+#include "Utils/Math.h"
+#include "Utils/Values.h"
 
 
 // Нарисовать одну ячейчку памяти

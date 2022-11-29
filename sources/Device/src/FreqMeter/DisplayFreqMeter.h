@@ -2,10 +2,20 @@
 #include "FreqMeter/FreqMeter.h"
 
 
-namespace DisplayFreqMeter
+struct DisplayFreqMeter
 {
     // Отрисовка значения
-    void Update();
+    static void Update();
+
+private:
+    // Выводит отладочную информацию
+    static void DrawDebugInfo();
+
+    static void DrawFrequencyMode(int x, int _y);
+
+    static void DrawPeriodMode(int x, int y);
+
+    static bool needSendToSCPI;
 };
 
 

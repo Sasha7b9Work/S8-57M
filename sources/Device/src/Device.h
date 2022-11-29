@@ -1,9 +1,11 @@
 #pragma once
+#include "Multimeter/Multimeter.h"
 #include "Osci/Osci.h"
+#include "Tester/Tester.h"
 
 
 
-namespace Device
+struct Device
 {
     struct Mode
     {
@@ -18,21 +20,21 @@ namespace Device
         explicit Mode(E v) : value(v) {};
     };
 
-    void Init();
+    static void Init();
 
-    void Update();
+    static void Update();
 
-    void Reset();
+    static void Reset();
     // Устанавливает режим работы
-    void SetMode(Mode::E mode);
+    static void SetMode(Mode::E mode);
     // Возвращает текущий режим работы
-    Mode::E CurrentMode();
+    static Mode::E CurrentMode();
 
-    bool InModeTester();
+    static bool InModeTester();
 
-    bool InModeMultimeter();
+    static bool InModeMultimeter();
 
-    bool InModeRecorder();
+    static bool InModeRecorder();
 
-    bool InModeOsci();
+    static bool InModeOsci();
 };

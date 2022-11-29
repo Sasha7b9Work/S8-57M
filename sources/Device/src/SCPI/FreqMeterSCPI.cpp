@@ -68,11 +68,11 @@ static void SetNumberPeriods(int i)
     }
 }
 
-static pCHAR FuncAvePeriods(pCHAR buffer)
+static pCHAR FuncAvePeriods(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(periodsReverse[S_FREQ_NUMBER_PERIODS]));
 
-    SCPI_PROCESS_ARRAY(periodsReverse, SetNumberPeriods(i));
+    SCPI_PROCESS_ARRAY(periodsReverse, SetNumberPeriods(i)); //-V2563
 }
 
 
@@ -95,11 +95,11 @@ static void SetLabels(int i)
     }
 }
 
-static pCHAR FuncLabels(pCHAR buffer)
+static pCHAR FuncLabels(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(labels[S_FREQ_FREQ_CLC]));
 
-    SCPI_PROCESS_ARRAY(labels, SetLabels(i));
+    SCPI_PROCESS_ARRAY(labels, SetLabels(i)); //-V2563
 }
 
 
@@ -116,11 +116,11 @@ static void SetMeasure(int i)
     PageFreqMeter::Init();
 }
 
-static pCHAR FuncMeasure(pCHAR buffer)
+static pCHAR FuncMeasure(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(measures[S_FREQ_MODE_MEASURE]));
 
-    SCPI_PROCESS_ARRAY(measures, SetMeasure(i));
+    SCPI_PROCESS_ARRAY(measures, SetMeasure(i)); //-V2563
 }
 
 
@@ -138,11 +138,11 @@ static void SetMode(int i)
 }
 
 
-static pCHAR FuncMode(pCHAR buffer)
+static pCHAR FuncMode(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(S_FREQ_METER_ENABLED ? " ON" : " OFF"));
 
-    SCPI_PROCESS_ARRAY(mode, SetMode(i));
+    SCPI_PROCESS_ARRAY(mode, SetMode(i)); //-V2563
 }
 
 
@@ -164,15 +164,15 @@ static void SetTime(int i)
     }
 }
 
-static pCHAR FuncTime(pCHAR buffer)
+static pCHAR FuncTime(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(time[S_FREQ_TIME_COUNTING]));
 
-    SCPI_PROCESS_ARRAY(time, SetTime(i));
+    SCPI_PROCESS_ARRAY(time, SetTime(i)); //-V2563
 }
 
 
-static pCHAR FuncValue(pCHAR buffer)
+static pCHAR FuncValue(pCHAR buffer) //-V2506
 {
     SCPI_PROLOG(buffer);
 

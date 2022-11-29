@@ -1,5 +1,6 @@
 #include "defines.h"
 #include "device.h"
+#include "common/Decoder_d.h"
 #include "Display/Console.h"
 #include "Display/Display.h"
 #include "Display/Painter.h"
@@ -7,46 +8,33 @@
 #include "Display/Warnings.h"
 #include "Hardware/HAL/HAL.h"
 #include "common/Display/Font/Font_d.h"
+#include "FlashDrive/FlashDrive.h"
 #include "Hardware/Timer.h"
 #include "Keyboard/BufferButtons.h"
 #include "Osci/Display/DisplayOsci.h"
 #include "Recorder/DisplayRecorder.h"
-#include "Utils/Containers/Values.h"
-#include "common/Communicator/Communicator_.h"
+#include "Utils/Values.h"
 #include <cstring>
 
 
-namespace Display
-{
-    static void EmptyFunc() { }
+static void EmptyFunc() { }
 
 
-    static pFuncVV funcOnHand = nullptr;
-    static uint timeStart = 0;
-    static const char* textWait = 0;
-    static bool clearBackground = false;
-    volatile static pFuncVV funcAdditionDraw = EmptyFunc;   // Дополнительная функция рисования. Выполняется после стандартной отрисовки, но перед вызовом EndScene;
-    static bool inStateDraw = false;                        // true означает, что происходит процесс отрисовки
-    static pFuncVV funcAfterUpdateOnce = EmptyFunc;
+bool Display::Message::waitKey = false;
+volatile bool Display::Message::running = false;
+bool Display::Breaker::powerOn = true;
 
-    // Выполняет функцию, определённую для выполнения после отрисовки
-    static void ExecuteFuncAfterUpdateOnce();
 
-    namespace Message
-    {
-        static void Func();
+static pFuncVV funcOnHand = nullptr;
+static uint timeStart = 0;
+static const char *textWait = 0;
+static bool clearBackground = false;
+volatile static pFuncVV funcAdditionDraw = EmptyFunc;   // Дополнительная функция рисования. Выполняется после стандартной отрисовки, но перед вызовом EndScene;
+static bool inStateDraw = false;                        // true означает, что происходит процесс отрисовки
+static pFuncVV funcAfterUpdateOnce = EmptyFunc;
 
-        static bool waitKey = false;
-
-        static volatile bool running = false;
-    }
-
-    namespace Breaker
-    {
-        // Установленное в false значение означает, что дисплей находится в выключенном состоянии (яркость равна нулю)
-        static bool powerOn = true;
-    }
-}
+// Выполняет функцию, определённую для выполнения после отрисовки
+static void ExecuteFuncAfterUpdateOnce();
 
 
 void Display::Init()
@@ -62,7 +50,7 @@ void Display::Init()
 }
 
 
-void Display::Update()
+void Display::Update() //-V2506
 {
     static uint prevTime = 0;
 
@@ -109,7 +97,7 @@ bool Display::InProcess()
 }
 
 
-void Display::ExecuteFuncAfterUpdateOnce()
+static void ExecuteFuncAfterUpdateOnce()
 {
     funcAfterUpdateOnce();
     funcAfterUpdateOnce = EmptyFunc;
@@ -195,7 +183,7 @@ void Display::Message::Func()
     {
         for (uint i = 0; i < time; i++)
         {
-            std::strcat(buf, ".");
+            std::strcat(buf, "."); //-V2513
         }
     }
 
@@ -207,7 +195,7 @@ void Display::Message::Func()
     {
         while (HAL_BUS::Panel::Receive()) {};
 
-        Communicator::Device::Update();
+        DDecoder::Update();
 
         while (!BufferButtons::IsEmpty())
         {
@@ -290,19 +278,19 @@ uint ENumSignalsInSec::TimeBetweenFramesMS()
 
 void Display::LoadBrightness()
 {
-    ::Message<2>(Command::Display_Brightness, (uint8)(S_DISP_BRIGHTNESS + 10)).Transmit();
+    HAL_BUS::Panel::Send(Command::Display_Brightness, static_cast<uint8>(S_DISP_BRIGHTNESS + 10));
 }
 
 
 void Display::Breaker::PowerOff()
 {
-    ::Message<2>(Command::Display_Brightness, 0).Transmit();
+    HAL_BUS::Panel::Send(Command::Display_Brightness, 0);
 
     powerOn = false;
 }
 
 
-bool Display::Breaker::PowerOn()
+bool Display::Breaker::PowerOn() //-V2506
 {
     if (!powerOn)
     {

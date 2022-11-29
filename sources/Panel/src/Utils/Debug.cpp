@@ -1,4 +1,3 @@
-// 2022/04/20 16:52:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "log.h"
 #include "Debug.h"
 #include "Hardware/Timer.h"
@@ -15,13 +14,13 @@ uint  Debug::size = 0;
 
 void Debug::StartProfiling()
 {
-    timeStart = TIME_US;
+    timeStart = TIME_US; //-V2571
 }
 
 
 void Debug::PointProfiling(char *name)
 {
-    LOG_WRITE("%s %d", name, TIME_US - timeStart);
+    LOG_WRITE("%s %d", name, TIME_US - timeStart); //-V2571
 }
 
 
@@ -33,13 +32,13 @@ void Debug::ClearTimeCounter()
 
 void Debug::StartIncreaseCounter()
 {
-    timeStartCounter = TIME_US;
+    timeStartCounter = TIME_US; //-V2571
 }
 
 
 void Debug::StopIncreaseCounter()
 {
-    timeCounter += (TIME_US - timeStartCounter);
+    timeCounter += (TIME_US - timeStartCounter); //-V2571
 }
 
 

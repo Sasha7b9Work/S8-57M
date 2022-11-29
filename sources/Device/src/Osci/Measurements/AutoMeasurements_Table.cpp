@@ -3,7 +3,7 @@
 #include "Display/Primitives.h"
 #include "Osci/Measurements/AutoMeasurements.h"
 #include "Settings/Settings.h"
-#include "Utils/Math/Math.h"
+#include "Utils/Math.h"
 
 
 // Верхняя координата y выводимой таблицы автоматических измерений
@@ -15,7 +15,7 @@ static int GetTopTable();
 
 
 
-void TableMeasures::Draw()
+void TableMeasures::Draw() //-V2506
 {
     if (!S_MEAS_SHOW)
     {
@@ -107,7 +107,7 @@ void TableMeasures::Cell::DrawStringMeasure(int x, int y)
 }
 
 
-static int GetTopTable()
+static int GetTopTable() //-V2506
 {
     if (S_MEAS_ON_DISPLAY_IS_6_1 || S_MEAS_ON_DISPLAY_IS_6_2)
     {
@@ -163,7 +163,7 @@ int TableMeasures::GetDeltaGridLeft()
 }
 
 
-int TableMeasures::DY()
+int TableMeasures::DY() //-V2506
 {
     if (S_MEAS_SOURCE_IS_A_B)
     {

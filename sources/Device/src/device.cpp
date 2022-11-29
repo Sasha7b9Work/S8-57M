@@ -1,6 +1,8 @@
 #include "defines.h"
 #include "device.h"
+#include "common/Decoder_d.h"
 #include "Display/Console.h"
+#include "FlashDrive/FlashDrive.h"
 #include "FPGA/FPGA.h"
 #include "Hardware/Battery.h"
 #include "Hardware/Beeper.h"
@@ -14,21 +16,16 @@
 #include "Recorder/Sensor.h"
 #include "SCPI/SCPI.h"
 #include "Settings/SettingsNRST.h"
-#include "FDrive/FDrive.h"
-#include "common/Communicator/Communicator_.h"
 #include <cstdlib>
 
 
-namespace Device
-{
-    // Настроить устройство в соответствии с установленным режимом
-    void SetCurrentMode();
+// Настроить устройство в соответствии с установленным режимом
+static void SetCurrentMode();
+// Установить режим работы mode, если открыта страница page или в числе предков открытой страницы есть page
+static bool SetCurrentMode(const Page *page, Device::Mode::E mode);
 
-    // Установить режим работы mode, если открыта страница page или в числе предков открытой страницы есть page
-    bool SetCurrentMode(const Page* page, Device::Mode::E mode);
+static Device::Mode::E currentMode = Device::Mode::Osci;
 
-    Device::Mode::E currentMode = Device::Mode::Osci;
-}
 
 
 void Device::Init()
@@ -71,13 +68,15 @@ void Device::Init()
 
     FDrive::Init();
 
+    //Sensor::Init();
+
     SetCurrentMode();
 
     //HAL_TIM5::Init();
 }
 
 
-void Device::SetCurrentMode()
+void SetCurrentMode()
 {
     if (!SetCurrentMode(PageMultimeter::self, Device::Mode::Multimeter))
     {
@@ -92,7 +91,7 @@ void Device::SetCurrentMode()
 }
 
 
-bool Device::SetCurrentMode(const Page *page, Device::Mode::E mode)
+bool SetCurrentMode(const Page *page, Device::Mode::E mode) //-V2506
 {
     Item *opened = Menu::OpenedItem();
 
@@ -129,7 +128,7 @@ void Device::Update()
 
     SCPI::Update();
 
-    Communicator::Device::Update();
+    DDecoder::Update();
 
     Menu::Update();
 

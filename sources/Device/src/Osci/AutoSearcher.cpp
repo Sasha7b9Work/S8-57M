@@ -6,7 +6,7 @@
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Osci/Osci.h"
-#include "Utils/Math/Math.h"
+#include "Utils/Math.h"
 
 
 static void DisplayUpdate();
@@ -83,7 +83,7 @@ void Osci::RunAutoSearch()
 }
 
 
-static bool FullSearchSignal(Chan::E ch, const Settings *old)
+static bool FullSearchSignal(Chan::E ch, const Settings *old) //-V2506
 {
     TBase::E tBase = TBase::Count;
     Range::E range = Range::Count;
@@ -114,7 +114,7 @@ static bool FullSearchSignal(Chan::E ch, const Settings *old)
 }
 
 
-static bool FindSignal(Chan::E ch, TBase::E *tBase, Range::E *outRange, ModeCouple::E *couple)
+static bool FindSignal(Chan::E ch, TBase::E *tBase, Range::E *outRange, ModeCouple::E *couple) //-V2506
 {
     float frequency = 0.0F;
 
@@ -129,7 +129,7 @@ static bool FindSignal(Chan::E ch, TBase::E *tBase, Range::E *outRange, ModeCoup
 }
 
 
-static bool FindFrequency(Chan::E ch, float *outFreq, Range::E *outRange, ModeCouple::E *couple)
+static bool FindFrequency(Chan::E ch, float *outFreq, Range::E *outRange, ModeCouple::E *couple) //-V2506
 {
     Osci::Stop();
     ModeCouple::Set(ch, ModeCouple::AC);
@@ -195,7 +195,7 @@ static bool FindFrequencyForRanges(Chan::E ch, uint timeWaitMS, float *outFreq, 
 }
 
 
-static bool FindFrequencyForRange(Chan::E ch, Range::E range, uint timeWaitMS, float *outFreq)
+static bool FindFrequencyForRange(Chan::E ch, Range::E range, uint timeWaitMS, float *outFreq) //-V2506
 {
     DisplayUpdate();
 
@@ -252,7 +252,7 @@ void FrequencyMeter::TuneForFind()
 }
 
 
-static bool WaitSync(uint timeWaitMS)
+static bool WaitSync(uint timeWaitMS) //-V2506
 {
     uint start = TIME_MS;           // Время начала ожидания
 
@@ -293,7 +293,7 @@ static void DisplayUpdate()
 }
 
 
-static TBase::E CalculateTBase(float frequency)
+static TBase::E CalculateTBase(float frequency) //-V2506
 {
     struct TimeStruct
     {
@@ -452,7 +452,7 @@ void AutoFPGA::ReadData(Chan::E ch, uint8 *data)
     HAL_BUS::FPGA::Write8(WR::START_ADDR, 0xff);
 
     uint8 *a0 = (ch == ChanA) ? RD::DATA_A : RD::DATA_B;
-    uint8 *a1 = a0 + 1;
+    uint8 *a1 = a0 + 1; //-V2563
 
     HAL_BUS::FPGA::SetAddrData(a0, a1);
 

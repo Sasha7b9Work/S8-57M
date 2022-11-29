@@ -1,11 +1,12 @@
 #include "defines.h"
+#include "common/common_defines.h"
+#include "FlashDrive/FlashDrive.h"
 #include "FPGA/FPGA.h"
 #include "Menu/Pages/Include/DebugPage.h"
 #include "Menu/Pages/Include/PageService.h"
 #include "Osci/Osci.h"
 #include "SCPI/SCPI.h"
 #include "Settings/Settings.h"
-#include "FDrive/FDrive.h"
 
 
 // *IDN?
@@ -86,7 +87,7 @@ const StructSCPI SCPI::head[] =
 };
 
 
-static pCHAR FuncIDN(pCHAR buffer)
+static pCHAR FuncIDN(pCHAR buffer) //-V2506
 {
     SCPI_PROLOG(buffer)
 
@@ -102,7 +103,7 @@ static void HintIDN(String *message) //-V2009 //-V2558
 }
 
 
-static pCHAR FuncReset(pCHAR buffer)
+static pCHAR FuncReset(pCHAR buffer) //-V2506
 {
     SCPI_PROLOG(buffer)
         
@@ -118,7 +119,7 @@ static void HintReset(String *message) //-V2009 //-V2558
 }
 
 
-static pCHAR FuncHelp(pCHAR buffer)
+static pCHAR FuncHelp(pCHAR buffer) //-V2506
 {
     SCPI_PROLOG(buffer);
     
@@ -136,7 +137,7 @@ static void HintHelp(String *message) //-V2009 //-V2558
 }
 
 
-static pCHAR FuncTest(pCHAR buffer)
+static pCHAR FuncTest(pCHAR buffer) //-V2506
 {
     static const char *const modes[2] =
     {
@@ -182,11 +183,11 @@ static void SetCalibratorMode(int i)
     FPGA::LoadCalibratorMode();
 }
 
-static pCHAR FuncCalibratorMode(pCHAR buffer)
+static pCHAR FuncCalibratorMode(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(calibratorMode[S_SERV_CALIBRATOR_MODE]));
     
-    SCPI_PROCESS_ARRAY(calibratorMode, SetCalibratorMode(i));
+    SCPI_PROCESS_ARRAY(calibratorMode, SetCalibratorMode(i)); //-V2563
 }
 
 
@@ -200,15 +201,15 @@ static pString length[] =
     ""
 };
 
-static pCHAR FuncMemoryLength(pCHAR buffer)
+static pCHAR FuncMemoryLength(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(length[set.mem._enumPoints]));
 
-    SCPI_PROCESS_ARRAY(length, set.mem._enumPoints = static_cast<ENumPointsFPGA::E>(i));
+    SCPI_PROCESS_ARRAY(length, set.mem._enumPoints = static_cast<ENumPointsFPGA::E>(i)); //-V2563
 }
 
 
-static pCHAR FuncMemorySave(pCHAR buffer)
+static pCHAR FuncMemorySave(pCHAR buffer) //-V2506
 {
     SCPI_PROLOG(buffer);
 
@@ -225,7 +226,7 @@ static pCHAR FuncMemorySave(pCHAR buffer)
 }
 
 
-static pCHAR FuncRun(pCHAR buffer)
+static pCHAR FuncRun(pCHAR buffer) //-V2506
 {
     SCPI_PROLOG(buffer);
 
@@ -235,7 +236,7 @@ static pCHAR FuncRun(pCHAR buffer)
 }
 
 
-static pCHAR FuncStop(pCHAR buffer)
+static pCHAR FuncStop(pCHAR buffer) //-V2506
 {
     SCPI_PROLOG(buffer);
 

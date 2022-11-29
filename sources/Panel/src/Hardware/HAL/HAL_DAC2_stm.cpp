@@ -1,18 +1,14 @@
-// 2022/04/20 16:52:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
 #include <stm32f4xx_hal.h>
 
 
-namespace HAL_DAC2
-{
-    static DAC_HandleTypeDef handle = { DAC };
-}
+static DAC_HandleTypeDef handle = { DAC }; //-V2571
 
 
 void HAL_DAC2::Init()
 {
-    RCC->APB1ENR |= RCC_APB1ENR_DACEN;      // Включаем ЦАП
+    RCC->APB1ENR |= RCC_APB1ENR_DACEN;      // Включаем ЦАП //-V2571
 
     if (HAL_DAC_Init(&handle) != HAL_OK)
     {
@@ -28,7 +24,7 @@ void HAL_DAC2::Init()
         GPIO_MODE_ANALOG,
         GPIO_NOPULL
     };
-    HAL_GPIO_Init(GPIOA, &_gpio);
+    HAL_GPIO_Init(GPIOA, &_gpio); //-V2571
 
     if (HAL_DAC_Init(&handle) != HAL_OK)
     {

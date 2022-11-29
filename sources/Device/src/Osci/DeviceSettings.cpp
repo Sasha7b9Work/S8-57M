@@ -6,8 +6,8 @@
 #include "Osci/DeviceSettings.h"
 #include "Osci/Osci.h"
 #include "Settings/Settings.h"
-#include "Utils/Containers/Buffer.h"
-#include "Utils/Math/Math.h"
+#include "Utils/Buffer.h"
+#include "Utils/Math.h"
 #include <cstring>
 
 

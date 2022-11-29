@@ -161,4 +161,4 @@ private:
 
 #define COLOR(x) GlobalColors[x]
 
-extern uint GlobalColors[32];
+extern uint GlobalColors[256];

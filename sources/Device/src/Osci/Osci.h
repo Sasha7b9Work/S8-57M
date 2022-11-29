@@ -1,6 +1,6 @@
 #pragma once
 #include "Settings/Settings.h"
-#include "Utils/Containers/Buffer.h"
+#include "Utils/Buffer.h"
 
 
 #define OSCI_IN_MODE_P2P        (S_TIME_BASE >= TBase::MIN_P2P)
@@ -21,47 +21,54 @@ namespace OsciStateWork
 };
 
 
-namespace Osci
+
+struct Osci
 {
-    void Init();
+    friend struct Randomizer;
+    friend struct ContextTester;
 
-    void Update();
+    static void Init();
 
-    void OnPressButtonStart();
+    static void Update();
 
-    void DeInit();
+    static void OnPressButtonStart();
+
+    static void DeInit();
 
     // (Если button == true) - это запуск кнопкой
-    void Start(bool button);
+    static void Start(bool button);
 
-    void Stop();
+    static void Stop();
 
-    bool IsRunning();
+    static bool IsRunning();
     
     // Это вызываем в случае изменения настройки
-    void Restart();
+    static void Restart();
     
     // Эту функцию надо вызывать при изменении длины памяти. Ну или режима пикового детектора
-    void OnChangedLengthMemoryChannel();
+    static void OnChangedLengthMemoryChannel();
    
+    // Загрузить значение удержания синхронизации
+    //static void LoadHoldfOff();
+    
     // Эту функцию нужно вызывать при изменении режима запуска
-    void ChangedTrigStartMode();
+    static void ChangedTrigStartMode();
       
     // Очистка данных рандомизатора при переключении режимов
-    void ClearDataRand();
+    static void ClearDataRand();
   
-    void ReadData();
+    static void ReadData();
 
-    uint16 ReadLastRecord(Chan::E ch);
+    static uint16 ReadLastRecord(Chan::E ch);
 
     // Обработать флаг предзапуска
-    void ProcessFlagPred();
+    static void ProcessFlagPred();
 
     // Выполнить поиск сигнала
-    void RunAutoSearch();
+    static void RunAutoSearch();
 
     // Послать данные в SCPI, если это необходимо
-    void SendDataToSCPI();
+    static void SendDataToSCPI();
 
     // Управитель входными цепями
     struct InputController
@@ -69,6 +76,18 @@ namespace Osci
         static void Init();
         static void Write(HPort::E port, uint16 pin, uint16 value);
     };
+
+private:
+
+    // Читать данные канала в памяить data
+    static bool ReadDataChannel(Chan::E ch, uint8 *data);
+
+    static bool ReadDataChannelRand(uint8 *address, uint8 *data);
+
+    static void SendDataToSCPI(Chan::E ch);
+
+    // Здесь хранится адрес, начиная с которого будем читать данные по каналам. Если addrRead == 0xffff, то адрес вначале нужно считать
+    static uint16 addrRead;
 };
 
 

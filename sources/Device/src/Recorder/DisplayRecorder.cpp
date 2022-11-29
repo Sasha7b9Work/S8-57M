@@ -11,8 +11,8 @@
 #include "Recorder/DisplayRecorder.h"
 #include "Recorder/StorageRecorder.h"
 #include "Settings/Settings.h"
-#include "Utils/Math/Math.h"
-#include "Utils/Containers/Values.h"
+#include "Utils/Math.h"
+#include "Utils/Values.h"
 #include <cmath>
 #include <cstring>
 
@@ -146,7 +146,7 @@ static char *DeltaTime(char buffer[30])
 {
     float delta = std::fabsf(static_cast<float>(posCursor[0] - posCursor[1])) * Recorder::ScaleX::TimeForPointMS() / 1000.0F; //-V2564
 
-    std::strcpy(buffer, Time(delta).ToString(false).c_str());
+    std::strcpy(buffer, Time(delta).ToString(false).c_str()); //-V2513
 
     return buffer;
 }
@@ -164,11 +164,11 @@ static char *TimeCursor(int numCur, char buffer[30])
 
         time.AddTime((startPoint + posCursor[numCur]) * displayed->timeForPointMS);
 
-        std::strcpy(buffer, time.ToString().c_str());
+        std::strcpy(buffer, time.ToString().c_str()); //-V2513
     }
     else
     {
-        std::strcpy(buffer, "...");
+        std::strcpy(buffer, "..."); //-V2513
     }
 
     return buffer;
@@ -179,17 +179,17 @@ static void VoltagePoint(Chan::E ch, uint8 value, char buffer[30])
 {
     if (value > VALUE::MAX)
     {
-        std::strcat(buffer, "\x9d");
+        std::strcat(buffer, "\x9d"); //-V2513
     }
     else if (value < VALUE::MIN)
     {
-        std::strcat(buffer, "\xb9");
+        std::strcat(buffer, "\xb9"); //-V2513
     }
     else
     {
         float voltage = VALUE::ToVoltage(value, S_RANGE(ch), 0);
 
-        std::strcat(buffer, Voltage(voltage).ToString(true).c_str());
+        std::strcat(buffer, Voltage(voltage).ToString(true).c_str()); //-V2513
     }
 }
 
@@ -206,12 +206,12 @@ static char *VoltageCursor(Chan::E ch, int numCur, char buffer[30])
     {
         buffer[0] = '\0';
         VoltagePoint(ch, point->min, buffer);
-        std::strcat(buffer, " : ");
+        std::strcat(buffer, " : "); //-V2513
         VoltagePoint(ch, point->max, buffer);
     }
     else
     {
-        std::strcpy(buffer, "...");
+        std::strcpy(buffer, "..."); //-V2513
     }
 
     return buffer;
@@ -224,7 +224,7 @@ static char *VoltageSensor(int, char[30])
 }
 
 
-static void DrawParametersCursors()
+static void DrawParametersCursors() //-V2506
 {
     if (!S_REC_INFO_IS_SHOWN)
     {
@@ -364,7 +364,7 @@ static void DrawSensor()
 }
 
 
-static void DrawMemoryWindow()
+static void DrawMemoryWindow() //-V2506
 {
     static int prevNumPoints = 0;
 
@@ -402,7 +402,7 @@ static void DrawMemoryWindow()
 }
 
 
-void DisplayRecorder::MoveWindowLeft()
+void DisplayRecorder::MoveWindowLeft() //-V2506
 {
     HAL_BUS_CONFIGURE_TO_FSMC();
 
@@ -420,7 +420,7 @@ void DisplayRecorder::MoveWindowLeft()
 }
 
 
-void DisplayRecorder::MoveWindowRight()
+void DisplayRecorder::MoveWindowRight() //-V2506
 {
     HAL_BUS_CONFIGURE_TO_FSMC();
 
@@ -468,7 +468,7 @@ bool DisplayRecorder::InProcessUpdate()
 }
 
 
-void RecordIcon::Upate(int x, int y)
+void RecordIcon::Upate(int x, int y) //-V2506
 {
     if (Menu::OpenedItem() != PageRecorder::self)
     {

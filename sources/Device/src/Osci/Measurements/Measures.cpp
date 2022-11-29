@@ -1,7 +1,7 @@
 #include "defines.h"
 #include "Osci/Measurements/AutoMeasurements.h"
 #include "Settings/Settings.h"
-#include "Utils/Math/Math.h"
+#include "Utils/Math.h"
 
 
 struct StructMeasure
@@ -111,7 +111,7 @@ String Measure::Name()
 }
 
 
-TypeMeasure::E Measure::GetType()
+TypeMeasure::E Measure::GetType() //-V2506
 {
     if(t == TypeMeasure::Count)
     {

@@ -1,6 +1,8 @@
 #include "defines.h"
 #include "Font_d.h"
 #include "AdvancedFont_d.h"
+#include "common/Command.h"
+#include "common/Decoder_d.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "font8.inc"
@@ -39,9 +41,15 @@ int DFont::GetLengthText(pString text)
 }
 
 
-static void SendTypeFontToPanel(DTypeFont::E)
+static void SendTypeFontToPanel(DTypeFont::E type)
 {
-    // todo_paint
+    static DTypeFont::E prevType = DTypeFont::Count;
+
+    if (prevType != type)
+    {
+        HAL_BUS::Panel::Send(Command::Paint_SetFont, static_cast<uint8>(type));
+        prevType = type;
+    }
 }
 
 
@@ -102,9 +110,10 @@ void DFont::Pop()
 }
 
 
-void DFont::SetSpacing(int)
+void DFont::SetSpacing(int _spacing)
 {
-    // todo_paint
+    spacing = _spacing;
+    HAL_BUS::Panel::Send(Command::Paint_SetTextSpacing, static_cast<uint8>(spacing));
 }
 
 int DFont::GetSpacing()
@@ -113,9 +122,9 @@ int DFont::GetSpacing()
 }
 
 
-void DFont::SetMinWidth(uint8)
+void DFont::SetMinWidth(uint8 width)
 {
-    // todo_paint
+    HAL_BUS::Panel::Send(Command::Paint_SetMinWidthFont, width);
 }
 
 
@@ -125,7 +134,7 @@ static bool FontIsSmall()
 }
 
 
-uint8 DFont::GetWidth(uint8 symbol)
+uint8 DFont::GetWidth(uint8 symbol) //-V2506
 {
     if (FontIsSmall())
     {
@@ -142,7 +151,7 @@ uint8 DFont::GetWidth(char symbol)
 }
 
 
-uint8 DFont::GetHeight()
+uint8 DFont::GetHeight() //-V2506
 {
     if (FontIsSmall())
     {
@@ -153,7 +162,7 @@ uint8 DFont::GetHeight()
 }
 
 
-bool DFont::RowNotEmpty(uint8 symbol, int row)
+bool DFont::RowNotEmpty(uint8 symbol, int row) //-V2506
 {
     if (FontIsSmall())
     {
@@ -164,7 +173,7 @@ bool DFont::RowNotEmpty(uint8 symbol, int row)
 }
 
 
-bool DFont::BitIsExist(uint8 symbol, int row, int bit)
+bool DFont::BitIsExist(uint8 symbol, int row, int bit) //-V2506
 {
     if (FontIsSmall())
     {

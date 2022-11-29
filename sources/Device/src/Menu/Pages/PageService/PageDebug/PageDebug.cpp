@@ -1,10 +1,10 @@
 #include "defines.h"
 #include "Display/Painter.h"
 #include "Display/Primitives.h"
+#include "FlashDrive/FlashDrive.h"
 #include "Menu/Pages/Include/DebugPage.h"
 #include "Settings/Settings.h"
 #include "Settings/SettingsNRST.h"
-#include "FDrive/FDrive.h"
 
 
 // В этой структуре будут храниться данные серийного номера при открытой странице ppSerialNumer
@@ -134,15 +134,15 @@ static void OnPress_SaveFirmware()
 
     FDrive::OpenNewFileForWrite(NAME_FILE_FIRMWARE, &structForWrite);
 
-    uint8 *address = reinterpret_cast<uint8 *>(0x08020000);
-    uint8 *endAddress = address + SIZE_FILE_FIRMWARE;
+    uint8 *address = reinterpret_cast<uint8 *>(0x08020000); //-V566 //-V2571
+    uint8 *endAddress = address + SIZE_FILE_FIRMWARE; //-V566 //-V2563
 
     int sizeBlock = 512;
 
     while (address < endAddress)
     {
         FDrive::WriteToFile(address, sizeBlock, &structForWrite);
-        address += sizeBlock;
+        address += sizeBlock; //-V2563
     }
 
     FDrive::CloseFile(&structForWrite);

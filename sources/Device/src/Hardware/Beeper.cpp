@@ -1,7 +1,7 @@
 #include "defines.h"
 #include "Beeper.h"
 #include "Timer.h"
-#include "Utils/Math/Math.h"
+#include "Utils/Math.h"
 #include "Hardware/HAL/HAL.h"
 #include "Settings/Settings.h"
 #include <cmath>
@@ -129,7 +129,7 @@ static void SetWave()
 
 
 
-static void Beep(const TypeWave::E newTypeWave, const float newFreq, const float newAmpl, const int newDuration)
+static void Beep(const TypeWave::E newTypeWave, const float newFreq, const float newAmpl, const int newDuration) //-V2506
 {
     if (bellIsEnabled || soundWarnIsBeep || set.serv.SoundVolume() == 0)
     {

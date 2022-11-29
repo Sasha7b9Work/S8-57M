@@ -12,27 +12,27 @@
 
 class String;
 
-typedef const char* (*FuncSCPI)(pCHAR);
+typedef const char *(*FuncSCPI)(pCHAR);
 typedef bool (*FuncTestSCPI)();
-typedef void (*FuncHint)(String*);
+typedef void (*FuncHint)(String *);
 
 
 // Структура, соотвествующая узлу дерева.
 struct StructSCPI
 {
-    const char* key;            // Ключевое слово узла (морфема)
+    const char *key;            // Ключевое слово узла (морфема)
 
-    const StructSCPI* strct;    // Если структура имеет тип Node, то здесь хранится массив потомков - StructSCPI *structs.
+    const StructSCPI *strct;    // Если структура имеет тип Node, то здесь хранится массив потомков - StructSCPI *structs.
 
     FuncSCPI  func;             // Если структура имеет тип Leaf, то здесь хранится функция - обработчик листа типа FuncSCPI
 
     FuncTestSCPI test;
 
-    const char* hint;
+    const char *hint;
 
     FuncHint funcHint;
 
-    bool IsEmpty() const { return key[0] == '\0'; };
+    bool IsEmpty() const { return key[0] == '\0'; }; //-V2563
     bool IsNode() const { return strct != nullptr; };   // Структура является "узлом" дерева, нужно идти дальше по дереву через structs
     bool IsLeaf() const { return func != nullptr; };    // Стурктура является "листом" дерева, нужно выполнять функцию func
 };
@@ -73,60 +73,60 @@ namespace SCPI
 
     const int SIZE_SEPARATOR = 1;
 
-    void AppendNewData(const char* buffer, int length);
+    void AppendNewData(const char *buffer, int length);
 
     void Update();
-
+    
     // Возвращает true, если указатель указывает на завершающую последовательность
-    bool IsLineEnding(const char** bufer);
-
+    bool IsLineEnding(const char **bufer);
+    
     // Послать ответ м в конце дописать 0x0D, если нет
     void SendAnswer(pCHAR message);
-    void SendAnswer(const String& message);
+    void SendAnswer(const String &message);
 
     // Послать строку как есть - без завершающего символа
     void SendData(pCHAR message);
-    void SendData(const String& message);
+    void SendData(const String &message);
 
     // Послать измерение в SCPI - с заменой нечитаемых символов и единиц измерения
-    void SendMeasure(const String& message);
-
+    void SendMeasure(const String &message);
+    
     // Если строка buffer начинается с последовательности символов word, то возвращает указатель на символ, следующий за последним символом последовательности word.
     // Иначе возвращает nullptr.
-    const char* BeginWith(const char* buffer, const char* word);
-
+    const char *BeginWith(const char *buffer, const char *word);
+    
     // Послать сообщение об ошибочных символах, если таковые имеются
     void SendBadSymbols();
 
     bool Test();
 
-    void ProcessHint(String* message, const char* const* names);
+    void ProcessHint(String *message, const char *const *names); //-V2504
 };
 
 
 namespace SCPI
 {
-    extern const StructSCPI channels[];
+    extern const StructSCPI channels[];     //-V2504
 
-    extern const StructSCPI display[];
+    extern const StructSCPI display[];      //-V2504
 
-    extern const StructSCPI fft[];
+    extern const StructSCPI fft[];          //-V2504
 
-    extern const StructSCPI freqmeter[];
+    extern const StructSCPI freqmeter[];    //-V2504
 
-    extern const StructSCPI head[];
+    extern const StructSCPI head[];         //-V2504
 
-    extern const StructSCPI key[];
+    extern const StructSCPI key[];          //-V2504
 
-    extern const StructSCPI measures[];
+    extern const StructSCPI measures[];     //-V2504
 
-    extern const StructSCPI multimeter[];
+    extern const StructSCPI multimeter[];   //-V2504
 
-    extern const StructSCPI tBase[];
+    extern const StructSCPI tBase[];        //-V2504
 
-    extern const StructSCPI tester[];
+    extern const StructSCPI tester[];       //-V2504
 
-    extern const StructSCPI trigger[];
+    extern const StructSCPI trigger[];      //-V2504
 
     namespace Sender
     {

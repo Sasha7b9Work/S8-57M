@@ -3,7 +3,7 @@
 #include "Display/Primitives.h"
 #include "Display/Warnings.h"
 #include "Hardware/Timer.h"
-#include "Utils/Containers/Queue.h"
+#include "Utils/Queue.h"
 #include <cstring>
 
 
@@ -31,14 +31,14 @@ void Warnings::AddWarning(const char *warning)
 }
 
 
-static bool BackMessagesSame()
+static bool BackMessagesSame() //-V2506
 {
     if (warnings.Size() < 2)
     {
         return false;
     }
 
-    return (std::strcmp(warnings[warnings.Size() - 2].message.c_str(), warnings[warnings.Size() - 1].message.c_str()) == 0);
+    return (std::strcmp(warnings[warnings.Size() - 2].message.c_str(), warnings[warnings.Size() - 1].message.c_str()) == 0); //-V2513
 }
 
 

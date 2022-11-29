@@ -1,6 +1,6 @@
-// 2022/04/20 16:52:00 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "AdvancedFont_p.h"
+#include "common/Command.h"
 #include "Hardware/HAL/HAL.h"
 #include "font8.inc"
 #include "font5.inc"
@@ -72,7 +72,7 @@ static bool FontIsSmall()
 }
 
 
-uint8 PFont::GetWidth(uint8 symbol)
+uint8 PFont::GetWidth(uint8 symbol) //-V2506
 {
     if (FontIsSmall())
     {
@@ -89,7 +89,7 @@ uint8 PFont::GetWidth(char symbol)
 }
 
 
-uint8 PFont::GetHeight()
+uint8 PFont::GetHeight() //-V2506
 {
     if (FontIsSmall())
     {
@@ -100,7 +100,7 @@ uint8 PFont::GetHeight()
 }
 
 
-bool PFont::RowNotEmpty(uint8 symbol, int row)
+bool PFont::RowNotEmpty(uint8 symbol, int row) //-V2506
 {
     if (FontIsSmall())
     {
@@ -111,7 +111,7 @@ bool PFont::RowNotEmpty(uint8 symbol, int row)
 }
 
 
-bool PFont::BitIsExist(uint8 symbol, int row, int bit)
+bool PFont::BitIsExist(uint8 symbol, int row, int bit) //-V2506
 {
     if (FontIsSmall())
     {
