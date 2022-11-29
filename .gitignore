@@ -1,5 +1,6 @@
 *.out
 *.bin
+archive.zip
 
 sources/generated/
 sources/ThirdParty/wxWidgets/generated/
