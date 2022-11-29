@@ -98,7 +98,6 @@ file(GLOB MENU_PAGES_PAGEMEMORY            src/Menu/Pages/PageMemory/*)
 file(GLOB MENU_PAGES_PAGESERVICE           src/Menu/Pages/PageService/*.h src/Menu/Pages/PageService/*.cpp)
 file(GLOB MENU_PAGES_PAGESERVICE_PAGEDEBUG src/Menu/Pages/PageService/PageDebug/*)
 file(GLOB MENU_PAGES_PAGETRIG              src/Menu/Pages/PageTrig/*)
-file(GLOB MULTIMETER                       src/Multimeter/*)
 file(GLOB OSCI                             src/Osci/*.*)
 file(GLOB OSCI_DISPLAY                     src/Osci/Display/*)
 file(GLOB OSCI_MATH                        src/Osci/Math/*)
@@ -107,7 +106,6 @@ file(GLOB RECORDER                         src/Recorder/*)
 file(GLOB SCPI                             src/SCPI/*)
 file(GLOB SETTINGS                         src/Settings/*)
 file(GLOB TEST                             src/Test/*)
-file(GLOB TESTER                           src/Tester/*)
 file(GLOB UTILS                            src/Utils/*.*)
 file(GLOB UTILS_CONTAINERS                 src/Utils/Containers/*.*)
 file(GLOB UTILS_MATH                       src/Utils/Math/*.*)
@@ -149,7 +147,6 @@ source_group(Menu/Pages/PageMemory              FILES ${MENU_PAGES_PAGEMEMORY})
 source_group(Menu/Pages/PageService             FILES ${MENU_PAGES_PAGESERVICE})
 source_group(Menu/Pages/PageService/PageDebug   FILES ${MENU_PAGES_PAGESERVICE_PAGEDEBUG})
 source_group(Menu/Pages/PageTrig                FILES ${MENU_PAGES_PAGETRIG})
-source_group(Multimeter                         FILES ${MULTIMETER})
 source_group(Osci                               FILES ${OSCI})
 source_group(Osci/Display                       FILES ${OSCI_DISPLAY})
 source_group(Osci/Math                          FILES ${OSCI_MATH})
@@ -158,7 +155,6 @@ source_group(Recorder                           FILES ${RECORDER})
 source_group(SCPI                               FILES ${SCPI})
 source_group(Settings                           FILES ${SETTINGS})
 source_group(Test                               FILES ${TEST})
-source_group(Tester                             FILES ${TESTER})
 source_group(Utils                              FILES ${UTILS})
 source_group(Utils/Containers                   FILES ${UTILS_CONTAINERS})
 source_group(Utils/Math                         FILES ${UTILS_MATH})
@@ -171,7 +167,7 @@ add_library(${PROJECT_NAME} ${COMMON} ${DOC} ${VS} ${VS_STD_INCLUDES} ${SRC}
                             ${KEYBOARD} ${MENU} ${MENU_PAGES} ${MENU_PAGES_INCLUDE} ${MENU_PAGES_PAGEDISPLAY}
                             ${MENU_PAGES_PAGEFUNCTION} ${MENU_PAGES_PAGERECORDER} ${MENU_PAGES_PAGEHELP}
                             ${MENU_PAGES_PAGEMEASURES} ${MENU_PAGES_PAGEMEMORY} ${MENU_PAGES_PAGESERVICE}
-                            ${MENU_PAGES_PAGESERVICE_PAGEDEBUG} ${MENU_PAGES_PAGETRIG} ${MULTIMETER} ${OSCI}
+                            ${MENU_PAGES_PAGESERVICE_PAGEDEBUG} ${MENU_PAGES_PAGETRIG} ${OSCI}
                             ${OSCI_DISPLAY} ${OSCI_MATH} ${OSCI_MEASUREMENTS} ${RECORDER} ${SCPI} ${SETTINGS}
-                            ${TEST} ${TESTER} ${UTILS} ${UTILS_CONTAINERS} ${UTILS_MATH} ${UTILS_TEXT}
+                            ${TEST} ${UTILS} ${UTILS_CONTAINERS} ${UTILS_MATH} ${UTILS_TEXT}
 )

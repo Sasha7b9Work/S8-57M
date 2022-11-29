@@ -1,7 +1,5 @@
 #pragma once
-#include "Multimeter/Multimeter.h"
 #include "Osci/Osci.h"
-#include "Tester/Tester.h"
 
 
 

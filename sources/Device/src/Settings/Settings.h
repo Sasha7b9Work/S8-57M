@@ -1,5 +1,4 @@
 #pragma once
-#include "Tester/Tester.h"
 #include "Menu/Pages/Include/PageChannels.h"
 #include "Menu/Pages/Include/DebugPage.h"
 #include "Menu/Pages/Include/PageDisplay.h"
