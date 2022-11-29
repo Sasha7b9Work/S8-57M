@@ -84,7 +84,7 @@ pCHAR SCPI_TRIG::FuncInput(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(inputs[S_TRIG_INPUT]));
 
-    SCPI_PROCESS_ARRAY(inputs, TrigInput::Set(static_cast<TrigInput::E>(i))); //-V2563
+    SCPI_PROCESS_ARRAY(inputs, TrigInput::Set(static_cast<TrigInput::E>(i)));
 }
 
 
@@ -106,7 +106,7 @@ pCHAR SCPI_TRIG::FuncLevel(pCHAR buffer) //-V2506
     {
         TrigLevel::Set(S_TRIG_SOURCE, static_cast<int16>(value * 2));
 
-        return end_str + 1; //-V2563
+        return end_str + 1;
     }
 
     return nullptr;
@@ -117,7 +117,7 @@ pCHAR SCPI_TRIG::FuncMode(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(trig_modes[S_TRIG_START_MODE]));
 
-    SCPI_PROCESS_ARRAY(trig_modes, TrigStartMode::Set(static_cast<TrigStartMode::E>(i))); //-V2563
+    SCPI_PROCESS_ARRAY(trig_modes, TrigStartMode::Set(static_cast<TrigStartMode::E>(i)));
 }
 
 
@@ -125,7 +125,7 @@ pCHAR SCPI_TRIG::FuncPolarity(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(polarities[S_TRIG_POLARITY]));
 
-    SCPI_PROCESS_ARRAY(polarities, TrigPolarity::Set(static_cast<TrigPolarity::E>(i))); //-V2563
+    SCPI_PROCESS_ARRAY(polarities, TrigPolarity::Set(static_cast<TrigPolarity::E>(i)));
 }
 
 
@@ -133,7 +133,7 @@ pCHAR SCPI_TRIG::FuncSource(pCHAR buffer) //-V2506
 {
     SCPI_REQUEST(SCPI::SendAnswer(sources[S_TRIG_SOURCE]));
 
-    SCPI_PROCESS_ARRAY(sources, TrigSource::Set(static_cast<Chan::E>(i))); //-V2563
+    SCPI_PROCESS_ARRAY(sources, TrigSource::Set(static_cast<Chan::E>(i)));
 }
 
 

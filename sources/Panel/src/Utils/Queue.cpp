@@ -49,7 +49,7 @@ void Queue<T>::Push(T elem)
         pointer = new T[static_cast<uint>(num)]; //-V2511
         for (int i = 0; i < num - 1; i++)
         {
-            pointer[i] = old[i + iFront]; //-V2563
+            pointer[i] = old[i + iFront];
         }       
         pointer[num - 1] = elem;
         iFront = 0;
@@ -64,7 +64,7 @@ T Queue<T>::Front() //-V2506
 {
     if (pointer != nullptr)
     {
-        T result = pointer[iFront]; //-V2563
+        T result = pointer[iFront];
         iFront++;
         if (iFront == iBack)
         {
@@ -85,7 +85,7 @@ T Queue<T>::Back()
 
     if (pointer != nullptr)
     {
-        result = pointer[iBack - 1]; //-V2563
+        result = pointer[iBack - 1];
         iBack--;
         if (iFront == iBack)
         {
@@ -119,7 +119,7 @@ T &Queue<T>::operator[](int n) //-V2506
         int index = iFront + n;
         if (index >= iFront && index < iBack)
         {
-            return pointer[index]; //-V2563
+            return pointer[index];
         }
     }
 

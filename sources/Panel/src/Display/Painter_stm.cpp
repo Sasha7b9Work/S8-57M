@@ -19,7 +19,7 @@ void Painter::BeginScene()
 
     uint *address = reinterpret_cast<uint *>(Display::GetBuffer());
 
-    uint *end = address + (BUFFER_HEIGHT * BUFFER_WIDTH) / 4; //-V2563
+    uint *end = address + (BUFFER_HEIGHT * BUFFER_WIDTH) / 4;
 
     uint value = static_cast<uint>(col.value) + static_cast<uint>(col.value << 8) + static_cast<uint>(col.value << 16) + static_cast<uint>(col.value << 24);
 
@@ -52,7 +52,7 @@ void Painter::EndScene(void)
 
         uint8 buffer[SIZE] = { Command::Screen, static_cast<uint8>(sendingString) };
 
-        std::memcpy(buffer + 2, Display::GetBuffer() + sendingString * SIZE_STRING, SIZE_STRING); //-V2563
+        std::memcpy(buffer + 2, Display::GetBuffer() + sendingString * SIZE_STRING, SIZE_STRING);
 
         HAL_BUS::SendToDevice(buffer, SIZE_STRING);
 
@@ -78,7 +78,7 @@ void Painter::DrawHLine(int y, int x0, int x1)
         Math::Swap(&x0, &x1);
     }
 
-    uint8 *address = Display::GetBuffer() + x0 + y * BUFFER_WIDTH; //-V2563
+    uint8 *address = Display::GetBuffer() + x0 + y * BUFFER_WIDTH;
     uint8 *end = Display::GetBufferEnd();
 
     uint8 value = currentColor.value;
@@ -173,7 +173,7 @@ void Painter::DrawVLine(int x, int y0, int y1)
         Math::Swap(&y0, &y1);
     }
 
-    uint8 *address = Display::GetBuffer() + x + y0 * BUFFER_WIDTH; //-V2563
+    uint8 *address = Display::GetBuffer() + x + y0 * BUFFER_WIDTH;
     uint8 *end = Display::GetBufferEnd();
 
     uint8 value = currentColor.value;
@@ -186,7 +186,7 @@ void Painter::DrawVLine(int x, int y0, int y1)
         }
 
         *address = value;
-        address += BUFFER_WIDTH; //-V2563
+        address += BUFFER_WIDTH;
     }
 }
 
@@ -213,14 +213,14 @@ void Painter::SetPoint(int x, int y)
 {
     if (x >= 0 && x < BUFFER_WIDTH && y >= 0 && y < BUFFER_HEIGHT)
     {
-        *(Display::GetBuffer() + y * BUFFER_WIDTH + x) = currentColor.value; //-V2563
+        *(Display::GetBuffer() + y * BUFFER_WIDTH + x) = currentColor.value;
     }
 }
 
 
 void Painter::SendRow(int row)
 {
-    uint8 *points = Display::GetBuffer() + row * BUFFER_WIDTH; //-V2563
+    uint8 *points = Display::GetBuffer() + row * BUFFER_WIDTH;
 
     uint8 data[322] = { Command::Screen, static_cast<uint8>(row) };
 

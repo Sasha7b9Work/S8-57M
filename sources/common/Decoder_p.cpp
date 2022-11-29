@@ -473,10 +473,10 @@ static bool DrawText(uint8 data) //-V2506
             buffer = new char[static_cast<uint>(numSymbols + 1)]; //-V2511
             break;
         default:
-            buffer[readingSymbols++] = static_cast<char>(data); //-V2563
+            buffer[readingSymbols++] = static_cast<char>(data);
             if (readingSymbols == numSymbols)
             {
-                buffer[readingSymbols] = 0; //-V2563
+                buffer[readingSymbols] = 0;
                 Text::Draw(x, y, buffer);
                 delete []buffer; //-V2511
                 return true;
