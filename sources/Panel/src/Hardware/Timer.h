@@ -31,39 +31,40 @@ enum TypeTimer
 };
 
 
-class Timer
+namespace Timer
 {
-public:
+    void Init();
 
-    static void Init();
+    void DeInit();
 
-    static void DeInit();
     // Назначает таймеру timer функцию и время срабатывания
-    static void Set(TypeTimer type, pFuncVV func, uint dTms);
+    void Set(TypeTimer type, pFuncVV func, uint dTms);
 
-    static void SetAndStartOnce(TypeTimer type, pFuncVV func, uint dTms);
+    void SetAndStartOnce(TypeTimer type, pFuncVV func, uint dTms);
 
-    static void SetAndEnable(TypeTimer type, pFuncVV func, uint dTms);
+    void SetAndEnable(TypeTimer type, pFuncVV func, uint dTms);
 
-    static void StartOnce(TypeTimer type);
+    void StartOnce(TypeTimer type);
 
-    static void Enable(TypeTimer type);
+    void Enable(TypeTimer type);
 
-    static void Disable(TypeTimer type);
+    void Disable(TypeTimer type);
 
-    static bool IsRun(TypeTimer type);
+    bool IsRun(TypeTimer type);
 
-    static void PauseOnTime(uint timeMS);
+    void PauseOnTime(uint timeMS);
 
-    static void PauseOnTicks(uint numTicks);
+    void PauseOnTicks(uint numTicks);
+
     // Запускает счётчик для измерения малых отрезков времени
-    static void StartMultiMeasurement();
+    void StartMultiMeasurement();
+
     // Устанавливает стартовую точку логгирования. Далее вызовы Timer_LogPoint засекают временные интервалы от это точки
-    static void StartLogging();
+    void StartLogging();
 
-    static uint LogPointUS(char *name);
+    uint LogPointUS(char *name);
 
-    static uint LogPointMS(char *name);
+    uint LogPointMS(char *name);
 
-    static void PauseOnOPS(uint ops);
+    void PauseOnOPS(uint ops);
 };
