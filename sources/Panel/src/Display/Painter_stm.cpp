@@ -1,7 +1,6 @@
 #include "defines.h"
 #include "Display/Painter.h"
 #include "Display/Display.h"
-#include "Hardware/LTDC.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Math.h"
 #include <cstring>

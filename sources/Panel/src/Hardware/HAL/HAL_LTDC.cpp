@@ -1,7 +1,6 @@
 #include "defines.h"
 #include "Display/Painter.h"
 #include "Hardware/CPU.h"
-#include "Hardware/LTDC.h"
 #include "Hardware/HAL/HAL.h"
 #include "Settings/SettingsTypes.h"
 #include "Display/Display.h"

@@ -4,7 +4,6 @@
 #include "Display/Text.h"
 #include "Hardware/Controls.h"
 #include "Hardware/CPU.h"
-#include "Hardware/LTDC.h"
 #include "Hardware/HAL/HAL.h"
 #include "Display/Colors.h"
 #include "Hardware/Timer.h"

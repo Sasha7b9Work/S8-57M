@@ -1171,16 +1171,6 @@
               <FilePath>.\src\Hardware\Keyboard.h</FilePath>
             </File>
             <File>
-              <FileName>LTDC.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\LTDC.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>LTDC.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Hardware\LTDC.h</FilePath>
-            </File>
-            <File>
               <FileName>Timer.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\Timer.h</FilePath>
@@ -1244,6 +1234,11 @@
               <FileName>stm32f4xx_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\HAL\stm32f4xx_it.h</FilePath>
+            </File>
+            <File>
+              <FileName>HAL_LTDC.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\HAL\HAL_LTDC.cpp</FilePath>
             </File>
           </Files>
         </Group>
