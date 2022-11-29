@@ -3,8 +3,8 @@
 #include "Display/Text.h"
 #include "Utils/Math.h"
 #include <cstdarg>
-#include <stdio.h>
-#include <string.h>
+#include <cstdio>
+#include <cstring>
 
 
 

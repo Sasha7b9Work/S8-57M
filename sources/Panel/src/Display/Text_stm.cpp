@@ -3,4 +3,4 @@
 #include "Painter.h"
 
 
-int i; //-V707
+//int i; //-V707
