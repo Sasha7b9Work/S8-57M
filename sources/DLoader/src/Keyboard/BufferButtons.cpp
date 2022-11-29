@@ -6,19 +6,22 @@
 #endif
 
 
+namespace BufferButtons
+{
+    static const int SIZE = 100;
 
-static const int SIZE = 100;
+    /// Здесь хранятся все события
+    static KeyEvent buffer[SIZE];
 
-/// Здесь хранятся все события
-static KeyEvent buffer[SIZE];
-/// Предыдущее попавшее в буфер событие клавиатуры
-static KeyEvent prevPushEvent;
-/// Позиция первого свободного места в буфере. Когда end == 0, буфер пустой
-static int end;
-/// Позиция первого значащего события в буфере.
-static int start;
+    /// Предыдущее попавшее в буфер событие клавиатуры
+    static KeyEvent prevPushEvent;
 
+    /// Позиция первого свободного места в буфере. Когда end == 0, буфер пустой
+    static int end;
 
+    /// Позиция первого значащего события в буфере.
+    static int start;
+}
 
 
 void BufferButtons::Push(KeyEvent event) //-V2506

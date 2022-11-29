@@ -2,14 +2,16 @@
 #include "Keyboard/Keyboard.h"
 
 
-struct BufferButtons
+namespace BufferButtons
 {
-    /// Функция вызывается при нажатии, повторе и отпускании кнопки
-    static void Push(KeyEvent str);
-    /// Извлекает событие из очереди
-    static KeyEvent Extract();
-    /// Возвращает true, если очередь событий пуста
-    static bool IsEmpty();
+    // Функция вызывается при нажатии, повторе и отпускании кнопки
+    void Push(KeyEvent str);
 
-    static void Clear() { while (!IsEmpty()) { Extract(); } }
+    // Извлекает событие из очереди
+    KeyEvent Extract();
+
+    // Возвращает true, если очередь событий пуста
+    bool IsEmpty();
+
+    inline void Clear() { while (!IsEmpty()) { Extract(); } }
 };
