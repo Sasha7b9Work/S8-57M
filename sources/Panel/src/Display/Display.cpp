@@ -46,7 +46,7 @@ void Display::ClearBuffer(Color color)
 
     if (HAL_DMA2D_Init(&hDMA2D) == HAL_OK)
     {
-    if (HAL_DMA2D_Start(&hDMA2D, COLOR(color.value), (uint)buffer, Display::WIDTH, Display::HEIGHT) == HAL_OK)
+    if (HAL_DMA2D_Start(&hDMA2D, (uint)(color.value | (color.value << 8) | (color.value << 16) | (color.value << 24)), (uint)buffer, Display::WIDTH / 4, Display::HEIGHT) == HAL_OK)
     {
         HAL_DMA2D_PollForTransfer(&hDMA2D, 100);
     }
@@ -96,6 +96,11 @@ void Display::DrawStartScreen()
 
 void Display::Update()
 {
+    ClearBuffer(Color::BLACK);
+
+//    Painter::SetColor(Color::BLACK);
+//    Painter::FillRegion(0, 0, Display::WIDTH - 1, Display::HEIGHT - 1);
+
 //    int x = (int)(std::rand() % Display::WIDTH);
 //    int y = (int)(std::rand() % Display::HEIGHT);
 //    int width = (int)(std::rand() % Display::WIDTH);
@@ -129,7 +134,7 @@ void Display::Update1()
 
     Painter::SetColor(Color::BLACK);
 
-    Painter::DrawRectangle(x, y, width, width);
+//    Painter::DrawRectangle(x, y, width, width);
 
     x += dX;
     y += dY;
@@ -157,10 +162,6 @@ void Display::Update1()
         dY = 1;
         y += dY;
     }
-
-    Painter::SetColor(Color::CHAN[0]);
-
-    Painter::DrawRectangle(0, 0, Display::WIDTH - 1, Display::HEIGHT - 1);
 
     Painter::SetColor(Color::WHITE);
 
