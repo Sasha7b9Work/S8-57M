@@ -73,15 +73,15 @@ void Display::ClearBuffer(Color color)
     DMA2D_HandleTypeDef hDMA2D;
 
     hDMA2D.Init.Mode = DMA2D_R2M;
-    hDMA2D.Init.ColorMode = DMA2D_RGB565;
+    hDMA2D.Init.ColorMode = DMA2D_RGB888;
     hDMA2D.Init.OutputOffset = 0;
 
-    hDMA2D.XferCpltCallback = 0;
-
-    hDMA2D.LayerCfg[0].AlphaMode = DMA2D_NO_MODIF_ALPHA;
-    hDMA2D.LayerCfg[0].InputAlpha = 0xFF;
-    hDMA2D.LayerCfg[0].InputColorMode = DMA2D_INPUT_L8;
-    hDMA2D.LayerCfg[0].InputOffset = 0;
+//    hDMA2D.XferCpltCallback = 0;
+//
+//    hDMA2D.LayerCfg[0].AlphaMode = DMA2D_NO_MODIF_ALPHA;
+//    hDMA2D.LayerCfg[0].InputAlpha = 0xFF;
+//    hDMA2D.LayerCfg[0].InputColorMode = DMA2D_INPUT_L8;
+//    hDMA2D.LayerCfg[0].InputOffset = 0;
 
     hDMA2D.Instance = DMA2D;
 
@@ -89,7 +89,7 @@ void Display::ClearBuffer(Color color)
     {
         if (HAL_DMA2D_ConfigLayer(&hDMA2D, 0) == HAL_OK)
         {
-            if (HAL_DMA2D_Start(&hDMA2D, color.value, (uint)buffer, Display::WIDTH, Display::HEIGHT) == HAL_OK)
+            if (HAL_DMA2D_Start(&hDMA2D, COLOR(color.value), (uint)buffer, Display::WIDTH, Display::HEIGHT) == HAL_OK)
             {
                 HAL_DMA2D_PollForTransfer(&hDMA2D, 100);
             }
@@ -140,6 +140,26 @@ void Display::DrawStartScreen()
 
 void Display::Update()
 {
+    int x = (int)(std::rand() % Display::WIDTH);
+    int y = (int)(std::rand() % Display::HEIGHT);
+    int width = (int)(std::rand() % Display::WIDTH);
+    int height = (int)(std::rand() % Display::HEIGHT);
+
+    if (x + width < Display::WIDTH && y + height > Display::HEIGHT)
+    {
+        Painter::SetColor(Color(std::rand() % 32));
+
+        Painter::FillRegion(x, y, width, height);
+    }
+
+    HAL_Delay(2);
+
+    Update1();
+}
+
+
+void Display::Update1()
+{
     static const int width = 100;
     static int x = 0;
     static int y = 0;
@@ -147,7 +167,7 @@ void Display::Update()
     static int dX = 1;
     static int dY = 1;
 
-    Painter::SetColor(Color::CHAN[1]);
+    Painter::SetColor(Color::WHITE);
 
     Painter::FillRegion(x + 1, y + 1, width - 2, width - 2);
 

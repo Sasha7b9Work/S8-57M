@@ -13,6 +13,8 @@ namespace Display
 
     void Update();
 
+    void Update1();
+
     uint8 *GetBuffer();
 
     uint8 *GetBufferEnd();
