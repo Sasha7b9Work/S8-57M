@@ -148,7 +148,7 @@ void Display::Update()
     static int dX = 1;
     static int dY = 1;
 
-    Painter::SetColor(Color::WHITE);
+    Painter::SetColor(Color::CHAN[1]);
 
     Painter::FillRegion(x + 1, y + 1, width - 2, width - 2);
 
