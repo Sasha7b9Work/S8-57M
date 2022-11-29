@@ -11,8 +11,7 @@ namespace IntRAM
     static DataSettings ds;
 
 
-    static const uint SIZE_BUFFER = 106 * 1024;
-    static uint8 buffer[SIZE_BUFFER];
+    static uint8 buffer[106 * 1024];
 
     static uint16 *const memAveA = reinterpret_cast<uint16 *>(buffer);                              // 0            = 0k
     static uint16 *const memAveB = reinterpret_cast<uint16 *>(buffer + 4 * FPGA::MAX_NUM_POINTS);   // 0   + 4 * 8k = 32k //-V2563

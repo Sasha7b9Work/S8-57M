@@ -16,16 +16,16 @@ static void HintSource(String *);
 static bool TestSource();
 
 // :MEASURE:VALUE
-static pCHAR FuncValue(pCHAR);
-static void HintValue(String *);
-static bool TestValue();
+static pCHAR Meas_FuncValue(pCHAR);
+static void Meas_HintValue(String *);
+static bool Meas_TestValue();
 
 
 const StructSCPI SCPI::measures[] =
 {
-    SCPI_LEAF(":DISPLAY", FuncDisplay, TestDisplay, "", HintDisplay),
-    SCPI_LEAF(":SOURCE",  FuncSource,  TestSource,  "", HintSource),
-    SCPI_LEAF(":VALUE",   FuncValue,   TestValue,   "", HintValue),
+    SCPI_LEAF(":DISPLAY", FuncDisplay,    TestDisplay,    "", HintDisplay),
+    SCPI_LEAF(":SOURCE",  FuncSource,     TestSource,     "", HintSource),
+    SCPI_LEAF(":VALUE",   Meas_FuncValue, Meas_TestValue, "", Meas_HintValue),
     SCPI_EMPTY()
 };
 
@@ -94,7 +94,7 @@ static pString values[] =
     ""
 };
 
-static pCHAR FuncValue(pCHAR buffer) //-V2506
+static pCHAR Meas_FuncValue(pCHAR buffer) //-V2506
 {
     pCHAR end = nullptr;
 
@@ -126,7 +126,7 @@ static void HintSource(String *)
 }
 
 
-static void HintValue(String *)
+static void Meas_HintValue(String *)
 {
 
 }
@@ -144,7 +144,7 @@ static bool TestSource()
 }
 
 
-static bool TestValue()
+static bool Meas_TestValue()
 {
     return false;
 }

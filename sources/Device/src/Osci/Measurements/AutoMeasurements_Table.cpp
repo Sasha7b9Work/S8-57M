@@ -87,7 +87,7 @@ void TableMeasures::Cell::DrawStringMeasure(int x, int y)
 {
     Measure measure(row, col);
 
-    static const int SIZE_BUFFER = 20;
+    const int SIZE_BUFFER = 20;
 
     char buffer[SIZE_BUFFER];
 
