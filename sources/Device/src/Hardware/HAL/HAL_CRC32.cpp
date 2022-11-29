@@ -5,13 +5,13 @@
 
 namespace HAL_CRC32
 {
-    static CRC_HandleTypeDef handle = { CRC }; //-V2571
+    static CRC_HandleTypeDef handle = { CRC };
 }
 
 
 void HAL_CRC32::Init()
 {
-    __HAL_RCC_CRC_CLK_ENABLE(); //-V2571
+    __HAL_RCC_CRC_CLK_ENABLE();
 
     if (HAL_CRC_Init(&handle) != HAL_OK)
     {
@@ -27,5 +27,5 @@ uint HAL_CRC32::Calculate8bit(uint8 *buffer, int size)
         size -= (size % 4);
     }
 
-    return HAL_CRC_Calculate(&handle, reinterpret_cast<uint *>(buffer), static_cast<uint>(size / 4)); //-V2571
+    return HAL_CRC_Calculate(&handle, reinterpret_cast<uint *>(buffer), static_cast<uint>(size / 4));
 }

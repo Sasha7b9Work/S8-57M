@@ -992,7 +992,7 @@ bool GovernorColor::HandlerKey(const KeyEvent &event) //-V2506
 
 const DataGovernorColor *GovernorColor::OwnData() const
 {
-    return static_cast<const DataGovernorColor *>(data->ad); //-V2571
+    return static_cast<const DataGovernorColor *>(data->ad);
 }
 
 

@@ -74,10 +74,10 @@ void *FDrive::GetHandleUSBH()
 
 void FDrive::Init()
 {
-    __GPIOB_CLK_ENABLE(); //-V2571
-    __USB_OTG_HS_CLK_ENABLE(); //-V760 //-V2571
-    __HAL_RCC_USB_OTG_HS_CLK_ENABLE(); //-V2571
-    __SYSCFG_CLK_ENABLE(); //-V2571
+    __GPIOB_CLK_ENABLE();
+    __USB_OTG_HS_CLK_ENABLE(); //-V760
+    __HAL_RCC_USB_OTG_HS_CLK_ENABLE();
+    __SYSCFG_CLK_ENABLE();
 
     HAL_PIO::Init(PIN_HCD_DM, HMode::AF_PP, HPull::No, HSpeed::High, HAlternate::AF12_OTG_HS_FS);
     HAL_PIO::Init(PIN_HCD_DP, HMode::AF_PP, HPull::No, HSpeed::High, HAlternate::AF12_OTG_HS_FS);
@@ -337,9 +337,9 @@ void FDrive::CloseOpenedFile()
 
 void FDrive::LL_::InitHCD(void *host)
 {
-    USBH_HandleTypeDef *phost = static_cast<USBH_HandleTypeDef *>(host); //-V2571
+    USBH_HandleTypeDef *phost = static_cast<USBH_HandleTypeDef *>(host);
 
-    handleHCD.Instance = USB_OTG_HS; //-V2571
+    handleHCD.Instance = USB_OTG_HS;
     handleHCD.Init.speed = HCD_SPEED_HIGH;
     handleHCD.Init.Host_channels = 12;
     handleHCD.Init.dma_enable = 0;

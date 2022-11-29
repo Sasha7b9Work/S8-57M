@@ -14,13 +14,13 @@ uint  Debug::size = 0;
 
 void Debug::StartProfiling()
 {
-    timeStart = TIME_US; //-V2571
+    timeStart = TIME_US;
 }
 
 
 void Debug::PointProfiling(char *name)
 {
-    LOG_WRITE("%s %d", name, TIME_US - timeStart); //-V2571
+    LOG_WRITE("%s %d", name, TIME_US - timeStart);
 }
 
 
@@ -32,13 +32,13 @@ void Debug::ClearTimeCounter()
 
 void Debug::StartIncreaseCounter()
 {
-    timeStartCounter = TIME_US; //-V2571
+    timeStartCounter = TIME_US;
 }
 
 
 void Debug::StopIncreaseCounter()
 {
-    timeCounter += (TIME_US - timeStartCounter); //-V2571
+    timeCounter += (TIME_US - timeStartCounter);
 }
 
 

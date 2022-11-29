@@ -25,7 +25,7 @@ namespace Display
 void Display::Init()
 {
     HAL_DAC2::Init();
-    LTDC_::Init(reinterpret_cast<uint>(buffer)); //-V2571
+    LTDC_::Init(reinterpret_cast<uint>(buffer));
     Painter::LoadPalette();
 
     DrawStartScreen();
@@ -35,8 +35,8 @@ void Display::Init()
 /*
 void Display::ToggleBuffers(void)
 {
-    uint destination = reinterpret_cast<uint>(frontBuffer); //-V2571
-    uint source = reinterpret_cast<uint>(backBuffer); //-V2571
+    uint destination = reinterpret_cast<uint>(frontBuffer);
+    uint source = reinterpret_cast<uint>(backBuffer);
 
     DMA2D_HandleTypeDef hDMA2D;
 
@@ -51,7 +51,7 @@ void Display::ToggleBuffers(void)
     hDMA2D.LayerCfg[1].InputColorMode = DMA2D_INPUT_L8;
     hDMA2D.LayerCfg[1].InputOffset = 0;
 
-    hDMA2D.Instance = DMA2D; //-V2571
+    hDMA2D.Instance = DMA2D;
 
     if (HAL_DMA2D_Init(&hDMA2D) == HAL_OK)
     {

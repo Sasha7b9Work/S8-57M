@@ -196,8 +196,8 @@ bool SU::EqualsStrings(uint8 *str1, const char * const str2, int size)
 
 bool SU::EqualsStrings(void *_str1, void *_str2, int size) //-V2506
 {
-    char *str1 = static_cast<char *>(_str1); //-V2571
-    char *str2 = static_cast<char *>(_str2); //-V2571
+    char *str1 = static_cast<char *>(_str1);
+    char *str2 = static_cast<char *>(_str2);
 
     for (int i = 0; i < size; i++)
     {
