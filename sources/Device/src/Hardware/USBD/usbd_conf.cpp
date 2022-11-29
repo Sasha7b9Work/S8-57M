@@ -152,7 +152,7 @@ USBD_StatusTypeDef  USBD_LL_Init (USBD_HandleTypeDef *pdev)
         handlePCD->Init.dev_endpoints = 4;
         handlePCD->Init.speed = PCD_SPEED_FULL;
         handlePCD->Init.dma_enable = DISABLE;
-        handlePCD->Init.ep0_mps = DEP0CTL_MPS_64;
+//        handlePCD->Init.ep0_mps = DEP0CTL_MPS_64;
         handlePCD->Init.phy_itface = PCD_PHY_EMBEDDED;
         handlePCD->Init.Sof_enable = DISABLE;
         handlePCD->Init.low_power_enable = DISABLE;
