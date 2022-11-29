@@ -14,7 +14,7 @@ namespace Display
 
     uint8 *GetBufferEnd();
 
-    void ToggleBuffers();
+//    void ToggleBuffers();
 
     extern LTDC_HandleTypeDef hltdc;
 };

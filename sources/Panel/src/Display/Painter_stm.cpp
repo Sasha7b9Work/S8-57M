@@ -63,7 +63,7 @@ void Painter::EndScene(void)
         }
     }
 
-    LTDC_::ToggleBuffers();
+//    LTDC_::ToggleBuffers();
 }
 
 

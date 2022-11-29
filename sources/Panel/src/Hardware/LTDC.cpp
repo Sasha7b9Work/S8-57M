@@ -7,12 +7,10 @@
 
 
 static LTDC_HandleTypeDef handleLTDC;
-static uint frontBuffer = 0;
-static uint backBuffer = 0;
+static uint buffer = 0;
 
 
-
-void LTDC_::Init(uint front, uint back)
+void LTDC_::Init(uint _buffer)
 {
     GPIO_InitTypeDef isGPIO =
     {
@@ -82,7 +80,7 @@ void LTDC_::Init(uint front, uint back)
         ERROR_HANDLER();
     }
 
-    SetBuffers(front, back);
+    SetBuffer(_buffer);
 
     COLOR(0) = 0;
     COLOR(1) = 0x00ffffff;
@@ -93,10 +91,9 @@ void LTDC_::Init(uint front, uint back)
 }
 
 
-void LTDC_::SetBuffers(uint front, uint back)
+void LTDC_::SetBuffer(uint _buffer)
 {
-    frontBuffer = front;
-    backBuffer = back;
+    buffer = _buffer;
 
     LTDC_LayerCfgTypeDef pLayerCfg;
 
@@ -109,12 +106,13 @@ void LTDC_::SetBuffers(uint front, uint back)
     pLayerCfg.Alpha0 = 255;
     pLayerCfg.BlendingFactor1 = LTDC_BLENDING_FACTOR1_CA;
     pLayerCfg.BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
-    pLayerCfg.FBStartAdress = frontBuffer;
+    pLayerCfg.FBStartAdress = buffer;
     pLayerCfg.ImageWidth = 320;
     pLayerCfg.ImageHeight = 240;
     pLayerCfg.Backcolor.Blue = 0;
     pLayerCfg.Backcolor.Green = 0;
     pLayerCfg.Backcolor.Red = 0;
+
     if (HAL_LTDC_ConfigLayer(&handleLTDC, &pLayerCfg, 0) != HAL_OK)
     {
         ERROR_HANDLER();
@@ -130,6 +128,7 @@ void LTDC_::SetColors(uint *clut, uint numColors)
 }
 
 
+/*
 void LTDC_::ToggleBuffers()
 {
     DMA2D_HandleTypeDef hDMA2D;
@@ -158,3 +157,4 @@ void LTDC_::ToggleBuffers()
         }
     }
 }
+*/

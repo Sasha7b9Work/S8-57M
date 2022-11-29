@@ -15,11 +15,8 @@ namespace Display
     LTDC_HandleTypeDef hltdc;
 
     uint8  front[BUFFER_WIDTH * BUFFER_HEIGHT];
-    uint8  back[BUFFER_WIDTH * BUFFER_HEIGHT];
 
-    uint8 *frontBuffer = front;
-    // Задний буфер. В нём происходит отрисовка, и затем изображение копируется во frontBuffer
-    uint8 *backBuffer = back;
+    uint8 *buffer = front;
 
     static void DrawStartScreen();
 }
@@ -28,13 +25,14 @@ namespace Display
 void Display::Init()
 {
     HAL_DAC2::Init();
-    LTDC_::Init(reinterpret_cast<uint>(frontBuffer), reinterpret_cast<uint>(backBuffer)); //-V2571
+    LTDC_::Init(reinterpret_cast<uint>(buffer)); //-V2571
     Painter::LoadPalette();
 
     DrawStartScreen();
 }
 
 
+/*
 void Display::ToggleBuffers(void)
 {
     uint destination = reinterpret_cast<uint>(frontBuffer); //-V2571
@@ -66,17 +64,18 @@ void Display::ToggleBuffers(void)
         }
     }
 }
+*/
 
 
 uint8 *Display::GetBuffer()
 {
-    return backBuffer;
+    return buffer;
 }
 
 
 uint8 *Display::GetBufferEnd()
 {
-    return backBuffer + BUFFER_WIDTH * BUFFER_HEIGHT; //-V2563
+    return buffer + BUFFER_WIDTH * BUFFER_HEIGHT; //-V2563
 }
 
 
