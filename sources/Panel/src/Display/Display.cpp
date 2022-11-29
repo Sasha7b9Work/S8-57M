@@ -125,7 +125,7 @@ void Display::Update()
 
     Painter::DrawRectangle(x, y, width, width);
 
-    x += dY;
+    x += dX;
     y += dY;
 
     if (x > Display::WIDTH - width)
