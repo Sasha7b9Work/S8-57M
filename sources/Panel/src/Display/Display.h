@@ -1,5 +1,6 @@
 #pragma once
 #include "defines.h"
+#include "Display/Colors.h"
 
 
 
@@ -15,6 +16,8 @@ namespace Display
     uint8 *GetBuffer();
 
     uint8 *GetBufferEnd();
+
+    void ClearBuffer(Color);
 
     extern LTDC_HandleTypeDef hltdc;
 };
