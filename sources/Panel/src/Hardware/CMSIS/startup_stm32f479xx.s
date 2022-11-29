@@ -1,9 +1,7 @@
-;******************** (C) COPYRIGHT 2017 STMicroelectronics ********************
-;* File Name          : startup_stm32f429xx.s
+;*******************************************************************************
+;* File Name          : startup_stm32f479xx.s
 ;* Author             : MCD Application Team
-;* Version            : V2.6.1
-;* Date               : 14-February-2017
-;* Description        : STM32F429x devices vector table for MDK-ARM toolchain. 
+;* Description        : STM32F479x devices vector table for MDK-ARM toolchain. 
 ;*                      This module performs:
 ;*                      - Set the initial SP
 ;*                      - Set the initial PC == Reset_Handler
@@ -12,40 +10,26 @@
 ;*                        calls main()).
 ;*                      After Reset the CortexM4 processor is in Thread mode,
 ;*                      priority is Privileged, and the Stack is set to Main.
-;* <<< Use Configuration Wizard in Context Menu >>>   
 ;*******************************************************************************
-; 
-;* Redistribution and use in source and binary forms, with or without modification,
-;* are permitted provided that the following conditions are met:
-;*   1. Redistributions of source code must retain the above copyright notice,
-;*      this list of conditions and the following disclaimer.
-;*   2. Redistributions in binary form must reproduce the above copyright notice,
-;*      this list of conditions and the following disclaimer in the documentation
-;*      and/or other materials provided with the distribution.
-;*   3. Neither the name of STMicroelectronics nor the names of its contributors
-;*      may be used to endorse or promote products derived from this software
-;*      without specific prior written permission.
+;* @attention
 ;*
-;* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-;* AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-;* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-;* DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-;* FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-;* DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-;* SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-;* CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-;* OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-;* OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-; 
+;* Copyright (c) 2017 STMicroelectronics.
+;* All rights reserved.
+;*
+;* This software is licensed under terms that can be found in the LICENSE file
+;* in the root directory of this software component.
+;* If no LICENSE file comes with this software, it is provided AS-IS.
+;*
 ;*******************************************************************************
-
+;* <<< Use Configuration Wizard in Context Menu >>>
+;
 ; Amount of memory (in bytes) allocated for Stack
 ; Tailor this value to your application needs
 ; <h> Stack Configuration
 ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
-Stack_Size      EQU     0x00000800
+Stack_Size      EQU     0x00000400
 
                 AREA    STACK, NOINIT, READWRITE, ALIGN=3
 Stack_Mem       SPACE   Stack_Size
@@ -56,7 +40,7 @@ __initial_sp
 ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
-Heap_Size       EQU     0x00000800
+Heap_Size       EQU     0x00000200
 
                 AREA    HEAP, NOINIT, READWRITE, ALIGN=3
 __heap_base
@@ -170,7 +154,7 @@ __Vectors       DCD     __initial_sp               ; Top of Stack
                 DCD     OTG_HS_WKUP_IRQHandler            ; USB OTG HS Wakeup through EXTI                         
                 DCD     OTG_HS_IRQHandler                 ; USB OTG HS                                      
                 DCD     DCMI_IRQHandler                   ; DCMI  
-                DCD     0                          ; Reserved				                              
+                DCD     CRYP_IRQHandler                   ; CRYPTO				                              
                 DCD     HASH_RNG_IRQHandler               ; Hash and Rng
                 DCD     FPU_IRQHandler                    ; FPU
                 DCD     UART7_IRQHandler                  ; UART7
@@ -182,7 +166,9 @@ __Vectors       DCD     __initial_sp               ; Top of Stack
                 DCD     LTDC_IRQHandler                   ; LTDC
                 DCD     LTDC_ER_IRQHandler                ; LTDC error
                 DCD     DMA2D_IRQHandler                  ; DMA2D
-                                         
+                DCD     QUADSPI_IRQHandler                ; QUADSPI
+                DCD     DSI_IRQHandler                    ; DSI
+
 __Vectors_End
 
 __Vectors_Size  EQU  __Vectors_End - __Vectors
@@ -325,7 +311,8 @@ Default_Handler PROC
                 EXPORT  OTG_HS_EP1_IN_IRQHandler          [WEAK]                      
                 EXPORT  OTG_HS_WKUP_IRQHandler            [WEAK]                        
                 EXPORT  OTG_HS_IRQHandler                 [WEAK]                                      
-                EXPORT  DCMI_IRQHandler                   [WEAK]                                                                                 
+                EXPORT  DCMI_IRQHandler                   [WEAK]
+                EXPORT  CRYP_IRQHandler     			  [WEAK]
                 EXPORT  HASH_RNG_IRQHandler               [WEAK]
                 EXPORT  FPU_IRQHandler                    [WEAK]
                 EXPORT  UART7_IRQHandler                  [WEAK]
@@ -337,6 +324,8 @@ Default_Handler PROC
                 EXPORT  LTDC_IRQHandler                   [WEAK]
                 EXPORT  LTDC_ER_IRQHandler                [WEAK]
                 EXPORT  DMA2D_IRQHandler                  [WEAK]
+                EXPORT  QUADSPI_IRQHandler                [WEAK]
+                EXPORT  DSI_IRQHandler                    [WEAK]
 
 WWDG_IRQHandler                                                       
 PVD_IRQHandler                                      
@@ -416,7 +405,8 @@ OTG_HS_EP1_OUT_IRQHandler
 OTG_HS_EP1_IN_IRQHandler                            
 OTG_HS_WKUP_IRQHandler                                
 OTG_HS_IRQHandler                                                   
-DCMI_IRQHandler                                                                                                             
+DCMI_IRQHandler 
+CRYP_IRQHandler
 HASH_RNG_IRQHandler
 FPU_IRQHandler  
 UART7_IRQHandler                  
@@ -427,7 +417,9 @@ SPI6_IRQHandler
 SAI1_IRQHandler                   
 LTDC_IRQHandler                   
 LTDC_ER_IRQHandler                 
-DMA2D_IRQHandler                  
+DMA2D_IRQHandler
+QUADSPI_IRQHandler                 
+DSI_IRQHandler                  
                 B       .
 
                 ENDP
@@ -461,5 +453,3 @@ __user_initial_stackheap
                  ENDIF
 
                  END
-
-;************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE*****
