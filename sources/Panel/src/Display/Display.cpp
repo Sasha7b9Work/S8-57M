@@ -110,21 +110,49 @@ void Display::DrawStartScreen()
 
 void Display::Update()
 {
-    for (int i = 0; i < 32; i++)
+    static const int width = 100;
+    static int x = 0;
+    static int y = 0;
+
+    static int dX = 1;
+    static int dY = 1;
+
+    Painter::SetColor(Color::WHITE);
+
+    Painter::FillRegion(x + 1, y + 1, width - 2, width - 2);
+
+    Painter::SetColor(Color::BLACK);
+
+    Painter::DrawRectangle(x, y, width, width);
+
+    x += dY;
+    y += dY;
+
+    if (x > Display::WIDTH - width)
     {
-        COLOR(i) = (uint8)std::rand();
+        dX = -1;
+        x += dX;
     }
 
-    for (int x = 0; x < Display::WIDTH; x++)
+    if (x < 0)
     {
-        for (int y = 0; y < Display::HEIGHT; y++)
-        {
-            Painter::SetColor(Color((uint8)std::rand()));
-            Painter::SetPoint(x, y);
-        }
+        dX = 1;
+        x += dX;
     }
 
-//    Painter::SetColor(Color::WHITE);
+    if (y > Display::HEIGHT - width)
+    {
+        dY = -1;
+        y += dY;
+    }
 
-//    Painter::FillRegion(10, 10, 100, 100);
+    if (y < 0)
+    {
+        dY = 1;
+        y += dY;
+    }
+
+    Painter::SetColor(Color::CHAN[0]);
+
+    Painter::DrawRectangle(0, 0, Display::WIDTH - 1, Display::HEIGHT - 1);
 }
