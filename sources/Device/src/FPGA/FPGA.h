@@ -7,23 +7,6 @@
 
 struct FPGA
 {
-    friend struct ContextFreqMeter;
-    friend struct ContextOsci;
-    friend struct ContextRecorder;
-    friend struct Randomizer;
-
-    friend struct Bandwidth;
-    friend struct Device;
-    friend struct Range;
-    friend struct RShift;
-    friend struct TBase;
-    friend struct TrigInput;
-    friend struct TrigPolarity;
-    friend struct TShift;
-    friend struct TrigLevel;
-
-    friend class Tester;
-
     static bool IsRunning();
 
     // ¬ключить/выключить калибратор.
@@ -66,9 +49,9 @@ struct FPGA
         static bool PeriodInProcess();
     };
 
-private:
-
     static void Init();
+
+private:
 
     static void OnPressStart();
 };
