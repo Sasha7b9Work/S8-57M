@@ -19,21 +19,14 @@
 
 #define FM_CURSOR_IN_DIRS       (bf.cursorsInDirs)
 
-static struct BitFieldFileManager
-{
-    uint  cursorsInDirs : 1;
-    uint  notUsed       : 31;
-} bf = {1, 0};
-
-
-#define RECS_ON_PAGE    23
-#define WIDTH_COL       135
-
 ModeRedrawFM::E ModeRedrawFM::modeRedraw = ModeRedrawFM::Full;
 
 
 namespace FileManager
 {
+    static const int RECS_ON_PAGE = 23;
+    static const int WIDTH_COL    = 135;
+
     static char currentDir[255] = "\\";
     static int numFirstDir = 0;         // Ќомер первого выведенного каталога в левой панели. ¬сего может быть выведено RECS_ON_PAGE каталогов
     static int numCurDir = 0;           // Ќомер подсвеченного каталога
@@ -42,6 +35,12 @@ namespace FileManager
     static int numDirs = 0;
     static int numFiles = 0;
 
+    static struct BitFieldFileManager
+    {
+        uint  cursorsInDirs : 1;
+        uint  notUsed : 31;
+    } bf = { 1, 0 };
+
     static void DrawDirs(int x, int y);
     static void DrawFiles(int x, int y);
     static void DrawNameCurrentDir(int left, int top);
@@ -49,6 +48,9 @@ namespace FileManager
     static void DecCurrentDir();
     static void IncCurrentFile();
     static void DecCurrentFile();
+
+    static void DrawLongString(int x, int y, const char *string, bool hightlight);
+    static void DrawHat(int x, int y, const char *string, int num1, int num2);
 }
 
 
@@ -62,7 +64,7 @@ void FileManager::Init()
 }
 
 
-static void DrawLongString(int x, int y, const char *string, bool hightlight)
+void FileManager::DrawLongString(int x, int y, const char *string, bool hightlight)
 {
     int length = DFont::GetLengthText(string);
 
@@ -88,7 +90,7 @@ static void DrawLongString(int x, int y, const char *string, bool hightlight)
 }
 
 
-static void DrawHat(int x, int y, const char *string, int num1, int num2)
+void FileManager::DrawHat(int x, int y, const char *string, int num1, int num2)
 {
     Region(WIDTH_COL + 9, RECS_ON_PAGE * 9 + 11).Fill(x - 1, y, Color::BACK);
     String(string, num1, num2).Draw(x + 60, y, Color::FILL);
