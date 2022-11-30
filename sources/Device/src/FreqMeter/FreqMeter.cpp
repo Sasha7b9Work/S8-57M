@@ -13,24 +13,41 @@
 #include <cstring>
 
 
-// для отладки
-// \todo удалить
-static BitSet32 lastFreq;
-static BitSet32 lastPeriod;
+namespace FreqMeter
+{
+    // для отладки
+    // \todo удалить
+    static BitSet32 lastFreq;
+    static BitSet32 lastPeriod;
 
-BitSet32 FreqMeter::freqActual;
-BitSet32 FreqMeter::periodActual;
-uint     FreqMeter::lastFreqRead;
-uint     FreqMeter::lastPeriodRead;
-uint     FreqMeter::lastFreqOver;
-uint     FreqMeter::lastPeriodOver;
-uint     FreqMeter::timeStartMeasureFreq = 0;
-uint     FreqMeter::timeStartMeasurePeriod = 0;
+    BitSet32 freqActual;
+    BitSet32 periodActual;
+    uint     lastFreqRead;
+    uint     lastPeriodRead;
+    uint     lastFreqOver;
+    uint     lastPeriodOver;
+    uint     timeStartMeasureFreq = 0;
+    uint     timeStartMeasurePeriod = 0;
 
-static bool freqNeedCalculateFromPeriod = false;    // Установленное в true значение означает, что частоту нужно считать по счётчику периода
-static float prevFreq = 0.0F;
-static float frequency = 0.0F;                      // Значение частоты для встроенного частотомера справа вверху экрана
+    // Установить состояние лампочек счётчиков в состояние, соответствующее текущему моменту
+    static void SetStateLamps();
 
+    static void SetStateLampFreq();
+
+    static void SetStateLampPeriod();
+
+    static void ReadFreq();
+
+    static void ReadPeriod();
+
+    static float FreqSetToFreq(const BitSet32 *fr);
+
+    static float PeriodSetToFreq(const BitSet32 *period);
+
+    static bool freqNeedCalculateFromPeriod = false;    // Установленное в true значение означает, что частоту нужно считать по счётчику периода
+    static float prevFreq = 0.0F;
+    static float frequency = 0.0F;                      // Значение частоты для встроенного частотомера справа вверху экрана
+}
 
 
 void FreqMeter::Init()
@@ -269,8 +286,8 @@ void DisplayFreqMeter::DrawDebugInfo()
     Region(width, height).Fill(x, y, Color::BACK);
     Rectangle(width + 2, height + 2).Draw(x - 1, y - 1, Color::FILL);
 
-    String("%d", lastFreq.word).Draw(x + 4, y + 4);
-    String("%d", lastPeriod.word).Draw(x + 4, y + 15);
+    String("%d", FreqMeter::lastFreq.word).Draw(x + 4, y + 4);
+    String("%d", FreqMeter::lastPeriod.word).Draw(x + 4, y + 15);
 
     int size = 8;
 
