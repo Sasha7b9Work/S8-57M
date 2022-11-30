@@ -88,12 +88,12 @@ void TableMeasures::Cell::DrawStringMeasure(int x, int y)
 {
     Measure measure(row, col);
 
-    static const int SIZE_BUFFER = 20;
+    static const int _SIZE_BUFFER_ = 20;
 
-    char buffer[SIZE_BUFFER];
+    char buffer[_SIZE_BUFFER_];
 
-    String measureA = measure.GetStringMeasure(ChanA, buffer, SIZE_BUFFER);
-    String measureB = measure.GetStringMeasure(ChanB, buffer, SIZE_BUFFER);
+    String measureA = measure.GetStringMeasure(ChanA, buffer, _SIZE_BUFFER_);
+    String measureB = measure.GetStringMeasure(ChanB, buffer, _SIZE_BUFFER_);
 
     Color colA = Color::CHAN[ChanA];
     Color colB = Color::CHAN[ChanB];
