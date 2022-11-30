@@ -3,14 +3,13 @@
 #include "Osci/ParametersOsci.h"
 
 
-class Calibrator
+namespace Calibrator
 {
-public:
     // Запускает процедуру калибровки
-    static void Calibrate();
-    
+    void Calibrate();
+
     // Балансировать канал на всех диапазонах
-    static bool BalanceChannel(Chan::E ch, bool showHint);
+    bool BalanceChannel(Chan::E ch, bool showHint);
 
     struct Mode
     {
