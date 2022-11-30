@@ -8,16 +8,16 @@
 #include <stm32f4xx_hal.h>
 
 
-#define PORT_READY  GPIOC
-#define PIN_READY   GPIO_PIN_14
+#define PORT_READY  GPIOB
+#define PIN_READY   GPIO_PIN_15
 #define READY       PORT_READY, PIN_READY
 
-#define PORT_DATA   GPIOC
-#define PIN_DATA    GPIO_PIN_15
+#define PORT_DATA   GPIOB
+#define PIN_DATA    GPIO_PIN_14
 #define DATA        PORT_DATA, PIN_DATA
 
-#define PORT_CS     GPIOC
-#define PIN_CS      GPIO_PIN_13
+#define PORT_CS     GPIOD
+#define PIN_CS      GPIO_PIN_8
 #define CS          PORT_CS, PIN_CS
 
 #define PORT_WR     GPIOD
