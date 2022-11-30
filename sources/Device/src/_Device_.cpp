@@ -38,6 +38,8 @@ void Device::Init()
 
     PAUSE_ON_MS(500);
 
+    HAL_TIM2::StartMultiMeasurement();
+
     Beeper::Init();
 
     Battery::Init();
@@ -52,7 +54,7 @@ void Device::Init()
 
     Settings::Load();
 
-    setNRST.Init();
+//    setNRST.Init();
 
     Display::Init();
 
