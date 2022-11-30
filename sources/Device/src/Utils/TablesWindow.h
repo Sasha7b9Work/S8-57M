@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 static const float koeffsNorm256[256] =
 {
 	1.0f,

@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 /*
     «десь работа с пам€тью на макете, где не было внешней RAM
 */

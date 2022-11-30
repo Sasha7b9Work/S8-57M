@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include <stm32f4xx_hal.h>
 #include "defines.h"
 #include "FPGA/FPGA.h"

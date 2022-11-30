@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Menu/Pages/Include/PageChannels.h"
 #include "Menu/Pages/Include/DebugPage.h"

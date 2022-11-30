@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Osci/ParametersOsci.h"
 #include "Menu/Pages/Include/PageTime.h"
