@@ -13,23 +13,13 @@
 int main()
 {
     CPU::Init();
+
     Display::Init();
-//    Keyboard::Init();
 
     UnusedMemory::Init();
 
     while(1)
     {
-//        Display::Update();
-        
-//        static uint prevTime = 0;
-
         HAL_BUS::Update();
-
-//        if(TIME_MS - prevTime > 2)
-//        {
-//            Keyboard::Update();
-//            prevTime = TIME_MS;
-//        }
     }
 }

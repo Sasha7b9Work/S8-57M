@@ -71,7 +71,20 @@ static OutPin pinData(PIN_PAN_DATA);
 
 void HAL_BUS::InitPanel()
 {
+    pinD0.Init();
+    pinD1.Init();
+    pinD2.Init();
+    pinD3.Init();
+    pinD4.Init();
+    pinD5.Init();
+    pinD6.Init();
+    pinD7.Init();
 
+    pinWR.Init();
+    pinRD.Init();
+    pinCS.Init();
+    pinReady.Init();
+    pinData.Init();
 }
 
 
@@ -84,9 +97,7 @@ void HAL_BUS::UpdatePanel()
 
     for (int i = 0; i < 13; i++)
     {
-        bool bit = _GET_BIT(counter, i) != 0;
-
-        if (bit)
+        if (i == counter)
         {
             pins[i]->SetActive();
         }
@@ -94,6 +105,13 @@ void HAL_BUS::UpdatePanel()
         {
             pins[i]->SetPassive();
         }
+    }
+
+    counter++;
+
+    if (counter > 12)
+    {
+        counter = 0;
     }
 }
 

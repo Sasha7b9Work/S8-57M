@@ -99,6 +99,8 @@ bool SetCurrentMode(const Page *page, Device::Mode::E mode) //-V2506
 void Device::Update()
 {
     HAL_BUS::UpdatePanel();
+
+    Timer::PauseOnTime(500);
 }
 
 
