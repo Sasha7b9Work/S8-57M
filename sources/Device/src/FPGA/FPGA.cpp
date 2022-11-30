@@ -12,11 +12,14 @@
 #include <cstring>
 
 
-bool   FPGA::forcedStart = false;
-uint16 FPGA::post = static_cast<uint16>(~(512));
-uint16 FPGA::pred = static_cast<uint16>(~(512));
+namespace FPGA
+{
+    bool   forcedStart = false;
+    uint16 post = static_cast<uint16>(~(512));
+    uint16 pred = static_cast<uint16>(~(512));
 
-bool          FPGA::isRunning = false;
+    bool   isRunning = false;
+}
 
 
 void FPGA::ForcedStart()
@@ -53,26 +56,6 @@ uint16 Osci::ReadLastRecord(Chan::E ch)
     }
 
     return address;
-}
-
-
-void FPGA::OnPressStart()
-{
-    if (Device::InModeRecorder())
-    {
-        Recorder::OnPressStart();
-    }
-    else
-    {
-        if (IsRunning())
-        {
-            Osci::Stop();
-        }
-        else
-        {
-            Osci::Start(true);
-        }
-    }
 }
 
 

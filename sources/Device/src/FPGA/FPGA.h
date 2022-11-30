@@ -5,53 +5,49 @@
 #include "FPGA/MathFPGA.h"
 
 
-struct FPGA
+namespace FPGA
 {
-    static bool IsRunning();
+    bool IsRunning();
 
     // Включить/выключить калибратор.
-    static void LoadCalibratorMode();
+    void LoadCalibratorMode();
 
-    static void GiveStart(uint16 pred, uint16 post);
+    void GiveStart(uint16 pred, uint16 post);
 
-    static const int MAX_NUM_POINTS = 8 * 1024;
+    const int MAX_NUM_POINTS = 8 * 1024;
 
     // Принудительный запуск синхронизации
-    static void ForcedStart();
+    void ForcedStart();
 
-    static void LoadRegUPR();
+    void LoadRegUPR();
 
-    static void Reset();
+    void Reset();
 
     // True, если дан принудительный запуск
-    static bool forcedStart;
+    extern bool forcedStart;
 
-    static uint16 post;
-    static uint16 pred;
+    extern uint16 post;
+    extern uint16 pred;
 
-    static bool isRunning;
+    extern bool isRunning;
 
-    struct Flag
+    namespace Flag
     {
-        static void Read(bool updateFreqMeter = true);
+        void Read(bool updateFreqMeter = true);
 
-        static void Clear();
-        static bool DataReady();
-        static bool TrigReady();
-        static bool Pred();
-        static bool HoldOff();
+        void Clear();
+        bool DataReady();
+        bool TrigReady();
+        bool Pred();
+        bool HoldOff();
 
-        static bool FreqReady();
-        static bool PeriodReady();
-        static bool FreqOverflow();
-        static bool PeriodOverflow();
-        static bool FreqInProcess();
-        static bool PeriodInProcess();
+        bool FreqReady();
+        bool PeriodReady();
+        bool FreqOverflow();
+        bool PeriodOverflow();
+        bool FreqInProcess();
+        bool PeriodInProcess();
     };
 
-    static void Init();
-
-private:
-
-    static void OnPressStart();
+    void Init();
 };
