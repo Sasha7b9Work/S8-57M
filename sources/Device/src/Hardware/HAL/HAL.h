@@ -177,48 +177,48 @@ namespace HAL_ROM
 };
 
 
-struct HAL_SPI4
+namespace HAL_SPI4
 {
-    static void Init();
+    void Init();
 };
 
 
-struct HAL_TIM2
+namespace HAL_TIM2
 {
-    static uint TimeUS();
-    static uint TimeTicks();
-    static void Init(uint prescaler, uint period);
-    static void DeInit();
-    static void Start();
-    static void Stop();
-    static void StartMultiMeasurement();
+    uint TimeUS();
+    uint TimeTicks();
+    void Init(uint prescaler, uint period);
+    void DeInit();
+    void Start();
+    void Stop();
+    void StartMultiMeasurement();
 };
 
 
-struct HAL_TIM3
+namespace HAL_TIM3
 {
-    static void Init(uint prescaler, uint period);
-    static void DeInit();
-    static void Start();
-    static void Stop();
-    static void EnableIRQ(uint mainPriority, uint subPriority);
-    static void DisableIRQ();
-    static void StartIT(uint period);
-    static void StopIT();
+    void Init(uint prescaler, uint period);
+    void DeInit();
+    void Start();
+    void Stop();
+    void EnableIRQ(uint mainPriority, uint subPriority);
+    void DisableIRQ();
+    void StartIT(uint period);
+    void StopIT();
 };
 
 
 // Используется для выключения прибора в случае зависания
-struct HAL_TIM5
+namespace HAL_TIM5
 {
-    static void Init();
-    static void ElapsedCallback();
+    void Init();
+    void ElapsedCallback();
 };
 
 
-struct HAL_USART3
+namespace HAL_USART3
 {
-    static void Init(pFuncVV recvCallback);
-    static void Transmit(void *buffer, int size, uint timeout);
-    static void StartReceiveIT(void *buffer, int size);
+    void Init(pFuncVV recvCallback);
+    void Transmit(void *buffer, int size, uint timeout);
+    void StartReceiveIT(void *buffer, int size);
 };
