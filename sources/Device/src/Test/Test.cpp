@@ -9,7 +9,7 @@
 
 
 
-static void RunTest(bool (*func)(), char *message);
+static void RunTest(bool (*func)(), const char *message);
 
 
 void Test::Run() //-V2506
@@ -39,7 +39,7 @@ void Test::Run() //-V2506
 }
 
 
-static void RunTest(bool (*func)(), char *message)
+static void RunTest(bool (*func)(), const char *message)
 {
     Test::Display::AddMessage(message);
 
