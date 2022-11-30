@@ -5,6 +5,7 @@
 #include "Display/Warnings.h"
 #include "Hardware/Timer.h"
 #include "Utils/Queue.h"
+#include "Hardware/HAL/HAL.h"
 #include <cstring>
 
 

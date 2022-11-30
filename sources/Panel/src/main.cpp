@@ -20,7 +20,9 @@ int main()
 
     while(1)
     {
-        static uint prevTime = 0;
+//        Display::Update();
+        
+//        static uint prevTime = 0;
 
         HAL_BUS::Update();
 

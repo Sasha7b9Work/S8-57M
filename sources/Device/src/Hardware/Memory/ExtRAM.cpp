@@ -158,13 +158,13 @@ float ExtRAM::TestTime1kB(uint8 *address) //-V2506
         data[i] = static_cast<uint8>(std::rand());
     }
 
-    uint start = Timer::TimeUS();
+    uint start = TIME_US;
 
     Write(data, SIZE_BUFFER, address);
 
     Read(out, SIZE_BUFFER, address);
 
-    float time = (Timer::TimeUS() - start) / 1e6F; //-V2564
+    float time = (TIME_US - start) / 1e6F; //-V2564
 
     for(int i = 0; i < SIZE_BUFFER; i++)
     {

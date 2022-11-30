@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "log.h"
 #include "common/Display/Font/Font_d.h"
@@ -9,6 +10,7 @@
 #include "Settings/Settings.h"
 #include "Utils/StringUtils.h"
 #include "Utils/Values.h"
+#include "Hardware/HAL/HAL.h"
 #include <cstring>
 #include <limits>
 

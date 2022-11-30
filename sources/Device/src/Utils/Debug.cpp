@@ -1,8 +1,9 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "log.h"
 #include "debug.h"
 #include "Hardware/Timer.h"
-
+#include "Hardware/HAL/HAL.h"
 
 
 static uint timeStart;

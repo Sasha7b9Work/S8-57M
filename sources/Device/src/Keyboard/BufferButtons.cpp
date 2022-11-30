@@ -1,9 +1,11 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "BufferButtons.h"
 #include "Hardware/Beeper.h"
 #include "Hardware/Timer.h"
 #include "Menu/Pages/Include/PageFunction.h"
 #include "Menu/Pages/Include/PageService.h"
+#include "Hardware/HAL/HAL.h"
 
 
 static const int SIZE = 100;

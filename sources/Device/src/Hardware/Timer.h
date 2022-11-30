@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
 #define START_MULTI_MEASUREMENT() Timer::StartMultiMeasurement()
@@ -10,9 +11,9 @@
  // Максимальный отрезок времени, который можно отсчитать с её помощью - 35 сек.
 #undef TIME_TICKS
 #undef TIME_MS
-#define TIME_TICKS Timer::TimeTicks()
-#define TIME_US    Timer::TimeUS()
-#define TIME_MS    Timer::TimeMS()
+#define TIME_TICKS HAL_TIM2::TimeTicks()
+#define TIME_US    HAL_TIM2::TimeUS()
+#define TIME_MS    HAL::TimeMS()
 
 
 struct TypeTimer
@@ -51,24 +52,22 @@ struct Timer
     static void Enable(TypeTimer::E type);
 
     static void Disable(TypeTimer::E type);
+
     // Возвращает true, если таймер в данный момент ведёт отсчёт
     static bool IsRunning(TypeTimer::E type);
 
     static void PauseOnTime(uint timeMS);
 
     static void PauseOnTicks(uint numTicks);
+
     // Запускает счётчик для измерения малых отрезков времени
     static void StartMultiMeasurement();
+
     // Ожидать определённое число элементарных операция в цилке for
     static void PauseOnOPS(uint ops);
 
     static bool IsBusy();
-    // Возвращает количество микросекунд, прошедших с момента последнего вызова StartMultiMeasurement()
-    static uint TimeUS();
-    // Возвращает количество тиков, прошедших с момента последнего вызова StartMultiMeasurement();
-    static uint TimeTicks();
-    // Возвращает количество миллисекунд, прошедших с момента старта программы
-    static uint TimeMS();
+
     // Устанавливает стартовую точку логгирования. Далее вызовы Timer_LogPoint засекают временные интервалы от это точки
     static void StartLogging();
 

@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "log.h"
 #include "Timer.h"
@@ -251,24 +252,6 @@ uint Timer::LogPointMS(char * name)
     timePrevPoint = TIME_TICKS;
     LOG_WRITE("%s %.2f ms", name, interval / 120e3); //-V2564
     return interval;
-}
-
-
-uint Timer::TimeUS()
-{
-    return HAL_TIM2::TimeUS();
-}
-
-
-uint Timer::TimeTicks()
-{
-    return HAL_TIM2::TimeTicks();
-}
-
-
-uint Timer::TimeMS()
-{
-    return HAL::TimeMS();
 }
 
 

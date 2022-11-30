@@ -1,3 +1,4 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Menu/Menu.h"
 #include "Menu/MenuItems.h"
@@ -9,6 +10,7 @@
 #include "Display/Symbols.h"
 #include "Menu/Pages/Include/PageFunction.h"
 #include "Settings/Settings.h"
+#include "Hardware/HAL/HAL.h"
 
 
 struct DIRECTION
