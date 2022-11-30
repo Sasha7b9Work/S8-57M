@@ -6,18 +6,18 @@
 class FreqMeter
 {
 public:
-    
+
     // Инициализация.
     static void Init();
-    
+
     // Заслать настройки для счётчика частоты
     static void LoadFreqSettings();
-    
+
     // Заслать настрйки для счётчика периода
     static void LoadPeriodSettings();
 
     static void Update();
-    
+
     // Возвращает измеренное значение частоты
     static float GetFrequency();
 
@@ -46,7 +46,7 @@ public:
     };
 
 private:
-    
+
     // Установить состояние лампочек счётчиков в состояние, соответствующее текущему моменту
     static void SetStateLamps();
 
