@@ -144,25 +144,6 @@ void HAL_BUS::SendToDevice(uint8 *data, uint size)
 }
 
 
-uint8 HAL_BUS::DataBus::ReadValue()
-{
-    uint16 port_d = (uint16)GPIOD->IDR;
-    uint16 port_e = (uint16)GPIOE->IDR;
-
-    uint8 result = (uint8)((port_d >> 14) & 3);     // добавили биты 0,1
-    result |= (port_d << 2) & 0x0C;                 // добавили биты 2,3
-    result |= (port_e >> 3) & 0xF0;                 // добавили биты 4,5,6,7
-
-    return result;
-}
-
-
-void HAL_BUS::DataBus::WriteValue(uint8 value)
-{
-
-}
-
-
 void HAL_BUS::Update()
 {
     //while(pinCS.IsActive())
@@ -218,4 +199,25 @@ void HAL_BUS::DataBus::Init()
 {
     // Конфигурируем ШД на чтение
     CONFIG_TO_READ;
+}
+
+
+uint8 HAL_BUS::DataBus::ReadValue()
+{
+    uint16 port_d = (uint16)GPIOD->IDR;
+    uint16 port_e = (uint16)GPIOE->IDR;
+
+    uint8 result = (uint8)((port_d >> 14) & 3);     // добавили биты 0,1
+    result |= (port_d << 2) & 0x0C;                 // добавили биты 2,3
+    result |= (port_e >> 3) & 0xF0;                 // добавили биты 4,5,6,7
+
+    return result;
+}
+
+
+void HAL_BUS::DataBus::WriteValue(uint8 value)
+{
+    //GPIOE->ODR = (GPIOD->ODR & 0xffff0000U) + static_cast<uint16>(queueData.Front());
+
+
 }
