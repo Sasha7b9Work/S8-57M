@@ -22,36 +22,36 @@ typedef struct _USBH_HandleTypeDef USBH_HandleTypeDef;
 #endif
 
 
-struct HAL
+namespace HAL
 {
-    static void Init();
+    void Init();
 
-    static void ErrorHandler(pCHAR, int);
+    void ErrorHandler(pCHAR, int);
 
-    static void Delay(uint timeMS);
+    void Delay(uint timeMS);
 
-    static uint TimeMS();
+    uint TimeMS();
 };
 
 
-struct HAL_RTC
+namespace HAL_RTC
 {
-    static void Init();
-    static PackedTime GetPackedTime();
-    static bool SetPackedTime(const PackedTime &time);
+    void Init();
+    PackedTime GetPackedTime();
+    bool SetPackedTime(const PackedTime &time);
 };
 
 
 // Используется для работы с питанием
-struct HAL_ADC1
+namespace HAL_ADC1
 {
-    static void Init();
+    void Init();
 
     // Читает АЦП батареи
-    static uint ValueBattery();
+    uint ValueBattery();
 
     // Читает АЦП зарядного устройства
-    static uint ValueCharger();
+    uint ValueCharger();
 };
 
 
