@@ -81,26 +81,27 @@ namespace HAL_DAC1
 };
 
 
-struct HAL_BUS
+namespace HAL_BUS
 {
-    static void Init();
-    // Конфигурировать для работы по шине FSMC с альтерой и памятью
-    static void ConfigureToFSMC();
+    void Init();
 
-    struct Panel
+    // Конфигурировать для работы по шине FSMC с альтерой и памятью
+    void ConfigureToFSMC();
+
+    namespace Panel
     {
-        static void Send(uint8 byte);
-        static void Send(uint8 byte0, uint8 byte1);
-        static void Send(const uint8 *data, int size);
-        static bool Receive();
-        static bool InInteraction();
-        static void RunAfterInteraction(void (*func)());
+        void Send(uint8 byte);
+        void Send(uint8 byte0, uint8 byte1);
+        void Send(const uint8 *data, int size);
+        bool Receive();
+        bool InInteraction();
+        void RunAfterInteraction(void (*func)());
 
         // Запретить все действия кроме указааных (т.е. чтение в поточечном режиме и регистраторе)
-        static void ProhibitOtherActions();
+        void ProhibitOtherActions();
 
         // Разрешить некоторые другие действия кроме указанных (чтение в поточечном режиме и регистраторе)
-        static void AllowOtherActions();
+        void AllowOtherActions();
     };
 
     struct FPGA
@@ -132,13 +133,7 @@ struct HAL_BUS
         };
     };
 
-    static Mode::E mode;
-
-private:
-    // Настроить FSMC для работы с внешней RAM
-    static void InitRAM();
-    // Инициализация пинов панели, которые не изменяют свой режим во время всей работы программы
-    static void InitPanel();
+    extern Mode::E mode;
 };
 
 

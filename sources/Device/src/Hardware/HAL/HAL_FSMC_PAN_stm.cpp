@@ -67,6 +67,12 @@ static InPin pinReadyPAN(PIN_PAN_READY);
 static InPin pinDataPAN(PIN_PAN_DATA);
 
 
+namespace HAL_BUS
+{
+    void InitPanel();
+}
+
+
 void HAL_BUS::InitPanel()
 {
     pinReadyPAN.Init();

@@ -19,17 +19,25 @@ uint8 *HAL_BUS::FPGA::addrData0 = nullptr;
 uint8 *HAL_BUS::FPGA::addrData1 = nullptr;
 
 
-HAL_BUS::Mode::E HAL_BUS::mode = HAL_BUS::Mode::FSMC;
-
-
-static GPIO_InitTypeDef is =
+namespace HAL_BUS
 {
-    GPIO_PIN_0,
-    GPIO_MODE_AF_PP,
-    GPIO_PULLUP,
-    GPIO_SPEED_FREQ_VERY_HIGH,
-    GPIO_AF12_FMC
-};
+    static GPIO_InitTypeDef is =
+    {
+        GPIO_PIN_0,
+        GPIO_MODE_AF_PP,
+        GPIO_PULLUP,
+        GPIO_SPEED_FREQ_VERY_HIGH,
+        GPIO_AF12_FMC
+    };
+
+    Mode::E mode = Mode::FSMC;
+
+    // Настроить FSMC для работы с внешней RAM
+    static void InitRAM();
+
+    // Инициализация пинов панели, которые не изменяют свой режим во время всей работы программы
+    void InitPanel();
+}
 
 
 void HAL_BUS::Init()
