@@ -346,7 +346,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\src\Menu\Menu.cpp</Filename>
+          <Filename>D:\Projects\S8-57M\sources\Panel\src\Menu\Menu.cpp</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\S8_57\src/Menu/Menu.cpp\259</Expression>
         </Bp>
@@ -362,7 +362,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\src\Menu\Menu.cpp</Filename>
+          <Filename>D:\Projects\S8-57M\sources\Panel\src\Menu\Menu.cpp</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\S8_57\src/Menu/Menu.cpp\256</Expression>
         </Bp>
@@ -378,7 +378,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\src\Menu\Menu.cpp</Filename>
+          <Filename>D:\Projects\S8-57M\sources\Panel\src\Menu\Menu.cpp</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\S8_57\src/Menu/Menu.cpp\536</Expression>
         </Bp>
@@ -394,7 +394,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\src\Menu\Menu.cpp</Filename>
+          <Filename>D:\Projects\S8-57M\sources\Panel\src\Menu\Menu.cpp</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\S8_57\src/Menu/Menu.cpp\540</Expression>
         </Bp>
@@ -410,7 +410,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\src\Menu\Menu.cpp</Filename>
+          <Filename>D:\Projects\S8-57M\sources\Panel\src\Menu\Menu.cpp</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\S8_57\src/Menu/Menu.cpp\544</Expression>
         </Bp>
@@ -2296,30 +2296,6 @@
     <File>
       <GroupNumber>11</GroupNumber>
       <FileNumber>146</FileNumber>
-      <FileType>8</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\src\device.cpp</PathWithFileName>
-      <FilenameWithoutPath>device.cpp</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>147</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>.\src\device.h</PathWithFileName>
-      <FilenameWithoutPath>device.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>11</GroupNumber>
-      <FileNumber>148</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2331,7 +2307,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>149</FileNumber>
+      <FileNumber>147</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2343,7 +2319,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>150</FileNumber>
+      <FileNumber>148</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2355,7 +2331,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>151</FileNumber>
+      <FileNumber>149</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2367,7 +2343,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>152</FileNumber>
+      <FileNumber>150</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2379,7 +2355,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>153</FileNumber>
+      <FileNumber>151</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2391,7 +2367,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>154</FileNumber>
+      <FileNumber>152</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2403,7 +2379,7 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>155</FileNumber>
+      <FileNumber>153</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -2415,13 +2391,37 @@
     </File>
     <File>
       <GroupNumber>11</GroupNumber>
-      <FileNumber>156</FileNumber>
+      <FileNumber>154</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\tables.cpp</PathWithFileName>
       <FilenameWithoutPath>tables.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>155</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Device.cpp</PathWithFileName>
+      <FilenameWithoutPath>Device.cpp</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>156</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\src\Device.h</PathWithFileName>
+      <FilenameWithoutPath>Device.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
