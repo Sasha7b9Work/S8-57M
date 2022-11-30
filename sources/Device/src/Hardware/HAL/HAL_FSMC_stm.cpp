@@ -15,10 +15,6 @@
 //#define ADDR_DISPLAY    ((uint8 *)NOR_MEMORY_ADRESS4)
 
 
-uint8 *HAL_BUS::FPGA::addrData0 = nullptr;
-uint8 *HAL_BUS::FPGA::addrData1 = nullptr;
-
-
 namespace HAL_BUS
 {
     static GPIO_InitTypeDef is =
@@ -37,6 +33,14 @@ namespace HAL_BUS
 
     // »нициализаци€ пинов панели, которые не измен€ют свой режим во врем€ всей работы программы
     void InitPanel();
+
+    namespace FPGA
+    {
+        // ѕервый адрес чтени€ данных
+        static uint8 *addrData0 = nullptr;
+        // ¬торой адрес чтени€ данных
+        static uint8 *addrData1 = nullptr;
+    }
 }
 
 
