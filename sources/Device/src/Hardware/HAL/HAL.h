@@ -132,48 +132,48 @@ namespace HAL_BUS
 };
 
 
-struct HAL_HCD
+namespace HAL_HCD
 {
-    static void Init();
+    void Init();
 
-    static void InitUSBH_LL(USBH_HandleTypeDef *phost);
+    void InitUSBH_LL(USBH_HandleTypeDef *phost);
 
-    static void *handleHCD;
+    extern void *handleHCD;
 };
 
 
-struct HAL_NVIC
+namespace HAL_NVIC
 {
-    static uint irqEXTI1;
-    static uint irqEXTI9_5;
-    static void EnableIRQ(uint irq);
-    static void DisableIRQ(uint irq);
-    static void SetPriorityIRQ(uint irq, uint main, uint sub);
-    static void SystemReset();
+    extern uint irqEXTI1;
+    extern uint irqEXTI9_5;
+    void EnableIRQ(uint irq);
+    void DisableIRQ(uint irq);
+    void SetPriorityIRQ(uint irq, uint main, uint sub);
+    void SystemReset();
 };
 
 
-struct HAL_OTP
+namespace HAL_OTP
 {
     // ¬озвращает число свободных мест дл€ записи. ≈сли 0, то места в OTP уже не осталось.
-    static int GetSerialNumber(char buffer[17]);
-    static bool SaveSerialNumber(char *servialNumber);
+    int GetSerialNumber(char buffer[17]);
+    bool SaveSerialNumber(char *servialNumber);
 };
 
 
-struct HAL_PCD
+namespace HAL_PCD
 {
-    static void Init();
+    void Init();
 };
 
 
-struct HAL_ROM
+namespace HAL_ROM
 {
-    static const Sector sectors[Sector::Count];
+    extern const Sector sectors[Sector::Count];
 
-    static void WriteBytes(uint address, const uint8 *data, int size);
-    static void WriteBufferBytes(uint address, const void *data, int size);
-    static void Fill(uint address, uint8 value, int size);
+    void WriteBytes(uint address, const uint8 *data, int size);
+    void WriteBufferBytes(uint address, const void *data, int size);
+    void Fill(uint address, uint8 value, int size);
 };
 
 
