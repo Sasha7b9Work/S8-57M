@@ -28,6 +28,7 @@
 #define PIN_RD      GPIO_PIN_4
 #define RD          PORT_RD, PIN_RD
 
+
 #define CONFIG_TO_READ                                                              \
         /*              15,14    1,0   ѕишем 00 в биты портов 15, 14, 1, 0      */  \
         GPIOD->MODER &= 0x0ffffff0;                                                 \
@@ -37,6 +38,7 @@
 #define CONFIG_TO_WRITE                                                             \
         GPIOD->MODER |= 0x50000005;                                                 \
         GPIOE->MODER |= 0x00154000;
+
 
 
 namespace HAL_BUS
@@ -219,5 +221,7 @@ void HAL_BUS::DataBus::WriteValue(uint8 value)
 {
     //GPIOE->ODR = (GPIOD->ODR & 0xffff0000U) + static_cast<uint16>(queueData.Front());
 
+    GPIOD->ODR = (GPIOD->ODR & 0x0ffffff0) + ((value & 3) << 14) + ((value >> 2) & 3);
 
+    GPIOE->ODR = (GPIOE->ODR & 0xffc03fff) + ((value & 0xF0) << 3);
 }
