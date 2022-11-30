@@ -405,7 +405,7 @@ bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *data) //-V2506
 
     uint8 *last = data + ENumPointsFPGA::PointsInChannel();
 
-    HAL_BUS::FPGA::SetAddrData(addr);
+//    HAL_BUS::FPGA::SetAddrData(addr);
 
     if(S_OSCI_AVERAGING_IS_ENABLED)
     {

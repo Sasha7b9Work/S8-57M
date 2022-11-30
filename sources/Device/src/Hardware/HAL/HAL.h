@@ -83,9 +83,13 @@ namespace HAL_DAC1
 
 namespace HAL_BUS
 {
+    void InitPanel();
+
+    void UpdatePanel();
+
     void Init();
 
-    // Конфигурировать для работы по шине FSMC с альтерой и памятью
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ FSMC пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     void ConfigureToFSMC();
 
     namespace Panel

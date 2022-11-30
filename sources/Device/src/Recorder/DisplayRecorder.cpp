@@ -157,7 +157,7 @@ char *DisplayRecorder::DeltaTime(char buffer[30])
 
 char *DisplayRecorder::TimeCursor(int numCur, char buffer[30])
 {
-    HAL_BUS_CONFIGURE_TO_FSMC();
+//    HAL_BUS_CONFIGURE_TO_FSMC();
 
     int numPoint = startPoint + posCursor[numCur];
 
@@ -199,7 +199,7 @@ void DisplayRecorder::VoltagePoint(Chan::E ch, uint8 value, char buffer[30])
 
 char *DisplayRecorder::VoltageCursor(Chan::E ch, int numCur, char buffer[30])
 {
-    HAL_BUS_CONFIGURE_TO_FSMC();
+//    HAL_BUS_CONFIGURE_TO_FSMC();
 
     int numPoint = startPoint + posCursor[numCur];
 
@@ -236,7 +236,7 @@ void DisplayRecorder::DrawParametersCursors() //-V2506
 
 #define DRAW_IF_ENABLED(en, text) if(en) { text; y +=d; }
 
-    HAL_BUS_CONFIGURE_TO_FSMC();
+//    HAL_BUS_CONFIGURE_TO_FSMC();
 
     bool enA = displayed->ContainsChannelA();
     bool enB = displayed->ContainsChannelB();

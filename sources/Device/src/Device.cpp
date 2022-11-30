@@ -48,7 +48,7 @@ void Device::Init()
 
     VCP::Init();
 
-    FPGA::Init();
+//    FPGA::Init();
 
     ROM::Init();
 
@@ -56,15 +56,15 @@ void Device::Init()
 
 //    setNRST.Init();
 
-    Display::Init();
+//    Display::Init();
 
-    FreqMeter::Init();
+//    FreqMeter::Init();
 
-    Osci::Init();
+//    Osci::Init();
 
-    Menu::Init();
+//    Menu::Init();
 
-    FDrive::Init();
+//    FDrive::Init();
 
     SetCurrentMode();
 
@@ -98,25 +98,7 @@ bool SetCurrentMode(const Page *page, Device::Mode::E mode) //-V2506
 
 void Device::Update()
 {
-    Timer::StartMultiMeasurement();
-
-    Osci::Update();
-
-    Display::Update();
-
-    FDrive::Update();
-
-    while (HAL_BUS::Panel::Receive())
-    {
-    };
-
-    SCPI::Update();
-
-    DDecoder::Update();
-
-    Menu::Update();
-
-    PowerBreaker::Update();
+    HAL_BUS::UpdatePanel();
 }
 
 

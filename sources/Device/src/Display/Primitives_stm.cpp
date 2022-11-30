@@ -22,7 +22,7 @@ void Region::Fill(int x, int y, Color color)
         static_cast<uint8>(height)
     };
 
-    HAL_BUS::Panel::Send(buffer, 7);
+//    HAL_BUS::Panel::Send(buffer, 7);
 }
 
 
@@ -41,7 +41,7 @@ void Rectangle::Draw(int x, int y, Color color)
         static_cast<uint8>(height)
     };
 
-    HAL_BUS::Panel::Send(buffer, 7);
+//    HAL_BUS::Panel::Send(buffer, 7);
 }
 
 

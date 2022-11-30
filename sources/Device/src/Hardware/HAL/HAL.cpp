@@ -46,7 +46,7 @@ void HAL::Init()
 
     HAL_CRC32::Init();
 
-    HAL_BUS::Init();
+    HAL_BUS::InitPanel();
 
     HAL_SPI4::Init();
 

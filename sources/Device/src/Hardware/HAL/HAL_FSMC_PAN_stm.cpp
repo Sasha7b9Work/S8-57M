@@ -54,32 +54,47 @@ static bool otherActionsAllowed = true;         // true означает, что во врем€ п
                                                 // режиме и регистраторе
 
 
-// ѕо активному состо€нию этого пина панель определ€ет, что главный ћ  готов к взаимодействию
-static OutPin pinCS(PIN_CS);
-// ѕо активновному состо€нию этого пина панель определ€те, что главный ћ  хочет делать передачу
+static OutPin pinD0(HPort::_D, HPin::_14);
+static OutPin pinD1(HPort::_D, HPin::_15);
+static OutPin pinD2(HPort::_D, HPin::_0);
+static OutPin pinD3(HPort::_D, HPin::_1);
+static OutPin pinD4(HPort::_E, HPin::_7);
+static OutPin pinD5(HPort::_E, HPin::_8);
+static OutPin pinD6(HPort::_E, HPin::_9);
+static OutPin pinD7(HPort::_E, HPin::_10);
+
 static OutPin pinWR(PIN_WR);
-// ѕо активному состо€нию этого пина панель определ€те, что главный ћ  хочет делать чтение
 static OutPin pinRD(PIN_RD);
-
-// јктивным состо€нием этого пина панель сообщает о готовности к взаимодействию
-static InPin pinReadyPAN(PIN_PAN_READY);
-// јктивное состо€ние этого пина сообщает о том, что панель имеет данные дл€ пеередчи
-static InPin pinDataPAN(PIN_PAN_DATA);
-
-
-namespace HAL_BUS
-{
-    void InitPanel();
-}
-
+static OutPin pinCS(PIN_CS);
+static OutPin pinReady(PIN_PAN_READY);
+static OutPin pinData(PIN_PAN_DATA);
 
 void HAL_BUS::InitPanel()
 {
-    pinReadyPAN.Init();
-    pinDataPAN.Init();
-    pinCS.Init();
 
-    DataBus::Init();
+}
+
+
+void HAL_BUS::UpdatePanel()
+{
+    static OutPin *pins[13] = {   &pinD0, &pinD1, &pinD2, &pinD3, &pinD4, &pinD5, &pinD6, &pinD7,
+                                        &pinWR, &pinRD, &pinCS, &pinReady, &pinData};
+
+    static int counter = 0;
+
+    for (int i = 0; i < 13; i++)
+    {
+        bool bit = _GET_BIT(counter, i) != 0;
+
+        if (bit)
+        {
+            pins[i]->SetActive();
+        }
+        else
+        {
+            pins[i]->SetPassive();
+        }
+    }
 }
 
 
@@ -111,26 +126,26 @@ bool HAL_BUS::Panel::Receive() //-V2506
 
     pinCS.SetActive();
     
-    pinReadyPAN.WaitPassive();
+//    pinReadyPAN.WaitPassive();
 
-    while(pinReadyPAN.IsActive()) {};
+//    while(pinReadyPAN.IsActive()) {};
     
     uint8 data = 0;
 
-    while(pinReadyPAN.IsActive())
-    {
-        if(pinDataPAN.IsPassive())
-        {
-            goto exit;
-        }
-    }
+//    while(pinReadyPAN.IsActive())
+//    {
+//        if(pinDataPAN.IsPassive())
+//        {
+//            goto exit;
+//        }
+//    }
     
     //                                                 4,5,6,7              2,3                          0,1
     data = static_cast<uint8>((GPIOE->IDR >> 3) & 0xF0 | (GPIOD->IDR << 2) & 0x0C | (GPIOD->IDR >> 14));
 
     DDecoder::AddData(data);
     
-exit:
+//exit:
     
     pinRD.SetPassive();
 
