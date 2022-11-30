@@ -364,9 +364,9 @@ void Menu::DrawHintItem(int x, int y, int width)
 
         Page *item = static_cast<Page *>(itemHint);
 
-        const int SIZE = 100;
-        char title[SIZE];
-        std::snprintf(title, SIZE, "%s \"%s\"", names[itemHint->data->type], item->data->title);
+        const int _SIZE_ = 100;
+        char title[_SIZE_];
+        std::snprintf(title, _SIZE_, "%s \"%s\"", names[itemHint->data->type], item->data->title);
 
         Text(title).DrawInCenterRectAndBoundIt(x, y, width, 15, Color::BACK, Color::FILL);
 
