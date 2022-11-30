@@ -481,6 +481,7 @@ static void SaveScreenToFlash() //-V2506
 
     HAL_BUS::Panel::ProhibitOtherActions();
 
+#pragma pack(push)
 #pragma pack(1)
     struct BITMAPFILEHEADER
     {
@@ -534,7 +535,7 @@ static void SaveScreenToFlash() //-V2506
     };
 
     // 54
-#pragma pack(4)
+#pragma pack(pop)
 
     StructForWrite structForWrite;
 
