@@ -98,23 +98,6 @@ void Display::Update()
 {
     ClearBuffer(Color::BLACK);
 
-//    Painter::SetColor(Color::BLACK);
-//    Painter::FillRegion(0, 0, Display::WIDTH - 1, Display::HEIGHT - 1);
-
-//    int x = (int)(std::rand() % Display::WIDTH);
-//    int y = (int)(std::rand() % Display::HEIGHT);
-//    int width = (int)(std::rand() % Display::WIDTH);
-//    int height = (int)(std::rand() % Display::HEIGHT);
-//
-//    if (x + width < Display::WIDTH && y + height > Display::HEIGHT)
-//    {
-//        Painter::SetColor(Color(std::rand() % 32));
-//
-//        Painter::FillRegion(x, y, width, height);
-//    }
-//
-//    HAL_Delay(10);
-
     Update1();
 }
 
