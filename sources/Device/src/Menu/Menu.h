@@ -35,10 +35,10 @@ struct Menu
     static void Update();
 
     static void Draw();
-    
+
     // Установить время автоматического сокрытия меню в соответствии с установками.
     static void SetAutoHide(bool active);
-    
+
     static void Show();
 
     static void Hide();
@@ -46,7 +46,7 @@ struct Menu
     static bool IsShown();
 
     static Item *OpenedItem();
-    
+
     // Возвращает адрес текущего элемента меню (текущим, как правило, является элемент, кнопка которого была нажата последней
     static Item *CurrentItem();
 
@@ -69,7 +69,7 @@ struct Menu
 
     // Устанавливает текущую главную страницу
     static void SetMainPage(const Page *page);
-   
+
     struct Title
     {
         static const int HEIGHT = 9;
@@ -77,31 +77,31 @@ struct Menu
     };
 
 private:
-   
+
     // Последний открытый контрол на дереве странице page
     static Item *LastOpened(Page *page);
-    
+
     // Обработка события таймера автоматического сокрытия меню
     static void OnTimerAutoHide();
 
     static void ProcessButtonForHint(Key::E button);
-    
+
     // Написать подсказку
     static void DrawHint();
-    
+
     // Закрыть все страницы, которые не могут быть открытыми при включении
     static void CloseAllBadOpenedPages();
-    
+
     // Закрыть parent, если он является хранителем page
     static void CloseIfSubPage(Page *parent, Page *page);
 
     static void ClosePage(Page *page);
 
     static void DrawHintItem(int x, int y, int width);
-    
+
     // Итем, для которого нужно выводить подсказку
     static Item *itemHint;
-      
+
     // Строка подсказки, которую надо выводить в случае включённого режима подсказок.
     static const char *stringForHint;
 };
