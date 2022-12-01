@@ -14,13 +14,9 @@ namespace DisplayOsci
     // ”становить признак того, что дисплей нуждаетс€ в перерисовке
     void SetFlagRedraw();
 
-
-    struct HiPart
+    namespace HiPart
     {
-        static void Draw();
-    private:
-        // Ќарисовать правую часть - синхронизаци€ и режим работы
-        static void DrawRightPart(int x0, int y0);
+        void Draw();
     };
 
 

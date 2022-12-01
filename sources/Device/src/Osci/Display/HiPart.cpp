@@ -48,6 +48,16 @@ static void WriteCursors();
 static void DrawPeakDet(int x, int y);
 
 
+namespace DisplayOsci
+{
+    namespace HiPart
+    {
+        // Нарисовать правую часть - синхронизация и режим работы
+        static void DrawRightPart(int x0, int y0);
+    }
+}
+
+
 void DisplayOsci::HiPart::Draw()
 {
 #define Y0 0

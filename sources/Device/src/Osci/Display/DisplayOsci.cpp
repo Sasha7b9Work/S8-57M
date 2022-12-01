@@ -28,6 +28,11 @@ namespace DisplayOsci
 {
     // Признак того, что дисплей нуждается в полной перерисовке
     static bool needRedraw = false;
+
+    namespace HiPart
+    {
+
+    }
 }
 
 
