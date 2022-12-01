@@ -4,11 +4,10 @@
 struct DataSettings;
 
 
-class AveragerOsci
+namespace AveragerOsci
 {
-public:
-    static void Process(Chan::E ch, const uint8 *newData, int size);
-    static void SettingChanged();
+    void Process(Chan::E ch, const uint8 *newData, int size);
+    void SettingChanged();
 };
 
 
@@ -19,8 +18,7 @@ namespace InterpolatorLinear
 };
 
 
-class InterpolatorSinX_X
+namespace InterpolatorSinX_X
 {
-public:
-    static void Run(DataSettings *ds);
+    void Run(DataSettings *ds);
 };
