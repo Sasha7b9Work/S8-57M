@@ -14,7 +14,7 @@ struct SettingsChannel;
 
 
 #define S_TIME_BASE (set.time._base)
-struct TBase
+namespace TBase
 {
     enum E
     {
@@ -51,25 +51,25 @@ struct TBase
         Count
     };
 
-    static pString Name(TBase::E tBase);
+    pString Name(TBase::E tBase);
 
-    static pString ToString(TBase::E tBase);
+    pString ToString(TBase::E tBase);
 
-    static void Set(E v = Count);
+    void Set(E v = Count);
 
-    static void Change(int delta);
+    void Change(int delta);
 
     // С этого значения должен включаться режим поточечного вывода
-    static const E MIN_P2P = _10ms;
-    
+    const E MIN_P2P = _10ms;
+
     // Минимальный масштаб по времени, при котором ещё возможно включение режима пикового детектора
-    static const E MIN_PEAK_DET = _5us;
+    const E MIN_PEAK_DET = _5us;
 
     // Расстояние между точками в режиме рандомизатора
-    static int DeltaPoint();
+    int DeltaPoint();
 
     // Время между точками
-    static float TimePoint(TBase::E base);
+    float TimePoint(TBase::E base);
 };
 
 
@@ -236,13 +236,13 @@ private:
     static void LoadReal();
 
     static void LoadRandomize();
-    
+
     // Нарисовать "нормальное" изображение маркера смещения, когда позиция смещения находится на экране
     static void DrawNormal(const int x, const int y);
-    
+
     // Нарисовать маркер смещения, когда позиция смещения находится за левой границей экрана
     static void DrawLeft();
-    
+
     // Нарисовать маркер смещения, когда позиция смещения находится за правой границей экрана
     static void DrawRight();
 
