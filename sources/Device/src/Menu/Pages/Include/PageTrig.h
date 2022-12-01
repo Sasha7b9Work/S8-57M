@@ -97,18 +97,17 @@ struct SettingsTrig
 };
 
 
-struct PageTrig
+namespace PageTrig
 {
-    static const Page * const self;
+    extern const Page * const self;
 
-    struct HoldOff
+    namespace HoldOff
     {
-        static const Page * const self;
+        extern const Page * const self;
     };
 
-
-    struct Find
+    namespace Find
     {
-        static const Page * const self;
+        extern const Page * const self;
     };
 };

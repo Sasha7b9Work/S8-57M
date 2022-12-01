@@ -96,13 +96,13 @@ struct LinkingTShift
 
 
 
-struct PageTime
+namespace PageTime
 {
-    static void OnChanged_PeakDet(bool active);
+    void OnChanged_PeakDet(bool active);
 
-    static void OnChanged_TPos(bool active);
+    void OnChanged_TPos(bool active);
 
-    static void SetSampleTime(SampleType::E v);
+    void SetSampleTime(SampleType::E v);
 
-    static const Page * const self;
+    extern const Page * const self;
 };
