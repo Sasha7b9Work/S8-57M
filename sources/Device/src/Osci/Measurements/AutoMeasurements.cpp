@@ -132,6 +132,21 @@ static bool picIsCalculating[2] = {false, false};
 #define CHOICE_BUFFER (OUT(ch))
 
 
+namespace AutoMeasurements
+{
+    // Привести смещение канала ch по вертикали к текущему
+    static void CountedToCurrentRShift(Chan::E ch, uint numBytes, const uint8 *in, uint8 *out);
+
+    // Данные из IN_A, IN_B пересчитать к текущим настройкам и записать в OUT_A, OUT_B
+    static void CountedToCurrentSettings();
+
+    static void CountedToCurrentSettings(Chan::E ch, uint numBytes, const uint8 *in, uint8 *out);
+
+    // Вписать значения данных в разрещённый диапазон
+    static void LimitationData(uint8 *inOut, uint numBytes);
+}
+
+
 void AutoMeasurements::CalculateMeasures() //-V2506
 {
     if(!S_MEAS_SHOW || !isSet)
