@@ -17,11 +17,11 @@ struct WarningStruct
 };
 
 
-struct Warnings
+namespace Warnings
 {
-    static void AddWarning(const char *warning);
+    void AddWarning(const char *warning);
 
-    static void Draw();
+    void Draw();
 
-    static bool IsShown();
+    bool IsShown();
 };
