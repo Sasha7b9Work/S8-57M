@@ -15,34 +15,37 @@ struct TypeWave
 };
 
 
-struct Beeper
+namespace Beeper
 {
-    static void Init();
+    void Init();
+
     // Звук нажатия на кнопку.
-    static void ButtonPress();
+    void ButtonPress();
+
     // Функция вызовет звук отпускаемой кнопки только если перед этим проигрывался звук нажатия кнопки.
-    static void ButtonRelease();
+    void ButtonRelease();
 
-    static void GovernorChangedValue();
-    
-    static void RegulatorShiftRotate();
+    void GovernorChangedValue();
 
-    static void RegulatorSwitchRotate();
+    void RegulatorShiftRotate();
 
-    static void WarnBeepBad();
+    void RegulatorSwitchRotate();
 
-    static void WarnBeepGood();
+    void WarnBeepBad();
+
+    void WarnBeepGood();
+
     // Эту функцию надо вызывать перед записью/стиранием ППЗУ. Звук конфликтует с ППЗУ.
-    static void WaitForCompletion();
+    void WaitForCompletion();
 
-    static void Beep(TypePress::E type);
+    void Beep(TypePress::E type);
 
-    static void Test();
+    void Test();
 
-    struct Bell
+    namespace Bell
     {
-        static void On();
+        void On();
 
-        static void Off();
+        void Off();
     };
 };
