@@ -4,20 +4,23 @@
 #include "Keyboard/Keyboard.h"
 
 
-struct TableMeasures
+namespace TableMeasures
 {
     // ќтрисовать результаты автоматических измерений
-    static void Draw();
+    void Draw();
 
-    static int NumCols();
+    int NumCols();
 
-    static int NumRows();
+    int NumRows();
+
     // Ќа сколько сжимать сетку по горизонтали
-    static int GetDeltaGridLeft();
+    int GetDeltaGridLeft();
+
     // ¬озвращает высоту пол€ дл€ вывода автоматического измерени€
-    static int DY();
+    int DY();
+
     // ¬озвращает ширину пол€ дл€ вывода автоматического измерени€
-    static int DX();
+    int DX();
 
 
     struct Cell
