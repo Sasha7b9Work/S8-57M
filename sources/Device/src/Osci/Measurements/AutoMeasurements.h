@@ -39,16 +39,15 @@ namespace TableMeasures
 
 
 // Страница выбора измерений
-struct PageChoiceMeasures
+namespace PageChoiceMeasures
 {
     // Обработка нажатий при открытой странице
-    static void OnKeyEvent(const KeyEvent &event);
-    // Нужно вызывать для открытия/закрытия страницы выбора
-    void OnOpenCloseEvent();
-    // Включить/отключить отображение
-    static void ChangeState();
+    void OnKeyEvent(const KeyEvent &event);
 
-    static void Draw();
+    // Включить/отключить отображение
+    void ChangeState();
+
+    void Draw();
 };
 
 

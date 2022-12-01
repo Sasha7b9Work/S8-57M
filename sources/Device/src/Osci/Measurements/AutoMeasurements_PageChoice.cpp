@@ -18,16 +18,6 @@ void PageChoiceMeasures::ChangeState()
 }
 
 
-void PageChoiceMeasures::OnOpenCloseEvent()
-{
-    ChangeState();
-    if (isActive)
-    {
-        posCursor = static_cast<int8>(S_MEAS_INDICATED(AutoMeasurements::posActive));
-    }
-}
-
-
 void PageChoiceMeasures::OnKeyEvent(const KeyEvent &event) //-V2506
 {
     if (event.type != TypePress::Press)
