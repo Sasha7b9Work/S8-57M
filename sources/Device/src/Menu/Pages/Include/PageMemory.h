@@ -162,38 +162,36 @@ namespace PageMemory
 
 
 
-struct PageRAM
+namespace PageRAM
 {
-    static const Page * const self;
+    extern const Page * const self;
 };
 
 
 
-struct PageROM
+namespace PageROM
 {
-    static const Page * const self;
+    extern const Page * const self;
 };
 
 
 
-struct PageDrive
+namespace PageDrive
 {
-    static const Page * const self;
+    extern const Page * const self;
 
-
-    struct Manager
+    namespace Manager
     {
-        static const Page * const self;
+        extern const Page * const self;
     };
 
-
-    struct Mask
+    namespace Mask
     {
-        static const Page * const self;
+        extern const Page * const self;
     };
 
-    struct SetName
+    namespace SetName
     {
-        static const Page *const self;
+        extern const Page *const self;
     };
 };
