@@ -10,16 +10,16 @@ namespace PainterMem
     // \brief Эту функцию нужно вызывать по завершении рисования, чтобы освободить место, занимаемеое буфером.
     // Можно и не вызывать, если нет надобности экономить память - в этом случае в следующий раз CreateBuffer() можно не вызывать.
     void DeleteBuffer();
-    
+
     void FillRect(int x, int y, int width, int height, Color color = Color::NUMBER);
-    
+
     void SetPoint(int x, int y);
 
     void SetPoint(int x, int y, Color color);
-    
+
     void DrawVLine(int x, int y0, int y1, Color color = Color::NUMBER);
-    
+
     void DrawHLine(int y, int x0, int x1, Color color = Color::NUMBER);
-    
+
     void DrawRectangle(int x, int y, int widht, int height, Color = Color::NUMBER);
 };
