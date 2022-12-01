@@ -25,10 +25,6 @@ bool DisplayOsci::DrawingValueParameter::needDrawParameter = false;
 DisplayOsci::DrawingValueParameter::E DisplayOsci::DrawingValueParameter::parameter;
 
 
-static const int DELTA = 5;
-
-
-
 void DisplayOsci::Update()
 {
     DFont::SetSpacing(1);
@@ -71,29 +67,6 @@ void DisplayOsci::Update()
     Menu::Draw();
 
     Warnings::Draw();
-}
-
-
-void DisplayOsci::DrawScaleLine(int x, bool forTrigLev)
-{
-    int width = 6;
-    int topY = Grid::Top() + DELTA;
-    int x2 = width + x + 2;
-    int bottomY = Grid::Bottom() - DELTA;
-    int centerY = (Grid::Bottom() + Grid::Top()) / 2;
-    int levels[] =
-    {
-        topY,
-        bottomY,
-        centerY,
-        centerY - (bottomY - topY) / (forTrigLev ? 8 : 4),
-        centerY + (bottomY - topY) / (forTrigLev ? 8 : 4)
-    };
-
-    for (int i = 0; i < 5; i++)
-    {
-        Line(x + 1, levels[i], x2 - 1, levels[i]).Draw(Color::FILL);
-    }
 }
 
 

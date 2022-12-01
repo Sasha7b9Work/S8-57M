@@ -11,8 +11,6 @@ struct DisplayOsci
 {
     static void Update();
 
-    void DrawScaleLine(int x, bool forTrigLev);
-
     // Установить признак того, что дисплей нуждается в перерисовке
     static void SetFlagRedraw();
 
