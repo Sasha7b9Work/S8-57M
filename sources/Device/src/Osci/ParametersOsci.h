@@ -164,7 +164,7 @@ namespace RShift
 #define S_MODE_COUPLE_A             S_MODE_COUPLE(ChanA)
 #define S_MODE_COUPLE_B             S_MODE_COUPLE(ChanB)
 #define S_MODE_COUPLE_IS_DC(chan)   (S_MODE_COUPLE(chan) == ModeCouple::DC)
-struct ModeCouple
+namespace ModeCouple
 {
     enum E
     {
@@ -174,9 +174,9 @@ struct ModeCouple
         Count
     };
 
-    static void Set(Chan::E ch, ModeCouple::E couple);
+    void Set(Chan::E ch, ModeCouple::E couple);
 
-    static pString UGO(ModeCouple::E v);
+    pString UGO(ModeCouple::E v);
 };
 
 
