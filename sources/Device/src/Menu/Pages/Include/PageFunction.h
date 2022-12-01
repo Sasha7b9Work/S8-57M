@@ -3,7 +3,7 @@
 #include "Menu/MenuItems.h"
 
 
-struct PageFunction
+namespace PageFunction
 {
-    static const Page * const self;
+    extern const Page * const self;
 };

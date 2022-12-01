@@ -21,9 +21,9 @@ struct SettingsFreqMeter
 
 
 
-struct PageFreqMeter
+namespace PageFreqMeter
 {
-    static const Page *const self;
+    extern const Page *const self;
 
-    static void Init();
+    void Init();
 };

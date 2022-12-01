@@ -92,12 +92,12 @@ struct SettingsFFT
 };
 
 
-struct PageFFT
+namespace PageFFT
 {
-    static const Page *const self;
+    extern const Page *const self;
 
-    struct Cursors
+    namespace Cursors
     {
-        static const Page *const self;
+        extern const Page *const self;
     };
 };
