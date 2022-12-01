@@ -25,6 +25,14 @@ namespace RShift
 }
 
 
+namespace TShift
+{
+    static void LoadReal();
+
+    static void LoadRandomize();
+}
+
+
 void TrigStartMode::Set(TrigStartMode::E v)
 {
     S_TRIG_START_MODE = v;
@@ -123,7 +131,7 @@ void FPGA::LoadCalibratorMode()
 
 void TShift::LoadReal()
 {
-    FPGA::post = static_cast<uint16>(S_TIME_SHIFT - TShift().Min() + 10);
+    FPGA::post = static_cast<uint16>(S_TIME_SHIFT - TShift::Min() + 10);
     int Pred = static_cast<int>(ENumPointsFPGA::PointsInChannel()) - static_cast<int>(FPGA::post);
 
     if (Pred < 0)
@@ -150,9 +158,9 @@ void TShift::LoadRandomize()
 {
     int k = TBase::DeltaPoint();
 
-    FPGA::post = static_cast<uint16>((S_TIME_SHIFT - TShift().Min() - GetK()) / k);
+    FPGA::post = static_cast<uint16>((S_TIME_SHIFT - TShift::Min() - GetK()) / k);
 
-    if((S_TIME_SHIFT - static_cast<int>(GetK())) < TShift().Min())
+    if((S_TIME_SHIFT - static_cast<int>(GetK())) < TShift::Min())
     {
         FPGA::post = 0;
     }

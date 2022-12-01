@@ -194,40 +194,24 @@ namespace Bandwidth
 };
 
 
-struct TShift
+namespace TShift
 {
-    static void Set(int);
+    void Set(int);
 
-    static int Min();
-    static int Max();
+    int Min();
+    int Max();
 
-    static void Load();
+    void Load();
 
-    static void Change(const int delta);
+    void Change(const int delta);
 
-    static String ToString(const TBase::E tBase = TBase::Count);
+    String ToString(const TBase::E tBase = TBase::Count);
 
-    static float ToAbs(const int shift, const TBase::E tBase);
+    float ToAbs(const int shift, const TBase::E tBase);
 
-    static void Reset();
+    void Reset();
 
-    static void Draw();
-
-private:
-    static void LoadReal();
-
-    static void LoadRandomize();
-
-    // Нарисовать "нормальное" изображение маркера смещения, когда позиция смещения находится на экране
-    static void DrawNormal(const int x, const int y);
-
-    // Нарисовать маркер смещения, когда позиция смещения находится за левой границей экрана
-    static void DrawLeft();
-
-    // Нарисовать маркер смещения, когда позиция смещения находится за правой границей экрана
-    static void DrawRight();
-
-    static const float absStep[TBase::Count];
+    void Draw();
 };
 
 namespace Trig
