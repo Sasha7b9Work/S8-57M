@@ -8,7 +8,7 @@
 */
 class AT25160N
 {
-friend class Settings;
+    friend class Settings;
 public:
 
     static void Init();
@@ -22,28 +22,28 @@ private:
 
     // Разрешить запись
     static void SetWriteLatch();
-    
+
     // Запретить запись
     static void ResetWriteLatch();
-    
+
     // Читать регистр статуса
     static uint8 ReadStatusRegister();
-    
+
     // Записать регистр статуса
     static void WriteStatusRegister(uint8 data);
-    
+
     // Записывает size байт, начиная с адреса address
     static void WriteData(uint address, uint8 *data, int size);
-    
+
     // Посылает порцию буфера по данному адресу. Порция не может быть больше 32 байт
     static void Write32BytesOrLess(uint address, const uint8 *data, int size);
-    
+
     // Читает size байт, начиная с адреса address
     static void ReadData(uint address, uint8 *data, int size);
 
     // Записывает байт в микросхему
     static void WriteByte(uint8 byte);
-    
+
     // Читает байт из микросхемы
     static uint8 ReadByte();
 
