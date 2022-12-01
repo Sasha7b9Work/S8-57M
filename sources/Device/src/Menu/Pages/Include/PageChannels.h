@@ -31,24 +31,24 @@ struct SettingsChannel
 
 
 
-struct PageChannelA
+namespace PageChannelA
 {
-    static void OnChanged_Couple(bool active);
+    void OnChanged_Couple(bool active);
 
-    static const Page * const self;
+    extern const Page * const self;
 };
 
 
 
-struct PageChannelB
+namespace PageChannelB
 {
-    static void OnChanged_Couple(bool active);
+    void OnChanged_Couple(bool active);
 
-    static const Page * const self;
+    extern const Page * const self;
 };
 
 
-struct PageChannel
+namespace PageChannel
 {
-    static void Enable(Chan::E ch, int enable);
+    extern void Enable(Chan::E ch, int enable);
 };

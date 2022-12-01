@@ -176,39 +176,40 @@ struct SettingsDisplay
 };
 
 
-struct PageDisplay
+namespace PageDisplay
 {
-    static const Page * const self;
+    extern const Page * const self;
 
-    static void SetTypeGrid(TypeGrid::E v);
+    void SetTypeGrid(TypeGrid::E);
 
-    static void SetBrightness(int value);
+    void SetBrightness(int value);
 
-    struct Accumulation
+    namespace Accumulation
     {
-        static const Page * const self;
+        extern const Page * const self;
 
-        static void OnPress_Accumulation_Clear();
+        void OnPress_Accumulation_Clear();
     };
 
 
-    struct Settings
+    namespace Settings
     {
-        static const Page * const self;
+        extern const Page * const self;
 
-
-        struct Colors
+        namespace Colors
         {
-            static void Init();
+            void Init();
 
-            static const Page * const self;
+            extern const Page * const self;
 
             // Для сетки
-            static ColorType colorTypeGrid;
+            extern ColorType colorTypeGrid;
+
             // Для первого канала
-            static ColorType colorTypeA;
+            extern ColorType colorTypeA;
+
             // Для второго канала
-            static ColorType colorTypeB;
+            extern ColorType colorTypeB;
         };
     };
 };
