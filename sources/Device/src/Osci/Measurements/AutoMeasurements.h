@@ -80,11 +80,11 @@ namespace AutoMeasurements
 
 
 // Отвечает за посылаение результата имерения в SCPI
-struct AutoMeasuresSender
+namespace AutoMeasuresSender
 {
     // Назначить данный тип измерения к посылке в SCPI
-    static void DesignateForSending(TypeMeasure::E type);
+    void DesignateForSending(TypeMeasure::E type);
 
     // Тип измерения, которое нужно залать в SCPI. Если Count, то не надо ничего посылать
-    static TypeMeasure::E sended;
+    extern TypeMeasure::E sended;
 };
