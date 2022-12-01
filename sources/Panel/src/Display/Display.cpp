@@ -94,11 +94,19 @@ void Display::DrawStartScreen()
 }
 
 
-void Display::Update()
+uint Display::Update()
 {
+    uint start = TIME_MS;
+
     ClearBuffer(Color::BLACK);
 
+//    Painter::SetColor(Color::BLACK);
+//
+//    Painter::FillRegion(0, 0, Display::WIDTH, Display::HEIGHT);
+
     Update1();
+
+    return TIME_MS - start;
 }
 
 

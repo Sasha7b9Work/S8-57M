@@ -17,14 +17,20 @@ int main()
 //    Keyboard::Init();
 
     UnusedMemory::Init();
+    
+    uint full_time = 0;
 
     while(1)
     {
-//        Display::Update();
+        volatile uint time = Display::Update();
+
+        time = time;
         
+        full_time += time;
+
 //        static uint prevTime = 0;
 
-        HAL_BUS::Update();
+//        HAL_BUS::Update();
 
 //        if(TIME_MS - prevTime > 2)
 //        {

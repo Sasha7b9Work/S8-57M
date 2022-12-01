@@ -1531,7 +1531,7 @@
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
-          <DebugInformation>0</DebugInformation>
+          <DebugInformation>1</DebugInformation>
           <BrowseInformation>0</BrowseInformation>
           <ListingPath>.\Listings\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
@@ -1815,7 +1815,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>USE_HAL_DRIVER, STM32F479xx, DEBUG,PANEL</Define>
+              <Define>USE_HAL_DRIVER, STM32F479xx, PANEL</Define>
               <Undefine></Undefine>
               <IncludePath>.\src;.\src\Hardware\HAL;..\src\Hardware\HAL;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include;..\;..\common\Display\Font</IncludePath>
             </VariousControls>

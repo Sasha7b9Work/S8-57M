@@ -12,7 +12,7 @@ namespace Display
 
     void Init();
 
-    void Update();
+    uint Update();
 
     void Update1();
 
