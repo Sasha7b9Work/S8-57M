@@ -45,22 +45,25 @@ static const int voltsInPixelInt[] =   // Коэффициент 20000
 };
 
 
-const float VALUE::voltsInPoint[Range::Count] =
+namespace VALUE
 {
-    2e-3F   / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 2mV //-V2564
-    5e-3F   / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 5mV //-V2564
-    10e-3F  / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 10mV //-V2564
-    20e-3F  / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 20mV //-V2564
-    50e-3F  / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 50mV //-V2564
-    100e-3F / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 100mV //-V2564
-    200e-3F / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 200mV //-V2564
-    500e-3F / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 500mV //-V2564
-    1.0F    / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 1V //-V2564
-    2.0F    / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 2V //-V2564
-    5.0F    / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 5V //-V2564
-    10.0F   / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 10V //-V2564
-    20.0F   / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN)     // 20V //-V2564
-};
+    const float voltsInPoint[Range::Count] =
+    {
+        2e-3F / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 2mV //-V2564
+        5e-3F / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 5mV //-V2564
+        10e-3F / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 10mV //-V2564
+        20e-3F / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 20mV //-V2564
+        50e-3F / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 50mV //-V2564
+        100e-3F / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 100mV //-V2564
+        200e-3F / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 200mV //-V2564
+        500e-3F / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 500mV //-V2564
+        1.0F / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 1V //-V2564
+        2.0F / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 2V //-V2564
+        5.0F / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 5V //-V2564
+        10.0F / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN),    // 10V //-V2564
+        20.0F / 20 * Grid::Height() / (VALUE::MAX - VALUE::MIN)     // 20V //-V2564
+    };
+}
 
 
 // Массив структур описаний масштабов по напряжению.
