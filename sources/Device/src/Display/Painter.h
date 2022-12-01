@@ -4,11 +4,11 @@
 #include "common/Display/Font/Font_d.h"
 
 
-struct Painter
+namespace Painter
 {
-    static void Init();
+    void Init();
 
-    static void BeginScene(Color color);
+    void BeginScene(Color color);
 
-    static void EndScene();
+    void EndScene();
 };
