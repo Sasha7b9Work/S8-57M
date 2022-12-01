@@ -2,11 +2,9 @@
 #pragma once
 
 
-class PowerBreaker
+namespace PowerBreaker
 {
-public:
+    void Init();
 
-    static void Init();
-
-    static void Update();
+    void Update();
 };
