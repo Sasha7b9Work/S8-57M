@@ -182,7 +182,7 @@ namespace ModeCouple
 
 #define S_BANDWIDTH(chan)           set.ch[chan]._bandwidth
 #define S_BANDWIDTH_IS_20MHz(chan)  (S_BANDWIDTH(chan) == Bandwidth::_20MHz)
-struct Bandwidth
+namespace Bandwidth
 {
     enum E
     {
@@ -190,7 +190,7 @@ struct Bandwidth
         _20MHz,
     };
 
-    static void Load(Chan::E ch);
+    void Load(Chan::E ch);
 };
 
 
