@@ -65,18 +65,17 @@ namespace DisplayOsci
         extern bool needSendToSCPI_FFT;
     };
 
-
-    struct MemoryWindow
+    namespace MemoryWindow
     {
-        static void Draw();
+        void Draw();
 
-        static int X();
+        int X();
 
-        static int Y();
+        int Y();
 
-        static int Width();
+        int Width();
 
-        static int Height();
+        int Height();
     };
 
 
