@@ -20,18 +20,20 @@
 #include "Utils/Values.h"
 
 
-bool DisplayOsci::DrawingValueParameter::needDrawParameter = false;
-DisplayOsci::DrawingValueParameter::E DisplayOsci::DrawingValueParameter::parameter;
-
-
 namespace DisplayOsci
 {
     // Признак того, что дисплей нуждается в полной перерисовке
     static bool needRedraw = false;
 
-    namespace HiPart
+    namespace DrawingValueParameter
     {
+        static bool                     needDrawParameter = false;
+        static DrawingValueParameter::E parameter;
 
+        static void Disable();
+
+        // Отобразить строку в прямоугольнике на высоте y
+        static void DrawBoundedText(int y, const String *text, Color color);
     }
 }
 

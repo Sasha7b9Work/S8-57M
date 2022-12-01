@@ -80,7 +80,7 @@ namespace DisplayOsci
 
 
     // —труктура дл€ обслуживани€ параметра, значение которого необходимо отрисовывать поверх сетки (в течение некоторого времени поисле того, как этот параметр изменилс€)
-    struct DrawingValueParameter
+    namespace DrawingValueParameter
     {
         enum E
         {
@@ -94,17 +94,8 @@ namespace DisplayOsci
         };
 
         // ѕосле изменени€ параметра (вращени€ ручки) нужно вызывать эту функцию
-        static void Enable(DrawingValueParameter::E v);
+        void Enable(DrawingValueParameter::E v);
 
-        static void Draw();
-
-    private:
-        static bool                     needDrawParameter;
-        static DrawingValueParameter::E parameter;
-
-        static void Disable();
-
-        // ќтобразить строку в пр€моугольнике на высоте y
-        static void DrawBoundedText(int y, const String *text, Color color);
+        void Draw();
     };
 };
