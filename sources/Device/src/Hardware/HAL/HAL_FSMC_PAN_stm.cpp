@@ -113,9 +113,6 @@ void HAL_BUS::UpdatePanel()
     {
         counter = 0;
     }
-
-    pinReady.SetPassive();
-    pinData.SetPassive();
 }
 
 
