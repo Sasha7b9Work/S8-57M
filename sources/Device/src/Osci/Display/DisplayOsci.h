@@ -7,12 +7,12 @@
 #define SHIFT_IN_MEMORY     DisplayOsci::PainterData::FirstPointOnScreen()
 
 
-struct DisplayOsci
+namespace DisplayOsci
 {
-    static void Update();
+    void Update();
 
     // ”становить признак того, что дисплей нуждаетс€ в перерисовке
-    static void SetFlagRedraw();
+    void SetFlagRedraw();
 
 
     struct HiPart
@@ -150,9 +150,4 @@ struct DisplayOsci
         // ќтобразить строку в пр€моугольнике на высоте y
         static void DrawBoundedText(int y, const String *text, Color color);
     };
-
-private:
-
-    // ѕризнак того, что дисплей нуждаетс€ в полной перерисовке
-    static bool needRedraw;
 };

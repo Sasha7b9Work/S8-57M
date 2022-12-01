@@ -20,9 +20,15 @@
 #include "Utils/Values.h"
 
 
-bool DisplayOsci::needRedraw = false;
 bool DisplayOsci::DrawingValueParameter::needDrawParameter = false;
 DisplayOsci::DrawingValueParameter::E DisplayOsci::DrawingValueParameter::parameter;
+
+
+namespace DisplayOsci
+{
+    // Признак того, что дисплей нуждается в полной перерисовке
+    static bool needRedraw = false;
+}
 
 
 void DisplayOsci::Update()
