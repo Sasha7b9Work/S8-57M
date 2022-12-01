@@ -3,6 +3,8 @@
 #include "common/Command.h"
 #include "Hardware/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
+#include "Display/Text.h"
+#include "Display/Painter.h"
 
 
 #define SL0 GPIO_PIN_2
@@ -90,28 +92,48 @@ void Keyboard::Init()
     GPIO_InitTypeDef isGPIO;
 
     // порты ввода
-    isGPIO.Pin = RL1 | RL2 | RL4;
+    isGPIO.Pin = RL0 | RL1;
     isGPIO.Mode = GPIO_MODE_INPUT;
     isGPIO.Pull = GPIO_PULLUP;
-    HAL_GPIO_Init(GPIOA, &isGPIO);
+    HAL_GPIO_Init(GPIOB, &isGPIO);
 
-    isGPIO.Pin = RL0 | RL5 | RL3;
+    isGPIO.Pin = RL3 | RL4 | RL5;
+    HAL_GPIO_Init(GPIOC, &isGPIO);
+
+    isGPIO.Pin = RL2;
     HAL_GPIO_Init(GPIOD, &isGPIO);
 
     // порты вывода
-    isGPIO.Pin = SL0 | SL1 | SL2 | SL3;
+    isGPIO.Pin = SL7;
     isGPIO.Mode = GPIO_MODE_OUTPUT_PP;
-    HAL_GPIO_Init(GPIOB, &isGPIO);
+    HAL_GPIO_Init(GPIOA, &isGPIO);
 
-    isGPIO.Pin = SL5 | SL7;
+    isGPIO.Pin = SL1 | SL2 | SL3 | SL4 | SL5 | SL6;
     HAL_GPIO_Init(GPIOC, &isGPIO);
 
-    isGPIO.Pin = SL4 | SL6;
-    HAL_GPIO_Init(GPIOD, &isGPIO);
+    isGPIO.Pin = SL0;
+    HAL_GPIO_Init(GPIOE, &isGPIO);
 
     SET_ALL_SL;
 
     init = true;
+}
+
+
+static void EraseControl()
+{
+    Painter::SetColor(Color::BLACK);
+    Painter::FillRegion(10, 300, 300, 50);
+}
+
+
+static void DrawControl(Control::E control)
+{
+    EraseControl();
+
+    Painter::SetColor(Color::WHITE);
+
+    Text::Draw(10, 300, Keyboard::ControlName(control));
 }
 
 
@@ -145,7 +167,8 @@ void Keyboard::Update() //-V2506
                             timePress[rl][sl] = 0;
                             if (!alreadyLong[rl][sl])
                             {
-                                SendCommand(controls[rl][sl], Control::Action::Release);
+                                //SendCommand(controls[rl][sl], Control::Action::Release);
+                                EraseControl();
                             }
                             alreadyLong[rl][sl] = false;
                             prevRepeat = 0;
@@ -179,7 +202,8 @@ void Keyboard::Update() //-V2506
                 else if (BUTTON_IS_PRESS(state) && !alreadyLong[rl][sl])
                 {
                     timePress[rl][sl] = time;
-                    SendCommand(controls[rl][sl], Control::Action::Press);
+                    //SendCommand(controls[rl][sl], Control::Action::Press);
+                    DrawControl(controls[rl][sl].value);
                     prevRepeat = 0;
                 }
                 else
