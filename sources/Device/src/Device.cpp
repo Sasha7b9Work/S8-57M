@@ -100,7 +100,7 @@ void Device::Update()
 {
     HAL_BUS::UpdatePanel();
 
-    Timer::PauseOnTime(500);
+    Timer::PauseOnTime(1000);
 }
 
 

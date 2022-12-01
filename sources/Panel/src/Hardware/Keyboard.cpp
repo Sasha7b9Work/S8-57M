@@ -5,9 +5,9 @@
 #include "Hardware/HAL/HAL.h"
 
 
-#define SL0 GPIO_PIN_14
+#define SL0 GPIO_PIN_2
 #define SL1 GPIO_PIN_13
-#define SL2 GPIO_PIN_15
+#define SL2 GPIO_PIN_14
 #define SL3 GPIO_PIN_12
 #define SL4 GPIO_PIN_8
 #define SL5 GPIO_PIN_8
@@ -45,7 +45,7 @@ static const Control controls[Keyboard::NUM_RL][Keyboard::NUM_SL] =
 
 
 static uint16 sls[Keyboard::NUM_SL]             = {SL0,   SL1,   SL2,   SL3,   SL4,   SL5,   SL6,   SL7};
-static GPIO_TypeDef* slsPorts[Keyboard::NUM_SL] = {GPIOB, GPIOB, GPIOB, GPIOB, GPIOD, GPIOC, GPIOD, GPIOC};
+static GPIO_TypeDef* slsPorts[Keyboard::NUM_SL] = {GPIOE, GPIOC, GPIOC, GPIOB, GPIOD, GPIOC, GPIOD, GPIOC};
 
 static uint16 rls[Keyboard::NUM_RL]             = {RL0,   RL1,   RL2,   RL3,   RL4,   RL5};
 static GPIO_TypeDef* rlsPorts[Keyboard::NUM_RL] = {GPIOD, GPIOA, GPIOA, GPIOD, GPIOA, GPIOD};
