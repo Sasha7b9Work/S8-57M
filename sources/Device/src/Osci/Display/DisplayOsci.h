@@ -19,10 +19,9 @@ namespace DisplayOsci
         void Draw();
     };
 
-
-    struct BottomPart
+    namespace BottomPart
     {
-        static void Draw(int x, int y);
+        void Draw(int x, int y);
     };
 
 
