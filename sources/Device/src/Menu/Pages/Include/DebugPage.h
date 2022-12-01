@@ -42,50 +42,50 @@ struct SettingsDebug
 };
 
 
-struct PageDebug
+namespace PageDebug
 {
-    static const Page *const self;
+    extern const Page *const self;
 
-    struct PageConsole
+    namespace PageConsole
     {
-        static const Page *const self;
+        extern const Page *const self;
     };
 
 
-    struct PageRegisters
+    namespace PageRegisters
     {
-        static const Page *const self;
+        extern const Page *const self;
     };
 
 
-    struct PageRand
+    namespace PageRand
     {
-        static const Page *const self;
+        extern const Page *const self;
     };
 
 
-    struct PageSettings
+    namespace PageSettings
     {
-        static const Page *const self;
+        extern const Page *const self;
     };
 
 
-    struct PageSerialNumber
+    namespace PageSerialNumber
     {
-        static const Page *const self;
+        extern const Page *const self;
     };
 
 
-    struct PageTests
+    namespace PageTests
     {
-        static const Page *const self;
+        extern const Page *const self;
 
-        static void OnPress_Run();
+        void OnPress_Run();
     };
 
 
-    struct PageADC
+    namespace PageADC
     {
-        static const Page *const self;
+        extern const Page *const self;
     };
 };
