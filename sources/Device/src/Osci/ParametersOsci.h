@@ -220,26 +220,20 @@ namespace Trig
     bool SyncPulse();
 };
 
-struct TrigLevel
+namespace TrigLevel
 {
-    static void Set(Chan::E ch, int16 level);
+    void Set(Chan::E ch, int16 level);
 
     // Загрузить уровень синхронизации в аппаратную часть
-    static void Load();
+    void Load();
 
     // Изменить уровень синхронизации текущего иточника синхронизации на delta единиц
-    static void Change(int16 delta);
+    void Change(int16 delta);
 
     // Однократно найти уровень синхронизации
-    static void Find();
+    void Find();
 
-    static void Draw();
-
-private:
-    static const int16 MIN = -480;
-    static const int16 MAX = 480;
-    static const int16 HARDWARE_ZERO = 500;
-    static const int16 STEP = (((MAX - MIN) / 24) / 20);
+    void Draw();
 };
 
 

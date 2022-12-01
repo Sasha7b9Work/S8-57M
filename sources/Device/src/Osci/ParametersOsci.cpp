@@ -170,18 +170,13 @@ namespace TShift
 static uint8 ValueForRange(Chan::E ch);
 
 
-//void Osci::LoadHoldfOff()
-//{
-//    HAL_BUS::FPGA::Write8(WR::TRIG_HOLD_ENABLE, S_TRIG_HOLDOFF_ENABLED ? 1U : 0U);
-//
-//    uint value = static_cast<uint>(0 - S_TRIG_HOLDOFF_VALUE + 1);
-//
-//    BitSet32 bs(value);
-//
-//    HAL_BUS::FPGA::Write8(WR::TRIG_HOLD_VALUE_LOW, bs.byte0);
-//    HAL_BUS::FPGA::Write8(WR::TRIG_HOLD_VALUE_MID, bs.byte1);
-//    HAL_BUS::FPGA::Write8(WR::TRIG_HOLD_VALUE_HI, bs.byte2);
-//}
+namespace TrigLevel
+{
+    static const int16 MIN = -480;
+    static const int16 MAX = 480;
+    static const int16 HARDWARE_ZERO = 500;
+    static const int16 STEP = (((MAX - MIN) / 24) / 20);
+}
 
 
 void TBase::Change(int delta) //-V2506
