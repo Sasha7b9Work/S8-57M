@@ -135,49 +135,28 @@ namespace Range
 };
 
 
-struct RShift
+namespace RShift
 {
-public:
-
     // Ётим конструктором можно установить значение
-    static void Set(Chan::E ch, int16 rShift);
+    void Set(Chan::E ch, int16 rShift);
 
     // »зменить на delta
-    static void Change(Chan::E ch, int16 delta);
+    void Change(Chan::E ch, int16 delta);
 
     // «агрузить в аппаратуру
-    static void Load(Chan::E ch);
+    void Load(Chan::E ch);
 
     // ќтрисовать оба на экране
-    static void DrawBoth();
+    void DrawBoth();
 
     // ѕреобразовать в строку
-    static String ToString(int16 rShiftRel, Range::E range, Divider::E divider);
+    String ToString(int16 rShiftRel, Range::E range, Divider::E divider);
 
-    static float ToAbs(int16 rShift, Range::E range);
+    float ToAbs(int16 rShift, Range::E range);
 
-    static int16 ToRel(float rShiftAbs, Range::E range);
+    int16 ToRel(float rShiftAbs, Range::E range);
 
-    static bool ChangeMath(int delta);
-
-private:
-
-    // ќтрисовать маркер вертикального смещени€ на сетке
-    static void Draw(Chan::E ch);
-
-    static const float absStep[Range::Count];
-
-    // Ёто значение соответствует минимуму смещени€
-    static const int16 MIN = -480;
-
-    // Ёто значение соотвествует максимуму смещени€
-    static const int16 MAX = 480;
-
-    // Ёто знаение, которое нужно засылать в аппаратную часть, чтобы получить смещение "0"
-    static const int16 HARDWARE_ZERO = 500;
-
-    // Ќа столько единиц нужно изменить значение смещени€, чтобы маркер смещени€ по напр€жению передвинулс€ на одну точку.
-    static const int16 STEP = (((MAX - MIN) / 24) / 20);
+    bool ChangeMath(int delta);
 };
 
 // –ежим канала по входу.

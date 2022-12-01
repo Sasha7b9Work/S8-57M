@@ -87,22 +87,37 @@ ranges[Range::Count][2] =
 };
 
 
-const float RShift::absStep[Range::Count] =
+namespace RShift
 {
-    2e-3F   / 20 / RShift::STEP, //-V2564
-    5e-3F   / 20 / RShift::STEP, //-V2564
-    10e-3F  / 20 / RShift::STEP, //-V2564
-    20e-3F  / 20 / RShift::STEP, //-V2564
-    50e-3F  / 20 / RShift::STEP, //-V2564
-    100e-3F / 20 / RShift::STEP, //-V2564
-    200e-3F / 20 / RShift::STEP, //-V2564
-    500e-3F / 20 / RShift::STEP, //-V2564
-    1.0F    / 20 / RShift::STEP, //-V2564
-    2.0F    / 20 / RShift::STEP, //-V2564
-    5.0F    / 20 / RShift::STEP, //-V2564
-    10.0F   / 20 / RShift::STEP, //-V2564
-    20.0F   / 20 / RShift::STEP //-V2564
-};
+    // Это значение соответствует минимуму смещения
+    extern const int16 MIN;
+
+    // Это значение соотвествует максимуму смещения
+    extern const int16 MAX;
+
+    // На столько единиц нужно изменить значение смещения, чтобы маркер смещения по напряжению передвинулся на одну точку.
+    extern const int16 STEP;
+
+    const float absStep[Range::Count] =
+    {
+        2e-3F / 20 / RShift::STEP, //-V2564
+        5e-3F / 20 / RShift::STEP, //-V2564
+        10e-3F / 20 / RShift::STEP, //-V2564
+        20e-3F / 20 / RShift::STEP, //-V2564
+        50e-3F / 20 / RShift::STEP, //-V2564
+        100e-3F / 20 / RShift::STEP, //-V2564
+        200e-3F / 20 / RShift::STEP, //-V2564
+        500e-3F / 20 / RShift::STEP, //-V2564
+        1.0F / 20 / RShift::STEP, //-V2564
+        2.0F / 20 / RShift::STEP, //-V2564
+        5.0F / 20 / RShift::STEP, //-V2564
+        10.0F / 20 / RShift::STEP, //-V2564
+        20.0F / 20 / RShift::STEP //-V2564
+    };
+
+    // Отрисовать маркер вертикального смещения на сетке
+    static void Draw(Chan::E ch);
+}
 
 
 const float TShift::absStep[TBase::Count] =

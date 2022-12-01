@@ -14,6 +14,17 @@
 #include "Hardware/HAL/HAL_PIO.h"
 
 
+namespace RShift
+{
+    // Это знаение, которое нужно засылать в аппаратную часть, чтобы получить смещение "0"
+    static const int16 HARDWARE_ZERO = 500;
+
+    extern const int16 MIN = -480;
+    extern const int16 MAX = 480;
+    extern const int16 STEP = (((MAX - MIN) / 24) / 20);
+}
+
+
 void TrigStartMode::Set(TrigStartMode::E v)
 {
     S_TRIG_START_MODE = v;
@@ -222,7 +233,7 @@ void Range::Change(Chan::E ch, int16 delta) //-V2506
 
 void RShift::Set(Chan::E ch, int16 rShift)
 {
-    ::Math::Limitation(&rShift, MIN, MAX);
+    ::Math::Limitation(&rShift, RShift::MIN, MAX);
     S_RSHIFT(ch) = rShift;
     Load(ch);
     DisplayOsci::DrawingValueParameter::Enable((ch == ChanA) ? DisplayOsci::DrawingValueParameter::RShiftA : DisplayOsci::DrawingValueParameter::RShiftB);
