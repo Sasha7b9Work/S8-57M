@@ -8,18 +8,18 @@
 #define SL0 GPIO_PIN_2
 #define SL1 GPIO_PIN_13
 #define SL2 GPIO_PIN_14
-#define SL3 GPIO_PIN_12
-#define SL4 GPIO_PIN_8
-#define SL5 GPIO_PIN_8
-#define SL6 GPIO_PIN_9
-#define SL7 GPIO_PIN_9
+#define SL3 GPIO_PIN_15
+#define SL4 GPIO_PIN_1
+#define SL5 GPIO_PIN_2
+#define SL6 GPIO_PIN_3
+#define SL7 GPIO_PIN_0
 
-#define RL0 GPIO_PIN_13
-#define RL1 GPIO_PIN_8
-#define RL2 GPIO_PIN_9
-#define RL3 GPIO_PIN_11
-#define RL4 GPIO_PIN_10
-#define RL5 GPIO_PIN_12
+#define RL0 GPIO_PIN_6
+#define RL1 GPIO_PIN_5
+#define RL2 GPIO_PIN_2
+#define RL3 GPIO_PIN_12
+#define RL4 GPIO_PIN_11
+#define RL5 GPIO_PIN_10
 
 
 static const Control controls[Keyboard::NUM_RL][Keyboard::NUM_SL] =
@@ -45,15 +45,15 @@ static const Control controls[Keyboard::NUM_RL][Keyboard::NUM_SL] =
 
 
 static uint16 sls[Keyboard::NUM_SL]             = {SL0,   SL1,   SL2,   SL3,   SL4,   SL5,   SL6,   SL7};
-static GPIO_TypeDef* slsPorts[Keyboard::NUM_SL] = {GPIOE, GPIOC, GPIOC, GPIOB, GPIOD, GPIOC, GPIOD, GPIOC};
+static GPIO_TypeDef* slsPorts[Keyboard::NUM_SL] = {GPIOE, GPIOC, GPIOC, GPIOC, GPIOC, GPIOC, GPIOC, GPIOA};
 
 static uint16 rls[Keyboard::NUM_RL]             = {RL0,   RL1,   RL2,   RL3,   RL4,   RL5};
-static GPIO_TypeDef* rlsPorts[Keyboard::NUM_RL] = {GPIOD, GPIOA, GPIOA, GPIOD, GPIOA, GPIOD};
+static GPIO_TypeDef* rlsPorts[Keyboard::NUM_RL] = {GPIOB, GPIOB, GPIOD, GPIOC, GPIOC, GPIOC};
 
 #define SET_SL(n)   HAL_GPIO_WritePin(slsPorts[n], sls[n], GPIO_PIN_SET);
-#define SET_ALL_SL  HAL_GPIO_WritePin(GPIOB, SL0 | SL1 | SL2 | SL3, GPIO_PIN_SET);  \
-                    HAL_GPIO_WritePin(GPIOC, SL5 | SL7 , GPIO_PIN_SET);             \
-                    HAL_GPIO_WritePin(GPIOD, SL4 | SL6, GPIO_PIN_SET);
+#define SET_ALL_SL  HAL_GPIO_WritePin(GPIOA, SL7, GPIO_PIN_SET);                                    \
+                    HAL_GPIO_WritePin(GPIOC, SL1 | SL2 | SL3 | SL4 | SL5 | SL6, GPIO_PIN_SET);      \
+                    HAL_GPIO_WritePin(GPIOE, SL0, GPIO_PIN_SET);
 #define RESET_SL(n) HAL_GPIO_WritePin(slsPorts[n], sls[n], GPIO_PIN_RESET);
 #define READ_RL(n)  HAL_GPIO_ReadPin(rlsPorts[n], rls[n]);
 

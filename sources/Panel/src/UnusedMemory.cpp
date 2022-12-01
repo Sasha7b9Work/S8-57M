@@ -5,7 +5,7 @@
 
 namespace UnusedMemory
 {
-    static const uint SIZE = 17 * 1024 + 822;
+    static const uint SIZE = 16 * 1024 + 822;
     static uint8 memory[SIZE];
 }
 
