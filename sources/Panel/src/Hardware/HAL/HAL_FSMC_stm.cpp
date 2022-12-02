@@ -120,20 +120,20 @@ namespace HAL_BUS
 
 void HAL_BUS::Init()
 {
-//    pinD0.Init();
-//    pinD1.Init();
-//    pinD2.Init();
-//    pinD3.Init();
-//    pinD4.Init();
-//    pinD5.Init();
-//    pinD6.Init();
-//    pinD7.Init();
-//    pinWR.Init();
-//    pinRD.Init();
-//    pinCS.Init();
-//
-//    pinReady.Init();
-//    pinData.Init();
+    pinD0.Init();
+    pinD1.Init();
+    pinD2.Init();
+    pinD3.Init();
+    pinD4.Init();
+    pinD5.Init();
+    pinD6.Init();
+    pinD7.Init();
+    pinWR.Init();
+    pinRD.Init();
+    pinCS.Init();
+
+    pinReady.Init();
+    pinData.Init();
 //
 //    GPIOB->MODER &= 0x0fffffff;
 //

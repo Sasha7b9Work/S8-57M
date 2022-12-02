@@ -90,10 +90,25 @@ void HAL_BUS::InitPanel()
 
 void HAL_BUS::UpdatePanel()
 {
-    static OutPin *pins[13] = {   &pinD0, &pinD1, &pinD2, &pinD3, &pinD4, &pinD5, &pinD6, &pinD7,
-                                        &pinWR, &pinRD, &pinCS, &pinReady, &pinData};
+    static uint prev_time = 0;
 
     static int counter = 0;
+
+    if (TIME_MS >= prev_time + 250)
+    {
+        prev_time = TIME_MS;
+
+        counter++;
+
+        if (counter > 12)
+        {
+            counter = 0;
+        }
+    }
+
+
+    static OutPin *pins[13] = {   &pinD0, &pinD1, &pinD2, &pinD3, &pinD4, &pinD5, &pinD6, &pinD7,
+                                        &pinWR, &pinRD, &pinCS, &pinReady, &pinData};
 
     for (int i = 0; i < 13; i++)
     {
@@ -105,13 +120,6 @@ void HAL_BUS::UpdatePanel()
         {
             pins[i]->SetPassive();
         }
-    }
-
-    counter++;
-
-    if (counter > 12)
-    {
-        counter = 0;
     }
 }
 
