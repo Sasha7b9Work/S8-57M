@@ -18,12 +18,12 @@ int main()
 
     UnusedMemory::Init();
 
-    Keyboard::Init();
+//    Keyboard::Init();
 
     while(1)
     {
         HAL_BUS::Update();
 
-        Keyboard::Update();
+//        Keyboard::Update();
     }
 }

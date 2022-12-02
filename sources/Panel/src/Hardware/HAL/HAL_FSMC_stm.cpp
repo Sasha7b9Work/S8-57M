@@ -120,27 +120,38 @@ namespace HAL_BUS
 
 void HAL_BUS::Init()
 {
-    pinD0.Init();
-    pinD1.Init();
-    pinD2.Init();
-    pinD3.Init();
-    pinD4.Init();
-    pinD5.Init();
-    pinD6.Init();
-    pinD7.Init();
-    pinWR.Init();
-    pinRD.Init();
-    pinCS.Init();
-
-    GPIO_InitTypeDef isGPIO;
-
-    isGPIO.Pin = GPIO_PIN_14 | GPIO_PIN_15;
-    isGPIO.Mode = GPIO_MODE_OUTPUT_PP;
-    isGPIO.Pull = GPIO_PULLUP;
-    HAL_GPIO_Init(GPIOB, &isGPIO);
-
-    pinReady.Init();
-    pinData.Init();
+//    pinD0.Init();
+//    pinD1.Init();
+//    pinD2.Init();
+//    pinD3.Init();
+//    pinD4.Init();
+//    pinD5.Init();
+//    pinD6.Init();
+//    pinD7.Init();
+//    pinWR.Init();
+//    pinRD.Init();
+//    pinCS.Init();
+//
+//    pinReady.Init();
+//    pinData.Init();
+//
+//    GPIOB->MODER &= 0x0fffffff;
+//
+//    GPIO_InitTypeDef isGPIO;
+//
+//    isGPIO.Pin = GPIO_PIN_11;
+//    isGPIO.Mode = GPIO_MODE_INPUT;
+//    isGPIO.Pull = GPIO_PULLUP;
+//    //    HAL_GPIO_Init(GPIOA, &isGPIO);
+//
+//    isGPIO.Pin = GPIO_PIN_14 | GPIO_PIN_15;
+//    isGPIO.Mode = GPIO_MODE_OUTPUT_PP;
+////    HAL_GPIO_Init(GPIOB, &isGPIO);
+//
+////    isGPIO.Pin = GPIO_PIN_1;
+////    HAL_GPIO_Init(GPIOD, &isGPIO);
+////
+////    HAL_GPIO_WritePin(GPIOD, GPIO_PIN_1, GPIO_PIN_SET);
 }
 
 
