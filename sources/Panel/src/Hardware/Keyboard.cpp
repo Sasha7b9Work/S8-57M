@@ -108,6 +108,9 @@ void Keyboard::Init()
     isGPIO.Mode = GPIO_MODE_OUTPUT_PP;
     HAL_GPIO_Init(GPIOA, &isGPIO);
 
+    isGPIO.Pin = GPIO_PIN_14 | GPIO_PIN_15;
+    HAL_GPIO_Init(GPIOB, &isGPIO);
+
     isGPIO.Pin = SL1 | SL2 | SL3 | SL4 | SL5 | SL6;
     HAL_GPIO_Init(GPIOC, &isGPIO);
 

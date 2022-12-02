@@ -131,6 +131,14 @@ void HAL_BUS::Init()
     pinWR.Init();
     pinRD.Init();
     pinCS.Init();
+
+    GPIO_InitTypeDef isGPIO;
+
+    isGPIO.Pin = GPIO_PIN_14 | GPIO_PIN_15;
+    isGPIO.Mode = GPIO_MODE_OUTPUT_PP;
+    isGPIO.Pull = GPIO_PULLUP;
+    HAL_GPIO_Init(GPIOB, &isGPIO);
+
     pinReady.Init();
     pinData.Init();
 }
