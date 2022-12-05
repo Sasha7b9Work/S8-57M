@@ -36,12 +36,12 @@ void Rectangle::Draw(int x, int y, Color color)
     uint8 buffer[7] =
     {
         Command::Paint_DrawRectangle,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
+        0,  // \ 
+        0,  // | (x, y)
+        0,  // /
+        0,  // \ 
+        0,  // | (width, height)
+        0   // /
     };
 
     Point2(x, y).Write(&buffer[1]);
@@ -58,15 +58,19 @@ void HLine::Draw(int x, int y, Color color)
     int x0 = x;
     int x1 = x0 + width;
 
-    uint8 buffer[6] =
+    uint8 buffer[7] =
     {
         Command::Paint_DrawHLine,
-        static_cast<uint8>(y),
-        static_cast<uint8>(x0),
-        static_cast<uint8>(x0 >> 8),
-        static_cast<uint8>(x1),
-        static_cast<uint8>(x1 >> 8)
+        0,  // \ 
+        0,  // | (x0, y)
+        0,  // /
+        0,  // \ 
+        0,  // | (x1, 0)
+        0   // /
     };
+
+    Point2(x0, y).Write(&buffer[1]);
+    Point2(x1, 0).Write(&buffer[4]);
 
     HAL_BUS::Panel::Send(buffer, 6);
 }

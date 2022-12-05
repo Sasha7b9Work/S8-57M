@@ -309,23 +309,30 @@ static bool DrawVLine(uint8 data)
 
 static bool DrawHLine(uint8 data)
 {
-    static int y;
-    static int x0;
-    static int x1;
-    
+    static Point2 pos1;
+    static Point2 pos2;
+
     bool result = false;
 
     switch (step)
     {
-        case 0:                                         break;
-        case 1:     y = data;                           break;
-        case 2:     x0 = data;                          break;
-        case 3:     x0 += static_cast<int>(data) << 8;  break;
-        case 4:     x1 = data;                          break;
-        case 5:     x1 += static_cast<int>(data) << 8;
-//            Painter::DrawHLine(y, x0, x1);
-            Painter::DrawHLine(y * 2, x0 * 2, x1 * 2);
-            Painter::DrawHLine(y * 2 + 1, x0 * 2, x1 * 2);
+        case 0:
+            break;
+        case 1:
+        case 2:
+        case 3:
+            pos1.Append(data);
+            break;
+        case 4:
+        case 5:
+            pos2.Append(data);
+            break;
+        case 6:
+            pos2.Append(data);
+            Painter::DrawHLine(pos1.Y() * 2, pos1.X() * 2, pos2.X() * 2);
+            Painter::DrawHLine(pos1.Y() * 2 + 1, pos1.X() * 2, pos2.X() * 2);
+            pos1.Reset();
+            pos2.Reset();
             result = true;
             break;
         default:
