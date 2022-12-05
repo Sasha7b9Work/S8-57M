@@ -156,9 +156,7 @@ void MultiVPointLine::Draw(int y0, Color color)
     {
         int x = x0[i];
 
-        buffer[1] = static_cast<uint8>(x);
-        buffer[2] = static_cast<uint8>(x >> 8);
-        buffer[3] = static_cast<uint8>(y0);
+        Point2(x, y0).Write(&buffer[1]);
 
         HAL_BUS::Panel::Send(buffer, 6);
     }
