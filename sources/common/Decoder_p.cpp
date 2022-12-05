@@ -422,7 +422,9 @@ static bool DrawLine(uint8 data)
         case 3: y0 = data;                          break;
         case 4: x1 = data;                          break;
         case 5: x1 += static_cast<int>(data) << 8;  break;
-        case 6: Painter::DrawLine(x0, y0, x1, data);
+        case 6: // Painter::DrawLine(x0, y0, x1, data);
+            Painter::DrawLine(x0 * 2, y0 * 2, x1 * 2, data * 2);
+            Painter::DrawLine(x0 * 2 + 1, y0 * 2, x1 * 2 + 1, data * 2);
             result = true;
             break;
         default:
@@ -445,7 +447,8 @@ static bool SetPoint(uint8 data)
         case 0:                                     break;
         case 1: x = data;                           break;
         case 2: x += static_cast<int>(data) << 8;   break;
-        case 3: Painter::SetPoint(x, data);
+        case 3: // Painter::SetPoint(x, data);
+            Painter::FillRegion(x * 2, data * 2, 1, 1);
             result = true;
             break;
         default:
