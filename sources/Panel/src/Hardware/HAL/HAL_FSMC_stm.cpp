@@ -160,7 +160,7 @@ void HAL_BUS::Update()
             uint8 data = DataBus::ReadValue();
 
             //pinReady.SetPassive();
-            GPIOB->BSRR = GPIO_PIN_15;
+            GPIOB->BSRR = GPIO_PIN_12;
 
             PDecoder::AddData(data);        // \todo Сейчас недостаток - пока не отработает PDecoder::AddData(), устройство не пойдёт дальше
 
@@ -173,7 +173,7 @@ void HAL_BUS::Update()
             }
 
             //pinReady.SetActive();
-            GPIOB->BSRR = (uint)GPIO_PIN_15 << 16U;
+            GPIOB->BSRR = (uint)GPIO_PIN_12 << 16U;
         }
         else if (pinRD.IsActive() && queueData.Size())   // Запись байта в устройсто //-V2570 //-V2516
         {
