@@ -466,17 +466,21 @@ static bool DrawLine(uint8 data)
 
 static bool SetPoint(uint8 data)
 {
-    static int x = 0;
+    static Point2 pos;
     
     bool result = false;
 
     switch (step)
     {
-        case 0:                                     break;
-        case 1: x = data;                           break;
-        case 2: x += static_cast<int>(data) << 8;   break;
-        case 3: // Painter::SetPoint(x, data);
-            Painter::FillRegion(x * 2, data * 2, 1, 1);
+        case 0:
+            break;
+        case 1:
+        case 2:
+            pos.Append(data);
+            break;
+        case 3:
+            Painter::FillRegion(pos.X() * 2, pos.Y() * 2, 1, 1);
+            pos.Reset();
             result = true;
             break;
         default:

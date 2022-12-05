@@ -108,10 +108,12 @@ void Pixel::Draw(int x, int y, Color color)
     uint8 buffer[4] =
     {
         Command::Paint_SetPoint,
-        static_cast<uint8>(x),
-        static_cast<uint8>(x >> 8),
-        static_cast<uint8>(y)
+        0,
+        0,
+        0
     };
+
+    Point2(x, y).Write(&buffer[1]);
 
     HAL_BUS::Panel::Send(buffer, 4);
 }
