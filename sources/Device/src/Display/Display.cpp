@@ -95,7 +95,7 @@ void Display::Update() //-V2506
 
     inStateDraw = false;
 
-    LOG_WRITE("time frame %d ms", TIME_MS - start);
+    LOG_WRITE("%d ms", TIME_MS - start);
 
     ExecuteFuncAfterUpdateOnce();
 }
