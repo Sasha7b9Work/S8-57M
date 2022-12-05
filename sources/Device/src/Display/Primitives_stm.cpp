@@ -129,9 +129,7 @@ void MultiHPointLine::Draw(int x, Color color)
 
     for (int i = 0; i < numLines; i++)
     {
-        buffer[1] = static_cast<uint8>(x);
-        buffer[2] = static_cast<uint8>(x >> 8);
-        buffer[3] = y[i];
+        Point2(x, y[i]).Write(&buffer[1]);
 
         HAL_BUS::Panel::Send(buffer, 6);
     }

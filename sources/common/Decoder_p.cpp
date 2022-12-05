@@ -382,8 +382,7 @@ static bool DrawVPointLine(uint8 data)
 
 static bool DrawHPointLine(uint8 data)
 {
-    static int y;
-    static int x;
+    static Point2 pos;
     static int delta;
     static int count;
 
@@ -391,14 +390,21 @@ static bool DrawHPointLine(uint8 data)
 
     switch (step)
     {
-    case 0:                                     break;
-    case 1: x = data;                           break;
-    case 2: x += static_cast<int>(data) << 8;   break;
-    case 3: y = data;                           break;
-    case 4: delta = data;                       break;
-    case 5: count = data;
-        Painter::DrawHPointLine(x * 2, y * 2, delta * 2, count);
-        Painter::DrawHPointLine(x * 2, y * 2 + 1, delta * 2, count);
+    case 0:
+        break;
+    case 1:
+    case 2:
+    case 3:
+        pos.Append(data);
+        break;
+    case 4:
+        delta = data;
+        break;
+    case 5:
+        count = data;
+        Painter::DrawHPointLine(pos.X() * 2, pos.Y() * 2, delta * 2, count);
+        Painter::DrawHPointLine(pos.X() * 2, pos.Y() * 2 + 1, delta * 2, count);
+        pos.Reset();
         result = true;
         break;
     default:
