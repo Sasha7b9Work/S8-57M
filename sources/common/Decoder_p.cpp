@@ -333,7 +333,8 @@ static bool DrawVPointLine(uint8 data)
     case 3: y = data;                           break;
     case 4: delta = data;                       break;
     case 5: count = data;
-        Painter::DrawVPointLine(x, y, delta, count);
+        Painter::DrawVPointLine(x * 2, y * 2, delta * 2, count);
+        Painter::DrawVPointLine(x * 2 + 1, y * 2, delta * 2, count);
         result = true;
         break;
     default:
@@ -362,7 +363,8 @@ static bool DrawHPointLine(uint8 data)
     case 3: y = data;                           break;
     case 4: delta = data;                       break;
     case 5: count = data;
-        Painter::DrawHPointLine(x, y, delta, count);
+        Painter::DrawHPointLine(x * 2, y * 2, delta * 2, count);
+        Painter::DrawHPointLine(x * 2, y * 2 + 1, delta * 2, count);
         result = true;
         break;
     default:
