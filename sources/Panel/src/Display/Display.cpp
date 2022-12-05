@@ -36,7 +36,7 @@ void Display::Init()
 
 void Display::ClearBuffer()
 {
-    Color color = Color::BACK;
+    Color color = Painter::GetColor();
 
     DMA2D_HandleTypeDef hDMA2D;
 
@@ -48,11 +48,22 @@ void Display::ClearBuffer()
 
     if (HAL_DMA2D_Init(&hDMA2D) == HAL_OK)
     {
-    if (HAL_DMA2D_Start(&hDMA2D, (uint)(color.value | (color.value << 8) | (color.value << 16) | (color.value << 24)), (uint)buffer, Display::WIDTH / 4, Display::HEIGHT) == HAL_OK)
-    {
-        HAL_DMA2D_PollForTransfer(&hDMA2D, 100);
+        uint pdata = (uint)(color.value | (color.value << 8) | (color.value << 16) | (color.value << 24));
+        uint dest = (uint)buffer;
+        uint width = Display::WIDTH / 4;
+        uint height = Display::HEIGHT;
+
+        if (HAL_DMA2D_Start(&hDMA2D, pdata, dest, width, Display::HEIGHT) == HAL_OK)
+        {
+            HAL_DMA2D_PollForTransfer(&hDMA2D, 100);
+        }
     }
-    }
+}
+
+
+void Display::FillRegion(int x, int y, int width, int height)
+{
+
 }
 
 

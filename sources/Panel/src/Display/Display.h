@@ -22,6 +22,8 @@ namespace Display
 
     void ClearBuffer();
 
+    void FillRegion(int x, int y, int width, int height);
+
     extern LTDC_HandleTypeDef hltdc;
 };
 

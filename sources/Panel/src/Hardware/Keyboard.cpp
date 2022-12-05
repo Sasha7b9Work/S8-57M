@@ -123,23 +123,6 @@ void Keyboard::Init()
 }
 
 
-static void EraseControl()
-{
-    Painter::SetColor(Color::BLACK);
-    Painter::FillRegion(10, 300, 300, 50);
-}
-
-
-static void DrawControl(Control::E control)
-{
-    EraseControl();
-
-    Painter::SetColor(Color::WHITE);
-
-    Text::Draw(10, 300, Keyboard::ControlName(control));
-}
-
-
 void Keyboard::Update() //-V2506
 {
     if (!init)
