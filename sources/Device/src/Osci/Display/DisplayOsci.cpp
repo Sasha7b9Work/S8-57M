@@ -44,7 +44,7 @@ void DisplayOsci::Update()
 
     if (needRedraw)
     {
-        Painter::BeginScene(Color::BACK);
+        Painter::BeginScene(Color::BLACK);
 
         Grid::Draw();
 
