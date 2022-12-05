@@ -36,7 +36,9 @@ void Display::Init()
 
 void Display::ClearBuffer()
 {
-    FillRegion(320, 240, Display::WIDTH / 2, Display::HEIGHT / 2);
+    // FillRegion(0, 0, Display::WIDTH, Display::HEIGHT);
+
+    Painter::FillRegion(0, 0, Display::WIDTH, Display::HEIGHT);
 }
 
 

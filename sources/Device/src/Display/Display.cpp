@@ -85,9 +85,13 @@ void Display::Update() //-V2506
         DisplayRecorder::Update
     };
 
-    funcs[static_cast<int>(Device::CurrentMode())]();
+//    funcs[static_cast<int>(Device::CurrentMode())]();
 
-    Console::Draw();
+//    Console::Draw();
+
+    Painter::BeginScene(Color::BLACK);
+
+    Region(64, 64).Fill(0, 0, Color::WHITE);
 
     funcAdditionDraw();
 
