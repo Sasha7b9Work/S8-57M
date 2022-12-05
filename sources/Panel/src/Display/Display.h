@@ -22,7 +22,7 @@ namespace Display
 
     void ClearBuffer();
 
-    void FillRegion(const int x, const int y, const int width, const int height);
+    void FillRegion(int x, int y, int width, int height);
 
     extern LTDC_HandleTypeDef hltdc;
 };
