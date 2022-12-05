@@ -13,23 +13,6 @@
 static int sendingString = -1;
 
 
-void Painter::BeginScene()
-{   
-    Color col = currentColor;
-
-    uint *address = reinterpret_cast<uint *>(Display::GetBuffer());
-
-    uint *end = address + (Display::WIDTH * Display::HEIGHT) / 4;
-
-    uint value = static_cast<uint>(col.value) + static_cast<uint>(col.value << 8) + static_cast<uint>(col.value << 16) + static_cast<uint>(col.value << 24);
-
-    while (address != end)
-    {
-        *address++ = value;
-    }
-}
-
-
 void Painter::SetColorValue(Color color, uint value)
 {
     COLOR(color.value) = value;

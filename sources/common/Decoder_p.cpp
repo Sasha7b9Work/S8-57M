@@ -137,7 +137,7 @@ static bool InButtonPress(uint8) //-V2506
 
 static bool BeginScene(uint8)
 {
-    Painter::BeginScene();
+    Display::ClearBuffer();
     return true;
 }
 

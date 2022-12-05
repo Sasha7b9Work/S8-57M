@@ -34,8 +34,10 @@ void Display::Init()
 }
 
 
-void Display::ClearBuffer(Color color)
+void Display::ClearBuffer()
 {
+    Color color = Color::BACK;
+
     DMA2D_HandleTypeDef hDMA2D;
 
     hDMA2D.Init.Mode = DMA2D_R2M;
@@ -70,7 +72,7 @@ void Display::DrawStartScreen()
 {
     Painter::SetColor(Color::BACK);
 
-    Painter::BeginScene();
+    ClearBuffer();
 
     Painter::SetColor(Color::FILL);
 
@@ -98,7 +100,7 @@ uint Display::Update()
 {
     uint start = TIME_MS;
 
-    ClearBuffer(Color::BLACK);
+    ClearBuffer();
 
 //    Painter::SetColor(Color::BLACK);
 //

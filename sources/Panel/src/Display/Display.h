@@ -20,7 +20,7 @@ namespace Display
 
     uint8 *GetBufferEnd();
 
-    void ClearBuffer(Color);
+    void ClearBuffer();
 
     extern LTDC_HandleTypeDef hltdc;
 };
