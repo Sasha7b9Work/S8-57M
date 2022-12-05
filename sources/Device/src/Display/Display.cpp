@@ -55,6 +55,13 @@ void Display::Update() //-V2506
 {
     static uint prevTime = 0;
 
+    if (TIME_MS - prevTime < 500)
+    {
+        return;
+    }
+
+    uint start = TIME_MS;
+
     if(Device::InModeOsci() && (TIME_MS - prevTime < ENumSignalsInSec::TimeBetweenFramesMS()))
     {
         return;
@@ -87,6 +94,9 @@ void Display::Update() //-V2506
     Painter::EndScene();
 
     inStateDraw = false;
+
+    volatile uint time = TIME_MS - start;
+    time = time;
 
     ExecuteFuncAfterUpdateOnce();
 }
