@@ -485,7 +485,7 @@ static bool DrawText(uint8 data) //-V2506
             if (readingSymbols == numSymbols)
             {
                 buffer[readingSymbols] = 0;
-                Text::Draw(x, y, buffer);
+                Text::Draw(x * 2, y * 2, buffer, 2);
                 delete []buffer; //-V2511
                 return true;
             }
