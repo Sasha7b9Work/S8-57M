@@ -1,5 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include <cstring>
 
 
 /*
@@ -15,9 +16,10 @@ struct StructCoord
     StructCoord(uint8 *data)  { uint *pointer = (uint *)data; coord = *pointer; coord >>= 8; }
     int X() const             { return (int)(coord & 0xa);     }
     int Y() const             { return (int)(coord >> 10);     }
-    uint8 *Data() const       { uint8 *pointer = (uint8 *)&coord; return ++pointer; }
+    void Write(uint8 *dest)   { std::memcpy(dest, Data(), 3);  }
 private:
     uint coord;
+    uint8 *Data() const { uint8 *pointer = (uint8 *)&coord; return ++pointer; }
 };
 
 
