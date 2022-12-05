@@ -200,7 +200,7 @@ static bool FuncScreen(uint8 data) //-V2506
 static bool FillRegion(uint8 data)
 {
     static Point2 pos;
-    static Point2 dim;
+    static Point2 size;
     
     bool result = false;
 
@@ -214,13 +214,13 @@ static bool FillRegion(uint8 data)
             break;
         case 4:
         case 5:
-            dim.Append(data);
+            size.Append(data);
             break;
         case 6:
-            dim.Append(data);
-            Painter::FillRegion(pos.X() * 2, pos.Y() * 2, dim.Width() * 2, dim.Height() * 2);
+            size.Append(data);
+            Painter::FillRegion(pos.X() * 2, pos.Y() * 2, size.Width() * 2, size.Height() * 2);
             pos.Reset();
-            dim.Reset();
+            size.Reset();
             result = true;
             break;
         default:
@@ -234,25 +234,27 @@ static bool FillRegion(uint8 data)
 
 static bool DrawRectangle(uint8 data)
 {
-    static int x;
-    static int y;
-    static int width;
-    static int height;
+    static Point2 pos;
+    static Point2 size;
     
     bool result = false;
 
     switch (step)
     {
         case 0:                                             break;
-        case 1:     x = data;                               break;
-        case 2:     x += static_cast<int>(data) << 8;       break;
-        case 3:     y = data;                               break;
-        case 4:     width = data;                           break;
-        case 5:     width += static_cast<int>(data) << 8;   break;
-        case 6:     height = static_cast<int>(data);
-//            Painter::DrawRectangle(x, y, width, height);
-            Painter::DrawRectangle(x * 2, y * 2, width * 2, height * 2);
-            Painter::DrawRectangle(x * 2 + 1, y * 2 + 1, width * 2 - 2, height * 2 - 2);
+        case 1:
+        case 2:
+        case 3:
+            pos.Append(data);
+            break;
+        case 4:
+        case 5:
+            size.Append(data);
+            break;
+        case 6:
+            size.Append(data);
+            Painter::DrawRectangle(pos.X() * 2, pos.Y() * 2, size.Width() * 2, size.Height() * 2);
+            Painter::DrawRectangle(pos.X() * 2 + 1, pos.Y() * 2 + 1, size.Width() * 2 - 2, size.Height() * 2 - 2);
             result = true;
             break;
         default:

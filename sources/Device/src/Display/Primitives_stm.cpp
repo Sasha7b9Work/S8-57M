@@ -36,13 +36,16 @@ void Rectangle::Draw(int x, int y, Color color)
     uint8 buffer[7] =
     {
         Command::Paint_DrawRectangle,
-        static_cast<uint8>(x),
-        static_cast<uint8>(x >> 8),
-        static_cast<uint8>(y),
-        static_cast<uint8>(width),
-        static_cast<uint8>(width >> 8),
-        static_cast<uint8>(height)
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
     };
+
+    Point2(x, y).Write(&buffer[1]);
+    Point2(width, height).Write(&buffer[4]);
 
     HAL_BUS::Panel::Send(buffer, 7);
 }
