@@ -95,8 +95,7 @@ void Display::Update() //-V2506
 
     inStateDraw = false;
 
-    volatile uint time = TIME_MS - start;
-    time = time;
+    LOG_WRITE("time frame %d ms", TIME_MS - start);
 
     ExecuteFuncAfterUpdateOnce();
 }

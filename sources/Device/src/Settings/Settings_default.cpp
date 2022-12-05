@@ -189,8 +189,8 @@ const Settings Settings::defaultSettings =
         
     // ÃÂÌ˛ Œ“À¿ƒ ¿
     {
-        false,                          // showConsole
-        30,                             // numStrings
+        true,                           // showConsole
+        10,                             // numStrings
         false,                          // showAll
         false,                          // showFlag
         { false, false },               // showRShift[2]
@@ -204,6 +204,6 @@ const Settings Settings::defaultSettings =
         false,                          // runTest
         false                           // showBattery
     },
-    { 0, 0 },
+    { 0 },
     0
 };
