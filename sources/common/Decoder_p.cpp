@@ -212,7 +212,8 @@ static bool FillRegion(uint8 data)
         case 4:     width = data;                           break;
         case 5:     width += static_cast<int>(data) << 8;   break;
         case 6:     height = static_cast<int>(data);
-            Painter::FillRegion(x, y, width, height);
+//            Painter::FillRegion(x, y, width, height);
+            Painter::FillRegion(x * 2, y * 2, width * 2, height * 2);
             result = true;
             break;
         default:
@@ -242,7 +243,9 @@ static bool DrawRectangle(uint8 data)
         case 4:     width = data;                           break;
         case 5:     width += static_cast<int>(data) << 8;   break;
         case 6:     height = static_cast<int>(data);
-            Painter::DrawRectangle(x, y, width, height);
+//            Painter::DrawRectangle(x, y, width, height);
+            Painter::DrawRectangle(x * 2, y * 2, width * 2, height * 2);
+            Painter::DrawRectangle(x * 2 + 1, y * 2 + 1, width * 2 - 2, height * 2 - 2);
             result = true;
             break;
         default:
@@ -269,7 +272,9 @@ static bool DrawVLine(uint8 data)
         case 2: x += static_cast<int>(data) << 8;   break;
         case 3: y0 = data;                          break;
         case 4: y1 = data;
-            Painter::DrawVLine(x, y0, y1);
+//            Painter::DrawVLine(x, y0, y1);
+            Painter::DrawVLine(x * 2, y0 * 2, y1 * 2);
+            Painter::DrawVLine(x * 2 + 1, y0 * 2, y1 * 2);
             result = true;
             break;
         default:
@@ -297,7 +302,9 @@ static bool DrawHLine(uint8 data)
         case 3:     x0 += static_cast<int>(data) << 8;  break;
         case 4:     x1 = data;                          break;
         case 5:     x1 += static_cast<int>(data) << 8;
-            Painter::DrawHLine(y, x0, x1);
+//            Painter::DrawHLine(y, x0, x1);
+            Painter::DrawHLine(y * 2, x0 * 2, x1 * 2);
+            Painter::DrawHLine(y * 2 + 1, x0 * 2, x1 * 2);
             result = true;
             break;
         default:
