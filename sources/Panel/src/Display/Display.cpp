@@ -53,17 +53,11 @@ void Display::ClearBuffer()
         uint width = Display::WIDTH / 4;
         uint height = Display::HEIGHT;
 
-        if (HAL_DMA2D_Start(&hDMA2D, pdata, dest, width, Display::HEIGHT) == HAL_OK)
+        if (HAL_DMA2D_Start(&hDMA2D, pdata, dest, width, height) == HAL_OK)
         {
             HAL_DMA2D_PollForTransfer(&hDMA2D, 100);
         }
     }
-}
-
-
-void Display::FillRegion(int x, int y, int width, int height)
-{
-
 }
 
 
