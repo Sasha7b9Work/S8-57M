@@ -206,7 +206,8 @@ static bool FillRegion(uint8 data)
 
     switch (step)
     {
-        case 0:                         break;
+        case 0:
+            break;
         case 1:
         case 2:
         case 3:
@@ -241,7 +242,8 @@ static bool DrawRectangle(uint8 data)
 
     switch (step)
     {
-        case 0:                                             break;
+        case 0:
+            break;
         case 1:
         case 2:
         case 3:
@@ -255,6 +257,8 @@ static bool DrawRectangle(uint8 data)
             size.Append(data);
             Painter::DrawRectangle(pos.X() * 2, pos.Y() * 2, size.Width() * 2, size.Height() * 2);
             Painter::DrawRectangle(pos.X() * 2 + 1, pos.Y() * 2 + 1, size.Width() * 2 - 2, size.Height() * 2 - 2);
+            pos.Reset();
+            size.Reset();
             result = true;
             break;
         default:
@@ -268,22 +272,30 @@ static bool DrawRectangle(uint8 data)
 
 static bool DrawVLine(uint8 data)
 {
-    static int x;
-    static int y0;
-    static int y1;
+    static Point2 pos1;
+    static Point2 pos2;
     
     bool result = false;
 
     switch (step)
     {
-        case 0:                                     break;
-        case 1: x = data;                           break;
-        case 2: x += static_cast<int>(data) << 8;   break;
-        case 3: y0 = data;                          break;
-        case 4: y1 = data;
-//            Painter::DrawVLine(x, y0, y1);
-            Painter::DrawVLine(x * 2, y0 * 2, y1 * 2);
-            Painter::DrawVLine(x * 2 + 1, y0 * 2, y1 * 2);
+        case 0:
+            break;
+        case 1:
+        case 2:
+        case 3:
+            pos1.Append(data);
+            break;
+        case 4:
+        case 5:
+            pos2.Append(data);
+            break;
+        case 6:
+            pos2.Append(data);
+            Painter::DrawVLine(pos1.X() * 2, pos1.Y() * 2, pos2.Y() * 2);
+            Painter::DrawVLine(pos1.X() * 2 + 1, pos1.Y() * 2, pos2.Y() * 2);
+            pos1.Reset();
+            pos2.Reset();
             result = true;
             break;
         default:

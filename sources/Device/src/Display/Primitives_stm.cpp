@@ -79,14 +79,19 @@ void VLine::Draw(int x, int y, Color color)
     int y0 = y;
     int y1 = y0 + height;
 
-    uint8 buffer[5] =
+    uint8 buffer[7] =
     {
         Command::Paint_DrawVLine,
-        static_cast<uint8>(x),
-        static_cast<uint8>(x >> 8),
-        static_cast<uint8>(y0),
-        static_cast<uint8>(y1)
+        0,  // \ 
+        0,  // | (x, y0)
+        0,  // /
+        0,  // \ 
+        0,  // | (0, y1)
+        0   // /
     };
+
+    Point2(x, y0).Write(&buffer[1]);
+    Point2(0, y1).Write(&buffer[4]);
 
     HAL_BUS::Panel::Send(buffer, 5);
 }
