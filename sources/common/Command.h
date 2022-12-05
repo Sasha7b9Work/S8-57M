@@ -10,16 +10,21 @@
 */
 
 
-struct StructCoord
+struct Point2        // от слова dimensions
 {
-    StructCoord(int x, int y) { coord = (uint)(x | (y << 10)); }
-    StructCoord(uint8 *data)  { uint *pointer = (uint *)data; coord = *pointer; coord >>= 8; }
-    int X() const             { return (int)(coord & 0xa);     }
-    int Y() const             { return (int)(coord >> 10);     }
+    Point2(int x = 0, int y = 0) { xy = (uint)(x | (y << 10)); }
+    Point2(uint8 *data)          { uint *pointer = (uint *)data; xy = *pointer; xy >>= 8; }
+    // При приёме следующего байта добавляем его этой функцией
+    void Append(uint8 byte)   { xy <<= 8; xy |= byte;    }
+    void Reset()              { xy = 0; }
+    int X() const             { return (int)(xy & 0xa);     }
+    int Width() const         { return X(); }
+    int Y() const             { return (int)(xy >> 10);     }
+    int Height() const        { return Y(); }
     void Write(uint8 *dest)   { std::memcpy(dest, Data(), 3);  }
 private:
-    uint coord;
-    uint8 *Data() const { uint8 *pointer = (uint8 *)&coord; return ++pointer; }
+    uint xy;
+    uint8 *Data() const { uint8 *pointer = (uint8 *)&xy; return ++pointer; }
 };
 
 
