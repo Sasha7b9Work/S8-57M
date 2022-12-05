@@ -12,19 +12,18 @@
 
 struct Point2        // от слова dimensions
 {
-    Point2(int x = 0, int y = 0) { xy = (uint)(x | (y << 10)); }
-    Point2(uint8 *data)          { uint *pointer = (uint *)data; xy = *pointer; xy >>= 8; }
+    Point2(int x = 0, int y = 0) { xy = (uint)(x | (y << 10)); Reset(); }
     // При приёме следующего байта добавляем его этой функцией
-    void Append(uint8 byte)   { xy <<= 8; xy |= byte;    }
-    void Reset()              { xy = 0; }
+    void Append(uint8 byte)   { *pointer = byte; pointer++; }
+    void Reset()              { pointer = (uint8 *)&xy;; }
     int X() const             { return (int)(xy & 0xa);     }
     int Width() const         { return X(); }
     int Y() const             { return (int)(xy >> 10);     }
     int Height() const        { return Y(); }
-    void Write(uint8 *dest)   { std::memcpy(dest, Data(), 3);  }
+    void Write(uint8 *dest)   { std::memcpy(dest, &xy, 3); }
 private:
     uint xy;
-    uint8 *Data() const { uint8 *pointer = (uint8 *)&xy; return ++pointer; }
+    uint8 *pointer;
 };
 
 

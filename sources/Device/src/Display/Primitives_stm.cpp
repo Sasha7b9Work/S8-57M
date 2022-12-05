@@ -37,10 +37,10 @@ void HLine::Draw(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
-    int x0 = x;
-    int x1 = x0 + width;
-
     uint8 buffer[7] = { Command::Paint_DrawHLine };
+
+    const int x0 = x;
+    const int x1 = x0 + width;
 
     Point2(x0, y).Write(&buffer[1]);
     Point2(x1, 0).Write(&buffer[4]);
@@ -53,10 +53,10 @@ void VLine::Draw(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
-    int y0 = y;
-    int y1 = y0 + height;
-
     uint8 buffer[7] = { Command::Paint_DrawVLine };
+
+    const int y0 = y;
+    const int y1 = y0 + height;
 
     Point2(x, y0).Write(&buffer[1]);
     Point2(0, y1).Write(&buffer[4]);
@@ -152,9 +152,7 @@ void MultiVPointLine::Draw(int y0, Color color)
 
     for (int i = 0; i < numLines; i++)
     {
-        int x = x0[i];
-
-        Point2(x, y0).Write(&buffer[1]);
+        Point2(x0[i], y0).Write(&buffer[1]);
 
         HAL_BUS::Panel::Send(buffer, 6);
     }
