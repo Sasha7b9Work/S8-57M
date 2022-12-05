@@ -2,6 +2,25 @@
 #pragma once
 
 
+/*
+*   Координаты передаются так: coord = (x | (y << 10))
+*                              x = (coord & 0xA)
+*                              y = (coord >> 10)
+*/
+
+
+struct StructCoord
+{
+    StructCoord(int x, int y) { coord = (uint)(x | (y << 10)); }
+    StructCoord(uint8 *data)  { uint *pointer = (uint *)data; coord = *pointer; coord >>= 8; }
+    int X() const             { return (int)(coord & 0xa);     }
+    int Y() const             { return (int)(coord >> 10);     }
+    uint8 *Data() const       { uint8 *pointer = (uint8 *)&coord; return ++pointer; }
+private:
+    uint coord;
+};
+
+
 struct Command
 {           //  смещение               0  |     1       |     2      |      3      |     4        |      5       |   6    |         Размер
     enum E                                              
