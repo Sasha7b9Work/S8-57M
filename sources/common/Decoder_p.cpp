@@ -53,10 +53,13 @@ static bool DisplayBrightness(uint8);
 static bool DrawVPointLine(uint8);
 
 static bool DrawHPointLine(uint8);
+
 // Установка моноширинного вывода шрифта
 static bool SetMinWidthFont(uint8);
+
 // Устанавливает расстояние между символами при выводе текста
 static bool SetTextSpacing(uint8);
+
 // Эту функцию надо вызывать после выполнения последнего шага
 static void FinishCommand();
 
@@ -206,10 +209,15 @@ static bool FillRegion(uint8 data)
         case 0:                         break;
         case 1:
         case 2:
-        case 3:     pos.Append(data);   break;
+        case 3:
+            pos.Append(data);
+            break;
         case 4:
-        case 5:     dim.Append(data);   break;
-        case 6:     dim.Append(data);
+        case 5:
+            dim.Append(data);
+            break;
+        case 6:
+            dim.Append(data);
             Painter::FillRegion(pos.X() * 2, pos.Y() * 2, dim.Width() * 2, dim.Height() * 2);
             pos.Reset();
             dim.Reset();
@@ -461,23 +469,18 @@ static bool SetPoint(uint8 data)
 
 static bool DrawText(uint8 data) //-V2506
 {
-    static int x;
-    static int y;
+    static Point2 pos;
     static int numSymbols;
     static int readingSymbols;
     static char *buffer;
 
     switch (step)
     {
-        case 0:                                         break;
-        case 1:     x = data;                           break;
-        case 2:     x += static_cast<int>(data) << 8;   break;
+        case 0:                         break;
+        case 1:
+        case 2:
         case 3:
-            y = data;
-            if (y > 239)
-            {
-                y -= 256;
-            }
+            pos.Append(data);
             break;
         case 4:
             numSymbols = data;
@@ -489,7 +492,8 @@ static bool DrawText(uint8 data) //-V2506
             if (readingSymbols == numSymbols)
             {
                 buffer[readingSymbols] = 0;
-                Text::Draw(x * 2, y * 2, buffer, 2);
+                Text::Draw(pos.X() * 2, pos.Y() * 2, buffer, 2);
+                pos.Reset();
                 delete []buffer; //-V2511
                 return true;
             }
