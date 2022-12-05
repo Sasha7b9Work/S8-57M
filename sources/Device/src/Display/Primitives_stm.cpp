@@ -11,16 +11,7 @@ void Region::Fill(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
-    uint8 buffer[7] =
-    {
-        Command::Paint_FillRegion,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-    };
+    uint8 buffer[7] = { Command::Paint_FillRegion };
 
     Point2(x, y).Write(&buffer[1]);
     Point2(width, height).Write(&buffer[4]);
@@ -33,16 +24,7 @@ void Rectangle::Draw(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
-    uint8 buffer[7] =
-    {
-        Command::Paint_DrawRectangle,
-        0,  // \ 
-        0,  // | (x, y)
-        0,  // /
-        0,  // \ 
-        0,  // | (width, height)
-        0   // /
-    };
+    uint8 buffer[7] = { Command::Paint_DrawRectangle };
 
     Point2(x, y).Write(&buffer[1]);
     Point2(width, height).Write(&buffer[4]);
@@ -58,16 +40,7 @@ void HLine::Draw(int x, int y, Color color)
     int x0 = x;
     int x1 = x0 + width;
 
-    uint8 buffer[7] =
-    {
-        Command::Paint_DrawHLine,
-        0,  // \ 
-        0,  // | (x0, y)
-        0,  // /
-        0,  // \ 
-        0,  // | (x1, 0)
-        0   // /
-    };
+    uint8 buffer[7] = { Command::Paint_DrawHLine };
 
     Point2(x0, y).Write(&buffer[1]);
     Point2(x1, 0).Write(&buffer[4]);
@@ -83,16 +56,7 @@ void VLine::Draw(int x, int y, Color color)
     int y0 = y;
     int y1 = y0 + height;
 
-    uint8 buffer[7] =
-    {
-        Command::Paint_DrawVLine,
-        0,  // \ 
-        0,  // | (x, y0)
-        0,  // /
-        0,  // \ 
-        0,  // | (0, y1)
-        0   // /
-    };
+    uint8 buffer[7] = { Command::Paint_DrawVLine };
 
     Point2(x, y0).Write(&buffer[1]);
     Point2(0, y1).Write(&buffer[4]);
@@ -105,13 +69,7 @@ void Pixel::Draw(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
-    uint8 buffer[4] =
-    {
-        Command::Paint_SetPoint,
-        0,
-        0,
-        0
-    };
+    uint8 buffer[4] = { Command::Paint_SetPoint };
 
     Point2(x, y).Write(&buffer[1]);
 
@@ -123,16 +81,10 @@ void Line::Draw(Color color)
 {
     color.SetAsCurrent();
 
-    uint8 buffer[7] =
-    {
-        Command::Paint_DrawLine,
-        static_cast<uint8>(x0),
-        static_cast<uint8>(x0 >> 8),
-        static_cast<uint8>(y0),
-        static_cast<uint8>(x1),
-        static_cast<uint8>(x1 >> 8),
-        static_cast<uint8>(y1)
-    };
+    uint8 buffer[7] = { Command::Paint_DrawLine };
+
+    Point2(x0, y0).Write(&buffer[1]);
+    Point2(x1, y1).Write(&buffer[4]);
 
     HAL_BUS::Panel::Send(buffer, 7);
 }

@@ -436,23 +436,30 @@ static bool SetTextSpacing(uint8 data) //-V2506
 
 static bool DrawLine(uint8 data)
 {
-    __IO static int x0;
-    __IO static int y0;
-    __IO static int x1;
-    
+    static Point2 pos0;
+    static Point2 pos1;
+
     bool result = false;
 
     switch (step)
     {
-        case 0:                                     break;
-        case 1: x0 = data;                          break;
-        case 2: x0 += static_cast<int>(data) << 8;  break;
-        case 3: y0 = data;                          break;
-        case 4: x1 = data;                          break;
-        case 5: x1 += static_cast<int>(data) << 8;  break;
-        case 6: // Painter::DrawLine(x0, y0, x1, data);
-            Painter::DrawLine(x0 * 2, y0 * 2, x1 * 2, data * 2);
-            Painter::DrawLine(x0 * 2 + 1, y0 * 2, x1 * 2 + 1, data * 2);
+        case 0:
+            break;
+        case 1:
+        case 2:
+        case 3:
+            pos0.Append(data);
+            break;
+        case 4:
+        case 5:
+            pos1.Append(data);
+            break;
+        case 6:
+            pos1.Append(data);
+            Painter::DrawLine(pos0.X() * 2, pos0.Y() * 2, pos1.X() * 2, pos1.Y() * 2);
+            Painter::DrawLine(pos0.X() * 2 + 1, pos0.Y() * 2, pos1.X() * 2 + 1, pos1.Y() * 2);
+            pos0.Reset();
+            pos1.Reset();
             result = true;
             break;
         default:
