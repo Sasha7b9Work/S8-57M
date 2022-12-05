@@ -10,11 +10,13 @@
 
 
 #define PORT_READY  GPIOB
-#define PIN_READY   GPIO_PIN_15
+//#define PIN_READY   GPIO_PIN_15
+#define PIN_READY   GPIO_PIN_12             // Временная замена, потому что нерабочий вывод 15
 #define READY       PORT_READY, PIN_READY
 
 #define PORT_DATA   GPIOB
-#define PIN_DATA    GPIO_PIN_14
+//#define PIN_DATA    GPIO_PIN_14
+#define PIN_DATA    GPIO_PIN_13             // Временная замена, потому что нерабочий вывод 14
 #define DATA        PORT_DATA, PIN_DATA
 
 #define PORT_CS     GPIOD
