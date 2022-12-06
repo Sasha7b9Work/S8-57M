@@ -109,7 +109,7 @@ void BackBuffer::DrawVLine(int x, int y0, int y1)
         y++;
     }
 
-    while (y <= y1 && (pixel >= buffer && pixel < Address::end))
+    while (y <= y1 && pixel < Address::end)
     {
         *pixel = color;
         pixel += WIDTH;
