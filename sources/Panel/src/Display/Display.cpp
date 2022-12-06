@@ -108,7 +108,7 @@ void Display::Update1()
 
     Color::WHITE.SetAsCurrent();
 
-    Painter::FillRegion(x + 1, y + 1, width - 2, width - 2);
+    BackBuffer::FillRect(x + 1, y + 1, width - 2, width - 2);
 
     Color::BLACK.SetAsCurrent();
 

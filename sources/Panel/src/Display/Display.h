@@ -12,6 +12,8 @@ namespace Display
 
     void Init();
 
+    void SetField(int field, uint8 *data);
+
     uint Update();
 
     void Update1();

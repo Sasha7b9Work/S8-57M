@@ -2,48 +2,66 @@
 #include "defines.h"
 #include "Display/BackBuffer.h"
 #include "Display/Painter.h"
-#include <stdlib.h>
+#include "Display/Display.h"
+#include <cstdlib>
+#include <cstring>
 
 
 namespace BackBuffer
 {
-    static const int SIZE_BUFFER = 640 * 480 / 5;
+    static const int WIDTH = 640;
+    static const int HEIGHT = 480 / 5;
+
+    static int field = 0;
+
+    static const int SIZE_BUFFER = WIDTH * HEIGHT;
 
     static uint8 buffer[SIZE_BUFFER] __attribute__((section("CCM_DATA")));
 
-    static uint8 *AddressByte(int x, int y);
+    static uint8 *AddressByte(int x, int y)
+    {
+        y -= field * HEIGHT;
 
-    static uint8 *endBuffer = &buffer[0] + SIZE_BUFFER;
+        return &buffer[x + y * WIDTH];
+    }
+
+    static void Fill();
+
+    // Проверяет на попадание в буфер
+    namespace Limit
+    {
+        bool X(int x)
+        {
+            return x >= 0 && x < WIDTH;
+        }
+
+        bool Y(int y)
+        {
+            return (y >= field * HEIGHT) && y < (field *(HEIGHT + 1));
+        }
+    }
 }
 
 
-uint8 *BackBuffer::AddressByte(int, int)
+void BackBuffer::BeginPaint(int _field)
 {
-    return nullptr;
-}
+    field = _field;
 
-
-void BackBuffer::BeginPaint(int field)
-{
-
+    Fill();
 }
 
 
 void BackBuffer::EndPaint()
 {
-
+    Display::SetField(field, buffer);
 }
 
 
 void BackBuffer::SetPoint(int x, int y)
 {
-    Color color = Color::Current();
-
-    uint8 *address = AddressByte(x, y);
-
-    if (address >= buffer && address < endBuffer)
+    if (Limit::X(x) && Limit::Y(y))
     {
-        *address = color.value;
+        *AddressByte(x, y) = Color::Current().value;
     }
 }
 
@@ -81,4 +99,10 @@ void BackBuffer::DrawRectangle(int x, int y, int w, int h)
     DrawVLine(x + w, y, y + h);
     DrawHLine(y, x, x + w);
     DrawHLine(y + h, x, x + w);
+}
+
+
+void BackBuffer::Fill()
+{
+    std::memset(buffer, Color::Current().value, SIZE_BUFFER);
 }
