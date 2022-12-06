@@ -18,14 +18,17 @@ namespace BackBuffer
 
     static uint8 buffer[SIZE_BUFFER] __attribute__((section("CCM_DATA")));
 
-    static uint8 *AddressByte(int x, int y)
-    {
-        y -= field * HEIGHT;
-
-        return &buffer[x + y * WIDTH];
-    }
-
     static void Fill();
+
+    namespace Address
+    {
+        uint8 *Pixel(int x, int y)
+        {
+            y -= field * HEIGHT;
+
+            return &buffer[x + y * WIDTH];
+        }
+    }
 
     // Проверяет на попадание в буфер
     namespace Limit
@@ -63,7 +66,7 @@ void BackBuffer::SetPoint(int x, int y)
 {
     if (Limit::X(x) && Limit::Y(y))
     {
-        *AddressByte(x, y) = Color::Current().value;
+        *Address::Pixel(x, y) = Color::Current().value;
     }
 }
 
