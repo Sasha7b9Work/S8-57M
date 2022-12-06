@@ -7,7 +7,6 @@
 #include <cstring>
 #include <cmath>
 
-#include "Painter_common.h"
 
 // Установленное в true значение означает, что скриншот нужно заслать в устройство
 static int sendingString = -1;

@@ -5,7 +5,6 @@
 #include "Hardware/CPU.h"
 #include "Hardware/Timer.h"
 #include "Utils/Math.h"
-#include "Painter_common.h"
 
 
 void Painter::DrawVPointLine(int x, int y, int delta, int count)
