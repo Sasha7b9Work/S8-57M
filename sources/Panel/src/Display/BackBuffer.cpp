@@ -92,10 +92,12 @@ void BackBuffer::FillRegion(int x, int y, int w, int h)
 
 void BackBuffer::DrawVLine(int x, int y0, int y1)
 {
-    if (y0 > y1)
-    {
-        Math::Swap(&y0, &y1);
-    }
+    // \todo Без проверок работает ощутимо быстрее
+
+//    if (y0 > y1)
+//    {
+//        Math::Swap(&y0, &y1);
+//    }
 
     int y = y0;
 
@@ -125,10 +127,12 @@ void BackBuffer::DrawHLine(int y, int x0, int x1)
         return;
     }
 
-    if (x0 > x1)
-    {
-        Math::Swap(&x0, &x1);
-    }
+    // \todo Без проверок работает ощутимо быстрее
+
+//    if (x0 > x1)
+//    {
+//        Math::Swap(&x0, &x1);
+//    }
 
     uint8 *pixel = Address::Pixel(x0, y);
 
