@@ -3,6 +3,7 @@
 #include "Display/BackBuffer.h"
 #include "Display/Painter.h"
 #include "Display/Display.h"
+#include "Utils/Math.h"
 #include <cstdlib>
 #include <cstring>
 
@@ -20,6 +21,16 @@ namespace BackBuffer
 
     static void Fill();
 
+    int MinY()
+    {
+        return field * HEIGHT;
+    }
+
+    int MaxY()
+    {
+        return (field + 1) * HEIGHT;
+    }
+
     namespace Address
     {
         uint8 *end = buffer + SIZE_BUFFER;
@@ -35,11 +46,6 @@ namespace BackBuffer
     // Проверяет на попадание в буфер
     namespace Limit
     {
-        bool X(int x)
-        {
-            return x >= 0 && x < WIDTH;
-        }
-
         bool Y(int y)
         {
             return (y >= field * HEIGHT) && y < ((field + 1) *HEIGHT + 1);
@@ -86,15 +92,39 @@ void BackBuffer::FillRegion(int x, int y, int w, int h)
 
 void BackBuffer::DrawVLine(int x, int y0, int y1)
 {
-    for (int y = y0; y <= y1; y++)
+    if (y0 > y1)
     {
-        SetPoint(x, y);
+        Math::Swap(&y0, &y1);
+    }
+
+    int y = y0;
+
+    uint8 color = Color::Current().value;
+
+    uint8 *pixel = Address::Pixel(x, y);
+
+    while (pixel < buffer)
+    {
+        pixel += WIDTH;
+        y++;
+    }
+
+    while (y <= y1 && (pixel >= buffer && pixel < Address::end))
+    {
+        *pixel = color;
+        pixel += WIDTH;
+        y++;
     }
 }
 
 
 void BackBuffer::DrawHLine(int y, int x0, int x1)
 {
+    if (!Limit::Y(y))
+    {
+        return;
+    }
+
     for(int x = x0; x <= x1; x++)
     {
         SetPoint(x, y);
