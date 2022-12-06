@@ -94,7 +94,7 @@ public:
 
 
 
-        COLOR_NUMBER = 32
+        COLOR_COUNT = 32
     };
 
 private:
