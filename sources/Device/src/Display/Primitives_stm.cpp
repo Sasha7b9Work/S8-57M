@@ -33,7 +33,7 @@ void Rectangle::Draw(int x, int y, Color color)
 }
 
 
-void HLine::Draw(int x, int y, Color color)
+void HLine::Draw(int x, int y, Color color) 
 {
     color.SetAsCurrent();
 
@@ -45,7 +45,7 @@ void HLine::Draw(int x, int y, Color color)
     Point2(x0, y).Write(&buffer[1]);
     Point2(x1, 0).Write(&buffer[4]);
 
-    HAL_BUS::Panel::Send(buffer, 6);
+    HAL_BUS::Panel::Send(buffer, 7);
 }
 
 
@@ -61,7 +61,7 @@ void VLine::Draw(int x, int y, Color color)
     Point2(x, y0).Write(&buffer[1]);
     Point2(0, y1).Write(&buffer[4]);
 
-    HAL_BUS::Panel::Send(buffer, 5);
+    HAL_BUS::Panel::Send(buffer, 7);
 }
 
 

@@ -149,7 +149,7 @@ void DrawOsci()
         //    DrawGridSignal(Left(), Top() + Height() / 2, Width(), Height() / 2);
         //}
         
-		HLine(Grid::Width()).Draw(Grid::Left(), Grid::Top() + Grid::Height() / 2, Color::FILL);
+        HLine(Grid::Width()).Draw(Grid::Left(), Grid::Top() + Grid::Height() / 2, Color::FILL);
     }
     else
     {
@@ -167,8 +167,8 @@ void DrawGridSignal(int left, int top, int width, int height)
 
     if (top == Grid::Top())
     {
-		HLine(left - 1).Draw(1, top);
-		HLine(Display::WIDTH - right - 4).Draw(right + 2, top);
+        HLine(left - 1).Draw(1, top);
+        HLine(Display::WIDTH - right - 4).Draw(right + 2, top);
 
         VLine line(bottom - top - 4);
 
