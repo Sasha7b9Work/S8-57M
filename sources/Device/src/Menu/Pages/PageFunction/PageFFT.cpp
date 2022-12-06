@@ -32,7 +32,7 @@ DEF_CHOICE_2( cScale,                                                           
 )
 
 
-DEF_CHOICE_3( cSource,                                                                                                                                  //--- ФУНКЦИЯ - СПЕКТР - Источник ---
+DEF_CHOICE_3( cSourceFFT,                                                                                                                                  //--- ФУНКЦИЯ - СПЕКТР - Источник ---
     "Источник",
     "Выбор источника для расчёта спектра",
     "Канал 1",
@@ -131,7 +131,7 @@ DEF_PAGE_6( pFFT,                                                               
     "Отображение спектра входного сигнала",
     &cView,
     &cScale,
-    &cSource,
+    &cSourceFFT,
     &cWindow,
     &pCursors,
     &cRange,

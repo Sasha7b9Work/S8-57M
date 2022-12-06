@@ -41,10 +41,10 @@ struct PinOut : public Pin
 };
 
 
-static PinOut CLK(PIN_AT2516_CLK);
-static PinOut CS(PIN_AT2516_CS);
-static PinOut OUT(PIN_AT2516_OUT);
-static PinIn  IN(PIN_AT2516_IN);
+static PinOut pinCLK(PIN_AT2516_CLK);
+static PinOut pinCS(PIN_AT2516_CS);
+static PinOut pinOUT(PIN_AT2516_OUT);
+static PinIn  pinIN(PIN_AT2516_IN);
 
 
 void AT25160N::Init()
@@ -61,14 +61,14 @@ void AT25160N::Init()
 
     //__HAL_RCC_SPI2_CLK_ENABLE();
 
-    CLK.Init();
-    CS.Init();
-    OUT.Init();
-    IN.Init();
+    pinCLK.Init();
+    pinCS.Init();
+    pinOUT.Init();
+    pinIN.Init();
 
-    CS.Set();
-    OUT.Reset();
-    CLK.Reset();
+    pinCS.Set();
+    pinOUT.Reset();
+    pinCLK.Reset();
 }
 
 
@@ -151,7 +151,7 @@ void AT25160N::Write32BytesOrLess(uint address, const uint8 *, int size)
 
     SetWriteLatch();
 
-    CS.Reset();
+    pinCS.Reset();
 
     WriteByte(WRITE); //-V2501
 
@@ -168,17 +168,17 @@ void AT25160N::Write32BytesOrLess(uint address, const uint8 *, int size)
         }
     }
 
-    CS.Set();
+    pinCS.Set();
 }
 
 
 void AT25160N::SetWriteLatch()
 {
-    CS.Reset();
+    pinCS.Reset();
 
     WriteByte(WREN); //-V2501
 
-    CS.Set();
+    pinCS.Set();
 }
 
 
@@ -186,23 +186,23 @@ void AT25160N::ResetWriteLatch()
 {
     WaitFinishWrite();
 
-    CS.Reset();
+    pinCS.Reset();
 
     WriteByte(WRDI); //-V2501
 
-    CS.Set();
+    pinCS.Set();
 }
 
 
 uint8 AT25160N::ReadStatusRegister()
 {
-    CS.Reset();
+    pinCS.Reset();
 
     WriteByte(RDSR); //-V2501
 
     uint8 result = ReadByte();
 
-    CS.Set();
+    pinCS.Set();
 
     if(result)
     {
@@ -218,13 +218,13 @@ void AT25160N::WriteStatusRegister(uint8 data)
 {
     WaitFinishWrite();
 
-    CS.Reset();
+    pinCS.Reset();
 
     WriteByte(WRSR); //-V2501
 
     WriteByte(data);
 
-    CS.Set();
+    pinCS.Set();
 }
 
 
@@ -255,12 +255,12 @@ void AT25160N::WriteByte(uint8 byte)
     {
         if (_GET_BIT(byte, bit))
         {
-            OUT.Set();
+            pinOUT.Set();
         }
 
-        CLK.Set();
-        CLK.Reset();
-        OUT.Reset();
+        pinCLK.Set();
+        pinCLK.Reset();
+        pinOUT.Reset();
     }
 }
 
@@ -271,11 +271,11 @@ uint8 AT25160N::ReadByte()
 
     for(int i = 0; i < 8; i++)
     {
-        CLK.Set();
+        pinCLK.Set();
 
-        CLK.Reset();
+        pinCLK.Reset();
 
-        if(IN.Read())
+        if(pinIN.Read())
         {
             retValue |= 0x01;
         }
@@ -291,7 +291,7 @@ void AT25160N::ReadData(uint address, uint8 *data, int size)
 {
     WaitFinishWrite();
 
-    CS.Reset();
+    pinCS.Reset();
 
     WriteByte(READ); //-V2501
     WriteByte((address >> 8) & 0xff);
@@ -315,5 +315,5 @@ void AT25160N::ReadData(uint address, uint8 *data, int size)
         }
     }
 
-    CS.Set();
+    pinCS.Set();
 }

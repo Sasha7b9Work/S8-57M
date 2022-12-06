@@ -125,13 +125,6 @@ static pCHAR FuncMeasure(pCHAR buffer) //-V2506
 }
 
 
-static pString mode[] =
-{
-    " OFF",
-    " ON",
-    ""
-};
-
 static void SetMode(int i)
 {
     S_FREQ_METER_ENABLED = (i == 1);
@@ -141,6 +134,13 @@ static void SetMode(int i)
 
 static pCHAR FuncMode(pCHAR buffer) //-V2506
 {
+    static pString mode[] =
+    {
+        " OFF",
+        " ON",
+        ""
+    };
+
     SCPI_REQUEST(SCPI::SendAnswer(S_FREQ_METER_ENABLED ? " ON" : " OFF"));
 
     SCPI_PROCESS_ARRAY(mode, SetMode(i));
