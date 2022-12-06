@@ -53,7 +53,9 @@ void BackBuffer::BeginPaint(int _field)
 
 void BackBuffer::EndPaint()
 {
-    Display::SetField(field, buffer);
+    uint offset = (uint)(field * WIDTH * HEIGHT);
+
+    Display::SetField(offset, buffer, WIDTH * HEIGHT);
 }
 
 

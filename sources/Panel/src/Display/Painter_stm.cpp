@@ -9,7 +9,7 @@
 
 
 // Установленное в true значение означает, что скриншот нужно заслать в устройство
-static int sendingString = -1;
+//static int sendingString = -1;
 
 
 void Painter::LoadPalette()
@@ -207,5 +207,5 @@ uint Painter::ReduceBrightness(uint colorValue, float newBrightness)
 
 void Painter::SendScreenToDevice()
 {
-    sendingString = 0;
+//    sendingString = 0;
 }

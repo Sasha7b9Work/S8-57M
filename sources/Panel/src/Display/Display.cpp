@@ -25,6 +25,12 @@ namespace Display
 }
 
 
+void Display::SetField(uint offset, uint8 *data, int num_bytes)
+{
+    std::memcpy(front + offset, data, (uint)num_bytes);
+}
+
+
 void Display::Init()
 {
     HAL_DAC2::Init();

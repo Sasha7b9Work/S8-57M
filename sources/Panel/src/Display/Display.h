@@ -12,7 +12,8 @@ namespace Display
 
     void Init();
 
-    void SetField(int field, uint8 *data);
+    // Записать данные data количеством num_bytes в буфер, начиная со смещения offset
+    void SetField(uint offset, uint8 *data, int num_bytes);
 
     uint Update();
 
