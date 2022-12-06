@@ -3,7 +3,9 @@
 #include "Display/BackBuffer.h"
 #include "Display/Painter.h"
 #include "Display/Display.h"
+#include "Display/Text/Text.h"
 #include "Utils/Math.h"
+#include "Hardware/Timer.h"
 #include <cstdlib>
 #include <cstring>
 

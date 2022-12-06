@@ -14,6 +14,8 @@ struct Painter
     // Загружает в дисплей все цвета
     static void LoadPalette();
 
+    static int DrawFormatText(int x, int y, char *format, ...);
+
 private:
 
     static void DrawVPointLine(int x, int y, int delta, int count);
@@ -39,8 +41,6 @@ private:
     static void DrawRectangle(int x, int y, int width, int height);
 
     static uint ReduceBrightness(uint colorValue, float newBrightness);
-
-    static int DrawFormatText(int x, int y, char *format, ...);
 
     // Пишет строку в позиции x, y
     static int DrawFormText(int x, int y, Color color, pString text, ...);
