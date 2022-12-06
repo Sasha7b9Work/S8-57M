@@ -181,15 +181,6 @@ void Painter::FillRegion(int x, int y, int width, int height)
 }
 
 
-void Painter::SetColor(Color color)
-{
-    if (color.value != Color::Count.value)
-    {
-        currentColor = color;
-    }
-}
-
-
 void Painter::SetPoint(int x, int y)
 {
     if (x >= 0 && x < Display::WIDTH && y >= 0 && y < Display::HEIGHT)

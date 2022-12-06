@@ -27,8 +27,8 @@ void Text::SetSpacing(uint8 space)
 
 int Text::DrawChar(int eX, int eY, int size, uint8 symbol, Color color)
 {
-    Painter::SetColor(color);
-    
+    color.SetAsCurrent();
+
     uint8 width = PFont::GetWidth(symbol);
     uint8 height = PFont::GetHeight();
 
@@ -65,7 +65,7 @@ int Text::DrawChar(int eX, int eY, int size, uint8 symbol, Color color)
                 {
                     if (PFont::BitIsExist(symbol, row, bit))
                     {
-//                        Painter::SetPoint(x, y);
+                        //                        Painter::SetPoint(x, y);
                         Painter::FillRegion(x, y, size - 1, size - 1);
                     }
                     x += size;

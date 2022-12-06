@@ -36,7 +36,7 @@ void Display::Init()
 
 void Display::ClearBuffer()
 {
-    Color color = Painter::GetColor();
+    Color color = Color::Current();
 
     DMA2D_HandleTypeDef hDMA2D;
 
@@ -75,11 +75,11 @@ uint8 *Display::GetBufferEnd()
 
 void Display::DrawStartScreen()
 {
-    Painter::SetColor(Color::BACK);
+    Color::BACK.SetAsCurrent();
 
     ClearBuffer();
 
-    Painter::SetColor(Color::FILL);
+    Color::FILL.SetAsCurrent();
 
     PFont::Set(PTypeFont::_GOST28);
     Text::SetSpacing(3);
@@ -126,11 +126,11 @@ void Display::Update1()
     static int dX = 1;
     static int dY = 1;
 
-    Painter::SetColor(Color::WHITE);
+    Color::WHITE.SetAsCurrent();
 
     Painter::FillRegion(x + 1, y + 1, width - 2, width - 2);
 
-    Painter::SetColor(Color::BLACK);
+    Color::BLACK.SetAsCurrent();
 
 //    Painter::DrawRectangle(x, y, width, width);
 
@@ -161,7 +161,7 @@ void Display::Update1()
         y += dY;
     }
 
-    Painter::SetColor(Color::WHITE);
+    Color::WHITE.SetAsCurrent();
 
     Painter::SetPoint(0, 0);
     Painter::SetPoint(Display::WIDTH - 1, 0);

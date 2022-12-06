@@ -65,6 +65,9 @@ Color Color::BACK(COLOR_BLACK);
 Color Color::GRID(COLOR_GRID);
 
 
+Color Color::current = Color::Count;
+
+
 
 void Color::Log(Color)
 {

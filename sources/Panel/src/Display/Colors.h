@@ -38,20 +38,23 @@ public:
     explicit Color(uint8 val = COLOR_BLACK) : value(val) { }
     Color(const Color &color) : value(color.value) { }
 
+    void SetAsCurrent() const { current = *this; };
+    static Color Current() { return current; }
+
     static Color Cursors(Chan ch);
     static Color Trig();
-    static Color ChanAccum(Chan ch);     // Цвет канала в режиме накопления
+    static Color ChanAccum(Chan ch);        // Цвет канала в режиме накопления
     static Color MenuItem(bool shade);      // Цвет элемента меню.
     static Color MenuTitle(bool shade);     // Цвет заголовка страницы. inShade == true, если страница затенена
     static Color BorderMenu(bool shade);    // Цвет окантовки меню
     static Color LightShadingText();        // Светлый цвет в тени.
     static Color Contrast(Color color);     // Возвращает цвет, контрастный к color. Может быть белым или чёрным.
-    
+
     uint8 value;
 
     static void Log(Color color);
 
-    Color& operator=(const Color &color);
+    Color &operator=(const Color &color);
 
     enum
     {
@@ -89,6 +92,10 @@ public:
 
         COLOR_NUMBER = 32
     };
+
+private:
+
+    static Color current;
 };
 
 bool operator!=(const Color &left, const Color &right);

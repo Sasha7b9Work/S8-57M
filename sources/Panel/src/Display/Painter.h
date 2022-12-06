@@ -15,11 +15,6 @@ namespace Painter
     // Пересылает строку в панель
     void SendRow(int row);
 
-    void SetColor(Color color);
-
-    // Возвращает текущий цвет рисования
-    Color GetColor();
-
     // Устанавливает цвету заданное значение. Загружается в дисплей LoadPalette() или SetPalette()
     void SetColorValue(Color color, uint value);
 

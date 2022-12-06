@@ -76,9 +76,3 @@ void Painter::DrawDashedVLine(int x, int y0, int y1, int deltaFill, int deltaEmt
         y += (deltaFill + deltaEmtpy);
     }
 }
-
-
-Color Painter::GetColor()
-{
-    return currentColor;
-}

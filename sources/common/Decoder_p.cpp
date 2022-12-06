@@ -175,7 +175,7 @@ static bool SetColor(uint8 data) //-V2506
     }
     if (step == 1)
     {
-        Painter::SetColor(static_cast<Color>(data));
+        Color(data).SetAsCurrent();
     }
     return true;
 }

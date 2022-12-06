@@ -1,18 +1,8 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Display/BackBuffer.h"
+#include "Display/Painter.h"
 #include <stdlib.h>
-
-
-// ¬озвращает адрес байта с координатами x, y.
-#define ADDRESS_BYTE(x, y) (buffer + ((y) * width + (x)))
-
-#define SET_POINT(x, y)                             \
-    uint8 *address = ADDRESS_BYTE(x, y);            \
-    if (address >= buffer && address < endBuffer)   \
-    {                                               \
-        *address = color.value;                     \
-    }
 
 
 namespace BackBuffer
@@ -21,19 +11,23 @@ namespace BackBuffer
 
     static uint8 buffer[SIZE_BUFFER] __attribute__((section("CCM_DATA")));
 
-    static uint8 *endBuffer = 0;
+    static uint8 *AddressByte(int x, int y);
 
-    static int width = 0;
-
-    static Color color = Color::FILL;
+    static uint8 *endBuffer = &buffer[0] + SIZE_BUFFER;
 }
 
 
-void BackBuffer::SetPoint(int x, int y, Color col)
+uint8 *BackBuffer::AddressByte(int x, int y)
 {
-    color = col;
+    return nullptr;
+}
 
-    uint8 *address = ADDRESS_BYTE(x, y);
+
+void BackBuffer::SetPoint(int x, int y)
+{
+    Color color = Color::Current();
+
+    uint8 *address = AddressByte(x, y);
 
     if (address >= buffer && address < endBuffer)
     {
@@ -42,24 +36,8 @@ void BackBuffer::SetPoint(int x, int y, Color col)
 }
 
 
-void BackBuffer::SetPoint(int x, int y)
+void BackBuffer::FillRect(int x, int y, int w, int h)
 {
-    uint8 *address = ADDRESS_BYTE(x, y);
-
-    if(address >= buffer && address < endBuffer)
-    {
-        *address = color.value;
-    }
-}
-
-
-void BackBuffer::FillRect(int x, int y, int w, int h, Color col)
-{
-    if(col != Color::Count)
-    {
-        color = col;
-    }
-
     for(int i = 0; i <= h; i++)
     {
         DrawHLine(y + i, x, x + w);
@@ -67,41 +45,26 @@ void BackBuffer::FillRect(int x, int y, int w, int h, Color col)
 }
 
 
-void BackBuffer::DrawVLine(int x, int y0, int y1, Color col)
+void BackBuffer::DrawVLine(int x, int y0, int y1)
 {
-    if(col != Color::Count)
-    {
-        color = col;
-    }
-
     for (int y = y0; y <= y1; y++)
     {
-        SET_POINT(x, y);
+        SetPoint(x, y);
     }
 }
 
 
-void BackBuffer::DrawHLine(int y, int x0, int x1, Color col)
+void BackBuffer::DrawHLine(int y, int x0, int x1)
 {
-    if(col != Color::Count)
-    {
-        color = col;
-    }
-
     for(int x = x0; x <= x1; x++)
     {
-        SET_POINT(x, y);
+        SetPoint(x, y);
     }
 }
 
 
-void BackBuffer::DrawRectangle(int x, int y, int w, int h, Color col)
+void BackBuffer::DrawRectangle(int x, int y, int w, int h)
 {
-    if(col != Color::Count)
-    {
-        color = col;
-    }
-
     DrawVLine(x, y, y + h);
     DrawVLine(x + w, y, y + h);
     DrawHLine(y, x, x + w);
