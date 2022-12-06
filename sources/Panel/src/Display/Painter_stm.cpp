@@ -62,7 +62,7 @@ void Painter::DrawHLine(int y, int x0, int x1)
     uint8 *address = Display::GetBuffer() + x0 + y * Display::WIDTH;
     uint8 *end = Display::GetBufferEnd();
 
-    uint8 value = currentColor.value;
+    uint8 value = Color::Current().value;
 
     for (int x = x0; x <= x1; ++x)
     {
@@ -157,7 +157,7 @@ void Painter::DrawVLine(int x, int y0, int y1)
     uint8 *address = Display::GetBuffer() + x + y0 * Display::WIDTH;
     uint8 *end = Display::GetBufferEnd();
 
-    uint8 value = currentColor.value;
+    uint8 value = Color::Current().value;
 
     for (int y = y0; y <= y1; ++y)
     {
@@ -185,7 +185,7 @@ void Painter::SetPoint(int x, int y)
 {
     if (x >= 0 && x < Display::WIDTH && y >= 0 && y < Display::HEIGHT)
     {
-        *(Display::GetBuffer() + y * Display::WIDTH + x) = currentColor.value;
+        *(Display::GetBuffer() + y * Display::WIDTH + x) = Color::Current().value;
     }
 }
 
