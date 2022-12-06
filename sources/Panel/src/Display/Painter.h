@@ -14,8 +14,6 @@ struct Painter
     // Загружает в дисплей все цвета
     static void LoadPalette();
 
-    static int DrawFormatText(int x, int y, char *format, ...);
-
 private:
 
     static void DrawVPointLine(int x, int y, int delta, int count);
@@ -44,6 +42,8 @@ private:
 
     // Пишет строку в позиции x, y
     static int DrawFormText(int x, int y, Color color, pString text, ...);
+
+    static int DrawFormatText(int x, int y, char *format, ...);
 
     // Посылает строку изображения numString в устройство
     static void SendScreenToDevice();
