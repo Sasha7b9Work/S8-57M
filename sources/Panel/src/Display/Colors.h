@@ -42,7 +42,7 @@ public:
     Color(const Color &color) : value(color.value) { }
 
     void SetValue(uint raw);
-    void SetAsCurrent() const { current = *this; };
+    void SetAsCurrent() { current = *this; };
     static Color Current() { return current; }
 
     static Color Cursors(Chan ch);
@@ -57,8 +57,6 @@ public:
     uint8 value;
 
     static void Log(Color color);
-
-    Color &operator=(const Color &color);
 
     enum
     {

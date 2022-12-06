@@ -268,12 +268,6 @@ void ColorType::ComponentChange(int delta)
 }
 
 
-Color& Color::operator=(const Color &color)
-{
-    value = color.value;
-    return *this;
-}
-
 void Color::SetValue(uint raw)
 {
     colors[value] = raw;
