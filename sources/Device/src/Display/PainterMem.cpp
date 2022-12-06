@@ -17,44 +17,15 @@
 
 namespace PainterMem
 {
-    // Адрес начала области памяти, в которой хранится буфер для рисования. Если == 0, то буфер не создан.
-    static uint8 *buffer = 0;
+    static const int SIZE_BUFFER = 640 * 480 / 5;
+
+    static uint8 buffer[SIZE_BUFFER] __attribute__((section("CCM_DATA")));
 
     static uint8 *endBuffer = 0;
 
     static int width = 0;
 
-    static int height = 0;
-
     static Color color = Color::FILL;
-}
-
-
-uint8 *PainterMem::CreateBuffer(int w, int h)
-{
-    if (buffer == 0)        // Выделяем память только если она не была освобождена вызовом DeleteBuffer()
-    {
-        width = w;
-        height = h;
-        buffer = static_cast<uint8 *>(malloc(static_cast<uint>(width * height))); //-V2511
-        if (buffer != nullptr)
-        {
-            endBuffer = buffer + width * height;
-        }
-        else
-        {
-            endBuffer = nullptr;
-        }
-    }
-
-    return buffer;
-}
-
-
-void PainterMem::DeleteBuffer()
-{
-    free(buffer); //-V2511
-    buffer = 0;
 }
 
 
