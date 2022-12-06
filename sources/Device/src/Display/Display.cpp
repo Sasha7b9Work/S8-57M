@@ -55,8 +55,6 @@ void Display::Update() //-V2506
 {
     static uint prevTime = 0;
 
-    uint start = TIME_MS;
-
     if(Device::InModeOsci() && (TIME_MS - prevTime < ENumSignalsInSec::TimeBetweenFramesMS()))
     {
         return;
@@ -92,8 +90,6 @@ void Display::Update() //-V2506
     }
 
     inStateDraw = false;
-
-    LOG_WRITE("%d ms", TIME_MS - start);
 
     ExecuteFuncAfterUpdateOnce();
 }
