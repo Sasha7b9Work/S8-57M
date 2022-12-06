@@ -91,16 +91,11 @@ namespace HAL_BUS
     };
 
 
-    // На этом выводе будем выставлять признак готовности к коммуникации и признак подтверждения
-    static OutPin pinReady(READY);
-    // Здесь будем выставлять признак готовности данных для передачи в устройство
-    static OutPin pinData(DATA);
-    // По этому сигналу от основого МК начинаем транзакцию чтения/записи
-    static InPin  pinCS(CS);
-    // Признак того, что основной МК осуществляет операцию записи в панель
-    static InPin  pinWR(WR);
-    // Признак того, что основной МК осуществляет операцию чтения из панели
-    static InPin  pinRD(RD);
+    static OutPin out_ready(READY);     // На этом выводе будем выставлять признак готовности к коммуникации и признак подтверждения
+    static OutPin out_data(DATA);       // Здесь будем выставлять признак готовности данных для передачи в устройство
+    static InPin  in_CS(CS);            // По этому сигналу от основого МК начинаем транзакцию чтения/записи
+    static InPin  in_WR(WR);            // Признак того, что основной МК осуществляет операцию записи в панель
+    static InPin  in_RD(RD);            // Признак того, что основной МК осуществляет операцию чтения из панели
 
     static Queue<uint8> queueData;
 
@@ -119,15 +114,15 @@ namespace HAL_BUS
 
 void HAL_BUS::Init()
 {
-    pinReady.Init();
-    pinReady.SetActive();
+    out_ready.Init();
+    out_ready.SetActive();
 
-    pinData.Init();
-    pinData.SetPassive();
+    out_data.Init();
+    out_data.SetPassive();
 
-    pinCS.Init();
-    pinRD.Init();
-    pinWR.Init();
+    in_CS.Init();
+    in_RD.Init();
+    in_WR.Init();
 
     DataBus::Init();
 }
@@ -143,17 +138,17 @@ void HAL_BUS::SendToDevice(uint8 *data, uint size)
 
     if (queueData.Size())
     {
-        pinData.SetActive();
+        out_data.SetActive();
     }
 }
 
 
 void HAL_BUS::Update()
 {
-    //while(pinCS.IsActive())
+    //while(in_CS.IsActive())
     while ((GPIOD->IDR & GPIO_PIN_8) == 0)
     {
-        //if(pinWR.IsActive())                            // Чтение байта из устройства
+        //if(in_WR.IsActive())                            // Чтение байта из устройства
         if ((GPIOD->IDR & GPIO_PIN_5) == 0)
         {
             //uint8 data = DataBus::Read();
@@ -164,7 +159,7 @@ void HAL_BUS::Update()
 
             PDecoder::AddData(data);        // \todo Сейчас недостаток - пока не отработает PDecoder::AddData(), устройство не пойдёт дальше
 
-            //while(pinCS.IsActive()) {};
+            //while(in_CS.IsActive()) {};
             //while(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) == GPIO_PIN_RESET) { }
             volatile uint state = GPIOD->IDR & GPIO_PIN_8;
             while (state == 0)
@@ -175,22 +170,22 @@ void HAL_BUS::Update()
             //pinReady.SetActive();
             GPIOB->BSRR = (uint)GPIO_PIN_12 << 16U;
         }
-        else if (pinRD.IsActive() && queueData.Size())   // Запись байта в устройсто //-V2570 //-V2516
+        else if (in_RD.IsActive() && queueData.Size())   // Запись байта в устройсто //-V2570 //-V2516
         {
             CONFIG_TO_WRITE;
 
             // Устанавливаем данные на ШД
             HAL_BUS::DataBus::WriteValue(queueData.Front());
 
-            pinReady.SetPassive();
+            out_ready.SetPassive();
 
-            pinCS.WaitPassive();
+            in_CS.WaitPassive();
 
-            pinReady.SetActive();
+            out_ready.SetActive();
 
             if (queueData.Size() == 0)
             {
-                pinData.SetPassive();
+                out_data.SetPassive();
             }
 
             CONFIG_TO_READ;
