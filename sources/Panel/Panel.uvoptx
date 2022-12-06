@@ -152,18 +152,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>172</LineNumber>
+          <LineNumber>30</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134229738</Address>
+          <Address>134230368</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;1&gt;.\src\Hardware\HAL\HAL_FSMC_stm.cpp</Filename>
+          <Filename>&lt;2&gt;.\src\Display\Text.cpp</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Panel\src/Hardware/HAL/HAL_FSMC_stm.cpp\172</Expression>
+          <Expression>\\Panel\src/Display/Text.cpp\30</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -298,7 +298,7 @@
         <LExpSel>0</LExpSel>
       </OPTXL>
       <OPTFL>
-        <tvExp>1</tvExp>
+        <tvExp>0</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
         <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>

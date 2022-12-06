@@ -42,7 +42,7 @@ public:
     Color(const Color &color) : value(color.value) { }
 
     void SetValue(uint raw);
-    void SetAsCurrent() { current = *this; };
+    void SetAsCurrent() { if (value != Color::Count.value) { current = *this; } };
     static Color Current() { return current; }
 
     static Color Cursors(Chan ch);
