@@ -22,6 +22,8 @@ namespace BackBuffer
 
     namespace Address
     {
+        uint8 *end = buffer + SIZE_BUFFER;
+
         uint8 *Pixel(int x, int y)
         {
             y -= field * HEIGHT;
@@ -64,9 +66,11 @@ void BackBuffer::EndPaint()
 
 void BackBuffer::SetPoint(int x, int y)
 {
-    if (Limit::X(x) && Limit::Y(y))
+    uint8 *address = Address::Pixel(x, y);
+
+    if (address >= buffer && address < Address::end)
     {
-        *Address::Pixel(x, y) = Color::Current().value;
+        *address = Color::Current().value;
     }
 }
 
