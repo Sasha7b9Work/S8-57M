@@ -50,21 +50,15 @@ struct DataBus
 
 
 static bool interactionWithPanel = false;       // true означает, что шина находится в процессе обмена с панелью и запись по обычной FSMC в альтеру и память запрещена
-static bool otherActionsAllowed = true;         // true означает, что во время приёма/передачи разрешены и другие действия, выполняемые в процессе транзакция - чтение точек в поточечном
-                                                // режиме и регистраторе
+static bool otherActionsAllowed = true;         // true означает, что во время приёма/передачи разрешены и другие действия, выполняемые в процессе транзакция - чтение
+                                                // точек в поточечном режиме и регистраторе
 
+static OutPin out_CS(PIN_CS);                   // По активному состоянию этого пина панель определяет, что главный МК готов к взаимодействию
+static OutPin out_WR(PIN_WR);                   // По активновному состоянию этого пина панель определяте, что главный МК хочет делать передачу
+static OutPin out_RD(PIN_RD);                   // По активному состоянию этого пина панель определяте, что главный МК хочет делать чтение
 
-// По активному состоянию этого пина панель определяет, что главный МК готов к взаимодействию
-static OutPin pinCS(PIN_CS);
-// По активновному состоянию этого пина панель определяте, что главный МК хочет делать передачу
-static OutPin pinWR(PIN_WR);
-// По активному состоянию этого пина панель определяте, что главный МК хочет делать чтение
-static OutPin pinRD(PIN_RD);
-
-// Активным состоянием этого пина панель сообщает о готовности к взаимодействию
-static InPin pinReadyPAN(PIN_PAN_READY);
-// Активное состояние этого пина сообщает о том, что панель имеет данные для пеередчи
-static InPin pinDataPAN(PIN_PAN_DATA);
+static InPin in_ready(PIN_PAN_READY);           // Активным состоянием этого пина панель сообщает о готовности к взаимодействию
+static InPin in_data(PIN_PAN_DATA);             // Активное состояние этого пина сообщает о том, что панель имеет данные для пеередчи
 
 
 namespace HAL_BUS
@@ -75,9 +69,9 @@ namespace HAL_BUS
 
 void HAL_BUS::InitPanel()
 {
-    pinReadyPAN.Init();
-    pinDataPAN.Init();
-    pinCS.Init();
+    in_ready.Init();
+    in_data.Init();
+    out_CS.Init();
 
     DataBus::Init();
 }
@@ -85,7 +79,7 @@ void HAL_BUS::InitPanel()
 
 bool HAL_BUS::Panel::Receive() //-V2506
 {
-    //if(pinReadyPAN.IsPassive() || pinDataPAN.IsPassive())
+    //if(in_ready.IsPassive() || in_data.IsPassive())
     //if((GPIOA->IDR & GPIO_PIN_7) != GPIO_PIN_RESET || (GPIOC->IDR & GPIO_PIN_4) != GPIO_PIN_RESET)
     if((GPIOA->IDR & GPIO_PIN_7) || (GPIOC->IDR & GPIO_PIN_4)) //-V2570
     {
@@ -98,7 +92,7 @@ bool HAL_BUS::Panel::Receive() //-V2506
     {
         mode = Mode::PanelRead;
 
-        pinRD.Init();
+        out_RD.Init();
 
         // Конфигурируем ШД на чтение
 
@@ -107,19 +101,19 @@ bool HAL_BUS::Panel::Receive() //-V2506
         GPIOE->MODER &= 0xffc03fffU;        // Настроим пины 7, 8, 9, 10 на запись D4, D5, D6, D7
     }
     
-    pinRD.SetActive();
+    out_RD.SetActive();
 
-    pinCS.SetActive();
+    out_CS.SetActive();
     
-    pinReadyPAN.WaitPassive();
+    in_ready.WaitPassive();
 
-    while(pinReadyPAN.IsActive()) {};
+    while(in_ready.IsActive()) {};
     
     uint8 data = 0;
 
-    while(pinReadyPAN.IsActive())
+    while(in_ready.IsActive())
     {
-        if(pinDataPAN.IsPassive())
+        if(in_data.IsPassive())
         {
             goto exit;
         }
@@ -132,9 +126,9 @@ bool HAL_BUS::Panel::Receive() //-V2506
     
 exit:
     
-    pinRD.SetPassive();
+    out_RD.SetPassive();
 
-    pinCS.SetPassive();
+    out_CS.SetPassive();
     
     interactionWithPanel = false;
 
@@ -192,7 +186,7 @@ void HAL_BUS::Panel::Send(const uint8 *data, int size)
     {
         mode = Mode::PanelWrite;
 
-        pinWR.Init();
+        out_WR.Init();
 
         // Конфигурируем ШД на запись
 
@@ -212,10 +206,10 @@ void HAL_BUS::Panel::Send(const uint8 *data, int size)
         //                                                                          Биты 4,5,6,7
         GPIOE->ODR = (GPIOE->ODR & 0xf87f) + static_cast<uint16>((static_cast<int16>(d) & 0xf0) << 3);
 
-        //pinWR.SetActive();                  // Даём сигнал записи
+        //out_WR.SetActive();                  // Даём сигнал записи
         GPIOD->BSRR = (uint)GPIO_PIN_5 << 16U;
         
-        //while(pinReadyPAN.IsPassive()) {}   // И ожидаем сигнал панели о том, что она свободна
+        //while(in_ready.IsPassive()) {}   // И ожидаем сигнал панели о том, что она свободна
         //while(HAL_PIO::Read(HPort::_A, HPin::_7) == 1) { };
         volatile uint state = GPIOA->IDR & GPIO_PIN_7;
         while(state)
@@ -223,20 +217,20 @@ void HAL_BUS::Panel::Send(const uint8 *data, int size)
             state = GPIOA->IDR & GPIO_PIN_7;
         }
 
-        //pinCS.SetActive();                  // Даём признак того, чта данные выставлены и можно их считывать
+        //out_CS.SetActive();                  // Даём признак того, чта данные выставлены и можно их считывать
         GPIOG->BSRR = (uint)GPIO_PIN_12 << 16U;
 
-        //while(pinReadyPAN.IsActive()) {}    // Переключение PIN_PAN_READY в неактивное состояние означает, что панель приняла данные и обрабатывает их
+        //while(in_ready.IsActive()) {}    // Переключение PIN_PAN_READY в неактивное состояние означает, что панель приняла данные и обрабатывает их
         state = GPIOA->IDR & GPIO_PIN_7;
         while(state == 0)
         {
             state = GPIOA->IDR & GPIO_PIN_7;
         }
 
-        //pinWR.SetPassive();                 // \ Устанавливаем WR и CS в неактивное состояние - элементарный цикл записи окончен
+        //out_WR.SetPassive();                 // \ Устанавливаем WR и CS в неактивное состояние - элементарный цикл записи окончен
         GPIOD->BSRR = GPIO_PIN_5;
 
-        //pinCS.SetPassive();                 // /
+        //out_CS.SetPassive();                 // /
         GPIOG->BSRR = GPIO_PIN_12;
     }
 
