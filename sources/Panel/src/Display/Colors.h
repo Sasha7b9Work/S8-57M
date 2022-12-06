@@ -17,7 +17,7 @@ public:
     static Color MENU_ITEM_BRIGHT;
     static Color DATA_WHITE_ACCUM_A;
     static Color DATA_WHITE_ACCUM_B;
-    static Color NUMBER;
+    static Color Count;
     static Color FLASH_10;
     static Color FLASH_01;
 

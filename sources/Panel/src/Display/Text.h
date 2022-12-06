@@ -7,7 +7,7 @@ namespace Text
 {
     int Draw(int x, int y, const char *text, int size = 1);
 
-    int DrawChar(int x, int y, int size, uint8 symbol, Color color = Color::NUMBER);
+    int DrawChar(int x, int y, int size, uint8 symbol, Color color = Color::Count);
 
     // ”становка моноширинного режима вывода текста
     void SetMinWidthFont(uint8 width);

@@ -23,7 +23,7 @@ void Painter::SetColorValue(Color color, uint value)
 
 void Painter::LoadPalette()
 {
-    HAL_LTDC::SetColors(&COLOR(0), Color::NUMBER.value);
+    HAL_LTDC::SetColors(&COLOR(0), Color::Count.value);
 }
 
 
@@ -183,7 +183,7 @@ void Painter::FillRegion(int x, int y, int width, int height)
 
 void Painter::SetColor(Color color)
 {
-    if (color.value != Color::NUMBER.value)
+    if (color.value != Color::Count.value)
     {
         currentColor = color;
     }

@@ -55,7 +55,7 @@ void BackBuffer::SetPoint(int x, int y)
 
 void BackBuffer::FillRect(int x, int y, int w, int h, Color col)
 {
-    if(col != Color::NUMBER)
+    if(col != Color::Count)
     {
         color = col;
     }
@@ -69,7 +69,7 @@ void BackBuffer::FillRect(int x, int y, int w, int h, Color col)
 
 void BackBuffer::DrawVLine(int x, int y0, int y1, Color col)
 {
-    if(col != Color::NUMBER)
+    if(col != Color::Count)
     {
         color = col;
     }
@@ -83,7 +83,7 @@ void BackBuffer::DrawVLine(int x, int y0, int y1, Color col)
 
 void BackBuffer::DrawHLine(int y, int x0, int x1, Color col)
 {
-    if(col != Color::NUMBER)
+    if(col != Color::Count)
     {
         color = col;
     }
@@ -97,7 +97,7 @@ void BackBuffer::DrawHLine(int y, int x0, int x1, Color col)
 
 void BackBuffer::DrawRectangle(int x, int y, int w, int h, Color col)
 {
-    if(col != Color::NUMBER)
+    if(col != Color::Count)
     {
         color = col;
     }
