@@ -18,6 +18,7 @@
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
 #include "Utils/Values.h"
+#include <cstdlib>
 
 
 namespace DisplayOsci
@@ -44,7 +45,7 @@ void DisplayOsci::Update(int field)
 
     if (needRedraw)
     {
-        Painter::BeginScene(field, Color::BLACK);
+        Painter::BeginScene(field, Color::BACK);
 
         Grid::Draw();
 

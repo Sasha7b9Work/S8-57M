@@ -18,6 +18,8 @@ namespace HAL_LTDC
 
 void HAL_LTDC::Init(uint _buffer)
 {
+    __HAL_RCC_DMA2D_CLK_ENABLE();
+
     GPIO_InitTypeDef is =
     {
         //  R5           G6           DEN
