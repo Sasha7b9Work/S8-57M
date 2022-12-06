@@ -1355,16 +1355,6 @@
               <FilePath>.\src\Display\Painter_stm.cpp</FilePath>
             </File>
             <File>
-              <FileName>PainterMem.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\PainterMem.h</FilePath>
-            </File>
-            <File>
-              <FileName>PainterMem.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\PainterMem.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Primitives.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Display\Primitives.h</FilePath>
@@ -3760,16 +3750,6 @@
               <FileName>Painter_stm.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Display\Painter_stm.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PainterMem.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\PainterMem.h</FilePath>
-            </File>
-            <File>
-              <FileName>PainterMem.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\PainterMem.cpp</FilePath>
             </File>
             <File>
               <FileName>Primitives.h</FileName>

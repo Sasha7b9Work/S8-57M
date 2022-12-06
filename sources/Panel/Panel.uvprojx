@@ -1405,6 +1405,16 @@
               <FileType>8</FileType>
               <FilePath>.\src\Display\Text_stm.cpp</FilePath>
             </File>
+            <File>
+              <FileName>PainterMem.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\PainterMem.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PainterMem.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\PainterMem.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2882,6 +2892,16 @@
               <FileName>Text_stm.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Display\Text_stm.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PainterMem.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\PainterMem.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PainterMem.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\PainterMem.h</FilePath>
             </File>
           </Files>
         </Group>
