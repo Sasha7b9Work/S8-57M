@@ -23,16 +23,6 @@ namespace BackBuffer
 
     static void Fill();
 
-    int MinY()
-    {
-        return field * HEIGHT;
-    }
-
-    int MaxY()
-    {
-        return (field + 1) * HEIGHT;
-    }
-
     namespace Address
     {
         uint8 *end = buffer + SIZE_BUFFER;
