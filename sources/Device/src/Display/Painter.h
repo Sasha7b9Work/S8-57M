@@ -8,7 +8,7 @@ namespace Painter
 {
     void Init();
 
-    void BeginScene(Color color);
+    void BeginScene(int num_field, Color color);
 
     void EndScene();
 };

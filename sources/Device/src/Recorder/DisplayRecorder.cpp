@@ -81,31 +81,34 @@ struct RecordIcon
 
 void DisplayRecorder::Update()
 {
-    Painter::BeginScene(Color::BLACK);
+    for (int i = 0; i < 5; i++)
+    {
+        Painter::BeginScene(i, Color::BLACK);
 
-    Grid::Draw();
+        Grid::Draw();
 
-    inProcessUpdate = true;
+        inProcessUpdate = true;
 
-    DrawData();
+        DrawData();
 
-    inProcessUpdate = false;
+        inProcessUpdate = false;
 
-    StorageRecorder::LastRecord()->AddMissingPoints();
+        StorageRecorder::LastRecord()->AddMissingPoints();
 
-    DrawSettings(289, 0);
+        DrawSettings(289, 0);
 
-    DrawCursors();
+        DrawCursors();
 
-    DrawMemoryWindow();
+        DrawMemoryWindow();
 
-    DFont::Set(DTypeFont::_8);
+        DFont::Set(DTypeFont::_8);
 
-    Warnings::Draw();
+        Warnings::Draw();
 
-    Menu::Draw();
+        Menu::Draw();
 
-    RecordIcon::Upate(5, 5);
+        RecordIcon::Upate(5, 5);
+    }
 }
 
 

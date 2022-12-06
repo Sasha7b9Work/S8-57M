@@ -31,22 +31,25 @@ void Test::Display::DeInit()
 
 static void Update()
 {
-    Painter::BeginScene(Color::BACK);
-
-    Color::FILL.SetAsCurrent();
-
-    int start = queue->Size() - 24;
-    if (start < 0)
+    for (int i = 0; i < 5; i++)
     {
-        start = 0;
-    }
+        Painter::BeginScene(i, Color::BACK);
 
-    for (int i = start; i < queue->Size(); i++)
-    {
-        Text((*queue)[i]->c_str()).Draw(10, (i - start) * 10);
-    }
+        Color::FILL.SetAsCurrent();
 
-    Painter::EndScene();
+        int start = queue->Size() - 24;
+        if (start < 0)
+        {
+            start = 0;
+        }
+
+        for (int i = start; i < queue->Size(); i++)
+        {
+            Text((*queue)[i]->c_str()).Draw(10, (i - start) * 10);
+        }
+
+        Painter::EndScene();
+    }
 }
 
 

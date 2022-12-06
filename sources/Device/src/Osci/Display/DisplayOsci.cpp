@@ -42,44 +42,50 @@ void DisplayOsci::Update()
 {
     DFont::SetSpacing(1);
 
-    if (needRedraw)
+    for (int field = 0; field < 5; field++)
     {
-        Painter::BeginScene(Color::BLACK);
+        if (needRedraw)
+        {
+            Painter::BeginScene(field, Color::BLACK);
 
-        Grid::Draw();
+            Grid::Draw();
 
-        needRedraw = false;
+            if (field == 4)
+            {
+                needRedraw = false;
+            }
 
-        Accumulator::Reset();
+            Accumulator::Reset();
+        }
+
+        PainterData::DrawData();
+
+        Rectangle(Grid::Width(), Grid::ChannelHeight()).Draw(Grid::Left(), Grid::Top(), Color::FILL);
+
+        HiPart::Draw();
+
+        TPos::Draw();
+
+        TShift::Draw();
+
+        RShift::DrawBoth();
+
+        TrigLevel::Draw();
+
+        DrawingValueParameter::Draw();
+
+        CursorsMeasurements::Draw();
+
+        BottomPart::Draw(273, Grid::Bottom() + 1);
+
+        DisplayFreqMeter::Update();
+
+        TableMeasures::Draw();
+
+        Menu::Draw();
+
+        Warnings::Draw();
     }
-
-    PainterData::DrawData();
-
-    Rectangle(Grid::Width(), Grid::ChannelHeight()).Draw(Grid::Left(), Grid::Top(), Color::FILL);
-
-    HiPart::Draw();
-
-    TPos::Draw();
-
-    TShift::Draw();
-
-    RShift::DrawBoth();
-
-    TrigLevel::Draw();
-
-    DrawingValueParameter::Draw();
-
-    CursorsMeasurements::Draw();
-
-    BottomPart::Draw(273, Grid::Bottom() + 1);
-
-    DisplayFreqMeter::Update();
-
-    TableMeasures::Draw();
-
-    Menu::Draw();
-
-    Warnings::Draw();
 }
 
 

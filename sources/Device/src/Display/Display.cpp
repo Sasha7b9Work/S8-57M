@@ -161,67 +161,70 @@ void Display::Message::Hide()
 
 void Display::Message::Func()
 {
-    if (clearBackground)
+    for (int field = 0; field < 5; field++)
     {
-        Painter::BeginScene(Color::BACK);
-    }
-
-    uint time = ((TIME_MS - timeStart) / 50) % 100;
-
-    if (time > 50)
-    {
-        time = (100 - time);
-    }
-
-    int width = 200;
-    int height = 80;
-    int x = 160 - width / 2;
-    int y = 120 - height / 2;
-
-    Region(width, height).Fill(x, y, Color::BACK);
-    Rectangle(width, height).Draw(x, y, Color::FILL);
-
-    int length = DFont::GetLengthText(textWait);
-
-    if (waitKey)
-    {
-        y += 10;
-    }
-
-    if (length < width)
-    {
-        Text(textWait).DrawInCenterRect(x, y, width, height - 20);
-    }
-    else
-    {
-        Text(textWait).DrawInRectWithTransfers(x + 11, y + 20, width - 22, height - 20);
-    }
-
-    char buf[100] = { 0 };
-
-    if (!waitKey)
-    {
-        for (uint i = 0; i < time; i++)
+        if (clearBackground)
         {
-            std::strcat(buf, "."); //-V2513
+            Painter::BeginScene(field, Color::BACK);
         }
-    }
 
-    Text(buf).DrawInCenterRect(x, y + 20, width, height - 20);
+        uint time = ((TIME_MS - timeStart) / 50) % 100;
 
-    Painter::EndScene();
-
-    if (waitKey)
-    {
-        while (HAL_BUS::Panel::Receive()) {};
-
-        DDecoder::Update();
-
-        while (!BufferButtons::IsEmpty())
+        if (time > 50)
         {
-            if (BufferButtons::Extract().IsRelease())
+            time = (100 - time);
+        }
+
+        int width = 200;
+        int height = 80;
+        int x = 160 - width / 2;
+        int y = 120 - height / 2;
+
+        Region(width, height).Fill(x, y, Color::BACK);
+        Rectangle(width, height).Draw(x, y, Color::FILL);
+
+        int length = DFont::GetLengthText(textWait);
+
+        if (waitKey)
+        {
+            y += 10;
+        }
+
+        if (length < width)
+        {
+            Text(textWait).DrawInCenterRect(x, y, width, height - 20);
+        }
+        else
+        {
+            Text(textWait).DrawInRectWithTransfers(x + 11, y + 20, width - 22, height - 20);
+        }
+
+        char buf[100] = { 0 };
+
+        if (!waitKey)
+        {
+            for (uint i = 0; i < time; i++)
             {
-                Hide();
+                std::strcat(buf, "."); //-V2513
+            }
+        }
+
+        Text(buf).DrawInCenterRect(x, y + 20, width, height - 20);
+
+        Painter::EndScene();
+
+        if (waitKey)
+        {
+            while (HAL_BUS::Panel::Receive()) {};
+
+            DDecoder::Update();
+
+            while (!BufferButtons::IsEmpty())
+            {
+                if (BufferButtons::Extract().IsRelease())
+                {
+                    Hide();
+                }
             }
         }
     }

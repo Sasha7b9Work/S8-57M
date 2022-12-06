@@ -10,29 +10,32 @@
 
 static void Information_Draw()
 {
-    Painter::BeginScene(Color::BACK);
-    int x = 65;
-    int dY = 20;
-    int y = 20;
-    Rectangle(319, 239).Draw(0, 0, Color::FILL);
-    y += dY;
-    y += dY;
+    for (int i = 0; i < 5; i++)
+    {
+        Painter::BeginScene(i, Color::BACK);
+        int x = 65;
+        int dY = 20;
+        int y = 20;
+        Rectangle(319, 239).Draw(0, 0, Color::FILL);
+        y += dY;
+        y += dY;
 
-    char buffer[100];
+        char buffer[100];
 
-    std::sprintf(buffer, MODEL_RU);
-    String(buffer).Draw(x, y);
+        std::sprintf(buffer, MODEL_RU);
+        String(buffer).Draw(x, y);
 
-    y += 2 * dY;
+        y += 2 * dY;
 
-    String("Программное обеспечение : версия %s", VERSION).Draw(x, y);
+        String("Программное обеспечение : версия %s", VERSION).Draw(x, y);
 
-    y += dY - 1;
+        y += dY - 1;
 
-    String("CRC32 %s", CRC32_DEVICE).Draw(x + 123, y);
+        String("CRC32 %s", CRC32_DEVICE).Draw(x + 123, y);
 
-    Menu::Draw();
-    Painter::EndScene();
+        Menu::Draw();
+        Painter::EndScene();
+    }
 }
 
 

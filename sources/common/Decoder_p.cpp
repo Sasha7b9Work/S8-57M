@@ -6,7 +6,7 @@
 #include "Display/Text/Text.h"
 #include "Hardware/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
-
+#include "Display/BackBuffer.h"
 
 
 typedef bool(*pFuncBU8)(uint8);
@@ -138,9 +138,16 @@ static bool InButtonPress(uint8) //-V2506
 }
 
 
-static bool BeginScene(uint8)
+static bool BeginScene(uint8 data)
 {
-    Display::ClearBuffer();
+    if (step == 0)
+    {
+        return false;
+    }
+    if (step == 1)
+    {
+        BackBuffer::BeginPaint((int)data);
+    }
     return true;
 }
 
@@ -162,7 +169,7 @@ static bool DisplayBrightness(uint8 data) //-V2506
 
 static bool EndScene(uint8)
 {
-    Painter::EndScene();
+    BackBuffer::EndPaint();
     return true;
 }
 

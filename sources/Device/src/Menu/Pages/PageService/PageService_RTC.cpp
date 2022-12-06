@@ -200,9 +200,12 @@ static void BeforeDraw_Set()
         OnOpenClose_Set(true);              // подведём подготовительные операции
     }
 
-    Painter::BeginScene(Color::BACK);
+    for (int i = 0; i < 5; i++)
+    {
+        Painter::BeginScene(i, Color::BACK);
 
-    DrawTime();
+        DrawTime();
+    }
 }
 
 static bool HandlerKey_Set(const KeyEvent &event) //-V2506

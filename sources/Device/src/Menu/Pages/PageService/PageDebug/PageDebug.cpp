@@ -45,59 +45,62 @@ static int IncreaseY(int &y, int dY)
 
 static void DebugShowSetInfo_Draw()
 {
-    Painter::BeginScene(Color::BACK);
-    Rectangle(319, 239).Draw(0, 0, Color::FILL);
+    for (int i = 0; i < 5; i++)
+    {
+        Painter::BeginScene(i, Color::BACK);
+        Rectangle(319, 239).Draw(0, 0, Color::FILL);
 
-    int x0 = 30;
-    int y0 = 25;
-    int dY = 10;
-    int y = y0 - dY;
+        int x0 = 30;
+        int y0 = 25;
+        int dY = 10;
+        int y = y0 - dY;
 
 #define INC_Y IncreaseY(y, dY)
 #define DRAW_TEXT(str)                  Painter::DrawText(x0, INC_Y, str)
 #define DRAW_FORMAT(str, value)         String(str, value).Draw(x0, INC_Y)
 #define DRAW_FORMAT2(str, val1, val2)   String(str, val1, val2).Draw(x0, INC_Y)
 
-    //Painter_DrawFormatText(x0, Y_AND_INCREASE, "Размер основной структуры %d", sizeof(set));
-    DRAW_FORMAT("Размер основной структуры : %d", sizeof(set)); //-V2528
-    String("Несбрасываемая структура:").Draw(x0, INC_Y); //-V2528
+        //Painter_DrawFormatText(x0, Y_AND_INCREASE, "Размер основной структуры %d", sizeof(set));
+        DRAW_FORMAT("Размер основной структуры : %d", sizeof(set)); //-V2528
+        String("Несбрасываемая структура:").Draw(x0, INC_Y); //-V2528
 
-    int x = String("rShiftAdd :").Draw(x0, INC_Y) + 5; //-V2528
+        int x = String("rShiftAdd :").Draw(x0, INC_Y) + 5; //-V2528
 
-    int ddY = 0;
+        int ddY = 0;
 
-    for (int ch = 0; ch < 2; ch++)
-    {
-        for (int range = 0; range < Range::Count; ++range)
+        for (int ch = 0; ch < 2; ch++)
         {
-            String("%d", NRST_EX_SHIFT(ch, range)).Draw(x + range * 20, y + dY * ddY);
+            for (int range = 0; range < Range::Count; ++range)
+            {
+                String("%d", NRST_EX_SHIFT(ch, range)).Draw(x + range * 20, y + dY * ddY);
+            }
+            ddY++;
         }
-        ddY++;
-    }
 
-    y += dY * 3;
+        y += dY * 3;
 
-    DRAW_FORMAT("correctionTime : %d", NRST_CORRECTION_TIME); //-V2528
-//    DRAW_FORMAT("numAveForRand : %d", NRST_NUM_AVE_FOR_RAND); //-V2528
+        DRAW_FORMAT("correctionTime : %d", NRST_CORRECTION_TIME); //-V2528
+        //    DRAW_FORMAT("numAveForRand : %d", NRST_NUM_AVE_FOR_RAND); //-V2528
 
-//    pString s[3] = {"выключено", "настроено автоматически", "задано вручную"};
-//    DRAW_FORMAT("stretchADCtype : %s", (ExtraStretch::Type() < 3 ? s[ExtraStretch::Type()] : "!!! неправильное значение !!!")); //-V547 //-V2528
+        //    pString s[3] = {"выключено", "настроено автоматически", "задано вручную"};
+        //    DRAW_FORMAT("stretchADCtype : %s", (ExtraStretch::Type() < 3 ? s[ExtraStretch::Type()] : "!!! неправильное значение !!!")); //-V547 //-V2528
 
-    x = String("stretchADC :").Draw(x0, INC_Y) + 5; //-V2528
+        x = String("stretchADC :").Draw(x0, INC_Y) + 5; //-V2528
 
-//    for (int ch = 0; ch < 2; ch++)
-//    {
-//        String("%f", ExtraStretch::GetValue(static_cast<Chan::E>(ch))).Draw(x, y + dY * ch);
-//    }
+        //    for (int ch = 0; ch < 2; ch++)
+        //    {
+        //        String("%f", ExtraStretch::GetValue(static_cast<Chan::E>(ch))).Draw(x, y + dY * ch);
+        //    }
 
-    y += dY;
+        y += dY;
 
 #define DRAW_STRETCH(name) DRAW_FORMAT2(#name " : %d %d", set.nrst_##name[0], set.nrst_##name[1])
 
-    DRAW_FORMAT("numSmoothForRand : %d", NRST_NUM_SMOOTH_FOR_RAND); //-V2528
+        DRAW_FORMAT("numSmoothForRand : %d", NRST_NUM_SMOOTH_FOR_RAND); //-V2528
 
-    Menu::Draw();
-    Painter::EndScene();
+        Menu::Draw();
+        Painter::EndScene();
+    }
 }
 
 

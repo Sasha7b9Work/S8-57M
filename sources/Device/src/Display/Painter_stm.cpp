@@ -12,11 +12,11 @@ void Painter::Init()
 }
 
 
-void Painter::BeginScene(Color color)
+void Painter::BeginScene(int field, Color color)
 {
     color.SetAsCurrent();
 
-    HAL_BUS::Panel::Send(Command::Paint_BeginScene);
+    HAL_BUS::Panel::Send(Command::Paint_BeginScene, (uint8)field);
 }
 
 

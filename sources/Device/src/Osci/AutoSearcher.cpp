@@ -275,22 +275,25 @@ static bool WaitSync(uint timeWaitMS) //-V2506
 
 static void DisplayUpdate()
 {
-    Painter::BeginScene(Color::BACK);
-
-    Text("Поиск сигнала").DrawInCenterRect(0, 0, 320, 200, Color::FILL);
-
-    int length = static_cast<int>((TIME_MS / 250) % 20);
-
-    int dX = 5;
-
-    int width = dX * length;
-
-    for (int i = 0; i < length; i++)
+    for (int field = 0; field < 5; field++)
     {
-        Text(".").Draw(320 / 2 - width / 2 + i * dX + 2, 120);
-    }
+        Painter::BeginScene(field, Color::BACK);
 
-    Painter::EndScene();
+        Text("Поиск сигнала").DrawInCenterRect(0, 0, 320, 200, Color::FILL);
+
+        int length = static_cast<int>((TIME_MS / 250) % 20);
+
+        int dX = 5;
+
+        int width = dX * length;
+
+        for (int i = 0; i < length; i++)
+        {
+            Text(".").Draw(320 / 2 - width / 2 + i * dX + 2, 120);
+        }
+
+        Painter::EndScene();
+    }
 }
 
 

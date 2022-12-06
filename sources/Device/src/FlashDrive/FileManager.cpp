@@ -178,30 +178,33 @@ void FileManager::Draw() //-V2506
     int width = 297;
     int left2col = width / 2;
 
-    if (ModeRedrawFM::Is(ModeRedrawFM::Full))
+    for (int field = 0; field < 5; field++)
     {
-        Painter::BeginScene(Color::BACK);
-        Menu::Draw();
-        Rectangle(width, 239).Draw(0, 0, Color::FILL);
-        Region(Grid::Width() - 2, Grid::Height() - 2).Fill(left, top, Color::BACK);
-        FDrive::GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
-        DrawNameCurrentDir(left, top + 2);
+        if (ModeRedrawFM::Is(ModeRedrawFM::Full))
+        {
+            Painter::BeginScene(field, Color::BACK);
+            Menu::Draw();
+            Rectangle(width, 239).Draw(0, 0, Color::FILL);
+            Region(Grid::Width() - 2, Grid::Height() - 2).Fill(left, top, Color::BACK);
+            FDrive::GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
+            DrawNameCurrentDir(left, top + 2);
 
-        VLine(223 - top).Draw(left2col, top + 16, Color::FILL);
-		HLine(width).Draw(0, top + 15);
+            VLine(223 - top).Draw(left2col, top + 16, Color::FILL);
+            HLine(width).Draw(0, top + 15);
+        }
+
+        if (!ModeRedrawFM::Is(ModeRedrawFM::Files))
+        {
+            DrawDirs(left + 2, top + 18);
+        }
+
+        if (!ModeRedrawFM::Is(ModeRedrawFM::Folders))
+        {
+            DrawFiles(left2col + 3, top + 18);
+        }
+
+        Painter::EndScene();
     }
-
-    if (!ModeRedrawFM::Is(ModeRedrawFM::Files))
-    {
-        DrawDirs(left + 2, top + 18);
-    }
-
-    if (!ModeRedrawFM::Is(ModeRedrawFM::Folders))
-    {
-        DrawFiles(left2col + 3, top + 18);
-    }
-
-    Painter::EndScene();
 
     ModeRedrawFM::Set(ModeRedrawFM::None);
 }

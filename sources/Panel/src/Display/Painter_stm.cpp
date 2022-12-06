@@ -18,25 +18,25 @@ void Painter::LoadPalette()
 }
 
 
-void Painter::EndScene(void)
-{
-    if (sendingString >= 0)                                               // Если нужно отправить картинку
-    {
-#define SIZE  (SIZE_STRING + 2)
-
-        uint8 buffer[SIZE] = { Command::Screen, static_cast<uint8>(sendingString) };
-
-        std::memcpy(buffer + 2, Display::GetBuffer() + sendingString * SIZE_STRING, SIZE_STRING);
-
-        HAL_BUS::SendToDevice(buffer, SIZE_STRING);
-
-        sendingString++;
-        if (sendingString == 120)
-        {
-            sendingString = -1;
-        }
-    }
-}
+//void Painter::EndScene(void)
+//{
+//    if (sendingString >= 0)                                               // Если нужно отправить картинку
+//    {
+//#define SIZE  (SIZE_STRING + 2)
+//
+//        uint8 buffer[SIZE] = { Command::Screen, static_cast<uint8>(sendingString) };
+//
+//        std::memcpy(buffer + 2, Display::GetBuffer() + sendingString * SIZE_STRING, SIZE_STRING);
+//
+//        HAL_BUS::SendToDevice(buffer, SIZE_STRING);
+//
+//        sendingString++;
+//        if (sendingString == 120)
+//        {
+//            sendingString = -1;
+//        }
+//    }
+//}
 
 
 void Painter::DrawHLine(int y, int x0, int x1)

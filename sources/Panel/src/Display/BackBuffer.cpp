@@ -17,9 +17,21 @@ namespace BackBuffer
 }
 
 
-uint8 *BackBuffer::AddressByte(int x, int y)
+uint8 *BackBuffer::AddressByte(int, int)
 {
     return nullptr;
+}
+
+
+void BackBuffer::BeginPaint(int field)
+{
+
+}
+
+
+void BackBuffer::EndPaint()
+{
+
 }
 
 

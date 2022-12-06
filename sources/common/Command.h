@@ -34,7 +34,7 @@ struct Command
     {                                                   
 /* 00 */    None,                   //    |             |            |             |              |              |        |
 /* 01 */    ButtonPress,            // 01 |   Item      | TypePress  |             |              |              |        |
-/* 02 */    Paint_BeginScene,       // 02 |             |            |             |              |              |        |
+/* 02 */    Paint_BeginScene,       // 02 | num_field   |            |             |              |              |        |
 /* 03 */    Paint_EndScene,         // 03 |             |            |             |              |              |        |
 /* 04 */    Paint_SetColor,         // 04 |   Color     |            |             |              |              |        |
 /* 05 */    Paint_FillRegion,       // 05 |   x[0:7]    |  x[8:15]   |      y      | width[0:7]   | width[8:15]  | height |

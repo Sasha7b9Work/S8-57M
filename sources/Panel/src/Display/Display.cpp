@@ -8,6 +8,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Display/Colors.h"
 #include "Hardware/Timer.h"
+#include "Display/BackBuffer.h"
 #include <cstdlib>
 
 
@@ -34,33 +35,6 @@ void Display::Init()
 }
 
 
-void Display::ClearBuffer()
-{
-    Color color = Color::Current();
-
-    DMA2D_HandleTypeDef hDMA2D;
-
-    hDMA2D.Init.Mode = DMA2D_R2M;
-    hDMA2D.Init.ColorMode = DMA2D_ARGB8888;
-    hDMA2D.Init.OutputOffset = 0;
-
-    hDMA2D.Instance = DMA2D;
-
-    if (HAL_DMA2D_Init(&hDMA2D) == HAL_OK)
-    {
-        uint pdata = (uint)(color.value | (color.value << 8) | (color.value << 16) | (color.value << 24));
-        uint dest = (uint)buffer;
-        uint width = Display::WIDTH / 4;
-        uint height = Display::HEIGHT;
-
-        if (HAL_DMA2D_Start(&hDMA2D, pdata, dest, width, height) == HAL_OK)
-        {
-            HAL_DMA2D_PollForTransfer(&hDMA2D, 100);
-        }
-    }
-}
-
-
 uint8 *Display::GetBuffer()
 {
     return buffer;
@@ -75,29 +49,32 @@ uint8 *Display::GetBufferEnd()
 
 void Display::DrawStartScreen()
 {
-    Color::BACK.SetAsCurrent();
+    for (int field = 0; field < 5; field++)
+    {
+        Color::BACK.SetAsCurrent();
 
-    ClearBuffer();
+        BackBuffer::BeginPaint(field);
 
-    Color::FILL.SetAsCurrent();
+        Color::FILL.SetAsCurrent();
 
-    PFont::Set(PTypeFont::_GOST28);
-    Text::SetSpacing(3);
+        PFont::Set(PTypeFont::_GOST28);
+        Text::SetSpacing(3);
 
-    int x0 = 85;
-    int dX = 65;
-    int y0 = 50;
+        int x0 = 85;
+        int dX = 65;
+        int y0 = 50;
 
-    int x1 = 120;
-    int y1 = 130;
+        int x1 = 120;
+        int y1 = 130;
 
-    Text::Draw(x0, y0, "ÎÀÎ");
+        Text::Draw(x0, y0, "ÎÀÎ");
 
-    Text::Draw(x0 + dX, y0, "ÌÍÈÏÈ");
+        Text::Draw(x0 + dX, y0, "ÌÍÈÏÈ");
 
-    Text::Draw(x1, y1, "Ñ8-57");
+        Text::Draw(x1, y1, "Ñ8-57");
 
-    Painter::EndScene();
+        BackBuffer::EndPaint();
+    }
 }
 
 
@@ -105,13 +82,16 @@ uint Display::Update()
 {
     uint start = TIME_MS;
 
-    ClearBuffer();
+    for (int field = 0; field < 5; field++)
+    {
+        Color::BLACK.SetAsCurrent();
 
-//    Painter::SetColor(Color::BLACK);
-//
-//    Painter::FillRegion(0, 0, Display::WIDTH, Display::HEIGHT);
+        BackBuffer::BeginPaint(field);
 
-    Update1();
+        Update1();
+
+        BackBuffer::EndPaint();
+    }
 
     return TIME_MS - start;
 }
