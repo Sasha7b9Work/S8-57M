@@ -3,7 +3,7 @@
 #include "Decoder_p.h"
 #include "Display/Display.h"
 #include "Display/Painter.h"
-#include "Display/Text.h"
+#include "Display/Text/Text.h"
 #include "Hardware/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
 

@@ -1351,11 +1351,6 @@
               <FilePath>.\src\Display\Display.h</FilePath>
             </File>
             <File>
-              <FileName>DisplayTypes.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\DisplayTypes.h</FilePath>
-            </File>
-            <File>
               <FileName>Painter.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Display\Painter.cpp</FilePath>
@@ -1364,11 +1359,6 @@
               <FileName>Painter.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Display\Painter.h</FilePath>
-            </File>
-            <File>
-              <FileName>PainterText.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\PainterText.cpp</FilePath>
             </File>
             <File>
               <FileName>Colors.cpp</FileName>
@@ -1381,29 +1371,9 @@
               <FilePath>.\src\Display\Colors.h</FilePath>
             </File>
             <File>
-              <FileName>Text.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Text.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Text.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Text.h</FilePath>
-            </File>
-            <File>
-              <FileName>Painter_common.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Painter_common.h</FilePath>
-            </File>
-            <File>
               <FileName>Painter_stm.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Display\Painter_stm.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Text_stm.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Text_stm.cpp</FilePath>
             </File>
             <File>
               <FileName>BackBuffer.cpp</FileName>
@@ -1439,6 +1409,26 @@
               <FileName>Font_p.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Display\Font\Font_p.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Display/Text</GroupName>
+          <Files>
+            <File>
+              <FileName>PainterText.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\Text\PainterText.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Text.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\Text\Text.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Text.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Text\Text.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2839,11 +2829,6 @@
               <FilePath>.\src\Display\Display.h</FilePath>
             </File>
             <File>
-              <FileName>DisplayTypes.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\DisplayTypes.h</FilePath>
-            </File>
-            <File>
               <FileName>Painter.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Display\Painter.cpp</FilePath>
@@ -2852,11 +2837,6 @@
               <FileName>Painter.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Display\Painter.h</FilePath>
-            </File>
-            <File>
-              <FileName>PainterText.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\PainterText.cpp</FilePath>
             </File>
             <File>
               <FileName>Colors.cpp</FileName>
@@ -2869,29 +2849,9 @@
               <FilePath>.\src\Display\Colors.h</FilePath>
             </File>
             <File>
-              <FileName>Text.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Text.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Text.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Text.h</FilePath>
-            </File>
-            <File>
-              <FileName>Painter_common.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Painter_common.h</FilePath>
-            </File>
-            <File>
               <FileName>Painter_stm.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Display\Painter_stm.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Text_stm.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Text_stm.cpp</FilePath>
             </File>
             <File>
               <FileName>BackBuffer.cpp</FileName>
@@ -2927,6 +2887,26 @@
               <FileName>Font_p.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Display\Font\Font_p.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Display/Text</GroupName>
+          <Files>
+            <File>
+              <FileName>PainterText.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\Text\PainterText.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Text.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\Text\Text.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Text.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Text\Text.h</FilePath>
             </File>
           </Files>
         </Group>

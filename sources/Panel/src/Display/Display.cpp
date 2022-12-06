@@ -2,7 +2,7 @@
 #include "defines.h"
 #include "Display.h"
 #include "Display/Painter.h"
-#include "Display/Text.h"
+#include "Display/Text/Text.h"
 #include "Hardware/Controls.h"
 #include "Hardware/CPU.h"
 #include "Hardware/HAL/HAL.h"

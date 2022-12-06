@@ -3,7 +3,7 @@
 #include "common/Command.h"
 #include "Hardware/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
-#include "Display/Text.h"
+#include "Display/Text/Text.h"
 #include "Display/Painter.h"
 
 
