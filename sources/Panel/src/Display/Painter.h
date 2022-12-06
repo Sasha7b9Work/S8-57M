@@ -14,10 +14,6 @@ struct Painter
     // Загружает в дисплей все цвета
     static void LoadPalette();
 
-    // Установить цвет рисования
-    // Нарисовать точку текущим цветом
-    static void SetPoint(int x, int y);
-
     static void DrawVPointLine(int x, int y, int delta, int count);
 
     static void DrawHPointLine(int x, int y, int delta, int count);
@@ -52,4 +48,7 @@ struct Painter
 
 private:
     static void FillRegion(int x, int y, int width, int height);
+
+    // Нарисовать точку текущим цветом
+    static void SetPoint(int x, int y);
 };

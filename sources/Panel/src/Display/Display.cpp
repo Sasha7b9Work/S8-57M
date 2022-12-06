@@ -149,8 +149,8 @@ void Display::Update1()
 
     Color::WHITE.SetAsCurrent();
 
-    Painter::SetPoint(0, 0);
-    Painter::SetPoint(Display::WIDTH - 1, 0);
-    Painter::SetPoint(Display::WIDTH - 1, Display::HEIGHT - 1);
-    Painter::SetPoint(0, Display::HEIGHT - 1);
+    for (int i = 10; i < 100; i += 10)
+    {
+        BackBuffer::SetPoint(i, 10);
+    }
 }
