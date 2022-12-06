@@ -125,9 +125,21 @@ void BackBuffer::DrawHLine(int y, int x0, int x1)
         return;
     }
 
-    for(int x = x0; x <= x1; x++)
+    if (x0 > x1)
     {
-        SetPoint(x, y);
+        Math::Swap(&x0, &x1);
+    }
+
+    int x = x0;
+
+    uint8 color = Color::Current().value;
+
+    uint8 *pixel = Address::Pixel(x, y);
+
+    while (x <= x1)
+    {
+        *pixel++ = color;
+        x++;
     }
 }
 
