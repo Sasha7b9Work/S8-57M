@@ -58,8 +58,13 @@ namespace DisplayOsci
 }
 
 
-void DisplayOsci::HiPart::Draw()
+void DisplayOsci::HiPart::Draw(int field)
 {
+    if (field != 0)
+    {
+        return;
+    }
+
 #define Y0 0
 
     int x = -1;

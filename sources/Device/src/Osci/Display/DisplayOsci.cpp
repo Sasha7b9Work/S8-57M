@@ -61,7 +61,7 @@ void DisplayOsci::Update(int field)
 
     Rectangle(Grid::Width(), Grid::ChannelHeight()).Draw(Grid::Left(), Grid::Top(), Color::FILL);
 
-    HiPart::Draw();
+    HiPart::Draw(field);
 
     TPos::Draw();
 

@@ -16,7 +16,7 @@ namespace DisplayOsci
 
     namespace HiPart
     {
-        void Draw();
+        void Draw(int field);
     };
 
     namespace BottomPart
