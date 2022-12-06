@@ -262,8 +262,8 @@ static bool DrawRectangle(uint8 data)
             break;
         case 6:
             size.Append(data);
-            Painter::DrawRectangle(pos.X() * 2, pos.Y() * 2, size.Width() * 2, size.Height() * 2);
-            Painter::DrawRectangle(pos.X() * 2 + 1, pos.Y() * 2 + 1, size.Width() * 2 - 2, size.Height() * 2 - 2);
+            BackBuffer::DrawRectangle(pos.X() * 2, pos.Y() * 2, size.Width() * 2, size.Height() * 2);
+            BackBuffer::DrawRectangle(pos.X() * 2 + 1, pos.Y() * 2 + 1, size.Width() * 2 - 2, size.Height() * 2 - 2);
             pos.Reset();
             size.Reset();
             result = true;
@@ -299,8 +299,8 @@ static bool DrawVLine(uint8 data)
             break;
         case 6:
             pos2.Append(data);
-            Painter::DrawVLine(pos1.X() * 2, pos1.Y() * 2, pos2.Y() * 2);
-            Painter::DrawVLine(pos1.X() * 2 + 1, pos1.Y() * 2, pos2.Y() * 2);
+            BackBuffer::DrawVLine(pos1.X() * 2, pos1.Y() * 2, pos2.Y() * 2);
+            BackBuffer::DrawVLine(pos1.X() * 2 + 1, pos1.Y() * 2, pos2.Y() * 2);
             pos1.Reset();
             pos2.Reset();
             result = true;
@@ -336,8 +336,8 @@ static bool DrawHLine(uint8 data)
             break;
         case 6:
             pos2.Append(data);
-            Painter::DrawHLine(pos1.Y() * 2, pos1.X() * 2, pos2.X() * 2);
-            Painter::DrawHLine(pos1.Y() * 2 + 1, pos1.X() * 2, pos2.X() * 2);
+            BackBuffer::DrawHLine(pos1.Y() * 2, pos1.X() * 2, pos2.X() * 2);
+            BackBuffer::DrawHLine(pos1.Y() * 2 + 1, pos1.X() * 2, pos2.X() * 2);
             pos1.Reset();
             pos2.Reset();
             result = true;
@@ -373,8 +373,8 @@ static bool DrawVPointLine(uint8 data)
         break;
     case 5:
         count = data;
-        Painter::DrawVPointLine(pos.X() * 2, pos.Y() * 2, delta * 2, count);
-        Painter::DrawVPointLine(pos.X() * 2 + 1, pos.Y() * 2, delta * 2, count);
+        BackBuffer::DrawVPointLine(pos.X() * 2, pos.Y() * 2, delta * 2, count);
+        BackBuffer::DrawVPointLine(pos.X() * 2 + 1, pos.Y() * 2, delta * 2, count);
         pos.Reset();
         result = true;
         break;
@@ -409,8 +409,8 @@ static bool DrawHPointLine(uint8 data)
         break;
     case 5:
         count = data;
-        Painter::DrawHPointLine(pos.X() * 2, pos.Y() * 2, delta * 2, count);
-        Painter::DrawHPointLine(pos.X() * 2, pos.Y() * 2 + 1, delta * 2, count);
+        BackBuffer::DrawHPointLine(pos.X() * 2, pos.Y() * 2, delta * 2, count);
+        BackBuffer::DrawHPointLine(pos.X() * 2, pos.Y() * 2 + 1, delta * 2, count);
         pos.Reset();
         result = true;
         break;
@@ -475,8 +475,8 @@ static bool DrawLine(uint8 data)
             break;
         case 6:
             pos1.Append(data);
-            Painter::DrawLine(pos0.X() * 2, pos0.Y() * 2, pos1.X() * 2, pos1.Y() * 2);
-            Painter::DrawLine(pos0.X() * 2 + 1, pos0.Y() * 2, pos1.X() * 2 + 1, pos1.Y() * 2);
+            BackBuffer::DrawLine(pos0.X() * 2, pos0.Y() * 2, pos1.X() * 2, pos1.Y() * 2);
+            BackBuffer::DrawLine(pos0.X() * 2 + 1, pos0.Y() * 2, pos1.X() * 2 + 1, pos1.Y() * 2);
             pos0.Reset();
             pos1.Reset();
             result = true;

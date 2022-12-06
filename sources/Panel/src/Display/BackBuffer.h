@@ -20,4 +20,10 @@ namespace BackBuffer
     void DrawHLine(int y, int x0, int x1);
 
     void DrawRectangle(int x, int y, int widht, int height);
+
+    void DrawVPointLine(int x, int y, int delta, int count);
+
+    void DrawHPointLine(int x, int y, int delta, int count);
+
+    void DrawLine(int x0, int y0, int x1, int y1);
 };

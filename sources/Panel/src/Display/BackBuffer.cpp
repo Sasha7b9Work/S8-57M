@@ -108,3 +108,21 @@ void BackBuffer::Fill()
 {
     std::memset(buffer, Color::Current().value, SIZE_BUFFER);
 }
+
+
+void BackBuffer::DrawHPointLine(int x, int y, int delta, int count)
+{
+
+}
+
+
+void BackBuffer::DrawVPointLine(int x, int y, int delta, int count)
+{
+
+}
+
+
+void BackBuffer::DrawLine(int x0, int y0, int x1, int y1)
+{
+
+}

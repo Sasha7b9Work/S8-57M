@@ -14,6 +14,8 @@ struct Painter
     // Загружает в дисплей все цвета
     static void LoadPalette();
 
+private:
+
     static void DrawVPointLine(int x, int y, int delta, int count);
 
     static void DrawHPointLine(int x, int y, int delta, int count);
@@ -46,7 +48,6 @@ struct Painter
     // Посылает строку изображения numString в устройство
     static void SendScreenToDevice();
 
-private:
     static void FillRegion(int x, int y, int width, int height);
 
     // Нарисовать точку текущим цветом
