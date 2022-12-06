@@ -37,7 +37,7 @@ namespace BackBuffer
 
         bool Y(int y)
         {
-            return (y >= field * HEIGHT) && y < (field *(HEIGHT + 1));
+            return (y >= field * HEIGHT) && y < ((field + 1) *HEIGHT + 1);
         }
     }
 }
