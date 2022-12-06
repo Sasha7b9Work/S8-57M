@@ -68,7 +68,7 @@ void BackBuffer::SetPoint(int x, int y)
 }
 
 
-void BackBuffer::FillRect(int x, int y, int w, int h)
+void BackBuffer::FillRegion(int x, int y, int w, int h)
 {
     for(int i = 0; i <= h; i++)
     {

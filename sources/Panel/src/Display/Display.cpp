@@ -114,7 +114,7 @@ void Display::Update1()
 
     Color::WHITE.SetAsCurrent();
 
-    BackBuffer::FillRect(x + 1, y + 1, width - 2, width - 2);
+    BackBuffer::FillRegion(x + 1, y + 1, width - 2, width - 2);
 
     Color::BLACK.SetAsCurrent();
 

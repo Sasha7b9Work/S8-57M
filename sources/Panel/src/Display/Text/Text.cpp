@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "Display/Text/Text.h"
 #include "Display/Painter.h"
+#include "Display/BackBuffer.h"
 #include <cstring>
 
 
@@ -66,7 +67,7 @@ int Text::DrawChar(int eX, int eY, int size, uint8 symbol, Color color)
                     if (PFont::BitIsExist(symbol, row, bit))
                     {
                         //                        Painter::SetPoint(x, y);
-                        Painter::FillRegion(x, y, size - 1, size - 1);
+                        BackBuffer::FillRegion(x, y, size - 1, size - 1);
                     }
                     x += size;
                 }

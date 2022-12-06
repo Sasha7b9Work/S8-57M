@@ -11,7 +11,7 @@ namespace BackBuffer
 
     void EndPaint();
 
-    void FillRect(int x, int y, int width, int height);
+    void FillRegion(int x, int y, int width, int height);
 
     void SetPoint(int x, int y);
 

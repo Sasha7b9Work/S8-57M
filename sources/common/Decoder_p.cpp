@@ -226,7 +226,7 @@ static bool FillRegion(uint8 data)
             break;
         case 6:
             size.Append(data);
-            Painter::FillRegion(pos.X() * 2, pos.Y() * 2, size.Width() * 2, size.Height() * 2);
+            BackBuffer::FillRegion(pos.X() * 2, pos.Y() * 2, size.Width() * 2, size.Height() * 2);
             pos.Reset();
             size.Reset();
             result = true;
@@ -505,7 +505,7 @@ static bool SetPoint(uint8 data)
             pos.Append(data);
             break;
         case 3:
-            Painter::FillRegion(pos.X() * 2, pos.Y() * 2, 1, 1);
+            BackBuffer::FillRegion(pos.X() * 2, pos.Y() * 2, 1, 1);
             pos.Reset();
             result = true;
             break;
