@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "PainterMem.h"
+#include "Display/BackBuffer.h"
 #include <stdlib.h>
 
 
@@ -15,7 +15,7 @@
     }
 
 
-namespace PainterMem
+namespace BackBuffer
 {
     static const int SIZE_BUFFER = 640 * 480 / 5;
 
@@ -29,7 +29,7 @@ namespace PainterMem
 }
 
 
-void PainterMem::SetPoint(int x, int y, Color col)
+void BackBuffer::SetPoint(int x, int y, Color col)
 {
     color = col;
 
@@ -42,7 +42,7 @@ void PainterMem::SetPoint(int x, int y, Color col)
 }
 
 
-void PainterMem::SetPoint(int x, int y)
+void BackBuffer::SetPoint(int x, int y)
 {
     uint8 *address = ADDRESS_BYTE(x, y);
 
@@ -53,7 +53,7 @@ void PainterMem::SetPoint(int x, int y)
 }
 
 
-void PainterMem::FillRect(int x, int y, int w, int h, Color col)
+void BackBuffer::FillRect(int x, int y, int w, int h, Color col)
 {
     if(col != Color::NUMBER)
     {
@@ -67,7 +67,7 @@ void PainterMem::FillRect(int x, int y, int w, int h, Color col)
 }
 
 
-void PainterMem::DrawVLine(int x, int y0, int y1, Color col)
+void BackBuffer::DrawVLine(int x, int y0, int y1, Color col)
 {
     if(col != Color::NUMBER)
     {
@@ -81,7 +81,7 @@ void PainterMem::DrawVLine(int x, int y0, int y1, Color col)
 }
 
 
-void PainterMem::DrawHLine(int y, int x0, int x1, Color col)
+void BackBuffer::DrawHLine(int y, int x0, int x1, Color col)
 {
     if(col != Color::NUMBER)
     {
@@ -95,7 +95,7 @@ void PainterMem::DrawHLine(int y, int x0, int x1, Color col)
 }
 
 
-void PainterMem::DrawRectangle(int x, int y, int w, int h, Color col)
+void BackBuffer::DrawRectangle(int x, int y, int w, int h, Color col)
 {
     if(col != Color::NUMBER)
     {

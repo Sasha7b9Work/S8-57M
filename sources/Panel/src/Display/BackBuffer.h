@@ -3,7 +3,7 @@
 #include "Colors.h"
 
 
-namespace PainterMem
+namespace BackBuffer
 {
     void FillRect(int x, int y, int width, int height, Color color = Color::NUMBER);
 

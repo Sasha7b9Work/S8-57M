@@ -1406,14 +1406,14 @@
               <FilePath>.\src\Display\Text_stm.cpp</FilePath>
             </File>
             <File>
-              <FileName>PainterMem.cpp</FileName>
+              <FileName>BackBuffer.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\PainterMem.cpp</FilePath>
+              <FilePath>.\src\Display\BackBuffer.cpp</FilePath>
             </File>
             <File>
-              <FileName>PainterMem.h</FileName>
+              <FileName>BackBuffer.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\PainterMem.h</FilePath>
+              <FilePath>.\src\Display\BackBuffer.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2894,14 +2894,14 @@
               <FilePath>.\src\Display\Text_stm.cpp</FilePath>
             </File>
             <File>
-              <FileName>PainterMem.cpp</FileName>
+              <FileName>BackBuffer.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\PainterMem.cpp</FilePath>
+              <FilePath>.\src\Display\BackBuffer.cpp</FilePath>
             </File>
             <File>
-              <FileName>PainterMem.h</FileName>
+              <FileName>BackBuffer.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\PainterMem.h</FilePath>
+              <FilePath>.\src\Display\BackBuffer.h</FilePath>
             </File>
           </Files>
         </Group>
