@@ -2,18 +2,6 @@
 #include "defines.h"
 
 
-void EmptyFuncVV()
-{
-
-}
-
-
-void EmptyFuncVB(bool)
-{
-
-}
-
-
 volatile BitField gBF =
 {
     0,  // currentNumROMSignal

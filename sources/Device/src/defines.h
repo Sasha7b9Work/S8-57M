@@ -45,10 +45,12 @@ typedef unsigned int   uint32_t;
 typedef void (*pFuncVV)();
 typedef void (*pFuncVB)(bool);
 typedef bool (*pFuncBV)();
+typedef void (*pFuncVI)(int);
 typedef void (*pFuncVII)(int, int);
 
-void EmptyFuncVV();
-void EmptyFuncVB(bool);
+inline void EmptyFuncVV() { };
+inline void EmptyFuncVI(int) { };
+inline void EmptyFuncVB(bool) { };
 
 
 #define UNUSED_PARAMETER(x)(void)x

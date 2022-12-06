@@ -77,21 +77,24 @@ void Display::Update() //-V2506
 
     inStateDraw = true;
 
-    static const pFuncVV funcs[Device::Mode::Count] =
+    static const pFuncVI funcs[Device::Mode::Count] =
     {
         DisplayOsci::Update,
-        EmptyFuncVV,
-        EmptyFuncVV,
+        EmptyFuncVI,
+        EmptyFuncVI,
         DisplayRecorder::Update
     };
 
-    funcs[static_cast<int>(Device::CurrentMode())]();
+    for (int field = 0; field < 5; field++)
+    {
+        funcs[static_cast<int>(Device::CurrentMode())](field);
 
-    Console::Draw();
+        Console::Draw();
 
-    funcAdditionDraw();
+        funcAdditionDraw();
 
-    Painter::EndScene();
+        Painter::EndScene();
+    }
 
     inStateDraw = false;
 

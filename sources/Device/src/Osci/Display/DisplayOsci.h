@@ -9,7 +9,7 @@
 
 namespace DisplayOsci
 {
-    void Update();
+    void Update(int field);
 
     // Установить признак того, что дисплей нуждается в перерисовке
     void SetFlagRedraw();

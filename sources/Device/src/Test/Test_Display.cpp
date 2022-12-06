@@ -31,9 +31,9 @@ void Test::Display::DeInit()
 
 static void Update()
 {
-    for (int i = 0; i < 5; i++)
+    for (int field = 0; field < 5; field++)
     {
-        Painter::BeginScene(i, Color::BACK);
+        Painter::BeginScene(field, Color::BACK);
 
         Color::FILL.SetAsCurrent();
 
