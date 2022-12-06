@@ -12,14 +12,6 @@
 static int sendingString = -1;
 
 
-void Painter::SetColorValue(Color color, uint value)
-{
-    COLOR(color.value) = value;
-
-    LoadPalette();
-}
-
-
 void Painter::LoadPalette()
 {
     HAL_LTDC::SetColors(&COLOR(0), Color::Count.value);

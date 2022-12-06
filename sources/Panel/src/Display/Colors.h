@@ -3,6 +3,9 @@
 #include "defines.h"
 #include "Settings/SettingsTypes.h"
 
+extern uint colors[256];
+
+#define COLOR(x) colors[x]
 
 
 class Color
@@ -38,6 +41,7 @@ public:
     explicit Color(uint8 val = COLOR_BLACK) : value(val) { }
     Color(const Color &color) : value(color.value) { }
 
+    void SetValue(uint raw);
     void SetAsCurrent() const { current = *this; };
     static Color Current() { return current; }
 
@@ -143,7 +147,3 @@ private:
 #define R_FROM_COLOR(color) ((static_cast<uint>(color) >> 16) & 0xff)
 #define G_FROM_COLOR(color) ((static_cast<uint>(color) >> 8)  & 0xff)
 #define B_FROM_COLOR(color) ((static_cast<uint>(color))       & 0xff)
-
-extern uint colors[256];
-
-#define COLOR(x) colors[x]

@@ -563,7 +563,7 @@ static bool SetPalette(uint8 data)
         case 3: valueColor |= static_cast<uint>(data) << 8;     break;
         case 4: valueColor |= static_cast<uint>(data) << 16;    break;
         case 5: valueColor |= static_cast<uint>(data) << 24;
-            Painter::SetColorValue(Color(numColor), valueColor);
+            Color(numColor).SetValue(valueColor);
             result = true;
             break;
         default:

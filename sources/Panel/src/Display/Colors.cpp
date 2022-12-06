@@ -270,3 +270,10 @@ Color& Color::operator=(const Color &color)
     value = color.value;
     return *this;
 }
+
+void Color::SetValue(uint raw)
+{
+    colors[value] = raw;
+
+    Painter::LoadPalette();
+}
