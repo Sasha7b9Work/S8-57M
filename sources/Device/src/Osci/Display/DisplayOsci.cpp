@@ -75,7 +75,7 @@ void DisplayOsci::Update(int field)
 
     CursorsMeasurements::Draw();
 
-    BottomPart::Draw(273, Grid::Bottom() + 1);
+    BottomPart::Draw(273, Grid::Bottom() + 1, field);
 
     DisplayFreqMeter::Update();
 
@@ -93,8 +93,13 @@ void DisplayOsci::SetFlagRedraw()
 }
 
 
-void DisplayOsci::BottomPart::Draw(int x0, int y0)
+void DisplayOsci::BottomPart::Draw(int x0, int y0, int field)
 {
+    if (field != 4)
+    {
+        return;
+    }
+
     DFont::Set(DTypeFont::_UGO2);
 
     // Флешка

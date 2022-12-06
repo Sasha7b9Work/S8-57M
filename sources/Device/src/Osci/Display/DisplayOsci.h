@@ -21,7 +21,7 @@ namespace DisplayOsci
 
     namespace BottomPart
     {
-        void Draw(int x, int y);
+        void Draw(int x, int y, int field);
     };
 
     namespace Accumulator
