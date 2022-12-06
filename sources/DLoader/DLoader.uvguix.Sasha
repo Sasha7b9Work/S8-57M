@@ -15,17 +15,17 @@
     <View>
       <WinId>38003</WinId>
       <ViewName>Registers</ViewName>
-      <TableColWidths>147 148</TableColWidths>
+      <TableColWidths>147 131</TableColWidths>
     </View>
     <View>
       <WinId>346</WinId>
       <ViewName>Code Coverage</ViewName>
-      <TableColWidths>860 160</TableColWidths>
+      <TableColWidths>860 810</TableColWidths>
     </View>
     <View>
       <WinId>204</WinId>
       <ViewName>Performance Analyzer</ViewName>
-      <TableColWidths>1020</TableColWidths>
+      <TableColWidths>1020 153 153 344</TableColWidths>
     </View>
   </SECTreeCtrl>
 
@@ -93,8 +93,8 @@
       <flags>2</flags>
       <showCmd>3</showCmd>
       <MinPosition>
-        <xPos>-1</xPos>
-        <yPos>-1</yPos>
+        <xPos>-32000</xPos>
+        <yPos>-32000</yPos>
       </MinPosition>
       <MaxPosition>
         <xPos>-1</xPos>

@@ -120,6 +120,27 @@ void HAL_LTDC::SetBuffer(uint _buffer)
     {
         ERROR_HANDLER();
     }
+
+//    pLayerCfg.WindowX0 = 0;
+//    pLayerCfg.WindowX1 = Display::WIDTH;
+//    pLayerCfg.WindowY0 = 0;
+//    pLayerCfg.WindowY1 = Display::HEIGHT;
+//    pLayerCfg.PixelFormat = LTDC_PIXEL_FORMAT_L8;
+//    pLayerCfg.Alpha = 255;
+//    pLayerCfg.Alpha0 = 255;
+//    pLayerCfg.BlendingFactor1 = LTDC_BLENDING_FACTOR1_CA;
+//    pLayerCfg.BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
+//    pLayerCfg.FBStartAdress = buffer;
+//    pLayerCfg.ImageWidth = Display::WIDTH;
+//    pLayerCfg.ImageHeight = Display::HEIGHT;
+//    pLayerCfg.Backcolor.Blue = 128;
+//    pLayerCfg.Backcolor.Green = 128;
+//    pLayerCfg.Backcolor.Red = 0;
+//
+//    if (HAL_LTDC_ConfigLayer(&handleLTDC, &pLayerCfg, 1) != HAL_OK)
+//    {
+//        ERROR_HANDLER();
+//    }
 }
 
 

@@ -152,18 +152,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>30</LineNumber>
+          <LineNumber>53</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134230368</Address>
+          <Address>134232088</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\Projects\S8-57M\sources\Panel\src\Display\Text.cpp</Filename>
+          <Filename>&lt;2&gt;.\src\Display\Display.cpp</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Panel\src/Display/Text.cpp\30</Expression>
+          <Expression>\\Panel\src/Display/Display.cpp\53</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -373,24 +373,7 @@
           <Name>(105=-1,-1,-1,-1,0)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint>
-        <Bp>
-          <Number>0</Number>
-          <Type>0</Type>
-          <LineNumber>25</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134228862</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;1&gt;.\src\main.cpp</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\PanelOSC\src/main.cpp\25</Expression>
-        </Bp>
-      </Breakpoint>
+      <Breakpoint/>
       <WatchWindow1>
         <Ww>
           <count>0</count>
@@ -1278,7 +1261,7 @@
 
   <Group>
     <GroupName>Display</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

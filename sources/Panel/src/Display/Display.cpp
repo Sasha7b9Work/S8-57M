@@ -48,6 +48,7 @@ void Display::SetField(uint offset, uint8 *data, int num_bytes)
         {
             if (HAL_DMA2D_Start(&hDMA2D, (uint)data, (uint)(front), 640, 480 / 5) == HAL_OK)
             {
+                // \todo с какого-то хрена __HAL_DMA2D_ENABLE() в HAL_DMA2D_Start не заводит флаг DMA2D_CR_START
                 HAL_DMA2D_PollForTransfer(&hDMA2D, 100);
             }
         }
