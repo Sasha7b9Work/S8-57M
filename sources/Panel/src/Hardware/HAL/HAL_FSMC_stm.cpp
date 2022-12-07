@@ -203,6 +203,17 @@ void HAL_BUS::DataBus::Init()
 
 namespace HAL_BUS
 {
+    /*
+    *   0   PD14
+    *   1   PD15
+    *   2   PD0
+    *   3   PD1
+    *   4   PE7
+    *   5   PE8
+    *   6   PE9
+    *   7   PE10
+    */
+
     uint8 DataBus::ReadValue()
     {
         uint16 port_d = (uint16)GPIOD->IDR;
@@ -218,9 +229,9 @@ namespace HAL_BUS
 
     void DataBus::WriteValue(uint8 value)
     {
-        GPIOD->ODR = (GPIOD->ODR & 0x0ffffff0) + ((value & 3) << 14) + ((value >> 2) & 3);
+        GPIOD->ODR = (GPIOD->ODR & 0x3ffc) + ((value & 3) << 14) + ((value >> 2) & 3);
 
-        GPIOE->ODR = (GPIOE->ODR & 0xffc03fff) + ((value & 0xF0) << 3);
+        GPIOE->ODR = (GPIOE->ODR & 0xfe1f) + ((value & 0xF0) << 3);
     }
 }
 
