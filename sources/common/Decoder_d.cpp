@@ -47,7 +47,6 @@ bool DDecoder::Update()
     {
         for (int i = 0; i < pointer; i++)
         {
-            LOG_WRITE("%d", buffer[i]);
             RunStep(buffer[i]);
         }
         pointer = 0;

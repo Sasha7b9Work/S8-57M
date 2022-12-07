@@ -41,8 +41,6 @@ bool Osci::ReadDataChannel(Chan::E ch, uint8 *data) //-V2506
     }
     else
     {
-        int counter = 0;
-
         uint8 *p = data;
 
         *p = HAL_BUS::FPGA::ReadA0();    // Первая точка почему-то неправильная читается. Просто откидываем её.
@@ -77,11 +75,6 @@ bool Osci::ReadDataChannel(Chan::E ch, uint8 *data) //-V2506
                 else
                 {
                     p[i] = static_cast<uint8>(result);
-
-                    if (counter++ < 5)
-                    {
-                        LOG_WRITE("%d", result);
-                    }
                 }
             }
         }
