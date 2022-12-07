@@ -5,9 +5,6 @@
 #include <cstring>
 
 
-SettingsNRST setNRST;
-
-
 static const SettingsNRST defaultNRST =
 {
     0,                                   // size
@@ -18,6 +15,9 @@ static const SettingsNRST defaultNRST =
     {{0}, {0}},                          // shiftADC
     {1.0F, 1.0F}                         // stretchADCtype
 };
+
+
+SettingsNRST setNRST = defaultNRST;
 
 
 void SettingsNRST::Init()
