@@ -154,7 +154,6 @@ void Keyboard::Update() //-V2506
                             if (!alreadyLong[rl][sl])
                             {
                                 SendCommand(controls[rl][sl], Control::Action::Release);
-//                                EraseControl();
                             }
                             alreadyLong[rl][sl] = false;
                             prevRepeat = 0;
@@ -179,17 +178,12 @@ void Keyboard::Update() //-V2506
                             SendCommand(controls[rl][sl], Control::Action::Long);
                             alreadyLong[rl][sl] = true;
                         }
-                        else
-                        {
-                            // остальное не обрабатываем
-                        }
                     }
                 }
                 else if (BUTTON_IS_PRESS(state) && !alreadyLong[rl][sl])
                 {
                     timePress[rl][sl] = time;
                     SendCommand(controls[rl][sl], Control::Action::Press);
-//                    DrawControl(controls[rl][sl].value);
                     prevRepeat = 0;
                 }
                 else
