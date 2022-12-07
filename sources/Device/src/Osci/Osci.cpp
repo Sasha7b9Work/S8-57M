@@ -20,6 +20,7 @@
 #include "Utils/Math.h"
 #include "Utils/Values.h"
 #include "Hardware/HAL/HAL_PIO.h"
+#include "Utils/Buffer.h"
 #include <cstring>
 #include <cstdio>
 
@@ -375,6 +376,8 @@ void Osci::ReadData()
 
     if(ReadDataChannel(ChanA, ds->dataA))
     {
+//        Buffer::LogU8_10(ds->dataA);
+
         if(ReadDataChannel(ChanB, ds->dataB))
         {
             if (SampleType::IsReal())

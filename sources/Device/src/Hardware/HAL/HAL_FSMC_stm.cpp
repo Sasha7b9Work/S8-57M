@@ -191,6 +191,8 @@ void HAL_BUS::InitRAM()
 
 void HAL_BUS::ConfigureToFSMC()
 {
+    LOG_FUNC_ENTER();
+
     mode = Mode::FSMC;
 
     //           NOE          NWE          NE1

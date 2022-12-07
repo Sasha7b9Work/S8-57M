@@ -18,7 +18,7 @@ public:
     char *DataChar() { return reinterpret_cast<char *>(data); }
 
     void Log();
-    static void LogU8(const uint8 *buffer);
+    static void LogU8_10(const uint8 *buffer);
 private:
     int size;
     void Free();
