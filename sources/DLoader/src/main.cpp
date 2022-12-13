@@ -32,13 +32,13 @@ int main()
 
     Timer::PauseOnTime(250);
     
-    Display::Init();
+//    Display::Init();
    
     //Timer::SetAndEnable(kTemp, Display::Update, 10);
 
-    FDrive::Init();
+//    FDrive::Init();
 
-    FDrive::AttemptUpdate();
+///    FDrive::AttemptUpdate();
     
     Timer::Disable(kTemp);
 

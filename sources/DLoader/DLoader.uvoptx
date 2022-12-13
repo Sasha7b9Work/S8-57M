@@ -159,7 +159,7 @@
           <Type>0</Type>
           <LineNumber>57</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134258236</Address>
+          <Address>134234192</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -169,38 +169,6 @@
           <Filename>&lt;3&gt;.\src\main.cpp</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\DLoader57\src/main.cpp\57</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>188</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134249576</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;3&gt;.\src\Hardware\HAL\HAL_FSMC_PAN_stm.cpp</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\\src/Hardware/HAL/HAL_FSMC_PAN_stm.cpp\188</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>35</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134258196</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;3&gt;.\src\main.cpp</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\DLoader57\src/main.cpp\35</Expression>
         </Bp>
       </Breakpoint>
       <Tracepoint>
@@ -361,7 +329,7 @@
 
   <Group>
     <GroupName>libs/HAL</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1001,7 +969,7 @@
 
   <Group>
     <GroupName>src</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
