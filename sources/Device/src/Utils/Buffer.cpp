@@ -91,11 +91,11 @@ void Buffer::DeltaU8_10(const uint8 *buffer, int num_point)
 
     if (num_point > 0)
     {
-        LOG_WRITE("%d : detla %d", num_point);
+        LOG_WRITE("%d : detla %d, min %d, max %d", num_point, delta, min, max);
     }
     else
     {
-        LOG_WRITE("delta %d", delta);
+        LOG_WRITE("delta %d, min %d, max %d", delta, min, max);
     }
 }
 

@@ -376,6 +376,7 @@ void Osci::ReadData()
 
     if(ReadDataChannel(ChanA, ds.ch_a))
     {
+        Buffer::LogU8_10(ds.ch_a, 1);
         Buffer::DeltaU8_10(ds.ch_a, 1);
 
         if(ReadDataChannel(ChanB, ds.ch_b))
@@ -387,6 +388,7 @@ void Osci::ReadData()
         }
     }
 
+    Buffer::LogU8_10(ds.ch_a, 2);
     Buffer::DeltaU8_10(ds.ch_a, 2);
 }
 
