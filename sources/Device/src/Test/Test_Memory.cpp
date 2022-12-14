@@ -116,7 +116,7 @@ void TestMemoryStruct::FillData(DataSettings *ds)
 {
     int numPoints = ds->BytesInChannel();
 
-    FILL(ds->enableA, ds->ch_a);
+    FILL(ds->en_a, ds->ch_a);
     FILL(ds->enableB, ds->ch_b);
 }
 
@@ -133,7 +133,7 @@ bool TestMemoryStruct::CheckData(const DataSettings *ds) //-V2506
 {
     int numPoints = ds->BytesInChannel();
 
-    CHECK(ds->enableA, ds->ch_a);
+    CHECK(ds->en_a, ds->ch_a);
     CHECK(ds->enableB, ds->ch_b);
 
     return false;
@@ -142,8 +142,8 @@ bool TestMemoryStruct::CheckData(const DataSettings *ds) //-V2506
 
 static void PrepareDS(DataSettings *ds)
 {
-    ds->enableA = static_cast<uint>(std::rand() % 2);
-    ds->enableB = ds->enableA ? static_cast<uint>(std::rand() % 2) : 1;
+    ds->en_a = static_cast<uint>(std::rand() % 2);
+    ds->enableB = ds->en_a ? static_cast<uint>(std::rand() % 2) : 1;
     ds->peackDet = static_cast<uint>(PeakDetMode::Disabled);
     ds->enumPoints = static_cast<uint>(std::rand() % ENumPointsFPGA::Count);
 }

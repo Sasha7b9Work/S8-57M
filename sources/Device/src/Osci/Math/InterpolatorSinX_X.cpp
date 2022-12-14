@@ -27,7 +27,7 @@ void InterpolatorSinX_X::Run(DataSettings *ds) //-V2506
 
     int numPoints = ds->PointsInChannel();
 
-    if (ds->enableA)
+    if (ds->en_a)
     {
         InterpolateChannel(ds->ch_a, numPoints, ds->tBase);
     }

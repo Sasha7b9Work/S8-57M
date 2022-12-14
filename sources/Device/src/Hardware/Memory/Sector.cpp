@@ -66,14 +66,14 @@ bool PacketROM::WriteToSector(const Sector *sector) const //-V2506
     ds.ch_a = nullptr;
     ds.ch_b = nullptr;
 
-    if (ds.enableA)
+    if (ds.en_a)
     {
         ds.ch_a = reinterpret_cast<uint8 *>(addressWrite) + sizeof(PacketROM) + sizeof(DataSettings);
     }
     if (ds.enableB)
     {
         ds.ch_b = reinterpret_cast<uint8 *>(addressWrite) + sizeof(PacketROM) + sizeof(DataSettings);
-        if (ds.enableA)
+        if (ds.en_a)
         {
             ds.ch_b += ds.BytesInChannel();
         }
@@ -87,7 +87,7 @@ bool PacketROM::WriteToSector(const Sector *sector) const //-V2506
 
     addressWrite += sizeof(DataSettings);
 
-    if (ds.enableA)
+    if (ds.en_a)
     {
         HAL_ROM::WriteBufferBytes(addressWrite, UnPack()->ch_a, ds.BytesInChannel());
         addressWrite += ds.BytesInChannel();
@@ -170,7 +170,7 @@ void Sector::TranslateAddressToROM(const DataSettings *ds, const PacketROM *pack
 {
     uint8 *addressData = reinterpret_cast<uint8 *>(packet->Address() + sizeof(PacketROM) + sizeof(DataSettings)); // По этому адресу будут записаны данные первого из записываемых каналов
 
-    if (ds->enableA)
+    if (ds->en_a)
     {
         const_cast<DataSettings *>(ds)->ch_a = addressData; //-V2567
         addressData += ds->BytesInChannel();
@@ -228,7 +228,7 @@ const PacketROM *Sector::WriteData(uint numInROM, const DataSettings *ds) const 
 
     WriteToROM(&recordAddress, ds, sizeof(DataSettings));
 
-    if (ds->enableA)
+    if (ds->en_a)
     {
         WriteToROM(&recordAddress, addressDataA, ds->BytesInChannel());
     }
@@ -256,7 +256,7 @@ const PacketROM *Sector::FindValidPacket(uint numInROM) const //-V2506
             {
                 for (int j = 0; j < ds->BytesInChannel(); j++)
                 {
-                    if (ds->enableA)
+                    if (ds->en_a)
                     {
                         if (ds->ch_a[j] != static_cast<uint8>(j))
                         {

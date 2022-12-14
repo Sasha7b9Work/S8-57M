@@ -88,7 +88,7 @@ struct Packet
 
         address = WriteToRAM(address, ds, sizeof(DataSettings));                                        // Записываем DataSettings
 
-        if (ds->enableA)                                                                                // Записываем данные первого канала
+        if (ds->en_a)                                                                                // Записываем данные первого канала
         {
             data.ch_a = reinterpret_cast<uint8 *>(address);
             address = WriteToRAM(address, ds->ch_a, ds->BytesInChannel());
@@ -114,7 +114,7 @@ struct Packet
         ds->ch_b = nullptr;
         uint8 *addrData = reinterpret_cast<uint8 *>(reinterpret_cast<uint8 *>(address) + sizeof(DataSettings));
 
-        if (ds->enableA)
+        if (ds->en_a)
         {
             ds->ch_a = addrData;
             std::memset(addrData, VALUE::NONE, static_cast<uint>(bytesInChannel));

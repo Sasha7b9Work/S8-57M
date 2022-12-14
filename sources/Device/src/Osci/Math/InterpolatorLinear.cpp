@@ -116,7 +116,7 @@ void InterpolatorLinear::InterpolateSegment(Segment *segment) //-V2506
 
 void InterpolatorLinear::Run(DataSettings *ds)
 {
-    if(ds->enableA)
+    if(ds->en_a)
     {
         InterpolateChannel(ds->ch_a, ds->BytesInChannel());
     }
