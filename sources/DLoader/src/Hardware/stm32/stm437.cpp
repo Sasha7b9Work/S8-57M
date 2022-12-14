@@ -1,3 +1,5 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+#include "defines.h"
 #include <stm32f4xx_hal.h>
 #include "stm437.h"
 

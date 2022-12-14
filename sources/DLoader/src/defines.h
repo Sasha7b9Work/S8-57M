@@ -10,11 +10,14 @@
 #define MATH_FUNC_IS_MUL false
 
 #ifdef WIN32
-#define __attribute(x) //-V2573
-#define __attribute__(x) //-V2573
-#define WCHAR unsigned short
+    #define __attribute(x) //-V2573
+    #define __attribute__(x) //-V2573
+    #define WCHAR unsigned short
+    #define __STATIC_INLINE inline
+    #define __RBIT(x) 1
+    #define __CLZ(x)  1
 #else
-#define nullptr 0 //-V1059
+    #define nullptr 0 //-V1059
 #endif
 
 
