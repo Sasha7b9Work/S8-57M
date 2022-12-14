@@ -290,6 +290,12 @@ void DisplayOsci::PainterData::DrawChannel(Chan::E ch)
 
     uint8 *data = OUT(ch);
 
+    if (ch == ChanA)
+    {
+        Buffer::LogU8_10(data, 3);
+        Buffer::DeltaU8_10(data, 3);
+    }
+
     data += DisplayOsci::ShiftInMemory::Get();
 
     if (PEAKDET_ENABLED(DS))
@@ -365,6 +371,12 @@ void DisplayOsci::PainterData::DrawModeLinesPeakDetOn(int center, const uint8 *d
 
 void DisplayOsci::PainterData::DrawModeLinesPeakDetOff(int center, const uint8 *data, float scale, int x)
 {
+    if (Color::GetCurent().value == Color::CHAN[ChanA].value)
+    {
+        Buffer::LogU8_10(data, 4);
+        Buffer::DeltaU8_10(data, 4);
+    }
+
     for (int i = 1; i < 281; i++)
     {
         int value = static_cast<int>(center - (data[i] - VALUE::AVE) * scale + 0.5F); //-V2564
