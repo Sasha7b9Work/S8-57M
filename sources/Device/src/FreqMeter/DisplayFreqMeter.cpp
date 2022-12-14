@@ -44,7 +44,7 @@ namespace DisplayFreqMeter
 }
 
 
-void DisplayFreqMeter::Update() //-V2506
+void DisplayFreqMeter::Update()
 {
     // \todo ¬ этой строке точку ставить не где придЄтс€, а в той позиции, где она сто€ла последний раз
 
@@ -253,7 +253,7 @@ void DisplayFreqMeter::DrawPeriodMode(int x, int _y)
 }
 
 
-pString DisplayFreqMeter::FreqSetToString(const BitSet32 *fr) //-V2506
+pString DisplayFreqMeter::FreqSetToString(const BitSet32 *fr)
 {
     if(fr->word < 2)
     {
@@ -450,7 +450,7 @@ int DisplayFreqMeter::LowOrder(FreqMeter::FreqClc::E freqCLC, FreqMeter::NumberP
 }
 
 
-pString DisplayFreqMeter::PeriodSetToString(const BitSet32 *pr) //-V2506
+pString DisplayFreqMeter::PeriodSetToString(const BitSet32 *pr)
 {
     if(pr->word == 0)
     {

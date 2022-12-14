@@ -112,7 +112,7 @@ static void SetSampleType(int i)
     PageTime::SetSampleTime(static_cast<SampleType::E>(i));
 }
 
-pCHAR SCPI_TBASE::FuncMode(pCHAR buffer) //-V2506
+pCHAR SCPI_TBASE::FuncMode(pCHAR buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(modes[S_RAND_SAMPLE_TYPE]));
 
@@ -126,7 +126,7 @@ static void AnswerOffsetBase()
     SCPI::SendAnswer(answer.c_str());
 }
 
-pCHAR SCPI_TBASE::FuncOffsetBase(pCHAR buffer) //-V2506
+pCHAR SCPI_TBASE::FuncOffsetBase(pCHAR buffer)
 {
     SCPI_REQUEST(AnswerOffsetBase());
 
@@ -145,7 +145,7 @@ pCHAR SCPI_TBASE::FuncOffsetBase(pCHAR buffer) //-V2506
 }
 
 
-pCHAR SCPI_TBASE::FuncPeakDet(pCHAR buffer) //-V2506
+pCHAR SCPI_TBASE::FuncPeakDet(pCHAR buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(peakdets[S_PEAK_DET]));
 
@@ -153,7 +153,7 @@ pCHAR SCPI_TBASE::FuncPeakDet(pCHAR buffer) //-V2506
 }
 
 
-pCHAR SCPI_TBASE::FuncScale(pCHAR buffer) //-V2506
+pCHAR SCPI_TBASE::FuncScale(pCHAR buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(tBaseNames[S_TIME_BASE]));
 
@@ -161,7 +161,7 @@ pCHAR SCPI_TBASE::FuncScale(pCHAR buffer) //-V2506
 }
 
 
-pCHAR SCPI_TBASE::FuncTPos(pCHAR buffer) //-V2506
+pCHAR SCPI_TBASE::FuncTPos(pCHAR buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(tposes[S_TPOS]));
 

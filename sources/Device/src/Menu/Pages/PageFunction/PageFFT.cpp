@@ -68,7 +68,7 @@ DEF_CHOICE_3( cRange,                                                           
 )
 
 
-static bool HandlerKey_FFT_Cursors(const KeyEvent &event) //-V2506
+static bool HandlerKey_FFT_Cursors(const KeyEvent &event)
 {
     if (event.IsArrow())
     {

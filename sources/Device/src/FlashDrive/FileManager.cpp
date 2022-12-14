@@ -138,7 +138,7 @@ void FileManager::DrawFiles(int x, int y)
 }
 
 
-void FileManager::DrawNameCurrentDir(int left, int top) //-V2506
+void FileManager::DrawNameCurrentDir(int left, int top)
 {
     Color::FILL.SetAsCurrent();
     int length = DFont::GetLengthText(currentDir);
@@ -166,7 +166,7 @@ void FileManager::DrawNameCurrentDir(int left, int top) //-V2506
 }
 
 
-void FileManager::Draw() //-V2506
+void FileManager::Draw()
 {
     if (ModeRedrawFM::Is(ModeRedrawFM::None))
     {
@@ -209,7 +209,7 @@ void FileManager::Draw() //-V2506
     ModeRedrawFM::Set(ModeRedrawFM::None);
 }
 
-void FileManager::Press_LevelDown() //-V2506
+void FileManager::Press_LevelDown()
 {
     ModeRedrawFM::Set(ModeRedrawFM::Full);
 
@@ -237,7 +237,7 @@ void FileManager::Press_LevelDown() //-V2506
 }
 
 
-void FileManager::Press_LevelUp() //-V2506
+void FileManager::Press_LevelUp()
 {
     ModeRedrawFM::Set(ModeRedrawFM::Full);
 
@@ -337,7 +337,7 @@ void FileManager::DecCurrentFile()
 }
 
 
-bool FileManager::HandlerKey(const KeyEvent &event) //-V2506
+bool FileManager::HandlerKey(const KeyEvent &event)
 {
     if (event.IsRelease() && event.IsArrow())
     {
@@ -364,7 +364,7 @@ bool FileManager::HandlerKey(const KeyEvent &event) //-V2506
 }
 
 
-bool FileManager::GetNameForNewFile(char name[255]) //-V2506
+bool FileManager::GetNameForNewFile(char name[255])
 {
     static int number = 0;
 

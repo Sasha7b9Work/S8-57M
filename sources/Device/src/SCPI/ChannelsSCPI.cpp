@@ -104,7 +104,7 @@ const StructSCPI SCPI::channels[] =
 };
 
 
-static pCHAR FuncBalance(pCHAR buffer) //-V2506
+static pCHAR FuncBalance(pCHAR buffer)
 {
     EXTRACT_CHANNEL(9);
 
@@ -131,7 +131,7 @@ static void SetBandwidth(Chan::E ch, int i)
 }
 
 
-static pCHAR FuncBandwidth(pCHAR buffer) //-V2506
+static pCHAR FuncBandwidth(pCHAR buffer)
 {
     EXTRACT_CHANNEL(11);
 
@@ -150,7 +150,7 @@ static pString couple[] =
 };
 
 
-static pCHAR FuncCoupling(pCHAR buffer) //-V2506
+static pCHAR FuncCoupling(pCHAR buffer)
 {
     EXTRACT_CHANNEL(10);
 
@@ -160,7 +160,7 @@ static pCHAR FuncCoupling(pCHAR buffer) //-V2506
 }
 
 
-static pCHAR FuncData(pCHAR buffer) //-V2506
+static pCHAR FuncData(pCHAR buffer)
 {
     EXTRACT_CHANNEL(7);
 
@@ -172,7 +172,7 @@ static pCHAR FuncData(pCHAR buffer) //-V2506
 }
 
 
-static pCHAR FuncDisplay(pCHAR buffer) //-V2506
+static pCHAR FuncDisplay(pCHAR buffer)
 {
     EXTRACT_CHANNEL(9);
 
@@ -188,7 +188,7 @@ static void SendAnswerForOffst(Chan::E ch)
     SCPI::SendAnswer(answer.c_str());
 }
 
-static pCHAR FuncOffset(pCHAR buffer) //-V2506
+static pCHAR FuncOffset(pCHAR buffer)
 {
     EXTRACT_CHANNEL(8);
 
@@ -217,7 +217,7 @@ static pString probe[] =
 };
 
 
-static pCHAR FuncProbe(pCHAR buffer) //-V2506
+static pCHAR FuncProbe(pCHAR buffer)
 {
     EXTRACT_CHANNEL(7);
 
@@ -244,7 +244,7 @@ static pCHAR FuncProbe(pCHAR buffer) //-V2506
 }
 
 
-static pCHAR FuncScale(pCHAR buffer) //-V2506
+static pCHAR FuncScale(pCHAR buffer)
 {
     EXTRACT_CHANNEL(7);
 
@@ -344,7 +344,7 @@ static bool TestProbe()
 }
 
 
-static bool TestScale() //-V2506
+static bool TestScale()
 {
     for(int i = 0; i < 5; i++)
     {

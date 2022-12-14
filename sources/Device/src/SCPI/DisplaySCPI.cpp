@@ -90,7 +90,7 @@ static pString accumulationDirect[] =
 };
 
 
-static pCHAR FuncAccumulation(pCHAR buffer) //-V2506
+static pCHAR FuncAccumulation(pCHAR buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(accumulationDirect[S_DISP_ENUM_ACCUM]));
 
@@ -120,7 +120,7 @@ static void SetAverage(int i)
 
 static pString averagesDirect[] = { " 1", " 2", " 4", " 8", " 16", " 32", " 64", " 128", " 256", "" };
 
-static pCHAR FuncAverages(pCHAR buffer) //-V2506
+static pCHAR FuncAverages(pCHAR buffer)
 {
     static pString averages[] = { " 128", " 16", " 256", " 8", " 2", " 32", " 64", " 1", " 4", "" };
 
@@ -130,7 +130,7 @@ static pCHAR FuncAverages(pCHAR buffer) //-V2506
 }
 
 
-static pCHAR FuncBrightness(pCHAR buffer) //-V2506
+static pCHAR FuncBrightness(pCHAR buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(String("%d", set.disp._brightness).c_str()));
 
@@ -158,7 +158,7 @@ static pString fps[] =
     ""
 };
 
-static pCHAR FuncFPS(pCHAR buffer) //-V2506
+static pCHAR FuncFPS(pCHAR buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(fps[S_DISP_ENUM_FPS]));
 
@@ -166,7 +166,7 @@ static pCHAR FuncFPS(pCHAR buffer) //-V2506
 }
 
 
-static const char *FuncGrid(const char *buffer) //-V2506
+static const char *FuncGrid(const char *buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(grids[S_DISP_TYPE_GRID]));
 
@@ -174,7 +174,7 @@ static const char *FuncGrid(const char *buffer) //-V2506
 }
 
 
-static pCHAR FuncMapping(pCHAR buffer) //-V2506
+static pCHAR FuncMapping(pCHAR buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(mapping[S_DISP_MAPPING]));
 
@@ -218,7 +218,7 @@ static void SetSmoothing(int i)
 }
 
 
-static pCHAR FuncSmoothing(pCHAR buffer) //-V2506
+static pCHAR FuncSmoothing(pCHAR buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(smoothingsDirect[S_DISP_ENUM_SMOOTH]));
 
@@ -300,7 +300,7 @@ static bool TestGrid()
 }
 
 
-static bool TestMapping() //-V2506
+static bool TestMapping()
 {
     String commandLines(":DISPLAY:MAPPING LINEs%c", 0x0D);
     String commandDots(":DISPLAY:MApping dots%c", 0x0D);

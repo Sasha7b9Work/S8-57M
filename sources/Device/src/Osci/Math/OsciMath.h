@@ -20,5 +20,5 @@ namespace InterpolatorLinear
 
 namespace InterpolatorSinX_X
 {
-    void Run(DataSettings *ds);
+    void Run(DataSettings &ds);
 };

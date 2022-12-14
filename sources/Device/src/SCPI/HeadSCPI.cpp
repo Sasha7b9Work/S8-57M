@@ -86,7 +86,7 @@ const StructSCPI SCPI::head[] =
 };
 
 
-static pCHAR FuncIDN(pCHAR buffer) //-V2506
+static pCHAR FuncIDN(pCHAR buffer)
 {
     SCPI_PROLOG(buffer)
 
@@ -102,7 +102,7 @@ static void HintIDN(String *message) //-V2009 //-V2558
 }
 
 
-static pCHAR FuncReset(pCHAR buffer) //-V2506
+static pCHAR FuncReset(pCHAR buffer)
 {
     SCPI_PROLOG(buffer)
         
@@ -118,7 +118,7 @@ static void HintReset(String *message) //-V2009 //-V2558
 }
 
 
-static pCHAR FuncHelp(pCHAR buffer) //-V2506
+static pCHAR FuncHelp(pCHAR buffer)
 {
     SCPI_PROLOG(buffer);
     
@@ -136,7 +136,7 @@ static void HintHelp(String *message) //-V2009 //-V2558
 }
 
 
-static pCHAR FuncTest(pCHAR buffer) //-V2506
+static pCHAR FuncTest(pCHAR buffer)
 {
     static const char *const modes[2] =
     {
@@ -182,7 +182,7 @@ static void SetCalibratorMode(int i)
     FPGA::LoadCalibratorMode();
 }
 
-static pCHAR FuncCalibratorMode(pCHAR buffer) //-V2506
+static pCHAR FuncCalibratorMode(pCHAR buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(calibratorMode[S_SERV_CALIBRATOR_MODE]));
     
@@ -200,7 +200,7 @@ static pString length[] =
     ""
 };
 
-static pCHAR FuncMemoryLength(pCHAR buffer) //-V2506
+static pCHAR FuncMemoryLength(pCHAR buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(length[set.mem._enumPoints]));
 
@@ -208,7 +208,7 @@ static pCHAR FuncMemoryLength(pCHAR buffer) //-V2506
 }
 
 
-static pCHAR FuncMemorySave(pCHAR buffer) //-V2506
+static pCHAR FuncMemorySave(pCHAR buffer)
 {
     SCPI_PROLOG(buffer);
 
@@ -225,7 +225,7 @@ static pCHAR FuncMemorySave(pCHAR buffer) //-V2506
 }
 
 
-static pCHAR FuncRun(pCHAR buffer) //-V2506
+static pCHAR FuncRun(pCHAR buffer)
 {
     SCPI_PROLOG(buffer);
 
@@ -235,7 +235,7 @@ static pCHAR FuncRun(pCHAR buffer) //-V2506
 }
 
 
-static pCHAR FuncStop(pCHAR buffer) //-V2506
+static pCHAR FuncStop(pCHAR buffer)
 {
     SCPI_PROLOG(buffer);
 

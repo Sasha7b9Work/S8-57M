@@ -18,7 +18,7 @@ namespace Osci
 }
 
 
-bool Osci::ReadDataChannel(Chan::E ch, uint8 *data) //-V2506
+bool Osci::ReadDataChannel(Chan::E ch, uint8 *data)
 {
     int numPoints = ENumPointsFPGA::PointsInChannel();
 

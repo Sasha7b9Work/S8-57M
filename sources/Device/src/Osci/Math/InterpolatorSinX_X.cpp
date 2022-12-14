@@ -16,7 +16,7 @@
 static void InterpolateChannel(uint8 *data, int numPoints, uint tBase);
 
 
-void InterpolatorSinX_X::Run(DataSettings *ds) //-V2506
+void InterpolatorSinX_X::Run(DataSettings &ds)
 {
     if (!OSCI_IN_MODE_RANDOMIZER)
     {
@@ -25,16 +25,16 @@ void InterpolatorSinX_X::Run(DataSettings *ds) //-V2506
 
     HAL_BUS_CONFIGURE_TO_FSMC();
 
-    int numPoints = ds->PointsInChannel();
+    int numPoints = ds.PointsInChannel();
 
-    if (ds->en_a)
+    if (ds.en_a)
     {
-        InterpolateChannel(ds->ch_a, numPoints, ds->tBase);
+        InterpolateChannel(ds.ch_a, numPoints, ds.tBase);
     }
 
-    if (ds->enableB)
+    if (ds.enableB)
     {
-        InterpolateChannel(ds->ch_b, numPoints, ds->tBase);
+        InterpolateChannel(ds.ch_b, numPoints, ds.tBase);
     }
 }
 

@@ -182,7 +182,7 @@ namespace TrigLevel
 }
 
 
-void TBase::Change(int delta) //-V2506
+void TBase::Change(int delta)
 {
     TBase::E old = S_TIME_BASE;
 
@@ -624,7 +624,7 @@ int16 RShift::ToRel(float rShiftAbs, Range::E range)
 }
 
 
-bool RShift::ChangeMath(int delta) //-V2506
+bool RShift::ChangeMath(int delta)
 {
     int16 prevRShift = S_RSHIFT_MATH;
     int16 rShift = prevRShift;

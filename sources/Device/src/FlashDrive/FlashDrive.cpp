@@ -469,7 +469,7 @@ void FDrive::SaveScreen()
 }
 
 
-void FDrive::SaveScreenToFlash() //-V2506
+void FDrive::SaveScreenToFlash()
 {
     if(!needSaveScreen)
     {
@@ -629,7 +629,7 @@ void FDrive::ReadRow(uint8 row, uint8 pixels[320])
 }
 
 
-bool FDrive::ExistFile(const char *fullPath, const char *fileName) //-V2506
+bool FDrive::ExistFile(const char *fullPath, const char *fileName)
 {
     int numDirs = 0;
     int numFiles = 0;

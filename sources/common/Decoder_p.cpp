@@ -64,7 +64,7 @@ static bool SetTextSpacing(uint8);
 static void FinishCommand();
 
 
-void PDecoder::AddData(uint8 data) //-V2506
+void PDecoder::AddData(uint8 data)
 {
     static const struct StructFunc
     {
@@ -121,7 +121,7 @@ void PDecoder::AddData(uint8 data) //-V2506
 }
 
 
-static bool InButtonPress(uint8) //-V2506
+static bool InButtonPress(uint8)
 {
     if (step == 0)
     {
@@ -152,7 +152,7 @@ static bool BeginScene(uint8 data)
 }
 
 
-static bool DisplayBrightness(uint8 data) //-V2506
+static bool DisplayBrightness(uint8 data)
 {
     if (step == 0)
     {
@@ -174,7 +174,7 @@ static bool EndScene(uint8)
 }
 
 
-static bool SetColor(uint8 data) //-V2506
+static bool SetColor(uint8 data)
 {
     if (step == 0)
     {
@@ -188,7 +188,7 @@ static bool SetColor(uint8 data) //-V2506
 }
 
 
-static bool FuncScreen(uint8 data) //-V2506
+static bool FuncScreen(uint8 data)
 {
     if (step == 0)
     {
@@ -423,7 +423,7 @@ static bool DrawHPointLine(uint8 data)
 }
 
 
-static bool SetMinWidthFont(uint8 data) //-V2506
+static bool SetMinWidthFont(uint8 data)
 {
     if (step == 0)
     {
@@ -438,7 +438,7 @@ static bool SetMinWidthFont(uint8 data) //-V2506
 }
 
 
-static bool SetTextSpacing(uint8 data) //-V2506
+static bool SetTextSpacing(uint8 data)
 {
     if (step == 0)
     {
@@ -518,7 +518,7 @@ static bool SetPoint(uint8 data)
 }
 
 
-static bool DrawText(uint8 data) //-V2506
+static bool DrawText(uint8 data)
 {
     static Point2 pos;
     static int numSymbols;
@@ -582,7 +582,7 @@ static bool SetPalette(uint8 data)
 }
 
 
-static bool SetFont(uint8 data) //-V2506
+static bool SetFont(uint8 data)
 {
     if (step == 0)
     {

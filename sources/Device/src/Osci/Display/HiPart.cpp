@@ -200,7 +200,7 @@ static int DrawMainParameters(int _x, int _y)
 }
 
 
-static void WriteTextVoltage(Chan::E ch, int x, int y) //-V2506
+static void WriteTextVoltage(Chan::E ch, int x, int y)
 {
     if (!S_CHANNEL_ENABLED(ch))
     {
@@ -253,7 +253,7 @@ static void WriteStringAndNumber(const char *text, int x, int y, int number, pSt
 }
 
 
-static void DrawTime(int x, int y) //-V2506
+static void DrawTime(int x, int y)
 {
     int dField = 10;
     int dSeparator = 2;

@@ -41,7 +41,7 @@ const StructSCPI SCPI::fft[] =
 };
 
 
-static pCHAR FFT_FuncData(pCHAR buffer) //-V2506
+static pCHAR FFT_FuncData(pCHAR buffer)
 {
     SCPI_PROLOG(buffer);
 
@@ -63,7 +63,7 @@ static void EnableFFT(int i)
     S_FFT_ENABLED = (i == 0);
 }
 
-static pCHAR FFT_FuncDisplay(pCHAR buffer) //-V2506
+static pCHAR FFT_FuncDisplay(pCHAR buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(display[S_FFT_ENABLED ? 0 : 1]));
 
@@ -78,7 +78,7 @@ static pString scale[] =
     ""
 };
 
-static pCHAR FFT_FuncScale(pCHAR buffer) //-V2506
+static pCHAR FFT_FuncScale(pCHAR buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(scale[S_FFT_SCALE]));
 
@@ -94,7 +94,7 @@ static pString source[] =
     ""
 };
 
-static pCHAR FuncSource(pCHAR buffer) //-V2506
+static pCHAR FuncSource(pCHAR buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(source[S_FFT_SOURCE]));
 
@@ -111,7 +111,7 @@ static pString window[] =
     ""
 };
 
-static pCHAR FuncWindow(pCHAR buffer) //-V2506
+static pCHAR FuncWindow(pCHAR buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(window[S_FFT_WINDOW]));
 
