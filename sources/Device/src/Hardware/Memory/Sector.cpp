@@ -70,7 +70,7 @@ bool PacketROM::WriteToSector(const Sector *sector) const
     {
         ds.ch_a = reinterpret_cast<uint8 *>(addressWrite) + sizeof(PacketROM) + sizeof(DataSettings);
     }
-    if (ds.enableB)
+    if (ds.en_b)
     {
         ds.ch_b = reinterpret_cast<uint8 *>(addressWrite) + sizeof(PacketROM) + sizeof(DataSettings);
         if (ds.en_a)
@@ -93,7 +93,7 @@ bool PacketROM::WriteToSector(const Sector *sector) const
         addressWrite += ds.BytesInChannel();
     }
 
-    if (ds.enableB)
+    if (ds.en_b)
     {
         HAL_ROM::WriteBufferBytes(addressWrite, UnPack()->ch_b, ds.BytesInChannel());
     }
@@ -176,7 +176,7 @@ void Sector::TranslateAddressToROM(const DataSettings *ds, const PacketROM *pack
         addressData += ds->BytesInChannel();
     }
 
-    if (ds->enableB)
+    if (ds->en_b)
     {
         const_cast<DataSettings *>(ds)->ch_b = addressData; //-V2567
     }
@@ -233,7 +233,7 @@ const PacketROM *Sector::WriteData(uint numInROM, const DataSettings *ds) const
         WriteToROM(&recordAddress, addressDataA, ds->BytesInChannel());
     }
 
-    if (ds->enableB)
+    if (ds->en_b)
     {
         WriteToROM(&recordAddress, addressDataB, ds->BytesInChannel());
     }
@@ -263,7 +263,7 @@ const PacketROM *Sector::FindValidPacket(uint numInROM) const
                             return packet;
                         }
                     }
-                    if (ds->enableB)
+                    if (ds->en_b)
                     {
                         if (ds->ch_b[j] != static_cast<uint8>(j))
                         {

@@ -54,7 +54,7 @@ struct DataSettings
     Range::E    range[2];           // Масштаб по напряжению обоих каналов.
     uint        tBase       : 5;    // Масштаб по времени
     uint        en_a        : 1;    // Включён ли канал A
-    uint        enableB     : 1;    // Включен ли канал B
+    uint        en_b        : 1;    // Включен ли канал B
     uint        coupleA     : 2;    // Режим канала по входу
     uint        coupleB     : 2;
     uint        peackDet    : 2;    // Включен ли пиковый детектор
@@ -96,7 +96,7 @@ struct DataSettings
 #define DATA(ds, ch)            (((ch) == ChanA) ? (ds)->dataA : (ds)->dataB)
 
 #define Lval_ENABLED_A(ds)      ((ds)->en_a)
-#define Lval_ENABLED_B(ds)      ((ds)->enableB)
+#define Lval_ENABLED_B(ds)      ((ds)->en_b)
 #define Lval_ENABLED(ds, ch)    (ch.IsA() ? Lval_ENABLED_A(ds) : Lval_ENABLED_B(ds))
 #define ENABLED_A(ds)           ((bool)Lval_ENABLED_A(ds))
 #define ENABLED_B(ds)           ((bool)Lval_ENABLED_B(ds))

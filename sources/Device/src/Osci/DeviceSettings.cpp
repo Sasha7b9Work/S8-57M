@@ -97,7 +97,7 @@ int DataSettings::NeedMemoryForData() const
         result += BytesInChannel();
     }
 
-    if (enableB)
+    if (en_b)
     {
         result += BytesInChannel();
     }
@@ -302,7 +302,7 @@ void DataSettings::CopyDataFrom(const DataSettings *source)
         std::memcpy(ch_a, source->ch_a, static_cast<uint>(numBytes));
     }
 
-    if((enableB != 0) && (source->enableB != 0))
+    if((en_b != 0) && (source->en_b != 0))
     {
         std::memcpy(ch_b, source->ch_b, static_cast<uint>(numBytes));
     }
@@ -316,7 +316,7 @@ void DataSettings::Clear()
         std::memset(ch_a, VALUE::NONE, static_cast<uint>(BytesInChannel()));
     }
 
-    if (enableB)
+    if (en_b)
     {
         std::memset(ch_b, VALUE::NONE, static_cast<uint>(BytesInChannel()));
     }

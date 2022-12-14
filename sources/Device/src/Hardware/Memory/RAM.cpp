@@ -121,7 +121,7 @@ struct Packet
             addrData += bytesInChannel;
         }
 
-        if (ds->enableB)
+        if (ds->en_b)
         {
             ds->ch_b = addrData;
             std::memset(addrData, VALUE::NONE, static_cast<uint>(bytesInChannel));

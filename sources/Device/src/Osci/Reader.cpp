@@ -48,7 +48,7 @@ void Reader::ReadDataFromRAM()
         {
             std::memcpy(IN_A, DS->ch_a, 8 * 1024);
         }
-        if (DS->enableB)
+        if (DS->en_b)
         {
             std::memcpy(IN_B, DS->ch_b, 8 * 1024);
         }
@@ -71,7 +71,7 @@ void Reader::ReadDataFromROM()
         {
             std::memcpy(IN_A, DS->ch_a, 8 * 1024);
         }
-        if (DS->enableB)
+        if (DS->en_b)
         {
             std::memcpy(IN_B, DS->ch_b, 8 * 1024);
         }

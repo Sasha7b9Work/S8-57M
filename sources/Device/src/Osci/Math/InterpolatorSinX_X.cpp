@@ -32,7 +32,7 @@ void InterpolatorSinX_X::Run(DataSettings &ds)
         InterpolateChannel(ds.ch_a, numPoints, ds.tBase);
     }
 
-    if (ds.enableB)
+    if (ds.en_b)
     {
         InterpolateChannel(ds.ch_b, numPoints, ds.tBase);
     }
