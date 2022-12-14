@@ -38,7 +38,7 @@ typedef unsigned int   uint32_t;
 #define __IO
 #endif
 #else
-#define nullptr 0 //-V1059
+#define nullptr 0
 #endif
 
 

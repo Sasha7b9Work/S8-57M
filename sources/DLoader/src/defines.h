@@ -17,7 +17,7 @@
     #define __RBIT(x) 1
     #define __CLZ(x)  1
 #else
-    #define nullptr 0 //-V1059
+    #define nullptr 0
 #endif
 
 
