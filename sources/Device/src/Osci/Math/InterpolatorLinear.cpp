@@ -103,11 +103,11 @@ void InterpolatorLinear::InterpolateSegment(Segment *segment)
 
     int numTicks = segment->end - segment->start + 1;   // На столько отрезков разбит наш сегмент
 
-    float delta = (after - before) / numTicks; //-V2564
+    float delta = (after - before) / numTicks;
 
     for(int tick = 0; tick < numTicks - 1; tick++)
     {
-        float value = before + delta * (tick + 1); //-V2564
+        float value = before + delta * (tick + 1);
 
         *(segment->start + tick) = static_cast<uint8>(value + 0.5F);
     }

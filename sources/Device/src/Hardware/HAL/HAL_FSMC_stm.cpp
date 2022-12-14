@@ -249,7 +249,7 @@ uint8 HAL_BUS::FPGA::ReadA0()
 {
     int delta = VALUE::AVE - static_cast<int>(*addrData0);
 
-    int result = static_cast<int>(VALUE::AVE - static_cast<int>(delta * GetStretch(addrData0))); //-V2564
+    int result = static_cast<int>(VALUE::AVE - static_cast<int>(delta * GetStretch(addrData0)));
 
     if(result < VALUE::MIN)
     {
@@ -268,7 +268,7 @@ uint8 HAL_BUS::FPGA::ReadA1()
 {
     int delta = VALUE::AVE - static_cast<int>(*addrData1);
 
-    int result = static_cast<uint8>(VALUE::AVE - static_cast<int>(delta * GetStretch(addrData1))); //-V2564
+    int result = static_cast<uint8>(VALUE::AVE - static_cast<int>(delta * GetStretch(addrData1)));
 
     if(result < VALUE::MIN)
     {

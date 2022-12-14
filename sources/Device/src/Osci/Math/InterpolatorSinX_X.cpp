@@ -96,7 +96,7 @@ static void InterpolateChannel(uint8 *data, int numPoints, uint tBase)
         {
             int part = num % ((delta - 1) * 2);
             num++;
-            float sinX = (part < delta - 1) ? std::sinf(Math::PI_F / delta * (part + 1)) : std::sinf(Math::PI_F / delta * (part - (delta - 1) * 2)); //-V2564
+            float sinX = (part < delta - 1) ? std::sinf(Math::PI_F / delta * (part + 1)) : std::sinf(Math::PI_F / delta * (part - (delta - 1) * 2));
 
             if (tBase > TBase::_5ns)                 // Здесь используем более быструю, но более неправильную арифметику целвых чисел
             {
@@ -110,7 +110,7 @@ static void InterpolateChannel(uint8 *data, int numPoints, uint tBase)
                     value += signedData[n] * sinXint / (x - n * deltaXint);
                     sinXint = -sinXint;
                 }
-                data[i] = (uint8)(value * KOEFF); //-V2564
+                data[i] = (uint8)(value * KOEFF);
             }
             else                                    // На этих развёртках арифметика с плавающей запятой даёт приемлемое быстродействие
             {
@@ -120,7 +120,7 @@ static void InterpolateChannel(uint8 *data, int numPoints, uint tBase)
                 for (int n = 0; n < numSignedPoints; n++)
                 {
                     x -= deltaX;
-                    value += signedData[n] * sinX / x; //-V2564
+                    value += signedData[n] * sinX / x;
                     sinX = -sinX;
                 }
                 data[i] = static_cast<uint8>(value);

@@ -56,7 +56,7 @@ static uint16 CalculatePeriodForTIM()
 {
 #define MULTIPLIER_CALCPERFORTIM 30e6F
 
-    return (uint16)(MULTIPLIER_CALCPERFORTIM / frequency / POINTS_IN_PERIOD_SOUND); //-V2564
+    return (uint16)(MULTIPLIER_CALCPERFORTIM / frequency / POINTS_IN_PERIOD_SOUND);
 }
 
 
@@ -64,8 +64,8 @@ static void CalculateSine()
 {
     for(int i = 0; i < POINTS_IN_PERIOD_SOUND; i++)
     {
-        float step = 2.0F * Math::PI_F / (POINTS_IN_PERIOD_SOUND - 1); //-V2564
-        float value = (std::sinf(i * step) + 1.0F) / 2.0F; //-V2564
+        float step = 2.0F * Math::PI_F / (POINTS_IN_PERIOD_SOUND - 1);
+        float value = (std::sinf(i * step) + 1.0F) / 2.0F;
         float v = value * amplitude * 255.0F;
         points[i] = static_cast<uint8>(v);
     }
@@ -101,7 +101,7 @@ static void CalculateMeandr()
 
 static void CalculateTriangle()
 {
-    float k = 255.0F / POINTS_IN_PERIOD_SOUND; //-V2564
+    float k = 255.0F / POINTS_IN_PERIOD_SOUND;
     for(int i = 0; i < POINTS_IN_PERIOD_SOUND; i++)
     {
         points[i] = static_cast<uint8>(k * static_cast<float>(i) * amplitude);
@@ -140,7 +140,7 @@ static void Beep(const TypeWave::E newTypeWave, const float newFreq, const float
     if (frequency != newFreq || amplitude != newAmpl || typeWave != newTypeWave) //-V550 //-V2550
     {
         frequency = newFreq;
-        amplitude = newAmpl * set.serv.SoundVolume() / 100.0F; //-V2564
+        amplitude = newAmpl * set.serv.SoundVolume() / 100.0F;
         typeWave = newTypeWave;
         
         Stop();

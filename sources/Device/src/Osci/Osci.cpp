@@ -467,9 +467,9 @@ ShiftPoint Gates::CalculateShiftPoint()
         return result;
     }
 
-    float tin = static_cast<float>(valueADC - min) / (max - min); //-V2564
+    float tin = static_cast<float>(valueADC - min) / (max - min);
 
-    result.shift = static_cast<int>(tin * TBase::DeltaPoint()); //-V2564
+    result.shift = static_cast<int>(tin * TBase::DeltaPoint());
 
     if(result.shift < 0)
     {
@@ -556,8 +556,8 @@ bool Gates::Calculate(uint16 value, uint16 *min, uint16 *max)
         {
             return true;
         }
-        minGate = m.Min(); //-V2564
-        maxGate = m.Max(); //-V2564
+        minGate = m.Min();
+        maxGate = m.Max();
         m.Reset();
     }
 
@@ -577,8 +577,8 @@ bool Gates::Calculate(uint16 value, uint16 *min, uint16 *max)
 
 void Gates::RecalculateGates()
 {
-    minGate = 0.8F * minGate + m.Min() * 0.2F; //-V2564
-    maxGate = 0.8F * maxGate + m.Max() * 0.2F; //-V2564
+    minGate = 0.8F * minGate + m.Min() * 0.2F;
+    maxGate = 0.8F * maxGate + m.Max() * 0.2F;
 
     if(S_DBG_SHOW_RAND_GATES)
     {
