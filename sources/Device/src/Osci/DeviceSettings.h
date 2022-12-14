@@ -55,8 +55,8 @@ struct DataSettings
     uint        tBase       : 5;    // Масштаб по времени
     uint        en_a        : 1;    // Включён ли канал A
     uint        en_b        : 1;    // Включен ли канал B
-    uint        coupleA     : 2;    // Режим канала по входу
-    uint        coupleB     : 2;
+    uint        coup_a      : 2;    // Режим канала по входу
+    uint        coup_b     : 2;
     uint        peackDet    : 2;    // Включен ли пиковый детектор
     uint        inverseA    : 1;
     uint        inverseB    : 1;
@@ -135,8 +135,8 @@ struct DataSettings
 
 #define TSHIFT(ds)              ((ds)->tShift)
 
-#define Lval_COUPLE_A(ds)       ((ds)->coupleA)
-#define Lval_COUPLE_B(ds)       ((ds)->coupleB)
+#define Lval_COUPLE_A(ds)       ((ds)->coup_a)
+#define Lval_COUPLE_B(ds)       ((ds)->coup_b)
 #define COUPLE_A(ds)            ((ModeCouple)Lval_COUPLE_A(ds))
 #define COUPLE_B(ds)            ((ModeCouple)Lval_COUPLE_B(ds))
 #define COUPLE(ds, ch)          (ch.IsA() ? COUPLE_A(ds) : COUPLE_B(ds))
