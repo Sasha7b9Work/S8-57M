@@ -379,19 +379,19 @@ void DisplayOsci::PainterData::DrawModeLinesPeakDetOff(int center, const uint8 *
 
     for (int i = 1; i < 281; i++)
     {
-        int value = static_cast<int>(center - (data[i] - VALUE::AVE) * scale + 0.5F);
-        int valuePrev = static_cast<int>(center - (data[i - 1] - VALUE::AVE) * scale + 0.5F);
+        int current = (int)(center - (data[i] - VALUE::AVE) * scale + 0.5F);
+        int prev = (int)(center - (data[i - 1] - VALUE::AVE) * scale + 0.5F);
 
         if(data[i] != VALUE::NONE && data[i - 1] != VALUE::NONE)
         {
-            if(value == valuePrev)
+            if(current == prev)
             {
-                Pixel().Draw(x, valuePrev);
+                Pixel().Draw(x, prev);
             }
             else
             {
-                int val = valuePrev > value ? (value + 1) : (value - 1);
-                VLine(val - valuePrev).Draw(x, valuePrev);
+                int val = (prev > current) ? (current + 1) : (current - 1);
+                VLine(val - prev).Draw(x, prev);
             }
         }
         x++;
