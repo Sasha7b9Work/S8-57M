@@ -47,7 +47,7 @@ struct DataSettings
     uint        id;                 // —квозной id данных. 1-й номер получают данные, считанные первыми после включени€ прибора и каждые следующие увиличиваютс€ на 1
     uint        timeMS;             // ¬рем€ чтени€ данных
     uint8       *ch_a;              // ѕо этому адресу хран€тс€ данные 1-го канала
-    uint8       *dataB;             // ѕо этому адресу хран€тс€ данные 2-го канала. ѕри хранение в Buffer данные 2-го канала идут сразу после 1-го канала
+    uint8       *ch_b;              // ѕо этому адресу хран€тс€ данные 2-го канала. ѕри хранение в Buffer данные 2-го канала идут сразу после 1-го канала
     int16       rShift[2];
     int16       trigLev[2];
     int         tShift;             // —мещение по времени
@@ -83,7 +83,7 @@ struct DataSettings
     
     bool EqualsCurrentSettings() const;
     
-    uint8 *Data(Chan::E ch) { return ch == ChanA ? ch_a : dataB; }
+    uint8 *Data(Chan::E ch) { return ch == ChanA ? ch_a : ch_b; }
     
     //  опировать данные из source с проверкой безопасности
     void CopyDataFrom(const DataSettings *source);

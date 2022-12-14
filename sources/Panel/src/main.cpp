@@ -7,7 +7,6 @@
 #include "Hardware/Timer.h"
 #include "Hardware/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
-#include "UnusedMemory.h"
 
 
 int main()
@@ -15,8 +14,6 @@ int main()
     CPU::Init();
     Display::Init();
     Keyboard::Init();
-
-    UnusedMemory::Init();
 
     while (1)
     {

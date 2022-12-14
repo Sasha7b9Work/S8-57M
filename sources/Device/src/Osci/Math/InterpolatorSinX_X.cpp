@@ -34,7 +34,7 @@ void InterpolatorSinX_X::Run(DataSettings *ds) //-V2506
 
     if (ds->enableB)
     {
-        InterpolateChannel(ds->dataB, numPoints, ds->tBase);
+        InterpolateChannel(ds->ch_b, numPoints, ds->tBase);
     }
 }
 

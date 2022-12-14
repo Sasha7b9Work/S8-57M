@@ -80,7 +80,7 @@ struct Packet
     {
         DataSettings data = *ds;
         data.ch_a = nullptr;
-        data.dataB = nullptr;
+        data.ch_b = nullptr;
 
         addrNewest = 0x0000000;                                                                         // Указываем, что это самый последний пакет
 
@@ -94,10 +94,10 @@ struct Packet
             address = WriteToRAM(address, ds->ch_a, ds->BytesInChannel());
         }
 
-        if (ds->dataB)                                                                                  // Записываем данные второго канала
+        if (ds->ch_b)                                                                                  // Записываем данные второго канала
         {
-            data.dataB = reinterpret_cast<uint8 *>(address);
-            WriteToRAM(address, ds->dataB, ds->BytesInChannel());
+            data.ch_b = reinterpret_cast<uint8 *>(address);
+            WriteToRAM(address, ds->ch_b, ds->BytesInChannel());
         }
 
         std::memcpy(reinterpret_cast<uint *>(Address() + sizeof(Packet)), &data, sizeof(DataSettings)); // Записываем скорректированные настройки
@@ -111,7 +111,7 @@ struct Packet
         uint *address = reinterpret_cast<uint *>(Address() + sizeof(Packet));
 
         ds->ch_a = nullptr;
-        ds->dataB = nullptr;
+        ds->ch_b = nullptr;
         uint8 *addrData = reinterpret_cast<uint8 *>(reinterpret_cast<uint8 *>(address) + sizeof(DataSettings));
 
         if (ds->enableA)
@@ -123,7 +123,7 @@ struct Packet
 
         if (ds->enableB)
         {
-            ds->dataB = addrData;
+            ds->ch_b = addrData;
             std::memset(addrData, VALUE::NONE, static_cast<uint>(bytesInChannel));
         }
 

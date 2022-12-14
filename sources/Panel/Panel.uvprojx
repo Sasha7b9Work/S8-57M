@@ -1305,16 +1305,6 @@
               <FileType>5</FileType>
               <FilePath>.\src\structs.h</FilePath>
             </File>
-            <File>
-              <FileName>UnusedMemory.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\UnusedMemory.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>UnusedMemory.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\UnusedMemory.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -2782,16 +2772,6 @@
               <FileName>structs.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\structs.h</FilePath>
-            </File>
-            <File>
-              <FileName>UnusedMemory.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\UnusedMemory.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>UnusedMemory.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\UnusedMemory.h</FilePath>
             </File>
           </Files>
         </Group>

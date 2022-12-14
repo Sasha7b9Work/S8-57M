@@ -64,7 +64,7 @@ bool PacketROM::WriteToSector(const Sector *sector) const //-V2506
     DataSettings ds = *UnPack(); //-V522
 
     ds.ch_a = nullptr;
-    ds.dataB = nullptr;
+    ds.ch_b = nullptr;
 
     if (ds.enableA)
     {
@@ -72,10 +72,10 @@ bool PacketROM::WriteToSector(const Sector *sector) const //-V2506
     }
     if (ds.enableB)
     {
-        ds.dataB = reinterpret_cast<uint8 *>(addressWrite) + sizeof(PacketROM) + sizeof(DataSettings);
+        ds.ch_b = reinterpret_cast<uint8 *>(addressWrite) + sizeof(PacketROM) + sizeof(DataSettings);
         if (ds.enableA)
         {
-            ds.dataB += ds.BytesInChannel();
+            ds.ch_b += ds.BytesInChannel();
         }
     }
 
@@ -95,7 +95,7 @@ bool PacketROM::WriteToSector(const Sector *sector) const //-V2506
 
     if (ds.enableB)
     {
-        HAL_ROM::WriteBufferBytes(addressWrite, UnPack()->dataB, ds.BytesInChannel());
+        HAL_ROM::WriteBufferBytes(addressWrite, UnPack()->ch_b, ds.BytesInChannel());
     }
 
     return true;
@@ -178,7 +178,7 @@ void Sector::TranslateAddressToROM(const DataSettings *ds, const PacketROM *pack
 
     if (ds->enableB)
     {
-        const_cast<DataSettings *>(ds)->dataB = addressData; //-V2567
+        const_cast<DataSettings *>(ds)->ch_b = addressData; //-V2567
     }
 }
 
@@ -222,7 +222,7 @@ const PacketROM *Sector::WriteData(uint numInROM, const DataSettings *ds) const 
     const_cast<DataSettings *>(ds)->numInROM = numInROM; //-V2567
 
     uint8 *addressDataA = ds->ch_a;   // По этим адресам хранятся данные, подлежащие записи. Сохраним их перед тем, как в ds будут записаны новые - по которым данные будут храниться в ROM.
-    uint8 *addressDataB = ds->dataB;   // По этим адресам хранятся данные, подлежащие записи. Сохраним их перед тем, как в ds будут записаны новые - по которым данные будут храниться в ROM.
+    uint8 *addressDataB = ds->ch_b;   // По этим адресам хранятся данные, подлежащие записи. Сохраним их перед тем, как в ds будут записаны новые - по которым данные будут храниться в ROM.
 
     TranslateAddressToROM(ds, packet);
 
@@ -265,7 +265,7 @@ const PacketROM *Sector::FindValidPacket(uint numInROM) const //-V2506
                     }
                     if (ds->enableB)
                     {
-                        if (ds->dataB[j] != static_cast<uint8>(j))
+                        if (ds->ch_b[j] != static_cast<uint8>(j))
                         {
                             return packet;
                         }

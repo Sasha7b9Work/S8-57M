@@ -304,7 +304,7 @@ void DataSettings::CopyDataFrom(const DataSettings *source)
 
     if((enableB != 0) && (source->enableB != 0))
     {
-        std::memcpy(dataB, source->dataB, static_cast<uint>(numBytes));
+        std::memcpy(ch_b, source->ch_b, static_cast<uint>(numBytes));
     }
 }
 
@@ -318,6 +318,6 @@ void DataSettings::Clear()
 
     if (enableB)
     {
-        std::memset(dataB, VALUE::NONE, static_cast<uint>(BytesInChannel()));
+        std::memset(ch_b, VALUE::NONE, static_cast<uint>(BytesInChannel()));
     }
 }

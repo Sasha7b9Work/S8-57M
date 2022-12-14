@@ -71,10 +71,10 @@ void Roller::AddPointPeakDetEnabled(BitSet16 dataA, BitSet16 dataB)
         ds->ch_a[currentPoint * 2 + 1] = dataA.byte1;
     }
 
-    if(ds->dataB)
+    if(ds->ch_b)
     {
-        ds->dataB[currentPoint * 2] = dataB.byte0;
-        ds->dataB[currentPoint * 2 + 1] = dataB.byte1;
+        ds->ch_b[currentPoint * 2] = dataB.byte0;
+        ds->ch_b[currentPoint * 2 + 1] = dataB.byte1;
     }
 
     Math::CircleIncrease<int>(&currentPoint, 0, ds->PointsInChannel());
@@ -88,9 +88,9 @@ void Roller::AddPointPeakDetDisabled(BitSet16 dataA, BitSet16 dataB)
         ds->ch_a[currentPoint] = dataA.byte0;
     }
 
-    if(ds->dataB)
+    if(ds->ch_b)
     {
-        ds->dataB[currentPoint] = dataB.byte1;
+        ds->ch_b[currentPoint] = dataB.byte1;
     }
 
     Math::CircleIncrease<int>(&currentPoint, 0, ds->PointsInChannel());

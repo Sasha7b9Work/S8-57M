@@ -117,7 +117,7 @@ void TestMemoryStruct::FillData(DataSettings *ds)
     int numPoints = ds->BytesInChannel();
 
     FILL(ds->enableA, ds->ch_a);
-    FILL(ds->enableB, ds->dataB);
+    FILL(ds->enableB, ds->ch_b);
 }
 
 
@@ -134,7 +134,7 @@ bool TestMemoryStruct::CheckData(const DataSettings *ds) //-V2506
     int numPoints = ds->BytesInChannel();
 
     CHECK(ds->enableA, ds->ch_a);
-    CHECK(ds->enableB, ds->dataB);
+    CHECK(ds->enableB, ds->ch_b);
 
     return false;
 }

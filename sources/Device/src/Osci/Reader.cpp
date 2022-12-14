@@ -50,7 +50,7 @@ void Reader::ReadDataFromRAM()
         }
         if (DS->enableB)
         {
-            std::memcpy(IN_B, DS->dataB, 8 * 1024);
+            std::memcpy(IN_B, DS->ch_b, 8 * 1024);
         }
 
         ds = *DS;
@@ -73,7 +73,7 @@ void Reader::ReadDataFromROM()
         }
         if (DS->enableB)
         {
-            std::memcpy(IN_B, DS->dataB, 8 * 1024);
+            std::memcpy(IN_B, DS->ch_b, 8 * 1024);
         }
     }
 }

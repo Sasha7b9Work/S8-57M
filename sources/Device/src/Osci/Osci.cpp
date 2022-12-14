@@ -217,7 +217,7 @@ static void UpdateFPGA()
                     }
                     if(ENABLED_B(last))
                     {
-                        AveragerOsci::Process(ChanB, last->dataB, last->BytesInChannel());
+                        AveragerOsci::Process(ChanB, last->ch_b, last->BytesInChannel());
                     }
                 }
             }
@@ -378,7 +378,7 @@ void Osci::ReadData()
     {
         Buffer::LogU8_10(ds->ch_a, 1);
 
-        if(ReadDataChannel(ChanB, ds->dataB))
+        if(ReadDataChannel(ChanB, ds->ch_b))
         {
             Buffer::LogU8_10(ds->ch_a, 2);
 
