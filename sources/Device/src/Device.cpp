@@ -52,9 +52,9 @@ void Device::Init()
 
     ROM::Init();
 
-//    Settings::Load();
+    Settings::Load();
 
-//    setNRST.Init();
+    setNRST.Init();
 
     Display::Init();
 
