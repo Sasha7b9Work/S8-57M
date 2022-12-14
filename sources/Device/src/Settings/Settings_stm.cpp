@@ -19,6 +19,5 @@ void Settings::Load(bool _default)
 
 void Settings::Save()
 {
-    LOG_WRITE("сохран€ю настройки");
     ROM::Settings::Save();
 }

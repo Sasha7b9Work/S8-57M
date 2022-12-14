@@ -282,35 +282,29 @@ static bool DrawVLine(uint8 data)
     static Point2 pos1;
     static Point2 pos2;
 
-    bool result = false;
-
-    switch (step)
+    if (step > 0)
     {
-    case 0:
-        break;
-    case 1:
-    case 2:
-    case 3:
-        pos1.Append(data);
-        break;
-    case 4:
-    case 5:
-        pos2.Append(data);
-        break;
-    case 6:
-        pos2.Append(data);
-        BackBuffer::DrawVLine(pos1.X() * 2, pos1.Y() * 2, pos2.Y() * 2);
-        BackBuffer::DrawVLine(pos1.X() * 2 + 1, pos1.Y() * 2, pos2.Y() * 2);
-        pos1.Reset();
-        pos2.Reset();
-        result = true;
-        break;
-    default:
-        result = true;
-        break;
+        if (step < 4)
+        {
+            pos1.Append(data);
+        }
+        else
+        {
+            pos2.Append(data);
+
+            if (step > 5)
+            {
+                BackBuffer::DrawVLine(pos1.X() * 2, pos1.Y() * 2, pos2.Y() * 2);
+                BackBuffer::DrawVLine(pos1.X() * 2 + 1, pos1.Y() * 2, pos2.Y() * 2);
+                pos1.Reset();
+                pos2.Reset();
+
+                return true;
+            }
+        }
     }
 
-    return result;
+    return false;
 }
 
 
@@ -319,35 +313,29 @@ static bool DrawHLine(uint8 data)
     static Point2 pos1;
     static Point2 pos2;
 
-    bool result = false;
-
-    switch (step)
+    if (step > 0)
     {
-    case 0:
-        break;
-    case 1:
-    case 2:
-    case 3:
-        pos1.Append(data);
-        break;
-    case 4:
-    case 5:
-        pos2.Append(data);
-        break;
-    case 6:
-        pos2.Append(data);
-        BackBuffer::DrawHLine(pos1.Y() * 2, pos1.X() * 2, pos2.X() * 2);
-        BackBuffer::DrawHLine(pos1.Y() * 2 + 1, pos1.X() * 2, pos2.X() * 2);
-        pos1.Reset();
-        pos2.Reset();
-        result = true;
-        break;
-    default:
-        result = true;
-        break;
+        if (step < 4)
+        {
+            pos1.Append(data);
+        }
+        else
+        {
+            pos2.Append(data);
+
+            if (step > 5)
+            {
+                BackBuffer::DrawHLine(pos1.Y() * 2, pos1.X() * 2, pos2.X() * 2);
+                BackBuffer::DrawHLine(pos1.Y() * 2 + 1, pos1.X() * 2, pos2.X() * 2);
+                pos1.Reset();
+                pos2.Reset();
+
+                return true;
+            }
+        }
     }
 
-    return result;
+    return false;
 }
 
 
