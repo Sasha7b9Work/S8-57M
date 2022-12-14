@@ -60,8 +60,8 @@ struct DataSettings
     uint        peackDet    : 2;    // Включен ли пиковый детектор
     uint        inv_a    : 1;
     uint        inv_b    : 1;
-    uint        multiplierA : 1;
-    uint        multiplierB : 1;
+    uint        mult_a : 1;
+    uint        mult_b : 1;
     uint        enumPoints  : 3;
     uint        numInROM    : 5;    // Номер данных в памяти ROM
     uint        notUsed     : 7;
@@ -149,8 +149,8 @@ struct DataSettings
 #define PEAKDET(ds)             ((PeakDetMode::E)Lval_PEAKDET(ds))
 #define PEAKDET_ENABLED(ds)     (PEAKDET(ds) == PeakDetMode::Enabled)
 
-#define Lval_DIVIDER_A(ds)      ((ds)->multiplierA)
-#define Lval_DIVIDER_B(ds)      ((ds)->multiplierB)
+#define Lval_DIVIDER_A(ds)      ((ds)->mult_a)
+#define Lval_DIVIDER_B(ds)      ((ds)->mult_b)
 
 #define ENUM_POINTS(ds)         ((ds)->enumPoints)
 #define BYTES_IN_CHANNEL(ds)    ((uint)(ds)->BytesInChannel())
