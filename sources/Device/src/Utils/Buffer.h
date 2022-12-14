@@ -21,7 +21,8 @@ public:
     static void LogU8_10(const uint8 *buffer, int num_point = 0);
     // Выводит разность между максимальным и минимальным элементами
     static void DeltaU8_10(const uint8 *buffer, int num_point = 0);
-    static uint8 MinU8_10(const uint8 *bu)
+    static uint8 MinU8_10(const uint8 *buffer);
+    static uint8 MaxU8_10(const uint8 *buffer);
 private:
     int size;
     void Free();

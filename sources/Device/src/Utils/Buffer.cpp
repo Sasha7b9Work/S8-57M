@@ -84,15 +84,51 @@ void Buffer::LogU8_10(const uint8 *buffer, int num_point)
 
 void Buffer::DeltaU8_10(const uint8 *buffer, int num_point)
 {
+    int min = MinU8_10(buffer);
+    int max = MaxU8_10(buffer);
 
-
+    int delta = max - min;
 
     if (num_point > 0)
     {
-
+        LOG_WRITE("%d : detla %d", num_point);
     }
     else
     {
-
+        LOG_WRITE("delta %d", delta);
     }
+}
+
+
+uint8 Buffer::MinU8_10(const uint8 *buffer)
+{
+    uint8 min = 255;
+
+    for (int i = 0; i < 10; i++)
+    {
+        if (*buffer < min)
+        {
+            min = *buffer;
+        }
+        buffer++;
+    }
+
+    return min;
+}
+
+
+uint8 Buffer::MaxU8_10(const uint8 *buffer)
+{
+    uint8 max = 0;
+
+    for (int i = 0; i < 10; i++)
+    {
+        if (*buffer > max)
+        {
+            max = *buffer;
+        }
+        buffer++;
+    }
+
+    return max;
 }
