@@ -45,7 +45,7 @@ struct Vector
 };
 
 #ifdef MSVC
-#define __attribute__(x) //-V2573
+#define __attribute__(x)
 #endif
 
 static int numPoints = 0;

@@ -1,13 +1,13 @@
 #pragma once
 
-#define __CC_ARM //-V2573
+#define __CC_ARM
 
 #include "stdint.h"
 
 #undef __ASM
-#define __ASM() //-V2573
+#define __ASM()
 
-#define __FPU_USED 0 //-V2573
+#define __FPU_USED 0
 
 struct SysTickStruct
 {

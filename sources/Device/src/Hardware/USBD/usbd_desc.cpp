@@ -43,8 +43,8 @@ USBD_DescriptorsTypeDef VCP_Desc =
 
 #ifdef WIN32
 #undef __ALIGN_BEGIN
-#define __ALIGN_BEGIN //-V2573
-#define __ALIGN_END //-V2573
+#define __ALIGN_BEGIN
+#define __ALIGN_END
 #endif
 
 /* USB Standard Device Descriptor */

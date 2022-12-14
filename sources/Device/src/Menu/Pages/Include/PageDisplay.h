@@ -68,7 +68,7 @@ struct ENumAccum
         _32,
         _64,
         _128,
-        _Infinity, //-V2573
+        _Infinity,
         Count
     };
 
