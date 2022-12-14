@@ -58,8 +58,8 @@ struct DataSettings
     uint        coup_a      : 2;    // –ежим канала по входу
     uint        coup_b     : 2;
     uint        peackDet    : 2;    // ¬ключен ли пиковый детектор
-    uint        inverseA    : 1;
-    uint        inverseB    : 1;
+    uint        inv_a    : 1;
+    uint        inv_b    : 1;
     uint        multiplierA : 1;
     uint        multiplierB : 1;
     uint        enumPoints  : 3;
@@ -129,8 +129,8 @@ struct DataSettings
 #define TIME_MONTH(ds)          ((ds)->time.month)
 #define TIME_YEAR(ds)           ((ds)->time.year)
 
-#define INVERSE_A(ds)           ((ds)->inverseA)
-#define INVERSE_B(ds)           ((ds)->inverseB)
+#define INVERSE_A(ds)           ((ds)->inv_a)
+#define INVERSE_B(ds)           ((ds)->inv_b)
 #define INVERSE(ds, ch)         (ch.IsA() ? INVERSE_A(ds) : INVERSE_B(ds))
 
 #define TSHIFT(ds)              ((ds)->tShift)
