@@ -63,12 +63,12 @@ bool PacketROM::WriteToSector(const Sector *sector) const //-V2506
 
     DataSettings ds = *UnPack(); //-V522
 
-    ds.dataA = nullptr;
+    ds.ch_a = nullptr;
     ds.dataB = nullptr;
 
     if (ds.enableA)
     {
-        ds.dataA = reinterpret_cast<uint8 *>(addressWrite) + sizeof(PacketROM) + sizeof(DataSettings);
+        ds.ch_a = reinterpret_cast<uint8 *>(addressWrite) + sizeof(PacketROM) + sizeof(DataSettings);
     }
     if (ds.enableB)
     {
@@ -89,7 +89,7 @@ bool PacketROM::WriteToSector(const Sector *sector) const //-V2506
 
     if (ds.enableA)
     {
-        HAL_ROM::WriteBufferBytes(addressWrite, UnPack()->dataA, ds.BytesInChannel());
+        HAL_ROM::WriteBufferBytes(addressWrite, UnPack()->ch_a, ds.BytesInChannel());
         addressWrite += ds.BytesInChannel();
     }
 
@@ -172,7 +172,7 @@ void Sector::TranslateAddressToROM(const DataSettings *ds, const PacketROM *pack
 
     if (ds->enableA)
     {
-        const_cast<DataSettings *>(ds)->dataA = addressData; //-V2567
+        const_cast<DataSettings *>(ds)->ch_a = addressData; //-V2567
         addressData += ds->BytesInChannel();
     }
 
@@ -221,7 +221,7 @@ const PacketROM *Sector::WriteData(uint numInROM, const DataSettings *ds) const 
 
     const_cast<DataSettings *>(ds)->numInROM = numInROM; //-V2567
 
-    uint8 *addressDataA = ds->dataA;   // По этим адресам хранятся данные, подлежащие записи. Сохраним их перед тем, как в ds будут записаны новые - по которым данные будут храниться в ROM.
+    uint8 *addressDataA = ds->ch_a;   // По этим адресам хранятся данные, подлежащие записи. Сохраним их перед тем, как в ds будут записаны новые - по которым данные будут храниться в ROM.
     uint8 *addressDataB = ds->dataB;   // По этим адресам хранятся данные, подлежащие записи. Сохраним их перед тем, как в ds будут записаны новые - по которым данные будут храниться в ROM.
 
     TranslateAddressToROM(ds, packet);
@@ -258,7 +258,7 @@ const PacketROM *Sector::FindValidPacket(uint numInROM) const //-V2506
                 {
                     if (ds->enableA)
                     {
-                        if (ds->dataA[j] != static_cast<uint8>(j))
+                        if (ds->ch_a[j] != static_cast<uint8>(j))
                         {
                             return packet;
                         }

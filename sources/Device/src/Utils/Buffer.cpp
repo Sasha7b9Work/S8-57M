@@ -69,7 +69,14 @@ void Buffer::Log()
 }
 
 
-void Buffer::LogU8_10(const uint8 *buffer)
+void Buffer::LogU8_10(const uint8 *buffer, int num_point)
 {
-    LOG_WRITE("%d %d %d %d %d %d %d %d %d %d", buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6], buffer[7], buffer[8], buffer[9]);
+    if (num_point > 0)
+    {
+        LOG_WRITE("%d : %d %d %d %d %d %d %d %d %d %d", num_point, buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6], buffer[7], buffer[8], buffer[9]);
+    }
+    else
+    {
+        LOG_WRITE("%d %d %d %d %d %d %d %d %d %d", buffer[0], buffer[1], buffer[2], buffer[3], buffer[4], buffer[5], buffer[6], buffer[7], buffer[8], buffer[9]);
+    }
 }

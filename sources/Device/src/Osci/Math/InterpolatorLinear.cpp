@@ -118,7 +118,7 @@ void InterpolatorLinear::Run(DataSettings *ds)
 {
     if(ds->enableA)
     {
-        InterpolateChannel(ds->dataA, ds->BytesInChannel());
+        InterpolateChannel(ds->ch_a, ds->BytesInChannel());
     }
     if(ds->enableB)
     {

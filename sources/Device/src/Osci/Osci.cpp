@@ -213,7 +213,7 @@ static void UpdateFPGA()
                 {
                     if(ENABLED_A(last))
                     {
-                        AveragerOsci::Process(ChanA, last->dataA, last->BytesInChannel());
+                        AveragerOsci::Process(ChanA, last->ch_a, last->BytesInChannel());
                     }
                     if(ENABLED_B(last))
                     {
@@ -374,18 +374,22 @@ void Osci::ReadData()
 
     DataSettings *ds = RAM::PrepareForNewData();
 
-    if(ReadDataChannel(ChanA, ds->dataA))
+    if(ReadDataChannel(ChanA, ds->ch_a))
     {
-//        Buffer::LogU8_10(ds->dataA);
+        Buffer::LogU8_10(ds->ch_a, 1);
 
         if(ReadDataChannel(ChanB, ds->dataB))
         {
+            Buffer::LogU8_10(ds->ch_a, 2);
+
             if (SampleType::IsReal())
             {
                 InterpolatorSinX_X::Run(ds);
             }
         }
     }
+
+    Buffer::LogU8_10(ds->ch_a, 3);
 }
 
 

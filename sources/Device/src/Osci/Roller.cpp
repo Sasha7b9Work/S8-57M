@@ -65,10 +65,10 @@ void Roller::ReadPoint()
 
 void Roller::AddPointPeakDetEnabled(BitSet16 dataA, BitSet16 dataB)
 {
-    if(ds->dataA)
+    if(ds->ch_a)
     {
-        ds->dataA[currentPoint * 2] = dataA.byte0;
-        ds->dataA[currentPoint * 2 + 1] = dataA.byte1;
+        ds->ch_a[currentPoint * 2] = dataA.byte0;
+        ds->ch_a[currentPoint * 2 + 1] = dataA.byte1;
     }
 
     if(ds->dataB)
@@ -83,9 +83,9 @@ void Roller::AddPointPeakDetEnabled(BitSet16 dataA, BitSet16 dataB)
 
 void Roller::AddPointPeakDetDisabled(BitSet16 dataA, BitSet16 dataB)
 {
-    if(ds->dataA)
+    if(ds->ch_a)
     {
-        ds->dataA[currentPoint] = dataA.byte0;
+        ds->ch_a[currentPoint] = dataA.byte0;
     }
 
     if(ds->dataB)
