@@ -208,34 +208,34 @@ static bool FillRegion(uint8 data)
 {
     static Point2 pos;
     static Point2 size;
-    
+
     bool result = false;
 
     switch (step)
     {
-        case 0:
-            break;
-        case 1:
-        case 2:
-        case 3:
-            pos.Append(data);
-            break;
-        case 4:
-        case 5:
-            size.Append(data);
-            break;
-        case 6:
-            size.Append(data);
-            BackBuffer::FillRegion(pos.X() * 2, pos.Y() * 2, size.Width() * 2, size.Height() * 2);
-            pos.Reset();
-            size.Reset();
-            result = true;
-            break;
-        default:
-            result = true;
-            break;
+    case 0:
+        break;
+    case 1:
+    case 2:
+    case 3:
+        pos.Append(data);
+        break;
+    case 4:
+    case 5:
+        size.Append(data);
+        break;
+    case 6:
+        size.Append(data);
+        BackBuffer::FillRegion(pos.X() * 2, pos.Y() * 2, size.Width() * 2, size.Height() * 2);
+        pos.Reset();
+        size.Reset();
+        result = true;
+        break;
+    default:
+        result = true;
+        break;
     }
-    
+
     return result;
 }
 
@@ -244,35 +244,35 @@ static bool DrawRectangle(uint8 data)
 {
     static Point2 pos;
     static Point2 size;
-    
+
     bool result = false;
 
     switch (step)
     {
-        case 0:
-            break;
-        case 1:
-        case 2:
-        case 3:
-            pos.Append(data);
-            break;
-        case 4:
-        case 5:
-            size.Append(data);
-            break;
-        case 6:
-            size.Append(data);
-            BackBuffer::DrawRectangle(pos.X() * 2, pos.Y() * 2, size.Width() * 2, size.Height() * 2);
-            BackBuffer::DrawRectangle(pos.X() * 2 + 1, pos.Y() * 2 + 1, size.Width() * 2 - 2, size.Height() * 2 - 2);
-            pos.Reset();
-            size.Reset();
-            result = true;
-            break;
-        default:
-            result = true;
-            break;
+    case 0:
+        break;
+    case 1:
+    case 2:
+    case 3:
+        pos.Append(data);
+        break;
+    case 4:
+    case 5:
+        size.Append(data);
+        break;
+    case 6:
+        size.Append(data);
+        BackBuffer::DrawRectangle(pos.X() * 2, pos.Y() * 2, size.Width() * 2, size.Height() * 2);
+        BackBuffer::DrawRectangle(pos.X() * 2 + 1, pos.Y() * 2 + 1, size.Width() * 2 - 2, size.Height() * 2 - 2);
+        pos.Reset();
+        size.Reset();
+        result = true;
+        break;
+    default:
+        result = true;
+        break;
     }
-    
+
     return result;
 }
 
@@ -281,35 +281,35 @@ static bool DrawVLine(uint8 data)
 {
     static Point2 pos1;
     static Point2 pos2;
-    
+
     bool result = false;
 
     switch (step)
     {
-        case 0:
-            break;
-        case 1:
-        case 2:
-        case 3:
-            pos1.Append(data);
-            break;
-        case 4:
-        case 5:
-            pos2.Append(data);
-            break;
-        case 6:
-            pos2.Append(data);
-            BackBuffer::DrawVLine(pos1.X() * 2, pos1.Y() * 2, pos2.Y() * 2);
-            BackBuffer::DrawVLine(pos1.X() * 2 + 1, pos1.Y() * 2, pos2.Y() * 2);
-            pos1.Reset();
-            pos2.Reset();
-            result = true;
-            break;
-        default:
-            result = true;
-            break;
+    case 0:
+        break;
+    case 1:
+    case 2:
+    case 3:
+        pos1.Append(data);
+        break;
+    case 4:
+    case 5:
+        pos2.Append(data);
+        break;
+    case 6:
+        pos2.Append(data);
+        BackBuffer::DrawVLine(pos1.X() * 2, pos1.Y() * 2, pos2.Y() * 2);
+        BackBuffer::DrawVLine(pos1.X() * 2 + 1, pos1.Y() * 2, pos2.Y() * 2);
+        pos1.Reset();
+        pos2.Reset();
+        result = true;
+        break;
+    default:
+        result = true;
+        break;
     }
-    
+
     return result;
 }
 
@@ -323,30 +323,30 @@ static bool DrawHLine(uint8 data)
 
     switch (step)
     {
-        case 0:
-            break;
-        case 1:
-        case 2:
-        case 3:
-            pos1.Append(data);
-            break;
-        case 4:
-        case 5:
-            pos2.Append(data);
-            break;
-        case 6:
-            pos2.Append(data);
-            BackBuffer::DrawHLine(pos1.Y() * 2, pos1.X() * 2, pos2.X() * 2);
-            BackBuffer::DrawHLine(pos1.Y() * 2 + 1, pos1.X() * 2, pos2.X() * 2);
-            pos1.Reset();
-            pos2.Reset();
-            result = true;
-            break;
-        default:
-            result = true;
-            break;
+    case 0:
+        break;
+    case 1:
+    case 2:
+    case 3:
+        pos1.Append(data);
+        break;
+    case 4:
+    case 5:
+        pos2.Append(data);
+        break;
+    case 6:
+        pos2.Append(data);
+        BackBuffer::DrawHLine(pos1.Y() * 2, pos1.X() * 2, pos2.X() * 2);
+        BackBuffer::DrawHLine(pos1.Y() * 2 + 1, pos1.X() * 2, pos2.X() * 2);
+        pos1.Reset();
+        pos2.Reset();
+        result = true;
+        break;
+    default:
+        result = true;
+        break;
     }
-    
+
     return result;
 }
 
@@ -462,28 +462,28 @@ static bool DrawLine(uint8 data)
 
     switch (step)
     {
-        case 0:
-            break;
-        case 1:
-        case 2:
-        case 3:
-            pos0.Append(data);
-            break;
-        case 4:
-        case 5:
-            pos1.Append(data);
-            break;
-        case 6:
-            pos1.Append(data);
-            BackBuffer::DrawLine(pos0.X() * 2, pos0.Y() * 2, pos1.X() * 2, pos1.Y() * 2);
-            BackBuffer::DrawLine(pos0.X() * 2 + 1, pos0.Y() * 2, pos1.X() * 2 + 1, pos1.Y() * 2);
-            pos0.Reset();
-            pos1.Reset();
-            result = true;
-            break;
-        default:
-            result = true;
-            break;
+    case 0:
+        break;
+    case 1:
+    case 2:
+    case 3:
+        pos0.Append(data);
+        break;
+    case 4:
+    case 5:
+        pos1.Append(data);
+        break;
+    case 6:
+        pos1.Append(data);
+        BackBuffer::DrawLine(pos0.X() * 2, pos0.Y() * 2, pos1.X() * 2, pos1.Y() * 2);
+        BackBuffer::DrawLine(pos0.X() * 2 + 1, pos0.Y() * 2, pos1.X() * 2 + 1, pos1.Y() * 2);
+        pos0.Reset();
+        pos1.Reset();
+        result = true;
+        break;
+    default:
+        result = true;
+        break;
     }
 
     return result;
@@ -493,28 +493,22 @@ static bool DrawLine(uint8 data)
 static bool SetPoint(uint8 data)
 {
     static Point2 pos;
-    
-    bool result = false;
 
-    switch (step)
+    if (step > 0)
     {
-        case 0:
-            break;
-        case 1:
-        case 2:
-            pos.Append(data);
-            break;
-        case 3:
+        pos.Append(data);
+
+        if (step > 2)
+        {
             BackBuffer::FillRegion(pos.X() * 2, pos.Y() * 2, 1, 1);
+
             pos.Reset();
-            result = true;
-            break;
-        default:
-            result = true;
-            break;
+
+            return true;
+        }
     }
 
-    return result;
+    return false;
 }
 
 
@@ -527,29 +521,29 @@ static bool DrawText(uint8 data)
 
     switch (step)
     {
-        case 0:
-            break;
-        case 1:
-        case 2:
-        case 3:
-            pos.Append(data);
-            break;
-        case 4:
-            numSymbols = data;
-            readingSymbols = 0;
-            buffer = new char[static_cast<uint>(numSymbols + 1)]; //-V2511
-            break;
-        default:
-            buffer[readingSymbols++] = static_cast<char>(data);
-            if (readingSymbols == numSymbols)
-            {
-                buffer[readingSymbols] = 0;
-                Text::Draw(pos.X() * 2, pos.Y() * 2, buffer, 2);
-                pos.Reset();
-                delete []buffer; //-V2511
-                return true;
-            }
-            break;
+    case 0:
+        break;
+    case 1:
+    case 2:
+    case 3:
+        pos.Append(data);
+        break;
+    case 4:
+        numSymbols = data;
+        readingSymbols = 0;
+        buffer = new char[static_cast<uint>(numSymbols + 1)]; //-V2511
+        break;
+    default:
+        buffer[readingSymbols++] = static_cast<char>(data);
+        if (readingSymbols == numSymbols)
+        {
+            buffer[readingSymbols] = 0;
+            Text::Draw(pos.X() * 2, pos.Y() * 2, buffer, 2);
+            pos.Reset();
+            delete[]buffer; //-V2511
+            return true;
+        }
+        break;
     }
     return false;
 }
@@ -559,25 +553,25 @@ static bool SetPalette(uint8 data)
 {
     static uint8 numColor;
     static uint valueColor;
-    
+
     bool result = false;
 
     switch (step)
     {
-        case 0:                                                 break;
-        case 1: numColor = data;                                break;
-        case 2: valueColor = data;                              break;
-        case 3: valueColor |= static_cast<uint>(data) << 8;     break;
-        case 4: valueColor |= static_cast<uint>(data) << 16;    break;
-        case 5: valueColor |= static_cast<uint>(data) << 24;
-            Color(numColor).SetValue(valueColor);
-            result = true;
-            break;
-        default:
-            result = true;
-            break;
+    case 0:                                                 break;
+    case 1: numColor = data;                                break;
+    case 2: valueColor = data;                              break;
+    case 3: valueColor |= static_cast<uint>(data) << 8;     break;
+    case 4: valueColor |= static_cast<uint>(data) << 16;    break;
+    case 5: valueColor |= static_cast<uint>(data) << 24;
+        Color(numColor).SetValue(valueColor);
+        result = true;
+        break;
+    default:
+        result = true;
+        break;
     }
-    
+
     return result;
 }
 

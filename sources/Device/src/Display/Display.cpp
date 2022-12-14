@@ -87,13 +87,6 @@ void Display::Update()
 
         funcAdditionDraw();
 
-        Color::WHITE.SetAsCurrent();
-
-        for (int i = 0; i < 480; i++)
-        {
-            Pixel().Draw(i, i);
-        }
-
         Painter::EndScene();
     }
 
