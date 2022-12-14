@@ -365,8 +365,6 @@ void DisplayOsci::PainterData::DrawModeLinesPeakDetOn(int center, const uint8 *d
 
 void DisplayOsci::PainterData::DrawModeLinesPeakDetOff(int center, const uint8 *data, float scale, int x)
 {
-    LOG_WRITE("");
-
     for (int i = 1; i < 281; i++)
     {
         int current = (int)(center - (data[i] - VALUE::AVE) * scale + 0.5F);

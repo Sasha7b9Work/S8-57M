@@ -15,6 +15,7 @@
 #include "Osci/Display/DisplayOsci.h"
 #include "Recorder/DisplayRecorder.h"
 #include "Utils/Values.h"
+#include "Display/Primitives.h"
 #include <cstring>
 
 
@@ -85,6 +86,13 @@ void Display::Update()
         Console::Draw();
 
         funcAdditionDraw();
+
+        Color::WHITE.SetAsCurrent();
+
+        for (int i = 0; i < 480; i++)
+        {
+            Pixel().Draw(i, i);
+        }
 
         Painter::EndScene();
     }
