@@ -87,7 +87,6 @@ void PDecoder::AddData(uint8 data)
         SetFont,
         SetPoint,
         DrawLine,
-        E,
         DisplayBrightness,
         FuncScreen,
         DrawVPointLine,

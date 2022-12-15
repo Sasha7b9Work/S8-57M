@@ -71,28 +71,27 @@ void DDecoder::RunStep(uint8 data)
     }
     commands[Command::Count] =
     {
-        E,              // None,
-        ButtonPress,    // ButtonPress,
-        E,              // Paint_BeginScene,
-        E,              // Paint_EndScene,
-        E,              // Paint_SetColor,
-        E,              // Paint_FillRegion,
-        E,              // Paint_DrawText,
-        E,              // Paint_SetPalette,
-        E,              // Paint_DrawRectangle,
-        E,              // Paint_DrawVLine,
-        E,              // Paint_DrawHLine,
-        E,              // Paint_SetFont,
-        E,              // Paint_SetPoint,
-        E,              // Paint_DrawLine,
-        E,              // Paint_TesterLines,
-        E,              // Paint_DrawBigText,
-        E,              // Screen
-        E,              // Paint_VPointLine
-        E,              // Paint_HPointLine
-        E,              // Paint_SetMonoSpaceFont
-        E,              // Paint_SetTextSpacing
-        AddToConsole,   // AddToConsole
+        E,
+        ButtonPress,
+        E,
+        E,
+        E,
+        E,
+        E,
+        E,
+        E,
+        E,
+        E,
+        E,
+        E,
+        E,
+        E,
+        E,
+        E,
+        E,
+        E,
+        E,
+        AddToConsole,
         E
     };
 
