@@ -107,12 +107,15 @@ void Device::Update()
     HAL_BUS::Panel::BeginScene();
 
     uint time_start_ms = TIME_MS;
-    uint time_start_ticks = TIME_TICKS;
 
     Display::Update();
 
-    LOG_WRITE("%d ms %d ms", (TIME_TICKS - time_start_ticks) / 60 / 1000, TIME_MS - time_start_ms);
-    LOG_WRITE("%d bytes, %d ms", HAL_BUS::Panel::TransBytes(), HAL_BUS::Panel::ElapsedUS() / 1000);
+    LOG_WRITE("%d ms", TIME_MS - time_start_ms);
+
+    int num_ms = (int)HAL_BUS::Panel::ElapsedUS() / 1000;
+    int num_bytes = HAL_BUS::Panel::TransBytes();
+
+    LOG_WRITE("%d bytes, %d ms, %d Kb/sec", num_bytes, num_ms, num_bytes * 1000 / (TIME_MS - time_start_ms) / 1024);
 
     FDrive::Update();
 
