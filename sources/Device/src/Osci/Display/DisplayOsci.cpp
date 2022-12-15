@@ -81,7 +81,7 @@ void DisplayOsci::Update(int field)
 
     TableMeasures::Draw();
 
-    Menu::Draw();
+    Menu::Draw(field);
 
     Warnings::Draw();
 }

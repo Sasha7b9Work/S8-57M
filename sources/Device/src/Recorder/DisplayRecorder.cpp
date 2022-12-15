@@ -103,7 +103,7 @@ void DisplayRecorder::Update(int field)
 
     Warnings::Draw();
 
-    Menu::Draw();
+    Menu::Draw(field);
 
     RecordIcon::Upate(5, 5);
 }

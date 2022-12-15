@@ -183,7 +183,7 @@ void FileManager::Draw()
         if (ModeRedrawFM::Is(ModeRedrawFM::Full))
         {
             Painter::BeginScene(field, Color::BACK);
-            Menu::Draw();
+            Menu::Draw(4);
             Rectangle(width, 239).Draw(0, 0, Color::FILL);
             Region(Grid::Width() - 2, Grid::Height() - 2).Fill(left, top, Color::BACK);
             FDrive::GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);

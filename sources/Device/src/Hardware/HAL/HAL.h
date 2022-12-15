@@ -90,6 +90,10 @@ namespace HAL_BUS
 
     namespace Panel
     {
+        void BeginScene();
+        int TransBytes();
+        uint ElapsedUS();
+
         void Send(uint8 byte);
         void Send(uint8 byte0, uint8 byte1);
         void Send(const uint8 *data, int size);

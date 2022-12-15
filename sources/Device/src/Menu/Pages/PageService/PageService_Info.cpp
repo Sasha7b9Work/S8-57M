@@ -33,7 +33,7 @@ static void Information_Draw()
 
         String("CRC32 %s", CRC32_DEVICE).Draw(x + 123, y);
 
-        Menu::Draw();
+        Menu::Draw(4);
         Painter::EndScene();
     }
 }

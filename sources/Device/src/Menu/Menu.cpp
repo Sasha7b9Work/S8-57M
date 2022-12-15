@@ -413,8 +413,13 @@ int Menu::Y0()
 }
 
 
-void Menu::Draw()
+void Menu::Draw(int field)
 {
+    if (field != 4)
+    {
+        return;
+    }
+
     DFont::Set(DTypeFont::_8);
 
     if (Menu::IsShown())

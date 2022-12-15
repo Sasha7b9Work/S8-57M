@@ -34,7 +34,7 @@ namespace Menu
 
     void Update();
 
-    void Draw();
+    void Draw(int field);
 
     // Установить время автоматического сокрытия меню в соответствии с установками.
     void SetAutoHide(bool active);

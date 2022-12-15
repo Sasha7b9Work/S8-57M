@@ -160,6 +160,32 @@ exit:
 }
 
 
+namespace HAL_BUS
+{
+    namespace Panel
+    {
+        static int num_bytes = 0;
+        static uint num_ticks = 0;
+
+        void BeginScene()
+        {
+            num_bytes = 0;
+            num_ticks = 0;
+        }
+
+        uint ElapsedUS()
+        {
+            return num_ticks / 60;
+        }
+
+        int TransBytes()
+        {
+            return num_bytes;
+        }
+    }
+}
+
+
 void HAL_BUS::Panel::Send(uint8 byte)
 {
     Send(&byte, 1);
@@ -175,6 +201,10 @@ void HAL_BUS::Panel::Send(uint8 byte0, uint8 byte1)
 
 void HAL_BUS::Panel::Send(const uint8 *data, int size)
 {
+    num_bytes += size;
+
+    uint start = TIME_TICKS;
+
     if (!(GPIOA->IDR & GPIO_PIN_7) && !(GPIOC->IDR & GPIO_PIN_4)) //-V2570
     {
         while (Receive()) {}
@@ -253,6 +283,8 @@ void HAL_BUS::Panel::Send(const uint8 *data, int size)
             funcAfterInteraction = nullptr;
         }
     }
+
+    num_ticks += TIME_TICKS - start;
 }
 
 
