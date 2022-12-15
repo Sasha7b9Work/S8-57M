@@ -3,4 +3,4 @@
 #include "Settings/Settings.h"
 
 
-Resolution::E Resolution::value = Resolution::Full;
+Resolution::E Resolution::value = Resolution::Half;

@@ -54,6 +54,8 @@ void Display::Init()
 
 void Display::Update()
 {
+    static uint time_prev_frame = 0;
+
     static uint prevTime = 0;
 
     if(Device::InModeOsci() && (TIME_MS - prevTime < ENumSignalsInSec::TimeBetweenFramesMS()))
@@ -88,7 +90,11 @@ void Display::Update()
         funcAdditionDraw();
 
         Painter::EndScene();
+
+//        LOG_WRITE("time frame %d ms", time_prev_frame);
     }
+
+    time_prev_frame = TIME_MS - prevTime;
 
     inStateDraw = false;
 
