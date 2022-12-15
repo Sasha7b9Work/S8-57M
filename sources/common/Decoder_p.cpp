@@ -7,6 +7,7 @@
 #include "Hardware/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
 #include "Display/BackBuffer.h"
+#include "Settings/Settings.h"
 
 
 namespace PDecoder
@@ -231,7 +232,14 @@ bool PDecoder::FillRegion(uint8 data)
         break;
     case 6:
         size.Append(data);
-        BackBuffer::FillRegion(pos.X() * 2, pos.Y() * 2, size.Width() * 2, size.Height() * 2);
+        if (Resolution::IsFull())
+        {
+            BackBuffer::FillRegion(pos.X(), pos.Y(), size.Width(), size.Height());
+        }
+        else
+        {
+            BackBuffer::FillRegion(pos.X() * 2, pos.Y() * 2, size.Width() * 2, size.Height() * 2);
+        }
         pos.Reset();
         size.Reset();
         result = true;
@@ -267,8 +275,15 @@ bool PDecoder::DrawRectangle(uint8 data)
         break;
     case 6:
         size.Append(data);
-        BackBuffer::DrawRectangle(pos.X() * 2, pos.Y() * 2, size.Width() * 2, size.Height() * 2);
-        BackBuffer::DrawRectangle(pos.X() * 2 + 1, pos.Y() * 2 + 1, size.Width() * 2 - 2, size.Height() * 2 - 2);
+        if (Resolution::IsFull())
+        {
+            BackBuffer::DrawRectangle(pos.X(), pos.Y(), size.Width(), size.Height());
+        }
+        else
+        {
+            BackBuffer::DrawRectangle(pos.X() * 2, pos.Y() * 2, size.Width() * 2, size.Height() * 2);
+            BackBuffer::DrawRectangle(pos.X() * 2 + 1, pos.Y() * 2 + 1, size.Width() * 2 - 2, size.Height() * 2 - 2);
+        }
         pos.Reset();
         size.Reset();
         result = true;
@@ -299,8 +314,15 @@ bool PDecoder::DrawVLine(uint8 data)
 
             if (step > 5)
             {
-                BackBuffer::DrawVLine(pos1.X() * 2, pos1.Y() * 2, pos2.Y() * 2);
-                BackBuffer::DrawVLine(pos1.X() * 2 + 1, pos1.Y() * 2, pos2.Y() * 2);
+                if (Resolution::IsFull())
+                {
+                    BackBuffer::DrawVLine(pos1.X(), pos1.Y(), pos2.Y());
+                }
+                else
+                {
+                    BackBuffer::DrawVLine(pos1.X() * 2, pos1.Y() * 2, pos2.Y() * 2);
+                    BackBuffer::DrawVLine(pos1.X() * 2 + 1, pos1.Y() * 2, pos2.Y() * 2);
+                }
                 pos1.Reset();
                 pos2.Reset();
 
@@ -330,8 +352,15 @@ bool PDecoder::DrawHLine(uint8 data)
 
             if (step > 5)
             {
-                BackBuffer::DrawHLine(pos1.Y() * 2, pos1.X() * 2, pos2.X() * 2);
-                BackBuffer::DrawHLine(pos1.Y() * 2 + 1, pos1.X() * 2, pos2.X() * 2);
+                if (Resolution::IsFull())
+                {
+                    BackBuffer::DrawHLine(pos1.Y(), pos1.X(), pos2.X());
+                }
+                else
+                {
+                    BackBuffer::DrawHLine(pos1.Y() * 2, pos1.X() * 2, pos2.X() * 2);
+                    BackBuffer::DrawHLine(pos1.Y() * 2 + 1, pos1.X() * 2, pos2.X() * 2);
+                }
                 pos1.Reset();
                 pos2.Reset();
 

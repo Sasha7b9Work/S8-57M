@@ -3,10 +3,4 @@
 #include "Settings/Settings.h"
 
 
-static Settings default_set =
-{
-    1   // mode_draw
-};
-
-
-Settings set = default_set;
+Resolution::E Resolution::value = Resolution::Full;
