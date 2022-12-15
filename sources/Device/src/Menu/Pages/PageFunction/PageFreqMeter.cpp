@@ -121,7 +121,7 @@ void PageFreqMeter::Init()
         items[2] = const_cast<Choice *>(&cTimeF);
         items[3] = &Item::empty;
     }
-    else if (S_FREQ_MODE_MEASURE_IS_PERIOD) //-V2516
+    else if (S_FREQ_MODE_MEASURE_IS_PERIOD)
     {
         items[2] = const_cast<Choice *>(&cFreqClc);
         items[3] = const_cast<Choice *>(&cNumPeriods);

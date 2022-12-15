@@ -140,7 +140,7 @@ void DisplayOsci::DrawingValueParameter::Enable(DrawingValueParameter::E v)
         //            return;
         //        }
     }
-    else if (!CursorsMeasurements::NecessaryDraw()) //-V2516
+    else if (!CursorsMeasurements::NecessaryDraw())
     {
         return;
     }
@@ -233,7 +233,7 @@ int16 DisplayOsci::ShiftInMemory::Default(TPos::E tPos)
     {
         return static_cast<int16>(ENumPointsFPGA::PointsInChannel() / 2 - Grid::Width() / 2);
     }
-    else if (tPos == TPos::Right) //-V2516
+    else if (tPos == TPos::Right)
     {
         return static_cast<int16>(ENumPointsFPGA::PointsInChannel() - Grid::Width() - 2);
     }

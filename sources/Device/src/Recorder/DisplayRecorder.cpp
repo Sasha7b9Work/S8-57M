@@ -460,7 +460,7 @@ int *DisplayRecorder::CurrentPosCursor()
     int *result = &nullPos;
 
     if (S_REC_CURSOR_IS_1)      { result = &posCursor[0]; }
-    else if (S_REC_CURSOR_IS_2) { result = &posCursor[1]; } //-V2516
+    else if (S_REC_CURSOR_IS_2) { result = &posCursor[1]; }
 
     return result;
 }

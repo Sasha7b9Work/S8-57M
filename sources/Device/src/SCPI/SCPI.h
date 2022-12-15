@@ -101,29 +101,29 @@ namespace SCPI
 
     bool Test();
 
-    void ProcessHint(String *message, const char *const *names); //-V2504
+    void ProcessHint(String *message, const char *const *names);
 };
 
 
 namespace SCPI
 {
-    extern const StructSCPI channels[];     //-V2504
+    extern const StructSCPI channels[];    
 
-    extern const StructSCPI display[];      //-V2504
+    extern const StructSCPI display[];     
 
-    extern const StructSCPI fft[];          //-V2504
+    extern const StructSCPI fft[];         
 
-    extern const StructSCPI freqmeter[];    //-V2504
+    extern const StructSCPI freqmeter[];   
 
-    extern const StructSCPI head[];         //-V2504
+    extern const StructSCPI head[];        
 
-    extern const StructSCPI key[];          //-V2504
+    extern const StructSCPI key[];         
 
-    extern const StructSCPI measures[];     //-V2504
+    extern const StructSCPI measures[];    
 
-    extern const StructSCPI tBase[];        //-V2504
+    extern const StructSCPI tBase[];       
 
-    extern const StructSCPI trigger[];      //-V2504
+    extern const StructSCPI trigger[];     
 
     namespace Sender
     {

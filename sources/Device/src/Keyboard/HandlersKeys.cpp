@@ -224,7 +224,7 @@ void Handlers::OnArrow()
             openedItem->HandlerKey(event);
         }
     }
-    else if (openedItem == PageFFT::Cursors::self) //-V2516
+    else if (openedItem == PageFFT::Cursors::self)
     {
         openedItem->HandlerKey(event);
     }
@@ -269,7 +269,7 @@ void Handlers::OnEnter()
             Menu::CloseOpenedItem();
         }
     }
-    else if (event.IsLong()) //-V2516
+    else if (event.IsLong())
     {
         return Menu::IsShown() ? Menu::Hide() : Menu::Show();
     }
@@ -290,7 +290,7 @@ void Handlers::OnChannelA()
 
         ShowHidePage(PageChannelA::self);
     }
-    else if (event.IsLong()) //-V2516
+    else if (event.IsLong())
     {
         RShift::Set(ChanA, 0);
     }
@@ -305,7 +305,7 @@ void Handlers::OnChannelB()
 
         ShowHidePage(PageChannelB::self);
     }
-    else if (event.IsLong()) //-V2516
+    else if (event.IsLong())
     {
         RShift::Set(ChanB, 0);
     }
@@ -334,7 +334,7 @@ void Handlers::OnMemory()
     {
         FDrive::SaveScreen();
     }
-    else if(Device::InModeOsci()) //-V2516
+    else if(Device::InModeOsci())
     {
         CommonButtonPage(PageMemory::self);
 
@@ -359,7 +359,7 @@ void Handlers::OnTime()
     {
         ShowHidePage(PageTime::self);
     }
-    else if (event.IsLong()) //-V2516
+    else if (event.IsLong())
     {
         if (Osci::IsRunning())
         {
@@ -394,7 +394,7 @@ void Handlers::OnTrig()
 
         ShowHidePage(PageTrig::self);
     }
-    else if (event.IsLong()) //-V2516
+    else if (event.IsLong())
     {
         TrigLevel::Set(S_TRIG_SOURCE, 0);
     }

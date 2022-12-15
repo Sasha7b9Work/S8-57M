@@ -357,7 +357,7 @@ static void ProcessHelp(const StructSCPI *strct, String msg)
             message.Append(strct->key);
             ProcessHelp(strct->strct, message);
         }
-        else if(strct->IsLeaf()) //-V2516
+        else if(strct->IsLeaf())
         {
             String message(msg); //-V820
             message.Append(strct->key);

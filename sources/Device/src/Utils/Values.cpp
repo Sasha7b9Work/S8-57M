@@ -178,7 +178,7 @@ char *Frequency::ToStringAccuracy(char bufferOut[20], int numDigits) const
         suffix = "ћ√ц";
         freq /= 1e6F;
     }
-    else if (freq >= 1e3F) //-V2516
+    else if (freq >= 1e3F)
     {
         suffix = "к√ц";
         freq /= 1e3F;
@@ -255,7 +255,7 @@ char* Time::ToStringAccuracy(bool alwaysSign, char buffer[20], int numDigits) co
         suffix = "мкс";
         time *= 1e6F;
     }
-    else if (fabsTime + 0.5e-3F < 1.0F) //-V2516
+    else if (fabsTime + 0.5e-3F < 1.0F)
     {
         suffix = "мс";
         time *= 1e3F;
@@ -419,7 +419,7 @@ static char *FloatToString(float value, bool alwaysSign, int numDigits, char buf
     {
         *pBuffer++ = '-';
     }
-    else if (alwaysSign) //-V2516
+    else if (alwaysSign)
     {
         *pBuffer++ = '+';
     }

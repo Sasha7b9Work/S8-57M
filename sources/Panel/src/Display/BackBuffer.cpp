@@ -179,7 +179,7 @@ void BackBuffer::DrawLine(int x1, int y1, int x2, int y2)
         DrawVLine(x1, y1, y2);
         return;
     }
-    else if (y1 == y2) //-V2516
+    else if (y1 == y2)
     {
         DrawHLine(y1, x1, x2);
         return;

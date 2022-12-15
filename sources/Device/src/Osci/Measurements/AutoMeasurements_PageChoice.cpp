@@ -28,7 +28,7 @@ void PageChoiceMeasures::OnKeyEvent(const KeyEvent &event)
     int8 delta = 1;
     if (event.IsArrowLeft())      { delta = -1; }
     else if (event.IsArrowUp())   { delta = -5; }
-    else if (event.IsArrowDown()) { delta = 5;  } //-V2516
+    else if (event.IsArrowDown()) { delta = 5;  }
 
     if (isActive)
     {
@@ -43,7 +43,7 @@ void PageChoiceMeasures::OnKeyEvent(const KeyEvent &event)
             {
                 posCursor = TypeMeasure::Count - 1;
             }
-            else if (posCursor >= TypeMeasure::Count) //-V2516
+            else if (posCursor >= TypeMeasure::Count)
             {
                 posCursor = 0;
             }
@@ -58,7 +58,7 @@ void PageChoiceMeasures::OnKeyEvent(const KeyEvent &event)
                 else if(prevPos == 1) { posCursor = 20; }
                 else                  { posCursor = TypeMeasure::Count - 1; }
             }
-            else if (posCursor >= TypeMeasure::Count) //-V2516
+            else if (posCursor >= TypeMeasure::Count)
             {
                 if (prevPos == 20)     { posCursor = 1; }
                 else if(prevPos == 21) { posCursor = 2; }

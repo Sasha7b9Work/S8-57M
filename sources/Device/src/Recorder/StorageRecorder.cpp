@@ -78,7 +78,7 @@ void PointFloat::Add(float value)
     {
         min = value;
     }
-    else if(value > max) //-V2516
+    else if(value > max)
     {
         max = value;
     }

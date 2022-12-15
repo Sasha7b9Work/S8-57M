@@ -227,7 +227,7 @@ static bool HandlerKey_Set(const KeyEvent &event)
             OnPress_SetUp();
             return true;
         }
-        else if (event.IsArrowDown()) //-V2516
+        else if (event.IsArrowDown())
         {
             OnPress_SetDown();
             return true;

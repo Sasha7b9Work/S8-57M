@@ -47,7 +47,7 @@ void Math::Limitation(T *value, T min, T max)
     {
         *value = min;
     }
-    else if (*value > max) //-V2516
+    else if (*value > max)
     {
         *value = max;
     }

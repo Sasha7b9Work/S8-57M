@@ -11,10 +11,10 @@
 // Рекурсивная функция обработки массива структур StructSCPI.
 // В случае успешного выполнения возвращает адрес символа, расположенного за последним обработанным символом.
 // В случае неуспешного завершения - возвращает nullptr. Код ошибки находится в *error
-static const char *Process(const char *buffer, const StructSCPI structs[]); //-V2504
+static const char *Process(const char *buffer, const StructSCPI structs[]);
 
                                                                             // Рекурсивная функция тестирования
-static bool ProcessTest(const StructSCPI strct[]); //-V2504
+static bool ProcessTest(const StructSCPI strct[]);
 
                                                    // Обработка узла дерева node
 static const char *ProcessNode(const char *begin, const StructSCPI *node);
@@ -79,7 +79,7 @@ void SCPI::Update()
 }
 
 
-static const char *Process(const char *buffer, const StructSCPI strct[]) //-V2504
+static const char *Process(const char *buffer, const StructSCPI strct[])
 {
     while (!strct->IsEmpty())
     {
@@ -91,7 +91,7 @@ static const char *Process(const char *buffer, const StructSCPI strct[]) //-V250
             {
                 return ProcessNode(end, strct);
             }
-            else if (strct->IsLeaf()) //-V2516
+            else if (strct->IsLeaf())
             {
                 return ProcessLeaf(end, strct);
             }
@@ -261,7 +261,7 @@ bool SCPI::Test()
 }
 
 
-static bool ProcessTest(const StructSCPI strct[]) //-V2504
+static bool ProcessTest(const StructSCPI strct[])
 {
     while(!strct->IsEmpty())
     {
@@ -272,7 +272,7 @@ static bool ProcessTest(const StructSCPI strct[]) //-V2504
                 return false;
             }
         }
-        else if(strct->IsLeaf()) //-V2516
+        else if(strct->IsLeaf())
         {
             if(!strct->test())
             {
@@ -327,7 +327,7 @@ void SCPI::SendMeasure(const String &str)
         else if (symbol == 'А')    { symbol = 'A'; }
         else if (symbol == 'М')    { symbol = 'M'; }
         else if (symbol == 'к')    { symbol = 'k'; }
-        else if ((symbol == 'Г') && (str[i + 1] == 'ц')) //-V2516
+        else if ((symbol == 'Г') && (str[i + 1] == 'ц'))
         {
             message.Append('H');  message.Append('z');  i++; continue;
         }

@@ -116,7 +116,7 @@ static float ConvertFrequencyToAbs(const char *strFreq)
     {
         result *= 1e3F;
     }
-    else if(std::strcmp(&strFreq[std::strlen(strFreq) - 3], "м√ц") == 0) //-V2516
+    else if(std::strcmp(&strFreq[std::strlen(strFreq) - 3], "м√ц") == 0)
     {
         result *= 1e-3F;
     }
@@ -194,7 +194,7 @@ static float ConvertPeriodToAbs(const char *strPeriod)
     {
         result *= 1e-6F;
     }
-    else if(std::strcmp(&strPeriod[std::strlen(strPeriod) - 2], "мс") == 0) //-V2516
+    else if(std::strcmp(&strPeriod[std::strlen(strPeriod) - 2], "мс") == 0)
     {
         result *= 1e-3F;
     }
@@ -259,7 +259,7 @@ pString DisplayFreqMeter::FreqSetToString(const BitSet32 *fr)
     {
         return EMPTY_STRING;
     }
-    else if(fr->word == MAX_UINT) //-V2516
+    else if(fr->word == MAX_UINT)
     {
         return OVERFLOW_STRING;
     }
@@ -586,7 +586,7 @@ void ProgressBarFreqMeter::Draw(int x, int y)
 
         Region(width, 3).Fill(x, y, Color::FILL);
     }
-    else if(S_FREQ_MODE_MEASURE_IS_PERIOD && (FreqMeter::timeStartMeasurePeriod != 0)) //-V2516
+    else if(S_FREQ_MODE_MEASURE_IS_PERIOD && (FreqMeter::timeStartMeasurePeriod != 0))
     {
 
     }

@@ -82,7 +82,7 @@ static bool HandlerKey_FFT_Cursors(const KeyEvent &event)
             return true;
         }
     }
-    else if(event.key == Key::F1 && event.IsRelease()) //-V2516
+    else if(event.key == Key::F1 && event.IsRelease())
     {
         S_FFT_ACTIVE_CURSOR = static_cast<uint8>((S_FFT_ACTIVE_CURSOR + 1) % 2);
         return true;

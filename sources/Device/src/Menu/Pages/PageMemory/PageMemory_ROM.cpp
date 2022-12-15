@@ -229,7 +229,7 @@ namespace PageMemory
 
                 result = true;
             }
-            else if (event.IsIncrease()) //-V2516
+            else if (event.IsIncrease())
             {
                 Math::CircleIncrease<int8>((int8 *)&NUM_ROM_SIGNAL, 0, ROM::Data::MAX_NUM_SAVED_WAVES - 1);
 

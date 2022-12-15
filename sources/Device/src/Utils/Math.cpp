@@ -284,7 +284,7 @@ void Math::CalculateMathFunction(float *dataAandResult, const float *dataB, int 
             dataAandResult++;
         }
     }
-    else if (S_MATH_FUNCTION_IS_MUL) //-V547 //-V2516
+    else if (S_MATH_FUNCTION_IS_MUL) //-V547
     {
         int delta = dataB - dataAandResult;
         float *end = &dataAandResult[numPoints];
@@ -529,7 +529,7 @@ T Math::Add(T value, T delta, T min, T max)
     {
         result = min;
     }
-    else if (result > max) //-V2516
+    else if (result > max)
     {
         result = max;
     }
@@ -555,7 +555,7 @@ void Math::Limitation(T *value, T min, T max)
     {
         *value = min;
     }
-    else if (*value > max) //-V2516
+    else if (*value > max)
     {
         *value = max;
     }
@@ -630,7 +630,7 @@ void Min2::Add(uint16 value)
         moreMin = lessMin;
         lessMin = value;
     }
-    else if(value < moreMin) //-V2516
+    else if(value < moreMin)
     {
         moreMin = value;
     }
@@ -644,7 +644,7 @@ void Max2::Add(uint16 value)
         lessMax = moreMax;
         moreMax = value;
     }
-    else if(value > lessMax) //-V2516
+    else if(value > lessMax)
     {
         lessMax = value;
     }

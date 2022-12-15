@@ -158,7 +158,7 @@ void FDrive::AttemptUpdate()
             Upgrade();
         }
     }
-    else if(state == State::WrongFlash)         // Диск не удалось примонтировать //-V774 //-V2516
+    else if(state == State::WrongFlash)         // Диск не удалось примонтировать //-V774
     {
         Timer::PauseOnTime(5000);
     }

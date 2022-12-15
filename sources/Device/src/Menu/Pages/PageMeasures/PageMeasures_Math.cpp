@@ -208,7 +208,7 @@ static bool HandlerKey_Function(const KeyEvent &event) // -V2506
     {
         delta = 1;
     }
-    else if(event.IsArrowDown() || event.IsArrowLeft()) //-V2516
+    else if(event.IsArrowDown() || event.IsArrowLeft())
     {
         delta = -1;
     }
@@ -222,7 +222,7 @@ static bool HandlerKey_Function(const KeyEvent &event) // -V2506
                 Beeper::RegulatorShiftRotate();
             }
         }
-        else if (S_MATH_MODE_REG_SET_IS_RANGE) //-V2516
+        else if (S_MATH_MODE_REG_SET_IS_RANGE)
         {
             static int sum = 0;
             sum -= delta;
@@ -239,7 +239,7 @@ static bool HandlerKey_Function(const KeyEvent &event) // -V2506
                 }
                 sum = 0;
             }
-            else if(sum < -2) //-V2516
+            else if(sum < -2)
             {
                 if(S_RANGE_MATH > 0)
                 {

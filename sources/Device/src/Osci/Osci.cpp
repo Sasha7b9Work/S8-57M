@@ -338,7 +338,7 @@ void Osci::InputController::Write(HPort::E portCS, uint16 pinCS, uint16 value)
             HAL_PIO::Reset(PIN_SPI3_SCK);
         }
     }
-    else if(portCS == PORT_SPI3_CS2) //-V2516
+    else if(portCS == PORT_SPI3_CS2)
     {
         for(int i = 0; i < 16; ++i)
         {
@@ -469,7 +469,7 @@ ShiftPoint Gates::CalculateShiftPoint()
     {
         result.shift = 0;
     }
-    else if(result.shift >= TBase::DeltaPoint()) //-V2516
+    else if(result.shift >= TBase::DeltaPoint())
     {
         result.shift = TBase::DeltaPoint() - 1;
     }

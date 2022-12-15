@@ -170,7 +170,7 @@ void HAL_BUS::Update()
             //pinReady.SetActive();
             GPIOB->BSRR = (uint)GPIO_PIN_12 << 16U;
         }
-        else if (in_RD.IsActive() && queueData.Size())   // Запись байта в устройсто //-V2570 //-V2516
+        else if (in_RD.IsActive() && queueData.Size())   // Запись байта в устройсто //-V2570
         {
             CONFIG_TO_WRITE;
 

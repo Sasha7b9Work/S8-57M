@@ -82,7 +82,7 @@ static bool HandlerKey_PageShow(const KeyEvent &event)
             DisplayRecorder::MoveCursorLeft();
             return true;
         }
-        else if (event.IsArrowRight()) //-V2516
+        else if (event.IsArrowRight())
         {
             DisplayRecorder::MoveCursorRight();
             return true;

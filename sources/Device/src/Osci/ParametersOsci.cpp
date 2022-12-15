@@ -615,7 +615,7 @@ int16 RShift::ToRel(float rShiftAbs, Range::E range)
     {
         retValue = MIN;
     }
-    else if (retValue > MAX) //-V2516
+    else if (retValue > MAX)
     {
         retValue = MAX;
     }
@@ -733,7 +733,7 @@ void VALUE::PointsFromVoltage(const float *voltage, int numPoints, Range::E rang
             points[i] = 0;
             continue;
         }
-        else if (value > 255) //-V2516
+        else if (value > 255)
         {
             points[i] = 255;
             continue;

@@ -355,7 +355,7 @@ bool PageCursorsMeasures::Set::HandlerKey(const KeyEvent &event)
         
         return true;
     }
-    else if(S_CURS_ACTIVE_IS_T && (event.IsArrowLeft() || event.IsArrowRight())) //-V2516
+    else if(S_CURS_ACTIVE_IS_T && (event.IsArrowLeft() || event.IsArrowRight()))
     {
         if (S_CURS_MOVEMENT_IS_PERCENTS)
         {
