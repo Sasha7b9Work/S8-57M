@@ -86,12 +86,10 @@ void BackBuffer::FillRegion(int x, int y, int w, int h)
 
 void BackBuffer::DrawVLine(int x, int y0, int y1)
 {
-    // \todo Без проверок работает ощутимо быстрее
-
-//    if (y0 > y1)
-//    {
-//        Math::Swap(&y0, &y1);
-//    }
+    if (y0 > y1)
+    {
+        Math::Swap(&y0, &y1);
+    }
 
     int y = y0;
 
