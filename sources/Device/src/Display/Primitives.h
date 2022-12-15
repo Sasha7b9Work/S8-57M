@@ -109,6 +109,11 @@ private:
 class Text
 {
 public:
+
+    static void BeginScene();
+    static int TransBytes();
+    static uint ElapsedTime();
+
     Text(const char *text);
     Text(const String &string);
 

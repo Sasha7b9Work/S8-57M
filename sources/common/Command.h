@@ -38,7 +38,7 @@ struct Command
             Paint_EndScene,         // 03 |                                                                                                    |    1    |
             Paint_SetColor,         // 04 |   Color     |                                                                                      |    2    |
             Paint_FillRegion,       // 05 |              coord Point2              |             size Point2              |                    |    7    |
-            Paint_DrawText,         // 06 |              coord Point2              | num symbols  |                                            |    5    |
+            Paint_DrawText,         // 06 |              coord Point2              | num symbols  |                                            |  5 + X  |
             Paint_SetPalette,       // 07 | numColor    | value[0:7] | value[8:15] | value[16:23] | value[24:31] |                             |    6    |
             Paint_DrawRectangle,    // 08 |              coord Point2              |             size Point2              |                    |    7    |
             Paint_DrawVLine,        // 09 |              x0 y0 Pont2               |              y1 Point2               |                    |    7    |

@@ -16,6 +16,7 @@
 #include "Recorder/Recorder.h"
 #include "SCPI/SCPI.h"
 #include "Settings/SettingsNRST.h"
+#include "Display/Primitives.h"
 #include <cstdlib>
 
 
@@ -102,7 +103,13 @@ void Device::Update()
 
     Osci::Update();
 
+    Text::BeginScene();
+
+    uint time_start = TIME_MS;
+
     Display::Update();
+
+    LOG_WRITE("%d ms", TIME_MS - time_start);
 
     FDrive::Update();
 
