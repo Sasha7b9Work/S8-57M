@@ -7,16 +7,16 @@
 #include "Utils/Math.h"
 
 
-void Painter::DrawVPointLine(int x, int y, int delta, int count)
-{
-    for (int i = 0; i < count; i++)
-    {
-        SetPoint(x, y);
-        y += delta;
-    }
-}
+//void Painter::DrawVPointLine(int x, int y, int delta, int count)
+//{
+//    for (int i = 0; i < count; i++)
+//    {
+//        SetPoint(x, y);
+//        y += delta;
+//    }
+//}
 
-
+/*
 void Painter::DrawHPointLine(int x, int y, int delta, int count)
 {
     for (int i = 0; i < count; i++)
@@ -75,3 +75,4 @@ void Painter::DrawDashedVLine(int x, int y0, int y1, int deltaFill, int deltaEmt
         y += (deltaFill + deltaEmtpy);
     }
 }
+*/

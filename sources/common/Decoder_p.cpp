@@ -65,6 +65,8 @@ namespace PDecoder
     // Устанавливает расстояние между символами при выводе текста
     static bool SetTextSpacing(uint8);
 
+    static bool DrawSignal(uint8);
+
     // Эту функцию надо вызывать после выполнения последнего шага
     static void FinishCommand();
 }
@@ -100,7 +102,8 @@ void PDecoder::AddData(uint8 data)
         SetMinWidthFont,
         SetTextSpacing,
         E,
-        E
+        E,
+        DrawSignal
     };
 
     if (step == 0)
@@ -555,6 +558,45 @@ bool PDecoder::SetPoint(uint8 data)
             pos.Reset();
 
             return true;
+        }
+    }
+
+    return false;
+}
+
+
+bool PDecoder::DrawSignal(uint8 data)
+{
+    static uint8 mode;
+    static Point2 left_top;
+    static Point2 left_bottom;
+    static int num_points;
+
+    if (step > 0)
+    {
+        if (step == 1)
+        {
+            mode = data;
+        }
+        else if (step < 5)
+        {
+            left_top.Append(data);
+        }
+        else if (step < 8)
+        {
+            left_bottom.Append(data);
+        }
+        else if (step == 8)
+        {
+            num_points = data;
+        }
+        else if (step == 9)
+        {
+            num_points += data << 8;
+        }
+        else
+        {
+
         }
     }
 

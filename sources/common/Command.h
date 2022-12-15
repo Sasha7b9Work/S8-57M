@@ -31,30 +31,33 @@ private:
 struct Command
 {
     enum E
-    {       //  номер байте            0  |     1       |     2      |      3      |     4        |      5       |   6    | Размер |
-            None,                   //                                                                                             |
-            ButtonPress,            // 01 |   Item      | TypePress  |                                                    |   3    |
-            Paint_BeginScene,       // 02 | num_field   |                                                                 |   2    |
-            Paint_EndScene,         // 03 |                                                                               |   1    |
-            Paint_SetColor,         // 04 |   Color     |                                                                 |   2    |
-            Paint_FillRegion,       // 05 |              coord Point2              |             size Point2              |   7    |
-            Paint_DrawText,         // 06 |              coord Point2              | num symbols  |                       |   5    |
-            Paint_SetPalette,       // 07 | numColor    | value[0:7] | value[8:15] | value[16:23] | value[24:31] |        |   6    |
-            Paint_DrawRectangle,    // 08 |              coord Point2              |             size Point2              |   7    |
-            Paint_DrawVLine,        // 09 |              x0 y0 Pont2               |              y1 Point2               |   7    |
-            Paint_DrawHLine,        // 10 |              x0 y0 Pont2               |              x1 Point2               |   6    |
-            Paint_SetFont,          // 11 | typeFont    |                                                                 |   2    |
-            Paint_SetPoint,         // 12 |              coord Point2              |                                      |   4    |
-            Paint_DrawLine,         // 13 |              coord0 Point2             |             coord1 Point2            |   7    |
-            Display_Brightness,     // 15 | яркость                                                                       |   2    |
-            Screen,                 // 16 |  numRow     |                                                                 |   2    |
-            Paint_VPointLine,       // 17 |              coord Point2              |   delta      |     count    |        |   6    |
-            Paint_HPointLine,       // 18 |              coord Point2              |   delta      |     count    |        |   6    |
-            Paint_SetMinWidthFont,  // 19 |   width     |                                                                 |   2    |
-            Paint_SetTextSpacing,   // 20 |   0 | 1     |                                                                 |   2    |
-            AddToConsole,           // 21 | num symb    |  ..... symbols ....                                             |   X    |
+    {       //  номер байте            0  |     1       |     2      |      3      |     4        |      5       |   6    |   7   |  8   |  9  | Размер  |
+            None,                   //                                                                                                         |         |
+            ButtonPress,            // 01 |   Item      | TypePress  |                                                                         |    3    |
+            Paint_BeginScene,       // 02 | num_field   |                                                                                      |    2    |
+            Paint_EndScene,         // 03 |                                                                                                    |    1    |
+            Paint_SetColor,         // 04 |   Color     |                                                                                      |    2    |
+            Paint_FillRegion,       // 05 |              coord Point2              |             size Point2              |                    |    7    |
+            Paint_DrawText,         // 06 |              coord Point2              | num symbols  |                                            |    5    |
+            Paint_SetPalette,       // 07 | numColor    | value[0:7] | value[8:15] | value[16:23] | value[24:31] |                             |    6    |
+            Paint_DrawRectangle,    // 08 |              coord Point2              |             size Point2              |                    |    7    |
+            Paint_DrawVLine,        // 09 |              x0 y0 Pont2               |              y1 Point2               |                    |    7    |
+            Paint_DrawHLine,        // 10 |              x0 y0 Pont2               |              x1 Point2               |                    |    7    |
+            Paint_SetFont,          // 11 | typeFont    |                                                                                      |    2    |
+            Paint_SetPoint,         // 12 |              coord Point2              |                                                           |    4    |
+            Paint_DrawLine,         // 13 |              coord0 Point2             |             coord1 Point2            |                    |    7    |
+            Display_Brightness,     // 15 | яркость     |                                                                                      |    2    |
+            Screen,                 // 16 |  numRow     |                                                                                      |    2    |
+            Paint_VPointLine,       // 17 |              coord Point2              |   delta      |     count    |                             |    6    |
+            Paint_HPointLine,       // 18 |              coord Point2              |   delta      |     count    |                             |    6    |
+            Paint_SetMinWidthFont,  // 19 |   width     |                                                                                      |    2    |
+            Paint_SetTextSpacing,   // 20 |   0 | 1     |                                                                                      |    2    |
+            AddToConsole,           // 21 | num symb    |  ..... symbols ....                                                                  |  2 + X  |
             // Установка режима рисования : 0 - 640х480, 1 - 320х240
-            SetResolution,          // 22 |   mode      |                                                                 |   2    |
+            Paint_SetResolution,    // 22 |    mode     |                                                                                      |    2    |
+            // mode/bits : 0 - 0/1 - точки/линии
+            //             1 - 0/1 - пиквоый детектор откл/вкл
+            Paint_DrawSignal,       // 23 |    mode     |          coord_left_top Point2          |     coord_left_bottom Point2  | num_points | 10 +  X |
             Count
     };
 };

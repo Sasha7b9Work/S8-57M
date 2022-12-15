@@ -91,7 +91,7 @@ void Display::Update()
 
         Painter::EndScene();
 
-//        LOG_WRITE("time frame %d ms", time_prev_frame);
+        LOG_WRITE("%d ms", time_prev_frame);
     }
 
     time_prev_frame = TIME_MS - prevTime;

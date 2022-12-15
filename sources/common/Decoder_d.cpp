@@ -92,6 +92,7 @@ void DDecoder::RunStep(uint8 data)
         E,
         E,
         AddToConsole,
+        E,
         E
     };
 

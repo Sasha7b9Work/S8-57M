@@ -16,7 +16,7 @@ struct Painter
 
 private:
 
-    static void DrawVPointLine(int x, int y, int delta, int count);
+//    static void DrawVPointLine(int x, int y, int delta, int count);
 
     static void DrawHPointLine(int x, int y, int delta, int count);
 
