@@ -1401,11 +1401,6 @@
           <GroupName>Display/Text</GroupName>
           <Files>
             <File>
-              <FileName>PainterText.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Text\PainterText.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Text.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Display\Text\Text.cpp</FilePath>
@@ -2868,11 +2863,6 @@
         <Group>
           <GroupName>Display/Text</GroupName>
           <Files>
-            <File>
-              <FileName>PainterText.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Text\PainterText.cpp</FilePath>
-            </File>
             <File>
               <FileName>Text.cpp</FileName>
               <FileType>8</FileType>
