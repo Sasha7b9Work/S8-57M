@@ -572,6 +572,10 @@ bool PDecoder::DrawSignal(uint8 data)
     static Point2 left_bottom;
     static int num_points;
 
+    static int x0;
+    static int y_top;
+    static int y_bottom;
+
     if (step > 0)
     {
         if (step == 1)
@@ -581,10 +585,21 @@ bool PDecoder::DrawSignal(uint8 data)
         else if (step < 5)
         {
             left_top.Append(data);
+
+            if (step == 4)
+            {
+                x0 = left_top.X();
+                y_top = left_top.Y();
+            }
         }
         else if (step < 8)
         {
             left_bottom.Append(data);
+
+            if (step == 7)
+            {
+                y_bottom = left_bottom.Y();
+            }
         }
         else if (step == 8)
         {
@@ -596,7 +611,33 @@ bool PDecoder::DrawSignal(uint8 data)
         }
         else
         {
+            int current_number = step - 10;     // Номер текущей точки
 
+            static uint8 prev = 0;              // Значение предыдущей точки
+
+            if (current_number == 0)
+            {
+                prev = data;
+            }
+            else
+            {
+                int x1 = x0 + current_number - 1;
+                int y1 = prev + y_top;
+                int x2 = x1 + 1;
+                int y2 = data + y_top;
+
+                BackBuffer::DrawLine(x1, y1, x2, y2);
+
+                prev = data;
+            }
+
+            if (current_number == num_points - 1)
+            {
+                left_top.Reset();
+                left_bottom.Reset();
+
+                return true;
+            }
         }
     }
 
