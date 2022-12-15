@@ -92,7 +92,8 @@ void DDecoder::RunStep(uint8 data)
         E,              // Paint_HPointLine
         E,              // Paint_SetMonoSpaceFont
         E,              // Paint_SetTextSpacing
-        AddToConsole    // AddToConsole
+        AddToConsole,   // AddToConsole
+        E
     };
 
     if (step == 0)
