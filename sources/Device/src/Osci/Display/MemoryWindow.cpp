@@ -24,6 +24,11 @@ void DisplayOsci::MemoryWindow::Draw()
         return;
     }
 
+    if (Menu::IsShown())
+    {
+        return;
+    }
+
     // \todo Отрисовка занимает целых 30 мс
 
     if (CursorsMeasurements::NecessaryDraw())
