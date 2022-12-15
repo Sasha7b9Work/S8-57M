@@ -590,7 +590,7 @@ bool PDecoder::DrawText(uint8 data)
             buffer[readingSymbols] = 0;
             if (Resolution::IsFull())
             {
-                Text::Draw(pos.X(), pos.Y(), buffer);
+                Text::Draw(pos.X(), pos.Y(), buffer, 1);
             }
             else
             {
