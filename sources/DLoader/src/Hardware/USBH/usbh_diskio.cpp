@@ -118,7 +118,7 @@ DRESULT USBH_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count)
 
     USBH_HandleTypeDef *handleUSBH = reinterpret_cast<USBH_HandleTypeDef *>(FDrive::GetHandleUSBH());
 
-    if(USBH_MSC_Write(handleUSBH, lun, sector, const_cast<BYTE *>(buff), count) == USBH_OK) //-V2567
+    if(USBH_MSC_Write(handleUSBH, lun, sector, const_cast<BYTE *>(buff), count) == USBH_OK)
     {
         res = RES_OK;
     }

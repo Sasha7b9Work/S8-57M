@@ -12,7 +12,7 @@ const DataSettings *PacketROM::UnPack() const
         return nullptr;
     }
 
-    return const_cast<DataSettings *>(reinterpret_cast<const DataSettings *>(reinterpret_cast<const uint8 *>(this) + sizeof(PacketROM))); //-V2567
+    return const_cast<DataSettings *>(reinterpret_cast<const DataSettings *>(reinterpret_cast<const uint8 *>(this) + sizeof(PacketROM)));
 }
 
 
@@ -172,13 +172,13 @@ void Sector::TranslateAddressToROM(const DataSettings *ds, const PacketROM *pack
 
     if (ds->en_a)
     {
-        const_cast<DataSettings *>(ds)->ch_a = addressData; //-V2567
+        const_cast<DataSettings *>(ds)->ch_a = addressData;
         addressData += ds->BytesInChannel();
     }
 
     if (ds->en_b)
     {
-        const_cast<DataSettings *>(ds)->ch_b = addressData; //-V2567
+        const_cast<DataSettings *>(ds)->ch_b = addressData;
     }
 }
 
@@ -219,7 +219,7 @@ const PacketROM *Sector::WriteData(uint numInROM, const DataSettings *ds) const
 
     WriteToROM(&recordAddress, &record, sizeof(record));
 
-    const_cast<DataSettings *>(ds)->numInROM = numInROM; //-V2567
+    const_cast<DataSettings *>(ds)->numInROM = numInROM;
 
     uint8 *addressDataA = ds->ch_a;   // По этим адресам хранятся данные, подлежащие записи. Сохраним их перед тем, как в ds будут записаны новые - по которым данные будут храниться в ROM.
     uint8 *addressDataB = ds->ch_b;   // По этим адресам хранятся данные, подлежащие записи. Сохраним их перед тем, как в ds будут записаны новые - по которым данные будут храниться в ROM.

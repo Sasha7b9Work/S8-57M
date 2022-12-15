@@ -49,7 +49,7 @@ static bool IsActive_Accum()
     return !OSCI_IN_MODE_RANDOMIZER;
 }
 
-DEF_PAGE_2( pAccum,                                                                                                                           //--- ДИСПЛЕЙ - НАКОПЛЕНИЕ --- //-V2567
+DEF_PAGE_2( pAccum,                                                                                                                           //--- ДИСПЛЕЙ - НАКОПЛЕНИЕ ---
     "НАКОПЛ",
     "Настройки режима отображения последних сигналов на экране",
     &cNumber,

@@ -52,7 +52,7 @@ DEF_GOVERNOR( gTimeDisableDisplay,
 )
 
 
-DEF_PAGE_8_VAR( pService,                                                                                                                                                    //--- СЕРВИС --- //-V2567
+DEF_PAGE_8_VAR( pService,                                                                                                                                                    //--- СЕРВИС ---
     "СЕРВИС",
     "Дополнительные настройки, калибровка, поиск сигнала, математические функции",
     &bResetSettings,
@@ -112,19 +112,19 @@ void PageService::DecodePassword(const KeyEvent &event)
 
 void PageService::EnablePageDebug()
 {
-    Page *page = const_cast<Page *>(&pService); //-V2567
+    Page *page = const_cast<Page *>(&pService);
 
-    Item **items = const_cast<Item **>(page->OwnData()->items); //-V2567
+    Item **items = const_cast<Item **>(page->OwnData()->items);
 
-    items[7] = const_cast<Page *>(PageDebug::self); //-V2567
+    items[7] = const_cast<Page *>(PageDebug::self);
 }
 
 
 void PageService::DisablePageDebug()
 {
-    Page *page = const_cast<Page *>(&pService); //-V2567
+    Page *page = const_cast<Page *>(&pService);
 
-    Item **items = const_cast<Item **>(page->OwnData()->items); //-V2567
+    Item **items = const_cast<Item **>(page->OwnData()->items);
 
     items[7] = &Item::empty;
 }

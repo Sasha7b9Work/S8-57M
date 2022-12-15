@@ -336,7 +336,7 @@ static bool FindNextTransfer(const char *letters, int8 *lettersInSyllable)
 #define VOWEL       0   // Гласная
 #define CONSONANT   1   // Согласная
 
-    *lettersInSyllable = static_cast<int8>(std::strlen(letters)); //-V1029
+    *lettersInSyllable = static_cast<int8>(std::strlen(letters));
 
     if (std::strlen(letters) <= 3) //-V1051
     {

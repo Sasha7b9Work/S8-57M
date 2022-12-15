@@ -28,7 +28,7 @@ static void DrawPageContent()
 
     while(currentPage->pages[numPage])
     {
-        Page *page = reinterpret_cast<Page *>(currentPage->pages[numPage]); //-V2567
+        Page *page = reinterpret_cast<Page *>(currentPage->pages[numPage]);
         const char *title = page->Title().c_str();
         if(currentParagraph == numPage)
         {

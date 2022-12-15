@@ -59,7 +59,7 @@ DEF_GOVERNOR_COLOR( gcGrid,                                                     
 )
 
 
-DEF_PAGE_4( pColors,                                                                                                                                    //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА --- //-V2567
+DEF_PAGE_4( pColors,                                                                                                                                    //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА ---
     "ЦВЕТА",
     "Выбор цветов дисплея",
     &bReset,

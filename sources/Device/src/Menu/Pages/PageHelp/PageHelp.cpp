@@ -65,7 +65,7 @@ DEF_GRAPH_BUTTON( bHelpNext,                                                    
     &PageHelp::self, Item::Active, HelpContent::NextParagraph, Help_Draw_Next
 )
 
-DEF_PAGE_4( pHelp,                                                                                                                                                           //--- ѕќћќў№ --- //-V2567
+DEF_PAGE_4( pHelp,                                                                                                                                                           //--- ѕќћќў№ ---
     "ѕќћќў№",
     "ќткрыть разделы помощи",
     &bEnter,

@@ -94,7 +94,7 @@ bool Item::IsCurrentItem() const
 
 void Item::Open(bool open) const
 {
-    Page *parent = const_cast<Page *>(Keeper()); //-V2567
+    Page *parent = const_cast<Page *>(Keeper());
     if (parent)
     {
         parent->SetPosActItem(open ? (parent->PosCurrentItem() | 0x80) : (parent->PosCurrentItem() & 0x7f));
@@ -130,7 +130,7 @@ bool Item::IsOpened() const
 
 void Item::SetCurrent(bool active) const
 {
-    Page *page = const_cast<Page *>(Keeper()); //-V2567
+    Page *page = const_cast<Page *>(Keeper());
 
     if (page)
     {
@@ -314,7 +314,7 @@ bool Page::IsSubPage(const Page *parent)
             break;
         }
 
-        keep = (static_cast<Item *>(const_cast<Page *>(keep)))->Keeper(); //-V2567
+        keep = (static_cast<Item *>(const_cast<Page *>(keep)))->Keeper();
     }
 
     return result;
@@ -387,7 +387,7 @@ Item *Page::GetItem(int numItem) const
 
     if (numItem < NumItems())
     {
-        result = const_cast<Item *>(OwnData()->items[numItem]); //-V2567
+        result = const_cast<Item *>(OwnData()->items[numItem]);
     }
 
     return result;
@@ -782,7 +782,7 @@ void Choice::StartChange(int delta) const
         }
         else
         {
-            tsChoice.address = const_cast<void *>(static_cast<const void *>(this)); //-V2567
+            tsChoice.address = const_cast<void *>(static_cast<const void *>(this));
             tsChoice.timeStart = TIME_MS;
             tsChoice.dir = delta > 0 ? DIRECTION::INCREASE : DIRECTION::DECREASE;
         }
@@ -857,7 +857,7 @@ const char *Choice::NameNextSubItem() const
 
     if (OwnData()->cell != 0)
     {
-        int index = *(static_cast<int8 *>(OwnData()->cell)) + 1; //-V2567
+        int index = *(static_cast<int8 *>(OwnData()->cell)) + 1;
 
         if (index == NumChoices())
         {
@@ -877,7 +877,7 @@ const char *Choice::NamePrevSubItem() const
 
     if (OwnData()->cell != 0)
     {
-        int index = *(static_cast<int8 *>(OwnData()->cell)) - 1; //-V2567
+        int index = *(static_cast<int8 *>(OwnData()->cell)) - 1;
 
         if (index < 0)
         {

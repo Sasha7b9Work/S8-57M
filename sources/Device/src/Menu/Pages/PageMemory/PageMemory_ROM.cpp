@@ -223,7 +223,7 @@ namespace PageMemory
 
             if (event.IsDecrease())
             {
-                Math::CircleDecrease<int8>((int8 *)&NUM_ROM_SIGNAL, 0, ROM::Data::MAX_NUM_SAVED_WAVES - 1); //-V2567
+                Math::CircleDecrease<int8>((int8 *)&NUM_ROM_SIGNAL, 0, ROM::Data::MAX_NUM_SAVED_WAVES - 1);
 
                 Color::ChangeFlash(true);
 
@@ -231,7 +231,7 @@ namespace PageMemory
             }
             else if (event.IsIncrease()) //-V2516
             {
-                Math::CircleIncrease<int8>((int8 *)&NUM_ROM_SIGNAL, 0, ROM::Data::MAX_NUM_SAVED_WAVES - 1); //-V2567
+                Math::CircleIncrease<int8>((int8 *)&NUM_ROM_SIGNAL, 0, ROM::Data::MAX_NUM_SAVED_WAVES - 1);
 
                 Color::ChangeFlash(true);
 
@@ -249,7 +249,7 @@ namespace PageMemory
 }
 
 
-DEF_PAGE_5                                                                                                                                                        //--- œ¿Ãﬂ“‹ - ¬Õ”“– «” --- //-V2567
+DEF_PAGE_5                                                                                                                                                        //--- œ¿Ãﬂ“‹ - ¬Õ”“– «” ---
 (
     pROM,
     "¬Õ”“– «”",

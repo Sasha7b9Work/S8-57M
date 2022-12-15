@@ -81,7 +81,7 @@ DEF_CHOICE_4(cAverage,
 )
 
 
-DEF_PAGE_3( pRand,                                                                                                                                               //--- Œ“À¿ƒ ¿ - –¿Õƒ-“Œ– --- //-V2567
+DEF_PAGE_3( pRand,                                                                                                                                               //--- Œ“À¿ƒ ¿ - –¿Õƒ-“Œ– ---
     "–¿Õƒ-“Œ–",
     "",
     &gGateMin,

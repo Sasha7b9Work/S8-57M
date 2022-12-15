@@ -65,7 +65,7 @@ static void OnOpenClose_Page(bool enter)
     }
 }
 
-DEF_PAGE_1 ( pInfo, //-V2567
+DEF_PAGE_1 ( pInfo,
     "ИНФОРМАЦИЯ",
     "Информация об изделии",
     &bClose,

@@ -95,7 +95,7 @@ DEF_CHOICE_2( cInverseA,                                                        
 )
 
 
-DEF_PAGE_6( pChanA,                                                                                                                                                         //--- КАНАЛ 1 --- //-V2567
+DEF_PAGE_6( pChanA,                                                                                                                                                         //--- КАНАЛ 1 ---
     "КАНАЛ 1",
     "Содержит настройки канала 1.",
     &cInputA,
@@ -178,7 +178,7 @@ DEF_CHOICE_2( cInverseB,                                                        
 )
 
 
-DEF_PAGE_6( pChanB,                                                                                                                                                         //--- КАНАЛ 2 --- //-V2567
+DEF_PAGE_6( pChanB,                                                                                                                                                         //--- КАНАЛ 2 ---
     "КАНАЛ 2",
     "Содержит настройки канала 2.",
     &cInputB,

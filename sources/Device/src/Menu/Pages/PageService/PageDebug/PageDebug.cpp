@@ -237,7 +237,7 @@ static bool HandlerKey_SerialNumber(const KeyEvent &)
     return false;
 }
 
-DEF_PAGE_2( pSerialNumber,                                                                                                                                            //--- ОТЛАДКА - С/Н --- //-V2567
+DEF_PAGE_2( pSerialNumber,                                                                                                                                            //--- ОТЛАДКА - С/Н ---
     "С/Н",
     "Запись серийного номера в OTP-память. ВНИМАНИЕ!!! ОТP-память - память с однократной записью.",
     &bSerialNumber_Change,
@@ -249,7 +249,7 @@ DEF_PAGE_2( pSerialNumber,                                                      
 const Page * const PageDebug::PageSerialNumber::self = static_cast<const Page *>(&pSerialNumber);
 
 
-DEF_PAGE_8( pDebug,                                                                                                                                                         //--- ОТЛАДКА --- //-V2567
+DEF_PAGE_8( pDebug,                                                                                                                                                         //--- ОТЛАДКА ---
     "ОТЛАДКА",
     "",
     PageDebug::PageConsole::self,

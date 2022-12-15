@@ -50,7 +50,7 @@ DEF_GRAPH_BUTTON( bLeft,
 )
 
 
-DEF_PAGE_3(pRecorderCursors, //-V2567
+DEF_PAGE_3(pRecorderCursors,
     "КУРСОРЫ",
     "Работа курсорами",
     &cChoice,

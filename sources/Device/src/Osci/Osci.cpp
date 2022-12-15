@@ -629,7 +629,7 @@ void Osci::SendDataToSCPI(Chan::E ch)
 
     char buffer[100];
 
-    uint8 *data = const_cast<DataSettings *>(DS)->Data(ch); //-V2567
+    uint8 *data = const_cast<DataSettings *>(DS)->Data(ch);
 
     SCPI::SendData(ch == Chan::A ? "1: " : "2: ");
 

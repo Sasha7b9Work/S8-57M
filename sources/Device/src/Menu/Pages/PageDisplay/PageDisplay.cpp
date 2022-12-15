@@ -108,7 +108,7 @@ DEF_CHOICE_2( cViewMode,                                                        
 )
 
 
-DEF_PAGE_7( pDisplay,                                                                                                                                                       //--- ДИСПЛЕЙ --- //-V2567
+DEF_PAGE_7( pDisplay,                                                                                                                                                       //--- ДИСПЛЕЙ ---
     "ДИСПЛЕЙ",
     "Содержит настройки отображения дисплея.",
     &cViewMode,

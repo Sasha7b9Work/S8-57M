@@ -135,7 +135,7 @@ void PageMemory::OnOpenClose_Drive_Manager(bool)
     }
 }
 
-DEF_PAGE_5(pManager,                                                                                                                                   //--- ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ --- //-V2567
+DEF_PAGE_5(pManager,                                                                                                                                   //--- ПАМЯТЬ - ВНЕШН ЗУ - КАТАЛОГ ---
     "КАТАЛОГ",
     "Открывает доступ к файловой системе подключенного накопителя",
     &bManager_Tab,
@@ -390,7 +390,7 @@ DEF_PAGE_SB( pMask,                                                             
 */
 
 
-DEF_PAGE_3( pMask,                                                                                                                                        //--- Память - ВНЕШН ЗУ - МАСКА --- //-V2567
+DEF_PAGE_3( pMask,                                                                                                                                        //--- Память - ВНЕШН ЗУ - МАСКА ---
     "МАСКА",
     "Режим ввода маски для автоматического именования файлов",
     &bMask_Delete,
@@ -403,7 +403,7 @@ DEF_PAGE_3( pMask,                                                              
 const Page * const PageDrive::Mask::self = static_cast<const Page *>(&pMask);
 
 
-DEF_PAGE_4( pMemory,                                                                                                                                                         //--- ПЯМЯТЬ --- //-V2567
+DEF_PAGE_4( pMemory,                                                                                                                                                         //--- ПЯМЯТЬ ---
     "ПАМЯТЬ",
     "Работа с внешней и внутренней памятью.",
     &cPoints,
@@ -600,7 +600,7 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
     Beeper::RegulatorSwitchRotate();
 }
 
-DEF_PAGE_4( pSetName,                                                                                                             //--- Страница вызывается для ввода имени файла --- //-V2567
+DEF_PAGE_4( pSetName,                                                                                                             //--- Страница вызывается для ввода имени файла ---
     "",
     "",
     &bSetName_Delete,

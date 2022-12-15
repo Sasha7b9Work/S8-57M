@@ -151,7 +151,7 @@ void Recorder::OnPressStart()
         return;
     }
 
-    if (Menu::OpenedItem() == const_cast<Page *>(PageRecorder::self)) //-V2567
+    if (Menu::OpenedItem() == const_cast<Page *>(PageRecorder::self))
     {
         if (mode == Mode::Recording)
         {

@@ -216,7 +216,7 @@ void DrawGridSpectrum()
 			HLine(256).Draw(Grid::Left(), y, Color::GRID);
 
             Color::FILL.SetAsCurrent();
-            String(const_cast<char *>(strs[i])).Draw(3, y - 4); //-V2567
+            String(const_cast<char *>(strs[i])).Draw(3, y - 4);
         }
 
         Color::FILL.SetAsCurrent();
@@ -232,7 +232,7 @@ void DrawGridSpectrum()
 
 			HLine(256).Draw(Grid::Left(), y, Color::GRID);
 
-            String(const_cast<char *>(strs[i])).Draw(5, y - 4, Color::FILL); //-V2567
+            String(const_cast<char *>(strs[i])).Draw(5, y - 4, Color::FILL);
         }
     }
 

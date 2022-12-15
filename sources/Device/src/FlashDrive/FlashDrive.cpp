@@ -395,7 +395,7 @@ bool FDrive::OpenNewFileForWrite(const char *fullPathToFile, StructForWrite *str
     {
         return false;
     }
-    std::strcpy(structForWrite->name, const_cast<char *>(fullPathToFile)); //-V2567
+    std::strcpy(structForWrite->name, const_cast<char *>(fullPathToFile));
     structForWrite->sizeData = 0;
     return true;
 }

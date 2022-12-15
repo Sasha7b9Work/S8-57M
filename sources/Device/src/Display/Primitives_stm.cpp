@@ -101,11 +101,11 @@ int Text::DrawSmall(int x, int y, Color color)
     buffer.data[1] = 0;
     buffer.data[2] = 0;
     buffer.data[3] = 0;
-    buffer.data[4] = static_cast<uint8>(std::strlen(text)); //-V1029
+    buffer.data[4] = static_cast<uint8>(std::strlen(text));
 
     Point2(x, y).Write(&buffer.data[1]);
 
-    std::memcpy(&buffer.data[5], static_cast<void *>(const_cast<char *>(text)), std::strlen(text)); //-V2567
+    std::memcpy(&buffer.data[5], static_cast<void *>(const_cast<char *>(text)), std::strlen(text));
 
     HAL_BUS::Panel::Send(buffer.data, sizeBuffer);
 

@@ -126,7 +126,7 @@ static void OnOpenClose_FFT(bool)
     }
 }
 
-DEF_PAGE_6( pFFT,                                                                                                                                                   //--- СЕРВИС - СПЕКТР --- //-V2567
+DEF_PAGE_6( pFFT,                                                                                                                                                   //--- СЕРВИС - СПЕКТР ---
     "СПЕКТР",
     "Отображение спектра входного сигнала",
     &cView,

@@ -231,7 +231,7 @@ bool FDrive::FileExist(const char *fileName)
 
 static bool GetNameFile(const char *fullPath, int numFile, char *nameFileOut, StructForReadDir *s)
 {
-    memcpy(reinterpret_cast<uint8 *>(s->nameDir), const_cast<char *>(fullPath), strlen(fullPath)); //-V2567
+    memcpy(reinterpret_cast<uint8 *>(s->nameDir), const_cast<char *>(fullPath), strlen(fullPath));
     s->nameDir[strlen(fullPath)] = '\0';
 
     DIR *pDir = &s->dir;

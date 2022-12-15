@@ -247,7 +247,7 @@ static bool HandlerKey_Set(const KeyEvent &event)
     return true;                        // А все остальные кнопки якобы обработаны - чтобы не происходило неправильных переключений на другие страницы
 }
 
-DEF_PAGE_5( pSet, //-V2567
+DEF_PAGE_5( pSet,
     "ВРЕМЯ",
     "Установка текущего времени",
     &bSet_Left,

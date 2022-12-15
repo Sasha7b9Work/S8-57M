@@ -46,7 +46,7 @@ DEF_CHOICE_6( cAutoHide,                                                        
 )
 
 
-DEF_PAGE_3( pSettings,                                                                                                                                          //--- ДИСПЛЕЙ - НАСТРОЙКИ --- //-V2567
+DEF_PAGE_3( pSettings,                                                                                                                                          //--- ДИСПЛЕЙ - НАСТРОЙКИ ---
     "НАСТРОЙКИ",
     "Дополнительные настройки дисплея",
     PageDisplay::Settings::Colors::self,

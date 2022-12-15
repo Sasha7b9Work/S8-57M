@@ -7,7 +7,7 @@
 #include "Menu/Pages/Include/PageRecorder.h"
 
 
-DEF_PAGE_3( pFunction,                                                                                                                                                      //--- ‘”Õ ÷»ﬂ --- //-V2567
+DEF_PAGE_3( pFunction,                                                                                                                                                      //--- ‘”Õ ÷»ﬂ ---
     "‘”Õ ÷»ﬂ",
     "¬˚·Ó ÙÛÌÍˆËË",
     PageFreqMeter::self,
