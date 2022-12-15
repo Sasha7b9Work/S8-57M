@@ -19,9 +19,9 @@ String::String(const String &rhs) : buffer(nullptr)
 {
     Set(TypeConversionString::None, "");
 
-    if (Allocate(std::strlen(rhs.c_str()) + 1)) //-V2513
+    if (Allocate(std::strlen(rhs.c_str()) + 1))
     {
-        std::strcpy(buffer, rhs.c_str()); //-V2513
+        std::strcpy(buffer, rhs.c_str());
     }
 }
 
@@ -57,11 +57,11 @@ String::String(const char *format, ...) : buffer(nullptr)
 
     if (numSymbols < 0 || numSymbols > SIZE)
     {
-        std::strcpy(buffer, "Буфер слишком мал"); //-V2513
+        std::strcpy(buffer, "Буфер слишком мал");
     }
-    else if (Allocate(std::strlen(buf) + 1)) //-V2513
+    else if (Allocate(std::strlen(buf) + 1))
     {
-        std::strcpy(buffer, buf); //-V2513
+        std::strcpy(buffer, buf);
     }
     else
     {
@@ -86,11 +86,11 @@ void String::Set(TypeConversionString::E /*conv*/, const char *format, ...)
 
         if(numSymbols < 0 || numSymbols > SIZE)
         {
-            std::strcpy(buffer, "Буфер слишком мал"); //-V2513
+            std::strcpy(buffer, "Буфер слишком мал");
         }
-        else if(Allocate(std::strlen(buf) + 1)) //-V2513
+        else if(Allocate(std::strlen(buf) + 1))
         {
-            std::strcpy(buffer, buf); //-V2513
+            std::strcpy(buffer, buf);
         }
         else
         {
@@ -111,10 +111,10 @@ void String::Append(const char *str)
 
     Free();
 
-    Allocate(old.Size() + std::strlen(str) + 1); //-V2513
+    Allocate(old.Size() + std::strlen(str) + 1);
 
-    std::strcpy(buffer, old.c_str()); //-V2513
-    std::strcat(buffer, str); //-V2513
+    std::strcpy(buffer, old.c_str());
+    std::strcat(buffer, str);
 }
 
 
@@ -133,7 +133,7 @@ void String::Append(const char *str, uint numSymbols)
 
     Allocate(size);
 
-    std::strcpy(buffer, old.c_str()); //-V2513
+    std::strcpy(buffer, old.c_str());
     std::memcpy(buffer + old.Size(), str, numSymbols);
     buffer[size - 1] = '\0';
 }
@@ -191,7 +191,7 @@ int String::Draw(int x, int y, Color color) const
 
 void String::RemoveFromBegin(uint numSymbols)
 {
-    if (std::strlen(buffer) == numSymbols) //-V2513
+    if (std::strlen(buffer) == numSymbols)
     {
         Free();
     }
@@ -203,7 +203,7 @@ void String::RemoveFromBegin(uint numSymbols)
 
         Allocate(old.Size() - numSymbols + 1);
 
-        std::strcpy(buffer, old.c_str() + numSymbols); //-V2513
+        std::strcpy(buffer, old.c_str() + numSymbols);
     }
 }
 
@@ -224,7 +224,7 @@ uint String::Size() const
         return 0;
     }
 
-    return std::strlen(buffer); //-V2513
+    return std::strlen(buffer);
 }
 
 

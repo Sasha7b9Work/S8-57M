@@ -303,11 +303,11 @@ static void DrawFrequency(int x, int y)
         float freq = FreqMeter::GetFrequency();
         if (freq == -1.0F) //-V550 //-V2550
         {
-            std::strcat(mesFreq, "******"); //-V2513
+            std::strcat(mesFreq, "******");
         }
         else
         {
-            std::strcat(mesFreq, Frequency(freq).ToString().c_str()); //-V2513
+            std::strcat(mesFreq, Frequency(freq).ToString().c_str());
         }
 
         String(mesFreq).Draw(x, y, Color::FILL); //-V2007

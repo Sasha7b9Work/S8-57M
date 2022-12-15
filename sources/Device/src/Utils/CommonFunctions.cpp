@@ -25,7 +25,7 @@ void CF::LogBufferU8_HEX(const uint8 *buffer, int num)
     for (int i = 0; i < num; ++i)
     {
         std::sprintf(value, "%02x ", buffer[i]);
-        std::strcat(message, value); //-V2513
+        std::strcat(message, value);
     }
 
     message[num * 3 - 1] = 0;
@@ -53,7 +53,7 @@ void CF::LogBufferU8_DEC(const uint8 *buffer, int num)
     for (int i = 0; i < num; ++i)
     {
         std::sprintf(value, "%03d ", buffer[i]);
-        std::strcat(message, value); //-V2513
+        std::strcat(message, value);
     }
 
     message[num * 3 - 1] = 0;

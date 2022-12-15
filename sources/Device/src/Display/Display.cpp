@@ -200,7 +200,7 @@ void Display::Message::Func()
         {
             for (uint i = 0; i < time; i++)
             {
-                std::strcat(buf, "."); //-V2513
+                std::strcat(buf, ".");
             }
         }
 

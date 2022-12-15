@@ -103,14 +103,14 @@ Message::Message(uint size, uint8 v0, uint16 v1, uint8 v2, uint16 v3, uint8 v4) 
 Message::Message(uint8 v0, uint16 v1, uint8 v2, char *string) : allocated(0), used(0), data(0)
 {
     //         v0  | v1  | v2  | размер_строки | string
-    uint size = 1 +   2 +   1 +   1 +             std::strlen(string); //-V2513
+    uint size = 1 +   2 +   1 +   1 +             std::strlen(string);
 
     if (Allocate(size))
     {
         PutByte(v0);
         PutHalfWord(v1);
         PutByte(v2);
-        PutByte(static_cast<uint8>(std::strlen(string))); //-V2513
+        PutByte(static_cast<uint8>(std::strlen(string)));
 
         uint8 *pointer = Data(5);
         while (*string)

@@ -49,7 +49,7 @@ void HAL_BUS::Init()
     is.Pin = GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13;
     HAL_GPIO_Init(GPIOD, &is);
 
-    static const GPIO_InitTypeDef isGPIO =
+    GPIO_InitTypeDef isGPIO =
     {   //    NOE          NWE          NE1
         GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_7,
         GPIO_MODE_AF_PP,
@@ -84,7 +84,7 @@ void HAL_BUS::Init()
         }
     };
 
-    static const FMC_NORSRAM_TimingTypeDef sramTiming =
+    FMC_NORSRAM_TimingTypeDef sramTiming =
     {
         0,                 // FSMC_AddressSetupTime
         0,                 // FSMC_AddressHoldTime

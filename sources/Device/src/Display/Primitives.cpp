@@ -230,7 +230,7 @@ int Text::DrawDigitsMonospace(int x, int y, int width, Color color)
 {
     color.SetAsCurrent();
 
-    uint size = std::strlen(text); //-V2513
+    uint size = std::strlen(text);
 
     for (uint i = 0; i < size; i++)
     {
@@ -376,9 +376,9 @@ static bool FindNextTransfer(const char *letters, int8 *lettersInSyllable)
 #define VOWEL       0   // Гласная
 #define CONSONANT   1   // Согласная
 
-    *lettersInSyllable = static_cast<int8>(std::strlen(letters)); //-V1029 //-V2513
+    *lettersInSyllable = static_cast<int8>(std::strlen(letters)); //-V1029
 
-    if (std::strlen(letters) <= 3) //-V2513 //-V1051
+    if (std::strlen(letters) <= 3) //-V1051
     {
         return false;
     }
@@ -394,7 +394,7 @@ static bool FindNextTransfer(const char *letters, int8 *lettersInSyllable)
 
     bool consonant[20];
 
-    uint size = std::strlen(letters); //-V2513
+    uint size = std::strlen(letters);
 
     for (uint i = 0; i < size; i++)
     {
@@ -413,7 +413,7 @@ static bool FindNextTransfer(const char *letters, int8 *lettersInSyllable)
         return true;
     }
 
-    if (std::strlen(letters) < 5) //-V2513
+    if (std::strlen(letters) < 5)
     {
         return false;
     }
@@ -425,7 +425,7 @@ static bool FindNextTransfer(const char *letters, int8 *lettersInSyllable)
         return true;
     }
 
-    if (std::strlen(letters) < 6) //-V2513
+    if (std::strlen(letters) < 6)
     {
         return false;
     }
@@ -458,12 +458,12 @@ static int8 *BreakWord(char *word)
     }
     lengthSyllables[num + 1] = 0;
 
-    if (std::strcmp(word, "структуру") == 0) //-V2513
+    if (std::strcmp(word, "структуру") == 0)
     {
         int8 lengths[] = { 5, 2, 2, 0 };
         std::memcpy(lengthSyllables, lengths, 4);
     }
-    else if (std::strcmp(word, "соответствующей") == 0) //-V2513 //-V2516
+    else if (std::strcmp(word, "соответствующей") == 0) //-V2516
     {
         int8 lenghts[] = { 4, 3, 4, 5, 3, 0 };
         std::memcpy(lengthSyllables, lenghts, 6);
@@ -513,7 +513,7 @@ static int DrawPartWord(char *word, int x, int y, int xRight, bool draw)
             {
                 String(subString).Draw(x, y);
             }
-            return static_cast<int>(std::strlen(subString) - 1); //-V2513
+            return static_cast<int>(std::strlen(subString) - 1);
         }
     }
 
@@ -531,7 +531,7 @@ int Text::DrawInRectWithTransfers(int eX, int eY, int eWidth, int eHeight, Color
     int bottom = eY + eHeight;
 
     char buffer[20];
-    int numSymbols = static_cast<int>(std::strlen(text)); //-V2513
+    int numSymbols = static_cast<int>(std::strlen(text));
 
     int y = top - 1;
     int x = left;
@@ -588,7 +588,7 @@ int Text::DrawInRectWithTransfers(int eX, int eY, int eWidth, int eHeight, Color
 static bool GetHeightTextWithTransfers(int left, int top, int right, const char *text, int *height)
 {
     char buffer[20];
-    int numSymbols = static_cast<int>(std::strlen(text)); //-V2513
+    int numSymbols = static_cast<int>(std::strlen(text));
 
     int y = top - 1;
     int x = left;

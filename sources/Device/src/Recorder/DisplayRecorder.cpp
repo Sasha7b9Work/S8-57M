@@ -149,7 +149,7 @@ char *DisplayRecorder::DeltaTime(char buffer[30])
 {
     float delta = std::fabsf(static_cast<float>(posCursor[0] - posCursor[1])) * Recorder::ScaleX::TimeForPointMS() / 1000.0F;
 
-    std::strcpy(buffer, Time(delta).ToString(false).c_str()); //-V2513
+    std::strcpy(buffer, Time(delta).ToString(false).c_str());
 
     return buffer;
 }
@@ -167,11 +167,11 @@ char *DisplayRecorder::TimeCursor(int numCur, char buffer[30])
 
         time.AddTime((startPoint + posCursor[numCur]) * displayed->timeForPointMS);
 
-        std::strcpy(buffer, time.ToString().c_str()); //-V2513
+        std::strcpy(buffer, time.ToString().c_str());
     }
     else
     {
-        std::strcpy(buffer, "..."); //-V2513
+        std::strcpy(buffer, "...");
     }
 
     return buffer;
@@ -182,17 +182,17 @@ void DisplayRecorder::VoltagePoint(Chan::E ch, uint8 value, char buffer[30])
 {
     if (value > VALUE::MAX)
     {
-        std::strcat(buffer, "\x9d"); //-V2513
+        std::strcat(buffer, "\x9d");
     }
     else if (value < VALUE::MIN)
     {
-        std::strcat(buffer, "\xb9"); //-V2513
+        std::strcat(buffer, "\xb9");
     }
     else
     {
         float voltage = VALUE::ToVoltage(value, S_RANGE(ch), 0);
 
-        std::strcat(buffer, Voltage(voltage).ToString(true).c_str()); //-V2513
+        std::strcat(buffer, Voltage(voltage).ToString(true).c_str());
     }
 }
 
@@ -209,12 +209,12 @@ char *DisplayRecorder::VoltageCursor(Chan::E ch, int numCur, char buffer[30])
     {
         buffer[0] = '\0';
         VoltagePoint(ch, point->min, buffer);
-        std::strcat(buffer, " : "); //-V2513
+        std::strcat(buffer, " : ");
         VoltagePoint(ch, point->max, buffer);
     }
     else
     {
-        std::strcpy(buffer, "..."); //-V2513
+        std::strcpy(buffer, "...");
     }
 
     return buffer;

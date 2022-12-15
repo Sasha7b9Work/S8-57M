@@ -113,7 +113,7 @@ static char *IntegerToString(int value, bool alwaysSign, int numMinFields, char 
     const int SIZE = 20;
     char format[SIZE] = "%";
     std::snprintf(&(format[1]), SIZE, "0%d", numMinFields);
-    std::strcat(format, "d"); //-V2513
+    std::strcat(format, "d");
 
     if (alwaysSign && value >= 0)
     {
@@ -136,7 +136,7 @@ static char *FrequencyToString(float freq, char bufferOut[20])
 
     if (Math::IsEquals(freq, Float::ERROR))
     {
-        std::strcat(bufferOut, String::_ERROR); //-V2513
+        std::strcat(bufferOut, String::_ERROR);
         return bufferOut;
     }
 
@@ -169,7 +169,7 @@ char *Frequency::ToStringAccuracy(char bufferOut[20], int numDigits) const
 
     if (Math::IsEquals(freq, Float::ERROR))
     {
-        std::strcat(bufferOut, String::_ERROR); //-V2513
+        std::strcat(bufferOut, String::_ERROR);
         return bufferOut;
     }
 
@@ -184,8 +184,8 @@ char *Frequency::ToStringAccuracy(char bufferOut[20], int numDigits) const
         freq /= 1e3F;
     }
 
-    std::strcat(bufferOut, Float(freq).ToString(false, numDigits).c_str()); //-V2513
-    std::strcat(bufferOut, suffix); //-V2513
+    std::strcat(bufferOut, Float(freq).ToString(false, numDigits).c_str());
+    std::strcat(bufferOut, suffix);
     return bufferOut;
 }
 
@@ -208,7 +208,7 @@ char *TimeToString(float time, bool alwaysSign, char buffer[20])
 {
     if (Math::IsEquals(time, Float::ERROR))
     {
-        std::strcpy(buffer, String::_ERROR); //-V2513
+        std::strcpy(buffer, String::_ERROR);
         return buffer;
     }
 
@@ -225,8 +225,8 @@ char *TimeToString(float time, bool alwaysSign, char buffer[20])
     else if (absTime + 0.5e-3F < 1.0F)  { num = 2; }
     else                                { num = 3; }
 
-    std::strcpy(buffer, Float(time * factor[num]).ToString(alwaysSign, 4).c_str()); //-V2513
-    std::strcat(buffer, suffix[num]); //-V2513
+    std::strcpy(buffer, Float(time * factor[num]).ToString(alwaysSign, 4).c_str());
+    std::strcat(buffer, suffix[num]);
     return buffer;
 }
 
@@ -242,7 +242,7 @@ char* Time::ToStringAccuracy(bool alwaysSign, char buffer[20], int numDigits) co
 
     if (Math::IsEquals(time, Float::ERROR))
     {
-        std::strcat(buffer, String::_ERROR); //-V2513
+        std::strcat(buffer, String::_ERROR);
         return buffer;
     }
     else if (fabsTime + 0.5e-10F < 1e-6F)
@@ -261,8 +261,8 @@ char* Time::ToStringAccuracy(bool alwaysSign, char buffer[20], int numDigits) co
         time *= 1e3F;
     }
 
-    std::strcat(buffer, Float(time).ToString(alwaysSign, numDigits).c_str()); //-V2513
-    std::strcat(buffer, suffix); //-V2513
+    std::strcat(buffer, Float(time).ToString(alwaysSign, numDigits).c_str());
+    std::strcat(buffer, suffix);
 
     return buffer;
 }
@@ -279,7 +279,7 @@ static char* VoltageToString(float voltage, bool alwaysSign, char buffer[20])
 {
     if (Math::IsEquals(voltage, Float::ERROR))
     {
-        std::strcpy(buffer, String::_ERROR); //-V2513
+        std::strcpy(buffer, String::_ERROR);
         return buffer;
     }
 
@@ -310,8 +310,8 @@ static char* VoltageToString(float voltage, bool alwaysSign, char buffer[20])
         num = 3;
     }
 
-    std::strcpy(buffer, Float(voltage * factor[num]).ToString(alwaysSign, 4).c_str()); //-V2513
-    std::strcat(buffer, suf[num]); //-V2513
+    std::strcpy(buffer, Float(voltage * factor[num]).ToString(alwaysSign, 4).c_str());
+    std::strcat(buffer, suf[num]);
     return buffer;
 }
 
@@ -329,7 +329,7 @@ char *Current::ToString(char buffer[50]) const
 
     if (Math::IsEquals(current, Float::ERROR))
     {
-        std::strcpy(buffer, String::_ERROR); //-V2513
+        std::strcpy(buffer, String::_ERROR);
         return buffer;
     }
 
@@ -361,8 +361,8 @@ char *Current::ToString(char buffer[50]) const
         num = 3;
     }
 
-    std::strcpy(buffer, Float(current * factor[num]).ToString(true, 4).c_str()); //-V2513
-    std::strcat(buffer, suf[num]); //-V2513
+    std::strcpy(buffer, Float(current * factor[num]).ToString(true, 4).c_str());
+    std::strcat(buffer, suf[num]);
     return buffer;
 }
 
@@ -407,7 +407,7 @@ static char *FloatToString(float value, bool alwaysSign, int numDigits, char buf
 {
     if (Math::IsEquals(value, Float::ERROR))
     {
-        std::strcpy(bufferOut, String::_ERROR); //-V2513
+        std::strcpy(bufferOut, String::_ERROR);
         return bufferOut;
     }
     
@@ -453,9 +453,9 @@ static char *FloatToString(float value, bool alwaysSign, int numDigits, char buf
     }
     
     bool signExist = alwaysSign || value < 0;
-    while (std::strlen(bufferOut) < static_cast<uint>(numDigits + (signExist ? 2 : 1))) //-V2513
+    while (std::strlen(bufferOut) < static_cast<uint>(numDigits + (signExist ? 2 : 1)))
     {
-        std::strcat(bufferOut, "0"); //-V2513
+        std::strcat(bufferOut, "0");
     }
     
 #ifdef WIN32

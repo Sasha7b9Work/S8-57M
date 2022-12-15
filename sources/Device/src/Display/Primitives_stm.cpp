@@ -94,18 +94,18 @@ int Text::DrawSmall(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
-    int sizeBuffer = 1 + 2 + 1 + 1 + static_cast<int>(std::strlen(text)); //-V2513
+    int sizeBuffer = 1 + 2 + 1 + 1 + static_cast<int>(std::strlen(text));
 
     Buffer buffer(sizeBuffer);
     buffer.data[0] = Command::Paint_DrawText;
     buffer.data[1] = 0;
     buffer.data[2] = 0;
     buffer.data[3] = 0;
-    buffer.data[4] = static_cast<uint8>(std::strlen(text)); //-V1029 //-V2513
+    buffer.data[4] = static_cast<uint8>(std::strlen(text)); //-V1029
 
     Point2(x, y).Write(&buffer.data[1]);
 
-    std::memcpy(&buffer.data[5], static_cast<void *>(const_cast<char *>(text)), std::strlen(text)); //-V2513 //-V2567
+    std::memcpy(&buffer.data[5], static_cast<void *>(const_cast<char *>(text)), std::strlen(text)); //-V2567
 
     HAL_BUS::Panel::Send(buffer.data, sizeBuffer);
 

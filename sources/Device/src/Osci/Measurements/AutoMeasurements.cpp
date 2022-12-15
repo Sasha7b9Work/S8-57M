@@ -1336,11 +1336,11 @@ String Measure::GetStringMeasure(Chan::E ch, char* buffer, int lenBuf)
     }
 
     buffer[0] = '\0';
-    std::strcpy(buffer, (ch == ChanA) ? "1: " : "2: "); //-V2513
+    std::strcpy(buffer, (ch == ChanA) ? "1: " : "2: ");
 
     if(!isSet || values[static_cast<int>(type)].value[static_cast<int>(ch)] == Float::ERROR) //-V550 //-V2550
     {
-        std::strcat(buffer, "-.-"); //-V2513
+        std::strcat(buffer, "-.-");
     }
     else if(sMeas[static_cast<int>(type)].FuncCalculate)
     {
@@ -1354,10 +1354,10 @@ String Measure::GetStringMeasure(Chan::E ch, char* buffer, int lenBuf)
         }
                
         char *text = func(value, sMeas[static_cast<int>(type)].showSign, bufferForFunc);
-        int len = static_cast<int>(std::strlen(text)) + static_cast<int>(std::strlen(buffer)) + 1; //-V2513
+        int len = static_cast<int>(std::strlen(text)) + static_cast<int>(std::strlen(buffer)) + 1;
         if (len + 1 <= lenBuf)
         {
-            std::strcat(buffer, text); //-V2513
+            std::strcat(buffer, text);
         }
     }
     else
@@ -1371,21 +1371,21 @@ String Measure::GetStringMeasure(Chan::E ch, char* buffer, int lenBuf)
 
 char* AutoMeasurements::Freq2String(float freq, bool, char buffer[20])
 {
-    std::strcpy(buffer, Frequency(freq).ToString().c_str()); //-V2513
+    std::strcpy(buffer, Frequency(freq).ToString().c_str());
     return buffer;
 }
 
 
 char* Time2String(float time, bool always, char buffer[20])
 {
-    std::strcpy(buffer, Time(time).ToString(always).c_str()); //-V2513
+    std::strcpy(buffer, Time(time).ToString(always).c_str());
     return buffer;
 }
 
 
 char* Voltage2String(float voltage, bool always, char buffer[20])
 {
-    std::strcpy(buffer, Voltage(voltage).ToString(always).c_str()); //-V2513
+    std::strcpy(buffer, Voltage(voltage).ToString(always).c_str());
     return buffer;
 }
 
@@ -1398,7 +1398,7 @@ char* Phase2String(float phase, bool, char buffer[20])
 
 char* AutoMeasurements::Float2String(float value, bool always, char buffer[20])
 {
-    std::strcpy(buffer, Float(value).ToString(always, 4).c_str()); //-V2513
+    std::strcpy(buffer, Float(value).ToString(always, 4).c_str());
     return buffer;
 }
 
