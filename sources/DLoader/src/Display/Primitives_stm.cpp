@@ -133,7 +133,7 @@ int Text::DrawSmall(int x, int y, Color color)
     buffer.data[3] = static_cast<uint8>(y);
     buffer.data[4] = static_cast<uint8>(std::strlen(text));
 
-    std::memcpy(&buffer.data[5], text, std::strlen(text));
+    std::memcpy(&buffer.data[5], text, std::strlen(text)); //-V575
 
     HAL_BUS::Panel::Send(buffer.data, sizeBuffer);
 

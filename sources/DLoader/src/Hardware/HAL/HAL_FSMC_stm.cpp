@@ -151,7 +151,7 @@ void HAL_BUS::InitRAM()
         }
     };
 
-    static const FMC_NORSRAM_TimingTypeDef sramTiming =
+    FMC_NORSRAM_TimingTypeDef sramTiming =
     {
         0,                 // FSMC_AddressSetupTime
         0,                 // FSMC_AddressHoldTime
