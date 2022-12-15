@@ -119,12 +119,10 @@ void BackBuffer::DrawHLine(int y, int x0, int x1)
         return;
     }
 
-    // \todo Без проверок работает ощутимо быстрее
-
-//    if (x0 > x1)
-//    {
-//        Math::Swap(&x0, &x1);
-//    }
+    if (x0 > x1)
+    {
+        Math::Swap(&x0, &x1);
+    }
 
     uint8 *pixel = Address::Pixel(x0, y);
 
