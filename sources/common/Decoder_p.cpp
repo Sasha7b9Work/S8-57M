@@ -9,59 +9,64 @@
 #include "Display/BackBuffer.h"
 
 
-typedef bool(*pFuncBU8)(uint8);
-// Выполняемая функция
-static pFuncBU8 curFunc;
-// Текущий байт выполняемой функции
-static int step = 0;
+namespace PDecoder
+{
+    typedef bool(*pFuncBU8)(uint8);
+
+    // Выполняемая функция
+    static pFuncBU8 curFunc;
+
+    // Текущий байт выполняемой функции
+    static int step = 0;
 
 
 
-// Обработка запроса на изображение экрана
-static bool FuncScreen(uint8);
+    // Обработка запроса на изображение экрана
+    static bool FuncScreen(uint8);
 
-static bool E(uint8) { return true; }
+    static bool E(uint8) { return true; }
 
-static bool InButtonPress(uint8);
+    static bool InButtonPress(uint8);
 
-static bool BeginScene(uint8);
+    static bool BeginScene(uint8);
 
-static bool EndScene(uint8);
+    static bool EndScene(uint8);
 
-static bool SetColor(uint8);
+    static bool SetColor(uint8);
 
-static bool FillRegion(uint8);
+    static bool FillRegion(uint8);
 
-static bool DrawText(uint8);
+    static bool DrawText(uint8);
 
-static bool SetPalette(uint8);
+    static bool SetPalette(uint8);
 
-static bool DrawRectangle(uint8);
+    static bool DrawRectangle(uint8);
 
-static bool DrawVLine(uint8);
+    static bool DrawVLine(uint8);
 
-static bool SetFont(uint8);
+    static bool SetFont(uint8);
 
-static bool SetPoint(uint8);
+    static bool SetPoint(uint8);
 
-static bool DrawLine(uint8);
+    static bool DrawLine(uint8);
 
-static bool DrawHLine(uint8);
+    static bool DrawHLine(uint8);
 
-static bool DisplayBrightness(uint8);
+    static bool DisplayBrightness(uint8);
 
-static bool DrawVPointLine(uint8);
+    static bool DrawVPointLine(uint8);
 
-static bool DrawHPointLine(uint8);
+    static bool DrawHPointLine(uint8);
 
-// Установка моноширинного вывода шрифта
-static bool SetMinWidthFont(uint8);
+    // Установка моноширинного вывода шрифта
+    static bool SetMinWidthFont(uint8);
 
-// Устанавливает расстояние между символами при выводе текста
-static bool SetTextSpacing(uint8);
+    // Устанавливает расстояние между символами при выводе текста
+    static bool SetTextSpacing(uint8);
 
-// Эту функцию надо вызывать после выполнения последнего шага
-static void FinishCommand();
+    // Эту функцию надо вызывать после выполнения последнего шага
+    static void FinishCommand();
+}
 
 
 void PDecoder::AddData(uint8 data)
@@ -121,7 +126,7 @@ void PDecoder::AddData(uint8 data)
 }
 
 
-static bool InButtonPress(uint8)
+bool PDecoder::InButtonPress(uint8)
 {
     if (step == 0)
     {
@@ -138,7 +143,7 @@ static bool InButtonPress(uint8)
 }
 
 
-static bool BeginScene(uint8 data)
+bool PDecoder::BeginScene(uint8 data)
 {
     if (step == 0)
     {
@@ -152,7 +157,7 @@ static bool BeginScene(uint8 data)
 }
 
 
-static bool DisplayBrightness(uint8 data)
+bool PDecoder::DisplayBrightness(uint8 data)
 {
     if (step == 0)
     {
@@ -167,14 +172,14 @@ static bool DisplayBrightness(uint8 data)
 }
 
 
-static bool EndScene(uint8)
+bool PDecoder::EndScene(uint8)
 {
     BackBuffer::EndPaint();
     return true;
 }
 
 
-static bool SetColor(uint8 data)
+bool PDecoder::SetColor(uint8 data)
 {
     if (step == 0)
     {
@@ -188,7 +193,7 @@ static bool SetColor(uint8 data)
 }
 
 
-static bool FuncScreen(uint8 data)
+bool PDecoder::FuncScreen(uint8 data)
 {
     if (step == 0)
     {
@@ -204,7 +209,7 @@ static bool FuncScreen(uint8 data)
 }
 
 
-static bool FillRegion(uint8 data)
+bool PDecoder::FillRegion(uint8 data)
 {
     static Point2 pos;
     static Point2 size;
@@ -240,7 +245,7 @@ static bool FillRegion(uint8 data)
 }
 
 
-static bool DrawRectangle(uint8 data)
+bool PDecoder::DrawRectangle(uint8 data)
 {
     static Point2 pos;
     static Point2 size;
@@ -277,7 +282,7 @@ static bool DrawRectangle(uint8 data)
 }
 
 
-static bool DrawVLine(uint8 data)
+bool PDecoder::DrawVLine(uint8 data)
 {
     static Point2 pos1;
     static Point2 pos2;
@@ -308,7 +313,7 @@ static bool DrawVLine(uint8 data)
 }
 
 
-static bool DrawHLine(uint8 data)
+bool PDecoder::DrawHLine(uint8 data)
 {
     static Point2 pos1;
     static Point2 pos2;
@@ -339,7 +344,7 @@ static bool DrawHLine(uint8 data)
 }
 
 
-static bool DrawVPointLine(uint8 data)
+bool PDecoder::DrawVPointLine(uint8 data)
 {
     static Point2 pos;
     static int delta;
@@ -375,7 +380,7 @@ static bool DrawVPointLine(uint8 data)
 }
 
 
-static bool DrawHPointLine(uint8 data)
+bool PDecoder::DrawHPointLine(uint8 data)
 {
     static Point2 pos;
     static int delta;
@@ -411,7 +416,7 @@ static bool DrawHPointLine(uint8 data)
 }
 
 
-static bool SetMinWidthFont(uint8 data)
+bool PDecoder::SetMinWidthFont(uint8 data)
 {
     if (step == 0)
     {
@@ -426,7 +431,7 @@ static bool SetMinWidthFont(uint8 data)
 }
 
 
-static bool SetTextSpacing(uint8 data)
+bool PDecoder::SetTextSpacing(uint8 data)
 {
     if (step == 0)
     {
@@ -441,7 +446,7 @@ static bool SetTextSpacing(uint8 data)
 }
 
 
-static bool DrawLine(uint8 data)
+bool PDecoder::DrawLine(uint8 data)
 {
     static Point2 pos0;
     static Point2 pos1;
@@ -478,7 +483,7 @@ static bool DrawLine(uint8 data)
 }
 
 
-static bool SetPoint(uint8 data)
+bool PDecoder::SetPoint(uint8 data)
 {
     static Point2 pos;
 
@@ -500,7 +505,7 @@ static bool SetPoint(uint8 data)
 }
 
 
-static bool DrawText(uint8 data)
+bool PDecoder::DrawText(uint8 data)
 {
     static Point2 pos;
     static int numSymbols;
@@ -537,7 +542,7 @@ static bool DrawText(uint8 data)
 }
 
 
-static bool SetPalette(uint8 data)
+bool PDecoder::SetPalette(uint8 data)
 {
     static uint8 numColor;
     static uint valueColor;
@@ -564,7 +569,7 @@ static bool SetPalette(uint8 data)
 }
 
 
-static bool SetFont(uint8 data)
+bool PDecoder::SetFont(uint8 data)
 {
     if (step == 0)
     {
@@ -577,7 +582,7 @@ static bool SetFont(uint8 data)
 }
 
 
-static void FinishCommand()
+void PDecoder::FinishCommand()
 {
     step = 0;
     curFunc = 0;

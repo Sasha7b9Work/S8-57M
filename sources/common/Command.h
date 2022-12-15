@@ -54,7 +54,7 @@ struct Command
             Paint_SetTextSpacing,   // 20 |   0 | 1     |                                                                 |   2    |
             AddToConsole,           // 21 | num symb    |  ..... symbols ....                                             |   X    |
             // Установка режима рисования : 0 - 640х480, 1 - 320х240
-            SetModeDrawing,         // 22 |   mode      |                                                                 |   2    |
+            SetResolution,          // 22 |   mode      |                                                                 |   2    |
             Count
     };
 };

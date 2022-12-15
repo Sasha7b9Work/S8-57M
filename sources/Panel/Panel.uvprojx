@@ -1435,6 +1435,11 @@
               <FileType>5</FileType>
               <FilePath>.\src\Settings\Settings.h</FilePath>
             </File>
+            <File>
+              <FileName>Settings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Settings\Settings.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2902,6 +2907,11 @@
               <FileName>Settings.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Settings\Settings.h</FilePath>
+            </File>
+            <File>
+              <FileName>Settings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Settings\Settings.cpp</FilePath>
             </File>
           </Files>
         </Group>
