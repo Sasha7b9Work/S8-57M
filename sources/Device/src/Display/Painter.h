@@ -10,5 +10,7 @@ namespace Painter
 
     void BeginScene(int num_field, Color color);
 
+    int CurrentField();
+
     void EndScene();
 };

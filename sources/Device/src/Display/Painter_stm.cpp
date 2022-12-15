@@ -7,16 +7,29 @@
 #include "Utils/Buffer.h"
 
 
+namespace Painter
+{
+    static int field = 0;
+
+    int CurrentField()
+    {
+        return field;
+    }
+}
+
+
 void Painter::Init()
 {
 }
 
 
-void Painter::BeginScene(int field, Color color)
+void Painter::BeginScene(int _field, Color color)
 {
+    field = _field;
+
     color.SetAsCurrent();
 
-    HAL_BUS::Panel::Send(Command::Paint_BeginScene, (uint8)field);
+    HAL_BUS::Panel::Send(Command::Paint_BeginScene, (uint8)_field);
 }
 
 

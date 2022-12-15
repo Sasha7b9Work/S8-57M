@@ -98,13 +98,11 @@ void DisplayOsci::PainterData::DrawCurrent()
 
     if(S_DISP_LAST_AFFECTED_CHANNEL_IS_A)
     {
-        // \todo Время отрисовки - 20 мс
         DrawChannel(ChanB);
         DrawChannel(ChanA);
     }
     else
     {
-        // \todo Время отрисовки - 20 мс
         DrawChannel(ChanA);
         DrawChannel(ChanB);
     }

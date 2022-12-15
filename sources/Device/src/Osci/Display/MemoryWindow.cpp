@@ -8,6 +8,7 @@
 #include "Osci/Measurements/AutoMeasurements.h"
 #include "Osci/Measurements/CursorsMeasurements.h"
 #include "Settings/Settings.h"
+#include "Display/Painter.h"
 
 
 static void DrawDataInRect(int x, int y, int width, int height, const uint8 *data, int length);
@@ -18,6 +19,13 @@ static void DrawScreenArea();
 
 void DisplayOsci::MemoryWindow::Draw()
 {
+    if (Painter::CurrentField() != 4)
+    {
+        return;
+    }
+
+    // \todo Отрисовка занимает целых 30 мс
+
     if (CursorsMeasurements::NecessaryDraw())
     {
         return;
