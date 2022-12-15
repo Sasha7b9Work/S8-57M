@@ -13,6 +13,8 @@
 #include "Utils/Buffer.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
+#include "Hardware/HAL/HAL.h"
+#include "common/Command.h"
 #include <cstdlib>
 
 
@@ -365,24 +367,27 @@ void DisplayOsci::PainterData::DrawModeLinesPeakDetOn(int center, const uint8 *d
 
 void DisplayOsci::PainterData::DrawModeLinesPeakDetOff(int center, const uint8 *data, float scale, int x)
 {
-    for (int i = 1; i < 281; i++)
-    {
-        int current = (int)(center - (data[i] - VALUE::AVE) * scale + 0.5F);
-        int prev = (int)(center - (data[i - 1] - VALUE::AVE) * scale + 0.5F);
+    HAL_BUS::Panel::Send(Command::Paint_DrawSignal);
 
-        if(data[i] != VALUE::NONE && data[i - 1] != VALUE::NONE)
-        {
-            if(current == prev)
-            {
-                Pixel().Draw(x, prev);
-            }
-            else
-            {
-                int val = (prev > current) ? (current + 1) : (current - 1);
-                VLine(val - prev).Draw(x, prev);
-            }
-        }
-        x++;
+    HAL_BUS::Panel::Send(0);                        // mode
+
+    Point2 left_top(x, Grid::Top());
+    Point2 left_bottom(x, Grid::Bottom());
+
+    uint buffer = 0;
+
+    left_top.Write((uint8 *)&buffer);
+    HAL_BUS::Panel::Send((uint8 *)&buffer, 3);      // left_top
+
+    left_bottom.Write((uint8 *)&buffer);
+    HAL_BUS::Panel::Send((uint8 *)&buffer, 3);      // left_bottom
+
+    buffer = (uint)281;
+    HAL_BUS::Panel::Send((uint8 *)&buffer, 2);      // num_points
+
+    for (int i = 0; i < 281; i++)
+    {
+        HAL_BUS::Panel::Send(*data++);
     }
 }
 
