@@ -26,4 +26,10 @@ namespace BackBuffer
     void DrawHPointLine(int x, int y, int delta, int count);
 
     void DrawLine(int x0, int y0, int x1, int y1);
+
+    // Пересылает строку в устройство
+    void SendRow(int row);
+
+    // Загружает в дисплей все цвета
+    void LoadPalette();
 };

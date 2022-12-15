@@ -1,9 +1,9 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Display/Colors.h"
-#include "Display/Painter.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
+#include "Display/BackBuffer.h"
 
 
 uint colors[256] =
@@ -272,5 +272,5 @@ void Color::SetValue(uint raw)
 {
     colors[value] = raw;
 
-    Painter::LoadPalette();
+    BackBuffer::LoadPalette();
 }

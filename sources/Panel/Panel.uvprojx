@@ -1341,11 +1341,6 @@
               <FilePath>.\src\Display\Display.h</FilePath>
             </File>
             <File>
-              <FileName>Painter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Painter.h</FilePath>
-            </File>
-            <File>
               <FileName>Colors.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Display\Colors.cpp</FilePath>
@@ -1354,11 +1349,6 @@
               <FileName>Colors.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Display\Colors.h</FilePath>
-            </File>
-            <File>
-              <FileName>Painter_stm.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Painter_stm.cpp</FilePath>
             </File>
             <File>
               <FileName>BackBuffer.cpp</FileName>
@@ -2804,11 +2794,6 @@
               <FilePath>.\src\Display\Display.h</FilePath>
             </File>
             <File>
-              <FileName>Painter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Painter.h</FilePath>
-            </File>
-            <File>
               <FileName>Colors.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Display\Colors.cpp</FilePath>
@@ -2817,11 +2802,6 @@
               <FileName>Colors.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Display\Colors.h</FilePath>
-            </File>
-            <File>
-              <FileName>Painter_stm.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Painter_stm.cpp</FilePath>
             </File>
             <File>
               <FileName>BackBuffer.cpp</FileName>

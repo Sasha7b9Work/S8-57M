@@ -2,12 +2,12 @@
 #include "structs.h"
 #include "Decoder_p.h"
 #include "Display/Display.h"
-#include "Display/Painter.h"
 #include "Display/Text/Text.h"
 #include "Hardware/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
 #include "Display/BackBuffer.h"
 #include "Settings/Settings.h"
+#include "Display/Font/Font_p.h"
 
 
 namespace PDecoder
@@ -206,7 +206,7 @@ bool PDecoder::FuncScreen(uint8 data)
 
     if (step == 1)
     {
-        Painter::SendRow(data);
+        BackBuffer::SendRow(data);
     }
 
     return true;

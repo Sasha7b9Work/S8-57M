@@ -1,8 +1,8 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Display/Text/Text.h"
-#include "Display/Painter.h"
 #include "Display/BackBuffer.h"
+#include "Display/Font/Font_p.h"
 #include <cstring>
 
 

@@ -1,7 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Display.h"
-#include "Display/Painter.h"
 #include "Display/Text/Text.h"
 #include "Hardware/Controls.h"
 #include "Hardware/CPU.h"
@@ -9,8 +8,9 @@
 #include "Display/Colors.h"
 #include "Hardware/Timer.h"
 #include "Display/BackBuffer.h"
+#include "Display/Font/Font_p.h"
 #include <cstdlib>
-
+#include <cstring>
 
 
 namespace Display
@@ -62,7 +62,7 @@ void Display::Init()
 {
     HAL_DAC2::Init();
     HAL_LTDC::Init(reinterpret_cast<uint>(buffer));
-    Painter::LoadPalette();
+    BackBuffer::LoadPalette();
 
     DrawStartScreen();
 }

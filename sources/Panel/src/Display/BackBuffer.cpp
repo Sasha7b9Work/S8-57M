@@ -1,11 +1,12 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Display/BackBuffer.h"
-#include "Display/Painter.h"
 #include "Display/Display.h"
 #include "Display/Text/Text.h"
 #include "Utils/Math.h"
 #include "Hardware/Timer.h"
+#include "Hardware/HAL/HAL.h"
+#include "common/Command.h"
 #include <cstdlib>
 #include <cstring>
 #include <cmath>
@@ -230,4 +231,21 @@ void BackBuffer::DrawLine(int x1, int y1, int x2, int y2)
         }
         e = e + 2 * dy;
     }
+}
+
+
+void BackBuffer::LoadPalette()
+{
+    HAL_LTDC::SetColors(&COLOR(0), Color::Count.value);
+}
+
+void BackBuffer::SendRow(int row)
+{
+    uint8 *points = Display::GetBuffer() + row * Display::WIDTH;
+
+    uint8 data[322] = { Command::Screen, static_cast<uint8>(row) };
+
+    std::memcpy(&data[2], points, 320);
+
+    HAL_BUS::SendToDevice(data, 322);
 }

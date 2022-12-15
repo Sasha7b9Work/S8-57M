@@ -1,10 +1,10 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Display/Painter.h"
 #include "Hardware/CPU.h"
 #include "Hardware/HAL/HAL.h"
 #include "Settings/SettingsTypes.h"
 #include "Display/Display.h"
+#include "Display/BackBuffer.h"
 
 
 namespace HAL_LTDC
@@ -90,7 +90,7 @@ void HAL_LTDC::Init(uint _buffer)
     COLOR(2) = 0x00a0a0a0;
     COLOR(3) = 0x000000ff;
 
-    Painter::LoadPalette();
+    BackBuffer::LoadPalette();
 }
 
 
