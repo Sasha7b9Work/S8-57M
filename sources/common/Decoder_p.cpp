@@ -588,7 +588,14 @@ bool PDecoder::DrawText(uint8 data)
         if (readingSymbols == numSymbols)
         {
             buffer[readingSymbols] = 0;
-            Text::Draw(pos.X() * 2, pos.Y() * 2, buffer, 2);
+            if (Resolution::IsFull())
+            {
+                Text::Draw(pos.X(), pos.Y(), buffer);
+            }
+            else
+            {
+                Text::Draw(pos.X() * 2, pos.Y() * 2, buffer, 2);
+            }
             pos.Reset();
             delete[]buffer; //-V2511
             return true;
