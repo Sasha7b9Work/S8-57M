@@ -395,8 +395,15 @@ bool PDecoder::DrawVPointLine(uint8 data)
         break;
     case 5:
         count = data;
-        BackBuffer::DrawVPointLine(pos.X() * 2, pos.Y() * 2, delta * 2, count);
-        BackBuffer::DrawVPointLine(pos.X() * 2 + 1, pos.Y() * 2, delta * 2, count);
+        if (Resolution::IsFull())
+        {
+            BackBuffer::DrawVPointLine(pos.X(), pos.Y(), delta, count);
+        }
+        else
+        {
+            BackBuffer::DrawVPointLine(pos.X() * 2, pos.Y() * 2, delta * 2, count);
+            BackBuffer::DrawVPointLine(pos.X() * 2 + 1, pos.Y() * 2, delta * 2, count);
+        }
         pos.Reset();
         result = true;
         break;
@@ -431,8 +438,15 @@ bool PDecoder::DrawHPointLine(uint8 data)
         break;
     case 5:
         count = data;
-        BackBuffer::DrawHPointLine(pos.X() * 2, pos.Y() * 2, delta * 2, count);
-        BackBuffer::DrawHPointLine(pos.X() * 2, pos.Y() * 2 + 1, delta * 2, count);
+        if (Resolution::IsFull())
+        {
+            BackBuffer::DrawHPointLine(pos.X(), pos.Y(), delta, count);
+        }
+        else
+        {
+            BackBuffer::DrawHPointLine(pos.X() * 2, pos.Y() * 2, delta * 2, count);
+            BackBuffer::DrawHPointLine(pos.X() * 2, pos.Y() * 2 + 1, delta * 2, count);
+        }
         pos.Reset();
         result = true;
         break;
@@ -497,8 +511,15 @@ bool PDecoder::DrawLine(uint8 data)
         break;
     case 6:
         pos1.Append(data);
-        BackBuffer::DrawLine(pos0.X() * 2, pos0.Y() * 2, pos1.X() * 2, pos1.Y() * 2);
-        BackBuffer::DrawLine(pos0.X() * 2 + 1, pos0.Y() * 2, pos1.X() * 2 + 1, pos1.Y() * 2);
+        if (Resolution::IsFull())
+        {
+            BackBuffer::DrawLine(pos0.X(), pos0.Y(), pos1.X(), pos1.Y());
+        }
+        else
+        {
+            BackBuffer::DrawLine(pos0.X() * 2, pos0.Y() * 2, pos1.X() * 2, pos1.Y() * 2);
+            BackBuffer::DrawLine(pos0.X() * 2 + 1, pos0.Y() * 2, pos1.X() * 2 + 1, pos1.Y() * 2);
+        }
         pos0.Reset();
         pos1.Reset();
         result = true;
@@ -522,7 +543,14 @@ bool PDecoder::SetPoint(uint8 data)
 
         if (step > 2)
         {
-            BackBuffer::FillRegion(pos.X() * 2, pos.Y() * 2, 1, 1);
+            if (Resolution::IsFull())
+            {
+                BackBuffer::FillRegion(pos.X(), pos.Y(), 1, 1);
+            }
+            else
+            {
+                BackBuffer::FillRegion(pos.X() * 2, pos.Y() * 2, 1, 1);
+            }
 
             pos.Reset();
 
