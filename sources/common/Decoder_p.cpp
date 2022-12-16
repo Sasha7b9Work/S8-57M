@@ -67,6 +67,8 @@ namespace PDecoder
 
     static bool DrawSignal(uint8);
 
+    static bool NullCommand(uint8);
+
     // Эту функцию надо вызывать после выполнения последнего шага
     static void FinishCommand();
 }
@@ -103,7 +105,8 @@ void PDecoder::AddData(uint8 data)
         SetTextSpacing,
         E,
         E,
-        DrawSignal
+        DrawSignal,
+        NullCommand
     };
 
     if (step == 0)
@@ -562,6 +565,17 @@ bool PDecoder::SetPoint(uint8 data)
     }
 
     return false;
+}
+
+
+bool PDecoder::NullCommand(uint8)
+{
+    if (step == 0)
+    {
+        return false;
+    }
+
+    return true;
 }
 
 

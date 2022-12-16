@@ -103,6 +103,23 @@ void Device::Update()
 
     Osci::Update();
 
+    {
+        HAL_BUS::Panel::BeginScene();
+
+        for (int i = 0; i < 5500; i++)
+        {
+            HAL_BUS::Panel::Send(Command::Null_command, 1);
+        }
+
+        int num_ms = (int)HAL_BUS::Panel::ElapsedUS() / 1000;
+
+        LOG_WRITE("Test %d bytes, %d ms, %d Kb/sec",
+            HAL_BUS::Panel::TransBytes(),
+            num_ms,
+            HAL_BUS::Panel::TransBytes() * 1000 / num_ms / 1024
+        );
+    }
+
     Text::BeginScene();
     HAL_BUS::Panel::BeginScene();
 
