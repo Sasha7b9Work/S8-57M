@@ -380,10 +380,6 @@ bool PageCursorsMeasures::Set::HandlerKey(const KeyEvent &event)
     return false;
 }
 
-static bool IsActive_Set()
-{
-    return S_CURS_SHOW;
-}
 
 DEF_PAGE_5( pSet,                                                                                                                                  //--- ÈÇÌÅĞÅÍÈß - ÊÓĞÑÎĞÛ - ÓÑÒÀÍÎÂÈÒÜ ---
     "ÓÑÒÀÍÎÂÈÒÜ",
@@ -393,7 +389,7 @@ DEF_PAGE_5( pSet,                                                               
     &bT,
     &b100,
     &bMovement,
-    PageName::CursorsMeasures_Set, &PageCursorsMeasures::self, IsActive_Set, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, PageCursorsMeasures::Set::HandlerKey
+    PageName::CursorsMeasures_Set, &PageCursorsMeasures::self, [] () { return S_CURS_SHOW; }, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, PageCursorsMeasures::Set::HandlerKey
 )
 
 const Page * const PageCursorsMeasures::Set::self = static_cast<const Page *>(&pSet);

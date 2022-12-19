@@ -16,11 +16,6 @@ DEF_CHOICE_2( cIsShow,                                                          
 )
 
 
-static bool IsActive_NumberChannels()
-{
-    return S_MEAS_SHOW;
-}
-
 DEF_CHOICE_7( cNumber,                                                                                                                             //--- ИЗМЕРЕНИЯ - АВТОМАТ - Количество ---
     "Количество"
     ,
@@ -40,7 +35,7 @@ DEF_CHOICE_7( cNumber,                                                          
     "3x5",
     "6x1",
     "6x2",
-    S_MEAS_ON_DISPLAY, &PageAutoMeasures::self, IsActive_NumberChannels, Choice::Changed, Choice::AfterDraw
+    S_MEAS_ON_DISPLAY, &PageAutoMeasures::self, [] () { return S_MEAS_SHOW; }, Choice::Changed, Choice::AfterDraw
 )
 
 
@@ -50,7 +45,7 @@ DEF_CHOICE_3( cChannels,                                                        
     "1",
     "2",
     "1 и 2",
-    S_MEAS_SOURCE, &PageAutoMeasures::self, IsActive_NumberChannels, Choice::Changed, Choice::AfterDraw
+    S_MEAS_SOURCE, &PageAutoMeasures::self, []() { return S_MEAS_SHOW; }, Choice::Changed, Choice::AfterDraw
 )
 
 
