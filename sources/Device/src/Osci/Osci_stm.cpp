@@ -58,11 +58,21 @@ bool Osci::ReadDataChannel(Chan::E ch, uint8 *data)
         {
             float stretch = HAL_BUS::FPGA::GetStretch(a1);
 
+            int counter = 0;
+
             for(int i = 0; i < numPoints; i++)
             {
                 int delta = VALUE::AVE - static_cast<int>(*a1);
 
                 int result = static_cast<int>(VALUE::AVE - static_cast<int>(delta * stretch));
+
+                if (ch == Chan::A)
+                {
+                    if (counter++ == 0)
+                    {
+                        LOG_WRITE("%d", result);
+                    }
+                }
 
                 if(result < VALUE::MIN)
                 {
