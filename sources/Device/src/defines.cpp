@@ -2,7 +2,7 @@
 #include "defines.h"
 
 
-volatile BitField gBF =
+BitField gBF =
 {
     0,  // currentNumROMSignal
     0,  // showHelpHints

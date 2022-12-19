@@ -351,5 +351,7 @@ bool RAM::LastSettingsEqualsCurrent()
         return false;
     }
 
-    return Get()->EqualsCurrentSettings();
+    DataSettings *last_data = Get();
+
+    return last_data ? last_data->EqualsCurrentSettings() : false;
 }
