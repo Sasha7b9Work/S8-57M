@@ -20,8 +20,6 @@ namespace PDecoder
     // Текущий байт выполняемой функции
     static int step = 0;
 
-
-
     // Обработка запроса на изображение экрана
     static bool FuncScreen(uint8);
 
@@ -640,7 +638,15 @@ bool PDecoder::DrawSignal(uint8 data)
                 int x2 = x1 + 1;
                 int y2 = data + y_top;
 
-                BackBuffer::DrawLine(x1, y1, x2, y2);
+                if (Resolution::IsFull())
+                {
+                    BackBuffer::DrawLine(x1, y1, x2, y2);
+                }
+                else
+                {
+                    BackBuffer::DrawLine(x1 * 2,     y1 * 2,     x2 * 2,     y2 * 2);
+                    BackBuffer::DrawLine(x1 * 2 + 1, y1 * 2 + 1, x2 * 2 + 1, y2 * 2 + 1);
+                }
 
                 prev = data;
             }
