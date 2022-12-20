@@ -18,11 +18,6 @@ namespace Painter
 }
 
 
-void Painter::Init()
-{
-}
-
-
 void Painter::BeginScene(int _field, Color color)
 {
     field = _field;

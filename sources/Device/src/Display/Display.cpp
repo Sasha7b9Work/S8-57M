@@ -46,8 +46,6 @@ void Display::Init()
         Color(i).LoadValueRGB();
     }
 
-    Painter::Init();
-
     LoadBrightness();
 }
 
