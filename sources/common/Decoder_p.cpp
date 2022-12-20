@@ -579,14 +579,14 @@ bool PDecoder::NullCommand(uint8)
 
 bool PDecoder::DrawSignal(uint8 data)
 {
-    static uint8 mode;
+    volatile static uint8 mode;
     static Point2 left_top;
     static Point2 left_bottom;
     static int num_points;
 
     static int x0;
     static int y_top;
-    static int y_bottom;
+    volatile static int y_bottom;
 
     if (step > 0)
     {
