@@ -507,7 +507,7 @@ bool PDecoder::DrawLine(uint8 data)
     case 1:
     case 2:
     case 3:
-        pos0.Append(data);
+        pos0.Append(data); //-V525
         break;
     case 4:
     case 5:
