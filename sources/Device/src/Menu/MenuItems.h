@@ -203,9 +203,9 @@ public:
 
     void DrawItems(int x, int y) const;
 
-    void DrawPagesUGO(int right, int bottom) const;
+    void DrawPagesUGO(int right, int top) const;
 
-    void DrawNestingPage(int left, int bottom) const;
+    void DrawNestingPage(int left, int top) const;
 
     // true, если является вложенной подстраницей страницы parent
     bool IsSubPage(const Page *parent);

@@ -340,8 +340,11 @@ void Page::DrawTitle(int y) const
     Text(Title().c_str()).DrawInCenterRect(0, y - 5, Menu::Title::WIDTH + 2 + delta, Menu::Title::HEIGHT, ColorTitleText());
 
     Color::GRAY_75.SetAsCurrent();
-    DrawPagesUGO(Menu::Title::WIDTH - 3, y + Menu::Title::HEIGHT);
-    DrawNestingPage(5, y + Menu::Title::HEIGHT - 6);
+
+    y += 4;
+
+    DrawPagesUGO(Menu::Title::WIDTH - 3, y);
+    DrawNestingPage(5, y);
 }
 
 void Page::DrawItems(int x, int y) const
@@ -416,16 +419,15 @@ void Governor::DrawValueWithSelectedPosition(int x, int y, int value, int numDig
 }
 
 
-void Page::DrawPagesUGO(int right, int bottom) const
+void Page::DrawPagesUGO(int right, int top) const
 {
-    int size = 4;
+    int size = 10;
     int delta = 2;
 
     int allPages = (NumItems() - 1) / Item::NUM_ON_DISPLAY + 1;
     int currentPage = CurrentSubPage();
 
     int left = right - (size + 1) * allPages - delta + (3 - allPages);
-    int top = bottom - size - delta;
 
     for (int p = 0; p < allPages; p++)
     {
@@ -442,7 +444,7 @@ void Page::DrawPagesUGO(int right, int bottom) const
 }
 
 
-void Page::DrawNestingPage(int left, int bottom) const
+void Page::DrawNestingPage(int left, int top) const
 {
     Page *parent = const_cast<Page *>(Keeper());
 
@@ -457,13 +459,13 @@ void Page::DrawNestingPage(int left, int bottom) const
             nesting++;                                  // -V127
         }
 
-        int size = 4;
+        int size = 10;
         int delta = 2;
 
         for (int i = 0; i <= nesting; i++)
         {
             int x = left + i * (size + delta);
-            Rectangle(size, size).Draw(x, bottom);
+            Rectangle(size, size).Draw(x, top);
         }
     }
 }
