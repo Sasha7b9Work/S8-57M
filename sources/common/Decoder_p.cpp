@@ -156,10 +156,9 @@ bool PDecoder::BeginScene(uint8 data)
     {
         return false;
     }
-    if (step == 1)
-    {
-        BackBuffer::BeginPaint((int)data);
-    }
+
+    BackBuffer::BeginPaint((int)data);
+
     return true;
 }
 
@@ -170,10 +169,8 @@ bool PDecoder::DisplayBrightness(uint8 data)
     {
         return false;
     }
-    if (step == 1)
-    {
-        HAL_DAC2::SetValue(data);
-    }
+
+    HAL_DAC2::SetValue(data);
 
     return true;
 }
@@ -192,10 +189,9 @@ bool PDecoder::SetColor(uint8 data)
     {
         return false;
     }
-    if (step == 1)
-    {
-        Color(data).SetAsCurrent();
-    }
+
+    Color(data).SetAsCurrent();
+
     return true;
 }
 
@@ -207,10 +203,7 @@ bool PDecoder::FuncScreen(uint8 data)
         return false;
     }
 
-    if (step == 1)
-    {
-        BackBuffer::SendRow(data);
-    }
+    BackBuffer::SendRow(data);
 
     return true;
 }
@@ -471,10 +464,8 @@ bool PDecoder::SetMinWidthFont(uint8 data)
     {
         return false;
     }
-    if (step == 1)
-    {
-        Text::SetMinWidthFont(data);
-    }
+
+    Text::SetMinWidthFont(data);
 
     return true;
 }
@@ -486,10 +477,8 @@ bool PDecoder::SetTextSpacing(uint8 data)
     {
         return false;
     }
-    if (step == 1)
-    {
-        Text::SetSpacing(data);
-    }
+
+    Text::SetSpacing(data);
 
     return true;
 }
