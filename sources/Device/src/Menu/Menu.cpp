@@ -409,7 +409,7 @@ void Menu::DrawHintItem(int x, int y, int width)
 
 int Menu::Y0()
 {
-    return Display::HEIGHT - 25;
+    return Display::HEIGHT - 48;
 }
 
 
