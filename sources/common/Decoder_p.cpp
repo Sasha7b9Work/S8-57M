@@ -609,7 +609,7 @@ bool PDecoder::DrawText(uint8 data)
         if (readingSymbols == numSymbols)
         {
             buffer[readingSymbols] = 0;
-            Text::Draw(pos.X(), pos.Y(), buffer, 1);
+            Text::Draw(pos.X(), pos.Y(), buffer, 2);
             pos.Reset();
             delete[]buffer; //-V2511
             return true;

@@ -337,7 +337,7 @@ void Page::DrawTitle(int y) const
 
     int delta = condDrawRSet ? -10 : 0;
 
-    Text(Title().c_str()).DrawInCenterRect(0, y, Menu::Title::WIDTH + 2 + delta, Menu::Title::HEIGHT, ColorTitleText());
+    Text(Title().c_str()).DrawInCenterRect(0, y - 5, Menu::Title::WIDTH + 2 + delta, Menu::Title::HEIGHT, ColorTitleText());
 
     Color::GRAY_75.SetAsCurrent();
     DrawPagesUGO(Menu::Title::WIDTH - 3, y + Menu::Title::HEIGHT);
