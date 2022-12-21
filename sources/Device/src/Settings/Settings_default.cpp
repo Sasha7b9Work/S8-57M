@@ -28,7 +28,7 @@ const Settings Settings::defaultSettings =
     // Ìåíş ÄÈÑÏËÅÉ
     {
         Resolution::Full,
-        DisplayMapping::Dots,       // modeDrawSignal
+        DisplayMapping::Lines,      // modeDrawSignal
         ENumAverage::_1,            // ENumAverage
         ENumAccum::_1,              // ENumAccum
         ENumSmoothing::Disable,     // ENumSmoothing
