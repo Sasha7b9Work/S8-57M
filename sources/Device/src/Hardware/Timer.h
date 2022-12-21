@@ -1,5 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Hardware/HAL/HAL.h"
 
 #define START_MULTI_MEASUREMENT() Timer::StartMultiMeasurement()
 #define PAUSE_ON_TICKS(ticks)     Timer::PauseOnTicks(ticks)
