@@ -48,7 +48,7 @@ void Display::Init()
 
     LoadBrightness();
 
-    set.disp.res.Set(Resolution::Half);
+    set.disp.res.Set(Resolution::Full);
 }
 
 
