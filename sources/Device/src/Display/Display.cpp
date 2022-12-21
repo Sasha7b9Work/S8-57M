@@ -96,16 +96,6 @@ void Display::Update()
 }
 
 
-//void Display::Update()
-//{
-//    Painter::BeginScene(Color::BACK);
-//
-//    Region(100, 100).Fill(100, 100, Color::WHITE);
-//
-//    Painter::EndScene();
-//}
-
-
 bool Display::InProcess()
 {
     return inStateDraw;
