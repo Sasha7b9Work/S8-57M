@@ -430,7 +430,7 @@ void Menu::Draw(int field)
         {
             if (!item->Is(TypeItem::Page))
             {
-                item = const_cast<Item *>(static_cast<const Item *>(item->Keeper()));
+                item = (Item *)item->Keeper();
             }
 
             if (item)
