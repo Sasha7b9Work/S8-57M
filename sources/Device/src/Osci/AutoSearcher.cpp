@@ -279,7 +279,7 @@ static void DisplayUpdate()
     {
         Painter::BeginScene(field, Color::BACK);
 
-        Text("Поиск сигнала").DrawInCenterRect(0, 0, 320, 200, Color::FILL);
+        Text("Поиск сигнала").DrawInCenterRect(0, 0, Display::WIDTH, 200, Color::FILL);
 
         int length = static_cast<int>((TIME_MS / 250) % 20);
 
@@ -289,7 +289,7 @@ static void DisplayUpdate()
 
         for (int i = 0; i < length; i++)
         {
-            Text(".").Draw(320 / 2 - width / 2 + i * dX + 2, 120);
+            Text(".").Draw(Display::WIDTH / 2 - width / 2 + i * dX + 2, 120);
         }
 
         Painter::EndScene();

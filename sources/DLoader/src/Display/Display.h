@@ -2,14 +2,14 @@
 #include "defines.h"
 
 
-
 #define DISPLAY_ADD_STRING(x) Display::AddStringToIndicating(x)
 
 
-
-class Display
+struct Display
 {
-public:
+    static const int WIDTH = 640;
+    static const int HEIGHT = 480;
+
     static void Init();
     static void Update();
     static bool IsRun();

@@ -72,7 +72,7 @@ namespace Menu
 
     namespace Title
     {
-        const int HEIGHT = 9;
-        const int WIDTH = 320 / 5 * 2 - 1;
+        const int HEIGHT = 18;
+        const int WIDTH = Display::WIDTH / 5 * 2 - 1;
     };
 };
