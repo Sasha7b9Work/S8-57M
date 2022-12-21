@@ -33,9 +33,8 @@ struct DrawMode
 
 namespace Display
 {
-    const int HEIGHT = 240;
-
-    const int WIDTH = 320;
+    const int HEIGHT = 480;
+    const int WIDTH = 640;
 
     void Init();
 

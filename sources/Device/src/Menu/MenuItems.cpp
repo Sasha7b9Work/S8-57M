@@ -187,13 +187,13 @@ bool Item::ExistKeeper(const Page *_keeper) const
 
 int Item::Height()
 {
-    return 23;
+    return 46;
 }
 
 
 int Item::Width(int pos) const
 {
-    int width = 320 / 5 + 1;
+    int width = Display::WIDTH / 5 + 1;
 
     int result = width;
 
