@@ -8,14 +8,6 @@
 #include "common/Command.h"
 
 
-void Resolution::Set(E v)
-{
-    value = v;;
-
-    HAL_BUS::Panel::Send(Command::ResolutionDisplay, (uint8)value);
-}
-
-
 void ENumAverage::Set(ENumAverage::E v)
 {
     S_OSCI_ENUM_AVERAGE = v;

@@ -65,8 +65,6 @@ namespace PDecoder
 
     static bool DrawSignal(uint8);
 
-    static bool SetResolutionDisplay(uint8);
-
     static bool NullCommand(uint8);
 
     // Эту функцию надо вызывать после выполнения последнего шага
@@ -104,7 +102,6 @@ void PDecoder::AddData(uint8 data)
         SetMinWidthFont,
         SetTextSpacing,
         E,
-        SetResolutionDisplay,
         DrawSignal,
         NullCommand
     };
@@ -231,14 +228,7 @@ bool PDecoder::FillRegion(uint8 data)
         break;
     case 6:
         size.Append(data);
-        if (Resolution::IsFull())
-        {
-            BackBuffer::FillRegion(pos.X(), pos.Y(), size.Width(), size.Height());
-        }
-        else
-        {
-            BackBuffer::FillRegion(pos.X() * 2, pos.Y() * 2, size.Width() * 2, size.Height() * 2);
-        }
+        BackBuffer::FillRegion(pos.X(), pos.Y(), size.Width(), size.Height());
         pos.Reset();
         size.Reset();
         result = true;
@@ -274,15 +264,7 @@ bool PDecoder::DrawRectangle(uint8 data)
         break;
     case 6:
         size.Append(data);
-        if (Resolution::IsFull())
-        {
-            BackBuffer::DrawRectangle(pos.X(), pos.Y(), size.Width(), size.Height());
-        }
-        else
-        {
-            BackBuffer::DrawRectangle(pos.X() * 2, pos.Y() * 2, size.Width() * 2, size.Height() * 2);
-            BackBuffer::DrawRectangle(pos.X() * 2 + 1, pos.Y() * 2 + 1, size.Width() * 2 - 2, size.Height() * 2 - 2);
-        }
+        BackBuffer::DrawRectangle(pos.X(), pos.Y(), size.Width(), size.Height());
         pos.Reset();
         size.Reset();
         result = true;
@@ -313,15 +295,7 @@ bool PDecoder::DrawVLine(uint8 data)
 
             if (step > 5)
             {
-                if (Resolution::IsFull())
-                {
-                    BackBuffer::DrawVLine(pos1.X(), pos1.Y(), pos2.Y());
-                }
-                else
-                {
-                    BackBuffer::DrawVLine(pos1.X() * 2, pos1.Y() * 2, pos2.Y() * 2);
-                    BackBuffer::DrawVLine(pos1.X() * 2 + 1, pos1.Y() * 2, pos2.Y() * 2);
-                }
+                BackBuffer::DrawVLine(pos1.X(), pos1.Y(), pos2.Y());
                 pos1.Reset();
                 pos2.Reset();
 
@@ -351,15 +325,7 @@ bool PDecoder::DrawHLine(uint8 data)
 
             if (step > 5)
             {
-                if (Resolution::IsFull())
-                {
-                    BackBuffer::DrawHLine(pos1.Y(), pos1.X(), pos2.X());
-                }
-                else
-                {
-                    BackBuffer::DrawHLine(pos1.Y() * 2, pos1.X() * 2, pos2.X() * 2);
-                    BackBuffer::DrawHLine(pos1.Y() * 2 + 1, pos1.X() * 2, pos2.X() * 2);
-                }
+                BackBuffer::DrawHLine(pos1.Y(), pos1.X(), pos2.X());
                 pos1.Reset();
                 pos2.Reset();
 
@@ -394,15 +360,7 @@ bool PDecoder::DrawVPointLine(uint8 data)
         break;
     case 5:
         count = data;
-        if (Resolution::IsFull())
-        {
-            BackBuffer::DrawVPointLine(pos.X(), pos.Y(), delta, count);
-        }
-        else
-        {
-            BackBuffer::DrawVPointLine(pos.X() * 2, pos.Y() * 2, delta * 2, count);
-            BackBuffer::DrawVPointLine(pos.X() * 2 + 1, pos.Y() * 2, delta * 2, count);
-        }
+        BackBuffer::DrawVPointLine(pos.X(), pos.Y(), delta, count);
         pos.Reset();
         result = true;
         break;
@@ -437,15 +395,7 @@ bool PDecoder::DrawHPointLine(uint8 data)
         break;
     case 5:
         count = data;
-        if (Resolution::IsFull())
-        {
-            BackBuffer::DrawHPointLine(pos.X(), pos.Y(), delta, count);
-        }
-        else
-        {
-            BackBuffer::DrawHPointLine(pos.X() * 2, pos.Y() * 2, delta * 2, count);
-            BackBuffer::DrawHPointLine(pos.X() * 2, pos.Y() * 2 + 1, delta * 2, count);
-        }
+        BackBuffer::DrawHPointLine(pos.X(), pos.Y(), delta, count);
         pos.Reset();
         result = true;
         break;
@@ -506,15 +456,7 @@ bool PDecoder::DrawLine(uint8 data)
         break;
     case 6:
         pos1.Append(data);
-        if (Resolution::IsFull())
-        {
-            BackBuffer::DrawLine(pos0.X(), pos0.Y(), pos1.X(), pos1.Y());
-        }
-        else
-        {
-            BackBuffer::DrawLine(pos0.X() * 2, pos0.Y() * 2, pos1.X() * 2, pos1.Y() * 2);
-            BackBuffer::DrawLine(pos0.X() * 2 + 1, pos0.Y() * 2, pos1.X() * 2 + 1, pos1.Y() * 2);
-        }
+        BackBuffer::DrawLine(pos0.X(), pos0.Y(), pos1.X(), pos1.Y());
         pos0.Reset();
         pos1.Reset();
         result = true;
@@ -538,14 +480,7 @@ bool PDecoder::SetPoint(uint8 data)
 
         if (step > 2)
         {
-            if (Resolution::IsFull())
-            {
-                BackBuffer::FillRegion(pos.X(), pos.Y(), 1, 1);
-            }
-            else
-            {
-                BackBuffer::FillRegion(pos.X() * 2, pos.Y() * 2, 1, 1);
-            }
+            BackBuffer::FillRegion(pos.X(), pos.Y(), 1, 1);
 
             pos.Reset();
 
@@ -629,15 +564,7 @@ bool PDecoder::DrawSignal(uint8 data)
                 int x2 = x1 + 1;
                 int y2 = data + y_top;
 
-                if (Resolution::IsFull())
-                {
-                    BackBuffer::DrawLine(x1, y1, x2, y2);
-                }
-                else
-                {
-                    BackBuffer::DrawLine(x1 * 2,     y1 * 2,     x2 * 2,     y2 * 2);
-                    BackBuffer::DrawLine(x1 * 2 + 1, y1 * 2 + 1, x2 * 2 + 1, y2 * 2 + 1);
-                }
+                BackBuffer::DrawLine(x1, y1, x2, y2);
 
                 prev = data;
             }
@@ -653,19 +580,6 @@ bool PDecoder::DrawSignal(uint8 data)
     }
 
     return false;
-}
-
-
-bool PDecoder::SetResolutionDisplay(uint8 data)
-{
-    if (step == 0)
-    {
-        return false;
-    }
-
-    Resolution::Set((Resolution::E)data);
-
-    return true;
 }
 
 
@@ -695,14 +609,7 @@ bool PDecoder::DrawText(uint8 data)
         if (readingSymbols == numSymbols)
         {
             buffer[readingSymbols] = 0;
-            if (Resolution::IsFull())
-            {
-                Text::Draw(pos.X(), pos.Y(), buffer, 1);
-            }
-            else
-            {
-                Text::Draw(pos.X() * 2, pos.Y() * 2, buffer, 2);
-            }
+            Text::Draw(pos.X(), pos.Y(), buffer, 1);
             pos.Reset();
             delete[]buffer; //-V2511
             return true;

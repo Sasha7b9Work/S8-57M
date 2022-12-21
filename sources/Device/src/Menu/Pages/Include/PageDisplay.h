@@ -9,20 +9,6 @@
 #define NUM_AVE_MAX     256
 
 
-struct Resolution
-{
-    enum E
-    {
-        Full,   // Полное разрешение 640х480
-        Half    // Половинное разрешение 320х240
-    };
-    E value;
-    Resolution(E v) { value = v; }
-    void Set(E v);
-    bool IsFull() { return value == Full; }
-};
-
-
 struct DisplayMapping
 {
 #define S_DISP_MAPPING          (set.disp._mapping)
@@ -171,7 +157,6 @@ struct MenuAutoHide
 
 struct SettingsDisplay
 { //-V802
-    Resolution             res;                     // Разрешение дисплея
     DisplayMapping::E      _mapping;
     ENumAverage::E         _enumAverage;            // Число усреднений сигнала.
     ENumAccum::E           _enumAccum;              // Число накоплений сигнала на экране.

@@ -53,8 +53,6 @@ struct Command
             Paint_SetMinWidthFont,  // 19 |   width     |                                                                                      |    2    |
             Paint_SetTextSpacing,   // 20 |   0 | 1     |                                                                                      |    2    |
             AddToConsole,           // 21 | num symb    |  ..... symbols ....                                                                  |  2 + X  |
-            // Установка режима рисования : 0 - 640х480, 1 - 320х240
-            ResolutionDisplay,      // 22 |    mode     |                                                                                      |    2    |
             // mode/bits : 0 - 0/1 - точки/линии
             //             1 - 0/1 - пиквоый детектор откл/вкл
             Paint_DrawSignal,       // 23 |    mode     |          coord_left_top Point2          |     coord_left_bottom Point2  | num_points | 10 +  X |
