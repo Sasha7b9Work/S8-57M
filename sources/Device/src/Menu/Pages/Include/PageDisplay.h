@@ -18,7 +18,7 @@ struct Resolution
     };
     E value;
     Resolution(E v) { value = v; }
-    void Set(E v) { value = v; }
+    void Set(E v);
     bool IsFull() { return value == Full; }
 };
 

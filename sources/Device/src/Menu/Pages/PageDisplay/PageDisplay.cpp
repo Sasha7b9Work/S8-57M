@@ -4,6 +4,16 @@
 #include "Osci/Osci.h"
 #include "Osci/Math/OsciMath.h"
 #include "Settings/Settings.h"
+#include "Hardware/HAL/HAL.h"
+#include "common/Command.h"
+
+
+void Resolution::Set(E v)
+{
+    value = v;;
+
+    HAL_BUS::Panel::Send(Command::ResolutionDisplay, (uint8)value);
+}
 
 
 void ENumAverage::Set(ENumAverage::E v)

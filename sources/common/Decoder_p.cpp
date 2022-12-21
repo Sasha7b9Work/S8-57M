@@ -65,6 +65,8 @@ namespace PDecoder
 
     static bool DrawSignal(uint8);
 
+    static bool SetResolutionDisplay(uint8);
+
     static bool NullCommand(uint8);
 
     // Эту функцию надо вызывать после выполнения последнего шага
@@ -102,7 +104,7 @@ void PDecoder::AddData(uint8 data)
         SetMinWidthFont,
         SetTextSpacing,
         E,
-        E,
+        SetResolutionDisplay,
         DrawSignal,
         NullCommand
     };
@@ -662,6 +664,19 @@ bool PDecoder::DrawSignal(uint8 data)
     }
 
     return false;
+}
+
+
+bool PDecoder::SetResolutionDisplay(uint8 data)
+{
+    if (step == 0)
+    {
+        return false;
+    }
+
+    Resolution::Set((Resolution::E)data);
+
+    return true;
 }
 
 
