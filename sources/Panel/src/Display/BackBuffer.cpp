@@ -239,9 +239,9 @@ void BackBuffer::SendRow(int row)
 {
     uint8 *points = Display::GetBuffer() + row * Display::WIDTH;
 
-    uint8 data[322] = { Command::Screen, static_cast<uint8>(row) };
+    uint8 data[Display::WIDTH + 2] = { Command::Screen, static_cast<uint8>(row) };
 
-    std::memcpy(&data[2], points, 320);
+    std::memcpy(&data[2], points, Display::WIDTH);
 
-    HAL_BUS::SendToDevice(data, 322);
+    HAL_BUS::SendToDevice(data, Display::WIDTH + 2);
 }

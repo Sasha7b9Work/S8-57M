@@ -13,6 +13,4 @@ struct Display
     static void Init();
     static void Update();
     static bool IsRun();
-    // \todo Заглушка. Нужно избавиться
-//    static void SaveRow(int) {};
 };

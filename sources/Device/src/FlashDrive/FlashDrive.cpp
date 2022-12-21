@@ -32,7 +32,7 @@ namespace FDrive
 
     static void CreateFileName(char name[256]);
 
-    static void ReadRow(uint8 row, uint8 pixels[320]);
+    static void ReadRow(uint8 row, uint8 pixels[Display::WIDTH]);
 }
 
 
@@ -500,7 +500,7 @@ void FDrive::SaveScreenToFlash()
     {
         0x42,
         0x4d,
-        14 + 40 + 1024 + 320 * 240,
+        14 + 40 + 1024 + Display::WIDTH * Display::HEIGHT,
         0,
         0,
         14 + 40 + 1024
@@ -525,17 +525,17 @@ void FDrive::SaveScreenToFlash()
     }
     bmIH =
     {
-        40, // size;
-        320,// width;
-        240,// height;
-        1,  // planes;
-        8,  // bitCount;
-        0,  // compression;
-        0,  // sizeImage;
-        0,  // xPelsPerMeter;
-        0,  // yPelsPerMeter;
-        0,  // clrUsed;
-        0   // clrImportant;
+        40,                 // size;
+        Display::WIDTH,     // width;
+        Display::HEIGHT,    // height;
+        1,                  // planes;
+        8,                  // bitCount;
+        0,                  // compression;
+        0,                  // sizeImage;
+        0,                  // xPelsPerMeter;
+        0,                  // yPelsPerMeter;
+        0,                  // clrUsed;
+        0                   // clrImportant;
     };
 
     // 54
@@ -553,7 +553,7 @@ void FDrive::SaveScreenToFlash()
 
     FDrive::WriteToFile(reinterpret_cast<uint8 *>(&bmIH), 40, &structForWrite);
 
-    uint8 buffer[320 * 3] = { 0 };
+    uint8 buffer[Display::WIDTH * 3] = { 0 };
 
     typedef struct tagRGBQUAD
     {
@@ -580,13 +580,13 @@ void FDrive::SaveScreenToFlash()
         FDrive::WriteToFile(buffer, 256, &structForWrite);
     }
 
-    uint8 pixels[320];
+    uint8 pixels[Display::WIDTH];
 
-    for(int row = 239; row >= 0; row--)
+    for(int row = Display::HEIGHT - 1; row >= 0; row--)
     {
         ReadRow(static_cast<uint8>(row), pixels);
 
-        FDrive::WriteToFile(pixels, 320, &structForWrite);
+        FDrive::WriteToFile(pixels, Display::WIDTH, &structForWrite);
     }
 
     FDrive::CloseFile(&structForWrite);
@@ -612,7 +612,7 @@ void FDrive::CreateFileName(char name[256])
 }
 
 
-void FDrive::ReadRow(uint8 row, uint8 pixels[320])
+void FDrive::ReadRow(uint8 row, uint8 pixels[Display::WIDTH])
 {
     while(DDecoder::Update())                       // ќбрабатываем данные, которые прин€ты на данный момент
     {
@@ -620,12 +620,12 @@ void FDrive::ReadRow(uint8 row, uint8 pixels[320])
 
     HAL_BUS::Panel::Send(Command::Screen, row);
 
-    while(DDecoder::BytesInBuffer() < 322)          // ќжидаем, пока панель пришлЄт запрошенные байты
+    while(DDecoder::BytesInBuffer() < Display::WIDTH + 2)          // ќжидаем, пока панель пришлЄт запрошенные байты
     {
         HAL_BUS::Panel::Receive();
     }
 
-    std::memcpy(pixels, DDecoder::Buffer() + 2, 320);
+    std::memcpy(pixels, DDecoder::Buffer() + 2, Display::WIDTH);
 }
 
 
