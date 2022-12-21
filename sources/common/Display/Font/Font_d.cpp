@@ -156,7 +156,7 @@ uint8 DFont::GetHeight()
 {
     if (FontIsSmall())
     {
-        return static_cast<uint8>(font->_height);
+        return (uint8)(font->_height * 2);
     }
 
     return DAdvancedFont().GetHeight();

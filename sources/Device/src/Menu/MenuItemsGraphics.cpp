@@ -239,7 +239,7 @@ void Choice::DrawClosed(int x, int y) const
 {
     if (IsActive())
     {
-        Region(Width() - 3, Value::HEIGHT - 3).Fill(x + 1, y + Value::HEIGHT, ColorBackground());
+//        Region(Width() - 3, Value::HEIGHT - 3).Fill(x + 1, y + Value::HEIGHT, ColorBackground());
 
         int deltaY = static_cast<int>(Step());
         Color colorText = Color::BLACK;
@@ -261,7 +261,7 @@ void Choice::DrawClosed(int x, int y) const
 
         OwnData()->funcAfterDraw(x, y);
     }
-    
+
     DrawCommonHiPart(x, y, false);
 }
 
