@@ -127,8 +127,8 @@ void Display::Update()
         Rectangle(319, 239).Draw(0, 0, Color::FILL);
         DrawBigMNIPI();
         Text("Для получения помощи нажмите и удерживайте кнопку ПОМОЩЬ").DrawInCenterRect(0, 180, Display::WIDTH, 20, Color::WHITE);
-        Text("Отдел маркетинга: тел./факс. 8-017-237-23-40").DrawInCenterRect(0, 205, 320, 20);
-        Text("Разработчики: e-mail: mnipi-24(@)tut.by, тел. 8-017-237-22-15").DrawInCenterRect(0, 220, 320, 20);
+        Text("Отдел маркетинга: тел./факс. 8-017-237-23-40").DrawInCenterRect(0, 205, Display::WIDTH, 20);
+        Text("Разработчики: e-mail: mnipi-24(@)tut.by, тел. 8-017-237-22-15").DrawInCenterRect(0, 220, Display::WIDTH, 20);
         Painter::EndScene();
     }
     else if (FDrive::State() == State::Mount)
@@ -137,21 +137,21 @@ void Display::Update()
     }
     else if (FDrive::State() == State::WrongFlash)
     {
-        Text("НЕ УДАЛОСЬ ПРОЧИТАТЬ ДИСК").DrawInCenterRect(0, 0, 320, 200, Color::FLASH_10);
-        Text("УБЕДИТЕСЬ, ЧТО ФАЙЛОВАЯ СИСТЕМА FAT32").DrawInCenterRect(0, 20, 320, 200, Color::WHITE);
+        Text("НЕ УДАЛОСЬ ПРОЧИТАТЬ ДИСК").DrawInCenterRect(0, 0, Display::WIDTH, 200, Color::FLASH_10);
+        Text("УБЕДИТЕСЬ, ЧТО ФАЙЛОВАЯ СИСТЕМА FAT32").DrawInCenterRect(0, 20, Display::WIDTH, 200, Color::WHITE);
     }
     else if (FDrive::State() == State::RequestAction)
     {
-        Text("Обнаружено программное обеспечение").DrawInCenterRect(0, 0, 320, 200);
-        Text("Установить его?").DrawInCenterRect(0, 20, 320, 200);
+        Text("Обнаружено программное обеспечение").DrawInCenterRect(0, 0, Display::WIDTH, 200);
+        Text("Установить его?").DrawInCenterRect(0, 20, Display::WIDTH, 200);
 
         DrawButton(290, 55, "ДА");
         DrawButton(290, 195, "НЕТ");
     }
     else if (FDrive::State() == State::Upgrade)
     {
-        Text("Подождите завершения").DrawInCenterRect(0, 0, 320, 190);
-        Text("установки программного обеспечения").DrawInCenterRect(0, 0, 320, 220);
+        Text("Подождите завершения").DrawInCenterRect(0, 0, Display::WIDTH, 190);
+        Text("установки программного обеспечения").DrawInCenterRect(0, 0, Display::WIDTH, 220);
 
         int height = 30;
         int fullWidth = 280;
@@ -264,92 +264,4 @@ static int RandValue(int min, int max)
     int val = static_cast<int>(std::rand() % (max - min + 1));
 
     return val + min;
-}
-
-
-//static int DrawBigCharInBuffer(int eX, int eY, int size, uint8 symbol, uint8 buffer[320][240])
-//{
-//    uint8 width = DFont::GetWidth (symbol);
-//    uint8 height = DFont::GetHeight();
-//
-//    for (int b = 0; b < height; b++)
-//    {
-//        if (DFont::RowNotEmpty(symbol, b))
-//        {
-//            int x = eX;
-//            int y = eY + b * size + 9 - height;
-//            int endBit = 8 - width;
-//            for (int bit = 7; bit >= endBit; bit--)
-//            {
-//                if (DFont::BitIsExist(symbol, b, bit))
-//                {
-//                    for (int i = 0; i < size; i++)
-//                    {
-//                        for (int j = 0; j < size; j++)
-//                        {
-//                            int fullX = x + i;
-//                            int fullY = y + j;
-//
-//                            if (fullX >= 0 && fullX < 320 && fullY >= 0 && fullY < 240)
-//                            {
-//                                buffer[fullX][fullY] = 1;
-//                            }
-//                        }
-//                    }
-//                }
-//                x += size;
-//            }
-//        }
-//    }
-//
-//    return eX + width * size;
-//}
-
-
-//static void DrawBigTextInBuffer(int eX, int eY, int size, const char* text, uint8 buffer[320][240])
-//{
-//    for (int x = 0; x < 320; x++)
-//    {
-//        for (int y = 0; y < 240; y++)
-//        {
-//            buffer[x][y] = 0;
-//        }
-//    }
-//
-//    int numSymbols = static_cast<int>(strlen(text));
-//
-//    int x = eX;
-//
-//    for (int i = 0; i < numSymbols; i++)
-//    {
-//        x = DrawBigCharInBuffer(x, eY, size, static_cast<uint8>(text[i]), buffer);
-//        x += size;
-//    }
-//}
-
-
-//static void InitPoints()
-//{
-//    uint8 buffer[320][240];
-//
-//    DrawBigTextInBuffer(31, 70, 9, "МНИПИ", buffer);
-//
-//    for (int x = 0; x < 320; x++)
-//    {
-//        for (int y = 0; y < 240; y++)
-//        {
-//            if (buffer[x][y])
-//            {
-//                array[numPoints].x = static_cast<uint16>(x);
-//                array[numPoints].y = static_cast<uint8>(y);
-//                numPoints++;
-//            }
-//        }
-//    }
-//}
-
-
-void Display::AddStringToIndicating(pString)
-{
-
 }
