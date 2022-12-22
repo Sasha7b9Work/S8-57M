@@ -31,7 +31,7 @@ static int spacing = 1;
 int DFont::GetLengthText(pString text)
 {
     int result = 0;
-    char *symbol = const_cast<char *>(text);
+    char *symbol = (char *)text;
 
     while(*symbol)
     {

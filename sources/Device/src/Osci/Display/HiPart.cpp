@@ -229,6 +229,7 @@ void DisplayOsci::HiPart::WriteStringAndNumber(const char *text, int x, int y, i
     {
         std::snprintf(buffer, SIZE, "%d", number);
     }
+
     Text(buffer).DrawRelativelyRight(x + 41, y);
 }
 
