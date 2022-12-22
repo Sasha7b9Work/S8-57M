@@ -71,17 +71,13 @@ void DisplayOsci::HiPart::Draw(int field)
 
     x = DrawMainParameters(x, Y0 + 1); //-V2007
 
-    return;
-
-    x += 124;
-
     DFont::Set(DTypeFont::_8);
-
-    Separator::Draw(x + 1, Y0);
 
     DrawFrequency(x + 3, Y0 + 1);
 
-    DrawTime(x + 3, Y0 + 10); //-V2007
+    DrawTime(x + 3, Y0 + 19); //-V2007
+
+    return;
 
     DrawRightPart(271, Y0);
 
@@ -179,7 +175,7 @@ int DisplayOsci::HiPart::DrawMainParameters(int _x, int _y)
 
     Separator::Draw(x, y0 - 1);
 
-    return x + 3;
+    return x;
 }
 
 
@@ -236,8 +232,8 @@ void DisplayOsci::HiPart::WriteStringAndNumber(pchar text, int x, int y, int num
 
 void DisplayOsci::HiPart::DrawTime(int x, int y)
 {
-    int dField = 10;
-    int dSeparator = 2;
+    int dField = 20;
+    int dSeparator = 4;
 
     PackedTime time = HAL_RTC::GetPackedTime();
 
@@ -254,11 +250,11 @@ void DisplayOsci::HiPart::DrawTime(int x, int y)
             time.seconds = TIME_SECONDS_DS;
             time.month = TIME_MONTH_DS;
             time.year = TIME_YEAR_DS;
-            Integer(static_cast<int>(time.day)).ToString(false, 2).Draw(x, y);
+            Integer((int)time.day).ToString(false, 2).Draw(x, y);
             String(':').Draw(x + dField, y);
-            Integer(static_cast<int>(time.month)).ToString(false, 2).Draw(x + dField + dSeparator, y);
+            Integer((int)time.month).ToString(false, 2).Draw(x + dField + dSeparator, y);
             String(':').Draw(x + 2 * dField + dSeparator, y);
-            Integer(static_cast<int>(time.year) + 2000).ToString(false, 4).Draw(x + 2 * dField + 2 * dSeparator, y);
+            Integer((int)time.year + 2000).ToString(false, 4).Draw(x + 2 * dField + 2 * dSeparator, y);
 
             y += 9;
         }
@@ -268,11 +264,11 @@ void DisplayOsci::HiPart::DrawTime(int x, int y)
         }
     }
 
-    Integer(static_cast<int>(time.hours)).ToString(false, 2).Draw(x, y);
+    Integer((int)time.hours).ToString(false, 2).Draw(x, y);
     String(':').Draw(x + dField, y);
-    Integer(static_cast<int>(time.minutes)).ToString(false, 2).Draw(x + dField + dSeparator, y);
+    Integer((int)time.minutes).ToString(false, 2).Draw(x + dField + dSeparator, y);
     String(':').Draw(x + 2 * dField + dSeparator, y);
-    Integer(static_cast<int>(time.seconds)).ToString(false, 2).Draw(x + 2 * dField + 2 * dSeparator, y);
+    Integer((int)time.seconds).ToString(false, 2).Draw(x + 2 * dField + 2 * dSeparator, y);
 }
 
 
