@@ -6,32 +6,32 @@
 
 
 // :FREQMETER:AVEPERIODS
-static pCHAR FuncAvePeriods(pCHAR);
+static pchar FuncAvePeriods(pchar);
 static void HintAvePeriods(String *);
 static bool TestAvePeriods();
 
 // :FREQMETER:LABELS
-static pCHAR FuncLabels(pCHAR);
+static pchar FuncLabels(pchar);
 static void HintLabels(String *);
 static bool TestLabels();
 
 // :FREQMETER:MEASURE
-static pCHAR FuncMeasure(pCHAR);
+static pchar FuncMeasure(pchar);
 static void HintMeasure(String *);
 static bool TestMeasure();
 
 // :FREQMETER:MODE
-static pCHAR FuncMode(pCHAR);
+static pchar FuncMode(pchar);
 static void HintMode(String *);
 static bool TestMode();
 
 // :FREQMETER:TIME
-static pCHAR FuncTime(pCHAR);
+static pchar FuncTime(pchar);
 static void HintTime(String *);
 static bool TestTime();
 
 // :FREQMETER:VALUE
-static pCHAR FuncValue(pCHAR);
+static pchar FuncValue(pchar);
 static void HintValue(String *);
 static bool TestValue();
 
@@ -69,7 +69,7 @@ static void SetNumberPeriods(int i)
     }
 }
 
-static pCHAR FuncAvePeriods(pCHAR buffer)
+static pchar FuncAvePeriods(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(periodsReverse[S_FREQ_NUMBER_PERIODS]));
 
@@ -96,7 +96,7 @@ static void SetLabels(int i)
     }
 }
 
-static pCHAR FuncLabels(pCHAR buffer)
+static pchar FuncLabels(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(labels[S_FREQ_FREQ_CLC]));
 
@@ -117,7 +117,7 @@ static void SetMeasure(int i)
     PageFreqMeter::Init();
 }
 
-static pCHAR FuncMeasure(pCHAR buffer)
+static pchar FuncMeasure(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(measures[S_FREQ_MODE_MEASURE]));
 
@@ -132,7 +132,7 @@ static void SetMode(int i)
 }
 
 
-static pCHAR FuncMode(pCHAR buffer)
+static pchar FuncMode(pchar buffer)
 {
     static pString mode[] =
     {
@@ -165,7 +165,7 @@ static void SetTime(int i)
     }
 }
 
-static pCHAR FuncTime(pCHAR buffer)
+static pchar FuncTime(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(time[S_FREQ_TIME_COUNTING]));
 
@@ -173,7 +173,7 @@ static pCHAR FuncTime(pCHAR buffer)
 }
 
 
-static pCHAR FuncValue(pCHAR buffer)
+static pchar FuncValue(pchar buffer)
 {
     SCPI_PROLOG(buffer);
 

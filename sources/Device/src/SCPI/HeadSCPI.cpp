@@ -11,53 +11,53 @@
 
 
 // *IDN?
-static pCHAR FuncIDN(pCHAR);
+static pchar FuncIDN(pchar);
 static bool TestIDN();
 static void HintIDN(String *);
 
 // *RST
-static pCHAR FuncReset(pCHAR);
+static pchar FuncReset(pchar);
 static bool TestReset();
 static void HintReset(String *);
 
 // :HELP
-static pCHAR FuncHelp(pCHAR);
+static pchar FuncHelp(pchar);
 static bool TestHelp();
 static void HintHelp(String *);
 static void ProcessHelp(const StructSCPI *strct, String message);
 
 // :TEST
-static pCHAR FuncTest(pCHAR);
+static pchar FuncTest(pchar);
 static bool TestTest();
 static void HintTest(String *);
 
 // :CALIBRATOR:MODE
-static pCHAR FuncCalibratorMode(pCHAR);
+static pchar FuncCalibratorMode(pchar);
 static bool TestCalibratorMode();
 static void HintCalibratorMode(String *);
 
 // :MEMORY:LENGTH
-static pCHAR FuncMemoryLength(pCHAR);
+static pchar FuncMemoryLength(pchar);
 static bool TestMemoryLength();
 static void HintMemoryLength(String *);
 
 // :MEMORY:SAVE
-static pCHAR FuncMemorySave(pCHAR);
+static pchar FuncMemorySave(pchar);
 static bool TestMemorySave();
 static void HintMemorySave(String *);
 
 // :RUN
-static pCHAR FuncRun(pCHAR);
+static pchar FuncRun(pchar);
 static bool TestRun();
 static void HintRun(String *);
 
 // :STOP
-static pCHAR FuncStop(pCHAR);
+static pchar FuncStop(pchar);
 static bool TestStop();
 static void HintStop(String *);
 
 // :AUTOSEARCH
-static pCHAR FuncAutoSearch(pCHAR);
+static pchar FuncAutoSearch(pchar);
 static bool TestAutoSearch();
 static void HintAutoSearch(String *);
 
@@ -86,7 +86,7 @@ const StructSCPI SCPI::head[] =
 };
 
 
-static pCHAR FuncIDN(pCHAR buffer)
+static pchar FuncIDN(pchar buffer)
 {
     SCPI_PROLOG(buffer)
 
@@ -102,7 +102,7 @@ static void HintIDN(String *message) //-V2009 //-V2558
 }
 
 
-static pCHAR FuncReset(pCHAR buffer)
+static pchar FuncReset(pchar buffer)
 {
     SCPI_PROLOG(buffer)
         
@@ -118,7 +118,7 @@ static void HintReset(String *message) //-V2009 //-V2558
 }
 
 
-static pCHAR FuncHelp(pCHAR buffer)
+static pchar FuncHelp(pchar buffer)
 {
     SCPI_PROLOG(buffer);
     
@@ -136,7 +136,7 @@ static void HintHelp(String *message) //-V2009 //-V2558
 }
 
 
-static pCHAR FuncTest(pCHAR buffer)
+static pchar FuncTest(pchar buffer)
 {
     static const char *const modes[2] =
     {
@@ -146,7 +146,7 @@ static pCHAR FuncTest(pCHAR buffer)
 
     for (int i = 0; i < 2; i++)
     {
-        pCHAR end = SCPI::BeginWith(buffer, modes[i]);
+        pchar end = SCPI::BeginWith(buffer, modes[i]);
         if (end)
         {
             SCPI_PROLOG(end)
@@ -161,7 +161,7 @@ static pCHAR FuncTest(pCHAR buffer)
 }
 
 
-static pCHAR FuncAutoSearch(pCHAR buffer)
+static pchar FuncAutoSearch(pchar buffer)
 {
     Osci::RunAutoSearch();
     return buffer;
@@ -182,7 +182,7 @@ static void SetCalibratorMode(int i)
     FPGA::LoadCalibratorMode();
 }
 
-static pCHAR FuncCalibratorMode(pCHAR buffer)
+static pchar FuncCalibratorMode(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(calibratorMode[S_SERV_CALIBRATOR_MODE]));
     
@@ -200,7 +200,7 @@ static pString length[] =
     ""
 };
 
-static pCHAR FuncMemoryLength(pCHAR buffer)
+static pchar FuncMemoryLength(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(length[set.mem._enumPoints]));
 
@@ -208,7 +208,7 @@ static pCHAR FuncMemoryLength(pCHAR buffer)
 }
 
 
-static pCHAR FuncMemorySave(pCHAR buffer)
+static pchar FuncMemorySave(pchar buffer)
 {
     SCPI_PROLOG(buffer);
 
@@ -225,7 +225,7 @@ static pCHAR FuncMemorySave(pCHAR buffer)
 }
 
 
-static pCHAR FuncRun(pCHAR buffer)
+static pchar FuncRun(pchar buffer)
 {
     SCPI_PROLOG(buffer);
 
@@ -235,7 +235,7 @@ static pCHAR FuncRun(pCHAR buffer)
 }
 
 
-static pCHAR FuncStop(pCHAR buffer)
+static pchar FuncStop(pchar buffer)
 {
     SCPI_PROLOG(buffer);
 

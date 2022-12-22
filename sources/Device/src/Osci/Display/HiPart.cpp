@@ -124,9 +124,6 @@ int DisplayOsci::HiPart::DrawMainParameters(int _x, int _y)
 
     Separator::Draw(x - 4, _y - 1);
 
-    const int SIZE = 100;
-    char buffer[SIZE];
-
     String("р\xa5%s", TBase::ToString(S_TIME_BASE)).Draw(x, y0, Color::FILL);
 
     String("\xa5%s", TShift::ToString().c_str()).Draw(x + 75, y0);
@@ -138,56 +135,51 @@ int DisplayOsci::HiPart::DrawMainParameters(int _x, int _y)
         String("с\xa5\x10%s", source[S_TRIG_SOURCE]).Draw(x, y1, Color::Trig());
     }
 
-    return 0;
-
-    buffer[0] = 0;
-
     if (S_MEM_MODE_WORK_IS_DIR)
     {
         static const pString couple[] = { "\x92", "\x92", "\x91" };
 
         static const pString polar[] =  { "\xa7", "\xa6" };
 
-        std::snprintf(buffer, SIZE, "\xa5\x10%s\x10\xa5\x10%s\x10\xa5\x10", couple[S_TRIG_INPUT], polar[S_TRIG_POLARITY]);
-        String(buffer).Draw(x + 18, y1);
+        String("\xa5\x10%s\x10\xa5\x10%s\x10\xa5\x10", couple[S_TRIG_INPUT], polar[S_TRIG_POLARITY]).Draw(x + 30, y1);
 
         static const pString filtr[] = { "\xb5\xb6", "\xb3\xb4", "\xb1\xb2" };
 
-        Char(filtr[S_TRIG_INPUT][0]).Draw(x + 45, y1);
-        Char(filtr[S_TRIG_INPUT][1]).Draw(x + 53, y1);
+        int x1 = x + 85;
+        Char(filtr[S_TRIG_INPUT][0]).Draw(x1, y1);
+        Char(filtr[S_TRIG_INPUT][1]).Draw(x1 + 16, y1);
     }
 
-    buffer[0] = '\0';
-    const char mode[] =
-    {
-        '\xb7',
-        '\xa0',
-        '\xb0'
-    };
     if (S_MEM_MODE_WORK_IS_DIR)
     {
-        std::snprintf(buffer, 100, "\xa5\x10%c", mode[S_TRIG_START_MODE]);
-        String(buffer).Draw(x + 63, y1);
-    }
+        static char mode[] =
+        {
+            '\xb7',
+            '\xa0',
+            '\xb0'
+        };
 
-    y1 = y1 - 6;
+        String("\xa5\x10%c", mode[S_TRIG_START_MODE]).Draw(x + 125, y1);
+    }
 
     DFont::Set(DTypeFont::_5);
 
-    x += 77;
+    x += 165;
 
-    Separator::Draw(x - 2, y0 - 1);
+    Separator::Draw(x - 3, y0 - 1);
 
     if (S_MEM_MODE_WORK_IS_DIR)
     {
-        WriteStringAndNumber("накопл", x, y0 - 4, 0, ENumAccum::ToString(S_DISP_ENUM_ACCUM));
-        WriteStringAndNumber("усредн", x, y1, S_OSCI_NUM_AVERAGE);
-        WriteStringAndNumber("сглаж", x, y1 + 6, S_DISP_NUM_SMOOTH);
+        WriteStringAndNumber("накопл", x, y0 - 6, 0, ENumAccum::ToString(S_DISP_ENUM_ACCUM));
+        WriteStringAndNumber("усредн", x, y0 + 6, S_OSCI_NUM_AVERAGE);
+        WriteStringAndNumber("сглаж", x, y0 + 18, S_DISP_NUM_SMOOTH);
     }
 
-    Separator::Draw(x + 43, y0 - 1);
+    x += 180;
 
-    return _x + 93;
+    Separator::Draw(x, y0 - 1);
+
+    return x + 5;
 }
 
 

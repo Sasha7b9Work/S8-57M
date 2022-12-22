@@ -26,7 +26,7 @@ namespace HAL
 {
     void Init();
 
-    void ErrorHandler(pCHAR, int);
+    void ErrorHandler(pchar, int);
 
     void Delay(uint timeMS);
 

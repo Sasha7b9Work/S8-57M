@@ -9,27 +9,27 @@
 namespace SCPI_TBASE
 {
     // :TIMEBASE:MODE
-    static pCHAR FuncMode(pCHAR);
+    static pchar FuncMode(pchar);
     static bool TestMode();
     static void HintMode(String *);
 
     // :TIMEBASE:OFFSETBASE
-    static pCHAR FuncOffsetBase(pCHAR);
+    static pchar FuncOffsetBase(pchar);
     static bool TestOffsetBase();
     static void HintOffsetBase(String *);
 
     // :TIMEBASE:PEAKDET
-    static pCHAR FuncPeakDet(pCHAR);
+    static pchar FuncPeakDet(pchar);
     static bool TestPeakDet();
     static void HintPeakDet(String *);
 
     // :TIMEBASE:SCALE:
-    static pCHAR FuncScale(pCHAR);
+    static pchar FuncScale(pchar);
     static bool TestScale();
     static void HintScale(String *);
 
     // :TIMEBASE:TPOS:
-    static pCHAR FuncTPos(pCHAR);
+    static pchar FuncTPos(pchar);
     static bool TestTPos();
     static void HintTPos(String *);
 
@@ -112,7 +112,7 @@ static void SetSampleType(int i)
     PageTime::SetSampleTime(static_cast<SampleType::E>(i));
 }
 
-pCHAR SCPI_TBASE::FuncMode(pCHAR buffer)
+pchar SCPI_TBASE::FuncMode(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(modes[S_RAND_SAMPLE_TYPE]));
 
@@ -126,7 +126,7 @@ static void AnswerOffsetBase()
     SCPI::SendAnswer(answer.c_str());
 }
 
-pCHAR SCPI_TBASE::FuncOffsetBase(pCHAR buffer)
+pchar SCPI_TBASE::FuncOffsetBase(pchar buffer)
 {
     SCPI_REQUEST(AnswerOffsetBase());
 
@@ -145,7 +145,7 @@ pCHAR SCPI_TBASE::FuncOffsetBase(pCHAR buffer)
 }
 
 
-pCHAR SCPI_TBASE::FuncPeakDet(pCHAR buffer)
+pchar SCPI_TBASE::FuncPeakDet(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(peakdets[S_PEAK_DET]));
 
@@ -153,7 +153,7 @@ pCHAR SCPI_TBASE::FuncPeakDet(pCHAR buffer)
 }
 
 
-pCHAR SCPI_TBASE::FuncScale(pCHAR buffer)
+pchar SCPI_TBASE::FuncScale(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(tBaseNames[S_TIME_BASE]));
 
@@ -161,7 +161,7 @@ pCHAR SCPI_TBASE::FuncScale(pCHAR buffer)
 }
 
 
-pCHAR SCPI_TBASE::FuncTPos(pCHAR buffer)
+pchar SCPI_TBASE::FuncTPos(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(tposes[S_TPOS]));
 

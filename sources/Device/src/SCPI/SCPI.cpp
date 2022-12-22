@@ -216,7 +216,7 @@ static bool RemoveSeparatorsSequenceFromBegin()
 }
 
 
-void SCPI::SendAnswer(pCHAR message)
+void SCPI::SendAnswer(pchar message)
 {
     if(message[std::strlen(message) - 1] != 0x0D)
     {
@@ -237,7 +237,7 @@ void SCPI::SendAnswer(const String &message)
 }
 
 
-void SCPI::SendData(pCHAR message)
+void SCPI::SendData(pchar message)
 {
     VCP::SendStringAsynch(message);
 }

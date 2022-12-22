@@ -5,27 +5,27 @@
 #include "Settings/Settings.h"
 
 // :FFT:DATA?
-static pCHAR FFT_FuncData(pCHAR);
+static pchar FFT_FuncData(pchar);
 static void FFT_HintData(String *);
 static bool FFT_TestData();
 
 // :FFT:DISPLAY
-static pCHAR FFT_FuncDisplay(pCHAR);
+static pchar FFT_FuncDisplay(pchar);
 static void FFT_HintDisplay(String *);
 static bool FFT_TestDisplay();
 
 // :FFT:SCALE
-static pCHAR FFT_FuncScale(pCHAR);
+static pchar FFT_FuncScale(pchar);
 static void FFT_HintScale(String *);
 static bool FFT_TestScale();
 
 // :FFT:SOUCRE
-static pCHAR FuncSource(pCHAR);
+static pchar FuncSource(pchar);
 static void HintSource(String *);
 static bool TestSource();
 
 // :FFT:WINDOW
-static pCHAR FuncWindow(pCHAR);
+static pchar FuncWindow(pchar);
 static void HintWindow(String *);
 static bool TestWindow();
 
@@ -41,7 +41,7 @@ const StructSCPI SCPI::fft[] =
 };
 
 
-static pCHAR FFT_FuncData(pCHAR buffer)
+static pchar FFT_FuncData(pchar buffer)
 {
     SCPI_PROLOG(buffer);
 
@@ -63,7 +63,7 @@ static void EnableFFT(int i)
     S_FFT_ENABLED = (i == 0);
 }
 
-static pCHAR FFT_FuncDisplay(pCHAR buffer)
+static pchar FFT_FuncDisplay(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(display[S_FFT_ENABLED ? 0 : 1]));
 
@@ -78,7 +78,7 @@ static pString scale[] =
     ""
 };
 
-static pCHAR FFT_FuncScale(pCHAR buffer)
+static pchar FFT_FuncScale(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(scale[S_FFT_SCALE]));
 
@@ -94,7 +94,7 @@ static pString source[] =
     ""
 };
 
-static pCHAR FuncSource(pCHAR buffer)
+static pchar FuncSource(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(source[S_FFT_SOURCE]));
 
@@ -111,7 +111,7 @@ static pString window[] =
     ""
 };
 
-static pCHAR FuncWindow(pCHAR buffer)
+static pchar FuncWindow(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(window[S_FFT_WINDOW]));
 

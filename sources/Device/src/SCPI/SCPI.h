@@ -13,7 +13,7 @@
 
 class String;
 
-typedef const char *(*FuncSCPI)(pCHAR);
+typedef const char *(*FuncSCPI)(pchar);
 typedef bool (*FuncTestSCPI)();
 typedef void (*FuncHint)(String *);
 
@@ -82,11 +82,11 @@ namespace SCPI
     bool IsLineEnding(const char **bufer);
     
     // Послать ответ м в конце дописать 0x0D, если нет
-    void SendAnswer(pCHAR message);
+    void SendAnswer(pchar message);
     void SendAnswer(const String &message);
 
     // Послать строку как есть - без завершающего символа
-    void SendData(pCHAR message);
+    void SendData(pchar message);
     void SendData(const String &message);
 
     // Послать измерение в SCPI - с заменой нечитаемых символов и единиц измерения

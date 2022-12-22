@@ -19,10 +19,10 @@ public:
     explicit String();
              String(const String &);
     explicit String(char symbol);
-    explicit String(pCHAR format, ...);
+    explicit String(pchar format, ...);
     ~String();
 
-    void Set(TypeConversionString::E conv, pCHAR format, ...);
+    void Set(TypeConversionString::E conv, pchar format, ...);
 
     char *c_str() const;
     // Отобразить текст на экране в заданнх координатах
@@ -32,9 +32,9 @@ public:
 
     void Free();
 
-    void Append(pCHAR str);
+    void Append(pchar str);
 
-    void Append(pCHAR str, int numSymbols);
+    void Append(pchar str, int numSymbols);
 
     void Append(char symbol);
     

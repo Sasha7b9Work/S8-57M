@@ -7,17 +7,17 @@
 
 
 // :MEASURE:DISPLAY
-static pCHAR FuncDisplay(pCHAR);
+static pchar FuncDisplay(pchar);
 static void HintDisplay(String *);
 static bool TestDisplay();
 
 // :MEASURE:SOURCE
-static pCHAR FuncSource(pCHAR);
+static pchar FuncSource(pchar);
 static void HintSource(String *);
 static bool TestSource();
 
 // :MEASURE:VALUE
-static pCHAR Meas_FuncValue(pCHAR);
+static pchar Meas_FuncValue(pchar);
 static void Meas_HintValue(String *);
 static bool Meas_TestValue();
 
@@ -43,7 +43,7 @@ static void DisplayMeasures(int i)
     S_MEAS_SHOW = (i == 1);
 }
 
-static pCHAR FuncDisplay(pCHAR buffer)
+static pchar FuncDisplay(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(S_MEAS_SHOW ? " ON" : " OFF"));
 
@@ -59,7 +59,7 @@ static pString source[] =
     ""
 };
 
-static pCHAR FuncSource(pCHAR buffer)
+static pchar FuncSource(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(source[S_MEAS_SOURCE]));
 
@@ -95,9 +95,9 @@ static pString values[] =
     ""
 };
 
-static pCHAR Meas_FuncValue(pCHAR buffer)
+static pchar Meas_FuncValue(pchar buffer)
 {
-    pCHAR end = nullptr;
+    pchar end = nullptr;
 
     end = SCPI::BeginWith(buffer, " VMAXEST");
 

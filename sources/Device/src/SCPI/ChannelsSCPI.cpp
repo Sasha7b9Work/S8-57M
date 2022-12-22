@@ -14,42 +14,42 @@
 #define EXTRACT_CHANNEL(x) Chan::E ch = (*(buffer - (x)) == '1') ? ChanA : ChanB;    /* (buffer - 7) указывает на номер канала - 1 или 2 */
 
 // :CHANNEL{1|2}:BALANCE
-static pCHAR FuncBalance(pCHAR);
+static pchar FuncBalance(pchar);
 static bool TestBalance();
 static void HintBalance(String *);
 
 // :CHANNEL{1|2}:BANDWIDTH
-static pCHAR FuncBandwidth(pCHAR);
+static pchar FuncBandwidth(pchar);
 static bool TestBandwidth();
 static void HintBandwidth(String *);
 
 // :CHANNEL{1|2}:COUPLING
-static pCHAR FuncCoupling(pCHAR);
+static pchar FuncCoupling(pchar);
 static bool TestCoupling();
 static void HintCoupling(String *);
 
 // :CHANNEL{1|2}:DATA
-static pCHAR FuncData(pCHAR);
+static pchar FuncData(pchar);
 static bool TestData();
 static void HintData(String *);
 
 // :CHANNEL{1|2}:DISPLAY
-static pCHAR FuncDisplay(pCHAR);
+static pchar FuncDisplay(pchar);
 static bool TestDisplay();
 static void HintDisplay(String *);
 
 // :CHANNEL{1|2}:OFFSET
-static pCHAR FuncOffset(pCHAR);
+static pchar FuncOffset(pchar);
 static bool TestOffset();
 static void HintOffset(String *);
 
 // :CHANNEL{1|2}:PROBE
-static pCHAR FuncProbe(pCHAR);
+static pchar FuncProbe(pchar);
 static bool TestProbe();
 static void HintProbe(String *);
 
 // :CHANNEL{1|2}:SCALE
-static pCHAR FuncScale(pCHAR);
+static pchar FuncScale(pchar);
 static bool TestScale();
 static void HintScale(String *);
 
@@ -104,7 +104,7 @@ const StructSCPI SCPI::channels[] =
 };
 
 
-static pCHAR FuncBalance(pCHAR buffer)
+static pchar FuncBalance(pchar buffer)
 {
     EXTRACT_CHANNEL(9);
 
@@ -131,7 +131,7 @@ static void SetBandwidth(Chan::E ch, int i)
 }
 
 
-static pCHAR FuncBandwidth(pCHAR buffer)
+static pchar FuncBandwidth(pchar buffer)
 {
     EXTRACT_CHANNEL(11);
 
@@ -150,7 +150,7 @@ static pString couple[] =
 };
 
 
-static pCHAR FuncCoupling(pCHAR buffer)
+static pchar FuncCoupling(pchar buffer)
 {
     EXTRACT_CHANNEL(10);
 
@@ -160,7 +160,7 @@ static pCHAR FuncCoupling(pCHAR buffer)
 }
 
 
-static pCHAR FuncData(pCHAR buffer)
+static pchar FuncData(pchar buffer)
 {
     EXTRACT_CHANNEL(7);
 
@@ -172,7 +172,7 @@ static pCHAR FuncData(pCHAR buffer)
 }
 
 
-static pCHAR FuncDisplay(pCHAR buffer)
+static pchar FuncDisplay(pchar buffer)
 {
     EXTRACT_CHANNEL(9);
 
@@ -188,7 +188,7 @@ static void SendAnswerForOffst(Chan::E ch)
     SCPI::SendAnswer(answer.c_str());
 }
 
-static pCHAR FuncOffset(pCHAR buffer)
+static pchar FuncOffset(pchar buffer)
 {
     EXTRACT_CHANNEL(8);
 
@@ -217,7 +217,7 @@ static pString probe[] =
 };
 
 
-static pCHAR FuncProbe(pCHAR buffer)
+static pchar FuncProbe(pchar buffer)
 {
     EXTRACT_CHANNEL(7);
 
@@ -244,7 +244,7 @@ static pCHAR FuncProbe(pCHAR buffer)
 }
 
 
-static pCHAR FuncScale(pCHAR buffer)
+static pchar FuncScale(pchar buffer)
 {
     EXTRACT_CHANNEL(7);
 

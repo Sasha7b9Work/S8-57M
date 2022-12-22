@@ -149,7 +149,7 @@ void FDrive::Update()
 
 
 
-bool FDrive::AppendStringToFile(pCHAR)
+bool FDrive::AppendStringToFile(pchar)
 {
     return false;
 }

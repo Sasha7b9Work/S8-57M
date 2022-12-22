@@ -6,10 +6,10 @@
 
 
 // :KEY:PRESS:
-static const char *FuncKeyPress(pCHAR);
+static const char *FuncKeyPress(pchar);
 static bool TestKeyPress();
 // :KEY:LONG:
-static const char *FuncKeyLong(pCHAR);
+static const char *FuncKeyLong(pchar);
 static bool TestKeyLong();
 
 static void HintKey(String *);

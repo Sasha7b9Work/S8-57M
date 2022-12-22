@@ -10,27 +10,27 @@
 namespace SCPI_TRIG
 {
     // :TRIG:INPUT
-    static pCHAR FuncInput(pCHAR);
+    static pchar FuncInput(pchar);
     static void HintInput(String *);
     static bool TestInput();
 
     // :TRIG:LEVEL
-    static pCHAR FuncLevel(pCHAR);
+    static pchar FuncLevel(pchar);
     static void HintLevel(String *);
     static bool TestLevel();
 
     // :TRIG:MODE
-    static pCHAR FuncMode(pCHAR);
+    static pchar FuncMode(pchar);
     static void HintMode(String *);
     static bool TestMode();
 
     // :TRIG:POLARITY
-    static pCHAR FuncPolarity(pCHAR);
+    static pchar FuncPolarity(pchar);
     static void HintPolarity(String *);
     static bool TestPolarity();
 
     // :TRIG:SOURCE
-    static pCHAR FuncSource(pCHAR);
+    static pchar FuncSource(pchar);
     static void HintSource(String *);
     static bool TestSource();
 
@@ -81,7 +81,7 @@ const StructSCPI SCPI::trigger[] =
 };
 
 
-pCHAR SCPI_TRIG::FuncInput(pCHAR buffer)
+pchar SCPI_TRIG::FuncInput(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(inputs[S_TRIG_INPUT]));
 
@@ -95,7 +95,7 @@ static void SendAnswerLevel()
     SCPI::SendAnswer(answer.c_str());
 }
 
-pCHAR SCPI_TRIG::FuncLevel(pCHAR buffer)
+pchar SCPI_TRIG::FuncLevel(pchar buffer)
 {
     SCPI_REQUEST(SendAnswerLevel());
 
@@ -114,7 +114,7 @@ pCHAR SCPI_TRIG::FuncLevel(pCHAR buffer)
 }
 
 
-pCHAR SCPI_TRIG::FuncMode(pCHAR buffer)
+pchar SCPI_TRIG::FuncMode(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(trig_modes[S_TRIG_START_MODE]));
 
@@ -122,7 +122,7 @@ pCHAR SCPI_TRIG::FuncMode(pCHAR buffer)
 }
 
 
-pCHAR SCPI_TRIG::FuncPolarity(pCHAR buffer)
+pchar SCPI_TRIG::FuncPolarity(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(polarities[S_TRIG_POLARITY]));
 
@@ -130,7 +130,7 @@ pCHAR SCPI_TRIG::FuncPolarity(pCHAR buffer)
 }
 
 
-pCHAR SCPI_TRIG::FuncSource(pCHAR buffer)
+pchar SCPI_TRIG::FuncSource(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(sources[S_TRIG_SOURCE]));
 

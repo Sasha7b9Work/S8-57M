@@ -281,7 +281,9 @@ int Text::DrawOnBackground(int x, int y, Color colorBackground)
 
 void Text::DrawRelativelyRight(int xRight, int y, Color color)
 {
-    Draw(xRight - DFont::GetLengthText(text), y, color);
+    int x = xRight - DFont::GetLengthText(text);
+    LOG_WRITE("x = %d", x);
+    Draw(x, y, color);
 }
 
 

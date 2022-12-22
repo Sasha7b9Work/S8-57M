@@ -19,7 +19,7 @@ struct Point2        // от слова dimensions
     // Берём 10 последних бит
     int X() const                 { return (int)(xy & 0x3ff);  }
     int Width() const             { return X(); }
-    int Y() const                 { return (int)(xy >> 10);    }
+    int Y() const                 { int result = (int)(xy >> 10); if (result & (1 << 13)) result |= 0xffffe000; return result; }
     int Height() const            { return Y(); }
     void Write(uint8 *dest) const { std::memcpy(dest, &xy, 3); }
 private:
