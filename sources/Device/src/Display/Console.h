@@ -6,7 +6,7 @@ namespace Console
 {
     void Init();
 
-    void Draw();
+    void Render();
 
     void AddString(const char *string);
     // Возвращает true, если консоль должна отображаться на экране

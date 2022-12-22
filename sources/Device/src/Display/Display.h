@@ -39,7 +39,7 @@ namespace Display
     void Init();
 
     // Здесь происходит вся отрисовка
-    void Update();
+    void Render();
 
     // Возвращаемое значение true означает, что дисплей находится в состоянии отрисовки
     bool InProcess();
@@ -60,10 +60,10 @@ namespace Display
 
     // Устанавливает дополнительную функцию, которая будет отрисовываться каждый раз после обновления экрана
     // timeRemove - время, по истечении которого дополнительная функция отрисовки будет удалена. Если его не указывать, фукнция удаляться самостоятельно не будет
-    void SetAddDrawFunction(pFuncVV func, uint timeRemove = 0);
+    void SetAddFunctionRender(pFuncVV func, uint timeRemove = 0);
 
     // Удаляет дополнительую функцию отрисовки, установленную вызовом функции SetAddDrawFunction()
-    void RemoveAddDrawFunction();
+    void RemoveAddFunctionRender();
 
     // Возвращает время, через которое меню автоматически скрывается, если не было больше нажатий
     int TimeMenuAutoHide();

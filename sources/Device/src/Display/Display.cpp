@@ -31,7 +31,7 @@ static pFuncVV funcOnHand = nullptr;
 static uint timeStart = 0;
 static const char *textWait = 0;
 static bool clearBackground = false;
-volatile static pFuncVV funcAdditionDraw = EmptyFunc;   // Дополнительная функция рисования. Выполняется после стандартной отрисовки, но перед вызовом EndScene;
+volatile static pFuncVV funcAdditionRender = EmptyFunc;   // Дополнительная функция рисования. Выполняется после стандартной отрисовки, но перед вызовом EndScene;
 static bool inStateDraw = false;                        // true означает, что происходит процесс отрисовки
 static pFuncVV funcAfterUpdateOnce = EmptyFunc;
 
@@ -50,7 +50,7 @@ void Display::Init()
 }
 
 
-void Display::Update()
+void Display::Render()
 {
     static uint prevTime = 0;
 
@@ -74,16 +74,16 @@ void Display::Update()
         DisplayOsci::Render,
         EmptyFuncVI,
         EmptyFuncVI,
-        DisplayRecorder::Update
+        DisplayRecorder::Render
     };
 
     for (int field = 0; field < 5; field++)
     {
         funcs[static_cast<int>(Device::CurrentMode())](field);
 
-        Console::Draw();
+        Console::Render();
 
-        funcAdditionDraw();
+        funcAdditionRender();
 
         Painter::EndScene();
     }
@@ -235,24 +235,24 @@ void Display::Message::ShowAndWaitKey(const char *text, bool eraseBackground)
 }
 
 
-void Display::RemoveAddDrawFunction()
+void Display::RemoveAddFunctionRender()
 {
-    funcAdditionDraw = EmptyFunc;
+    funcAdditionRender = EmptyFunc;
 }
 
 
-void Display::SetAddDrawFunction(pFuncVV func, uint time)
+void Display::SetAddFunctionRender(pFuncVV func, uint time)
 {
     if (func == 0)
     {
         func = EmptyFunc;
     }
 
-    funcAdditionDraw = func;
+    funcAdditionRender = func;
 
     if (time)
     {
-        Timer::SetAndStartOnce(TypeTimer::RemoveAddFunction, RemoveAddDrawFunction, time);
+        Timer::SetAndStartOnce(TypeTimer::RemoveAddFunction, RemoveAddFunctionRender, time);
     }
 }
 

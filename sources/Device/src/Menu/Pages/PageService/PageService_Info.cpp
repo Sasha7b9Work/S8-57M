@@ -54,14 +54,11 @@ static void OnOpenClose_Page(bool enter)
 {
     if (enter)
     {
-        Display::SetAddDrawFunction(Information_Draw);
-        //static const Key::E keys[2] = { Key::Enter, Key::None };
-        //Keyboard::Lock(keys);
+        Display::SetAddFunctionRender(Information_Draw);
     }
     else
     {
-        Display::RemoveAddDrawFunction();
-        //Keyboard::Unlock();
+        Display::RemoveAddFunctionRender();
     }
 }
 

@@ -37,7 +37,7 @@ void Console::Init()
 }
 
 
-void Console::Draw()
+void Console::Render()
 {
     if (prevMaxStrinsInConsole == -1)
     {

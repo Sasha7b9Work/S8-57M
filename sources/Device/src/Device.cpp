@@ -126,7 +126,7 @@ void Device::Update()
 
 //    TestPerformance();
 
-    Display::Update();
+    Display::Render();
 
     FDrive::Update();
 
