@@ -239,7 +239,7 @@ void Choice::DrawClosed(int x, int y) const
 {
     if (IsActive())
     {
-//        Region(Width() - 3, Value::HEIGHT - 3).Fill(x + 1, y + Value::HEIGHT, ColorBackground());
+        Region(Width() - 3, Value::HEIGHT - 3).Fill(x + 1, y + Value::HEIGHT, ColorBackground());
 
         int deltaY = static_cast<int>(Step());
         Color colorText = Color::BLACK;
@@ -337,7 +337,7 @@ void Page::DrawTitle(int y) const
 
     int delta = condDrawRSet ? -10 : 0;
 
-    Text(Title().c_str()).DrawInCenterRect(0, y - 5, Menu::Title::WIDTH + 2 + delta, Menu::Title::HEIGHT, ColorTitleText());
+    Text(Title().c_str()).DrawInCenterRect(0, y - 1, Menu::Title::WIDTH + 2 + delta, Menu::Title::HEIGHT, ColorTitleText());
 
     Color::GRAY_75.SetAsCurrent();
 
