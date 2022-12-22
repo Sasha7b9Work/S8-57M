@@ -101,7 +101,7 @@ public:
 
     struct Value
     {
-        static const int HEIGHT = 13;
+        static const int HEIGHT = 24;
     };
 
     bool Is(TypeItem::E t) const { return data->type == static_cast<uint8>(t); };
