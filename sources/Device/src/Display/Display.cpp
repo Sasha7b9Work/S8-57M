@@ -71,7 +71,7 @@ void Display::Update()
 
     static const pFuncVI funcs[Device::Mode::Count] =
     {
-        DisplayOsci::Update,
+        DisplayOsci::Render,
         EmptyFuncVI,
         EmptyFuncVI,
         DisplayRecorder::Update
