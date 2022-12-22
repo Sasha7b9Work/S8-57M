@@ -11,20 +11,20 @@
 namespace Console
 {
     static CHAR_BUF2(buffer, 33, 100);
+
     // true означает, что идЄт процесс вывода консоли и добавл€ть в неЄ новые строки нельз€ (это происходит, когда добавление идЄт из прерывани€)
     bool inProcessDraw = false;
+
     // true, если происходит процесс добавлени€ строки
     bool inProcessAddingString = false;
+
     //  оличество заполненных строк в консоли
     static int stringInConsole = 0;
+
     // «десь сохран€етс€ предыдущее значение максимального количества строк в консоли
     static int16 prevMaxStrinsInConsole = -1;
 
     static void DeleteFirstString();
-
-//    // ¬озвращает true, если консоль зан€та и с ней нельз€ производить работу
-//    static bool IsBusy();
-
 }
 
 
@@ -37,7 +37,7 @@ void Console::Init()
 }
 
 
-void Console::Render()
+void Console::Draw()
 {
     if (prevMaxStrinsInConsole == -1)
     {

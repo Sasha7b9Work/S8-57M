@@ -81,7 +81,7 @@ void Display::Render()
     {
         funcs[static_cast<int>(Device::CurrentMode())](field);
 
-        Console::Render();
+        Console::Draw();
 
         funcAdditionRender();
 
