@@ -77,9 +77,11 @@ void DisplayOsci::HiPart::Draw(int field)
 
     DrawTime(x + 3, Y0 + 19); //-V2007
 
-    return;
+    Separator::Draw(528, Y0);
 
-    DrawRightPart(271, Y0);
+    DrawRightPart(528, Y0);
+
+    return;
 
     WriteCursors();
 
@@ -295,10 +297,8 @@ void DisplayOsci::HiPart::DrawFrequency(int x, int y)
 void DisplayOsci::HiPart::DrawRightPart(int x0, int y0)
 {
     // Синхроимпульс
-
-    Separator::Draw(x0 - 1, y0);
-
     static const int xses[3] = { 280, 271, 251 };
+
     int x = xses[S_MEM_MODE_WORK];
 
     if (!S_MEM_MODE_WORK_IS_RAM)
@@ -307,26 +307,24 @@ void DisplayOsci::HiPart::DrawRightPart(int x0, int y0)
 
         if (Trig::SyncPulse())
         {
-            Region(26, 16).Fill(x0 + 1, y0 + 1, Color::FILL);
-            String("СИ").Draw(x0 + 9, y0 + 5, Color::BACK);
+            Region(35, 25).Fill(x0 + 5, y0 + 5, Color::FILL);
+            String("СИ").Draw(x0 + 12, y0 + 8, Color::BACK);
         }
     }
 
-    // Режим работы
-    static const pString strs[] =
-    {
-        "ИЗМ",
-        "ПОСЛ",
-        "ВНТР"
-    };
+    Separator::Draw(x0 + 43, y0);
 
+    // Режим работы
     if (!S_MEM_MODE_WORK_IS_DIR)
     {
-        x += 18;
+        static const pString strs[] =
+        {
+            "ИЗМ",
+            "ПОСЛ",
+            "ВНТР"
+        };
 
-//        VLine(Grid::Top() - 3).Draw(x, 1, Color::FILL);
-
-        x += 2;
+        x += 20;
         String("режим").Draw(x, -1);
         Text(strs[S_MEM_MODE_WORK]).DrawInCenterRect(x + 1, 9, 25, 8);
     }
@@ -337,17 +335,13 @@ void DisplayOsci::HiPart::DrawRightPart(int x0, int y0)
 
     if (!S_MEM_MODE_WORK_IS_RAM)
     {
-        x += 27;
-
-        VLine(Grid::Top() - 3).Draw(x, 1, Color::FILL);
-
-        x += 2;
+        x += 329;
         
         int y = 1;
 
         switch (OsciStateWork::Current())
         {
-        case OsciStateWork::Stopped:    Region(10, 10).Fill(x + 3, y + 3);              break;
+        case OsciStateWork::Stopped:    Region(20, 20).Fill(x + 3, y + 3);              break;
         case OsciStateWork::Triggered:  Char(Symbol8::PLAY).Draw4SymbolsInRect(x, y);   break;
         case OsciStateWork::Awaiting:   Region(4, 10).Fill(x + 3, y + 3);
                                         Region(4, 10).Fill(x + 10, y + 3);              break;

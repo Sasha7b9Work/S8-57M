@@ -121,8 +121,8 @@ void Char::Draw4SymbolsInRect(int x, int y, Color color)
 
     for (char i = 0; i < 2; i++)
     {
-        String("%c", ch + i).Draw(x + 8 * i, y);
-        String("%c", ch + i + 16).Draw(x + 8 * i, y + 8);
+        String("%c", ch + i).Draw(x + 16 * i, y);
+        String("%c", ch + i + 16).Draw(x + 16 * i, y + 16);
     }
 
     DFont::Pop();
