@@ -57,7 +57,7 @@ void DisplayOsci::Update(int field)
         Accumulator::Reset();
     }
 
-    PainterData::DrawData();
+//    PainterData::DrawData();
 
     Rectangle(Grid::Width(), Grid::ChannelHeight()).Draw(Grid::Left(), Grid::Top(), Color::FILL);
 

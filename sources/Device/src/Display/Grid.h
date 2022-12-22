@@ -5,9 +5,9 @@
 namespace Grid
 {
     // Константы используются для расчёта размеров, которые остаются одинаковыми при любых размерах и пропорциях сетки - например, элементов меню
-    const int WIDTH = 280;
-    const int HEIGHT = 200;
-    const int SIZE_CELL = 20;
+    const int WIDTH = 560;
+    const int HEIGHT = 400;
+    const int SIZE_CELL = 40;
 
     void Draw();
 

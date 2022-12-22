@@ -4,38 +4,41 @@
 #include "Display/Primitives.h"
 #include "Display/Grid.h"
 
-// Нарисовать сетку для режима осциллографа
-static void DrawOsci();
-// Нарисовать сетку для режима тестер-компонента
-static void DrawTester();
 
-static void DrawRecorder();
+namespace Grid
+{
+    // Нарисовать сетку для режима осциллографа
+    static void DrawOsci();
+    // Нарисовать сетку для режима тестер-компонента
+    static void DrawTester();
 
-static void DrawGridSignal(int left, int top, int width, int height);
+    static void DrawRecorder();
 
-static void DrawGridSpectrum();
-// Возвращает расстояние между 
-static int  DeltaHforLineGrid();
+    static void DrawGridSignal(int left, int top, int width, int height);
 
-static int  DeltaVforLineGrid();
+    static void DrawGridSpectrum();
+    // Возвращает расстояние между 
+    static int  DeltaHforLineGrid();
 
-static void DrawGridType1(int left, int top, int right, int bottom, float centerX, float centerY, float deltaX, float deltaY, float stepX, float stepY);
+    static int  DeltaVforLineGrid();
 
-static void DrawGridType2(int left, int top, int right, int bottom, int deltaX, int deltaY, int stepX, int stepY);
+    static void DrawGridType1(int left, int top, int right, int bottom, float centerX, float centerY, float deltaX, float deltaY, float stepX, float stepY);
 
-static void DrawGridType3(int left, int top, int right, int bottom, int centerX, int centerY, int deltaX, int deltaY, int stepX);
+    static void DrawGridType2(int left, int top, int right, int bottom, int deltaX, int deltaY, int stepX, int stepY);
 
-static float DeltaY();
+    static void DrawGridType3(int left, int top, int right, int bottom, int centerX, int centerY, int deltaX, int deltaY, int stepX);
 
-static float DeltaX();
+    static float DeltaY();
 
-static int MathTop();
+    static float DeltaX();
 
+    static int MathTop();
+}
 
 
 int Grid::Left()
 {
-    static const int left[Device::Mode::Count] = { 20, 0, 0, 0 };
+    static const int left[Device::Mode::Count] = { SIZE_CELL, 0, 0, 0 };
 
     return left[static_cast<int>(Device::CurrentMode())];
 }
@@ -43,7 +46,7 @@ int Grid::Left()
 
 int Grid::Top()
 {
-    static const int top[Device::Mode::Count] = { 19, 0, 0, 0 };
+    static const int top[Device::Mode::Count] = { SIZE_CELL - 1, 0, 0, 0 };
 
     return top[static_cast<int>(Device::CurrentMode())];
 }
@@ -51,7 +54,7 @@ int Grid::Top()
 
 int Grid::Width()
 {
-    static const int width[Device::Mode::Count] = { 280, Display::WIDTH - 1, 0, 319 };
+    static const int width[Device::Mode::Count] = { WIDTH, Display::WIDTH - 1, 0, Display::WIDTH - 1 };
 
     return width[static_cast<int>(Device::CurrentMode())];
 }
@@ -59,7 +62,7 @@ int Grid::Width()
 
 int Grid::Height()
 {
-    static const int height[Device::Mode::Count] = { 200, Display::HEIGHT - 1, 0, 239 };
+    static const int height[Device::Mode::Count] = { HEIGHT, Display::HEIGHT - 1, 0, Display::HEIGHT - 1 };
 
     return height[static_cast<int>(Device::CurrentMode())];
 }
@@ -83,7 +86,7 @@ int Grid::Right()
 }
 
 
-static int MathTop()
+int Grid::MathTop()
 {
     return Grid::Top() + Grid::Height() / 2;
 }
@@ -133,7 +136,7 @@ void Grid::Draw()
 }
 
 
-void DrawOsci()
+void Grid::DrawOsci()
 {
     if (Display::IsSeparate())
     {
@@ -144,11 +147,6 @@ void DrawOsci()
             DrawGridSpectrum();
         }
 
-        //if (FUNC_MODE_DRAW_IS_ENABLED)
-        //{
-        //    DrawGridSignal(Left(), Top() + Height() / 2, Width(), Height() / 2);
-        //}
-        
         HLine(Grid::Width()).Draw(Grid::Left(), Grid::Top() + Grid::Height() / 2, Color::FILL);
     }
     else
@@ -158,7 +156,7 @@ void DrawOsci()
 }
 
 
-void DrawGridSignal(int left, int top, int width, int height)
+void Grid::DrawGridSignal(int left, int top, int width, int height)
 {
     int right = left + width;
     int bottom = top + height;
@@ -173,7 +171,7 @@ void DrawGridSignal(int left, int top, int width, int height)
         VLine line(bottom - top - 4);
 
         line.Draw(0, top + 2);
-        line.Draw(319, top + 2);
+        line.Draw(Display::WIDTH - 1, top + 2);
     }
 
     float deltaX = DeltaX() * static_cast<float>(width) / width;
@@ -201,7 +199,7 @@ void DrawGridSignal(int left, int top, int width, int height)
 }
 
 
-void DrawGridSpectrum()
+void Grid::DrawGridSpectrum()
 {
     if (S_FFT_SCALE_IS_LOG)
     {
@@ -240,21 +238,21 @@ void DrawGridSpectrum()
 }
 
 
-static float DeltaY()
+float Grid::DeltaY()
 {
     float delta = (Grid::FullBottom() - Grid::Top()) / 10.0F;
     return Display::IsSeparate() ? (delta / 2.0F) : delta;
 }
 
 
-static float DeltaX()
+float Grid::DeltaX()
 {
     float delta = (Grid::Right() - Grid::Left()) / 14.0F;
     return delta;
 }
 
 
-static void DrawGridType1(int left, int top, int right, int bottom, float centerX, float centerY, float deltaX, float deltaY, float stepX, float stepY)
+void Grid::DrawGridType1(int left, int top, int right, int bottom, float centerX, float centerY, float deltaX, float deltaY, float stepX, float stepY)
 {
     uint16 masX[17];
     masX[0] = static_cast<uint16>(left + 1);
@@ -294,7 +292,7 @@ static void DrawGridType1(int left, int top, int right, int bottom, float center
 }
 
 
-static void DrawGridType2(int left, int top, int right, int bottom, int deltaX, int deltaY, int stepX, int stepY)
+void Grid::DrawGridType2(int left, int top, int right, int bottom, int deltaX, int deltaY, int stepX, int stepY)
 {
     uint16 masX[15];
     masX[0] = static_cast<uint16>(left + 1);
@@ -317,7 +315,7 @@ static void DrawGridType2(int left, int top, int right, int bottom, int deltaX, 
 }
 
 
-static void DrawGridType3(int left, int top, int right, int bottom, int centerX, int centerY, int deltaX, int deltaY, int stepX)
+void Grid::DrawGridType3(int left, int top, int right, int bottom, int centerX, int centerY, int deltaX, int deltaY, int stepX)
 {
     HPointLine(right - left - stepX, static_cast<float>(stepX)).Draw(left + stepX, centerY);
 
@@ -348,7 +346,7 @@ static void DrawGridType3(int left, int top, int right, int bottom, int centerX,
 }
 
 
-static int DeltaVforLineGrid()
+int Grid::DeltaVforLineGrid()
 {
     int result = 49;
 
@@ -371,7 +369,7 @@ static int DeltaVforLineGrid()
 }
 
 
-static int DeltaHforLineGrid()
+int Grid::DeltaHforLineGrid()
 {
     int result = 69;
 
@@ -391,7 +389,7 @@ static int DeltaHforLineGrid()
 }
 
 
-static void DrawTester()
+void Grid::DrawTester()
 {
     Color::FILL.SetAsCurrent();
 
@@ -455,7 +453,7 @@ static void DrawTester()
 }
 
 
-void DrawRecorder()
+void Grid::DrawRecorder()
 {
     Color::GRID.SetAsCurrent();
 
