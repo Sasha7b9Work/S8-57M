@@ -175,11 +175,11 @@ int DisplayOsci::HiPart::DrawMainParameters(int _x, int _y)
         WriteStringAndNumber("сглаж", x, y0 + 18, S_DISP_NUM_SMOOTH);
     }
 
-    x += 180;
+    x += 80;
 
     Separator::Draw(x, y0 - 1);
 
-    return x + 5;
+    return x + 3;
 }
 
 
@@ -230,7 +230,7 @@ void DisplayOsci::HiPart::WriteStringAndNumber(pchar text, int x, int y, int num
         std::snprintf(buffer, SIZE, "%d", number);
     }
 
-    Text(buffer).DrawRelativelyRight(x + 41, y);
+    Text(buffer).DrawRelativelyRight(x + 80, y);
 }
 
 
