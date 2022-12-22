@@ -897,7 +897,7 @@ String Choice::NameSubItem(int i) const
 }
 
 
-Color Item::ColorBackground() const
+Color Item::ColorBackgroundChoice() const
 {
     return Color::GRAY_50;
 }
