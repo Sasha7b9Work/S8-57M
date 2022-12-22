@@ -161,9 +161,9 @@ bool Keyboard::KeyIsActive(Key::E key)
 }
 
 
-const char *TypePress::ToChar() const
+pchar TypePress::ToChar() const
 {
-    static const char *ugo[TypePress::Count] =
+    static pchar ugo[TypePress::Count] =
     {
         "+",
         "повтор",

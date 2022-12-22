@@ -64,7 +64,7 @@ typedef char *(*pFuncPCFBPC)(float, bool, char*);
 
 typedef struct
 {
-    const char *name;
+    pchar name;
     pFuncFCh    FuncCalculate;
     pFuncPCFBPC FucnConvertate;
     bool        showSign;           // Если true, нужно показывать знак.

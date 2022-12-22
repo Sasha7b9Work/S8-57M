@@ -17,6 +17,6 @@
 
 struct Log
 {
-    static void Message(const char *message);
-    static void Message(const char *file, int line, const char *message);
+    static void Message(pchar message);
+    static void Message(pchar file, int line, pchar message);
 };

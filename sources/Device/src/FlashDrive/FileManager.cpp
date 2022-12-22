@@ -49,8 +49,8 @@ namespace FileManager
     static void IncCurrentFile();
     static void DecCurrentFile();
 
-    static void DrawLongString(int x, int y, const char *string, bool hightlight);
-    static void DrawHat(int x, int y, const char *string, int num1, int num2);
+    static void DrawLongString(int x, int y, pchar string, bool hightlight);
+    static void DrawHat(int x, int y, pchar string, int num1, int num2);
 }
 
 
@@ -64,7 +64,7 @@ void FileManager::Init()
 }
 
 
-void FileManager::DrawLongString(int x, int y, const char *string, bool hightlight)
+void FileManager::DrawLongString(int x, int y, pchar string, bool hightlight)
 {
     int length = DFont::GetLengthText(string);
 
@@ -90,7 +90,7 @@ void FileManager::DrawLongString(int x, int y, const char *string, bool hightlig
 }
 
 
-void FileManager::DrawHat(int x, int y, const char *string, int num1, int num2)
+void FileManager::DrawHat(int x, int y, pchar string, int num1, int num2)
 {
     Region(WIDTH_COL + 9, RECS_ON_PAGE * 9 + 11).Fill(x - 1, y, Color::BACK);
     String(string, num1, num2).Draw(x + 60, y, Color::FILL);

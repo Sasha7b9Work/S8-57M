@@ -7,7 +7,7 @@
 
 namespace HAL
 {
-    void ErrorHandler(const char *, int);
+    void ErrorHandler(pchar , int);
 };
 
 

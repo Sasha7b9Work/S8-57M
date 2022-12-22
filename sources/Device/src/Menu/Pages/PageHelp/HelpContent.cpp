@@ -29,7 +29,7 @@ static void DrawPageContent()
     while(currentPage->pages[numPage])
     {
         Page *page = reinterpret_cast<Page *>(currentPage->pages[numPage]);
-        const char *title = page->Title().c_str();
+        pchar title = page->Title().c_str();
         if(currentParagraph == numPage)
         {
             Text(title).DrawInCenterRectOnBackground(0, y, WIDTH, 10, Color::BACK, 2, Color::FILL);

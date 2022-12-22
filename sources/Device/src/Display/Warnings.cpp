@@ -21,7 +21,7 @@ static void DrawMessages();
 
 
 
-void Warnings::AddWarning(const char *warning)
+void Warnings::AddWarning(pchar warning)
 {
     warnings.Push(WarningStruct(warning));
 
@@ -93,7 +93,7 @@ bool Warnings::IsShown()
 }
 
 
-WarningStruct::WarningStruct(const char *msg)
+WarningStruct::WarningStruct(pchar msg)
 {
     message.Set(TypeConversionString::None, msg);
     timeStart = TIME_MS;

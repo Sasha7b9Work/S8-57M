@@ -28,7 +28,7 @@ namespace DisplayOsci
         static void WriteTextVoltage(Chan::E ch, int x, int y);
 
         // ¬ыводит наименование параметра (text) и его числовое (number) значение или символьное (number_c)
-        static void WriteStringAndNumber(const char *text, int x, int y, int number, pString number_c = nullptr);
+        static void WriteStringAndNumber(pchar text, int x, int y, int number, pString number_c = nullptr);
 
         static void DrawTime(int x, int y);
 
@@ -210,7 +210,7 @@ void DisplayOsci::HiPart::WriteTextVoltage(Chan::E ch, int x, int y)
 }
 
 
-void DisplayOsci::HiPart::WriteStringAndNumber(const char *text, int x, int y, int number, pString number_c)
+void DisplayOsci::HiPart::WriteStringAndNumber(pchar text, int x, int y, int number, pString number_c)
 {
     String(text).Draw(x, y, Color::FILL);
 

@@ -17,8 +17,8 @@ typedef bool (*pFuncActive)();
 struct DataItem
 {
     uint8               type;       // Тип итема
-    const char *title;      // Заголовок итема
-    const char *hint;       // Подсказка для режима помощи
+    pchar title;      // Заголовок итема
+    pchar hint;       // Подсказка для режима помощи
     const Page *const *keeper;     // Адрес страницы, которой принадлежит. Для Page_Main = 0
     pFuncActive         funcActive; // Указатель на функцию, которая определяет, активен ли данный итем
     const void *ad;         // Указатель на структуру с данными, специфическими для каждого подкласса Item
@@ -397,9 +397,9 @@ public:
     String NameCurrentSubItem() const;
 
     // Возвращает имя следующего варианта выбора элемента choice, как оно записано в исходном коде программы
-    const char *NameNextSubItem() const;
+    pchar NameNextSubItem() const;
 
-    const char *NamePrevSubItem() const;
+    pchar NamePrevSubItem() const;
 
     // Возвращает имя варианта выбора элемента choice в позиции i как оно записано в исходном коде программы
     String NameSubItem(int i) const;

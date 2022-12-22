@@ -117,7 +117,7 @@ void VCP::SendDataSynch(const void *_buffer, int size)
 }
 
 
-void VCP::SendStringAsynch(const char *data)
+void VCP::SendStringAsynch(pchar data)
 {
     SendDataAsynch(reinterpret_cast<uint8 *>(const_cast<char *>(data)), static_cast<int>(std::strlen(data)));
 }

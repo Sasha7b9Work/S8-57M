@@ -44,7 +44,7 @@ static void HintSmoothing(String *);
 static bool TestSmoothing();
 
 
-static const char *const grids[] =
+static pchar const grids[] =
 {
     " TYPE1",
     " TYPE2",
@@ -166,7 +166,7 @@ static pchar FuncFPS(pchar buffer)
 }
 
 
-static const char *FuncGrid(const char *buffer)
+static pchar FuncGrid(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(grids[S_DISP_TYPE_GRID]));
 

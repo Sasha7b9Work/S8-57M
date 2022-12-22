@@ -33,24 +33,24 @@ namespace FDrive
 
     bool IsConnected();
 
-    void GetNumDirsAndFiles(const char *fullPath, int *numDirs, int *numFiles);
+    void GetNumDirsAndFiles(pchar fullPath, int *numDirs, int *numFiles);
 
-    bool AppendStringToFile(const char *string);
+    bool AppendStringToFile(pchar string);
 
-    bool GetNameDir(const char *fuulPath, int numDir, char *nameDirOut, StructForReadDir *sfrd);
+    bool GetNameDir(pchar fuulPath, int numDir, char *nameDirOut, StructForReadDir *sfrd);
 
     bool GetNextNameDir(char *nameDirOut, StructForReadDir *sfrd);
 
     void CloseCurrentDir(StructForReadDir *sfrd);
 
-    bool GetNameFile(const char *fullPath, int numFile, char *nameFileOut, StructForReadDir *sfrd);
+    bool GetNameFile(pchar fullPath, int numFile, char *nameFileOut, StructForReadDir *sfrd);
 
     bool GetNextNameFile(char *nameFileOut, StructForReadDir *sfrd);
 
-    bool ExistFile(const char *fullPath, const char *fileName);
+    bool ExistFile(pchar fullPath, pchar fileName);
 
     // Функция создаст файл для записи. Если такой файл уже существует, сотрёт его, заменит новым нулевой длины и откроет его
-    bool OpenNewFileForWrite(const char *fullPathToFile, StructForWrite *structForWrite);
+    bool OpenNewFileForWrite(pchar fullPathToFile, StructForWrite *structForWrite);
 
     bool WriteToFile(uint8 *data, int sizeData, StructForWrite *structForWrite);
 

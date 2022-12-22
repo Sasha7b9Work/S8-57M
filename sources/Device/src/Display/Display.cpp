@@ -29,7 +29,7 @@ bool Display::Breaker::powerOn = true;
 
 static pFuncVV funcOnHand = nullptr;
 static uint timeStart = 0;
-static const char *textWait = 0;
+static pchar textWait = 0;
 static bool clearBackground = false;
 volatile static pFuncVV funcAdditionRender = EmptyFunc;   // Дополнительная функция рисования. Выполняется после стандартной отрисовки, но перед вызовом EndScene;
 static bool inStateDraw = false;                        // true означает, что происходит процесс отрисовки
@@ -113,7 +113,7 @@ void Display::SetFuncAfterUpadteOnce(pFuncVV func)
 }
 
 
-void Display::ShowWarning(const char *warn)
+void Display::ShowWarning(pchar warn)
 {
     Warnings::AddWarning(warn);
 }
@@ -215,7 +215,7 @@ void Display::Message::Func()
 
 
 
-void Display::Message::Show(const char *text, bool eraseBackground)
+void Display::Message::Show(pchar text, bool eraseBackground)
 {
     running = true;
     BufferButtons::Clear();
@@ -227,7 +227,7 @@ void Display::Message::Show(const char *text, bool eraseBackground)
 }
 
 
-void Display::Message::ShowAndWaitKey(const char *text, bool eraseBackground)
+void Display::Message::ShowAndWaitKey(pchar text, bool eraseBackground)
 {
     Show(text, eraseBackground);
     waitKey = true;

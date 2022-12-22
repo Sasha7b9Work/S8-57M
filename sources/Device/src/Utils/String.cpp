@@ -8,7 +8,7 @@
 #include <cstdarg>
 
 
-const char * const String::_ERROR = "---.---";
+pchar  const String::_ERROR = "---.---";
 
 
 String::String() : buffer(nullptr)
@@ -40,7 +40,7 @@ String::String(char symbol) : buffer(nullptr)
 }
 
 
-String::String(const char *format, ...) : buffer(nullptr)
+String::String(pchar format, ...) : buffer(nullptr)
 {
     Set(TypeConversionString::None, "");
 
@@ -72,7 +72,7 @@ String::String(const char *format, ...) : buffer(nullptr)
 }
 
 
-void String::Set(TypeConversionString::E conv, const char *format, ...)
+void String::Set(TypeConversionString::E conv, pchar format, ...)
 {
     Free();
 
@@ -99,7 +99,7 @@ void String::Set(TypeConversionString::E conv, const char *format, ...)
 }
 
 
-void String::Append(const char *str)
+void String::Append(pchar str)
 {
     if (!str || *str == '\0')
     {
@@ -117,7 +117,7 @@ void String::Append(const char *str)
 }
 
 
-void String::Append(const char *str, int numSymbols)
+void String::Append(pchar str, int numSymbols)
 {
     if (!str || *str == '\0')
     {

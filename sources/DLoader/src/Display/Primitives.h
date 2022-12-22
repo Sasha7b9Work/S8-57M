@@ -90,7 +90,7 @@ private:
 class Text
 {
 public:
-    Text(const char *text);
+    Text(pchar text);
     Text(const String &string);
 
     int Draw(int x, int y, Color color = Color::NUMBER);
@@ -116,7 +116,7 @@ public:
     int DrawDigitsMonospace(int x, int y, int width, Color color = Color::NUMBER);
 
 private:
-    const char *text;
+    pchar text;
     int DrawCharWithLimitation(int eX, int eY, char _symbol, int limitX, int limitY, int limitWidth, int limitHeight);
 
     int DrawSmall(int x, int y, Color color = Color::NUMBER);

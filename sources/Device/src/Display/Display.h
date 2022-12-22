@@ -47,7 +47,7 @@ namespace Display
     // Устанавливает функцию, которая выполится после отрисовки кадра однократно
     void SetFuncAfterUpadteOnce(pFuncVV func);
 
-    void ShowWarning(const char *warning);
+    void ShowWarning(pchar warning);
 
     // @brief Установить функцию и режим отрисовки экрана.
     // @details Возможны три варианта.
@@ -80,10 +80,10 @@ namespace Display
     struct Message
     {
         // Выводит на экран сообщение. Для удаления нунжно вызвать функцию Stop()
-        static void Show(const char *text, bool eraseBackground);
+        static void Show(pchar text, bool eraseBackground);
 
         // Выводит на экран сообщение и ожидает нажатия кнопки. По нажатии сообщение исчезает с экрана
-        static void ShowAndWaitKey(const char *text, bool eraseBackground);
+        static void ShowAndWaitKey(pchar text, bool eraseBackground);
 
         static void Hide();
 

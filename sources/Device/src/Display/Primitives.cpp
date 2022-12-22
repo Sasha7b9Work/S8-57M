@@ -145,7 +145,7 @@ void Char::Draw10SymbolsInRect(int x, int y, Color color)
 }
 
 
-Text::Text(const char *_text) : text(_text)
+Text::Text(pchar _text) : text(_text)
 {
 }
 
@@ -311,7 +311,7 @@ static bool IsLetter(char symbol)
 }
 
 
-static char *GetWord(const char *firstSymbol, int *length, char buffer[20])
+static char *GetWord(pchar firstSymbol, int *length, char buffer[20])
 {
     int pointer = 0;
     *length = 0;
@@ -370,7 +370,7 @@ static bool CompareArrays(const bool *array1, const bool *array2, int numElems)
 
 // \brief Находит следующий перенос. C letters начинается часть слово, где нужно найти перенос, в lettersInSyllable будет записано число букв в 
 // найденном слоге. Если слово закончилось, функция возвращает false
-static bool FindNextTransfer(const char *letters, int8 *lettersInSyllable)
+static bool FindNextTransfer(pchar letters, int8 *lettersInSyllable)
 {
 
 #define VOWEL       0   // Гласная
@@ -585,7 +585,7 @@ int Text::DrawInRectWithTransfers(int eX, int eY, int eWidth, int eHeight, Color
 
 
 // Возвращает высоту экрана, которую займёт текст text, при выводе от left до right в переменной height. Если bool == false, то текст не влезет на экран 
-static bool GetHeightTextWithTransfers(int left, int top, int right, const char *text, int *height)
+static bool GetHeightTextWithTransfers(int left, int top, int right, pchar text, int *height)
 {
     char buffer[20];
     int numSymbols = static_cast<int>(std::strlen(text));

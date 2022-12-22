@@ -79,7 +79,7 @@ int Text::DrawChar(int eX, int eY, int size, uint8 symbol, Color color)
 }
 
 
-int Text::Draw(int x, int y, const char *text, int size)
+int Text::Draw(int x, int y, pchar text, int size)
 {
     uint numSymbols = std::strlen(text);
     for (uint i = 0; i < numSymbols; ++i)

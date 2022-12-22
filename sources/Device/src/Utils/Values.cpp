@@ -132,7 +132,7 @@ static char *IntegerToString(int value, bool alwaysSign, int numMinFields, char 
 static char *FrequencyToString(float freq, char bufferOut[20])
 {
     bufferOut[0] = 0;
-    const char *suffix = 0;
+    pchar suffix = 0;
 
     if (Math::IsEquals(freq, Float::ERROR))
     {
@@ -165,7 +165,7 @@ char *Frequency::ToStringAccuracy(char bufferOut[20], int numDigits) const
     float freq = value;
 
     bufferOut[0] = 0;
-    const char *suffix = "Ãö";
+    pchar suffix = "Ãö";
 
     if (Math::IsEquals(freq, Float::ERROR))
     {
@@ -236,7 +236,7 @@ char* Time::ToStringAccuracy(bool alwaysSign, char buffer[20], int numDigits) co
     float time = value;
 
     buffer[0] = 0;
-    const char *suffix = "ñ";
+    pchar suffix = "ñ";
 
     float fabsTime = std::fabsf(time);
 

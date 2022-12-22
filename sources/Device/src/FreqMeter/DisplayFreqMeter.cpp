@@ -36,7 +36,7 @@ namespace DisplayFreqMeter
     static pString StackToString(Stack<uint> *stack, int order);
 
     // Записывает 6 разрядов из стека stack в буфер buffer. Младший разряд на вершине стека. Точку ставить на point позиции, начиная с buffer[0]
-    static void WriteStackToBuffer(Stack<uint> *stack, int point, const char *suffix);
+    static void WriteStackToBuffer(Stack<uint> *stack, int point, pchar suffix);
 
     static void DrawFrequencyMode(int x, int _y);
 
@@ -104,7 +104,7 @@ void DisplayFreqMeter::Update()
 
 
 // Конверитерует строку с текстовым значением в абсолютное значение
-static float ConvertFrequencyToAbs(const char *strFreq)
+static float ConvertFrequencyToAbs(pchar strFreq)
 {
     float result = SU::StringToFloat(strFreq);
 
@@ -182,7 +182,7 @@ void DisplayFreqMeter::DrawFrequencyMode(int x, int _y)
 
 
 // Конверитерует строку с текстовым значением в абсолютное значение
-static float ConvertPeriodToAbs(const char *strPeriod)
+static float ConvertPeriodToAbs(pchar strPeriod)
 {
     float result = SU::StringToFloat(strPeriod);
 
@@ -509,8 +509,8 @@ pString DisplayFreqMeter::StackToString(Stack<uint> *stack, int order)
     {
         int first;
         int second;
-        const char *s1;
-        const char *s2;
+        pchar s1;
+        pchar s2;
     }
     structs[] =
     {
@@ -546,7 +546,7 @@ pString DisplayFreqMeter::StackToString(Stack<uint> *stack, int order)
 }
 
 
-void DisplayFreqMeter::WriteStackToBuffer(Stack<uint> *stack, int point, const char *suffix)
+void DisplayFreqMeter::WriteStackToBuffer(Stack<uint> *stack, int point, pchar suffix)
 {
     for(int i = 6; i >= 0; i--)
     {

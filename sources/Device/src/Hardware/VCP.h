@@ -15,7 +15,7 @@ namespace VCP
     void SendDataSynch(const void *data, int size = 0);
 
     // Передаётся строка без завершающего нуля
-    void SendStringAsynch(const char *data);
+    void SendStringAsynch(pchar data);
 
     // Передаётся строка без завершающего нуля
     void SendStringSynch(char *data);

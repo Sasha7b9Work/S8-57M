@@ -222,7 +222,7 @@ pString TBase::ToString(TBase::E tBase)
     // Структура для описания диапазона масштаба по времени.
     static const struct StructTBase
     {
-        const char *name;    // Название диапазона в текстовом виде, пригодном для вывода на экран.
+        pchar name;    // Название диапазона в текстовом виде, пригодном для вывода на экран.
         StructTBase(pString nRU)
         {
             name = nRU;

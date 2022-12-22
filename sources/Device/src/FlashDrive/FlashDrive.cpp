@@ -25,7 +25,7 @@ namespace FDrive
     static void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id);
 
     // Устанавливает текущее время для файла nameFile
-    static void SetTimeForFile(const char *nameFile);
+    static void SetTimeForFile(pchar nameFile);
 
     // Сохранить содержимое экрана на флешку
     static void SaveScreenToFlash();
@@ -168,7 +168,7 @@ static void WriteToFile(FIL *file, char *string)
 */
 
 
-void FDrive::GetNumDirsAndFiles(const char *fullPath, int *numDirs, int *numFiles)
+void FDrive::GetNumDirsAndFiles(pchar fullPath, int *numDirs, int *numFiles)
 {
     FILINFO fno;
     DIR dir;
@@ -219,7 +219,7 @@ void FDrive::GetNumDirsAndFiles(const char *fullPath, int *numDirs, int *numFile
 
 
 
-bool FDrive::GetNameDir(const char *fullPath, int numDir, char *nameDirOut, StructForReadDir *s) // -V2506
+bool FDrive::GetNameDir(pchar fullPath, int numDir, char *nameDirOut, StructForReadDir *s) // -V2506
 {
     std::memcpy(s->nameDir, fullPath, std::strlen(fullPath));
     s->nameDir[std::strlen(fullPath)] = '\0';
@@ -250,7 +250,7 @@ bool FDrive::GetNameDir(const char *fullPath, int numDir, char *nameDirOut, Stru
             }
             if ((numDir == numDirs) && ((pFNO->fattrib & AM_DIR) != 0))
             {
-                std::strcpy(nameDirOut, static_cast<const char *>(pFNO->fname));
+                std::strcpy(nameDirOut, static_cast<pchar >(pFNO->fname));
                 f_closedir(pDir);
                 return true;
             }
@@ -292,7 +292,7 @@ bool FDrive::GetNextNameDir(char *nameDirOut, StructForReadDir *s) // -V2506
         {
             if (pFNO->fattrib & AM_DIR)
             {
-                std::strcpy(nameDirOut, static_cast<const char *>(pFNO->fname));
+                std::strcpy(nameDirOut, static_cast<pchar >(pFNO->fname));
                 return true;
             }
         }
@@ -308,7 +308,7 @@ void FDrive::CloseCurrentDir(StructForReadDir *s)
 
 
 
-bool FDrive::GetNameFile(const char *fullPath, int numFile, char *nameFileOut, StructForReadDir *s) // -V2506
+bool FDrive::GetNameFile(pchar fullPath, int numFile, char *nameFileOut, StructForReadDir *s) // -V2506
 {
     std::memcpy(s->nameDir, fullPath, std::strlen(fullPath));
     s->nameDir[std::strlen(fullPath)] = '\0';
@@ -339,7 +339,7 @@ bool FDrive::GetNameFile(const char *fullPath, int numFile, char *nameFileOut, S
             }
             if (numFile == numFiles && (pFNO->fattrib & AM_DIR) == 0)
             {
-                std::strcpy(nameFileOut, static_cast<const char *>(pFNO->fname));
+                std::strcpy(nameFileOut, static_cast<pchar >(pFNO->fname));
                 f_closedir(pDir);
                 return true;
             }
@@ -380,7 +380,7 @@ bool FDrive::GetNextNameFile(char *nameFileOut, StructForReadDir *s) // -V2506
         {
             if ((pFNO->fattrib & AM_DIR) == 0 && pFNO->fname[0] != '.')
             {
-                std::strcpy(nameFileOut, static_cast<const char *>(pFNO->fname));
+                std::strcpy(nameFileOut, static_cast<pchar >(pFNO->fname));
                 return true;
             }
         }
@@ -389,7 +389,7 @@ bool FDrive::GetNextNameFile(char *nameFileOut, StructForReadDir *s) // -V2506
 
 
 
-bool FDrive::OpenNewFileForWrite(const char *fullPathToFile, StructForWrite *structForWrite) // -V2506
+bool FDrive::OpenNewFileForWrite(pchar fullPathToFile, StructForWrite *structForWrite) // -V2506
 {
     if (f_open(&structForWrite->fileObj, fullPathToFile, FA_CREATE_ALWAYS | FA_WRITE) != FR_OK)
     {
@@ -450,7 +450,7 @@ bool FDrive::CloseFile(StructForWrite *structForWrite) // -V2506
 }
 
 
-void FDrive::SetTimeForFile(const char *name)
+void FDrive::SetTimeForFile(pchar name)
 {
     FILINFO info;
 
@@ -629,7 +629,7 @@ void FDrive::ReadRow(uint8 row, uint8 pixels[Display::WIDTH])
 }
 
 
-bool FDrive::ExistFile(const char *fullPath, const char *fileName)
+bool FDrive::ExistFile(pchar fullPath, pchar fileName)
 {
     int numDirs = 0;
     int numFiles = 0;

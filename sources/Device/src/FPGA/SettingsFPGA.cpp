@@ -362,7 +362,7 @@ pString Range::Name(Chan::E ch)
 {
     static const struct StructRange
     {
-        const char * name;
+        pchar  name;
         StructRange(pString nRU)
         {
             name = nRU;

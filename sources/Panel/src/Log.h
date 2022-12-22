@@ -1,5 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
-#pragma once   
+#pragma once
+#include "defines.h"
 
 #if defined(DEBUG) && !defined(WIN32)
 #define LOG_WRITE(...)          Log::Write(TypeTrace_Info, __VA_ARGS__)
@@ -44,8 +45,8 @@ enum TypeTrace
 class Log
 {
 public:
-    static void Trace(TypeTrace type, const char *module, const char *func, int numLine, char *format, ...);
-    static void Write(TypeTrace type, const char *format, ...);
+    static void Trace(TypeTrace type, pchar module, pchar func, int numLine, char *format, ...);
+    static void Write(TypeTrace type, pchar format, ...);
     static void DisconnectLoggerUSB();
     static void EnableLoggerUSB(bool enable);
     static int GetNumStrings();

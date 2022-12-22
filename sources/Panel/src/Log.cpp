@@ -14,10 +14,10 @@
 
 #define SIZE_BUFFER_LOG 200
 
-static void AddToConsole(const char *text);
+static void AddToConsole(pchar text);
 
 
-void Log::Write(TypeTrace type, const char *format, ...)
+void Log::Write(TypeTrace type, pchar format, ...)
 {
     char buffer[SIZE_BUFFER_LOG];
     char *pointer = buffer;
@@ -37,7 +37,7 @@ void Log::Write(TypeTrace type, const char *format, ...)
 }
 
 
-void Log::Trace(TypeTrace type, const char *module, const char *func, int numLine, char *format, ...)
+void Log::Trace(TypeTrace type, pchar module, pchar func, int numLine, char *format, ...)
 {
     char buffer[SIZE_BUFFER_LOG];
     char message[SIZE_BUFFER_LOG];
@@ -72,7 +72,7 @@ void Log::Trace(TypeTrace type, const char *module, const char *func, int numLin
 }
 
 
-static void AddToConsole(const char *text)
+static void AddToConsole(pchar text)
 {
     uint8 *buffer = static_cast<uint8 *>(std::malloc(std::strlen(text) + 3U)); //-V2511
 

@@ -6,16 +6,16 @@
 
 
 // :KEY:PRESS:
-static const char *FuncKeyPress(pchar);
+static pchar FuncKeyPress(pchar);
 static bool TestKeyPress();
 // :KEY:LONG:
-static const char *FuncKeyLong(pchar);
+static pchar FuncKeyLong(pchar);
 static bool TestKeyLong();
 
 static void HintKey(String *);
 
 
-static const char *const keyNames[Key::Count] =
+static pchar const keyNames[Key::Count] =
 {
     " NONE",
     " FUNCTION",
@@ -76,9 +76,9 @@ const StructSCPI SCPI::key[] =
     }                                                                                   \
 
 
-static const char *FuncKeyPress(const char *buffer)
+static pchar FuncKeyPress(pchar buffer)
 {
-    const char *end = nullptr;
+    pchar end = nullptr;
 
     PROCESS_KEY(end, " TRIGLEV+", Key::TrigLevMore);
     PROCESS_KEY(end, " TRIGLEV-", Key::TrigLevLess);
@@ -98,11 +98,11 @@ static void HintKey(String *message)
 }
 
 
-static const char *FuncKeyLong(const char *buffer)
+static pchar FuncKeyLong(pchar buffer)
 {
     for(int i = 0; i < Key::Count; i++)
     {
-        const char *end = SCPI::BeginWith(buffer, keyNames[i]);
+        pchar end = SCPI::BeginWith(buffer, keyNames[i]);
         if(end)
         {
             SCPI_PROLOG(end)

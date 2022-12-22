@@ -58,7 +58,7 @@ namespace Menu
     Item *itemHint = nullptr;
 
     // Строка подсказки, которую надо выводить в случае включённого режима подсказок.
-    const char *stringForHint = nullptr;
+    pchar stringForHint = nullptr;
 }
 
 

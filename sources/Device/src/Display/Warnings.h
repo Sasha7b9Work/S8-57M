@@ -5,7 +5,7 @@
 
 struct WarningStruct
 {
-    WarningStruct(const char *msg = nullptr);
+    WarningStruct(pchar msg = nullptr);
     WarningStruct(const WarningStruct &s);
     ~WarningStruct();
     String      message;
@@ -19,7 +19,7 @@ struct WarningStruct
 
 namespace Warnings
 {
-    void AddWarning(const char *warning);
+    void AddWarning(pchar warning);
 
     void Draw();
 

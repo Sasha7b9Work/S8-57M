@@ -11,13 +11,14 @@
 #include <stm32f4xx_hal.h>
 
 
-typedef const char *const   pString;
-typedef unsigned int        uint;
-typedef unsigned short int  uint16;
-typedef signed short int    int16;
-typedef unsigned char       uint8;
-typedef unsigned char       uchar;
-typedef signed char         int8;
+typedef const char *const  pString;
+typedef unsigned int       uint;
+typedef unsigned short int uint16;
+typedef signed short int   int16;
+typedef unsigned char      uint8;
+typedef unsigned char      uchar;
+typedef signed char        int8;
+typedef const char        *pchar;
 
 typedef void(*pFuncVV)(void);
 

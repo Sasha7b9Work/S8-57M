@@ -17,5 +17,5 @@ namespace Keyboard
     const int NUM_SL = 8;
 
     // Возращает имя органа управления
-    const char *ControlName(Control control);
+    pchar ControlName(Control control);
 };

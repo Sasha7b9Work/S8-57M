@@ -76,7 +76,7 @@ struct TypePress
 
     bool IsLong() const { return value == Long; };
 
-    const char *ToChar() const;
+    pchar ToChar() const;
 };
 
 

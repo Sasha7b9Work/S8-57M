@@ -29,10 +29,10 @@ public:
     // Сделать попытку обновления
     static void AttemptUpdate();
 
-    static bool FileExist(const char *fileName);
+    static bool FileExist(pchar fileName);
 
     // Открывает файл для чтения. Возвращает размер файла
-    static int OpenFileForRead(const char *fileName);
+    static int OpenFileForRead(pchar fileName);
 
     // Считывает из открытого файла numBytes байт. Возвращает число реально считанных байт
     static int ReadFromFile(int numBytes, uint8 *buffer);

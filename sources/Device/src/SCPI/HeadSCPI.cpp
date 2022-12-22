@@ -138,7 +138,7 @@ static void HintHelp(String *message) //-V2009 //-V2558
 
 static pchar FuncTest(pchar buffer)
 {
-    static const char *const modes[2] =
+    static pchar const modes[2] =
     {
         " FULL",
         " FAST"

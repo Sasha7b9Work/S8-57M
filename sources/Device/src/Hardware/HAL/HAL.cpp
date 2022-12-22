@@ -109,7 +109,7 @@ static void SystemClockConfig()
 }
 
 
-void HAL::ErrorHandler(const char *, int)
+void HAL::ErrorHandler(pchar , int)
 {
     while (true) {}
 }

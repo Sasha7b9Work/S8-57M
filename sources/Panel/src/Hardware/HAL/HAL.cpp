@@ -3,7 +3,7 @@
 #include "Hardware/HAL/HAL.h"
 
 
-void HAL::ErrorHandler(const char *, int)
+void HAL::ErrorHandler(pchar , int)
 {
     while (true) {};
 }

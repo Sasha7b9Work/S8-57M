@@ -12,9 +12,9 @@ namespace Test
 
         void DeInit();
 
-        void StartTest(const char *nameTest);
+        void StartTest(pchar nameTest);
 
-        int AddMessage(const char *message, int num = -1);
+        int AddMessage(pchar message, int num = -1);
     }
 
     namespace ROM

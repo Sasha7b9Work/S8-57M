@@ -16,7 +16,7 @@ volatile static uint timeStartMS = 0;
 // Время предыдущей точки профилировщика
 volatile static uint timePrevMS = 0;
 
-const char *Debug::file[10] = { 0 };
+pchar Debug::file[10] = { 0 };
 int   Debug::line[10] = { 0 };
 
 
@@ -27,7 +27,7 @@ void Debug::StartProfilingMS()
 }
 
 
-uint Debug::PointProfilingMS(const char *_file, int _line)
+uint Debug::PointProfilingMS(pchar _file, int _line)
 {
     uint d = TIME_MS - timePrevMS;
     LOG_WRITE("%s %d %d", _file, _line, d);
@@ -44,7 +44,7 @@ void Debug::StartProfilingUS()
 }
 
 
-uint Debug::PointProfilingUS(const char *_file, int _line)
+uint Debug::PointProfilingUS(pchar _file, int _line)
 {
     uint d = TIME_US - timePrev;
     LOG_WRITE("%s:%d - %d us", _file, _line, d);

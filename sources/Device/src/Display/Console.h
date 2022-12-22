@@ -8,7 +8,7 @@ namespace Console
 
     void Draw();
 
-    void AddString(const char *string);
+    void AddString(pchar string);
 
     // Возвращает true, если консоль должна отображаться на экране
     bool IsShown();

@@ -56,7 +56,7 @@ ENumSignalsInSec::E Tables::ENumSignalsInSecToENUM(int numSignalsInSec)
 }
 
 
-const char *Tables_RangeNameFromValue(Range::E range)
+pchar Tables_RangeNameFromValue(Range::E range)
 {
     static const struct StructName { pString name; } names[Range::Count] =
     {
@@ -83,7 +83,7 @@ const char *Tables_RangeNameFromValue(Range::E range)
 
 void Tables::DrawStr(int index, int x, int y)
 {
-    const char *str = symbolsAlphaBet[index];
+    pchar str = symbolsAlphaBet[index];
     if (index == S_MEM_INDEX_CUR_SYMBOL_MASK)
     {
         Region(DFont::GetLengthText(str), 9).Fill(x - 1, y, Color::FLASH_10);

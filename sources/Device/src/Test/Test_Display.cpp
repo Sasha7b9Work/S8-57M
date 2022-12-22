@@ -53,13 +53,13 @@ static void Update()
 }
 
 
-static String *CreateMessage(const char *message)
+static String *CreateMessage(pchar message)
 {
     return new String("%3d %s", TIME_MS / 1000, message); //-V2511
 }
 
 
-void Test::Display::StartTest(const char *nameTest)
+void Test::Display::StartTest(pchar nameTest)
 {
     queue->Push(CreateMessage(nameTest));
 
@@ -67,7 +67,7 @@ void Test::Display::StartTest(const char *nameTest)
 }
 
 
-int Test::Display::AddMessage(const char *message, int num)
+int Test::Display::AddMessage(pchar message, int num)
 {
     int result = num;
 

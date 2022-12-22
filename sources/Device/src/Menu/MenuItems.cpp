@@ -851,9 +851,9 @@ String Choice::NameCurrentSubItem() const
 }
 
 
-const char *Choice::NameNextSubItem() const
+pchar Choice::NameNextSubItem() const
 {
-    const char *result = "";
+    pchar result = "";
 
     if (OwnData()->cell != 0)
     {
@@ -871,9 +871,9 @@ const char *Choice::NameNextSubItem() const
 }
 
 
-const char *Choice::NamePrevSubItem() const
+pchar Choice::NamePrevSubItem() const
 {
-    const char *result = "";
+    pchar result = "";
 
     if (OwnData()->cell != 0)
     {

@@ -11,7 +11,7 @@
 
 
 
-static void RunTest(bool (*func)(), const char *message);
+static void RunTest(bool (*func)(), pchar message);
 
 
 void Test::Run()
@@ -41,7 +41,7 @@ void Test::Run()
 }
 
 
-static void RunTest(bool (*func)(), const char *message)
+static void RunTest(bool (*func)(), pchar message)
 {
     Test::Display::AddMessage(message);
 

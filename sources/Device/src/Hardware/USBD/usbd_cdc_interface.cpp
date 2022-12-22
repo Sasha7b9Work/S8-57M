@@ -107,7 +107,7 @@ static int8_t CDC_Itf_Control (uint8 cmd, uint8* pbuf, uint16)
 
 static int8_t CDC_Itf_Receive(uint8 *buffer, uint *length) //-V2009 //-V2558
 {
-    SCPI::AppendNewData(reinterpret_cast<const char *>(buffer), *reinterpret_cast<int *>(length));
+    SCPI::AppendNewData(reinterpret_cast<pchar >(buffer), *reinterpret_cast<int *>(length));
 
     USBD_CDC_ReceivePacket(reinterpret_cast<USBD_HandleTypeDef *>(VCP::handleUSBD));
 

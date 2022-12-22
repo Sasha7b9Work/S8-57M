@@ -8,13 +8,13 @@
 #define SIZE_BUFFER 100
 
 
-void Log::Message(const char *message)
+void Log::Message(pchar message)
 {
     Console::AddString(message);
 }
 
 
-void Log::Message(const char *file, int line, const char *message)
+void Log::Message(pchar file, int line, pchar message)
 {
     Console::AddString(String("%s %d %s", file, line, message).c_str());
 }

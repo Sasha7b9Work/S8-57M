@@ -23,6 +23,7 @@
 
 typedef signed   char        int8;
 typedef unsigned char        uint8;
+typedef const char          *pchar;
 typedef unsigned char        uchar;
 typedef signed   short int   int16;
 typedef unsigned short int   uint16;

@@ -200,7 +200,7 @@ pString Recorder::ScaleX::ToString()
 {
     static const struct StructScaleX
     {
-        const char *name;
+        pchar name;
         StructScaleX(pString nRU)
         {
             name = nRU;
