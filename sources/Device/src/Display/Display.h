@@ -58,13 +58,6 @@ namespace Display
     // главного цикла, будучи вызываемой из Update() вместо Update().
     void SetDrawMode(DrawMode::E mode, pFuncVV func = nullptr);
 
-    // Устанавливает дополнительную функцию, которая будет отрисовываться каждый раз после обновления экрана
-    // timeRemove - время, по истечении которого дополнительная функция отрисовки будет удалена. Если его не указывать, фукнция удаляться самостоятельно не будет
-    void SetAddFunctionRender(pFuncVV func, uint timeRemove = 0);
-
-    // Удаляет дополнительую функцию отрисовки, установленную вызовом функции SetAddDrawFunction()
-    void RemoveAddFunctionRender();
-
     // Возвращает время, через которое меню автоматически скрывается, если не было больше нажатий
     int TimeMenuAutoHide();
 
@@ -72,6 +65,17 @@ namespace Display
     bool IsSeparate();
 
     void LoadBrightness();
+
+    namespace AddFunctionRender
+    {
+        // Устанавливает дополнительную функцию, которая будет отрисовываться каждый раз после обновления экрана
+        // timeRemove - время, по истечении которого дополнительная функция отрисовки будет удалена. Если его не указывать, фукнция удаляться самостоятельно не будет
+        void Set(pFuncVV func, uint timeRemove = 0);
+
+        // Удаляет дополнительую функцию отрисовки, установленную вызовом функции SetAddDrawFunction()
+        void Remove();
+    }
+
 
     struct Message
     {
