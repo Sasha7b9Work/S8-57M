@@ -22,7 +22,7 @@ namespace Grid
 
     static int  DeltaVforLineGrid();
 
-    static void DrawGridType1(int left, int top, int right, int bottom, float centerX, float centerY, float deltaX, float deltaY, float stepX, float stepY);
+    static void DrawGridType1(int left, int top, int right, int bottom, float centerX, float deltaX, float deltaY, float stepX, float stepY);
 
     static void DrawGridType2(int left, int top, int right, int bottom, int deltaX, int deltaY, int stepX, int stepY);
 
@@ -186,7 +186,7 @@ void Grid::DrawGridSignal(int left, int top, int width, int height)
 
     if (S_DISP_TYPE_GRID_IS_1)
     {
-        DrawGridType1(left, top, right, bottom, centerX, centerY, deltaX, deltaY, stepX, stepY);
+        DrawGridType1(left, top, right, bottom, centerX, deltaX, deltaY, stepX, stepY);
     }
     else if (S_DISP_TYPE_GRID_IS_2)
     {
@@ -252,41 +252,45 @@ float Grid::DeltaX()
 }
 
 
-void Grid::DrawGridType1(int left, int top, int right, int bottom, float centerX, float centerY, float deltaX, float deltaY, float stepX, float stepY)
+void Grid::DrawGridType1(int left, int top, int right, int bottom, float centerX, float dX, float dY, float stepX, float stepY)
 {
-    uint16 masX[17];
-    masX[0] = static_cast<uint16>(left + 1);
-    for (int i = 1; i < 7; i++)
     {
-        masX[i] = static_cast<uint16>(left + static_cast<int>(deltaX * i));
-    }
-    for (int i = 7; i < 10; i++)
-    {
-        masX[i] = static_cast<uint16>(static_cast<int>(centerX) - 8 + i);
-    }
-    for (int i = 10; i < 16; i++)
-    {
-        masX[i] = static_cast<uint16>(centerX + deltaX * (i - 9)); //-V2004
-    }
-    masX[16] = static_cast<uint16>(right - 1);
+        uint16 masX[17];
+        masX[0] = (uint16)(left + 1);
+        for (int i = 1; i < 7; i++)
+        {
+            masX[i] = (uint16)(left + (int)(dX * i));
+        }
+        for (int i = 7; i < 10; i++)
+        {
+            masX[i] = (uint16)((int)(centerX)-8 + i);
+        }
+        for (int i = 10; i < 16; i++)
+        {
+            masX[i] = (uint16)(centerX + dX * (i - 9)); //-V2004
+        }
+        masX[16] = (uint16)(right - 1);
 
-    MultiVPointLine(17, masX, static_cast<int>(stepY), DeltaVforLineGrid()).Draw(top + static_cast<int>(stepY), Color::GRID);
-
-    uint16 mas[13];
-
-    mas[0] = (uint16)(top + 1);
-
-    for (int i = 1; i < 10; i++)
-    {
-        mas[i] = (uint16)(top + (int)(deltaY * i));
+        MultiVPointLine(17, masX, (int)stepY, DeltaVforLineGrid()).Draw(top + (int)stepY, Color::GRID);
     }
 
-    mas[10] = (uint16)(top + (int)(deltaY * 5) - 1);
-    mas[11] = (uint16)(top + (int)(deltaY * 5) + 1);
+    {
+        uint16 mas[13];
 
-    mas[12] = (uint16)(bottom - 1);
+        mas[0] = (uint16)(top + 1);
 
-    MultiHPointLine(13, mas, (int)stepX, DeltaHforLineGrid()).Draw(left + (int)stepX, Color::GRID);
+        for (int i = 1; i < 10; i++)
+        {
+            mas[i] = (uint16)(top + (int)(dY * i));
+        }
+
+        mas[10] = (uint16)(top + (int)(dY * 5) - 1);
+        mas[11] = (uint16)(top + (int)(dY * 5) + 1);
+
+        mas[12] = (uint16)(bottom - 1);
+
+        MultiHPointLine(13, mas, (int)stepX, DeltaHforLineGrid()).Draw(left + (int)stepX, Color::GRID);
+    }
 }
 
 
