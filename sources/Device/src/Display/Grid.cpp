@@ -273,22 +273,22 @@ void Grid::DrawGridType1(int left, int top, int right, int bottom, float centerX
     MultiVPointLine(17, masX, static_cast<int>(stepY), DeltaVforLineGrid()).Draw(top + static_cast<int>(stepY), Color::GRID);
 
     uint8 mas[13];
-    mas[0] = static_cast<uint8>(top + 1);
+    mas[0] = (uint8)(top + 1);
     for (int i = 1; i < 5; i++)
     {
-        mas[i] = static_cast<uint8>(top + static_cast<int>(deltaY * i));
+        mas[i] = (uint8)(top + (int)(deltaY * i));
     }
     for (int i = 5; i < 8; i++)
     {
-        mas[i] = static_cast<uint8>(static_cast<int>(centerY) - 6 + i);
+        mas[i] = (uint8)((int)centerY - 6 + i);
     }
     for (int i = 8; i < 12; i++)
     {
-        mas[i] = static_cast<uint8>(static_cast<int>(centerY) + static_cast<int>(deltaY * (i - 7)));
+        mas[i] = (uint8)((int)centerY + (int)(deltaY * (i - 7)));
     }
-    mas[12] = static_cast<uint8>(bottom - 1);
+    mas[12] = (uint8)(bottom - 1);
 
-    MultiHPointLine(13, mas, static_cast<int>(stepX), DeltaHforLineGrid()).Draw(left + static_cast<int>(stepX), Color::GRID);
+    MultiHPointLine(13, mas, (int)stepX, DeltaHforLineGrid()).Draw(left + static_cast<int>(stepX), Color::GRID);
 }
 
 
