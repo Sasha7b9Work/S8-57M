@@ -53,14 +53,15 @@ void Console::Draw()
 
     DFont::Set(DTypeFont::_5);
 
-    int y = -1;
+    int y = 70;
+    int h = DFont::GetHeight();
 
     for (int i = 0; i < stringInConsole; i++)
     {
         int length = DFont::GetLengthText(buffer[i]);
-        Region(length, 6).Fill(0, y + 3, Color::BACK);
-        String(buffer[i]).Draw(1, y, Color::FILL);
-        y += 6;
+        Region(length, h).Fill(0, y, Color::BACK);
+        String(buffer[i]).Draw(2, y - 7, Color::FILL);
+        y += h + 1;
     }
 
     DFont::Set(DTypeFont::_8);
