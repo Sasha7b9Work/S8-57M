@@ -49,7 +49,7 @@ namespace DisplayOsci
         {
             static void Draw(int x, int y)
             {
-                VLine(17).Draw(x, y, Color::FILL);
+                VLine(35).Draw(x, y, Color::FILL);
             }
         };
     }
@@ -129,22 +129,16 @@ int DisplayOsci::HiPart::DrawMainParameters(int _x, int _y)
 
     String("ð\xa5%s", TBase::ToString(S_TIME_BASE)).Draw(x, y0, Color::FILL);
 
-    return 0;
-
-    buffer[0] = 'a';
-    buffer[1] = 0;
-    std::snprintf(buffer, SIZE, "\xa5%s", TShift::ToString().c_str());
-    String(buffer).Draw(x + 35, y0);
-
-    buffer[0] = 0;
+    String("\xa5%s", TShift::ToString().c_str()).Draw(x + 75, y0);
 
     if (S_MEM_MODE_WORK_IS_DIR)
     {
         pString source[3] = { "1", "2", "\x82" };
-        std::snprintf(buffer, 100, "ñ\xa5\x10%s", source[S_TRIG_SOURCE]);
+
+        String("ñ\xa5\x10%s", source[S_TRIG_SOURCE]).Draw(x, y1, Color::Trig());
     }
 
-    String(buffer).Draw(x, y1, Color::Trig());
+    return 0;
 
     buffer[0] = 0;
 
