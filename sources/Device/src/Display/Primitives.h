@@ -204,11 +204,11 @@ private:
 class MultiHPointLine
 {
 public:
-    MultiHPointLine(int numLines, const uint8 *y, int delta, int count);
+    MultiHPointLine(int numLines, const uint16 *y, int delta, int count);
     void Draw(int x, Color color = Color::NUMBER);
 private:
     int numLines;
-    const uint8 *y;
+    const uint16 *y;
     int delta;
     int count;
 };

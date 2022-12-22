@@ -147,7 +147,7 @@ void MultiHPointLine::Draw(int x, Color color)
 {
     color.SetAsCurrent();
 
-    uint8 buffer[6] =
+    uint8 buffer[7] =
     {
         Command::Paint_HPointLine,
         0,

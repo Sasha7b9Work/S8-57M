@@ -272,23 +272,21 @@ void Grid::DrawGridType1(int left, int top, int right, int bottom, float centerX
 
     MultiVPointLine(17, masX, static_cast<int>(stepY), DeltaVforLineGrid()).Draw(top + static_cast<int>(stepY), Color::GRID);
 
-    uint8 mas[13];
-    mas[0] = (uint8)(top + 1);
-    for (int i = 1; i < 5; i++)
-    {
-        mas[i] = (uint8)(top + (int)(deltaY * i));
-    }
-    for (int i = 5; i < 8; i++)
-    {
-        mas[i] = (uint8)((int)centerY - 6 + i);
-    }
-    for (int i = 8; i < 12; i++)
-    {
-        mas[i] = (uint8)((int)centerY + (int)(deltaY * (i - 7)));
-    }
-    mas[12] = (uint8)(bottom - 1);
+    uint16 mas[13];
 
-    MultiHPointLine(13, mas, (int)stepX, DeltaHforLineGrid()).Draw(left + static_cast<int>(stepX), Color::GRID);
+    mas[0] = (uint16)(top + 1);
+
+    for (int i = 1; i < 10; i++)
+    {
+        mas[i] = (uint16)(top + (int)(deltaY * i));
+    }
+
+    mas[10] = (uint16)(top + (int)(deltaY * 5) - 1);
+    mas[11] = (uint16)(top + (int)(deltaY * 5) + 1);
+
+    mas[12] = (uint16)(bottom - 1);
+
+    MultiHPointLine(13, mas, (int)stepX, DeltaHforLineGrid()).Draw(left + (int)stepX, Color::GRID);
 }
 
 
@@ -303,13 +301,13 @@ void Grid::DrawGridType2(int left, int top, int right, int bottom, int deltaX, i
     masX[14] = static_cast<uint16>(right - 1);
     MultiVPointLine(15, masX, stepY, DeltaVforLineGrid()).Draw(top + stepY, Color::GRID);
 
-    uint8 mas[11];
-    mas[0] = static_cast<uint8>(top + 1);
+    uint16 mas[11];
+    mas[0] = (uint16)(top + 1);
     for (int i = 1; i < 10; i++)
     {
-        mas[i] = static_cast<uint8>(top + static_cast<int>(deltaY * i));
+        mas[i] = (uint16)(top + (int)(deltaY * i));
     }
-    mas[10] = static_cast<uint8>(bottom - 1);
+    mas[10] = (uint16)(bottom - 1);
 
     MultiHPointLine(11, mas, stepX, DeltaHforLineGrid()).Draw(left + stepX, Color::GRID);
 }
@@ -319,13 +317,13 @@ void Grid::DrawGridType3(int left, int top, int right, int bottom, int centerX, 
 {
     HPointLine(right - left - stepX, static_cast<float>(stepX)).Draw(left + stepX, centerY);
 
-    uint8 masY[6] = {
-        static_cast<uint8>(top + 1),
-        static_cast<uint8>(top + 2),
-        static_cast<uint8>(centerY - 1),
-        static_cast<uint8>(centerY + 1),
-        static_cast<uint8>(bottom - 2),
-        static_cast<uint8>(bottom - 1)
+    uint16 masY[6] = {
+        (uint16)(top + 1),
+        (uint16)(top + 2),
+        (uint16)(centerY - 1),
+        (uint16)(centerY + 1),
+        (uint16)(bottom - 2),
+        (uint16)(bottom - 1)
     };
 
     MultiHPointLine(6, masY, deltaX, (right - top) / deltaX).Draw(left + deltaX, Color::GRID);

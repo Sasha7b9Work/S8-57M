@@ -783,7 +783,8 @@ void HPointLine::Draw(int _x, int _y)
 }
 
 
-MultiHPointLine::MultiHPointLine(int _numLines, const uint8 *_y, int _delta, int _count) : numLines(_numLines), y(_y), delta(_delta), count(_count)
+MultiHPointLine::MultiHPointLine(int _numLines, const uint16 *_y, int _delta, int _count) :
+    numLines(_numLines), y(_y), delta(_delta), count(_count)
 {
 }
 
