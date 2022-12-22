@@ -114,7 +114,7 @@ void Governor::DrawOpened(int x, int y) const
 
 void Governor::DrawClosed(int x, int y) const
 {
-    DrawLowPart(x, y + 14);
+    DrawLowPart(x, y + Value::HEIGHT);
     DrawCommonHiPart(x, y, false);
     OwnData()->afterDraw(x, y);
 }
@@ -153,7 +153,7 @@ void Governor::DrawValue(int x, int y) const
 
 void Governor::DrawLowPart(int x, int y) const
 {
-    Region(Width() - 3, Value::HEIGHT - 3).Fill(x + 1, y - 1, ColorBackgroundChoice());
+    Region(Width() - 3, Value::HEIGHT - 3).Fill(x + 1, y, ColorBackgroundChoice());
 
     if (Menu::OpenedItem() != this)
     {
