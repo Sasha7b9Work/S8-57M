@@ -17,43 +17,41 @@
 #include <cstdio>
 
 
-struct Separator
-{
-    static void Draw(int x, int y)
-    {
-        VLine(17).Draw(x, y, Color::FILL);
-    }
-};
-
-
-// Ќаписать параметры вертикального тракта заданного канала
-static void WriteTextVoltage(Chan::E ch, int x, int y);
-
-// ¬ыводит наименование параметра (text) и его числовое (number) значение или символьное (number_c)
-static void WriteStringAndNumber(const char *text, int x, int y, int number, pString number_c = nullptr);
-
-static void DrawTime(int x, int y);
-
-static void DrawFrequency(int x, int y);
-
-// Ќарисовать разделительные линии
-static void DrawSeparators();
-
-// «аписывает главные параметры в указанную позицию. ¬озвращает х-координату правого верхнего угла выведенного изображени€
-static int DrawMainParameters(int x, int y);
-
-static void WriteCursors();
-
-// Ќарисовать значок пикового детектора
-static void DrawPeakDet(int x, int y);
-
-
 namespace DisplayOsci
 {
     namespace HiPart
     {
         // Ќарисовать правую часть - синхронизаци€ и режим работы
         static void DrawRightPart(int x0, int y0);
+
+        // Ќаписать параметры вертикального тракта заданного канала
+        static void WriteTextVoltage(Chan::E ch, int x, int y);
+
+        // ¬ыводит наименование параметра (text) и его числовое (number) значение или символьное (number_c)
+        static void WriteStringAndNumber(const char *text, int x, int y, int number, pString number_c = nullptr);
+
+        static void DrawTime(int x, int y);
+
+        static void DrawFrequency(int x, int y);
+
+        // Ќарисовать разделительные линии
+        static void DrawSeparators();
+
+        // «аписывает главные параметры в указанную позицию. ¬озвращает х-координату правого верхнего угла выведенного изображени€
+        static int DrawMainParameters(int x, int y);
+
+        static void WriteCursors();
+
+        // Ќарисовать значок пикового детектора
+        static void DrawPeakDet(int x, int y);
+
+        struct Separator
+        {
+            static void Draw(int x, int y)
+            {
+                VLine(17).Draw(x, y, Color::FILL);
+            }
+        };
     }
 }
 
@@ -73,6 +71,8 @@ void DisplayOsci::HiPart::Draw(int field)
 
     x = DrawMainParameters(x, Y0 + 1); //-V2007
 
+    return;
+
     x += 124;
 
     DFont::Set(DTypeFont::_8);
@@ -91,7 +91,7 @@ void DisplayOsci::HiPart::Draw(int field)
 }
 
 
-static void DrawSeparators()
+void DisplayOsci::HiPart::DrawSeparators()
 {
     HLine line(Grid::Left() - TableMeasures::GetDeltaGridLeft() - 1);
 
@@ -105,12 +105,8 @@ static void DrawSeparators()
 }
 
 
-static int DrawMainParameters(int _x, int _y)
+int DisplayOsci::HiPart::DrawMainParameters(int _x, int _y)
 {
-    /*
-        ≈сли активны курсоры ручных измерений, то нужно корректировать положение вывода
-    */
-
     if (CursorsMeasurements::NecessaryDraw())
     {
         _y = Grid::Bottom() + 3;
@@ -118,21 +114,22 @@ static int DrawMainParameters(int _x, int _y)
 
     int x = _x;
     const int y0 = _y;
-    int y1 = _y + 8;
+    const int dY = 18;
+    int y1 = _y + dY;
 
     WriteTextVoltage(ChanA, x + 2, y0);
     WriteTextVoltage(ChanB, x + 2, y1);
 
-    x += 98;
+    x += 191;
 
-    Separator::Draw(x - 3, _y - 1);
+    Separator::Draw(x - 4, _y - 1);
 
     const int SIZE = 100;
-    char buffer[SIZE] = { 0 };
+    char buffer[SIZE];
 
-    std::snprintf(buffer, SIZE, "р\xa5%s", TBase::ToString(S_TIME_BASE));
+    String("р\xa5%s", TBase::ToString(S_TIME_BASE)).Draw(x, y0, Color::FILL);
 
-    String(buffer).Draw(x, y0, Color::FILL);
+    return 0;
 
     buffer[0] = 'a';
     buffer[1] = 0;
@@ -200,7 +197,7 @@ static int DrawMainParameters(int _x, int _y)
 }
 
 
-static void WriteTextVoltage(Chan::E ch, int x, int y)
+void DisplayOsci::HiPart::WriteTextVoltage(Chan::E ch, int x, int y)
 {
     if (!S_CHANNEL_ENABLED(ch))
     {
@@ -218,19 +215,16 @@ static void WriteTextVoltage(Chan::E ch, int x, int y)
     {
         Region(91, 8).Fill(x, y, color);
     }
-    const int SIZE = 100;
 
-    char buffer[SIZE];
-    std::snprintf(buffer, SIZE, "%s\xa5%s\xa5%s", (ch == ChanA) ? "1к" : "2к", ModeCouple::UGO(S_MODE_COUPLE(ch)), Range::ToString(ch, S_DIVIDER(ch)));
-    String(buffer).Draw(x + 1, y, colorDraw);
+    String("%s\xa5%s\xa5%s", (ch == ChanA) ? "1к" : "2к", ModeCouple::UGO(S_MODE_COUPLE(ch)), Range::ToString(ch, S_DIVIDER(ch))).
+        Draw(x + 1, y, colorDraw);
 
-    char bufferTemp[SIZE];
-    std::snprintf(bufferTemp, SIZE, "\xa5%s", RShift::ToString(S_RSHIFT(ch), range, S_DIVIDER(ch)).c_str());
-    String(bufferTemp).Draw(x + 46, y);
+    String("\xa5%s", RShift::ToString(S_RSHIFT(ch), range, S_DIVIDER(ch)).c_str()).
+        Draw(x + 92, y);
 }
 
 
-static void WriteStringAndNumber(const char *text, int x, int y, int number, pString number_c)
+void DisplayOsci::HiPart::WriteStringAndNumber(const char *text, int x, int y, int number, pString number_c)
 {
     String(text).Draw(x, y, Color::FILL);
 
@@ -253,7 +247,7 @@ static void WriteStringAndNumber(const char *text, int x, int y, int number, pSt
 }
 
 
-static void DrawTime(int x, int y)
+void DisplayOsci::HiPart::DrawTime(int x, int y)
 {
     int dField = 10;
     int dSeparator = 2;
@@ -295,7 +289,7 @@ static void DrawTime(int x, int y)
 }
 
 
-static void DrawFrequency(int x, int y)
+void DisplayOsci::HiPart::DrawFrequency(int x, int y)
 {
     if (S_MEM_MODE_WORK_IS_DIR)
     {
@@ -379,7 +373,7 @@ void DisplayOsci::HiPart::DrawRightPart(int x0, int y0)
 }
 
 
-static void WriteCursors()
+void DisplayOsci::HiPart::WriteCursors()
 {
     if (CursorsMeasurements::NecessaryDraw())
     {
@@ -450,7 +444,7 @@ static void WriteCursors()
 }
 
 
-static void DrawPeakDet(int x, int y)
+void DisplayOsci::HiPart::DrawPeakDet(int x, int y)
 {
     if (PeakDetMode().IsEnabled())
     {

@@ -297,12 +297,12 @@ void Grid::DrawGridType1(int left, int top, int right, int bottom, float centerX
 void Grid::DrawGridType2(int left, int top, int right, int bottom, int deltaX, int deltaY, int stepX, int stepY)
 {
     uint16 masX[15];
-    masX[0] = static_cast<uint16>(left + 1);
+    masX[0] = (uint16)(left + 1);
     for (int i = 1; i < 14; i++)
     {
-        masX[i] = static_cast<uint16>(left + static_cast<int>(deltaX * i));
+        masX[i] = (uint16)(left + static_cast<int>(deltaX * i));
     }
-    masX[14] = static_cast<uint16>(right - 1);
+    masX[14] = (uint16)(right - 1);
     MultiVPointLine(15, masX, stepY, DeltaVforLineGrid()).Draw(top + stepY, Color::GRID);
 
     uint16 mas[11];
