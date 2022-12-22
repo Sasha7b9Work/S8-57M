@@ -77,9 +77,9 @@ void DisplayOsci::HiPart::Draw(int field)
 
     DrawTime(x + 3, Y0 + 19); //-V2007
 
-    Separator::Draw(528, Y0);
+    Separator::Draw(540, Y0);
 
-    DrawRightPart(528, Y0);
+    DrawRightPart(540, Y0);
 
     return;
 
