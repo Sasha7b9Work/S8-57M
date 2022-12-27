@@ -435,6 +435,10 @@ bool PDecoder::DrawDashedVLine(uint8 data)
                 height_deltaFill.X(), height_deltaFill.Y(),
                 deltaEmpty_deltaStart.X(), deltaEmpty_deltaStart.Y());
 
+            x_y.Reset();
+            height_deltaFill.Reset();
+            deltaEmpty_deltaStart.Reset();
+
             return true;
         };
     }
