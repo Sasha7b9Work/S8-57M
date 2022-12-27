@@ -247,9 +247,9 @@ void HAL_BUS::FPGA::SetAddrData(uint8 *address0, uint8 *address1)
 
 uint8 HAL_BUS::FPGA::ReadA0()
 {
-    int delta = VALUE::AVE - static_cast<int>(*addrData0);
+    int delta = VALUE::AVE - (int)(*addrData0);
 
-    int result = static_cast<int>(VALUE::AVE - static_cast<int>(delta * GetStretch(addrData0)));
+    int result = (int)(VALUE::AVE - (int)(delta * GetStretch(addrData0)));
 
     if(result < VALUE::MIN)
     {
@@ -266,9 +266,9 @@ uint8 HAL_BUS::FPGA::ReadA0()
 
 uint8 HAL_BUS::FPGA::ReadA1()
 {
-    int delta = VALUE::AVE - static_cast<int>(*addrData1);
+    int delta = VALUE::AVE - (int)(*addrData1);
 
-    int result = static_cast<uint8>(VALUE::AVE - static_cast<int>(delta * GetStretch(addrData1)));
+    int result = static_cast<uint8>(VALUE::AVE - (int)(delta * GetStretch(addrData1)));
 
     if(result < VALUE::MIN)
     {

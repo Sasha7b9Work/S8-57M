@@ -14,14 +14,14 @@ extern uint16 *ave[2];
 
 #define ENABLE_CH_DS(ch)  (((ch) == Chan::A) ? DS->en_a : DS->en_b)
 
-#define IN(ch)  (dataIN[static_cast<int>(ch)])
+#define IN(ch)  (dataIN[(int)(ch)])
 #define IN_A    IN(ChanA)
 #define IN_B    IN(ChanB)
-#define OUT(ch) (dataOUT[static_cast<int>(ch)])
+#define OUT(ch) (dataOUT[(int)(ch)])
 #define OUT_A   OUT(ChanA)
 #define OUT_B   OUT(ChanB)
 
-#define AVE_DATA(ch) ave[static_cast<int>(ch)]
+#define AVE_DATA(ch) ave[(int)(ch)]
 #define AVE_1        AVE_DATA(ChanA)
 #define AVE_2        AVE_DATA(ChanB)
 

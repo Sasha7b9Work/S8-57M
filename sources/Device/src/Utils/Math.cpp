@@ -64,7 +64,7 @@ int Math::LowSignedBit(uint value)
 
     for (int i = 0; i < 32; i++)
     {
-        if (verValue & (static_cast<int>(value)))
+        if (verValue & ((int)(value)))
         {
             return i;
         }
@@ -83,8 +83,8 @@ void Math::Smoothing(uint8 *data, int numPoints, int numSmooth)
         return;
     }
 
-    float *buffer = static_cast<float *>(std::malloc(static_cast<uint>(numPoints * static_cast<int>(sizeof(float))))); //-V2511
-    int  *num = static_cast<int *>(std::malloc(static_cast<uint>(numPoints * static_cast<int>(sizeof(int))))); //-V2511
+    float *buffer = static_cast<float *>(std::malloc(static_cast<uint>(numPoints * (int)(sizeof(float))))); //-V2511
+    int  *num = static_cast<int *>(std::malloc(static_cast<uint>(numPoints * (int)(sizeof(int))))); //-V2511
 
     if (num != 0 && buffer != 0)
     {
@@ -426,7 +426,7 @@ float Math::RoundFloat(float value, int numDigits)
     if (digsInInt < numDigits)  // Подстрахуемся
     {
         int pow = Pow10(numDigits - digsInInt);
-        absValue = (static_cast<int>(absValue * pow + 0.5F)) / static_cast<float>(pow);
+        absValue = ((int)(absValue * pow + 0.5F)) / static_cast<float>(pow);
     }
 
     return value > 0.0F ? absValue : -absValue;

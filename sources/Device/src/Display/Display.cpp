@@ -79,7 +79,7 @@ void Display::Render()
 
     for (int field = 0; field < 5; field++)
     {
-        funcs[static_cast<int>(Device::CurrentMode())](field);
+        funcs[(int)(Device::CurrentMode())](field);
 
         Console::Draw();
 

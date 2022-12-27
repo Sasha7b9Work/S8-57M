@@ -144,14 +144,14 @@ struct Packet
     {
         uint size = sizeof(Packet) + sizeof(DataSettings) + ds->NeedMemoryForData();
 
-        return static_cast<int>(size);
+        return (int)(size);
     }
 
     int Size() const
     {
         uint size = sizeof(Packet) + sizeof(DataSettings) + GetDataSettings()->NeedMemoryForData();
 
-        return static_cast<int>(size);
+        return (int)(size);
     }
 
     DataSettings *GetDataSettings() const

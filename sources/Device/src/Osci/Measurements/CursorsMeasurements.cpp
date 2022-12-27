@@ -85,10 +85,10 @@ void CursorsMeasurements::Draw()
 
         if (bothCursors)
         {
-            x0 = Grid::Left() + static_cast<int>(CursorsMeasurements::PosT(source, 0));
-            x1 = Grid::Left() + static_cast<int>(CursorsMeasurements::PosT(source, 1));
-            y0 = Grid::Top() + static_cast<int>(S_CURS_POS_U0(source));
-            y1 = Grid::Top() + static_cast<int>(S_CURS_POS_U1(source));
+            x0 = Grid::Left() + (int)(CursorsMeasurements::PosT(source, 0));
+            x1 = Grid::Left() + (int)(CursorsMeasurements::PosT(source, 1));
+            y0 = Grid::Top() + (int)(S_CURS_POS_U0(source));
+            y1 = Grid::Top() + (int)(S_CURS_POS_U1(source));
 
             Rectangle(4, 4).Draw(x0 - 2, y0 - 2);
             Rectangle(4, 4).Draw(x1 - 2, y1 - 2);
@@ -96,13 +96,13 @@ void CursorsMeasurements::Draw()
 
         if (!CursorsControl::IsDisabledT())
         {
-            DrawVertical(static_cast<int>(CursorsMeasurements::PosT(source, 0)), y0);
-            DrawVertical(static_cast<int>(CursorsMeasurements::PosT(source, 1)), y1);
+            DrawVertical((int)(CursorsMeasurements::PosT(source, 0)), y0);
+            DrawVertical((int)(CursorsMeasurements::PosT(source, 1)), y1);
         }
         if (!CursorsControl::IsDisabledU())
         {
-            DrawHorizontal(static_cast<int>(S_CURS_POS_U0(source)), x0);
-            DrawHorizontal(static_cast<int>(S_CURS_POS_U1(source)), x1);
+            DrawHorizontal((int)(S_CURS_POS_U0(source)), x0);
+            DrawHorizontal((int)(S_CURS_POS_U1(source)), x1);
         }
 
         UpdateCursorsForLook();

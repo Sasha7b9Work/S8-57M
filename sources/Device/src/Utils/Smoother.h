@@ -12,7 +12,7 @@ public:
     static void Run(const uint8 *in, uint8 *out, uint numBytes, int _numSmooth)
     {
         numSmooth = _numSmooth;
-        size = static_cast<int>(numBytes);
+        size = (int)(numBytes);
         data = in;
 
         if (numSmooth < 2)
@@ -23,7 +23,7 @@ public:
         {
             for (uint i = 0; i < numBytes; i++)
             {
-                out[i] = CalculatePoint(static_cast<int>(i));
+                out[i] = CalculatePoint((int)(i));
             }
         }
     }

@@ -301,7 +301,7 @@ float SU::StringToFloat(pchar string)
 
 char *SU::ToUpper(char *str)
 {
-    return ToUpper(str, static_cast<int>(std::strlen(str)));
+    return ToUpper(str, (int)(std::strlen(str)));
 }
 
 
@@ -419,7 +419,7 @@ bool SU::StringToDouble(double *value, pchar str)
 
 bool SU::String2Int(pchar buffer, int *value, char **end)
 {
-    Buffer string(static_cast<int>(std::strlen(buffer)) + 1);
+    Buffer string((int)(std::strlen(buffer)) + 1);
 
     std::strcpy(string.DataChar(), buffer);
 

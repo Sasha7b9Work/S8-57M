@@ -169,7 +169,7 @@ DEF_GRAPH_BUTTON( bMask_Delete,                                                 
 
 static void OnPress_Mask_Backspace()
 {
-    int size = static_cast<int>(std::strlen(S_MEM_FILE_NAME_MASK));
+    int size = (int)(std::strlen(S_MEM_FILE_NAME_MASK));
     if (size > 0)
     {
         if (size > 1 && S_MEM_FILE_NAME_MASK[size - 2] == 0x07)
@@ -323,7 +323,7 @@ static void DrawSetMask()
 
     deltaY--;
     Color::FILL.SetAsCurrent();
-    for (int i = 0; i < static_cast<int>(sizeof(strings)) / 4; i++)
+    for (int i = 0; i < (int)(sizeof(strings)) / 4; i++)
     {
         String(strings[i]).Draw(x0 + deltaX, y0 + 100 + deltaY * i);
     }

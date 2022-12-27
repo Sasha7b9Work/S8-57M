@@ -40,7 +40,7 @@ int Grid::Left()
 {
     static const int left[Device::Mode::Count] = { SIZE_CELL, 0, 0, 0 };
 
-    return left[static_cast<int>(Device::CurrentMode())];
+    return left[(int)(Device::CurrentMode())];
 }
 
 
@@ -48,7 +48,7 @@ int Grid::Top()
 {
     static const int top[Device::Mode::Count] = { SIZE_CELL - 1, 0, 0, 0 };
 
-    return top[static_cast<int>(Device::CurrentMode())];
+    return top[(int)(Device::CurrentMode())];
 }
 
 
@@ -56,7 +56,7 @@ int Grid::Width()
 {
     static const int width[Device::Mode::Count] = { WIDTH, Display::WIDTH - 1, 0, Display::WIDTH - 1 };
 
-    return width[static_cast<int>(Device::CurrentMode())];
+    return width[(int)(Device::CurrentMode())];
 }
 
 
@@ -64,7 +64,7 @@ int Grid::Height()
 {
     static const int height[Device::Mode::Count] = { HEIGHT, Display::HEIGHT - 1, 0, Display::HEIGHT - 1 };
 
-    return height[static_cast<int>(Device::CurrentMode())];
+    return height[(int)(Device::CurrentMode())];
 }
 
 
@@ -132,7 +132,7 @@ void Grid::Draw()
         DrawRecorder
     };
 
-    funcs[static_cast<int>(Device::CurrentMode())]();
+    funcs[(int)(Device::CurrentMode())]();
 }
 
 
@@ -190,11 +190,11 @@ void Grid::DrawGridSignal(int left, int top, int width, int height)
     }
     else if (S_DISP_TYPE_GRID_IS_2)
     {
-        DrawGridType2(left, top, right, bottom, static_cast<int>(deltaX), static_cast<int>(deltaY), static_cast<int>(stepX), static_cast<int>(stepY));
+        DrawGridType2(left, top, right, bottom, (int)(deltaX), (int)(deltaY), (int)(stepX), (int)(stepY));
     }
     else if (S_DISP_TYPE_GRID_IS_3)
     {
-        DrawGridType3(left, top, right, bottom, static_cast<int>(centerX), static_cast<int>(centerY), static_cast<int>(deltaX), static_cast<int>(deltaY), static_cast<int>(stepX));
+        DrawGridType3(left, top, right, bottom, (int)(centerX), (int)(centerY), (int)(deltaX), (int)(deltaY), (int)(stepX));
     }
 }
 
@@ -209,7 +209,7 @@ void Grid::DrawGridSpectrum()
         float scale = static_cast<float>(Grid::MathHeight()) / numParts;
         for (int i = 1; i < numParts; i++)
         {
-            int y = MathTop() + static_cast<int>(i * scale);
+            int y = MathTop() + (int)(i * scale);
 
 			HLine(256).Draw(Grid::Left(), y, Color::GRID);
 
@@ -226,7 +226,7 @@ void Grid::DrawGridSpectrum()
         float scale = static_cast<float>(Grid::MathHeight()) / 5;
         for (int i = 1; i < 5; i++)
         {
-            int y = MathTop() + static_cast<int>(i * scale);
+            int y = MathTop() + (int)(i * scale);
 
 			HLine(256).Draw(Grid::Left(), y, Color::GRID);
 
@@ -300,7 +300,7 @@ void Grid::DrawGridType2(int left, int top, int right, int bottom, int deltaX, i
     masX[0] = (uint16)(left + 1);
     for (int i = 1; i < 14; i++)
     {
-        masX[i] = (uint16)(left + static_cast<int>(deltaX * i));
+        masX[i] = (uint16)(left + (int)(deltaX * i));
     }
     masX[14] = (uint16)(right - 1);
     MultiVPointLine(15, masX, stepY, DeltaVforLineGrid()).Draw(top + stepY, Color::GRID);
@@ -403,8 +403,8 @@ void Grid::DrawTester()
 
     Color::GRID.SetAsCurrent();
 
-    int x = static_cast<int>(x0 + Display::WIDTH / 2);
-    int y = static_cast<int>(y0 + Display::HEIGHT / 2);
+    int x = (int)(x0 + Display::WIDTH / 2);
+    int y = (int)(y0 + Display::HEIGHT / 2);
 
     VLine(Display::HEIGHT).Draw(x, 0);
 
@@ -427,7 +427,7 @@ void Grid::DrawTester()
         x += deltaX;
     }
 
-    x = static_cast<int>(x0 + Display::WIDTH / 2 - deltaX);
+    x = (int)(x0 + Display::WIDTH / 2 - deltaX);
 
     while (x > 0)
     {
@@ -445,7 +445,7 @@ void Grid::DrawTester()
         y += deltaY;
     }
 
-    y = static_cast<int>(y0 + Display::HEIGHT / 2 - deltaY);
+    y = (int)(y0 + Display::HEIGHT / 2 - deltaY);
 
     while (y > 0)
     {

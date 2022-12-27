@@ -103,13 +103,13 @@ static void DrawUGO(int x, int y, float percents)
 
 static void DrawFilled(int x, int y, int full, float percents)
 {
-    int filled = static_cast<int>(full * percents / 100.0F + 0.5F);
+    int filled = (int)(full * percents / 100.0F + 0.5F);
 
     //if (ChargerIsConnected() && percents < 100.0F)
     //{
     //    int onePart = 1000 / full;
     //
-    //    int time = static_cast<int>(TIME_MS % 1000);
+    //    int time = (int)(TIME_MS % 1000);
     //
     //    int area = time / onePart;
     //

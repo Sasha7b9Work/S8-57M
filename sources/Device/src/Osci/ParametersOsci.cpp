@@ -443,10 +443,10 @@ void TrigLevel::Find()
 
         int numBytes = DS->BytesInChannel();
 
-        uint8 max = Math::MaxFromArray(data, 0, static_cast<int>(numBytes) - 1);
-        uint8 min = Math::MinFromArray(data, 0, static_cast<int>(numBytes) - 1);
+        uint8 max = Math::MaxFromArray(data, 0, (int)(numBytes) - 1);
+        uint8 min = Math::MinFromArray(data, 0, (int)(numBytes) - 1);
 
-        int deltaValue = static_cast<int>(VALUE::AVE) - (max + min) / 2;
+        int deltaValue = (int)(VALUE::AVE) - (max + min) / 2;
 
         int deltaRShift = S_RSHIFT(ch);
 
@@ -569,7 +569,7 @@ void TrigLevel::Draw()
 
     float scale = 1.0F / ((MAX - MIN) / 2.4F / Grid::Height());
 
-    int y = Grid::ChannelCenterHeight() - static_cast<int>((S_TRIG_LEVEL(ch) + S_RSHIFT(ch)) * scale);
+    int y = Grid::ChannelCenterHeight() - (int)((S_TRIG_LEVEL(ch) + S_RSHIFT(ch)) * scale);
 
     int x = Grid::Right();
     int xSymbol = Grid::Right() + 9;
@@ -673,7 +673,7 @@ void VALUE::PointsToVoltage(const uint8 *points, int numPoints, Range::E range, 
     int voltInPixel = voltsInPixelInt[range];
     float maxVoltsOnScreen = Range::MaxVoltageOnScreen(range);
     float rShiftAbs = RShift::ToAbs(rShift, range);
-    int diff = static_cast<int>((MIN * voltInPixel) + (maxVoltsOnScreen + rShiftAbs) * 20e3F);
+    int diff = (int)((MIN * voltInPixel) + (maxVoltsOnScreen + rShiftAbs) * 20e3F);
     float koeff = 1.0F / 20e3F;
     for (int i = 0; i < numPoints; i++)
     {
@@ -696,7 +696,7 @@ float Range::MaxVoltageOnScreen(Range::E range)
 
 uint8 VALUE::FromVoltage(float voltage, Range::E range, int16 rShift)
 {
-    int relValue = static_cast<int>((voltage + Range::MaxVoltageOnScreen(range) + RShift::ToAbs(rShift, range)) / voltsInPoint[range] + MIN);
+    int relValue = (int)((voltage + Range::MaxVoltageOnScreen(range) + RShift::ToAbs(rShift, range)) / voltsInPoint[range] + MIN);
     ::Math::Limitation<int>(&relValue, 0, 255);
     return static_cast<uint8>(relValue);
 }
@@ -726,7 +726,7 @@ void VALUE::PointsFromVoltage(const float *voltage, int numPoints, Range::E rang
 
     for (int i = 0; i < numPoints; i++)
     {
-        int value = static_cast<int>(voltage[i] * voltInPixel + delta);
+        int value = (int)(voltage[i] * voltInPixel + delta);
 
         if (value < 0)
         {

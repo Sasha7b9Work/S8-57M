@@ -31,7 +31,7 @@ int PacketROM::Size() const
 {
     if (IsFree())
     {
-        return static_cast<int>((Sector::Number(Address())) - Address());
+        return (int)((Sector::Number(Address())) - Address());
     }
 
     return size;
@@ -116,7 +116,7 @@ int PacketROM::GetPackedSize(const DataSettings *ds)
         sizeof(DataSettings) +          // DataSettings
         ds->NeedMemoryForData();        // data
 
-    return static_cast<int>(size);
+    return (int)(size);
 }
 
 
@@ -124,7 +124,7 @@ void PacketROM::Log() const
 {
 //    const DataSettings *ds = UnPack();
 //
-//    int numInROM = ds ? static_cast<int>(ds->numInROM) : -1;
+//    int numInROM = ds ? (int)(ds->numInROM) : -1;
 //    uint address = Address();
 //    int numSector = Sector::Number(Address());
 //    PacketROM *next = Next();
@@ -456,7 +456,7 @@ int NumberPacket(const PacketROM *packet)
         return -1;
     }
 
-    return static_cast<int>(ds->numInROM);
+    return (int)(ds->numInROM);
 }
 
 

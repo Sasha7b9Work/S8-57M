@@ -5,7 +5,7 @@
 
 
 // Преобразует перечисление в количество точек
-#define ENUM_TO_REL_POINTS(enum)    ((int)(1 << (static_cast<int>(enum) + 9)))
+#define ENUM_TO_REL_POINTS(enum)    ((int)(1 << ((int)(enum) + 9)))
 
 
 // Режим работы.

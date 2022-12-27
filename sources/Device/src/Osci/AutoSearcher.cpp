@@ -169,7 +169,7 @@ static bool FindFrequencyForRanges(Chan::E ch, uint timeWaitMS, float *outFreq, 
 
     FrequencyMeter::TuneForFind();
 
-    for (int range = static_cast<int>(Range::_20V); range >= 0; range -= 2)
+    for (int range = (int)(Range::_20V); range >= 0; range -= 2)
     {
         float frequency1 = 0.0F;
 
@@ -281,7 +281,7 @@ static void DisplayUpdate()
 
         Text("Поиск сигнала").DrawInCenterRect(0, 0, Display::WIDTH, 200, Color::FILL);
 
-        int length = static_cast<int>((TIME_MS / 250) % 20);
+        int length = (int)((TIME_MS / 250) % 20);
 
         int dX = 5;
 

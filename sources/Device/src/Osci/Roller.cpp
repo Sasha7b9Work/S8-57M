@@ -171,5 +171,5 @@ int Roller::FillScreenBuffer(Chan::E ch, Buffer &buffer, int width)
         Math::CircleIncrease<uint>(&position, 0, static_cast<uint>(width - 1));
     }
 
-    return static_cast<int>(PEAKDET_ENABLED(ds) ? (position / 2 - 1) : (position - 1));
+    return (int)(PEAKDET_ENABLED(ds) ? (position / 2 - 1) : (position - 1));
 }

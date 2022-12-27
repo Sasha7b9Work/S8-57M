@@ -35,7 +35,7 @@ void Reader::ReadDataFromRAM()
 {
     DS = nullptr;
 
-    DS = RAM::Get(S_MEM_MODE_WORK_IS_RAM ? static_cast<int>(RAM::currentSignal) : 0);
+    DS = RAM::Get(S_MEM_MODE_WORK_IS_RAM ? (int)(RAM::currentSignal) : 0);
 
     if(Roller::NeedDraw())
     {

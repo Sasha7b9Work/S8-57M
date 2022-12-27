@@ -47,7 +47,7 @@ float MathFPGA::VoltageCursor(float shiftCurU, Range::E range, int16 rShift)
 
 float MathFPGA::TimeCursor(float shiftCurT, TBase::E tBase)
 {
-    return TShift::ToAbs(static_cast<int>(shiftCurT), tBase);
+    return TShift::ToAbs((int)(shiftCurT), tBase);
 }
 
 
@@ -135,8 +135,8 @@ void MathFPGA::CalculateFFT(float *dataR, int numPoints, float *result, float *f
         -0.0007669903187427F, -0.0003834951875714F
     };
 
-    int nn = static_cast<int>(numPoints >> 1);
-    int ie = static_cast<int>(numPoints);
+    int nn = (int)(numPoints >> 1);
+    int ie = (int)(numPoints);
 
     for (int n = 1; n <= logN; n++)
     {
@@ -147,7 +147,7 @@ void MathFPGA::CalculateFFT(float *dataR, int numPoints, float *result, float *f
         float iu = 0.0F;
         for (int j = 0; j < in; j++)
         {
-            for (int i = j; i < static_cast<int>(numPoints); i += ie)
+            for (int i = j; i < (int)(numPoints); i += ie)
             {
                 int io = i + in;
                 float dRi = dataR[i];
@@ -168,7 +168,7 @@ void MathFPGA::CalculateFFT(float *dataR, int numPoints, float *result, float *f
         ie >>= 1;
     }
 
-    for (int j = 1, i = 1; i < static_cast<int>(numPoints); i++)
+    for (int j = 1, i = 1; i < (int)(numPoints); i++)
     {
         if (i < j)
         {
@@ -225,7 +225,7 @@ void MathFPGA::CalculateFFT(float *dataR, int numPoints, float *result, float *f
 #ifdef DEBUG
             result[i] = 20 * std::log10f(result[i]);
 #else
-            result[i] = Log10[static_cast<int>(result[i] * 10000)];
+            result[i] = Log10[(int)(result[i] * 10000)];
 #endif
 
             if (i == S_FFT_POS_CUR_0)
@@ -250,8 +250,8 @@ void MathFPGA::CalculateFFT(float *dataR, int numPoints, float *result, float *f
         *density0 = result[S_FFT_POS_CUR_0];
         *density1 = result[S_FFT_POS_CUR_1];
     }
-    *y0 = static_cast<int>(Grid::MathBottom() - result[S_FFT_POS_CUR_0] * Grid::MathHeight());
-    *y1 = static_cast<int>(Grid::MathBottom() - result[S_FFT_POS_CUR_1] * Grid::MathHeight());
+    *y0 = (int)(Grid::MathBottom() - result[S_FFT_POS_CUR_0] * Grid::MathHeight());
+    *y1 = (int)(Grid::MathBottom() - result[S_FFT_POS_CUR_1] * Grid::MathHeight());
 }
 
 

@@ -21,7 +21,7 @@ String::String(const String &rhs) : buffer(nullptr)
 {
     Set(TypeConversionString::None, "");
 
-    if (Allocate(static_cast<int>(std::strlen(rhs.c_str()) + 1)))
+    if (Allocate((int)(std::strlen(rhs.c_str()) + 1)))
     {
         std::strcpy(buffer, rhs.c_str());
     }
@@ -65,7 +65,7 @@ String::String(pchar format, ...) : buffer(nullptr)
     {
         std::strcpy(buffer, "Буфер слишком мал");
     }
-    else if (Allocate(static_cast<int>(std::strlen(buf) + 1)))
+    else if (Allocate((int)(std::strlen(buf) + 1)))
     {
         std::strcpy(buffer, buf);
     }
@@ -90,7 +90,7 @@ void String::Set(TypeConversionString::E conv, pchar format, ...)
         {
             std::strcpy(buffer, "Буфер слишком мал");
         }
-        else if(Allocate(static_cast<int>(std::strlen(buf) + 1)))
+        else if(Allocate((int)(std::strlen(buf) + 1)))
         {
             std::strcpy(buffer, buf);
             Conversion(conv);
@@ -110,7 +110,7 @@ void String::Append(pchar str)
 
     Free();
 
-    Allocate(static_cast<int>(old.Size() + std::strlen(str) + 1));
+    Allocate((int)(old.Size() + std::strlen(str) + 1));
 
     std::strcpy(buffer, old.c_str());
     std::strcat(buffer, str);
@@ -244,7 +244,7 @@ int String::Size() const
         return 0;
     }
 
-    return static_cast<int>(std::strlen(buffer));
+    return (int)(std::strlen(buffer));
 }
 
 

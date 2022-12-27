@@ -130,7 +130,7 @@ int DisplayRecorder::Y(int value)
 
     float scale = 120.0F / 125.0F;
 
-    int y = 120 + static_cast<int>(delta * scale);
+    int y = 120 + (int)(delta * scale);
 
     if (y < 0)
     {
@@ -379,7 +379,7 @@ void DisplayRecorder::DrawMemoryWindow()
         return;
     }
 
-    int numPoints = static_cast<int>(displayed->NumPoints());
+    int numPoints = (int)(displayed->NumPoints());
 
     if (prevNumPoints != numPoints)
     {
@@ -388,7 +388,7 @@ void DisplayRecorder::DrawMemoryWindow()
 
     Region(319, 5).DrawBounded(0, 3, Color::BACK, Color::FILL);
 
-    int width = static_cast<int>(320.0F / numPoints * 320.0F + 0.5F);
+    int width = (int)(320.0F / numPoints * 320.0F + 0.5F);
 
     if (width > 319)
     {
@@ -399,7 +399,7 @@ void DisplayRecorder::DrawMemoryWindow()
 
     if (numPoints > 320)
     {
-        x = static_cast<int>(static_cast<float>(startPoint) / numPoints * 320.0F + 0.5F);
+        x = (int)(static_cast<float>(startPoint) / numPoints * 320.0F + 0.5F);
     }
 
     Region(width, 10).DrawBounded(x, 0, Color::BACK, Color::FILL);
@@ -435,9 +435,9 @@ void DisplayRecorder::MoveWindowRight()
 
     startPoint += speed.NumPoints();
 
-    if (startPoint > static_cast<int>(displayed->NumPoints() - 320))
+    if (startPoint > (int)(displayed->NumPoints() - 320))
     {
-        startPoint = static_cast<int>(displayed->NumPoints() - 320);
+        startPoint = (int)(displayed->NumPoints() - 320);
     }
 }
 

@@ -153,7 +153,7 @@ static void DrawField(int numField)
         Color::FLASH_01.SetAsCurrent();
     }
 
-    Integer value(static_cast<int>(fields[numField]));
+    Integer value((int)(fields[numField]));
 
     DrawDigit(x, y, value[1]);
     DrawDigit(x + 38, y, value[0]);

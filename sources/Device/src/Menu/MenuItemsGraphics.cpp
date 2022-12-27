@@ -166,7 +166,7 @@ void Governor::DrawLowPart(int x, int y) const
     
         x = Char(Symbol8::GOVERNOR_LEFT).Draw(x + 4, y, colorTextDown);
         
-        int delta = static_cast<int>(Step());
+        int delta = (int)(Step());
         if (delta == 0)
         {
             x = Integer(GetValue()).ToString(false, 1).Draw(x + 1, y);
@@ -241,7 +241,7 @@ void Choice::DrawClosed(int x, int y) const
     {
         Region(Width() - 3, Value::HEIGHT - 3).Fill(x + 1, y + Value::HEIGHT + 1, ColorBackgroundChoice());
 
-        int deltaY = static_cast<int>(Step());
+        int deltaY = (int)(Step());
         Color colorText = Color::BLACK;
         colorText.SetAsCurrent();
         if (deltaY == 0)
@@ -405,7 +405,7 @@ void Governor::DrawValueWithSelectedPosition(int x, int y, int value, int numDig
     
     for (int i = 0; i < numDigits; i++)
     {
-        if (selPosFromEnd == (static_cast<int>(numDigits) - static_cast<int>(i) - 1))
+        if (selPosFromEnd == ((int)(numDigits) - (int)(i) - 1))
         {
             Region(5, height).Fill(x - 1, y, Color::FILL);
         }

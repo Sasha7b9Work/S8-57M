@@ -73,7 +73,7 @@ void DisplayOsci::Render(int field)
 
     DrawingValueParameter::Draw();
 
-    CursorsMeasurements::Draw();
+    CursorsMeasurements::Draw();                        // Курсоры курсорных измерений
 
     BottomPart::Draw(273, Grid::Bottom() + 1, field);
 

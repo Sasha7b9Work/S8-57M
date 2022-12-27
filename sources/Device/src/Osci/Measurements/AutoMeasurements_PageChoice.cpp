@@ -110,7 +110,7 @@ void PageChoiceMeasures::Draw()
                 Char(static_cast<SymbolUGO::E>(Measure::GetChar(meas))).Draw10SymbolsInRect(x0 + 2, y0 + 1, active ? Color::FLASH_01 : Color::FILL);
                 DFont::Set(DTypeFont::_5);
                 Text(TypeMeasure::GetName(meas)).DrawRelativelyRight(x0 + dX, y0 + 12);
-                meas = static_cast<TypeMeasure::E>(static_cast<int>(meas) + 1);    // meas++;
+                meas = static_cast<TypeMeasure::E>((int)(meas) + 1);    // meas++;
             }
         }
     }

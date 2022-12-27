@@ -463,7 +463,7 @@ ShiftPoint Gates::CalculateShiftPoint()
 
     float tin = static_cast<float>(valueADC - min) / (max - min);
 
-    result.shift = static_cast<int>(tin * TBase::DeltaPoint());
+    result.shift = (int)(tin * TBase::DeltaPoint());
 
     if(result.shift < 0)
     {
@@ -502,7 +502,7 @@ StructReadRand RandShift::GetInfoForReadRand(ShiftPoint Tsm, const uint8 *addres
 
         structRand.step = step;
 
-        int addShift = static_cast<int>(S_TIME_SHIFT % step);
+        int addShift = (int)(S_TIME_SHIFT % step);
 
         if (addShift < 0)
         {

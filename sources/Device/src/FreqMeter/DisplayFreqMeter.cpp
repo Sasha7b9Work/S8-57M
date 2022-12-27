@@ -572,7 +572,7 @@ void ProgressBarFreqMeter::Draw(int x, int y)
 
         float percents = (TIME_MS - FreqMeter::timeStartMeasureFreq) / time[S_FREQ_TIME_COUNTING];
 
-        int width = static_cast<int>(length * percents);
+        int width = (int)(length * percents);
 
         if(width > length)
         {

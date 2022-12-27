@@ -323,7 +323,7 @@ int FDrive::ReadFromFile(int numBytes, uint8 *buffer)
     uint readed = 0;
     if(f_read(&file, buffer, static_cast<UINT>(numBytes), &readed) == FR_OK)
     {
-        return static_cast<int>(readed);
+        return (int)(readed);
     }
     return -1;
 }

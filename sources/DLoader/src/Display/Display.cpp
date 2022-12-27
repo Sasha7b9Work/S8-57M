@@ -155,7 +155,7 @@ void Display::Update()
 
         int height = 30;
         int fullWidth = 280;
-        int width = static_cast<int>(fullWidth * FDrive::PercentsUpdated());
+        int width = (int)(fullWidth * FDrive::PercentsUpdated());
 
         Region(width, height).Fill(20, 130);
         Rectangle(fullWidth, height).Draw(20, 130);
@@ -201,7 +201,7 @@ void DrawProgressBar(uint dT)
     Text("Подождите...").DrawInCenterRect(X, y0 + 2 * dH, WIDTH, 10);
 
     Rectangle(WIDTH, HEIGHT).Draw(X, Y);
-    Region(static_cast<int>(value), HEIGHT).Fill(X, Y);
+    Region((int)(value), HEIGHT).Fill(X, Y);
 }
 
 
@@ -249,8 +249,8 @@ static void DrawBigMNIPI()
 
     for (int i = 0; i < numPoints; i++)
     {
-        int x = array[i].x + (VAGUE_OR_ALL ? RandValue(static_cast<int>(-radius), static_cast<int>(radius)) : 0) + static_cast<int>(shift[array[i].y]); //-V537
-        int y = array[i].y + (VAGUE_OR_ALL ? RandValue(static_cast<int>(-radius), static_cast<int>(radius)) : 0);
+        int x = array[i].x + (VAGUE_OR_ALL ? RandValue((int)(-radius), (int)(radius)) : 0) + (int)(shift[array[i].y]); //-V537
+        int y = array[i].y + (VAGUE_OR_ALL ? RandValue((int)(-radius), (int)(radius)) : 0);
         if (x > 0 && x < 319 && y > 0 && y < 239)
         {
             Pixel().Draw(x, y);
@@ -261,7 +261,7 @@ static void DrawBigMNIPI()
 
 static int RandValue(int min, int max)
 {
-    int val = static_cast<int>(std::rand() % (max - min + 1));
+    int val = (int)(std::rand() % (max - min + 1));
 
     return val + min;
 }

@@ -62,7 +62,7 @@ struct StructSCPI
 
 #define SCPI_EXIT_ERROR()   LOG_WRITE("Ошибка теста SCPI %s:%d", __FILE__, __LINE__); return false;
 
-#define SCPI_APPEND_STRING(string) SCPI::AppendNewData(string.c_str(), static_cast<int>(std::strlen(string.c_str()))); SCPI::Update()
+#define SCPI_APPEND_STRING(string) SCPI::AppendNewData(string.c_str(), (int)(std::strlen(string.c_str()))); SCPI::Update()
 
 #define SCPI_IF_BEGIN_WITH_THEN(begin, func) end = SCPI::BeginWith(buffer, begin); if (end) { SCPI_PROLOG(end); func; SCPI_EPILOG(end); }
 

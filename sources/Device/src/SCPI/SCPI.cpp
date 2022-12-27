@@ -74,7 +74,7 @@ void SCPI::Update()
 
     if(end)
     {
-        data.RemoveFromBegin(static_cast<int>(end - data.c_str()));
+        data.RemoveFromBegin((int)(end - data.c_str()));
     }
 }
 

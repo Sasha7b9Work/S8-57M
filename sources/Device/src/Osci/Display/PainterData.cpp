@@ -128,7 +128,7 @@ void DisplayOsci::PainterData::DrawSpectrumChannel(const float *spectrum, Color 
     int gridHeight = Grid::MathHeight();
     for (int i = 0; i < 256; i++)
     {
-        int height = static_cast<int>(gridHeight * spectrum[i]);
+        int height = (int)(gridHeight * spectrum[i]);
 
         VLine(height).Draw(gridLeft + i, gridBottom - height);
     }
@@ -355,8 +355,8 @@ void DisplayOsci::PainterData::DrawModeLinesPeakDetOn(int center, const uint8 *d
 {
     for (int i = 0; i < 281 * 2; i += 2)
     {
-        int min = static_cast<int>(center - (data[i] - VALUE::AVE) * scale + 0.5F);
-        int max = static_cast<int>(center - (data[i + 1] - VALUE::AVE) * scale + 0.5F);
+        int min = (int)(center - (data[i] - VALUE::AVE) * scale + 0.5F);
+        int max = (int)(center - (data[i + 1] - VALUE::AVE) * scale + 0.5F);
 
         VLine(min - max).Draw(x++, max);
     }
@@ -409,8 +409,8 @@ void DisplayOsci::PainterData::DrawModePointsPeakDetOn(int center, const uint8 *
 {
     for (int i = 0; i < 281 * 2; i += 2)
     {
-        Pixel().Draw(x, static_cast<int>(center - (data[i] - VALUE::AVE) * scale + 0.5F));
-        Pixel().Draw(x, static_cast<int>(center - (data[i + 1] - VALUE::AVE) * scale + 0.5F));
+        Pixel().Draw(x, (int)(center - (data[i] - VALUE::AVE) * scale + 0.5F));
+        Pixel().Draw(x, (int)(center - (data[i + 1] - VALUE::AVE) * scale + 0.5F));
         x++;
     }
 }

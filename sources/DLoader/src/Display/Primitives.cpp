@@ -354,7 +354,7 @@ static bool FindNextTransfer(pchar letters, int8 *lettersInSyllable)
 
     bool consonant[20];
 
-    int size = static_cast<int>(std::strlen(letters));
+    int size = (int)(std::strlen(letters));
 
     for (int i = 0; i < size; i++)
     {
@@ -477,7 +477,7 @@ static int DrawPartWord(char *word, int x, int y, int xRight, bool draw)
             {
                 String(subString).Draw(x, y);
             }
-            return static_cast<int>(std::strlen(subString) - 1);
+            return (int)(std::strlen(subString) - 1);
         }
     }
 
@@ -495,7 +495,7 @@ int Text::DrawInRectWithTransfers(int eX, int eY, int eWidth, int eHeight, Color
     int bottom = eY + eHeight;
 
     char buffer[20];
-    int numSymbols = static_cast<int>(std::strlen(text));
+    int numSymbols = (int)(std::strlen(text));
 
     int y = top - 1;
     int x = left;
@@ -552,7 +552,7 @@ int Text::DrawInRectWithTransfers(int eX, int eY, int eWidth, int eHeight, Color
 static bool GetHeightTextWithTransfers(int left, int top, int right, pchar text, int *height)
 {
     char buffer[20];
-    int numSymbols = static_cast<int>(std::strlen(text));
+    int numSymbols = (int)(std::strlen(text));
 
     int y = top - 1;
     int x = left;
@@ -723,7 +723,7 @@ void VPointLine::Draw(int _x, int _y, Color color)
     int y0 = _y;
     int y1 = y0 + height;
 
-    for (int y = y0; y <= y1; y += static_cast<int>(delta))
+    for (int y = y0; y <= y1; y += (int)(delta))
     {
         Pixel().Draw(_x, y);
     }
@@ -740,7 +740,7 @@ void HPointLine::Draw(int _x, int _y)
     int x0 = _x;
     int x1 = _x + width;
 
-    for (int x = x0; x <= x1; x += static_cast<int>(delta))
+    for (int x = x0; x <= x1; x += (int)(delta))
     {
         Pixel().Draw(x, _y);
     }
