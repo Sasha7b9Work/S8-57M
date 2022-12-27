@@ -572,7 +572,7 @@ void TrigLevel::Draw()
     int y = Grid::ChannelCenterHeight() - static_cast<int>((S_TRIG_LEVEL(ch) + S_RSHIFT(ch)) * scale);
 
     int x = Grid::Right();
-    int xSymbol = Grid::Right() + 5;
+    int xSymbol = Grid::Right() + 9;
 
     Color::Trig().SetAsCurrent();
 
@@ -592,12 +592,12 @@ void TrigLevel::Draw()
     }
     else
     {
-        Char(Symbol8::TRIGLEV_NORMAL).Draw(x + 1, y - 4);
+        Char(Symbol8::TRIGLEV_NORMAL).Draw(x + 1, y - 8);
     }
 
     static const char symbols[2] = { '1', '2' };
 
-    Char(symbols[ch], DTypeFont::_5).Draw(xSymbol, y - 6, Color::BACK);
+    Char(symbols[ch], DTypeFont::_5).Draw(xSymbol, y - 12, Color::BACK);
 }
 
 

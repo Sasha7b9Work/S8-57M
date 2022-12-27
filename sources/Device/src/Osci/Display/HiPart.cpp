@@ -81,8 +81,6 @@ void DisplayOsci::HiPart::Draw(int field)
 
     DrawRightPart(540, Y0);
 
-    return;
-
     WriteCursors();
 
     DrawPeakDet(x + 37, Y0 + 10); //-V2007
