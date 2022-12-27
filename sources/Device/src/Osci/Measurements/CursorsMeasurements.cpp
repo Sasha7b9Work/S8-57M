@@ -54,15 +54,15 @@ String CursorsMeasurements::Time(Chan::E source, int numCur)
 
 float CursorsMeasurements::PosT(Chan::E ch, int num)
 {
-    float retValue = 0.0F;
-    std::memcpy(&retValue, &S_CURS_POS_T(ch, num), sizeof(float));
-    return retValue;
+    float result = 0.0F;
+    std::memcpy(&result, &S_CURS_POS_T(ch, num), sizeof(result));
+    return result;
 }
 
 
 void CursorsMeasurements::SetCursPosT_temp(Chan::E ch, int num, float value)
 {
-    std::memcpy(&S_CURS_POS_T(ch, num), &value, sizeof(float));
+    std::memcpy(&S_CURS_POS_T(ch, num), &value, sizeof(value));
 }
 
 
