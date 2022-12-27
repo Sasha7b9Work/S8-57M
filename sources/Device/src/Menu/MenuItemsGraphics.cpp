@@ -278,12 +278,12 @@ void GraphButton::Draw(int x, int y, bool) const
 {
     x += 2;
     y += 3;
-    
+
     Region(GraphButton::Width() - 5, GraphButton::Height() - 4).Fill(x, y, ColorTitleBackground());
 
     ColorTitleText().SetAsCurrent();
 
-    OwnData()->funcDraw(x + 20, y);
+    OwnData()->funcDraw(x + 45, y + 6);
 }
 
 
