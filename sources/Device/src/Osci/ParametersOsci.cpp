@@ -556,10 +556,10 @@ void RShift::Draw(Chan::E ch)
     }
     else
     {
-        Char(Symbol8::RSHIFT_NORMAL).Draw(x, y - 4);
+        Char(Symbol8::RSHIFT_NORMAL).Draw(x - 8, y - 8);
     }
 
-    Char((ch == ChanA) ? '1' : '2', DTypeFont::_5).Draw(x + 1, y - 6, Color::BACK);
+    Char((ch == ChanA) ? '1' : '2', DTypeFont::_5).Draw(x - 6, y - 12, Color::BACK);
 }
 
 
