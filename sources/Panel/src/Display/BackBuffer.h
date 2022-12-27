@@ -25,7 +25,7 @@ namespace BackBuffer
 
     void DrawHPointLine(int x, int y, int delta, int count);
 
-    void DrawDashedLine(int x, int y, int height, int deltaFill, int deltaEmpty, int deltaStart);
+    void DrawDashedVLine(int x, int y, int height, int deltaFill, int deltaEmpty, int deltaStart);
 
     void DrawLine(int x0, int y0, int x1, int y1);
 

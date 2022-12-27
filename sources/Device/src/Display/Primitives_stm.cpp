@@ -50,6 +50,18 @@ void HLine::Draw(int x, int y, Color color)
 }
 
 
+void DashedVLine::Draw(int x, int y)
+{
+    uint8 buffer[10] = { Command::Paint_DashedVLine };
+
+    Point2(x, y).Write(&buffer[1]);
+    Point2(height, deltaFill).Write(&buffer[4]);
+    Point2(deltaEmpty, deltaStart).Write(&buffer[7]);
+
+//    HAL_BUS::Panel::Send(buffer, 10);
+}
+
+
 void VLine::Draw(int x, int y, Color color)
 {
     color.SetAsCurrent();

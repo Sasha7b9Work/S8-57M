@@ -57,6 +57,7 @@ struct Command
             //             1 - 0/1 - пиквоый детектор откл/вкл
             Paint_DrawSignal,       // 23 |    mode     |          coord_left_top Point2          |     coord_left_bottom Point2  | num_points | 10 +  X |
             Null_command,           // 24 |   number
+            Paint_DashedVLine,      // 25 | 
             Count
     };
 };

@@ -683,34 +683,6 @@ DashedVLine::DashedVLine(int _height, int _deltaFill, int _deltaEmpty, int _delt
 }
 
 
-void DashedVLine::Draw(int x, int y0)
-{
-    if (deltaStart < 0 || deltaStart >= (deltaFill + deltaEmpty))
-    {
-        //LOG_ERROR("Неправильный аргумент deltaStart = %d", deltaStart);
-        return;
-    }
-    int y = y0;
-    if (deltaStart != 0)                 // Если линию нужно рисовать не с начала штриха
-    {
-        y += (deltaFill + deltaEmpty - deltaStart);
-        if (deltaStart < deltaFill)     // Если начало линии приходится на штрих
-        {
-            VLine(y - y0 - 1).Draw(x, y0);
-        }
-    }
-
-    int y1 = y0 + height;
-
-    while (y < y1)
-    {
-        VLine(deltaFill - 1).Draw(x, y);
-
-        y += (deltaFill + deltaEmpty);
-    }
-}
-
-
 DashedHLine::DashedHLine(int _width, int _deltaFill, int _deltaEmpty, int _deltaStart) : 
     width(_width), deltaFill(_deltaFill), deltaEmpty(_deltaEmpty), deltaStart(_deltaStart)
 {

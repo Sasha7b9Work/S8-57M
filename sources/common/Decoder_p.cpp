@@ -67,6 +67,8 @@ namespace PDecoder
 
     static bool NullCommand(uint8);
 
+    static bool DrawDashedVLine(uint8);
+
     // İòó ôóíêöèş íàäî âûçûâàòü ïîñëå âûïîëíåíèÿ ïîñëåäíåãî øàãà
     static void FinishCommand();
 }
@@ -103,7 +105,8 @@ void PDecoder::AddData(uint8 data)
         SetTextSpacing,
         E,
         DrawSignal,
-        NullCommand
+        NullCommand,
+        DrawDashedVLine
     };
 
     if (step == 0)
@@ -405,6 +408,38 @@ bool PDecoder::DrawHPointLine(uint8 data)
     }
 
     return result;
+}
+
+
+bool PDecoder::DrawDashedVLine(uint8 data)
+{
+    static Point2 x_y;
+    static Point2 height_deltaFill;
+    static Point2 deltaEmpty_deltaStart;
+
+    if (step > 0 && step < 4)
+    {
+        x_y.Append(data);
+    }
+    else if (step > 3 && step < 7)
+    {
+        height_deltaFill.Append(data);
+    }
+    else
+    {
+        deltaEmpty_deltaStart.Append(data);
+
+        if (step == 9)
+        {
+            BackBuffer::DrawDashedVLine(x_y.X(), x_y.Y(),
+                height_deltaFill.X(), height_deltaFill.Y(),
+                deltaEmpty_deltaStart.X(), deltaEmpty_deltaStart.Y());
+
+            return true;
+        };
+    }
+
+    return false;
 }
 
 
