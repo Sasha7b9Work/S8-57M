@@ -167,6 +167,12 @@ void BackBuffer::DrawVPointLine(int x, int y, int delta, int count)
 }
 
 
+void BackBuffer::DrawDashedLine(int x, int y, int height, int deltaFill, int deltaEmpty, int deltaStart)
+{
+
+}
+
+
 void BackBuffer::DrawLine(int x1, int y1, int x2, int y2)
 {
     if (x1 == x2 && y1 == y2)
