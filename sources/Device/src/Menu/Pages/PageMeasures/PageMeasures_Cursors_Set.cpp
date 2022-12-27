@@ -12,8 +12,8 @@ namespace PageCursorsMeasures
 {
     namespace Set
     {
-        static const float MAX_POS_U = 200.0f;
-        static const float MAX_POS_T = 200.0f;
+        static const float MAX_POS_U = 400.0f;
+        static const float MAX_POS_T = 560.0f;
 
         // Установить источник курсорных измерений
         static void SetCursSource(Chan::E ch);
@@ -352,10 +352,10 @@ bool PageCursorsMeasures::Set::HandlerKey(const KeyEvent &event)
             SetShiftCursPosU(S_CURS_SOURCE, 1, value);
         }
         UpdateCursorsForLook();
-        
+
         return true;
     }
-    else if(S_CURS_ACTIVE_IS_T && (event.IsArrowLeft() || event.IsArrowRight()))
+    else if (S_CURS_ACTIVE_IS_T && (event.IsArrowLeft() || event.IsArrowRight()))
     {
         if (S_CURS_MOVEMENT_IS_PERCENTS)
         {
@@ -371,7 +371,7 @@ bool PageCursorsMeasures::Set::HandlerKey(const KeyEvent &event)
             SetShiftCursPosT(S_CURS_SOURCE, 1, value);
         }
         UpdateCursorsForLook();
-        
+
         return true;
     }
 
@@ -483,7 +483,7 @@ void PageCursorsMeasures::Set::SetCursorU(Chan::E ch, int numCur, float pos)
 void PageCursorsMeasures::Set::SetCursorT(Chan::E ch, int numCur, float pos)
 {
     // \todo одинаковые ветки
-    // CURsT_POS(ch, numCur) = LimitationFloat(pos, 0, MAX_POS_T);      
+    // CURsT_POS(ch, numCur) = LimitationFloat(pos, 0, MAX_POS_T);
     CursorsMeasurements::SetCursPosT_temp(ch, numCur, Math::LimitationRet(pos, 0.0F, MAX_POS_T));
 }
 
