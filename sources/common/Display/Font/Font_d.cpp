@@ -48,7 +48,7 @@ static void SendTypeFontToPanel(DTypeFont::E type)
 
     if (prevType != type)
     {
-        HAL_BUS::Panel::Send(Command::Paint_SetFont, (uint8)(type));
+        SBuffer<2>(Command::Paint_SetFont, (uint8)type).Send();
         prevType = type;
     }
 }

@@ -34,6 +34,7 @@ template<int size>
 struct SBuffer
 {
     SBuffer(uint8 command) : pointer(0) { Push(command); }
+    SBuffer(uint8 command, uint8 data) : pointer(0) { Push(command); Push(data); }
     void Push(const Point2 &point)      { std::memcpy(&buffer[pointer], point.XY(), 3); pointer += 3; }
     void Push(uint8 byte)               { buffer[pointer++] = byte; }
 #ifdef DEVICE
@@ -41,6 +42,8 @@ struct SBuffer
 #else
 #ifdef PANEL
     void Send() const                   { HAL_BUS::SendToDevice(buffer, pointer); };
+#else
+    void Send() const {}
 #endif
 #endif
 private:
