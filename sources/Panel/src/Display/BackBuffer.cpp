@@ -170,7 +170,7 @@ void BackBuffer::DrawVPointLine(int x, int y, int delta, int count)
 
 void BackBuffer::DrawDashedVLine(int x, int y0, int height, int deltaFill, int deltaEmpty, int deltaStart)
 {
-    LOG_WRITE("x = %d, y = %d", x, y0);
+    LOG_WRITE("Test string");
 
     if (deltaStart < 0 || deltaStart >= (deltaFill + deltaEmpty))
     {

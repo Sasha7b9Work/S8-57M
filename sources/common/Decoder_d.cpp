@@ -173,6 +173,7 @@ bool DDecoder::AddToConsole(uint8 data)
 
         if (recvSymbols == allSymbols)
         {
+            text[recvSymbols] = 0;
             LOG_WRITE(text);
             std::free(text);
             return true;
