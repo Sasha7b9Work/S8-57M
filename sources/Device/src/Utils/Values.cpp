@@ -437,7 +437,7 @@ static char *FloatToString(float value, bool alwaysSign, int numDigits, char buf
     }
     
     float absValue = std::fabsf(value);
-    std::sprintf(pBuffer, static_cast<char *>(format), static_cast<double>(absValue));
+    std::sprintf(pBuffer, (char *)(format), static_cast<double>(absValue));
     
     float val = static_cast<float>(std::atof(pBuffer)); //-V2508
     

@@ -197,8 +197,8 @@ bool SU::EqualsStrings(uint8 *str1, pchar  const str2, int size)
 
 bool SU::EqualsStrings(void *_str1, void *_str2, int size)
 {
-    char *str1 = static_cast<char *>(_str1);
-    char *str2 = static_cast<char *>(_str2);
+    char *str1 = (char *)(_str1);
+    char *str2 = (char *)(_str2);
 
     for (int i = 0; i < size; i++)
     {
@@ -307,7 +307,7 @@ char *SU::ToUpper(char *str)
 
 char *SU::ToUpper(char *_str, int size)
 {
-    char *str = static_cast<char *>(_str);
+    char *str = (char *)(_str);
 
     for(int i = 0; i < size; i++)
     {

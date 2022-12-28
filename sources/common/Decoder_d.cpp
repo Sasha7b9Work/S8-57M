@@ -157,6 +157,14 @@ bool DDecoder::AddToConsole(uint8 data)
 
     static uint8 recvSymbols = 0;       // Столько символов уже принято
 
+
+    if (step == 1)
+    {
+        allSymbols = data;
+        text = (char *)std::malloc(allSymbols + 1);
+    }
+
+
     if (step == 0)
     {
         return false;
@@ -165,7 +173,7 @@ bool DDecoder::AddToConsole(uint8 data)
     if (step == 1)
     {
         allSymbols = data;
-        text = static_cast<char *>(std::malloc(allSymbols + 1U));
+        text = (char *)(std::malloc(allSymbols + 1U));
         recvSymbols = 0;
         return false;
     }

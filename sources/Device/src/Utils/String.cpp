@@ -171,7 +171,7 @@ char *String::c_str() const
 bool String::Allocate(int size)
 {
     std::free(buffer);
-    buffer = static_cast<char *>(std::malloc(static_cast<uint>(size)));
+    buffer = (char *)(std::malloc(static_cast<uint>(size)));
     if (buffer)
     {
         return true;

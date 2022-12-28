@@ -11,7 +11,7 @@
 
 void CF::LogBufferU8_HEX(const uint8 *buffer, int num)
 {
-    char *message = static_cast<char *>(std::malloc(static_cast<uint>(num * 3)));
+    char *message = (char *)(std::malloc(static_cast<uint>(num * 3)));
 
     if (message == nullptr)
     {
@@ -38,7 +38,7 @@ void CF::LogBufferU8_HEX(const uint8 *buffer, int num)
 
 void CF::LogBufferU8_DEC(const uint8 *buffer, int num)
 {
-    char *message = static_cast<char *>(std::malloc(static_cast<uint>(num * 3)));
+    char *message = (char *)(std::malloc(static_cast<uint>(num * 3)));
 
     if (message == nullptr)
     {
@@ -129,7 +129,7 @@ char *CF::GetWord(char *string, int n, char *out, int size)
 
     if (length + 1 > size)
     {
-        return reinterpret_cast<char *>(0xffffffffU);   // Не хватит места в выходном буфере - выходим с соответствующим кодом //-V566
+        return (char *)(0xffffffffU);   // Не хватит места в выходном буфере - выходим с соответствующим кодом //-V566
     }
 
     for (int i = 0; i < length; i++)
