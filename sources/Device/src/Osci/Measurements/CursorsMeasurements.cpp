@@ -122,9 +122,9 @@ void CursorsMeasurements::DrawVertical(int x, int yTearing)
     }
     else
     {
-        DashedVLine(yTearing - Grid::Top() - 4, 1, 1, 0).Draw(x, Grid::Top() + 2);
-        DashedVLine(Grid::ChannelBottom() - yTearing - 3, 1, 1, 0).Draw(x, yTearing + 2);
+        VCursor(Grid::ChannelBottom() - Grid::Top(), yTearing - Grid::Top()).Draw(x, Grid::Top() + 2);
     }
+
     Rectangle(2, 2).Draw(x - 1, Grid::Top() - 1);
     Rectangle(2, 2).Draw(x - 1, Grid::ChannelBottom() - 1);
 }

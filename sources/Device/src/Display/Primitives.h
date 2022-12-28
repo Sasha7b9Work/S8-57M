@@ -152,13 +152,11 @@ private:
 class VCursor
 {
 public:
-    VCursor(int height, int skip);
+    VCursor(int _height, int _skip) : height(_height), skip(_skip) { }
     void Draw(int x, int y);
 private:
     int height;
-    int deltaFill;
-    int deltaEmpty;
-    int deltaStart;
+    int skip;
 };
 
 

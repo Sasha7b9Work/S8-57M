@@ -1,5 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Hardware/HAL/HAL.h"
 #include <cstring>
 
 
@@ -22,9 +23,29 @@ struct Point2        // от слова dimensions
     int Y() const                 { int result = (int)(xy >> 10); if (result & (1 << 13)) result |= 0xffffe000; return result; }
     int Height() const            { return Y(); }
     void Write(uint8 *dest) const { std::memcpy(dest, &xy, 3); }
+    const uint *XY() const { return &xy; }
 private:
     uint xy;
     uint8 *pointer;
+};
+
+
+template<int size>
+struct SBuffer
+{
+    SBuffer(uint8 command) : pointer(0) { Push(command); }
+    void Push(const Point2 &point)      { std::memcpy(&buffer[pointer], point.XY(), 3); pointer += 3; }
+    void Push(uint8 byte)               { buffer[pointer++] = byte; }
+#ifdef DEVICE
+    void Send() const                   { HAL_BUS::Panel::Send(buffer, pointer); };
+#else
+#ifdef PANEL
+    void Send() const                   { HAL_BUS::SendToDevice(buffer, pointer); };
+#endif
+#endif
+private:
+    uint8 buffer[size];
+    int pointer;
 };
 
 
@@ -59,8 +80,8 @@ struct Command
             Null_command,           // 24 |   number
             //                                                                        в x хрантися длина линии, в skip - координата
             //                                                                места, которое нужно пропустить (там будет нарисован прямоугольник
-            Paint_VCursor,          // 25 |               coord                    |                height,skip           |                    |    7    |
-            Paint_HCursor,          // 26 |                                        |                                      |                    |    7    |
+            Paint_DrawVCursor,      // 25 |               coord                    |                height,skip           |                    |    7    |
+            Paint_DrawHCursor,      // 26 |                                        |                                      |                    |    7    |
             Count
     };
 };

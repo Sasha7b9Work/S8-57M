@@ -50,15 +50,14 @@ void HLine::Draw(int x, int y, Color color)
 }
 
 
-void DashedVLine::Draw(int x, int y)
+void VCursor::Draw(int x, int y)
 {
-    uint8 buffer[10] = { Command::Paint_DashedVLine };
+    SBuffer<7> buffer(Command::Paint_DrawVCursor);
 
-    Point2(x, y).Write(&buffer[1]);
-    Point2(height, deltaFill).Write(&buffer[4]);
-    Point2(deltaEmpty, deltaStart).Write(&buffer[7]);
+    buffer.Push(Point2(x, y));
+    buffer.Push(Point2(height, skip));
 
-    HAL_BUS::Panel::Send(buffer, 10);
+    buffer.Send();
 }
 
 

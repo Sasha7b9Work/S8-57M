@@ -50,3 +50,5 @@ typedef bool  (*pFuncBV)();
 #define ERROR_STRING_VALUE  "--.--"
 
 #include <stm32f4xx_hal.h>
+
+#define LOG_WRITE(...)
