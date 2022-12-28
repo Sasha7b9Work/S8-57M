@@ -36,6 +36,10 @@
 #endif
 
 
+#undef LOG_WRITE
+#define LOG_WRITE(...)          Log::Write(TypeTrace_Info, __VA_ARGS__)
+
+
 enum TypeTrace
 {
     TypeTrace_Info,

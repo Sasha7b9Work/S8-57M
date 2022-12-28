@@ -74,7 +74,7 @@ void Log::Trace(TypeTrace type, pchar module, pchar func, int numLine, char *for
 
 static void AddToConsole(pchar text)
 {
-    uint8 *buffer = static_cast<uint8 *>(std::malloc(std::strlen(text) + 3U)); //-V2511
+    uint8 *buffer = (uint8 *)(std::malloc(std::strlen(text) + 3U)); //-V2511
 
     if (buffer)
     {
