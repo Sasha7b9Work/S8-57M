@@ -641,7 +641,7 @@ bool PDecoder::DrawText(uint8 data)
     case 4:
         numSymbols = data;
         readingSymbols = 0;
-        buffer = new char[static_cast<uint>(numSymbols + 1)]; //-V2511
+        buffer = new char[static_cast<uint>(numSymbols + 1)];
         break;
     default:
         buffer[readingSymbols++] = static_cast<char>(data);
@@ -650,7 +650,7 @@ bool PDecoder::DrawText(uint8 data)
             buffer[readingSymbols] = 0;
             Text::Draw(pos.X(), pos.Y(), buffer, 2);
             pos.Reset();
-            delete[]buffer; //-V2511
+            delete[]buffer;
             return true;
         }
         break;

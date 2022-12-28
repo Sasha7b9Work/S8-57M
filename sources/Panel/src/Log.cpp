@@ -58,10 +58,6 @@ void Log::Trace(TypeTrace type, pchar module, pchar func, int numLine, char *for
     {
         std::strcat(message, "            ");
     }
-    else
-    {
-        // больше типов нет
-    }
 
     std::strcat(message, module);
     std::strcat(message, " ");
@@ -74,7 +70,7 @@ void Log::Trace(TypeTrace type, pchar module, pchar func, int numLine, char *for
 
 static void AddToConsole(pchar text)
 {
-    uint8 *buffer = (uint8 *)(std::malloc(std::strlen(text) + 3U)); //-V2511
+    uint8 *buffer = (uint8 *)(std::malloc(std::strlen(text) + 3U));
 
     if (buffer)
     {
@@ -83,6 +79,6 @@ static void AddToConsole(pchar text)
         std::strcpy(reinterpret_cast<char *>(buffer + 1), text);
         HAL_BUS::SendToDevice(buffer, std::strlen(text) + 2);
 
-        std::free(buffer); //-V2511
+        std::free(buffer);
     }
 }
