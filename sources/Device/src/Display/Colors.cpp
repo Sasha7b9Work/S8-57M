@@ -319,17 +319,13 @@ void Color::LoadValueRGB()
 {
     uint rgb = COLOR(value);
 
-    uint8 buffer[6] = 
-    {
-        Command::Paint_SetPalette,
-        value,
-        (uint8)(rgb),
-        (uint8)(rgb >> 8),
-        (uint8)(rgb >> 16),
-        (uint8)(rgb >> 24)
-    };
+    SBuffer <6>buffer(Command::Paint_SetPalette, value);
+    buffer.Push((uint8)rgb);
+    buffer.Push((uint8)(rgb >> 8));
+    buffer.Push((uint8)(rgb >> 16));
+    buffer.Push((uint8)(rgb >> 24));
 
-    HAL_BUS::Panel::Send(buffer, 6);
+    buffer.Send();
 }
 
 
