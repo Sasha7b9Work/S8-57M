@@ -114,7 +114,7 @@ void DFont::Pop()
 void DFont::SetSpacing(int _spacing)
 {
     spacing = _spacing;
-    HAL_BUS::Panel::Send(Command::Paint_SetTextSpacing, (uint8)(spacing));
+    SBuffer<2>(Command::Paint_SetTextSpacing, (uint8)spacing).Send();
 }
 
 int DFont::GetSpacing()
