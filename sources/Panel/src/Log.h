@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "defines.h"
+
 
 #if defined(DEBUG) && !defined(WIN32)
 #define LOG_WRITE(...)          Log::Write(TypeTrace_Info, __VA_ARGS__)

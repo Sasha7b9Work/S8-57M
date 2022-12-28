@@ -10,13 +10,16 @@
 #include <cmath>
 
 
-// Нарисовать вертикальный курсор
-static void DrawVertical(int x, int yTearing);
-// Нарисовать горизонтальный курсор
-static void DrawHorizontal(int y, int xTearing);
+namespace CursorsMeasurements
+{
+    // Нарисовать вертикальный курсор
+    static void _DrawVertical(int x, int yTearing);
 
-static void UpdateCursorsForLook();
+    // Нарисовать горизонтальный курсор
+    static void DrawHorizontal(int y, int xTearing);
 
+    static void UpdateCursorsForLook();
+}
 
 
 float CursorsMeasurements::PosU(Chan::E ch, int numCur)
@@ -96,8 +99,8 @@ void CursorsMeasurements::Draw()
 
         if (!CursorsControl::IsDisabledT())
         {
-            DrawVertical((int)(CursorsMeasurements::PosT(source, 0)), y0);
-            DrawVertical((int)(CursorsMeasurements::PosT(source, 1)), y1);
+            _DrawVertical((int)(CursorsMeasurements::PosT(source, 0)), y0);
+            _DrawVertical((int)(CursorsMeasurements::PosT(source, 1)), y1);
         }
         if (!CursorsControl::IsDisabledU())
         {
@@ -110,7 +113,7 @@ void CursorsMeasurements::Draw()
 }
 
 
-static void DrawVertical(int x, int yTearing)
+void CursorsMeasurements::_DrawVertical(int x, int yTearing)
 {
     x += Grid::Left();
     if (yTearing == -1)
@@ -127,7 +130,7 @@ static void DrawVertical(int x, int yTearing)
 }
 
 
-static void DrawHorizontal(int y, int xTearing)
+void CursorsMeasurements::DrawHorizontal(int y, int xTearing)
 {
     y += Grid::Top();
     if (xTearing == -1)
@@ -144,7 +147,7 @@ static void DrawHorizontal(int y, int xTearing)
 }
 
 
-static void UpdateCursorsForLook()
+void CursorsMeasurements::UpdateCursorsForLook()
 {
 //    Chan::E source = CURS_SOURCE;
 

@@ -7,6 +7,7 @@
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "common/Command.h"
+#include "Log.h"
 #include <cstdlib>
 #include <cstring>
 #include <cmath>
@@ -169,18 +170,22 @@ void BackBuffer::DrawVPointLine(int x, int y, int delta, int count)
 
 void BackBuffer::DrawDashedVLine(int x, int y0, int height, int deltaFill, int deltaEmpty, int deltaStart)
 {
+    LOG_WRITE("x = %d, y = %d", x, y0);
+
     if (deltaStart < 0 || deltaStart >= (deltaFill + deltaEmpty))
     {
-        //LOG_ERROR("Неправильный аргумент deltaStart = %d", deltaStart);
         return;
     }
+
     int y = y0;
+
     if (deltaStart != 0)                 // Если линию нужно рисовать не с начала штриха
     {
         y += (deltaFill + deltaEmpty - deltaStart);
+
         if (deltaStart < deltaFill)     // Если начало линии приходится на штрих
         {
-            DrawVLine(x, y0, y - 1);
+//            DrawVLine(x, y0, y - 1);
 
 //            VLine(y - y0 - 1).Draw(x, y0);
         }
@@ -190,7 +195,7 @@ void BackBuffer::DrawDashedVLine(int x, int y0, int height, int deltaFill, int d
 
     while (y < y1)
     {
-        DrawVLine(x, y, y - deltaFill - 1);
+        DrawVLine(x, y, deltaFill - 1 - y);
 
 //        VLine(deltaFill - 1).Draw(x, y);
 
