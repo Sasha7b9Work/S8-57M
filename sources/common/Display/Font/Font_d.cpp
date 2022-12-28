@@ -125,7 +125,7 @@ int DFont::GetSpacing()
 
 void DFont::SetMinWidth(uint8 width)
 {
-    HAL_BUS::Panel::Send(Command::Paint_SetMinWidthFont, width);
+    SBuffer<2>(Command::Paint_SetMinWidthFont, width).Send();
 }
 
 

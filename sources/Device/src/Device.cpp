@@ -97,34 +97,11 @@ bool SetCurrentMode(const Page *page, Device::Mode::E mode)
 }
 
 
-/*
-static void TestPerformance()
-{
-    HAL_BUS::Panel::BeginScene();
-
-    for (int i = 0; i < 5500; i++)
-    {
-        HAL_BUS::Panel::Send(Command::Null_command, 1);
-    }
-
-    int num_ms = (int)HAL_BUS::Panel::ElapsedUS() / 1000;
-
-    LOG_WRITE("Test %d bytes, %d ms, %d Kb/sec",
-        HAL_BUS::Panel::TransBytes(),
-        num_ms,
-        HAL_BUS::Panel::TransBytes() * 1000 / num_ms / 1024
-    );
-}
-*/
-
-
 void Device::Update()
 {
     Timer::StartMultiMeasurement();
 
     Osci::Update();
-
-//    TestPerformance();
 
     Display::Render();
 
