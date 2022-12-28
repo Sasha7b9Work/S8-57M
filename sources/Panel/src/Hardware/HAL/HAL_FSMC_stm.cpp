@@ -231,7 +231,7 @@ namespace HAL_BUS
     {
         GPIOD->ODR = (GPIOD->ODR & 0x3ffc) + ((value & 3) << 14) + ((value >> 2) & 3);
 
-        GPIOE->ODR = (GPIOE->ODR & 0xfe1f) + ((value & 0xF0) << 3);
+        GPIOE->ODR = (GPIOE->ODR & 0xf87f) + ((value & 0xF0) << 3);
     }
 }
 
