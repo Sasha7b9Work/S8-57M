@@ -323,10 +323,10 @@ void Color::LoadValueRGB()
     {
         Command::Paint_SetPalette,
         value,
-        static_cast<uint8>(rgb),
-        static_cast<uint8>(rgb >> 8),
-        static_cast<uint8>(rgb >> 16),
-        static_cast<uint8>(rgb >> 24)
+        (uint8)(rgb),
+        (uint8)(rgb >> 8),
+        (uint8)(rgb >> 16),
+        (uint8)(rgb >> 24)
     };
 
     HAL_BUS::Panel::Send(buffer, 6);

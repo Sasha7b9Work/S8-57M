@@ -107,9 +107,9 @@ bool Test::ROM::Data::Test()
 #define FILL(en, dat)                                       \
     if (en) {                                               \
         uint8 *data = dat;                                  \
-        data[0] = static_cast<uint8>(std::rand());          \
+        data[0] = (uint8)(std::rand());          \
         for (int i = 1; i < numPoints; i++)                 \
-            { data[i] = static_cast<uint8>(data[0] * i); }  \
+            { data[i] = (uint8)(data[0] * i); }  \
     }
 
 void TestMemoryStruct::FillData(DataSettings *ds)
@@ -125,7 +125,7 @@ void TestMemoryStruct::FillData(DataSettings *ds)
     if (en) {                                                                       \
         uint8 *data = dat;                                                          \
         for (int i = 1; i < numPoints; i++)                                         \
-            { if (data[i] != static_cast<uint8>(data[0] * i)) { return false; } }   \
+            { if (data[i] != (uint8)(data[0] * i)) { return false; } }   \
     }
 
 

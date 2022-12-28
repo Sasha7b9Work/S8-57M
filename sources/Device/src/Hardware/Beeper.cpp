@@ -67,7 +67,7 @@ static void CalculateSine()
         float step = 2.0F * Math::PI_F / (POINTS_IN_PERIOD_SOUND - 1);
         float value = (std::sinf(i * step) + 1.0F) / 2.0F;
         float v = value * amplitude * 255.0F;
-        points[i] = static_cast<uint8>(v);
+        points[i] = (uint8)(v);
     }
 
     for (int i = 0; i < POINTS_IN_PERIOD_SOUND; i++)
@@ -78,7 +78,7 @@ static void CalculateSine()
         }
         else
         {
-            points[i] = static_cast<uint8>(255.0F * amplitude);
+            points[i] = (uint8)(255.0F * amplitude);
         }
     }
 }
@@ -89,7 +89,7 @@ static void CalculateMeandr()
 {
     for(int i = 0; i < POINTS_IN_PERIOD_SOUND / 2; i++)
     {
-        points[i] = static_cast<uint8>(255.0F * amplitude);
+        points[i] = (uint8)(255.0F * amplitude);
     }
     for(int i = POINTS_IN_PERIOD_SOUND / 2; i < POINTS_IN_PERIOD_SOUND; i++)
     {
@@ -104,7 +104,7 @@ static void CalculateTriangle()
     float k = 255.0F / POINTS_IN_PERIOD_SOUND;
     for(int i = 0; i < POINTS_IN_PERIOD_SOUND; i++)
     {
-        points[i] = static_cast<uint8>(k * static_cast<float>(i) * amplitude);
+        points[i] = (uint8)(k * static_cast<float>(i) * amplitude);
     }
 }
 

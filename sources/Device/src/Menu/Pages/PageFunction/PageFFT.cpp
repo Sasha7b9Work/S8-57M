@@ -76,7 +76,7 @@ static bool HandlerKey_FFT_Cursors(const KeyEvent &event)
         {
             int delta = (event.IsArrowUp() || event.IsArrowRight()) ? 1 : -1;
 
-            S_FFT_POS_ACTIVE_CURSOR += static_cast<uint8>(delta);
+            S_FFT_POS_ACTIVE_CURSOR += (uint8)(delta);
             Beeper::RegulatorShiftRotate();
 
             return true;
@@ -84,7 +84,7 @@ static bool HandlerKey_FFT_Cursors(const KeyEvent &event)
     }
     else if(event.key == Key::F1 && event.IsRelease())
     {
-        S_FFT_ACTIVE_CURSOR = static_cast<uint8>((S_FFT_ACTIVE_CURSOR + 1) % 2);
+        S_FFT_ACTIVE_CURSOR = (uint8)((S_FFT_ACTIVE_CURSOR + 1) % 2);
         return true;
     }
 

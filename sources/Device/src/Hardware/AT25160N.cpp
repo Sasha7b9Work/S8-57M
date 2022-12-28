@@ -81,7 +81,7 @@ void AT25160N::Test()
     {
         do
         {
-            data[i] = static_cast<uint8>(std::rand());
+            data[i] = (uint8)(std::rand());
         } while(data[i] == 0);
     }
 

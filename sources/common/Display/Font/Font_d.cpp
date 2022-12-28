@@ -48,7 +48,7 @@ static void SendTypeFontToPanel(DTypeFont::E type)
 
     if (prevType != type)
     {
-        HAL_BUS::Panel::Send(Command::Paint_SetFont, static_cast<uint8>(type));
+        HAL_BUS::Panel::Send(Command::Paint_SetFont, (uint8)(type));
         prevType = type;
     }
 }
@@ -114,7 +114,7 @@ void DFont::Pop()
 void DFont::SetSpacing(int _spacing)
 {
     spacing = _spacing;
-    HAL_BUS::Panel::Send(Command::Paint_SetTextSpacing, static_cast<uint8>(spacing));
+    HAL_BUS::Panel::Send(Command::Paint_SetTextSpacing, (uint8)(spacing));
 }
 
 int DFont::GetSpacing()
@@ -148,7 +148,7 @@ uint8 DFont::GetWidth(uint8 symbol)
 
 uint8 DFont::GetWidth(char symbol)
 {
-    return GetWidth(static_cast<uint8>(symbol));
+    return GetWidth((uint8)(symbol));
 }
 
 

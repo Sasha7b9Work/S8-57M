@@ -32,7 +32,7 @@ USBD_StatusTypeDef USBD_Init(USBD_HandleTypeDef *pdev, USBD_DescriptorsTypeDef *
 USBD_StatusTypeDef USBD_DeInit(USBD_HandleTypeDef *pdev)
 {
     pdev->dev_state = USBD_STATE_DEFAULT;
-    pdev->pClass->DeInit(pdev, static_cast<uint8>(pdev->dev_config));
+    pdev->pClass->DeInit(pdev, (uint8)(pdev->dev_config));
     USBD_LL_Stop(pdev);
     USBD_LL_DeInit(pdev);
 
@@ -68,7 +68,7 @@ USBD_StatusTypeDef  USBD_Start  (USBD_HandleTypeDef *pdev)
 
 USBD_StatusTypeDef  USBD_Stop   (USBD_HandleTypeDef *pdev)
 {
-    pdev->pClass->DeInit(pdev, static_cast<uint8>(pdev->dev_config));
+    pdev->pClass->DeInit(pdev, (uint8)(pdev->dev_config));
     USBD_LL_Stop(pdev);
 
     return USBD_OK;
@@ -126,7 +126,7 @@ USBD_StatusTypeDef USBD_LL_SetupStage(USBD_HandleTypeDef *pdev, uint8_t *psetup)
         break;
 
     default:
-        USBD_LL_StallEP(pdev, static_cast<uint8>(pdev->request.bmRequest & 0x80));
+        USBD_LL_StallEP(pdev, (uint8)(pdev->request.bmRequest & 0x80));
         break;
     }
     return USBD_OK;
@@ -242,7 +242,7 @@ USBD_StatusTypeDef USBD_LL_Reset(USBD_HandleTypeDef  *pdev)
 
     if (pdev->pClassData)
     {
-        pdev->pClass->DeInit(pdev, static_cast<uint8>(pdev->dev_config));
+        pdev->pClass->DeInit(pdev, (uint8)(pdev->dev_config));
     }
 
     return USBD_OK;
@@ -309,7 +309,7 @@ USBD_StatusTypeDef USBD_LL_DevConnected(USBD_HandleTypeDef  *)
 USBD_StatusTypeDef USBD_LL_DevDisconnected(USBD_HandleTypeDef  *pdev)
 {
     pdev->dev_state = USBD_STATE_DEFAULT;
-    pdev->pClass->DeInit(pdev, static_cast<uint8>(pdev->dev_config));
+    pdev->pClass->DeInit(pdev, (uint8)(pdev->dev_config));
 
     return USBD_OK;
 }

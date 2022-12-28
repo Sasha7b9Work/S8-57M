@@ -397,7 +397,7 @@ void Governor::DrawValueWithSelectedPosition(int x, int y, int value, int numDig
     
     for(int i = 0; i < numDigits; i++)
     {
-        stack.Push(static_cast<uint8>(value % 10));
+        stack.Push((uint8)(value % 10));
         value /= 10;
     }
     

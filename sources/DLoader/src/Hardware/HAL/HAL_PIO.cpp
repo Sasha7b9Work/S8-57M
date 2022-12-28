@@ -99,7 +99,7 @@ void HAL_PIO::Reset(HPort::E port, uint16 pin)
 
 uint8 HAL_PIO::Read(HPort::E port, uint16 pin)
 {
-    return static_cast<uint8>(HAL_GPIO_ReadPin(PORT(port), pin));
+    return (uint8)(HAL_GPIO_ReadPin(PORT(port), pin));
 }
 
 void HAL_PIO::TuneDataPinsToReceive()

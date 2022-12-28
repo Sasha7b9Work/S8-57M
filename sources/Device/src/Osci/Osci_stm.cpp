@@ -74,7 +74,7 @@ bool Osci::ReadDataChannel(Chan::E ch, uint8 *data)
                 }
                 else
                 {
-                    p[i] = static_cast<uint8>(result);
+                    p[i] = (uint8)(result);
                 }
             }
         }

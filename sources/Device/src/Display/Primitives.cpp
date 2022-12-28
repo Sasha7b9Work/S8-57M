@@ -186,7 +186,7 @@ int Text::DrawWithLimitation(int x, int y, int limitX, int limitY, int limitWidt
 
 int Text::DrawCharWithLimitation(int eX, int eY, char _symbol, int limitX, int limitY, int limitWidth, int limitHeight)
 {
-    uint8 symbol = static_cast<uint8>(_symbol);
+    uint8 symbol = (uint8)(_symbol);
 
     int8 width = static_cast<int8>(DFont::GetWidth(symbol));
     int8 height = static_cast<int8>(DFont::GetHeight());
@@ -240,7 +240,7 @@ int Text::DrawDigitsMonospace(int x, int y, int width, Color color)
 
         if (symbol >= 0x30 && symbol <= 0x39)
         {
-            int widthSymbol = DFont::GetWidth(static_cast<uint8>(symbol));
+            int widthSymbol = DFont::GetWidth((uint8)(symbol));
 
             dX = (width - widthSymbol) / 2;
 
@@ -307,7 +307,7 @@ static bool IsLetter(char symbol)
         true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true
     };
 
-    return isLetter[static_cast<uint8>(symbol)];
+    return isLetter[(uint8)(symbol)];
 }
 
 
@@ -351,7 +351,7 @@ static bool IsConsonant(char symbol)
         true, true, true, false, true, true, true, true, true, true, true, false, true, false, false, false
     };
 
-    return isConsonat[static_cast<uint8>(symbol)];
+    return isConsonat[(uint8)(symbol)];
 }
 
 

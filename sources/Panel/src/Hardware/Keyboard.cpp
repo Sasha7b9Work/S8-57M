@@ -204,8 +204,8 @@ static void SendCommand(Control control, Control::Action::E action)
     uint8 data[3] =
     {
         Command::ButtonPress,
-        static_cast<uint8>(control),
-        static_cast<uint8>(action)
+        (uint8)(control),
+        (uint8)(action)
     };
 
     HAL_BUS::SendToDevice(data, 3);

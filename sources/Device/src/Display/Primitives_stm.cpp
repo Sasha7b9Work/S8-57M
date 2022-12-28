@@ -139,7 +139,7 @@ int Text::DrawSmall(int x, int y, Color color)
     buffer.data[1] = 0;
     buffer.data[2] = 0;
     buffer.data[3] = 0;
-    buffer.data[4] = static_cast<uint8>(std::strlen(text));
+    buffer.data[4] = (uint8)(std::strlen(text));
 
     Point2(x, y).Write(&buffer.data[1]);
 
@@ -165,8 +165,8 @@ void MultiHPointLine::Draw(int x, Color color)
         0,
         0,
         0,
-        static_cast<uint8>(delta),
-        static_cast<uint8>(count)
+        (uint8)(delta),
+        (uint8)(count)
     };
 
     for (int i = 0; i < numLines; i++)
@@ -188,8 +188,8 @@ void MultiVPointLine::Draw(int y0, Color color)
         0,
         0,
         0,
-        static_cast<uint8>(delta),
-        static_cast<uint8>(count)
+        (uint8)(delta),
+        (uint8)(count)
     };
 
     for (int i = 0; i < numLines; i++)

@@ -284,7 +284,7 @@ uint ENumSignalsInSec::TimeBetweenFramesMS()
 
 void Display::LoadBrightness()
 {
-    HAL_BUS::Panel::Send(Command::Display_Brightness, static_cast<uint8>(S_DISP_BRIGHTNESS + 10));
+    HAL_BUS::Panel::Send(Command::Display_Brightness, (uint8)(S_DISP_BRIGHTNESS + 10));
 }
 
 

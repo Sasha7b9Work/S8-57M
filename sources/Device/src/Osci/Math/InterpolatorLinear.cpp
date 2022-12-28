@@ -109,7 +109,7 @@ void InterpolatorLinear::InterpolateSegment(Segment *segment)
     {
         float value = before + delta * (tick + 1);
 
-        *(segment->start + tick) = static_cast<uint8>(value + 0.5F);
+        *(segment->start + tick) = (uint8)(value + 0.5F);
     }
 }
 

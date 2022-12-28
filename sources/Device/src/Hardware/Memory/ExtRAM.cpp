@@ -75,11 +75,11 @@ float ExtRAM::Test1()
 
     for(int i = 0; i < SIZE; i++)
     {
-        *address = static_cast<uint8>(i);
+        *address = (uint8)(i);
 
         uint8 out = *address;
 
-        if(out != static_cast<uint8>(i))
+        if(out != (uint8)(i))
         {
             bad++;
         }
@@ -103,7 +103,7 @@ float ExtRAM::Test2()
 
     for(int x = 0; x < SIZE; x++)
     {
-        bufferIN[x] = static_cast<uint8>(std::rand());
+        bufferIN[x] = (uint8)(std::rand());
     }
 
     uint8 *address = Begin() + (std::rand() % (500 * 1024));
@@ -156,7 +156,7 @@ float ExtRAM::TestTime1kB(uint8 *address)
 
     for(int i = 0; i < SIZE_BUFFER; i++)
     {
-        data[i] = static_cast<uint8>(std::rand());
+        data[i] = (uint8)(std::rand());
     }
 
     uint start = TIME_US;

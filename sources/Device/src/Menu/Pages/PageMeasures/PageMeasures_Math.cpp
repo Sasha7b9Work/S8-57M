@@ -233,7 +233,7 @@ static bool HandlerKey_Function(const KeyEvent &event) // -V2506
             {
                 if(S_RANGE_MATH < Range::Count - 1)
                 {
-                    S_RANGE_MATH = static_cast<Range::E>(static_cast<uint8>(S_RANGE_MATH + 1));  // SET_RANGE_MATH++;
+                    S_RANGE_MATH = static_cast<Range::E>((uint8)(S_RANGE_MATH + 1));  // SET_RANGE_MATH++;
                     S_RSHIFT_MATH = RShift::ToRel(rShiftAbs, S_RANGE_MATH);
                     Beeper::RegulatorSwitchRotate();
                 }
@@ -243,7 +243,7 @@ static bool HandlerKey_Function(const KeyEvent &event) // -V2506
             {
                 if(S_RANGE_MATH > 0)
                 {
-                    S_RANGE_MATH = static_cast<Range::E>(static_cast<uint8>(S_RANGE_MATH - 1));  // SET_RANGE_MATH--;
+                    S_RANGE_MATH = static_cast<Range::E>((uint8)(S_RANGE_MATH - 1));  // SET_RANGE_MATH--;
                     S_RSHIFT_MATH = RShift::ToRel(rShiftAbs, S_RANGE_MATH);
                     Beeper::RegulatorSwitchRotate();
                 }

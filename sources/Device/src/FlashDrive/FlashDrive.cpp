@@ -584,7 +584,7 @@ void FDrive::SaveScreenToFlash()
 
     for(int row = Display::HEIGHT - 1; row >= 0; row--)
     {
-        ReadRow(static_cast<uint8>(row), pixels);
+        ReadRow((uint8)(row), pixels);
 
         FDrive::WriteToFile(pixels, Display::WIDTH, &structForWrite);
     }

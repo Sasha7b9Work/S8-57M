@@ -106,7 +106,7 @@ void Math::Smoothing(uint8 *data, int numPoints, int numSmooth)
 
         for (int i = 1; i < numPoints; i++)
         {
-            data[i] = static_cast<uint8>(buffer[i] / num[i] + 0.5F);
+            data[i] = (uint8)(buffer[i] / num[i] + 0.5F);
         }
     }
 
@@ -330,7 +330,7 @@ uint8 Math::CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoot
         }
     }
 
-    return static_cast<uint8>(sum / static_cast<float>(count));
+    return (uint8)(sum / static_cast<float>(count));
 }
 
 
@@ -371,7 +371,7 @@ void Math::CalculateFiltrArray(const uint8 *dataIn, uint8 *dataOut, int numPoint
                 }
             }
 
-            dataOut[i] = static_cast<uint8>(sum / static_cast<float>(count));
+            dataOut[i] = (uint8)(sum / static_cast<float>(count));
         }
     }
 }

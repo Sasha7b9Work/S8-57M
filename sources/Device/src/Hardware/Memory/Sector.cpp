@@ -258,14 +258,14 @@ const PacketROM *Sector::FindValidPacket(uint numInROM) const
                 {
                     if (ds->en_a)
                     {
-                        if (ds->ch_a[j] != static_cast<uint8>(j))
+                        if (ds->ch_a[j] != (uint8)(j))
                         {
                             return packet;
                         }
                     }
                     if (ds->en_b)
                     {
-                        if (ds->ch_b[j] != static_cast<uint8>(j))
+                        if (ds->ch_b[j] != (uint8)(j))
                         {
                             return packet;
                         }

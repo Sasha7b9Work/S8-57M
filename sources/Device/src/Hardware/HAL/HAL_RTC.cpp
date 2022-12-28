@@ -98,9 +98,9 @@ bool HAL_RTC::SetPackedTime(const PackedTime &time)
 {
     RTC_DateTypeDef dateStruct;
     dateStruct.WeekDay = RTC_WEEKDAY_MONDAY;
-    dateStruct.Month = static_cast<uint8>(time.month);
-    dateStruct.Date = static_cast<uint8>(time.day);
-    dateStruct.Year = static_cast<uint8>(time.year);
+    dateStruct.Month = (uint8)(time.month);
+    dateStruct.Date = (uint8)(time.day);
+    dateStruct.Year = (uint8)(time.year);
 
     if (HAL_RTC_SetDate(&handleRTC, &dateStruct, FORMAT_BIN) != HAL_OK)
     {
@@ -108,9 +108,9 @@ bool HAL_RTC::SetPackedTime(const PackedTime &time)
     };
 
     RTC_TimeTypeDef timeStruct;
-    timeStruct.Hours = static_cast<uint8>(time.hours);
-    timeStruct.Minutes = static_cast<uint8>(time.minutes);
-    timeStruct.Seconds = static_cast<uint8>(time.seconds);
+    timeStruct.Hours = (uint8)(time.hours);
+    timeStruct.Minutes = (uint8)(time.minutes);
+    timeStruct.Seconds = (uint8)(time.seconds);
     timeStruct.TimeFormat = RTC_HOURFORMAT_24;
     timeStruct.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
     timeStruct.StoreOperation = RTC_STOREOPERATION_SET;

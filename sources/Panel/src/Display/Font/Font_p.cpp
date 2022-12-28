@@ -86,7 +86,7 @@ uint8 PFont::GetWidth(uint8 symbol)
 
 uint8 PFont::GetWidth(char symbol)
 {
-    return GetWidth(static_cast<uint8>(symbol));
+    return GetWidth((uint8)(symbol));
 }
 
 
@@ -94,7 +94,7 @@ uint8 PFont::GetHeight()
 {
     if (FontIsSmall())
     {
-        return static_cast<uint8>(font->_height);
+        return (uint8)(font->_height);
     }
 
     return PAdvancedFont().GetHeight();

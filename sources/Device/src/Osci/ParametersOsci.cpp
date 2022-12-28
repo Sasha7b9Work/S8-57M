@@ -188,7 +188,7 @@ void TBase::Change(int delta)
 
     if (delta > 0)
     {
-        ::Math::LimitationIncrease<uint8>(reinterpret_cast<uint8 *>(&S_TIME_BASE), static_cast<uint8>(TBase::Count - 1));
+        ::Math::LimitationIncrease<uint8>(reinterpret_cast<uint8 *>(&S_TIME_BASE), (uint8)(TBase::Count - 1));
     }
     else
     {
@@ -429,7 +429,7 @@ static uint8 ValueForRange(Chan::E ch) // -V2506
         return datas[ModeCouple::GND];
     }
 
-    return static_cast<uint8>(values[S_RANGE(ch)][ch] | datas[couple]);
+    return (uint8)(values[S_RANGE(ch)][ch] | datas[couple]);
 }
 
 
@@ -698,13 +698,13 @@ uint8 VALUE::FromVoltage(float voltage, Range::E range, int16 rShift)
 {
     int relValue = (int)((voltage + Range::MaxVoltageOnScreen(range) + RShift::ToAbs(rShift, range)) / voltsInPoint[range] + MIN);
     ::Math::Limitation<int>(&relValue, 0, 255);
-    return static_cast<uint8>(relValue);
+    return (uint8)(relValue);
 }
 
 
 float VALUE::ToVoltage(uint8 value, Range::E range, int16 rShift)
 {
-    uint8 delta = static_cast<uint8>(value - MIN);
+    uint8 delta = (uint8)(value - MIN);
 
     float rShiftAbs = RShift::ToAbs(rShift, range);
 
@@ -739,7 +739,7 @@ void VALUE::PointsFromVoltage(const float *voltage, int numPoints, Range::E rang
             continue;
         }
 
-        points[i] = static_cast<uint8>(value);
+        points[i] = (uint8)(value);
     }
 }
 

@@ -224,7 +224,7 @@ void Range::Change(Chan::E ch, int16 delta)
 
     if (delta > 0)
     {
-        ::Math::LimitationIncrease<uint8>(reinterpret_cast<uint8 *>(&S_RANGE(ch)), static_cast<uint8>(Range::Count - 1)); // -V206
+        ::Math::LimitationIncrease<uint8>(reinterpret_cast<uint8 *>(&S_RANGE(ch)), (uint8)(Range::Count - 1)); // -V206
     }
     else
     {

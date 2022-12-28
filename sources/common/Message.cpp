@@ -110,12 +110,12 @@ Message::Message(uint8 v0, uint16 v1, uint8 v2, char *string) : allocated(0), us
         PutByte(v0);
         PutHalfWord(v1);
         PutByte(v2);
-        PutByte(static_cast<uint8>(std::strlen(string)));
+        PutByte((uint8)(std::strlen(string)));
 
         uint8 *pointer = Data(5);
         while (*string)
         {
-            *pointer++ = static_cast<uint8>(*string++);
+            *pointer++ = (uint8)(*string++);
         }
     }
 }
@@ -186,7 +186,7 @@ void Message::Create::DrawHLine(Message &message, int y, int x0, int x1)
     if (message.Allocate(6))
     {
         message.PutByte(Command::Paint_DrawHLine);
-        message.PutByte(static_cast<uint8>(y));
+        message.PutByte((uint8)(y));
         message.PutHalfWord(static_cast<uint16>(x0));
         message.PutHalfWord(static_cast<uint16>(x1));
     }
@@ -199,8 +199,8 @@ void Message::Create::DrawRectangle(Message &message, int x, int y, int width, i
     {
         message.PutByte(Command::Paint_DrawRectangle);
         message.PutHalfWord(static_cast<uint16>(x));
-        message.PutByte(static_cast<uint8>(y));
+        message.PutByte((uint8)(y));
         message.PutHalfWord(static_cast<uint16>(width));
-        message.PutByte(static_cast<uint8>(height));
+        message.PutByte((uint8)(height));
     }
 }

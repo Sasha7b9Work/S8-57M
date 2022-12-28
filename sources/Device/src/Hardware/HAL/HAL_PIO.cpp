@@ -116,7 +116,7 @@ void HAL_PIO::Write(const StructPIN &pin, int state)
 
 uint8 HAL_PIO::Read(HPort::E port, uint16 pin)
 {
-    uint8 result = static_cast<uint8>(HAL_GPIO_ReadPin(PORT(port), pin));
+    uint8 result = (uint8)(HAL_GPIO_ReadPin(PORT(port), pin));
 
     return result;
 }

@@ -53,7 +53,7 @@ void Math::Smoothing(uint8 *data, int numPoints, int numSmooth)
     
     for (int i = 1; i < numPoints; i++)
     {
-        data[i] = static_cast<uint8>(buffer[i] / num[i] + 0.5F);
+        data[i] = (uint8)(buffer[i] / num[i] + 0.5F);
     }
 
     std::free(buffer); //-V2511
@@ -206,7 +206,7 @@ uint8 Math::CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoot
         }
     }
 
-    return static_cast<uint8>(sum / static_cast<float>(count));
+    return (uint8)(sum / static_cast<float>(count));
 }
 
 
@@ -247,7 +247,7 @@ void Math::CalculateFiltrArray(const uint8 *dataIn, uint8 *dataOut, int numPoint
                 }
             }
 
-            dataOut[i] = static_cast<uint8>(sum / static_cast<float>(count));
+            dataOut[i] = (uint8)(sum / static_cast<float>(count));
         }
     }
 }
@@ -265,13 +265,13 @@ uint8 Math::MaxFromArray_RAM(const uint16 *data, int firstPoint, int lastPoint)
     {
         uint16 d16 = *pointer++;
 
-        uint8 d8 = static_cast<uint8>(d16);
+        uint8 d8 = (uint8)(d16);
         if (d8 > max)
         {
             max = d8;
         }
 
-        d8 = static_cast<uint8>(d16 >> 8);
+        d8 = (uint8)(d16 >> 8);
         if (d8 > max)
         {
             max = d8;
@@ -294,12 +294,12 @@ uint8 Math::MinFromArray_RAM(const uint16 *data, int firstPoint, int lastPoint)
     {
         uint16 d16 = *pointer++;
 
-        uint8 d8 = static_cast<uint8>(d16);
+        uint8 d8 = (uint8)(d16);
         if (d8 < min)
         {
             min = d8;
         }
-        d8 = static_cast<uint8>(d16 >> 8);
+        d8 = (uint8)(d16 >> 8);
         if (d8 < min)
         {
             min = d8;

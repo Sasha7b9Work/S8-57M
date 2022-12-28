@@ -123,7 +123,7 @@ static void InterpolateChannel(uint8 *data, int numPoints, uint tBase)
                     value += signedData[n] * sinX / x;
                     sinX = -sinX;
                 }
-                data[i] = static_cast<uint8>(value);
+                data[i] = (uint8)(value);
             }
         }
     }

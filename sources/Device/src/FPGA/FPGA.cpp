@@ -24,7 +24,7 @@ namespace FPGA
 
 void FPGA::ForcedStart()
 {
-    uint8 value = static_cast<uint8>(S_TRIG_POLARITY_U8 % 2);
+    uint8 value = (uint8)(S_TRIG_POLARITY_U8 % 2);
 
     uint8 stop = 0;
     if (Device::InModeRecorder())           // ¬ режиме регистратора
@@ -32,8 +32,8 @@ void FPGA::ForcedStart()
         stop = (1 << BIT_TRIG_ENABLED);     // устанавливаем признак того, что процесс чтени€ данных бесконечен
     }
 
-    HAL_BUS::FPGA::Write8(WR::TRIG, static_cast<uint8>(value++ | stop));
-    HAL_BUS::FPGA::Write8(WR::TRIG, static_cast<uint8>((value % 2) | stop));
+    HAL_BUS::FPGA::Write8(WR::TRIG, (uint8)(value++ | stop));
+    HAL_BUS::FPGA::Write8(WR::TRIG, (uint8)((value % 2) | stop));
 
     forcedStart = true;
 }

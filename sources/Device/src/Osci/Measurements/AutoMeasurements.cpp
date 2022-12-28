@@ -388,7 +388,7 @@ float CalculateVoltageAverage(Chan::E ch)
         sum += *data++;
     }
 
-    uint8 aveRel = static_cast<uint8>(static_cast<float>(sum) / period);
+    uint8 aveRel = (uint8)(static_cast<float>(sum) / period);
 
     if(S_MEAS_MARKED == TypeMeasure::VoltageAverage)
     {
@@ -447,14 +447,14 @@ float CalculatePeriod(Chan::E ch)
         }
         else
         {
-            float intersectionDownToTop = FindIntersectionWithHorLine(ch, 1, true, static_cast<uint8>(aveValue));
-            float intersectionTopToDown = FindIntersectionWithHorLine(ch, 1, false, static_cast<uint8>(aveValue));
+            float intersectionDownToTop = FindIntersectionWithHorLine(ch, 1, true, (uint8)(aveValue));
+            float intersectionTopToDown = FindIntersectionWithHorLine(ch, 1, false, (uint8)(aveValue));
 
             EXIT_IF_ERRORS_FLOAT(intersectionDownToTop, intersectionTopToDown); //-V2507
 
             bool firstDownToTop = intersectionDownToTop < intersectionTopToDown;
             firstIntersection = firstDownToTop ? intersectionDownToTop : intersectionTopToDown;
-            secondIntersection = FindIntersectionWithHorLine(ch, 2, firstDownToTop, static_cast<uint8>(aveValue));
+            secondIntersection = FindIntersectionWithHorLine(ch, 2, firstDownToTop, (uint8)(aveValue));
 
             EXIT_IF_ERRORS_FLOAT(firstIntersection, secondIntersection); //-V2507
 
@@ -640,14 +640,14 @@ float CalculateDurationPlus(Chan::E ch)
     float aveValue = CalculateAverageRel(ch);
     EXIT_IF_ERROR_FLOAT(aveValue); //-V2507
 
-    float firstIntersection = FindIntersectionWithHorLine(ch, 1, true, static_cast<uint8>(aveValue));
-    float secondIntersection = FindIntersectionWithHorLine(ch, 1, false, static_cast<uint8>(aveValue));
+    float firstIntersection = FindIntersectionWithHorLine(ch, 1, true, (uint8)(aveValue));
+    float secondIntersection = FindIntersectionWithHorLine(ch, 1, false, (uint8)(aveValue));
 
     EXIT_IF_ERRORS_FLOAT(firstIntersection, secondIntersection); //-V2507
 
     if(secondIntersection < firstIntersection)
     {
-        secondIntersection = FindIntersectionWithHorLine(ch, 2, false, static_cast<uint8>(aveValue));
+        secondIntersection = FindIntersectionWithHorLine(ch, 2, false, (uint8)(aveValue));
     }
 
     if (S_MEAS_MARKED == TypeMeasure::DurationPlus)
@@ -668,14 +668,14 @@ float CalculateDurationMinus(Chan::E ch)
     float aveValue = CalculateAverageRel(ch);
     EXIT_IF_ERROR_FLOAT(aveValue); //-V2507
 
-    float firstIntersection = FindIntersectionWithHorLine(ch, 1, false, static_cast<uint8>(aveValue));
-    float secondIntersection = FindIntersectionWithHorLine(ch, 1, true, static_cast<uint8>(aveValue));
+    float firstIntersection = FindIntersectionWithHorLine(ch, 1, false, (uint8)(aveValue));
+    float secondIntersection = FindIntersectionWithHorLine(ch, 1, true, (uint8)(aveValue));
 
     EXIT_IF_ERRORS_FLOAT(firstIntersection, secondIntersection); //-V2507
 
     if(secondIntersection < firstIntersection)
     {
-        secondIntersection = FindIntersectionWithHorLine(ch, 2, true, static_cast<uint8>(aveValue));
+        secondIntersection = FindIntersectionWithHorLine(ch, 2, true, (uint8)(aveValue));
     }
 
     if (S_MEAS_MARKED == TypeMeasure::DurationMinus)
@@ -703,14 +703,14 @@ float CalculateTimeNarastaniya(Chan::E ch)   /** \todo Здесь, возможно, нужно ув
     float max09 = maxSteady - value01;
     float min01 = minSteady + value01;
 
-    float firstIntersection = FindIntersectionWithHorLine(ch, 1, true, static_cast<uint8>(min01));
-    float secondIntersection = FindIntersectionWithHorLine(ch, 1, true, static_cast<uint8>(max09));
+    float firstIntersection = FindIntersectionWithHorLine(ch, 1, true, (uint8)(min01));
+    float secondIntersection = FindIntersectionWithHorLine(ch, 1, true, (uint8)(max09));
 
     EXIT_IF_ERRORS_FLOAT(firstIntersection, secondIntersection); //-V2507
     
     if (secondIntersection < firstIntersection)
     {
-        secondIntersection = FindIntersectionWithHorLine(ch, 2, true, static_cast<uint8>(max09));
+        secondIntersection = FindIntersectionWithHorLine(ch, 2, true, (uint8)(max09));
     }
 
     EXIT_IF_ERROR_FLOAT(secondIntersection); //-V2507
@@ -741,14 +741,14 @@ float CalculateTimeSpada(Chan::E ch)        // \todo Аналогично времени нарастан
     float max09 = maxSteady - value01;
     float min01 = minSteady + value01;
 
-    float firstIntersection = FindIntersectionWithHorLine(ch, 1, false, static_cast<uint8>(max09));
-    float secondIntersection = FindIntersectionWithHorLine(ch, 1, false, static_cast<uint8>(min01));
+    float firstIntersection = FindIntersectionWithHorLine(ch, 1, false, (uint8)(max09));
+    float secondIntersection = FindIntersectionWithHorLine(ch, 1, false, (uint8)(min01));
 
     EXIT_IF_ERRORS_FLOAT(firstIntersection, secondIntersection); //-V2507
 
     if (secondIntersection < firstIntersection)
     {
-        secondIntersection = FindIntersectionWithHorLine(ch, 2, false, static_cast<uint8>(min01));
+        secondIntersection = FindIntersectionWithHorLine(ch, 2, false, (uint8)(min01));
     }
 
     EXIT_IF_ERROR_FLOAT(secondIntersection); //-V2507
@@ -918,7 +918,7 @@ float CalculateMaxSteadyRel(Chan::E ch)
                 float value = pic / 9.0F;
 
                 data = &dataIn[firstByte];
-                uint8 _max = static_cast<uint8>(max[(int)(ch)]);
+                uint8 _max = (uint8)(max[(int)(ch)]);
 
                 while (data <= end)
                 {
@@ -1039,14 +1039,14 @@ float CalculateDelayPlus(Chan::E ch)
     Chan::E firstChannel = ch;
     Chan::E secondChannel = (ch == ChanA) ? ChanB : ChanA;
 
-    float firstIntersection = FindIntersectionWithHorLine(firstChannel, 1, true, static_cast<uint8>(averageFirst));
-    float secondIntersection = FindIntersectionWithHorLine(secondChannel, 1, true, static_cast<uint8>(averageSecond));
+    float firstIntersection = FindIntersectionWithHorLine(firstChannel, 1, true, (uint8)(averageFirst));
+    float secondIntersection = FindIntersectionWithHorLine(secondChannel, 1, true, (uint8)(averageSecond));
 
     EXIT_IF_ERRORS_FLOAT(firstIntersection, secondIntersection); //-V2507
 
     if(secondIntersection < firstIntersection)
     {
-        secondIntersection = FindIntersectionWithHorLine(secondChannel, 2, true, static_cast<uint8>(averageSecond));
+        secondIntersection = FindIntersectionWithHorLine(secondChannel, 2, true, (uint8)(averageSecond));
     }
 
     EXIT_IF_ERROR_FLOAT(secondIntersection); //-V2507
@@ -1078,14 +1078,14 @@ float CalculateDelayMinus(Chan::E ch)
     Chan::E firstChannel = ch;
     Chan::E secondChannel = (ch == ChanA) ? ChanB : ChanA;
 
-    float firstIntersection = FindIntersectionWithHorLine(firstChannel, 1, false, static_cast<uint8>(averageFirst));
-    float secondIntersection = FindIntersectionWithHorLine(secondChannel, 1, false, static_cast<uint8>(averageSecond));
+    float firstIntersection = FindIntersectionWithHorLine(firstChannel, 1, false, (uint8)(averageFirst));
+    float secondIntersection = FindIntersectionWithHorLine(secondChannel, 1, false, (uint8)(averageSecond));
 
     EXIT_IF_ERRORS_FLOAT(firstIntersection, secondIntersection); //-V2507
 
     if(secondIntersection < firstIntersection)
     {
-        secondIntersection = FindIntersectionWithHorLine(secondChannel, 2, false, static_cast<uint8>(averageSecond));
+        secondIntersection = FindIntersectionWithHorLine(secondChannel, 2, false, (uint8)(averageSecond));
     }
 
     /*
@@ -1309,7 +1309,7 @@ void InterpolationSinX_X(uint8 *data, int numPoints, TBase::E tBase)
                     value += signedData[n] * sinX / x;
                     sinX = -sinX;
                 }
-                data[i] = static_cast<uint8>(value);
+                data[i] = (uint8)(value);
             }
         }
     }

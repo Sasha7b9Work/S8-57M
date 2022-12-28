@@ -85,7 +85,7 @@ int Text::Draw(int x, int y, pchar text, int size)
     for (uint i = 0; i < numSymbols; ++i)
     {
         int prevX = x;
-        x = DrawChar(x, y, size, static_cast<uint8>(text[i]));
+        x = DrawChar(x, y, size, (uint8)(text[i]));
 
         if (x - prevX < minWidth)
         {

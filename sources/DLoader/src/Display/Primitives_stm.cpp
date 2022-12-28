@@ -13,12 +13,12 @@ void Region::Fill(int x, int y, Color color)
     uint8 buffer[7] =
     {
         Command::Paint_FillRegion,
-        static_cast<uint8>(x),
-        static_cast<uint8>(x >> 8),
-        static_cast<uint8>(y),
-        static_cast<uint8>(width),
-        static_cast<uint8>(width >> 8),
-        static_cast<uint8>(height)
+        (uint8)(x),
+        (uint8)(x >> 8),
+        (uint8)(y),
+        (uint8)(width),
+        (uint8)(width >> 8),
+        (uint8)(height)
     };
 
     HAL_BUS::Panel::Send(buffer, 7);
@@ -32,12 +32,12 @@ void Rectangle::Draw(int x, int y, Color color)
     uint8 buffer[7] =
     {
         Command::Paint_DrawRectangle,
-        static_cast<uint8>(x),
-        static_cast<uint8>(x >> 8),
-        static_cast<uint8>(y),
-        static_cast<uint8>(width),
-        static_cast<uint8>(width >> 8),
-        static_cast<uint8>(height)
+        (uint8)(x),
+        (uint8)(x >> 8),
+        (uint8)(y),
+        (uint8)(width),
+        (uint8)(width >> 8),
+        (uint8)(height)
     };
 
     HAL_BUS::Panel::Send(buffer, 7);
@@ -54,11 +54,11 @@ void HLine::Draw(int x, int y, Color color)
     uint8 buffer[6] =
     {
         Command::Paint_DrawHLine,
-        static_cast<uint8>(y),
-        static_cast<uint8>(x0),
-        static_cast<uint8>(x0 >> 8),
-        static_cast<uint8>(x1),
-        static_cast<uint8>(x1 >> 8)
+        (uint8)(y),
+        (uint8)(x0),
+        (uint8)(x0 >> 8),
+        (uint8)(x1),
+        (uint8)(x1 >> 8)
     };
 
     HAL_BUS::Panel::Send(buffer, 6);
@@ -75,10 +75,10 @@ void VLine::Draw(int x, int y, Color color)
     uint8 buffer[5] =
     {
         Command::Paint_DrawVLine,
-        static_cast<uint8>(x),
-        static_cast<uint8>(x >> 8),
-        static_cast<uint8>(y0),
-        static_cast<uint8>(y1)
+        (uint8)(x),
+        (uint8)(x >> 8),
+        (uint8)(y0),
+        (uint8)(y1)
     };
 
     HAL_BUS::Panel::Send(buffer, 5);
@@ -92,9 +92,9 @@ void Pixel::Draw(int x, int y, Color color)
     uint8 buffer[4] =
     {
         Command::Paint_SetPoint,
-        static_cast<uint8>(x),
-        static_cast<uint8>(x >> 8),
-        static_cast<uint8>(y)
+        (uint8)(x),
+        (uint8)(x >> 8),
+        (uint8)(y)
     };
 
     HAL_BUS::Panel::Send(buffer, 4);
@@ -108,12 +108,12 @@ void Line::Draw(Color color)
     uint8 buffer[7] =
     {
         Command::Paint_DrawLine,
-        static_cast<uint8>(x0),
-        static_cast<uint8>(x0 >> 8),
-        static_cast<uint8>(y0),
-        static_cast<uint8>(x1),
-        static_cast<uint8>(x1 >> 8),
-        static_cast<uint8>(y1)
+        (uint8)(x0),
+        (uint8)(x0 >> 8),
+        (uint8)(y0),
+        (uint8)(x1),
+        (uint8)(x1 >> 8),
+        (uint8)(y1)
     };
 
     HAL_BUS::Panel::Send(buffer, 7);
@@ -128,10 +128,10 @@ int Text::DrawSmall(int x, int y, Color color)
 
     Buffer buffer(sizeBuffer);
     buffer.data[0] = Command::Paint_DrawText;
-    buffer.data[1] = static_cast<uint8>(x);
-    buffer.data[2] = static_cast<uint8>(x >> 8);
-    buffer.data[3] = static_cast<uint8>(y);
-    buffer.data[4] = static_cast<uint8>(std::strlen(text));
+    buffer.data[1] = (uint8)(x);
+    buffer.data[2] = (uint8)(x >> 8);
+    buffer.data[3] = (uint8)(y);
+    buffer.data[4] = (uint8)(std::strlen(text));
 
     std::memcpy(&buffer.data[5], text, std::strlen(text)); //-V575
 
@@ -151,14 +151,14 @@ void MultiHPointLine::Draw(int x, Color color)
         0,
         0,
         0,
-        static_cast<uint8>(delta),
-        static_cast<uint8>(count)
+        (uint8)(delta),
+        (uint8)(count)
     };
 
     for (int i = 0; i < numLines; i++)
     {
-        buffer[1] = static_cast<uint8>(x);
-        buffer[2] = static_cast<uint8>(x >> 8);
+        buffer[1] = (uint8)(x);
+        buffer[2] = (uint8)(x >> 8);
         buffer[3] = y[i];
 
         HAL_BUS::Panel::Send(buffer, 6);
@@ -176,17 +176,17 @@ void MultiVPointLine::Draw(int y0, Color color)
         0,
         0,
         0,
-        static_cast<uint8>(delta),
-        static_cast<uint8>(count)
+        (uint8)(delta),
+        (uint8)(count)
     };
 
     for (int i = 0; i < numLines; i++)
     {
         int x = x0[i];
 
-        buffer[1] = static_cast<uint8>(x);
-        buffer[2] = static_cast<uint8>(x >> 8);
-        buffer[3] = static_cast<uint8>(y0);
+        buffer[1] = (uint8)(x);
+        buffer[2] = (uint8)(x >> 8);
+        buffer[3] = (uint8)(y0);
 
         HAL_BUS::Panel::Send(buffer, 6);
     }
