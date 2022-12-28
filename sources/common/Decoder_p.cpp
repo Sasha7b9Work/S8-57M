@@ -67,7 +67,8 @@ namespace PDecoder
 
     static bool NullCommand(uint8);
 
-    static bool DrawDashedVLine(uint8);
+    static bool DrawVCursor(uint8);
+    static bool DrawHCursor(uint8);
 
     // İòó ôóíêöèş íàäî âûçûâàòü ïîñëå âûïîëíåíèÿ ïîñëåäíåãî øàãà
     static void FinishCommand();
@@ -106,7 +107,8 @@ void PDecoder::AddData(uint8 data)
         E,
         DrawSignal,
         NullCommand,
-        DrawDashedVLine
+        DrawVCursor,
+        DrawHCursor
     };
 
     if (step == 0)
@@ -411,36 +413,63 @@ bool PDecoder::DrawHPointLine(uint8 data)
 }
 
 
-bool PDecoder::DrawDashedVLine(uint8 data)
+bool PDecoder::DrawVCursor(uint8 data)
 {
-    static Point2 x_y;
-    static Point2 height_deltaFill;
-    static Point2 deltaEmpty_deltaStart;
+    static Point2 coord;
+    static Point2 height_skip;
 
-    if (step > 0 && step < 4)
+    if (step == 0)
     {
-        x_y.Append(data);
     }
-    else if (step > 3 && step < 7)
+    else if (step < 4)
     {
-        height_deltaFill.Append(data);
+        coord.Append(data);
     }
     else
     {
-        deltaEmpty_deltaStart.Append(data);
+        height_skip.Append(data);
 
-        if (step == 9)
+        if (step == 6)
         {
-            BackBuffer::DrawDashedVLine(x_y.X(), x_y.Y(),
-                height_deltaFill.X(), height_deltaFill.Y(),
-                deltaEmpty_deltaStart.X(), deltaEmpty_deltaStart.Y());
+            BackBuffer::DrawVCursor(coord.X(), coord.Y(),
+                height_skip.X(), height_skip.Y());
 
-            x_y.Reset();
-            height_deltaFill.Reset();
-            deltaEmpty_deltaStart.Reset();
+            coord.Reset();
+            height_skip.Reset();
 
             return true;
         };
+    }
+
+    return false;
+}
+
+
+bool PDecoder::DrawHCursor(uint8 data)
+{
+    static Point2 coord;
+    static Point2 width_skip;
+
+    if (step == 0)
+    {
+    }
+    else if (step < 4)
+    {
+        coord.Append(data);
+    }
+    else
+    {
+        width_skip.Append(data);
+
+        if (step == 6)
+        {
+            BackBuffer::DrawHCursor(coord.X(), coord.Y(), width_skip.X(), width_skip.Y());
+
+            coord.Reset();
+            width_skip.Reset();
+
+            return true;
+        }
     }
 
     return false;

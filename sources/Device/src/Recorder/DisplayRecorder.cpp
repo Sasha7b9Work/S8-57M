@@ -287,7 +287,7 @@ void DisplayRecorder::DrawCursors()
 {
     if (Menu::OpenedItem() == PageRecorder::Show::self || Menu::OpenedItem()->Keeper() == PageRecorder::Show::self)
     {
-        DashedVLine cursor(239, 3, 1, 0);
+        VCursor cursor(239, 0);
 
         Color::FILL.SetAsCurrent();
 

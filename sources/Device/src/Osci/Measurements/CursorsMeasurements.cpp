@@ -13,7 +13,7 @@
 namespace CursorsMeasurements
 {
     // Нарисовать вертикальный курсор
-    static void _DrawVertical(int x, int yTearing);
+    static void DrawVertical(int x, int yTearing);
 
     // Нарисовать горизонтальный курсор
     static void DrawHorizontal(int y, int xTearing);
@@ -99,8 +99,8 @@ void CursorsMeasurements::Draw()
 
         if (!CursorsControl::IsDisabledT())
         {
-            _DrawVertical((int)(CursorsMeasurements::PosT(source, 0)), y0);
-            _DrawVertical((int)(CursorsMeasurements::PosT(source, 1)), y1);
+            DrawVertical((int)(CursorsMeasurements::PosT(source, 0)), y0);
+            DrawVertical((int)(CursorsMeasurements::PosT(source, 1)), y1);
         }
         if (!CursorsControl::IsDisabledU())
         {
@@ -113,12 +113,12 @@ void CursorsMeasurements::Draw()
 }
 
 
-void CursorsMeasurements::_DrawVertical(int x, int yTearing)
+void CursorsMeasurements::DrawVertical(int x, int yTearing)
 {
     x += Grid::Left();
     if (yTearing == -1)
     {
-        DashedVLine(Grid::ChannelBottom() - Grid::Top() - 3, 1, 1, 0).Draw(x, Grid::Top() + 2);
+        VCursor(Grid::ChannelBottom() - Grid::Top(), 0).Draw(x, Grid::Top() + 2);
     }
     else
     {

@@ -168,39 +168,9 @@ void BackBuffer::DrawVPointLine(int x, int y, int delta, int count)
 }
 
 
-void BackBuffer::DrawDashedVLine(int x, int y0, int height, int deltaFill, int deltaEmpty, int deltaStart)
+void BackBuffer::DrawVCursor(int x, int y, int height, int /*skip*/)
 {
-    LOG_WRITE("Test string");
-
-    if (deltaStart < 0 || deltaStart >= (deltaFill + deltaEmpty))
-    {
-        return;
-    }
-
-    int y = y0;
-
-    if (deltaStart != 0)                 // Если линию нужно рисовать не с начала штриха
-    {
-        y += (deltaFill + deltaEmpty - deltaStart);
-
-        if (deltaStart < deltaFill)     // Если начало линии приходится на штрих
-        {
-//            DrawVLine(x, y0, y - 1);
-
-//            VLine(y - y0 - 1).Draw(x, y0);
-        }
-    }
-
-    int y1 = y0 + height;
-
-    while (y < y1)
-    {
-        DrawVLine(x, y, deltaFill - 1 - y);
-
-//        VLine(deltaFill - 1).Draw(x, y);
-
-        y += (deltaFill + deltaEmpty);
-    }
+    DrawVLine(x, y, y + height);
 }
 
 

@@ -149,10 +149,10 @@ private:
 };
 
 
-class DashedVLine
+class VCursor
 {
 public:
-    DashedVLine(int height, int deltaFill, int deltaEmpty, int deltaStart);
+    VCursor(int height, int skip);
     void Draw(int x, int y);
 private:
     int height;
