@@ -225,7 +225,7 @@ static void OnPress_Mask_Insert()
         }
         else
         {
-            S_MEM_FILE_NAME_MASK[size] = static_cast<char>(index);
+            S_MEM_FILE_NAME_MASK[size] = (char)(index);
             S_MEM_FILE_NAME_MASK[size + 1] = '\0';
         }
     }

@@ -104,7 +104,7 @@ char Hex::DigitInPosition(int pos) const
         pos--;
     }
 
-    return static_cast<char>((val % 10) | 0x30);
+    return (char)((val % 10) | 0x30);
 }
 
 
@@ -426,11 +426,11 @@ static char *FloatToString(float value, bool alwaysSign, int numDigits, char buf
     
     char format[10] = "%4.2f\0\0";
     
-    format[1] = static_cast<char>(numDigits) + 0x30;
+    format[1] = (char)(numDigits) + 0x30;
     
     int numDigitsInInt = Math::DigitsInIntPart(value);
     
-    format[3] = static_cast<char>((numDigits - numDigitsInInt) + 0x30);
+    format[3] = (char)((numDigits - numDigitsInInt) + 0x30);
     if (numDigits == numDigitsInInt)
     {
         format[5] = '.';
@@ -444,7 +444,7 @@ static char *FloatToString(float value, bool alwaysSign, int numDigits, char buf
     if (Math::DigitsInIntPart(val) != numDigitsInInt)
     {
         numDigitsInInt = Math::DigitsInIntPart(val);
-        format[3] = static_cast<char>((numDigits - numDigitsInInt) + 0x30);
+        format[3] = (char)((numDigits - numDigitsInInt) + 0x30);
         if (numDigits == numDigitsInInt)
         {
             format[5] = '.';

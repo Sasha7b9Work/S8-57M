@@ -555,7 +555,7 @@ void DisplayFreqMeter::WriteStackToBuffer(Stack<uint> *stack, int point, pchar s
             buffer[i] = '.';
             continue;
         }
-        buffer[i] = static_cast<char>(stack->Pop()) | 0x30;
+        buffer[i] = (char)(stack->Pop()) | 0x30;
     }
 
     std::strcpy(&buffer[7], suffix);

@@ -644,7 +644,7 @@ bool PDecoder::DrawText(uint8 data)
         buffer = new char[static_cast<uint>(numSymbols + 1)];
         break;
     default:
-        buffer[readingSymbols++] = static_cast<char>(data);
+        buffer[readingSymbols++] = (char)(data);
         if (readingSymbols == numSymbols)
         {
             buffer[readingSymbols] = 0;

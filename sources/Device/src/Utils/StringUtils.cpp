@@ -139,7 +139,7 @@ bool SU::GetWord(pchar string, Word *word, const int numWord)
             int numSymbols = word->numSymbols;
             for (int i = 0; i < numSymbols; i++)
             {
-                *pointer = static_cast<char>(std::toupper(*pointer));
+                *pointer = (char)(std::toupper(*pointer));
                 pointer++;
             }
             return true;
@@ -311,7 +311,7 @@ char *SU::ToUpper(char *_str, int size)
 
     for(int i = 0; i < size; i++)
     {
-        str[i] = static_cast<char>(std::toupper(str[i]));
+        str[i] = (char)(std::toupper(str[i]));
     }
 
     return str;
@@ -328,11 +328,11 @@ char SU::ToUpper(char symbol)
     }
     else if(s >= 0x60 && s <= 0x7a)
     {
-        return static_cast<char>(s - 0x20);
+        return (char)(s - 0x20);
     }
     else if(s >= 0xf0)
     {
-        return static_cast<char>(s - 0x20);
+        return (char)(s - 0x20);
     }
 
     return symbol;
@@ -345,11 +345,11 @@ char SU::ToLower(char symbol)
 
     if(s >= 0x41 && s <= 0x5a)
     {
-        return static_cast<char>(s + 0x20);
+        return (char)(s + 0x20);
     }
     else if(s >= 0xc0 && s < 0xE0)
     {
-        return static_cast<char>(s + 0x20);
+        return (char)(s + 0x20);
     }
 
     return symbol;

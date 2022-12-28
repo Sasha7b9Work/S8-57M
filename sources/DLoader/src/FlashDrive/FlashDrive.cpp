@@ -192,7 +192,7 @@ static void ToLower(char *str)
 {
     while(*str)
     {
-        *str = static_cast<char>(tolower(*str));
+        *str = (char)(tolower(*str));
         str++;
     }
 }

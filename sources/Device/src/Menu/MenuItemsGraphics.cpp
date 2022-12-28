@@ -412,7 +412,7 @@ void Governor::DrawValueWithSelectedPosition(int x, int y, int value, int numDig
         
         uint8 val = stack.Pop();
         
-        Char(static_cast<char>(val + 48)).Draw(x, y, Color::BACK);
+        Char((char)(val + 48)).Draw(x, y, Color::BACK);
         
         x += 6;
     }
