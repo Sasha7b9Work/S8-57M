@@ -128,7 +128,7 @@ void HAL_BUS::Init()
 }
 
 
-void HAL_BUS::SendToDevice(uint8 *data, uint size)
+void HAL_BUS::SendToDevice(const uint8 *data, int size)
 {
     while (size > 0)
     {

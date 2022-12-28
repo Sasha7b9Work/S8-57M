@@ -77,7 +77,7 @@ static void AddToConsole(pchar text)
         buffer[0] = Command::AddToConsole;
         buffer[1] = (uint8)std::strlen(text);
         std::strcpy((char *)(buffer + 2), text);
-        HAL_BUS::SendToDevice(buffer, std::strlen(text) + 2);
+        HAL_BUS::SendToDevice(buffer, (int)std::strlen(text) + 2);
 
         std::free(buffer);
     }

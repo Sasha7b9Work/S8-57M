@@ -24,11 +24,11 @@ void Painter::BeginScene(int _field, Color color)
 
     color.SetAsCurrent();
 
-    SBuffer<2>(Command::Paint_BeginScene, (uint8)_field).Send();
+    SBuffer(Command::Paint_BeginScene, (uint8)_field).Send();
 }
 
 
 void Painter::EndScene()
 {
-    SBuffer<1>(Command::Paint_EndScene).Send();
+    SBuffer(Command::Paint_EndScene).Send();
 }

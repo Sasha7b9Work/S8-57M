@@ -48,7 +48,7 @@ static void SendTypeFontToPanel(DTypeFont::E type)
 
     if (prevType != type)
     {
-        SBuffer<2>(Command::Paint_SetFont, (uint8)type).Send();
+        SBuffer(Command::Paint_SetFont, (uint8)type).Send();
         prevType = type;
     }
 }
@@ -114,7 +114,7 @@ void DFont::Pop()
 void DFont::SetSpacing(int _spacing)
 {
     spacing = _spacing;
-    SBuffer<2>(Command::Paint_SetTextSpacing, (uint8)spacing).Send();
+    SBuffer(Command::Paint_SetTextSpacing, (uint8)spacing).Send();
 }
 
 int DFont::GetSpacing()
@@ -125,7 +125,7 @@ int DFont::GetSpacing()
 
 void DFont::SetMinWidth(uint8 width)
 {
-    SBuffer<2>(Command::Paint_SetMinWidthFont, width).Send();
+    SBuffer(Command::Paint_SetMinWidthFont, width).Send();
 }
 
 

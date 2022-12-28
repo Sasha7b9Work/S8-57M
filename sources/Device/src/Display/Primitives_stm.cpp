@@ -12,7 +12,7 @@ void Region::Fill(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
-    SBuffer<7>(Command::Paint_FillRegion, Point2(x, y), Point2(width, height)).Send();
+    SBuffer(Command::Paint_FillRegion, Point2(x, y), Point2(width, height)).Send();
 }
 
 
@@ -47,12 +47,7 @@ void HLine::Draw(int x, int y, Color color)
 
 void VCursor::Draw(int x, int y)
 {
-    SBuffer<7> buffer(Command::Paint_DrawVCursor);
-
-    buffer.Push(Point2(x, y));
-    buffer.Push(Point2(height, skip));
-
-    buffer.Send();
+    SBuffer(Command::Paint_DrawVCursor, Point2(x, y), Point2(height, skip)).Send();;
 }
 
 

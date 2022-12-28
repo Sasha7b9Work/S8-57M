@@ -25,7 +25,7 @@ namespace HAL_BUS
 {
     void Init();
 
-    void SendToDevice(uint8 *data, uint size);
+    void SendToDevice(const uint8 *data, int size);
 
     void Update();
 };

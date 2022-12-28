@@ -310,22 +310,14 @@ static void WriteToDisplay(Color color)
     {
         lastColor = color;
 
-        SBuffer<2>(Command::Paint_SetColor, lastColor.value).Send();
+        SBuffer(Command::Paint_SetColor, lastColor.value).Send();
     }
 }
 
 
 void Color::LoadValueRGB()
 {
-    uint rgb = COLOR(value);
-
-    SBuffer <6>buffer(Command::Paint_SetPalette, value);
-    buffer.Push((uint8)rgb);
-    buffer.Push((uint8)(rgb >> 8));
-    buffer.Push((uint8)(rgb >> 16));
-    buffer.Push((uint8)(rgb >> 24));
-
-    buffer.Send();
+    SBuffer(Command::Paint_SetPalette, value, COLOR(value)).Send();
 }
 
 

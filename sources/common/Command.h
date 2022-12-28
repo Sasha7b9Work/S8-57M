@@ -30,25 +30,33 @@ private:
 };
 
 
-template<int size>
 struct SBuffer
 {
     SBuffer(uint8 command) : pointer(0) { Push(command); }
     SBuffer(uint8 command, uint8 data) : pointer(0) { Push(command); Push(data); }
     SBuffer(uint8 command, const Point2 &p1, const Point2 &p2) : pointer(0) { Push(command); Push(p1); Push(p2); }
+    SBuffer(uint8 command, uint8 value, uint data) : pointer(0)
+    {
+        Push(command);
+        Push(value);
+        Push((uint8)data);
+        Push((uint8)(data >> 8));
+        Push((uint8)(data >> 16));
+        Push((uint8)(data >> 24));
+    }
     void Push(const Point2 &point)      { std::memcpy(&buffer[pointer], point.XY(), 3); pointer += 3; }
     void Push(uint8 byte)               { buffer[pointer++] = byte; }
 #ifdef DEVICE
-    void Send() const                   { HAL_BUS::Panel::Send(buffer, pointer); };
+    void Send() const                   { HAL_BUS::Panel::Send(&buffer[0], pointer); };
 #else
 #ifdef PANEL
-    void Send() const                   { HAL_BUS::SendToDevice(buffer, pointer); };
+    void Send() const                   { HAL_BUS::SendToDevice(&buffer[0], pointer); };
 #else
     void Send() const {}
 #endif
 #endif
 private:
-    uint8 buffer[size];
+    uint8 buffer[32];
     int pointer;
 };
 

@@ -284,13 +284,13 @@ uint ENumSignalsInSec::TimeBetweenFramesMS()
 
 void Display::LoadBrightness()
 {
-    SBuffer<2>(Command::Display_Brightness, (uint8)(S_DISP_BRIGHTNESS + 10)).Send();
+    SBuffer(Command::Display_Brightness, (uint8)(S_DISP_BRIGHTNESS + 10)).Send();
 }
 
 
 void Display::Breaker::PowerOff()
 {
-    SBuffer<2>(Command::Display_Brightness, 0).Send();
+    SBuffer(Command::Display_Brightness, 0).Send();
 
     powerOn = false;
 }
