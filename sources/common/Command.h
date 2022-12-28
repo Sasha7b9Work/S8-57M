@@ -35,6 +35,7 @@ struct SBuffer
 {
     SBuffer(uint8 command) : pointer(0) { Push(command); }
     SBuffer(uint8 command, uint8 data) : pointer(0) { Push(command); Push(data); }
+    SBuffer(uint8 command, const Point2 &p1, const Point2 &p2) : pointer(0) { Push(command); Push(p1); Push(p2); }
     void Push(const Point2 &point)      { std::memcpy(&buffer[pointer], point.XY(), 3); pointer += 3; }
     void Push(uint8 byte)               { buffer[pointer++] = byte; }
 #ifdef DEVICE

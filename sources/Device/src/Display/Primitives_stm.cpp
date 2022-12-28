@@ -12,12 +12,7 @@ void Region::Fill(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
-    uint8 buffer[7] = { Command::Paint_FillRegion };
-
-    Point2(x, y).Write(&buffer[1]);
-    Point2(width, height).Write(&buffer[4]);
-
-    HAL_BUS::Panel::Send(buffer, 7);
+    SBuffer<7>(Command::Paint_FillRegion, Point2(x, y), Point2(width, height)).Send();
 }
 
 

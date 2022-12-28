@@ -284,13 +284,13 @@ uint ENumSignalsInSec::TimeBetweenFramesMS()
 
 void Display::LoadBrightness()
 {
-    HAL_BUS::Panel::Send(Command::Display_Brightness, (uint8)(S_DISP_BRIGHTNESS + 10));
+    SBuffer<2>(Command::Display_Brightness, (uint8)(S_DISP_BRIGHTNESS + 10)).Send();
 }
 
 
 void Display::Breaker::PowerOff()
 {
-    HAL_BUS::Panel::Send(Command::Display_Brightness, 0);
+    SBuffer<2>(Command::Display_Brightness, 0).Send();
 
     powerOn = false;
 }
