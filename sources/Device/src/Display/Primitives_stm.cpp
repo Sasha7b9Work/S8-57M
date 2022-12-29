@@ -20,12 +20,7 @@ void Rectangle::Draw(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
-    uint8 buffer[7] = { Command::Paint_DrawRectangle };
-
-    Point2(x, y).Write(&buffer[1]);
-    Point2(width, height).Write(&buffer[4]);
-
-    HAL_BUS::Panel::Send(buffer, 7);
+    SBuffer(Command::Paint_DrawRectangle, Point2(x, y), Point2(width, height)).Send();
 }
 
 
@@ -33,15 +28,10 @@ void HLine::Draw(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
-    uint8 buffer[7] = { Command::Paint_DrawHLine };
-
     const int x0 = x;
     const int x1 = x0 + width;
 
-    Point2(x0, y).Write(&buffer[1]);
-    Point2(x1, 0).Write(&buffer[4]);
-
-    HAL_BUS::Panel::Send(buffer, 7);
+    SBuffer(Command::Paint_DrawHLine, Point2(x0, y), Point2(x1, 0)).Send();
 }
 
 
