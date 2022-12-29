@@ -365,23 +365,13 @@ void DisplayOsci::PainterData::DrawModeLinesPeakDetOn(int center, const uint8 *d
 
 void DisplayOsci::PainterData::DrawModeLinesPeakDetOff(int center, const uint8 *data, float scale, int x)
 {
-    HAL_BUS::Panel::Send(Command::Paint_DrawSignal);
+    SBuffer buffer(Command::Paint_DrawSignal, 0);
 
-    HAL_BUS::Panel::Send(0);                        // mode
+    buffer.Push(Point2(x, Grid::Top()));
+    buffer.Push(Point2(x, Grid::Bottom()));
+    buffer.Push(Point2(281, 0));
 
-    Point2 left_top(x, Grid::Top());
-    Point2 left_bottom(x, Grid::Bottom());
-
-    uint buffer = 0;
-
-    left_top.Write((uint8 *)&buffer);
-    HAL_BUS::Panel::Send((uint8 *)&buffer, 3);      // left_top
-
-    left_bottom.Write((uint8 *)&buffer);
-    HAL_BUS::Panel::Send((uint8 *)&buffer, 3);      // left_bottom
-
-    buffer = (uint)281;
-    HAL_BUS::Panel::Send((uint8 *)&buffer, 2);      // num_points
+    buffer.Send();
 
     for (int i = 0; i < 281; i++)
     {
