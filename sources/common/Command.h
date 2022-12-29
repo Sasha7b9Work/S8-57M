@@ -34,6 +34,7 @@ struct SBuffer
 {
     SBuffer(uint8 command) : pointer(0) { Push(command); }
     SBuffer(uint8 command, uint8 data) : pointer(0) { Push(command); Push(data); }
+    SBuffer(uint8 command, const Point2 &p) : pointer(0) { Push(command); Push(p); }
     SBuffer(uint8 command, const Point2 &p1, const Point2 &p2) : pointer(0) { Push(command); Push(p1); Push(p2); }
     SBuffer(uint8 command, uint8 value, uint data) : pointer(0)
     {

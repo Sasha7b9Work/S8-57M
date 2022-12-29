@@ -45,15 +45,10 @@ void VLine::Draw(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
-    uint8 buffer[7] = { Command::Paint_DrawVLine };
-
     const int y0 = y;
     const int y1 = y0 + height;
 
-    Point2(x, y0).Write(&buffer[1]);
-    Point2(0, y1).Write(&buffer[4]);
-
-    HAL_BUS::Panel::Send(buffer, 7);
+    SBuffer(Command::Paint_DrawVLine, Point2(x, y0), Point2(0, y1)).Send();
 }
 
 
@@ -61,11 +56,7 @@ void Pixel::Draw(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
-    uint8 buffer[4] = { Command::Paint_SetPoint };
-
-    Point2(x, y).Write(&buffer[1]);
-
-    HAL_BUS::Panel::Send(buffer, 4);
+    SBuffer(Command::Paint_SetPoint, Point2(x, y)).Send();
 }
 
 
