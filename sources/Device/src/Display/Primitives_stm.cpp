@@ -64,12 +64,7 @@ void Line::Draw(Color color)
 {
     color.SetAsCurrent();
 
-    uint8 buffer[7] = { Command::Paint_DrawLine };
-
-    Point2(x0, y0).Write(&buffer[1]);
-    Point2(x1, y1).Write(&buffer[4]);
-
-    HAL_BUS::Panel::Send(buffer, 7);
+    SBuffer(Command::Paint_DrawLine, Point2(x0, y0), Point2(x1, y1)).Send();
 }
 
 

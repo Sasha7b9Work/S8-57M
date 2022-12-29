@@ -618,7 +618,7 @@ void FDrive::ReadRow(uint8 row, uint8 pixels[Display::WIDTH])
     {
     }
 
-    HAL_BUS::Panel::Send(Command::Screen, row);
+    SBuffer(Command::Screen, row).Send();
 
     while(DDecoder::BytesInBuffer() < Display::WIDTH + 2)          // ќжидаем, пока панель пришлЄт запрошенные байты
     {
