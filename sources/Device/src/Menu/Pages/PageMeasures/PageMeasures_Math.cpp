@@ -16,7 +16,7 @@ static void OnPress_Screen()
     }
     else
     {
-        Math::CircleIncrease<int8>(reinterpret_cast<int8 *>(&S_MATH_MODE_DRAW), 0, 2);
+        Math::CircleIncrease<int8>((int8 *)&S_MATH_MODE_DRAW, 0, 2);
     }
 }
 
@@ -63,7 +63,7 @@ DEF_GRAPH_BUTTON_HINTS_3( bScreen,                                              
 
 static void OnPress_Type()
 {
-    Math::CircleIncrease<int8>(reinterpret_cast<int8 *>(&S_MATH_FUNCTION), 0, 1);
+    Math::CircleIncrease<int8>((int8 *)&S_MATH_FUNCTION, 0, 1);
 }
 
 static void Draw_Type_Sum(int x, int y)
@@ -101,7 +101,7 @@ DEF_GRAPH_BUTTON_HINTS_2( bType,                                                
 
 static void OnPress_ModeArrows()
 {
-    Math::CircleIncrease<int8>(reinterpret_cast<int8*>(&S_MATH_MODE_REG_SET), 0, 1);
+    Math::CircleIncrease<int8>((int8*)(&S_MATH_MODE_REG_SET), 0, 1);
 }
 
 static void Draw_ModeArrows_Range(int x, int y)

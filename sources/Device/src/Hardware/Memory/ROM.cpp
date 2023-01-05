@@ -132,7 +132,7 @@ void ROM::Settings::Save()
     set.number = lastSaved ? (lastSaved->set.number + 1) : 0;                // ≈сли запись пуста€, то номер будет равен 0 = 0xFFFFFFFF + 1
     set.crc32 = set.CalcWriteCRC32();
 
-    HAL_ROM::WriteBufferBytes(reinterpret_cast<uint>(record), &set, sizeof(set));
+    HAL_ROM::WriteBufferBytes((uint)record, &set, sizeof(set));
 }
 
 
@@ -202,11 +202,11 @@ Record *Record::NextFree()
 
 Record *Record::Next()
 {
-    uint8 *addressThis = reinterpret_cast<uint8 *>(this);
+    uint8 *addressThis = (uint8 *)this;
 
     uint8 *addressNext = addressThis + SIZE_RECORD;
 
-    return reinterpret_cast<Record *>(addressNext);
+    return (Record *)addressNext;
 }
 
 
@@ -256,7 +256,7 @@ bool Record::IsSaved()
 
 uint *Record::FirstDowbleWord()
 {
-    return reinterpret_cast<uint *>(&set.crc32);
+    return (uint *)&set.crc32;
 }
 
 
@@ -296,21 +296,21 @@ bool Record::IsCorrect()
 
 void Record::Erase()
 {
-    HAL_ROM::Fill(reinterpret_cast<uint>(this), 0, SIZE_RECORD);
+    HAL_ROM::Fill((uint)this, 0, SIZE_RECORD);
 }
 
 
 Record *SectorSet::FirstRecord()
 {
-    return reinterpret_cast<Record *>(sector.address);
+    return (Record *)sector.address;
 }
 
 
 bool SectorSet::Contains(Record *record)
 {
-    uint addressRecord = reinterpret_cast<uint>(record);
+    uint addressRecord = (uint)record;
 
-    return addressRecord >= sector.address && addressRecord < sector.End();
+    return (addressRecord >= sector.address) && (addressRecord < sector.End());
 }
 
 

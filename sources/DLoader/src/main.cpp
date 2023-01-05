@@ -51,7 +51,7 @@ int main()
     __disable_irq();
     // Теперь переходим на основную программу
     pFunction JumpToApplication;
-    JumpToApplication = reinterpret_cast<pFunction>(*reinterpret_cast<__IO uint *>(MAIN_PROGRAM_START_ADDRESS + 4));
+    JumpToApplication = (pFunction)(*(__IO uint *)(MAIN_PROGRAM_START_ADDRESS + 4));
     __set_MSP(*(__IO uint *)MAIN_PROGRAM_START_ADDRESS);
     __enable_irq();
     JumpToApplication();

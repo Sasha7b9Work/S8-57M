@@ -18,21 +18,12 @@
 #include <cstdlib>
 
 
-#ifdef OLD_VERSION
-
-#define BEGIN reinterpret_cast<uint>(IntRAM::BeginStorageRAM())
-#define END   reinterpret_cast<uint>(IntRAM::EndStorageRAM())
-
-#else
-
-#define BEGIN reinterpret_cast<uint>(ExtRAM::Begin())
-#define END   reinterpret_cast<uint>(ExtRAM::End())
-
-#endif
+#define BEGIN ((uint)ExtRAM::Begin())
+#define END   ((uint)ExtRAM::End())
 
 
 int16 RAM::currentSignal = 0;
-Packet *RAM::oldest = reinterpret_cast<Packet *>(BEGIN);
+Packet *RAM::oldest = (Packet *)BEGIN;
 Packet *RAM::newest = nullptr;
 
 
@@ -44,11 +35,11 @@ static uint *WriteToRAM(uint *dest, const void *src, int size)
 {
     HAL_BUS::ConfigureToFSMC();
     
-    uint8 *address = reinterpret_cast<uint8 *>(dest);
+    uint8 *address = (uint8 *)dest;
 
     std::memcpy(address, src, (uint)(size));
     
-    return reinterpret_cast<uint *>(address + size);
+    return (uint *)(address + size);
 }
 
 
@@ -62,7 +53,7 @@ struct Packet
 
     bool IsValid()
     {
-        return reinterpret_cast<uint8*>(this) >= ExtRAM::Begin() && reinterpret_cast<uint8*>(this) < ExtRAM::End();
+        return (uint8 *)this >= ExtRAM::Begin() && (uint8 *)this < ExtRAM::End();
     }
 
     void Trace(uint)
@@ -71,8 +62,6 @@ struct Packet
         {
             addrNewest = addrNewest; //-V570
         }
-
-        //LOG_WRITE("%d %x", line, addrNewest);
     }
 
     // Упаковать данные по адресу this. Возвращает указатель на пакет, следующий за ним
@@ -84,23 +73,23 @@ struct Packet
 
         addrNewest = 0x0000000;                                                                         // Указываем, что это самый последний пакет
 
-        uint *address = reinterpret_cast<uint *>(Address() + sizeof(Packet));                           // По этому адресу запишем DataSettings
+        uint *address = (uint *)(Address() + sizeof(Packet));                           // По этому адресу запишем DataSettings
 
         address = WriteToRAM(address, ds, sizeof(DataSettings));                                        // Записываем DataSettings
 
         if (ds->en_a)                                                                                // Записываем данные первого канала
         {
-            data.ch_a = reinterpret_cast<uint8 *>(address);
+            data.ch_a = (uint8 *)address;
             address = WriteToRAM(address, ds->ch_a, ds->BytesInChannel());
         }
 
         if (ds->ch_b)                                                                                  // Записываем данные второго канала
         {
-            data.ch_b = reinterpret_cast<uint8 *>(address);
+            data.ch_b = (uint8 *)address;
             WriteToRAM(address, ds->ch_b, ds->BytesInChannel());
         }
 
-        std::memcpy(reinterpret_cast<uint *>(Address() + sizeof(Packet)), &data, sizeof(DataSettings)); // Записываем скорректированные настройки
+        std::memcpy((uint *)(Address() + sizeof(Packet)), &data, sizeof(DataSettings)); // Записываем скорректированные настройки
     }
     // Подготовить пакет для сохранения данных в соответствии с настройками ds
     void Prepare(DataSettings *ds)
@@ -108,11 +97,11 @@ struct Packet
         int bytesInChannel = ds->BytesInChannel();
 
         addrNewest = 0x00000000;
-        uint *address = reinterpret_cast<uint *>(Address() + sizeof(Packet));
+        uint *address = (uint *)(Address() + sizeof(Packet));
 
         ds->ch_a = nullptr;
         ds->ch_b = nullptr;
-        uint8 *addrData = reinterpret_cast<uint8 *>(reinterpret_cast<uint8 *>(address) + sizeof(DataSettings));
+        uint8 *addrData = (uint8 *)((uint8 *)address + sizeof(DataSettings));
 
         if (ds->en_a)
         {
@@ -132,7 +121,7 @@ struct Packet
 
     uint Address() const
     {
-        return reinterpret_cast<uint>(this);
+        return (uint)this;
     };
     // Возвращает адрес первого следующего за пакетом байта
     uint End() const
@@ -158,14 +147,14 @@ struct Packet
     {
         uint address = Address() + sizeof(Packet);
 
-        return reinterpret_cast<DataSettings *>(address);
+        return (DataSettings *)address;
     }
 };
 
 
 void RAM::Init()
 {
-    oldest = reinterpret_cast<Packet *>(BEGIN);
+    oldest = (Packet *)BEGIN;
     newest = nullptr;
 }
 
@@ -192,7 +181,7 @@ DataSettings *RAM::PrepareForNewData()
         newest->addrNewest = address;               // Указываем его в качестве адреса следующего пакета для предыдущего
     }
 
-    newest = reinterpret_cast<Packet *>(address);   // Устанавилваем этот адрес в качестве новейшего пакета
+    newest = (Packet *)address;                     // Устанавилваем этот адрес в качестве новейшего пакета
 
     newest->Prepare(&ds);                           // И упаковываем данные
 
@@ -237,7 +226,7 @@ DataSettings *RAM::Get(int numFromEnd)
 
     while (counter > 0)
     {
-        packet = reinterpret_cast<Packet *>(packet->addrNewest);
+        packet = (Packet *)packet->addrNewest;
         counter--;
     }
 
@@ -267,7 +256,7 @@ int RAM::NumberDatas()
     {
         result++;
 
-        packet = reinterpret_cast<Packet *>(packet->addrNewest);
+        packet = (Packet *)packet->addrNewest;
 
 //        if(packet != nullptr && !packet->IsValid())     // \todo Времення затычка. Нужно разобраться, почему память портится и исправить
 //        {
@@ -292,7 +281,7 @@ uint RAM::AllocateMemoryForPacket(const DataSettings *ds)
     if (addrLast > END)
     {
         addrLast = BEGIN + Packet::NeedMemoryForPacedData(ds);
-        while (reinterpret_cast<uint>(oldest) < addrLast)
+        while ((uint)oldest < addrLast)
         {
             RemoveOldest();
         }
@@ -315,7 +304,7 @@ uint RAM::AllocateMemoryForPacket(const DataSettings *ds)
 
     if (newest < oldest)                                                    // Более старые записи расположены после более новых
     {
-        while (addrLast >= reinterpret_cast<uint>(oldest))
+        while (addrLast >= (uint)oldest)
         {
             RemoveOldest();
             if (oldest->Address() == BEGIN)
@@ -340,7 +329,7 @@ void RAM::AllocateMemoryFromBegin(int size)
 
 void RAM::RemoveOldest()
 {
-    oldest = reinterpret_cast<Packet *>(oldest->addrNewest);
+    oldest = (Packet *)oldest->addrNewest;
 }
 
 

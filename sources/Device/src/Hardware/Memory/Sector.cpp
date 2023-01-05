@@ -12,7 +12,7 @@ const DataSettings *PacketROM::UnPack() const
         return nullptr;
     }
 
-    return (DataSettings *)(reinterpret_cast<const DataSettings *>(reinterpret_cast<const uint8 *>(this) + sizeof(PacketROM)));
+    return (DataSettings *)((const DataSettings *)((const uint8 *)this + sizeof(PacketROM)));
 }
 
 
@@ -23,7 +23,7 @@ PacketROM *PacketROM::Next() const
         return nullptr;
     }
 
-    return reinterpret_cast<PacketROM *>(reinterpret_cast<uint8 *>((PacketROM *)(this)) + size);
+    return (PacketROM *)((uint8 *)((PacketROM *)this) + size);
 }
 
 
@@ -52,7 +52,7 @@ bool PacketROM::WriteToSector(const Sector *sector) const
         dest = dest->Next();
     }
 
-    uint addressWrite = reinterpret_cast<uint>(dest);       // По этому адресу будет производиться запись пакета
+    uint addressWrite = (uint)dest;       // По этому адресу будет производиться запись пакета
 
     uint lastAddress = addressWrite + size;                 // А это последний адрес записи
 
@@ -68,11 +68,11 @@ bool PacketROM::WriteToSector(const Sector *sector) const
 
     if (ds.en_a)
     {
-        ds.ch_a = reinterpret_cast<uint8 *>(addressWrite) + sizeof(PacketROM) + sizeof(DataSettings);
+        ds.ch_a = (uint8 *)addressWrite + sizeof(PacketROM) + sizeof(DataSettings);
     }
     if (ds.en_b)
     {
-        ds.ch_b = reinterpret_cast<uint8 *>(addressWrite) + sizeof(PacketROM) + sizeof(DataSettings);
+        ds.ch_b = (uint8 *)addressWrite + sizeof(PacketROM) + sizeof(DataSettings);
         if (ds.en_a)
         {
             ds.ch_b += ds.BytesInChannel();
@@ -134,7 +134,7 @@ void PacketROM::Log() const
 //        address,
 //        numSector,
 //        next,
-//        Sector::Number(reinterpret_cast<uint>(Next())));
+//        Sector::Number((uint>(Next())));
 //
 //    if (ds)
 //    {
@@ -168,7 +168,7 @@ static void WriteToROM(uint *address, const void *data, int size)
 
 void Sector::TranslateAddressToROM(const DataSettings *ds, const PacketROM *packet)
 {
-    uint8 *addressData = reinterpret_cast<uint8 *>(packet->Address() + sizeof(PacketROM) + sizeof(DataSettings)); // По этому адресу будут записаны данные первого из записываемых каналов
+    uint8 *addressData = (uint8 *)(packet->Address() + sizeof(PacketROM) + sizeof(DataSettings)); // По этому адресу будут записаны данные первого из записываемых каналов
 
     if (ds->en_a)
     {
@@ -312,7 +312,7 @@ const PacketROM *Sector::DeleteData(uint numInROM) const
 
 const PacketROM *Sector::FirstPacket() const
 {
-    return reinterpret_cast<const PacketROM *>(address);
+    return (const PacketROM *)address;
 }
 
 
@@ -465,7 +465,7 @@ void Sector::Log() const
 //    LOG_WRITE("    Сектор %d адрес 0x%x, размер 0x%x", number, address, size);
 //    LOG_WRITE("             #   адрес  размер  следующий");
 //
-//    PacketROM *packet = reinterpret_cast<PacketROM *>(address);
+//    PacketROM *packet = (PacketROM *>(address);
 //
 //    static int counter = 0;
 //    counter = 0;

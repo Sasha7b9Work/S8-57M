@@ -792,7 +792,7 @@ void Choice::StartChange(int delta) const
 
 char Choice::GetSymbol()
 {
-    return (reinterpret_cast<Governor*>(this))->GetSymbol();  
+    return ((Governor*)this)->GetSymbol();  
 }
 
 

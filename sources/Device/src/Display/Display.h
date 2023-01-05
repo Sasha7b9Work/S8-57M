@@ -47,7 +47,7 @@ namespace Display
     // Устанавливает функцию, которая выполится после отрисовки кадра однократно
     void SetFuncAfterUpadteOnce(pFuncVV func);
 
-    void ShowWarning(pchar warning);
+    void ShowWarning(pchar warnRU);
 
     // @brief Установить функцию и режим отрисовки экрана.
     // @details Возможны три варианта.

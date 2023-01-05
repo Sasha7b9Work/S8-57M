@@ -14,10 +14,10 @@ namespace IntRAM
 
     static uint8 buffer[106 * 1024];
 
-    static uint16 *const memAveA = reinterpret_cast<uint16 *>(buffer);                              // 0            = 0k
-    static uint16 *const memAveB = reinterpret_cast<uint16 *>(buffer + 4 * FPGA::MAX_NUM_POINTS);   // 0   + 4 * 8k = 32k
+    static uint16 *const memAveA = (uint16 *)buffer;                              // 0            = 0k
+    static uint16 *const memAveB = (uint16 *)(buffer + 4 * FPGA::MAX_NUM_POINTS);   // 0   + 4 * 8k = 32k
 
-    static uint8 *const memP2PA = reinterpret_cast<uint8 *>(memAveB) + 4 * FPGA::MAX_NUM_POINTS;    // 32k + 4 * 8k = 64k
+    static uint8 *const memP2PA = (uint8 *)memAveB + 4 * FPGA::MAX_NUM_POINTS;    // 32k + 4 * 8k = 64k
     static uint8 *const memP2PB = memP2PA + 2 * FPGA::MAX_NUM_POINTS;                               // 64k + 2 * 8k = 80k
 
     static uint8 *const memRandA = memP2PA;

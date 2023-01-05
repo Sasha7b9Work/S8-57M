@@ -50,7 +50,7 @@ void BufferMissingPoints::Pop(BitSet16 *a, BitSet16 *b)
 
 Point16 *Point16::Next(Record *record) const
 {
-    return (Point16 *)reinterpret_cast<const Point16 *>(reinterpret_cast<const uint8 *>(this) + record->bytesOnPoint);
+    return (Point16 *)(const Point16 *)((const uint8 *)this + record->bytesOnPoint);
 }
 
 
@@ -202,25 +202,25 @@ void Record::Interpolate(int num1, int num2)
 
 Point16 *Record::ValueA(int number)
 {
-    return reinterpret_cast<Point16 *>(AddressPoints(number));
+    return (Point16 *)AddressPoints(number);
 }
 
 
 Point16 *Record::ValueB(int number)
 {
-    return reinterpret_cast<Point16 *>(AddressPoints(number) + offsetB);
+    return (Point16 *)(AddressPoints(number) + offsetB);
 }
 
 
 PointFloat *Record::ValueSensor(int number)
 {
-    return EXIST_SENS ? reinterpret_cast<PointFloat *>(AddressPoints(number) + offsetSensor) : &empty;
+    return EXIST_SENS ? (PointFloat *)(AddressPoints(number) + offsetSensor) : &empty;
 }
 
 
 uint8 *Record::BeginData()
 {
-    return reinterpret_cast<uint8 *>(this) + sizeof(Record);
+    return (uint8 *)this + sizeof(Record);
 }
 
 
@@ -277,7 +277,7 @@ uint Record::FreeMemory() const
 
 uint8 *Record::Begin() const
 {
-    return reinterpret_cast<uint8 *>((Record *)this);
+    return (uint8 *)this;
 }
 
 
@@ -332,7 +332,7 @@ bool StorageRecorder::CreateNewRecord()
 
     if(lastRecord)
     {
-        Record *next = reinterpret_cast<Record *>(lastRecord ->End());
+        Record *next = (Record *)lastRecord ->End();
 
         if(!next->IsValid())
         {
@@ -343,7 +343,7 @@ bool StorageRecorder::CreateNewRecord()
     }
     else
     {
-        lastRecord = reinterpret_cast<Record *>(ExtRAM::Begin());
+        lastRecord = (Record *)ExtRAM::Begin();
     }
 
     lastRecord->Init();
@@ -376,13 +376,13 @@ uint StorageRecorder::NumRecords()
 {
     HAL_BUS_CONFIGURE_TO_FSMC();
 
-    const Record *record = reinterpret_cast<Record *>(ExtRAM::Begin());
+    const Record *record = (Record *)ExtRAM::Begin();
 
     uint result = 0;
 
     while(record->IsValid())
     {
-        record = reinterpret_cast<const Record *>(record->End());
+        record = (const Record *)record->End();
         result++;
     }
 

@@ -184,11 +184,11 @@ void Recorder::ScaleX::Change(int delta)
     {
         if (delta > 0)
         {
-            ::Math::LimitationIncrease<uint8>(reinterpret_cast<uint8 *>(&S_REC_SCALE_X), (uint8)(Recorder::ScaleX::Count - 1));
+            ::Math::LimitationIncrease<uint8>((uint8 *)&S_REC_SCALE_X, (uint8)(Recorder::ScaleX::Count - 1));
         }
         else
         {
-            ::Math::LimitationDecrease<uint8>(reinterpret_cast<uint8 *>(&S_REC_SCALE_X), 0);
+            ::Math::LimitationDecrease<uint8>((uint8 *)&S_REC_SCALE_X, 0);
         }
 
         Load();

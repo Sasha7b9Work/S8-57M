@@ -119,13 +119,13 @@ void VCP::SendDataSynch(const void *_buffer, int size)
 
 void VCP::SendStringAsynch(pchar data)
 {
-    SendDataAsynch(reinterpret_cast<uint8 *>((char *)(data)), (int)(std::strlen(data)));
+    SendDataAsynch((uint8 *)data, (int)std::strlen(data));
 }
 
 
 void VCP::SendStringSynch(char *data)
 {
-    SendDataSynch(reinterpret_cast<uint8 *>(data), (int)(std::strlen(data)));
+    SendDataSynch((uint8 *)data, (int)std::strlen(data));
 }
 
 
@@ -139,7 +139,7 @@ void VCP::SendFormatStringAsynch(char *format, ...)
         std::vsprintf(buffer, format, args);
         va_end(args);
         std::strcat(buffer, "\r\n");
-        SendDataAsynch(reinterpret_cast<uint8 *>(buffer), (int)(std::strlen(buffer)));
+        SendDataAsynch((uint8 *)buffer, (int)std::strlen(buffer));
     }
 }
 
@@ -152,7 +152,7 @@ void VCP::SendFormatStringSynch(char *format, ...)
     std::vsprintf(buffer, format, args);
     va_end(args);
     std::strcat(buffer, "\r\n");
-    SendDataSynch(reinterpret_cast<uint8 *>(buffer), (int)(std::strlen(buffer)));
+    SendDataSynch((uint8 *)buffer, (int)std::strlen(buffer));
 }
 
 

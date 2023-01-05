@@ -549,9 +549,9 @@ void FDrive::SaveScreenToFlash()
 
     FDrive::OpenNewFileForWrite(fileName, &structForWrite);
 
-    FDrive::WriteToFile(reinterpret_cast<uint8 *>(&bmFH), 14, &structForWrite);
+    FDrive::WriteToFile((uint8 *)&bmFH, 14, &structForWrite);
 
-    FDrive::WriteToFile(reinterpret_cast<uint8 *>(&bmIH), 40, &structForWrite);
+    FDrive::WriteToFile((uint8 *)&bmIH, 40, &structForWrite);
 
     uint8 buffer[Display::WIDTH * 3] = { 0 };
 
@@ -572,7 +572,7 @@ void FDrive::SaveScreenToFlash()
         colorStruct.green = (uint8)((float)G_FROM_COLOR(color));
         colorStruct.red = (uint8)((float)R_FROM_COLOR(color));
         colorStruct.rgbReserved = 0;
-        (reinterpret_cast<RGBQUAD *>(buffer))[i] = colorStruct;
+        ((RGBQUAD *)buffer)[i] = colorStruct;
     }
 
     for(int i = 0; i < 4; i++)

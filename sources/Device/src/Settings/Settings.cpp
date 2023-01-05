@@ -9,7 +9,7 @@ Settings set = Settings::defaultSettings;
 
 uint Settings::CalcWriteCRC32()
 {
-    uint8 *buffer = reinterpret_cast<uint8 *>(this);
+    uint8 *buffer = (uint8 *)this;
 
     return HAL_CRC32::Calculate8bit(buffer + 2 * sizeof(uint), sizeof(*this) - 2 * sizeof(uint));
 }

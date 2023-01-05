@@ -61,7 +61,7 @@ void Display::SetField(uint offset, uint8 *data, int num_bytes)
 void Display::Init()
 {
     HAL_DAC2::Init();
-    HAL_LTDC::Init(reinterpret_cast<uint>(buffer));
+    HAL_LTDC::Init((uint)buffer);
     BackBuffer::LoadPalette();
 
     DrawStartScreen();

@@ -129,7 +129,7 @@ DEF_GRAPH_BUTTON                                                                
 
 static void OnPress_TypeSignal()
 {
-    Math::CircleIncrease<uint8>(reinterpret_cast<uint8*>(&S_MEM_TYPE_SIGNAL_ROM), 0, TypeSignalROM::Count - 1);
+    Math::CircleIncrease<uint8>((uint8 *)&S_MEM_TYPE_SIGNAL_ROM, 0, TypeSignalROM::Count - 1);
 }
 
 static void Draw_Recorded(int x, int y)

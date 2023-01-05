@@ -301,7 +301,7 @@ static void Draw_Movement_Points(int x, int y)
 
 static void OnPress_Movement()
 {
-    Math::CircleIncrease<int8>(reinterpret_cast<int8 *>(&S_CURS_MOVEMENT), 0, 1);
+    Math::CircleIncrease<int8>((int8 *)&S_CURS_MOVEMENT, 0, 1);
 }
 
 static void Draw_Movement(int x, int y)
@@ -410,13 +410,13 @@ void PageCursorsMeasures::Set::SetCursSource(Chan::E ch)
 
 void PageCursorsMeasures::Set::IncCursCntrlU(Chan::E ch)
 {
-    Math::CircleIncrease<int8>(reinterpret_cast<int8 *>(&S_CURS_CONTROL_U(ch)), 0, 3);
+    Math::CircleIncrease<int8>((int8 *)&S_CURS_CONTROL_U(ch), 0, 3);
 }
 
 
 void PageCursorsMeasures::Set::IncCursCntrlT(Chan::E ch)
 {
-    Math::CircleIncrease<int8>(reinterpret_cast<int8 *>(&S_CURS_CONTROL_T(ch)), 0, 3);
+    Math::CircleIncrease<int8>((int8 *)&S_CURS_CONTROL_T(ch), 0, 3);
 }
 
 
