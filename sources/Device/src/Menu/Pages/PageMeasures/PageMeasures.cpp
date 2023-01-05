@@ -63,4 +63,4 @@ DEF_PAGE_2( pMeasures,                                                          
     PageName::Measures, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page *const PageMeasures::self = static_cast<const Page *>(&pMeasures);
+const Page *const PageMeasures::self = (const Page *)&pMeasures;

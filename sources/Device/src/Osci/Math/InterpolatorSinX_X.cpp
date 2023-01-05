@@ -81,7 +81,7 @@ static void InterpolateChannel(uint8 *data, int numPoints, uint tBase)
     }
 
     float deltaX = Math::PI_F;
-    float stepX0 = Math::PI_F / static_cast<float>(delta);
+    float stepX0 = Math::PI_F / (float)delta;
     float x0 = Math::PI_F - stepX0;
     int num = 0;
 

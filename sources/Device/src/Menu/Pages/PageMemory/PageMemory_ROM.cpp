@@ -263,4 +263,4 @@ DEF_PAGE_5                                                                      
     &PageMemory::self, Item::Active, PageMemory::NormalTitle_ROM, PageMemory::OnOpenClose_ROM, PageMemory::AfterDraw_ROM, PageMemory::HandlerKey_ROM
 )
 
-const Page *const PageROM::self = static_cast<const Page *>(&pROM);
+const Page *const PageROM::self = (const Page *)&pROM;

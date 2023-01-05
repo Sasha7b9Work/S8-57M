@@ -92,7 +92,7 @@ bool Calibrator::BalanceChannel(Chan::E ch, bool showHint)
 
     for (int range = 0; range < Range::Count; range++)
     {
-        BalanceRange(ch, static_cast<Range::E>(range));
+        BalanceRange(ch, (Range::E)range);
     }
 
     std::memcpy(&oldNRST._exShift[ch][0], &NRST_EX_SHIFT(ch, 0), sizeof(NRST_EX_SHIFT(ch, 0)) * Range::Count);
@@ -149,11 +149,11 @@ static void BalanceRange(Chan::E ch, Range::E range)
 
     if (delta > 0.0F)
     {
-        NRST_EX_SHIFT(ch, range) = static_cast<int8>(delta * 200.0F / 125.0F + 0.5F);
+        NRST_EX_SHIFT(ch, range) = (int8)(delta * 200.0F / 125.0F + 0.5F);
     }
     else
     {
-        NRST_EX_SHIFT(ch, range) = static_cast<int8>(delta * 200.0F / 125.0F - 0.5F);
+        NRST_EX_SHIFT(ch, range) = (int8)(delta * 200.0F / 125.0F - 0.5F);
     }
 }
 
@@ -251,8 +251,8 @@ static float FindStretchChannel(Chan::E ch)
 
     float patternDelta = (VALUE::MAX - VALUE::MIN) / 10.0F * 8.0F;    // Образцоввая разница между минимальным и максимальным значениями - ровно на 8 клеток из десяти
 
-    float min = static_cast<float>(sumMIN) / numMIN;
-    float max = static_cast<float>(sumMAX) / numMAX;
+    float min = (float)sumMIN / numMIN;
+    float max = (float)sumMAX / numMAX;
 
     return patternDelta / (max - min);
 }

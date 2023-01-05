@@ -461,7 +461,7 @@ ShiftPoint Gates::CalculateShiftPoint()
         return result;
     }
 
-    float tin = static_cast<float>(valueADC - min) / (max - min);
+    float tin = (float)(valueADC - min) / (max - min);
 
     result.shift = (int)(tin * TBase::DeltaPoint());
 
@@ -629,7 +629,7 @@ void Osci::SendDataToSCPI(Chan::E ch)
 
     char buffer[100];
 
-    uint8 *data = const_cast<DataSettings *>(DS)->Data(ch);
+    uint8 *data = ((DataSettings *)DS)->Data(ch);
 
     SCPI::SendData(ch == Chan::A ? "1: " : "2: ");
 

@@ -104,7 +104,7 @@ static void CalculateTriangle()
     float k = 255.0F / POINTS_IN_PERIOD_SOUND;
     for(int i = 0; i < POINTS_IN_PERIOD_SOUND; i++)
     {
-        points[i] = (uint8)(k * static_cast<float>(i) * amplitude);
+        points[i] = (uint8)(k * (float)i * amplitude);
     }
 }
 

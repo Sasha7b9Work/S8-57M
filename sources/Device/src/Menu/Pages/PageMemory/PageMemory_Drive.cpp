@@ -60,4 +60,4 @@ DEF_PAGE_1(pDrive,   //-V1027                                                   
     &PageMemory::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page *const PageDrive::self = static_cast<const Page *>(&pDrive);
+const Page *const PageDrive::self = (const Page *)&pDrive;

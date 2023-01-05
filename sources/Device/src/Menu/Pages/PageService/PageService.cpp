@@ -66,7 +66,7 @@ DEF_PAGE_8_VAR( pService,                                                       
     PageName::Service, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page * const PageService::self = static_cast<const Page *>(&pService);
+const Page * const PageService::self = (const Page *)&pService;
 
 
 void PageService::DecodePassword(const KeyEvent &event)
@@ -112,19 +112,19 @@ void PageService::DecodePassword(const KeyEvent &event)
 
 void PageService::EnablePageDebug()
 {
-    Page *page = const_cast<Page *>(&pService);
+    Page *page = (Page *)&pService;
 
-    Item **items = const_cast<Item **>(page->OwnData()->items);
+    Item **items = (Item **)page->OwnData()->items;
 
-    items[7] = const_cast<Page *>(PageDebug::self);
+    items[7] = (Page *)PageDebug::self;
 }
 
 
 void PageService::DisablePageDebug()
 {
-    Page *page = const_cast<Page *>(&pService);
+    Page *page = (Page *)&pService;
 
-    Item **items = const_cast<Item **>(page->OwnData()->items);
+    Item **items = (Item **)page->OwnData()->items;
 
     items[7] = &Item::empty;
 }

@@ -174,13 +174,13 @@ void Grid::DrawGridSignal(int left, int top, int width, int height)
         line.Draw(Display::WIDTH - 1, top + 2);
     }
 
-    float deltaX = DeltaX() * static_cast<float>(width) / width;
-    float deltaY = DeltaY() * static_cast<float>(height) / height;
+    float deltaX = DeltaX() * (float)width / width;
+    float deltaY = DeltaY() * (float)height / height;
     float stepX = deltaX / 5;
     float stepY = deltaY / 5;
 
-    float centerX = static_cast<float>(left + width / 2);
-    float centerY = static_cast<float>(top + height / 2);
+    float centerX = (float)(left + width / 2);
+    float centerY = (float)(top + height / 2);
 
     Color::GRID.SetAsCurrent();
 
@@ -206,7 +206,7 @@ void Grid::DrawGridSpectrum()
         static const int nums[] = {4, 6, 8};
         static pString strs[] = {"0", "-10", "-20", "-30", "-40", "-50", "-60", "-70"};
         int numParts = nums[S_FFT_MAX_DB];
-        float scale = static_cast<float>(Grid::MathHeight()) / numParts;
+        float scale = (float)Grid::MathHeight() / numParts;
         for (int i = 1; i < numParts; i++)
         {
             int y = MathTop() + (int)(i * scale);
@@ -223,7 +223,7 @@ void Grid::DrawGridSpectrum()
     else // SCALE_FFT_IS_LINEAR
     {
         static pString strs[] = {"1.0", "0.8", "0.6", "0.4", "0.2"};
-        float scale = static_cast<float>(Grid::MathHeight()) / 5;
+        float scale = (float)Grid::MathHeight() / 5;
         for (int i = 1; i < 5; i++)
         {
             int y = MathTop() + (int)(i * scale);
@@ -319,7 +319,7 @@ void Grid::DrawGridType2(int left, int top, int right, int bottom, int deltaX, i
 
 void Grid::DrawGridType3(int left, int top, int right, int bottom, int centerX, int centerY, int deltaX, int deltaY, int stepX)
 {
-    HPointLine(right - left - stepX, static_cast<float>(stepX)).Draw(left + stepX, centerY);
+    HPointLine(right - left - stepX, (float)stepX).Draw(left + stepX, centerY);
 
     uint16 masY[6] = {
         (uint16)(top + 1),
@@ -332,7 +332,7 @@ void Grid::DrawGridType3(int left, int top, int right, int bottom, int centerX, 
 
     MultiHPointLine(6, masY, deltaX, (right - top) / deltaX).Draw(left + deltaX, Color::GRID);
 
-    VPointLine(bottom - top - 2 * stepX, static_cast<float>(stepX)).Draw(centerX, top + stepX, Color::GRID);
+    VPointLine(bottom - top - 2 * stepX, (float)stepX).Draw(centerX, top + stepX, Color::GRID);
 
     uint16 masX[6] =
     {

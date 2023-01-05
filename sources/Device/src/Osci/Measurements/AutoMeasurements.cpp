@@ -388,7 +388,7 @@ float CalculateVoltageAverage(Chan::E ch)
         sum += *data++;
     }
 
-    uint8 aveRel = (uint8)(static_cast<float>(sum) / period);
+    uint8 aveRel = (uint8)((float)sum / period);
 
     if(S_MEAS_MARKED == TypeMeasure::VoltageAverage)
     {
@@ -468,8 +468,8 @@ float CalculatePeriod(Chan::E ch)
 
     if ((S_MEAS_MARKED == TypeMeasure::Period || S_MEAS_MARKED == TypeMeasure::Freq) && periodIsCaclulating[(int)(ch)])
     {
-        Measure::SetMarkerTime(ch, 0, static_cast<int16>(firstIntersection) - firstByte);
-        Measure::SetMarkerTime(ch, 1, static_cast<int16>(secondIntersection) - firstByte);
+        Measure::SetMarkerTime(ch, 0, (int16)firstIntersection - firstByte);
+        Measure::SetMarkerTime(ch, 1, (int16)secondIntersection - firstByte);
     }
 
     return period[(int)(ch)];
@@ -489,7 +489,7 @@ int CalculatePeriodAccurately(Chan::E ch)
 {
     static int period[2];
 
-    int *sums = static_cast<int *>(std::malloc((uint)(nBytes)));
+    int *sums = (int *)std::malloc((uint)(nBytes));
 
     if (sums == 0)
     {
@@ -652,8 +652,8 @@ float CalculateDurationPlus(Chan::E ch)
 
     if (S_MEAS_MARKED == TypeMeasure::DurationPlus)
     {
-        Measure::SetMarkerTime(ch, 0, static_cast<int16>(firstIntersection) - firstByte);
-        Measure::SetMarkerTime(ch, 1, static_cast<int16>(secondIntersection) - firstByte);
+        Measure::SetMarkerTime(ch, 0, (int16)firstIntersection - firstByte);
+        Measure::SetMarkerTime(ch, 1, (int16)secondIntersection - firstByte);
     }
 
     EXIT_IF_ERROR_FLOAT(secondIntersection); //-V2507
@@ -680,8 +680,8 @@ float CalculateDurationMinus(Chan::E ch)
 
     if (S_MEAS_MARKED == TypeMeasure::DurationMinus)
     {
-        Measure::SetMarkerTime(ch, 0, static_cast<int16>(firstIntersection) - firstByte);
-        Measure::SetMarkerTime(ch, 1, static_cast<int16>(secondIntersection) - firstByte);
+        Measure::SetMarkerTime(ch, 0, (int16)firstIntersection - firstByte);
+        Measure::SetMarkerTime(ch, 1, (int16)secondIntersection - firstByte);
     }
 
     EXIT_IF_ERROR_FLOAT(secondIntersection); //-V2507
@@ -721,8 +721,8 @@ float CalculateTimeNarastaniya(Chan::E ch)   /** \todo Здесь, возможно, нужно ув
     {
         Measure::SetMarkerVoltage(ch, 0, max09);
         Measure::SetMarkerVoltage(ch, 1, min01);
-        Measure::SetMarkerTime(ch, 0, static_cast<int16>(firstIntersection) - firstByte);
-        Measure::SetMarkerTime(ch, 1, static_cast<int16>(secondIntersection) - firstByte);
+        Measure::SetMarkerTime(ch, 0, (int16)firstIntersection - firstByte);
+        Measure::SetMarkerTime(ch, 1, (int16)secondIntersection - firstByte);
     }
 
     return retValue;
@@ -759,8 +759,8 @@ float CalculateTimeSpada(Chan::E ch)        // \todo Аналогично времени нарастан
     {
         Measure::SetMarkerVoltage(ch, 0, max09);
         Measure::SetMarkerVoltage(ch, 1, min01);
-        Measure::SetMarkerTime(ch, 0, static_cast<int16>(firstIntersection) - DisplayOsci::ShiftInMemory::Get());
-        Measure::SetMarkerTime(ch, 1, static_cast<int16>(secondIntersection) - DisplayOsci::ShiftInMemory::Get());
+        Measure::SetMarkerTime(ch, 0, (int16)firstIntersection - DisplayOsci::ShiftInMemory::Get());
+        Measure::SetMarkerTime(ch, 1, (int16)secondIntersection - DisplayOsci::ShiftInMemory::Get());
     }
 
     return retValue;
@@ -821,7 +821,7 @@ float CalculateMinSteadyRel(Chan::E ch)
                     numSums++; //-V127
                 }
             }
-            min[(int)(ch)] = static_cast<float>(sum) / numSums;
+            min[(int)(ch)] = (float)sum / numSums;
 
             float pic = CalculatePicRel(ch);
             if (pic == Float::ERROR) //-V550 //-V2550
@@ -861,7 +861,7 @@ float CalculateMinSteadyRel(Chan::E ch)
                         }
                     }
                 }
-                min[(int)(ch)] = (numDeleted > numMin / 2.0F) ? CalculateMinRel(ch) : static_cast<float>(sum) / numSums;
+                min[(int)(ch)] = (numDeleted > numMin / 2.0F) ? CalculateMinRel(ch) : (float)sum / numSums;
             }
         }
         minSteadyIsCalculating[(int)(ch)] = true;
@@ -901,7 +901,7 @@ float CalculateMaxSteadyRel(Chan::E ch)
                     numSums++; //-V127
                 }
             }
-            max[(int)(ch)] = static_cast<float>(sum) / numSums;
+            max[(int)(ch)] = (float)sum / numSums;
 
             float pic = CalculatePicRel(ch);
 
@@ -942,7 +942,7 @@ float CalculateMaxSteadyRel(Chan::E ch)
                         }
                     }
                 }
-                max[(int)(ch)] = (numDeleted > numMax / 2) ? CalculateMaxRel(ch) : static_cast<float>(sum) / numSums;
+                max[(int)(ch)] = (numDeleted > numMax / 2) ? CalculateMaxRel(ch) : (float)sum / numSums;
             }
         }
         maxSteadyIsCalculating[(int)(ch)] = true;
@@ -1267,7 +1267,7 @@ void InterpolationSinX_X(uint8 *data, int numPoints, TBase::E tBase)
     }
 
     float deltaX = Math::PI_F;
-    float stepX0 = Math::PI_F / static_cast<float>(delta);
+    float stepX0 = Math::PI_F / (float)delta;
     float x0 = Math::PI_F - stepX0;
     int num = 0;
     

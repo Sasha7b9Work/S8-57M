@@ -116,4 +116,4 @@ DEF_PAGE_5( pChoice,
 )
 
 
-const Page *const PageRecorder::Show::Choice::self = static_cast<const Page *>(&pChoice);
+const Page *const PageRecorder::Show::Choice::self = (const Page *)&pChoice;

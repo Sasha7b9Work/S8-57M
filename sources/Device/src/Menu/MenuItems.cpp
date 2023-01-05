@@ -94,7 +94,7 @@ bool Item::IsCurrentItem() const
 
 void Item::Open(bool open) const
 {
-    Page *parent = const_cast<Page *>(Keeper());
+    Page *parent = (Page *)Keeper();
     if (parent)
     {
         parent->SetPosActItem(open ? (parent->PosCurrentItem() | 0x80) : (parent->PosCurrentItem() & 0x7f));
@@ -121,7 +121,7 @@ bool Item::IsOpened() const
     }
     else
     {
-        result = (Menu::Position::ActItem(static_cast<PageName::E>(parent->OwnData()->name)) & 0x80) != 0;
+        result = (Menu::Position::ActItem((PageName::E)parent->OwnData()->name) & 0x80) != 0;
     }
 
     return result;
@@ -130,7 +130,7 @@ bool Item::IsOpened() const
 
 void Item::SetCurrent(bool active) const
 {
-    Page *page = const_cast<Page *>(Keeper());
+    Page *page = (Page *)Keeper();
 
     if (page)
     {
@@ -144,7 +144,7 @@ void Item::SetCurrent(bool active) const
             {
                 if (page->GetItem(i) == this)
                 {
-                    page->SetPosActItem(static_cast<int8>(i));
+                    page->SetPosActItem((int8)i);
                     return;
                 }
             }
@@ -314,7 +314,7 @@ bool Page::IsSubPage(const Page *parent)
             break;
         }
 
-        keep = (static_cast<Item *>(const_cast<Page *>(keep)))->Keeper();
+        keep = ((Item *)((Page *)keep))->Keeper();
     }
 
     return result;
@@ -323,7 +323,7 @@ bool Page::IsSubPage(const Page *parent)
 
 PageName::E Page::GetName() const
 {
-    return static_cast<PageName::E>(OwnData()->name);
+    return (PageName::E)OwnData()->name;
 }
 
 
@@ -365,19 +365,19 @@ void Page::SetAsCurrent() const
 
 bool Page::CurrentItemIsOpened() const
 {
-    return _GET_BIT(Menu::Position::ActItem(static_cast<PageName::E>(OwnData()->name)), 7) == 1;
+    return _GET_BIT(Menu::Position::ActItem((PageName::E)OwnData()->name), 7) == 1;
 }
 
 
 void Page::SetPosActItem(int8 pos) const
 {
-    Menu::Position::ActItem(static_cast<PageName::E>(OwnData()->name)) = pos;
+    Menu::Position::ActItem((PageName::E)OwnData()->name) = pos;
 }
 
 
 int8 Page::PosCurrentItem() const
 {
-    return Menu::Position::ActItem(static_cast<PageName::E>(OwnData()->name)) & 0x7f;
+    return Menu::Position::ActItem((PageName::E)OwnData()->name) & 0x7f;
 }
 
 
@@ -387,7 +387,7 @@ Item *Page::GetItem(int numItem) const
 
     if (numItem < NumItems())
     {
-        result = const_cast<Item *>(OwnData()->items[numItem]);
+        result = (Item *)OwnData()->items[numItem];
     }
 
     return result;
@@ -491,7 +491,7 @@ void Governor::NextPosition() const
 {
     if (Menu::OpenedItem() == this)
     {
-        Math::CircleIncrease<int8>(&currentDigit, 0, static_cast<int8>(NumDigits() - 1));
+        Math::CircleIncrease<int8>(&currentDigit, 0, (int8)(NumDigits() - 1));
     }
 }
 
@@ -581,7 +581,7 @@ void Governor::ChangeValue(int16 delta)
 
     int16 oldValue = GetValue();
 
-    int16 newValue = GetValue() + static_cast<int16>(Math::Sign(delta) * Math::Pow10(currentDigit));
+    int16 newValue = GetValue() + (int16)(Math::Sign(delta) * Math::Pow10(currentDigit));
 
     LIMITATION(newValue, OwnData()->min, OwnData()->max);
 
@@ -633,7 +633,7 @@ void Governor::PrevPosition()
 {
     if (Menu::OpenedItem() == this)
     {
-        Math::CircleDecrease<int8>(&currentDigit, 0, static_cast<int8>(NumDigits() - 1));
+        Math::CircleDecrease<int8>(&currentDigit, 0, (int8)(NumDigits() - 1));
     }
 }
 
@@ -744,7 +744,7 @@ void Choice::ChangeIndex(int delta) const
             index = NumChoices() - 1;
         }
     }
-    *OwnData()->cell = static_cast<int8>(index);
+    *OwnData()->cell = (int8)index;
     OwnData()->handlerChange(IsActive());
     Beeper::GovernorChangedValue();
     DisplayOsci::SetFlagRedraw();
@@ -782,7 +782,7 @@ void Choice::StartChange(int delta) const
         }
         else
         {
-            tsChoice.address = const_cast<void *>(static_cast<const void *>(this));
+            tsChoice.address = (void *)this;
             tsChoice.timeStart = TIME_MS;
             tsChoice.dir = delta > 0 ? DIRECTION::INCREASE : DIRECTION::DECREASE;
         }
@@ -816,7 +816,7 @@ float Choice::Step() const
             {
                 return delta;
             }
-            Math::CircleIncrease<int8>(&index, 0, static_cast<int8>(NumChoices()) - 1);
+            Math::CircleIncrease<int8>(&index, 0, (int8)NumChoices() - 1);
         }
         else if (tsChoice.dir == DIRECTION::DECREASE)
         {
@@ -826,7 +826,7 @@ float Choice::Step() const
             {
                 return delta;
             }
-            Math::CircleDecrease<int8>(&index, 0, static_cast<int8>(NumChoices()) - 1);
+            Math::CircleDecrease<int8>(&index, 0, (int8)NumChoices() - 1);
         }
         else
         {
@@ -857,7 +857,7 @@ pchar Choice::NameNextSubItem() const
 
     if (OwnData()->cell != 0)
     {
-        int index = *(static_cast<int8 *>(OwnData()->cell)) + 1;
+        int index = *((int8 *)OwnData()->cell) + 1;
 
         if (index == NumChoices())
         {
@@ -877,7 +877,7 @@ pchar Choice::NamePrevSubItem() const
 
     if (OwnData()->cell != 0)
     {
-        int index = *(static_cast<int8 *>(OwnData()->cell)) - 1;
+        int index = *((int8 *)OwnData()->cell) - 1;
 
         if (index < 0)
         {
@@ -994,11 +994,11 @@ bool GovernorColor::HandlerKey(const KeyEvent &event)
 
 const DataGovernorColor *GovernorColor::OwnData() const
 {
-    return static_cast<const DataGovernorColor *>(data->ad);
+    return (const DataGovernorColor *)data->ad;
 }
 
 
 const DataPage* Page::OwnData() const
 {
-    return static_cast<const DataPage*>(data->ad);
+    return (const DataPage*)data->ad;
 }

@@ -112,4 +112,4 @@ DEF_PAGE_5( pRecorder,                                                          
     PageName::Recorder, &PageFunction::self, Item::Active, Page::NormalTitle, OnOpenClose_Recorder, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page *const PageRecorder::self = static_cast<const Page *>(&pRecorder);
+const Page *const PageRecorder::self = (const Page *)&pRecorder;

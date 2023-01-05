@@ -62,7 +62,7 @@ bool Measure::IsActive()
 
 void Measure::SetActive(int row, int col)
 {
-    AutoMeasurements::posActive = static_cast<int8>(row * TableMeasures::NumCols() + col);
+    AutoMeasurements::posActive = (int8)(row * TableMeasures::NumCols() + col);
 }
 
 

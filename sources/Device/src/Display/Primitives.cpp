@@ -188,8 +188,8 @@ int Text::DrawCharWithLimitation(int eX, int eY, char _symbol, int limitX, int l
 {
     uint8 symbol = (uint8)(_symbol);
 
-    int8 width = static_cast<int8>(DFont::GetWidth(symbol));
-    int8 height = static_cast<int8>(DFont::GetHeight());
+    int8 width = (int8)DFont::GetWidth(symbol);
+    int8 height = (int8)DFont::GetHeight();
 
     for (int b = 0; b < height; b++)
     {
@@ -376,7 +376,7 @@ static bool FindNextTransfer(pchar letters, int8 *lettersInSyllable)
 #define VOWEL       0   // Гласная
 #define CONSONANT   1   // Согласная
 
-    *lettersInSyllable = static_cast<int8>(std::strlen(letters));
+    *lettersInSyllable = (int8)std::strlen(letters);
 
     if (std::strlen(letters) <= 3) //-V1051
     {

@@ -114,7 +114,7 @@ USBH_StatusTypeDef USBH_LL_SubmitURB(USBH_HandleTypeDef *phost, uint8_t pipe, ui
 
 USBH_URBStateTypeDef USBH_LL_GetURBState(USBH_HandleTypeDef *phost, uint8_t pipe)
 {
-    return static_cast<USBH_URBStateTypeDef>(HAL_HCD_HC_GetURBState(reinterpret_cast<HCD_HandleTypeDef *>(phost->pData), pipe));
+    return (USBH_URBStateTypeDef)HAL_HCD_HC_GetURBState(reinterpret_cast<HCD_HandleTypeDef *>(phost->pData), pipe);
 }
 
 

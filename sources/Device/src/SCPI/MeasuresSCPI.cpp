@@ -63,7 +63,7 @@ static pchar FuncSource(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(source[S_MEAS_SOURCE]));
 
-    SCPI_PROCESS_ARRAY(source, S_MEAS_SOURCE = static_cast<MeasuresSource::E>(i));
+    SCPI_PROCESS_ARRAY(source, S_MEAS_SOURCE = (MeasuresSource::E)i);
 }
 
 
@@ -111,7 +111,7 @@ static pchar Meas_FuncValue(pchar buffer)
 
     SCPI_RUN_IF_END(AutoMeasuresSender::DesignateForSending(TypeMeasure::TimeNarastaniya));
 
-    SCPI_PROCESS_ARRAY(values, AutoMeasuresSender::DesignateForSending(static_cast<TypeMeasure::E>(i)));
+    SCPI_PROCESS_ARRAY(values, AutoMeasuresSender::DesignateForSending((TypeMeasure::E)i));
 }
 
 

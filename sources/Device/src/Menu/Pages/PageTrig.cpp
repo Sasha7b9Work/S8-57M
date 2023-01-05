@@ -100,4 +100,4 @@ DEF_PAGE_5( pTrig,                                                              
     PageName::Trig, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page * const PageTrig::self = static_cast<const Page *>(&pTrig);
+const Page * const PageTrig::self = (const Page *)&pTrig;

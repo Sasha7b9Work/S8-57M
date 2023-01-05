@@ -46,4 +46,4 @@ DEF_PAGE_2( pCalibrate,                                                         
     PageName::Service_Calibrator, &PageService::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page * const PageService::Calibrate::self = static_cast<const Page *>(&pCalibrate);
+const Page * const PageService::Calibrate::self = (const Page *)&pCalibrate;

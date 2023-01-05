@@ -173,16 +173,16 @@ static bool FindFrequencyForRanges(Chan::E ch, uint timeWaitMS, float *outFreq, 
     {
         float frequency1 = 0.0F;
 
-        if (FindFrequencyForRange(ch, static_cast<Range::E>(range), timeWaitMS, &frequency1))
+        if (FindFrequencyForRange(ch, (Range::E)range, timeWaitMS, &frequency1))
         {
             float frequency2 = 0.0F;
 
-            if (FindFrequencyForRange(ch, static_cast<Range::E>(range), timeWaitMS, &frequency2))
+            if (FindFrequencyForRange(ch, (Range::E)range, timeWaitMS, &frequency2))
             {
                 if (Math::FloatsIsEquals(frequency1, frequency2, 0.1F))
                 {
                     *outFreq = (frequency1 + frequency2) / 2.0F;
-                    *outRange = static_cast<Range::E>(range > 0 ? (range - 1) : range);
+                    *outRange = (Range::E)(range > 0 ? (range - 1) : range);
                     result = true;
                     break;
                 }
@@ -414,7 +414,7 @@ float AutoFPGA::ReadAndCalculateMinMax(Chan::E ch)
     uint8 max = Math::MaxFromArray(buffer.data, 10, 290);
     uint8 min = Math::MinFromArray(buffer.data, 10, 290);
 
-    float delta = static_cast<float>(max - min) / static_cast<float>(VALUE::MAX - VALUE::MIN);
+    float delta = (float)(max - min) / (float)(VALUE::MAX - VALUE::MIN);
 
     return delta;
 }

@@ -109,7 +109,7 @@ static pString modes[] =
 
 static void SetSampleType(int i)
 {
-    PageTime::SetSampleTime(static_cast<SampleType::E>(i));
+    PageTime::SetSampleTime((SampleType::E)i);
 }
 
 pchar SCPI_TBASE::FuncMode(pchar buffer)
@@ -149,7 +149,7 @@ pchar SCPI_TBASE::FuncPeakDet(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(peakdets[S_PEAK_DET]));
 
-    SCPI_PROCESS_ARRAY(peakdets, PeakDetMode::Set(static_cast<PeakDetMode::E>(i)));
+    SCPI_PROCESS_ARRAY(peakdets, PeakDetMode::Set((PeakDetMode::E)i));
 }
 
 
@@ -157,7 +157,7 @@ pchar SCPI_TBASE::FuncScale(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(tBaseNames[S_TIME_BASE]));
 
-    SCPI_PROCESS_ARRAY(tBaseNames, TBase::Set(static_cast<TBase::E>(i)));
+    SCPI_PROCESS_ARRAY(tBaseNames, TBase::Set((TBase::E)i));
 }
 
 
@@ -165,7 +165,7 @@ pchar SCPI_TBASE::FuncTPos(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(tposes[S_TPOS]));
 
-    SCPI_PROCESS_ARRAY(tposes, TPos::Set(static_cast<TPos::E>(i)));
+    SCPI_PROCESS_ARRAY(tposes, TPos::Set((TPos::E)i));
 }
 
 

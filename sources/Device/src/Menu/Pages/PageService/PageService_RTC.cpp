@@ -259,4 +259,4 @@ DEF_PAGE_5( pSet,
     &PageService::self, Item::Active, Page::NormalTitle, OnOpenClose_Set, BeforeDraw_Set, HandlerKey_Set
 )
 
-const Page * const PageRTC::self = static_cast<const Page *>(&pSet);
+const Page * const PageRTC::self = (const Page *)&pSet;

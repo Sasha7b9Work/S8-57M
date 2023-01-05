@@ -75,4 +75,4 @@ DEF_PAGE_4( pHelp,                                                              
     PageName::Help, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, HelpContent::Draw, HandlerKey_Help
 )
 
-const Page *const PageHelp::self = static_cast<const Page *>(&pHelp);
+const Page *const PageHelp::self = (const Page *)&pHelp;

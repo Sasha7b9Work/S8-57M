@@ -33,21 +33,21 @@ static char *IntegerToString(int value, bool alwaysSign, int numMinFields, char 
 
 Float::Float(float val) : value(val)
 {
-//    if (value == std::numeric_limits<float>::infinity())
-//    {
-//        LOG_ERROR("Неправильное число");
-//    }
+    //    if (value == std::numeric_limits<float>::infinity())
+    //    {
+    //        LOG_ERROR("Неправильное число");
+    //    }
 }
 
 
-char* Hex::ToBin(int depth, char buffer[36]) const
+char *Hex::ToBin(int depth, char buffer[36]) const
 {
     int byte = 3;       // С этого байта начинаем вывод. Т.к. в начале строки - старший байт, в конце - младший
 
     switch (depth)
     {
-        case 8: byte = 0;  break;
-        case 16: byte = 1; break;
+    case 8: byte = 0;  break;
+    case 16: byte = 1; break;
     }
 
     char *pointer = buffer;
@@ -67,7 +67,7 @@ char* Hex::ToBin(int depth, char buffer[36]) const
 }
 
 
-char* Hex::BinToString8(uint8 val, char buffer[9]) const
+char *Hex::BinToString8(uint8 val, char buffer[9]) const
 {
     for (int bit = 0; bit < 8; bit++)
     {
@@ -78,16 +78,16 @@ char* Hex::BinToString8(uint8 val, char buffer[9]) const
 }
 
 
-char* Hex::ToHex(int depth, char buffer[9]) const
+char *Hex::ToHex(int depth, char buffer[9]) const
 {
     switch (depth)
     {
-        case 8:     std::sprintf(buffer, "%02X", value); break;
-        case 16:    std::sprintf(buffer, "%04X", value); break;
-        case 32:    std::sprintf(buffer, "%08X", value); break;
-        default:
-            // тут ничего не делаем
-            break;
+    case 8:     std::sprintf(buffer, "%02X", value); break;
+    case 16:    std::sprintf(buffer, "%04X", value); break;
+    case 32:    std::sprintf(buffer, "%08X", value); break;
+    default:
+        // тут ничего не делаем
+        break;
     }
 
     return buffer;
@@ -220,10 +220,10 @@ char *TimeToString(float time, bool alwaysSign, char buffer[20])
 
     int num = 0;
 
-    if (absTime + 0.5e-10F < 1e-6F)     { }
+    if (absTime + 0.5e-10F < 1e-6F) {}
     else if (absTime + 0.5e-7F < 1e-3F) { num = 1; }
-    else if (absTime + 0.5e-3F < 1.0F)  { num = 2; }
-    else                                { num = 3; }
+    else if (absTime + 0.5e-3F < 1.0F) { num = 2; }
+    else { num = 3; }
 
     std::strcpy(buffer, Float(time * factor[num]).ToString(alwaysSign, 4).c_str());
     std::strcat(buffer, suffix[num]);
@@ -231,7 +231,7 @@ char *TimeToString(float time, bool alwaysSign, char buffer[20])
 }
 
 
-char* Time::ToStringAccuracy(bool alwaysSign, char buffer[20], int numDigits) const
+char *Time::ToStringAccuracy(bool alwaysSign, char buffer[20], int numDigits) const
 {
     float time = value;
 
@@ -275,7 +275,7 @@ String Voltage::ToString(bool alwaysSign) const
 }
 
 
-static char* VoltageToString(float voltage, bool alwaysSign, char buffer[20])
+static char *VoltageToString(float voltage, bool alwaysSign, char buffer[20])
 {
     if (Math::IsEquals(voltage, Float::ERROR))
     {
@@ -367,7 +367,7 @@ char *Current::ToString(char buffer[50]) const
 }
 
 
-char* Phase::ToString(char bufferOut[20]) const
+char *Phase::ToString(char bufferOut[20]) const
 {
     std::sprintf(bufferOut, "%s\xa8", Float(value).ToString(false, 4).c_str());
     return bufferOut;
@@ -410,11 +410,11 @@ static char *FloatToString(float value, bool alwaysSign, int numDigits, char buf
         std::strcpy(bufferOut, String::_ERROR);
         return bufferOut;
     }
-    
+
     value = Math::RoundFloat(value, numDigits);
-    
+
     char *pBuffer = bufferOut;
-    
+
     if (value < 0)
     {
         *pBuffer++ = '-';
@@ -423,24 +423,24 @@ static char *FloatToString(float value, bool alwaysSign, int numDigits, char buf
     {
         *pBuffer++ = '+';
     }
-    
+
     char format[10] = "%4.2f\0\0";
-    
-    format[1] = (char)(numDigits) + 0x30;
-    
+
+    format[1] = (char)(numDigits)+0x30;
+
     int numDigitsInInt = Math::DigitsInIntPart(value);
-    
+
     format[3] = (char)((numDigits - numDigitsInInt) + 0x30);
     if (numDigits == numDigitsInInt)
     {
         format[5] = '.';
     }
-    
+
     float absValue = std::fabsf(value);
-    std::sprintf(pBuffer, (char *)(format), static_cast<double>(absValue));
-    
-    float val = static_cast<float>(std::atof(pBuffer)); //-V2508
-    
+    std::sprintf(pBuffer, (char *)(format), (double)absValue);
+
+    float val = (float)std::atof(pBuffer); //-V2508
+
     if (Math::DigitsInIntPart(val) != numDigitsInInt)
     {
         numDigitsInInt = Math::DigitsInIntPart(val);
@@ -449,22 +449,22 @@ static char *FloatToString(float value, bool alwaysSign, int numDigits, char buf
         {
             format[5] = '.';
         }
-        std::sprintf(pBuffer, format, static_cast<double>(value));
+        std::sprintf(pBuffer, format, (double)value);
     }
-    
+
     bool signExist = alwaysSign || value < 0;
     while (std::strlen(bufferOut) < (uint)(numDigits + (signExist ? 2 : 1)))
     {
         std::strcat(bufferOut, "0");
     }
-    
+
 #ifdef WIN32
 
     char *pointer = bufferOut;  //\
-                                //|
-    while(*pointer)             //|
+                                    //|
+    while (*pointer)             //|
     {                           //| Это нужно на PC, где вместо точки может быть запятая
-        if(*pointer == ',')     //| 
+        if (*pointer == ',')     //| 
         {                       //|
             *pointer = '.';     //|
         }                       //|

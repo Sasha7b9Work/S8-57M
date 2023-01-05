@@ -193,7 +193,7 @@ void DisplayOsci::PainterData::DrawSpectrum(const uint8 *dataIn, int numPoints, 
     int y0 = 0;
     int y1 = 0;
 
-    float *spectrum = static_cast<float *>(std::malloc(numPoints * sizeof(float)));
+    float *spectrum = (float *)std::malloc(numPoints * sizeof(float));
 
     if (spectrum)
     {
@@ -301,7 +301,7 @@ void DisplayOsci::PainterData::DrawChannel(Chan::E ch)
 
     int left = Grid::Left();
 
-    float scale = static_cast<float>(Grid::Height()) / (VALUE::MAX - VALUE::MIN);
+    float scale = (float)Grid::Height() / (VALUE::MAX - VALUE::MIN);
 
     if (S_FFT_ENABLED)
     {

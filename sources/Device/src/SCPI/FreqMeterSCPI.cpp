@@ -63,7 +63,7 @@ static void SetNumberPeriods(int i)
 {
     if (S_FREQ_MODE_MEASURE_IS_PERIOD)
     {
-        S_FREQ_NUMBER_PERIODS = static_cast<FreqMeter::NumberPeriods::E>(i);
+        S_FREQ_NUMBER_PERIODS = (FreqMeter::NumberPeriods::E)i;
 
         FreqMeter::LoadPeriodSettings();
     }
@@ -90,7 +90,7 @@ static void SetLabels(int i)
 {
     if (S_FREQ_MODE_MEASURE_IS_PERIOD)
     {
-        S_FREQ_FREQ_CLC = static_cast<FreqMeter::FreqClc::E>(i);
+        S_FREQ_FREQ_CLC = (FreqMeter::FreqClc::E)i;
         
         FreqMeter::LoadPeriodSettings();
     }
@@ -113,7 +113,7 @@ static pString measures[] =
 
 static void SetMeasure(int i)
 {
-    S_FREQ_MODE_MEASURE = static_cast<FreqMeter::ModeMeasure::E>(i);
+    S_FREQ_MODE_MEASURE = (FreqMeter::ModeMeasure::E)i;
     PageFreqMeter::Init();
 }
 
@@ -159,7 +159,7 @@ static void SetTime(int i)
 {
     if(S_FREQ_MODE_MEASURE_IS_FREQUENCY)
     {
-        S_FREQ_TIME_COUNTING = static_cast<FreqMeter::TimeCounting::E>(i);
+        S_FREQ_TIME_COUNTING = (FreqMeter::TimeCounting::E)i;
     
         FreqMeter::LoadFreqSettings();
     }

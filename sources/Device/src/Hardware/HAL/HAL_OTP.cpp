@@ -24,7 +24,7 @@ int HAL_OTP::GetSerialNumber(char buffer[17])
         return allShotsMAX;
     }
 
-    std::strcpy(buffer, const_cast<pchar >((char *)(address)));
+    std::strcpy(buffer, (pchar)address);
 
     return allShotsMAX - (address - (uint8 *)FLASH_OTP_BASE) / 16 - 1; //-V566
 }

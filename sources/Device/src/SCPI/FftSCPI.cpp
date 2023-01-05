@@ -82,7 +82,7 @@ static pchar FFT_FuncScale(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(scale[S_FFT_SCALE]));
 
-    SCPI_PROCESS_ARRAY(scale, S_FFT_SCALE = static_cast<ScaleFFT::E>(i));
+    SCPI_PROCESS_ARRAY(scale, S_FFT_SCALE = (ScaleFFT::E)i);
 }
 
 
@@ -98,7 +98,7 @@ static pchar FuncSource(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(source[S_FFT_SOURCE]));
 
-    SCPI_PROCESS_ARRAY(source, S_FFT_SOURCE = static_cast<SourceFFT::E>(i));
+    SCPI_PROCESS_ARRAY(source, S_FFT_SOURCE = (SourceFFT::E)i);
 }
 
 
@@ -115,7 +115,7 @@ static pchar FuncWindow(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(window[S_FFT_WINDOW]));
 
-    SCPI_PROCESS_ARRAY(window, S_FFT_WINDOW = static_cast<WindowFFT::E>(i));
+    SCPI_PROCESS_ARRAY(window, S_FFT_WINDOW = (WindowFFT::E)i);
 }
 
 

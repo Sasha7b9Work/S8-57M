@@ -147,7 +147,7 @@ int DisplayRecorder::Y(int value)
 
 char *DisplayRecorder::DeltaTime(char buffer[30])
 {
-    float delta = std::fabsf(static_cast<float>(posCursor[0] - posCursor[1])) * Recorder::ScaleX::TimeForPointMS() / 1000.0F;
+    float delta = std::fabsf((float)(posCursor[0] - posCursor[1])) * Recorder::ScaleX::TimeForPointMS() / 1000.0F;
 
     std::strcpy(buffer, Time(delta).ToString(false).c_str());
 
@@ -399,7 +399,7 @@ void DisplayRecorder::DrawMemoryWindow()
 
     if (numPoints > 320)
     {
-        x = (int)(static_cast<float>(startPoint) / numPoints * 320.0F + 0.5F);
+        x = (int)((float)startPoint / numPoints * 320.0F + 0.5F);
     }
 
     Region(width, 10).DrawBounded(x, 0, Color::BACK, Color::FILL);

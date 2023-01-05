@@ -69,4 +69,4 @@ DEF_PAGE_1 ( pInfo,
     PageName::Service_Info, &PageService::self, Item::Active, Page::NormalTitle, OnOpenClose_Page, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page *const PageService::Information::self = static_cast<const Page *>(&pInfo);
+const Page *const PageService::Information::self = (const Page *)&pInfo;

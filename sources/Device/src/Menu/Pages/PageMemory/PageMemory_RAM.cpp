@@ -13,7 +13,7 @@
 
 static void OnPress_Next()
 {
-    Math::CircleIncrease<int16>(&RAM::currentSignal, 0, static_cast<int16>(RAM::NumberDatas()) - 1);
+    Math::CircleIncrease<int16>(&RAM::currentSignal, 0, (int16)RAM::NumberDatas() - 1);
 }
 
 static void Draw_Next(int x, int y)
@@ -30,7 +30,7 @@ DEF_GRAPH_BUTTON( bNext,                                                        
 
 static void OnPress_Prev()
 {
-    Math::CircleDecrease<int16>(&RAM::currentSignal, 0, static_cast<int16>(RAM::NumberDatas()) - 1);
+    Math::CircleDecrease<int16>(&RAM::currentSignal, 0, (int16)RAM::NumberDatas() - 1);
 }
 
 static void Draw_Prev(int x, int y)
@@ -92,4 +92,4 @@ DEF_PAGE_2( pRAM,                                                               
     &PageMemory::self, Item::Active, Page::NormalTitle, OnOpenClose_RAM, AfterDraw_RAM, HandlerKey_RAM
 )
 
-const Page *const PageRAM::self = static_cast<const Page *>(&pRAM);
+const Page *const PageRAM::self = (const Page *)&pRAM;

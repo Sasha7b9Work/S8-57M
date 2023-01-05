@@ -55,4 +55,4 @@ DEF_PAGE_3( pSettings,                                                          
     PageName::Display_Settings, &PageDisplay::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page * const PageDisplay::Settings::self = static_cast<const Page *>(&pSettings);
+const Page * const PageDisplay::Settings::self = (const Page *)&pSettings;

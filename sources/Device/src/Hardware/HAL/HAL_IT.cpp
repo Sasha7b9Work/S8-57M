@@ -77,7 +77,7 @@ void EXTI9_5_IRQHandler(void)
 // VCP
 void OTG_FS_IRQHandler()
 {
-    HAL_PCD_IRQHandler(static_cast<PCD_HandleTypeDef *>(VCP::handlePCD));
+    HAL_PCD_IRQHandler((PCD_HandleTypeDef *)VCP::handlePCD);
 }
 
 

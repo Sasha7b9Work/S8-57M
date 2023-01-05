@@ -107,7 +107,7 @@ DEF_PAGE_6( pChanA,                                                             
     PageName::ChannelA, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page * const PageChannelA::self = static_cast<const Page *>(&pChanA);
+const Page * const PageChannelA::self = (const Page *)&pChanA;
 
 
 DEF_CHOICE_2( cInputB,                                                                                                                                               //---  ¿Õ¿À 2 - ¬ıÓ‰ ---
@@ -190,4 +190,4 @@ DEF_PAGE_6( pChanB,                                                             
     PageName::ChannelB, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page * const PageChannelB::self = static_cast<const Page *>(&pChanB);
+const Page * const PageChannelB::self = (const Page *)&pChanB;

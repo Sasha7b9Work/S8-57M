@@ -10,7 +10,7 @@ static int16 shift2 = setNRST._exShift[1][0];
 
 static void OnChange_Shift1()
 {
-    setNRST.SetExtraShift(static_cast<int8>(shift1));
+    setNRST.SetExtraShift((int8)shift1);
 }
 
 DEF_GOVERNOR( gExShift1,
@@ -22,7 +22,7 @@ DEF_GOVERNOR( gExShift1,
 
 static void OnChange_Shift2()
 {
-    setNRST.SetExtraShift(static_cast<int8>(shift2));
+    setNRST.SetExtraShift((int8)shift2);
 }
 
 
@@ -41,4 +41,4 @@ DEF_PAGE_2( pADC,
     PageName::Debug_ADC, &PageDebug::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page * const PageDebug::PageADC::self = static_cast<const Page *>(&pADC);
+const Page * const PageDebug::PageADC::self = (const Page *)&pADC;

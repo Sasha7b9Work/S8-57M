@@ -9,7 +9,7 @@
 #include "Utils/Averager.h"
 
 
-static const float MAX_ADC_REL = static_cast<float>((1 << 12) - 1);     // Максимальное значение, которое возможно считать с АЦП
+static const float MAX_ADC_REL = (float)((1 << 12) - 1);     // Максимальное значение, которое возможно считать с АЦП
 static const float MAX_ADC_ABS = 3.0F;                                  // Напряжение, соответствующее MAX_ADC_REL
 const float Battery::SHUTDOWN_VOLTAGE = 5.4F;
 
@@ -56,17 +56,17 @@ float Battery::GetVoltage()
 
     uint akk = HAL_ADC1::ValueBattery();
 
-    averager.Push(static_cast<float>(akk));
+    averager.Push((float)akk);
 
     isBusy = false;
 
-    return BatteryADC_ToVoltage(static_cast<float>(averager.Value()));
+    return BatteryADC_ToVoltage((float)averager.Value());
 }
 
 
 float Battery::GetVoltageAverage()
 {
-    return BatteryADC_ToVoltage(static_cast<float>(averager.Value()));
+    return BatteryADC_ToVoltage((float)averager.Value());
 }
 
 

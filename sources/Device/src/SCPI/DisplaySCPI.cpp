@@ -96,7 +96,7 @@ static pchar FuncAccumulation(pchar buffer)
 
     SCPI_IF_BEGIN_WITH_THEN(" CLEAR", PageDisplay::Accumulation::OnPress_Accumulation_Clear());
 
-    SCPI_PROCESS_ARRAY(accumulationDirect, S_DISP_ENUM_ACCUM = static_cast<ENumAccum::E>(i));
+    SCPI_PROCESS_ARRAY(accumulationDirect, S_DISP_ENUM_ACCUM = (ENumAccum::E)i);
 }
 
 
@@ -162,7 +162,7 @@ static pchar FuncFPS(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(fps[S_DISP_ENUM_FPS]));
 
-    SCPI_PROCESS_ARRAY(fps, S_DISP_ENUM_FPS = static_cast<ENumSignalsInSec::E>(i));
+    SCPI_PROCESS_ARRAY(fps, S_DISP_ENUM_FPS = (ENumSignalsInSec::E)i);
 }
 
 
@@ -170,7 +170,7 @@ static pchar FuncGrid(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(grids[S_DISP_TYPE_GRID]));
 
-    SCPI_PROCESS_ARRAY(grids, PageDisplay::SetTypeGrid(static_cast<TypeGrid::E>(i)));
+    SCPI_PROCESS_ARRAY(grids, PageDisplay::SetTypeGrid((TypeGrid::E)i));
 }
 
 
@@ -178,7 +178,7 @@ static pchar FuncMapping(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(mapping[S_DISP_MAPPING]));
 
-    SCPI_PROCESS_ARRAY(mapping, S_DISP_MAPPING = static_cast<DisplayMapping::E>(i));
+    SCPI_PROCESS_ARRAY(mapping, S_DISP_MAPPING = (DisplayMapping::E)i);
 }
 
 

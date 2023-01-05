@@ -41,7 +41,7 @@ struct TrigInput
 
 
 #define S_TRIG_POLARITY     (set.trig._polarity)
-#define S_TRIG_POLARITY_U8  (static_cast<uint8>(S_TRIG_POLARITY))
+#define S_TRIG_POLARITY_U8  ((uint8)(S_TRIG_POLARITY))
 struct TrigPolarity
 {
     enum E

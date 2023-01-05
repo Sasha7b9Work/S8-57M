@@ -89,7 +89,7 @@ static void DebugShowSetInfo_Draw()
 
         //    for (int ch = 0; ch < 2; ch++)
         //    {
-        //        String("%f", ExtraStretch::GetValue(static_cast<Chan::E>(ch))).Draw(x, y + dY * ch);
+        //        String("%f", ExtraStretch::GetValue((Chan::E>(ch))).Draw(x, y + dY * ch);
         //    }
 
         y += dY;
@@ -121,7 +121,7 @@ DEF_PAGE_5( pSettings,                                                          
     &PageDebug::self, Item::Active, Page::NormalTitle, OnOpenClose_Settings, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page * const PageDebug::PageSettings::self = static_cast<const Page *>(&pSettings);
+const Page * const PageDebug::PageSettings::self = (const Page *)&pSettings;
 
 
 
@@ -246,7 +246,7 @@ DEF_PAGE_2( pSerialNumber,                                                      
     &PageDebug::self, Item::Active, Page::NormalTitle, OnOpenClose_SerialNumber, Page::BeforeDraw, HandlerKey_SerialNumber
 )
 
-const Page * const PageDebug::PageSerialNumber::self = static_cast<const Page *>(&pSerialNumber);
+const Page * const PageDebug::PageSerialNumber::self = (const Page *)&pSerialNumber;
 
 
 DEF_PAGE_8( pDebug,                                                                                                                                                         //--- Œ“À¿ƒ ¿ ---
@@ -264,4 +264,4 @@ DEF_PAGE_8( pDebug,                                                             
     &PageService::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page * const PageDebug::self = static_cast<const Page *>(&pDebug);
+const Page * const PageDebug::self = (const Page *)&pDebug;

@@ -90,4 +90,4 @@ DEF_PAGE_3( pRand,                                                              
     PageName::Debug_Rand, &PageDebug::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page *const PageDebug::PageRand::self = static_cast<const Page *>(&pRand);
+const Page *const PageDebug::PageRand::self = (const Page *)&pRand;

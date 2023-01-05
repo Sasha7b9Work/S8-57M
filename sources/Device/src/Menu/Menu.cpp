@@ -234,7 +234,7 @@ void Menu::ClosePage(Page *page)
 {
     page->OwnData()->funcOnOpenClose(false);
 
-    Page *keeper = const_cast<Page *>(page->Keeper());
+    Page *keeper = (Page *)page->Keeper();
 
     if (keeper)
     {
@@ -260,7 +260,7 @@ void Menu::CloseIfSubPage(Page *parent, Page *page)
         while (page)
         {
             ClosePage(page);
-            page = const_cast<Page *>(page->Keeper());
+            page = (Page *)page->Keeper();
         }
     }
 }
@@ -268,7 +268,7 @@ void Menu::CloseIfSubPage(Page *parent, Page *page)
 
 Item *Menu::OpenedItem()
 {
-    return LastOpened(const_cast<Page *>(GetMainPage()));
+    return LastOpened((Page *)GetMainPage());
 }
 
 
@@ -313,7 +313,7 @@ void Menu::CloseOpenedItem()
 
     if (item->Is(TypeItem::Page))
     {
-        ClosePage(static_cast<Page *>(item)); //-V1027
+        ClosePage((Page *)item); //-V1027
     }
     else
     {
@@ -326,7 +326,7 @@ Page *Menu::OpenedPage()
 {
     Item *item = OpenedItem();
 
-    return (item->IsPage()) ? static_cast<Page *>(item) : nullptr;
+    return (item->IsPage()) ? (Page *)item : nullptr;
 }
 
 Item *Menu::LastOpened(Page *page)
@@ -342,7 +342,7 @@ Item *Menu::LastOpened(Page *page)
 
             if (page->GetItem(posActItem)->Is(TypeItem::Page))
             {
-                result = LastOpened(static_cast<Page *>(item));
+                result = LastOpened((Page *)item);
             }
             else
             {
@@ -363,11 +363,11 @@ Item *Menu::CurrentItem()
 {
     Item *result = OpenedItem();
 
-    int8 pos = static_cast<Page *>(result)->PosCurrentItem();
+    int8 pos = ((Page *)result)->PosCurrentItem();
 
     if (result->Is(TypeItem::Page) && pos != 0x7f)
     {
-        result = static_cast<Page *>(result)->GetItem(pos);
+        result = ((Page *)result)->GetItem(pos);
     }
 
     return result;
@@ -389,7 +389,7 @@ void Menu::DrawHintItem(int x, int y, int width)
             "Кнопка"              // Item::Type::DrawButton
         };
 
-        Page *item = static_cast<Page *>(itemHint);
+        Page *item = (Page *)itemHint;
 
         const int _SIZE_ = 100;
         char title[_SIZE_];
@@ -479,7 +479,7 @@ void Menu::DrawHint()
 void Menu::SetItemForHint(const Item *item)
 {
     stringForHint = nullptr;
-    itemHint = const_cast<Item *>(item);
+    itemHint = (Item *)item;
 }
 
 
@@ -496,7 +496,7 @@ const Item *Menu::ItemUnderFunctionalKey(Key::E key)
         }
         else if (item->Is(TypeItem::Page))
         {
-            result = (static_cast<Page *>(item))->ItemForFuncKey(key);
+            result = ((Page *)item)->ItemForFuncKey(key);
         }
         else
         {
@@ -514,17 +514,17 @@ const Item *Menu::ItemUnderFunctionalKey(Key::E key)
 
 void Menu::CloseAllBadOpenedPages()
 {
-    Page *opened = static_cast<Page *>(LastOpened(const_cast<Page *>(PageFunction::self))); //-V1027
+    Page *opened = (Page *)LastOpened((Page *)PageFunction::self); //-V1027
 
-    CloseIfSubPage(const_cast<Page *>(PageRecorder::self), opened);
-    CloseIfSubPage(const_cast<Page *>(PageFreqMeter::self), opened);
-    CloseIfSubPage(const_cast<Page *>(PageFFT::self), opened);
-    CloseIfSubPage(const_cast<Page *>(PageMemory::self), opened);
+    CloseIfSubPage((Page *)PageRecorder::self, opened);
+    CloseIfSubPage((Page *)PageFreqMeter::self, opened);
+    CloseIfSubPage((Page *)PageFFT::self, opened);
+    CloseIfSubPage((Page *)PageMemory::self, opened);
 
-    opened = static_cast<Page *>(LastOpened(const_cast<Page *>(PageMemory::self)));
+    opened = (Page *)LastOpened((Page *)PageMemory::self);
 
-    CloseIfSubPage(const_cast<Page *>(PageROM::self), opened);
-    CloseIfSubPage(const_cast<Page *>(PageRAM::self), opened);
+    CloseIfSubPage((Page *)PageROM::self, opened);
+    CloseIfSubPage((Page *)PageRAM::self, opened);
 }
 
 
@@ -544,7 +544,7 @@ Page *Menu::PageFromName(PageName::E name)
         }
         else if(pages[i]->GetName() == name)
         {
-            return const_cast<Page *>(pages[i]);
+            return (Page *)pages[i];
         }
     }
 

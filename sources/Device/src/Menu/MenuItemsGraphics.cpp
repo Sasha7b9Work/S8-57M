@@ -64,10 +64,10 @@ void GovernorColor::DrawValue(int x, int y) const
     ct->Init();
     int16 vals[4] =
     {
-        static_cast<int16>(ct->brightness * 100.0F),
-        static_cast<int16>(blue),
-        static_cast<int16>(green),
-        static_cast<int16>(red)
+        (int16)(ct->brightness * 100.0F),
+        (int16)blue,
+        (int16)green,
+        (int16)red
     };
 
     Region(widthOpened - 2, 12).Fill(x, y, Color::BACK);
@@ -446,7 +446,7 @@ void Page::DrawPagesUGO(int right, int top) const
 
 void Page::DrawNestingPage(int left, int top) const
 {
-    Page *parent = const_cast<Page *>(Keeper());
+    Page *parent = (Page *)Keeper();
 
     if (parent != nullptr)
     {
@@ -455,7 +455,7 @@ void Page::DrawNestingPage(int left, int top) const
         while (parent != nullptr)
         {
             const Page *page = parent;
-            parent = const_cast<Page *>(page->Keeper());
+            parent = (Page *)page->Keeper();
             nesting++;                                  // -V127
         }
 

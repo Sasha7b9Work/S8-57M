@@ -113,4 +113,4 @@ DEF_PAGE_5( pShow,                                                              
     PageName::Recorder_Show, &PageRecorder::self, IsActive_PageShow, Page::NormalTitle, OnOpenClose_PageShow, Page::BeforeDraw, HandlerKey_PageShow
 )
 
-const Page * const PageRecorder::Show::self = static_cast<const Page *>(&pShow);
+const Page * const PageRecorder::Show::self = (const Page *)&pShow;

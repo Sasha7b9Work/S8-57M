@@ -455,7 +455,7 @@ void TrigLevel::Find()
 
         float additionShift = deltaValue + deltaRShift / k;     // Итоговое смщение, которое нужно добавить к TrigLev::Zero
 
-        TrigLevel::Set(ch, static_cast<int16>(-additionShift * k + 0.5F));
+        TrigLevel::Set(ch, (int16)(-additionShift * k + 0.5F));
     }
 }
 
@@ -609,7 +609,7 @@ float RShift::ToAbs(int16 rShift, Range::E range)
 
 int16 RShift::ToRel(float rShiftAbs, Range::E range)
 {
-    int16 retValue = static_cast<int16>(rShiftAbs / absStep[range]);
+    int16 retValue = (int16)(rShiftAbs / absStep[range]);
 
     if (retValue < MIN)
     {

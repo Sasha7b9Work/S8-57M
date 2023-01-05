@@ -64,7 +64,7 @@ void FDrive::USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
             break;
 
         case HOST_USER_CONNECTION:
-            f_mount(NULL, static_cast<TCHAR const*>(""), 0);
+            f_mount(NULL, (TCHAR const*)"", 0);
             break;
 
         case HOST_USER_DISCONNECTION:
@@ -84,7 +84,7 @@ void FDrive::Mount()
 {
     FileManager::Init();
     Menu::ChangeStateFlashDrive();
-    if (f_mount(&USBDISKFatFs, static_cast<TCHAR const*>(USBDISKPath), 0) != FR_OK)
+    if (f_mount(&USBDISKFatFs, (TCHAR const *)USBDISKPath, 0) != FR_OK)
     {
 //        LOG_ERROR("Не могу примонтировать диск");
     }
@@ -123,7 +123,7 @@ void FDrive::Update()
     {
         needMount = 0;
 
-        if (f_mount(&USBDISKFatFs, static_cast<TCHAR const*>(USBDISKPath), 1) != FR_OK)
+        if (f_mount(&USBDISKFatFs, (TCHAR const *)USBDISKPath, 1) != FR_OK)
         {
             DISPLAY_SHOW_WARNING("Не могу прочитать флешку. Убедитесь, что на ней FAT32");
         }
@@ -250,7 +250,7 @@ bool FDrive::GetNameDir(pchar fullPath, int numDir, char *nameDirOut, StructForR
             }
             if ((numDir == numDirs) && ((pFNO->fattrib & AM_DIR) != 0))
             {
-                std::strcpy(nameDirOut, static_cast<pchar >(pFNO->fname));
+                std::strcpy(nameDirOut, (pchar)pFNO->fname);
                 f_closedir(pDir);
                 return true;
             }
@@ -292,7 +292,7 @@ bool FDrive::GetNextNameDir(char *nameDirOut, StructForReadDir *s) // -V2506
         {
             if (pFNO->fattrib & AM_DIR)
             {
-                std::strcpy(nameDirOut, static_cast<pchar >(pFNO->fname));
+                std::strcpy(nameDirOut, (pchar)pFNO->fname);
                 return true;
             }
         }
@@ -339,7 +339,7 @@ bool FDrive::GetNameFile(pchar fullPath, int numFile, char *nameFileOut, StructF
             }
             if (numFile == numFiles && (pFNO->fattrib & AM_DIR) == 0)
             {
-                std::strcpy(nameFileOut, static_cast<pchar >(pFNO->fname));
+                std::strcpy(nameFileOut, (pchar)pFNO->fname);
                 f_closedir(pDir);
                 return true;
             }
@@ -380,7 +380,7 @@ bool FDrive::GetNextNameFile(char *nameFileOut, StructForReadDir *s) // -V2506
         {
             if ((pFNO->fattrib & AM_DIR) == 0 && pFNO->fname[0] != '.')
             {
-                std::strcpy(nameFileOut, static_cast<pchar >(pFNO->fname));
+                std::strcpy(nameFileOut, (pchar)pFNO->fname);
                 return true;
             }
         }
@@ -456,8 +456,8 @@ void FDrive::SetTimeForFile(pchar name)
 
     PackedTime time = HAL_RTC::GetPackedTime();
 
-    info.fdate = static_cast<WORD>(((time.year + 2000 - 1980) * 512) | time.month * 32 | time.day);        // -V112
-    info.ftime = static_cast<WORD>(time.hours * 2048 | time.minutes * 32 | time.seconds / 2);              // -V112
+    info.fdate = (WORD)(((time.year + 2000 - 1980) * 512) | time.month * 32 | time.day);        // -V112
+    info.ftime = (WORD)(time.hours * 2048 | time.minutes * 32 | time.seconds / 2);              // -V112
 
     f_utime(name, &info);
 }

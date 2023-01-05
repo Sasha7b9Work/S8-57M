@@ -722,7 +722,7 @@ bool PDecoder::SetFont(uint8 data)
         return false;
     }
 
-    PFont::Set(static_cast<PTypeFont::E>(data));
+    PFont::Set((PTypeFont::E)data);
 
     return true;
 }

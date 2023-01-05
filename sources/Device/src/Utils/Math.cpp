@@ -83,8 +83,8 @@ void Math::Smoothing(uint8 *data, int numPoints, int numSmooth)
         return;
     }
 
-    float *buffer = static_cast<float *>(std::malloc((uint)(numPoints * (int)(sizeof(float)))));
-    int  *num = static_cast<int *>(std::malloc((uint)(numPoints * (int)(sizeof(int)))));
+    float *buffer = (float *)std::malloc((uint)(numPoints * (int)(sizeof(float))));
+    int  *num = (int *)std::malloc((uint)(numPoints * (int)(sizeof(int))));
 
     if (num != 0 && buffer != 0)
     {
@@ -265,10 +265,10 @@ float Math::GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, in
 {
     if (y0 == y1)
     {
-        return static_cast<float>(x1);
+        return (float)x1;
     }
 
-    return (yHorLine - y0) / (static_cast<float>(y1 - y0) / static_cast<float>(x1 - x0)) + x0;
+    return (yHorLine - y0) / ((float)(y1 - y0) / (float)(x1 - x0)) + x0;
 }
 
 
@@ -330,7 +330,7 @@ uint8 Math::CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoot
         }
     }
 
-    return (uint8)(sum / static_cast<float>(count));
+    return (uint8)(sum / (float)count);
 }
 
 
@@ -371,7 +371,7 @@ void Math::CalculateFiltrArray(const uint8 *dataIn, uint8 *dataOut, int numPoint
                 }
             }
 
-            dataOut[i] = (uint8)(sum / static_cast<float>(count));
+            dataOut[i] = (uint8)(sum / (float)count);
         }
     }
 }
@@ -426,7 +426,7 @@ float Math::RoundFloat(float value, int numDigits)
     if (digsInInt < numDigits)  // Подстрахуемся
     {
         int pow = Pow10(numDigits - digsInInt);
-        absValue = ((int)(absValue * pow + 0.5F)) / static_cast<float>(pow);
+        absValue = ((int)(absValue * pow + 0.5F)) / (float)pow;
     }
 
     return value > 0.0F ? absValue : -absValue;

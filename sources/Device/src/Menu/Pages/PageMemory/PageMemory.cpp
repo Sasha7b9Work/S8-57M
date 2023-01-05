@@ -147,7 +147,7 @@ DEF_PAGE_5(pManager,                                                            
     &PageDrive::self, IsActive_Drive_Manager, Page::NormalTitle, PageMemory::OnOpenClose_Drive_Manager, Page::BeforeDraw, FileManager::HandlerKey
 )
 
-const Page * const PageDrive::Manager::self = static_cast<const Page *>(&pManager);
+const Page * const PageDrive::Manager::self = (const Page *)&pManager;
 
 
 static void OnPress_Mask_Delete()
@@ -400,7 +400,7 @@ DEF_PAGE_3( pMask,                                                              
     &PageDrive::self, IsActive_Mask, Page::NormalTitle, OnOpenClose_Mask, Page::BeforeDraw, HandlerKey_Mask
 )
 
-const Page * const PageDrive::Mask::self = static_cast<const Page *>(&pMask);
+const Page * const PageDrive::Mask::self = (const Page *)&pMask;
 
 
 DEF_PAGE_4( pMemory,                                                                                                                                                         //--- œﬂÃﬂ“‹ ---
@@ -412,7 +412,7 @@ DEF_PAGE_4( pMemory,                                                            
     PageDrive::self,  PageName::Memory, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page * const PageMemory::self = static_cast<const Page *>(&pMemory);
+const Page * const PageMemory::self = (const Page *)&pMemory;
 
 
 void PageMemory::SaveSignalToFlashDrive()
@@ -594,9 +594,9 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
 
     if (S_MEM_INDEX_CUR_SYMBOL_MASK > maxIndex)
     {
-        S_MEM_INDEX_CUR_SYMBOL_MASK = static_cast<int8>(maxIndex - 1);
+        S_MEM_INDEX_CUR_SYMBOL_MASK = (int8)(maxIndex - 1);
     }
-    func[Math::Sign(angle) + 1](&S_MEM_INDEX_CUR_SYMBOL_MASK, 0, static_cast<int8>(maxIndex - 1));
+    func[Math::Sign(angle) + 1](&S_MEM_INDEX_CUR_SYMBOL_MASK, 0, (int8)(maxIndex - 1));
     Beeper::RegulatorSwitchRotate();
 }
 
@@ -610,4 +610,4 @@ DEF_PAGE_4( pSetName,                                                           
     PageName::Memory_SetName, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, HandlerKey_SetName
 )
 
-const Page * const PageDrive::SetName::self = static_cast<const Page *>(&pSetName);
+const Page * const PageDrive::SetName::self = (const Page *)&pSetName;

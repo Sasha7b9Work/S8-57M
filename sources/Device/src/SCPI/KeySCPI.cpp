@@ -63,17 +63,17 @@ const StructSCPI SCPI::key[] =
 };
 
 
-#define PROCESS_KEY(end, name, key)                                                     \
-    end = SCPI::BeginWith(buffer, name);                                                \
-    if (end)                                                                            \
-    {                                                                                   \
-        SCPI_PROLOG(end)                                                                \
-                                                                                        \
-        BufferButtons::Push(KeyEvent(static_cast<Key::E>(key), TypePress::Press));      \
-        BufferButtons::Push(KeyEvent(static_cast<Key::E>(key), TypePress::Release));    \
-                                                                                        \
-        SCPI_EPILOG(end)                                                                \
-    }                                                                                   \
+#define PROCESS_KEY(end, name, key)                                     \
+    end = SCPI::BeginWith(buffer, name);                                \
+    if (end)                                                            \
+    {                                                                   \
+        SCPI_PROLOG(end)                                                \
+                                                                        \
+        BufferButtons::Push(KeyEvent((Key::E)key, TypePress::Press));   \
+        BufferButtons::Push(KeyEvent((Key::E)key, TypePress::Release)); \
+                                                                        \
+        SCPI_EPILOG(end)                                                \
+    }                                                                   \
 
 
 static pchar FuncKeyPress(pchar buffer)
@@ -107,8 +107,8 @@ static pchar FuncKeyLong(pchar buffer)
         {
             SCPI_PROLOG(end)
 
-            BufferButtons::Push(KeyEvent(static_cast<Key::E>(i), TypePress::Press));
-            BufferButtons::Push(KeyEvent(static_cast<Key::E>(i), TypePress::Long));
+            BufferButtons::Push(KeyEvent((Key::E)i, TypePress::Press));
+            BufferButtons::Push(KeyEvent((Key::E)i, TypePress::Long));
 
             SCPI_EPILOG(end)
         }

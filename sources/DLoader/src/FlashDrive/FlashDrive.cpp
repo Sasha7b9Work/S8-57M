@@ -118,7 +118,7 @@ void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
     case HOST_USER_CONNECTION:
         connection++;
         state = State::Mount;
-        f_mount(NULL, static_cast<TCHAR const *>(""), 0);
+        f_mount(NULL, (TCHAR const *)"", 0);
         break;
 
     case HOST_USER_DISCONNECTION:
@@ -173,7 +173,7 @@ static bool Process()
     USBH_Process(&handleUSBH);
     if(stateDisk == StateDisk::Start)
     {
-        if(f_mount(&(USBDISKFatFS), static_cast<TCHAR const *>(USBDISKPath), 0) == FR_OK)
+        if(f_mount(&(USBDISKFatFS), (TCHAR const *)USBDISKPath, 0) == FR_OK)
         {
             return true;
         }
@@ -321,7 +321,7 @@ int FDrive::OpenFileForRead(pchar fileName)
 int FDrive::ReadFromFile(int numBytes, uint8 *buffer)
 {
     uint readed = 0;
-    if(f_read(&file, buffer, static_cast<UINT>(numBytes), &readed) == FR_OK)
+    if(f_read(&file, buffer, (UINT)numBytes, &readed) == FR_OK)
     {
         return (int)(readed);
     }
@@ -337,7 +337,7 @@ void FDrive::CloseOpenedFile()
 
 void FDrive::LL_::InitHCD(void *host)
 {
-    USBH_HandleTypeDef *phost = static_cast<USBH_HandleTypeDef *>(host);
+    USBH_HandleTypeDef *phost = (USBH_HandleTypeDef *)host;
 
     handleHCD.Instance = USB_OTG_HS;
     handleHCD.Init.speed = HCD_SPEED_HIGH;
@@ -411,7 +411,7 @@ void Upgrade()
         size -= readedBytes;
         address += (uint)(readedBytes);
 
-        percentsUpdate = 1.0F - static_cast<float>(size) / fullSize;
+        percentsUpdate = 1.0F - (float)size / fullSize;
     }
 
     FDrive::CloseOpenedFile();

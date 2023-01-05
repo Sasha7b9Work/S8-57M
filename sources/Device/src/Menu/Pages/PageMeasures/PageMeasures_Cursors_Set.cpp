@@ -138,7 +138,7 @@ static void Draw_T(int x, int y)
             bool condLeft = false, condDown = false;
             Chan::E source = S_CURS_SOURCE;
 
-            CalculateConditions(static_cast<int16>(CursorsMeasurements::PosT(source, 0)), static_cast<int16>(CursorsMeasurements::PosT(source, 1)), 
+            CalculateConditions((int16)CursorsMeasurements::PosT(source, 0), (int16)CursorsMeasurements::PosT(source, 1),
                                 S_CURS_CONTROL_T(source), &condLeft, &condDown);
 
             if (condLeft && condDown)
@@ -239,7 +239,7 @@ static void Draw_U(int x, int y)
         {
             bool condTop = false, condDown = false;
 
-            CalculateConditions(static_cast<int16>(CursorsMeasurements::PosU(source, 0)), static_cast<int16>(CursorsMeasurements::PosU(source, 1)),
+            CalculateConditions((int16)CursorsMeasurements::PosU(source, 0), (int16)CursorsMeasurements::PosU(source, 1),
                                 S_CURS_CONTROL_U(source), &condTop, &condDown);
 
             if (condTop && condDown)
@@ -398,7 +398,7 @@ DEF_PAGE_5( pSet,                                                               
     PageName::CursorsMeasures_Set, &PageCursorsMeasures::self, IsActive_Set, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, PageCursorsMeasures::Set::HandlerKey
 )
 
-const Page * const PageCursorsMeasures::Set::self = static_cast<const Page *>(&pSet);
+const Page * const PageCursorsMeasures::Set::self = (const Page *)&pSet;
 
 
 
@@ -422,8 +422,8 @@ void PageCursorsMeasures::Set::IncCursCntrlT(Chan::E ch)
 
 void PageCursorsMeasures::Set::SetCursPos100(Chan::E ch)
 {
-    S_CURS_DU_PERCENTS(ch) = static_cast<float>(std::fabsf(S_CURS_POS_U0(ch) - S_CURS_POS_U1(ch)));
-    S_CURS_DT_PERCENTS(ch) = static_cast<float>(std::fabsf(CursorsMeasurements::PosT(ch, 0) - CursorsMeasurements::PosT(ch, 1)));
+    S_CURS_DU_PERCENTS(ch) = (float)std::fabsf(S_CURS_POS_U0(ch) - S_CURS_POS_U1(ch));
+    S_CURS_DT_PERCENTS(ch) = (float)std::fabsf(CursorsMeasurements::PosT(ch, 0) - CursorsMeasurements::PosT(ch, 1));
 }
 
 

@@ -106,24 +106,24 @@ DEF_PAGE_5_VAR( pFreqMeter,                                                     
     PageName::FreqMeter, &PageFunction::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page * const PageFreqMeter::self = static_cast<const Page *>(&pFreqMeter);
+const Page * const PageFreqMeter::self = (const Page *)&pFreqMeter;
 
 
 
 void PageFreqMeter::Init()
 {
-    Page *page = const_cast<Page *>(PageFreqMeter::self);
+    Page *page = (Page *)PageFreqMeter::self;
 
-    Item **items = const_cast<Item **>(page->OwnData()->items);
+    Item **items = (Item **)page->OwnData()->items;
 
     if (S_FREQ_MODE_MEASURE_IS_FREQUENCY)
     {
-        items[2] = const_cast<Choice *>(&cTimeF);
+        items[2] = (Choice *)&cTimeF;
         items[3] = &Item::empty;
     }
     else if (S_FREQ_MODE_MEASURE_IS_PERIOD)
     {
-        items[2] = const_cast<Choice *>(&cFreqClc);
-        items[3] = const_cast<Choice *>(&cNumPeriods);
+        items[2] = (Choice *)&cFreqClc;
+        items[3] = (Choice *)&cNumPeriods;
     }
 }

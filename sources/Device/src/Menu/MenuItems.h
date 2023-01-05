@@ -104,7 +104,7 @@ public:
         static const int HEIGHT = 24;
     };
 
-    bool Is(TypeItem::E t) const { return data->type == static_cast<uint8>(t); };
+    bool Is(TypeItem::E t) const { return data->type == (uint8)t; };
 
     virtual void Draw(int x, int y, bool opened) const {};
 
@@ -249,7 +249,7 @@ public:
 
     virtual void HandlerFX(TypePress::E type) const;
 
-    const DataButton *OwnData() const { return static_cast<const DataButton *>(data->ad); } //-V2571
+    const DataButton *OwnData() const { return (const DataButton *)data->ad; } //-V2571
 };
 
 /////// GraphButton ///
@@ -278,7 +278,7 @@ public:
 
     virtual void HandlerFX(TypePress::E type) const;
 
-    const DataGraphButton *OwnData() const { return static_cast<const DataGraphButton *>(data->ad); } //-V2571
+    const DataGraphButton *OwnData() const { return (const DataGraphButton *)data->ad; } //-V2571
 
     int NumHints() const;
 };
@@ -347,7 +347,7 @@ public:
 
     static void AfterDraw(int, int) { };
 
-    const DataGovernor *OwnData() const { return static_cast<const DataGovernor *>(data->ad); } //-V2571
+    const DataGovernor *OwnData() const { return (const DataGovernor *)data->ad; } //-V2571
 
 private:
 
@@ -416,7 +416,7 @@ public:
 
     virtual int HeightOpened() const;
 
-    const DataChoice *OwnData() const { return static_cast<const DataChoice *>(data->ad); } //-V2571
+    const DataChoice *OwnData() const { return (const DataChoice *)data->ad; } //-V2571
 
     static void Changed(bool) {};
 

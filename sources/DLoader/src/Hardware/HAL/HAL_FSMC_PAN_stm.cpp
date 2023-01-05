@@ -169,9 +169,9 @@ void HAL_BUS::Panel::Send(uint8 *data, uint size)
         uint8 d = *data++;
 
         //                                                                             биты 0,1                                 биты 2,3
-        GPIOD->ODR = (GPIOD->ODR & 0x3ffc) + (uint16)((static_cast<int16>(d) & 0x03) << 14) + (((uint16)(d & 0x0c)) >> 2);  // Записываем данные в выходные пины
+        GPIOD->ODR = (GPIOD->ODR & 0x3ffc) + (uint16)(((int16)d & 0x03) << 14) + (((uint16)(d & 0x0c)) >> 2);  // Записываем данные в выходные пины
         //                                                                          Биты 4,5,6,7
-        GPIOE->ODR = (GPIOE->ODR & 0xf87f) + (uint16)((static_cast<int16>(d) & 0xf0) << 3);
+        GPIOE->ODR = (GPIOE->ODR & 0xf87f) + (uint16)(((int16)d & 0xf0) << 3);
 
         //pinWR.SetActive();                  // Даём сигнал записи
         GPIOD->BSRR = (uint)GPIO_PIN_5 << 16U;

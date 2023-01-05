@@ -233,7 +233,7 @@ static bool HandlerKey_Function(const KeyEvent &event) // -V2506
             {
                 if(S_RANGE_MATH < Range::Count - 1)
                 {
-                    S_RANGE_MATH = static_cast<Range::E>((uint8)(S_RANGE_MATH + 1));  // SET_RANGE_MATH++;
+                    S_RANGE_MATH = (Range::E)(uint8)(S_RANGE_MATH + 1);  // SET_RANGE_MATH++;
                     S_RSHIFT_MATH = RShift::ToRel(rShiftAbs, S_RANGE_MATH);
                     Beeper::RegulatorSwitchRotate();
                 }
@@ -243,7 +243,7 @@ static bool HandlerKey_Function(const KeyEvent &event) // -V2506
             {
                 if(S_RANGE_MATH > 0)
                 {
-                    S_RANGE_MATH = static_cast<Range::E>((uint8)(S_RANGE_MATH - 1));  // SET_RANGE_MATH--;
+                    S_RANGE_MATH = (Range::E)(uint8)(S_RANGE_MATH - 1);  // SET_RANGE_MATH--;
                     S_RSHIFT_MATH = RShift::ToRel(rShiftAbs, S_RANGE_MATH);
                     Beeper::RegulatorSwitchRotate();
                 }
@@ -268,4 +268,4 @@ DEF_PAGE_5( pMath,                                                              
     PageName::Math, &PageMeasures::self, IsActive_Math, Page::NormalTitle, OnOpenClose_Math, Page::BeforeDraw, HandlerKey_Function
 )
 
-const Page * const PageMath::self = static_cast<const Page *>(&pMath);
+const Page * const PageMath::self = (const Page *)&pMath;

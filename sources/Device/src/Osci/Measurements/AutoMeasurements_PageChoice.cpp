@@ -69,7 +69,7 @@ void PageChoiceMeasures::OnKeyEvent(const KeyEvent &event)
 
         }
 
-        S_MEAS_INDICATED(AutoMeasurements::posActive) = static_cast<TypeMeasure::E>(posCursor);
+        S_MEAS_INDICATED(AutoMeasurements::posActive) = (TypeMeasure::E)posCursor;
         Color::ChangeFlash(true);
     }
     else
@@ -107,10 +107,10 @@ void PageChoiceMeasures::Draw()
                 bool active = (meas == posCursor);
                 Rectangle(dX, dY).Draw(x0, y0, Color::WHITE);
                 Region(dX - 2, dY - 2).Fill(x0 + 1, y0 + 1, (active ? Color::FLASH_10 : Color::BACK));
-                Char(static_cast<SymbolUGO::E>(Measure::GetChar(meas))).Draw10SymbolsInRect(x0 + 2, y0 + 1, active ? Color::FLASH_01 : Color::FILL);
+                Char((SymbolUGO::E)Measure::GetChar(meas)).Draw10SymbolsInRect(x0 + 2, y0 + 1, active ? Color::FLASH_01 : Color::FILL);
                 DFont::Set(DTypeFont::_5);
                 Text(TypeMeasure::GetName(meas)).DrawRelativelyRight(x0 + dX, y0 + 12);
-                meas = static_cast<TypeMeasure::E>((int)(meas) + 1);    // meas++;
+                meas = (TypeMeasure::E)((int)(meas) + 1);    // meas++;
             }
         }
     }

@@ -133,7 +133,7 @@ bool SU::GetWord(pchar string, Word *word, const int numWord)
         {
             word->address = (char *)(string);
             ChooseSymbols(&string);
-            word->numSymbols = static_cast<int8>(string - word->address);
+            word->numSymbols = (int8)(string - word->address);
 
             char *pointer = word->address;
             int numSymbols = word->numSymbols;
@@ -268,7 +268,7 @@ float SU::StringToFloat(pchar string)
 
         while (stack.Size() > 0)
         {
-            result += static_cast<float>(pow) * stack.Pop();
+            result += (float)pow * stack.Pop();
             pow *= 10;
         }
     }

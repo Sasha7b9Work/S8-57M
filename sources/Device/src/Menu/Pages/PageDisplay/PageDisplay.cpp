@@ -123,4 +123,4 @@ DEF_PAGE_7( pDisplay,                                                           
     PageName::Display, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page * const PageDisplay::self = static_cast<const Page *>(&pDisplay);
+const Page * const PageDisplay::self = (const Page *)&pDisplay;

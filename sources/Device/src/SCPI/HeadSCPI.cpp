@@ -177,7 +177,7 @@ static pString calibratorMode[] =
 
 static void SetCalibratorMode(int i)
 {
-    S_SERV_CALIBRATOR_MODE = static_cast<Calibrator::Mode::E>(i);
+    S_SERV_CALIBRATOR_MODE = (Calibrator::Mode::E)i;
     
     FPGA::LoadCalibratorMode();
 }
@@ -204,7 +204,7 @@ static pchar FuncMemoryLength(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(length[set.mem._enumPoints]));
 
-    SCPI_PROCESS_ARRAY(length, set.mem._enumPoints = static_cast<ENumPointsFPGA::E>(i));
+    SCPI_PROCESS_ARRAY(length, set.mem._enumPoints = (ENumPointsFPGA::E)i);
 }
 
 

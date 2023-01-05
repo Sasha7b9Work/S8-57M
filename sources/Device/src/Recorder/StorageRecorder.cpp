@@ -50,7 +50,7 @@ void BufferMissingPoints::Pop(BitSet16 *a, BitSet16 *b)
 
 Point16 *Point16::Next(Record *record) const
 {
-    return const_cast<Point16 *>(reinterpret_cast<const Point16 *>(reinterpret_cast<const uint8 *>(this) + record->bytesOnPoint));
+    return (Point16 *)reinterpret_cast<const Point16 *>(reinterpret_cast<const uint8 *>(this) + record->bytesOnPoint);
 }
 
 
@@ -277,7 +277,7 @@ uint Record::FreeMemory() const
 
 uint8 *Record::Begin() const
 {
-    return reinterpret_cast<uint8 *>(const_cast<Record *>(this));
+    return reinterpret_cast<uint8 *>((Record *)this);
 }
 
 

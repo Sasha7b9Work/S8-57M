@@ -16,4 +16,4 @@ DEF_PAGE_3( pFunction,                                                          
     PageName::Function, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page * const PageFunction::self = static_cast<const Page *>(&pFunction);
+const Page * const PageFunction::self = (const Page *)&pFunction;

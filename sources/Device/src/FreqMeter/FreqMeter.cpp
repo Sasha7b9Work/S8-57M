@@ -200,7 +200,7 @@ float FreqMeter::PeriodSetToFreq(const BitSet32 *period_)
     const float _k_[4] = {10e4F, 10e5F, 10e6F, 10e7F};
     const float kP[3] = {1.0F, 10.0F, 100.0F};
 
-    return S_FREQ_METER_ENABLED ? (_k_[(int)S_FREQ_FREQ_CLC] * kP[S_FREQ_NUMBER_PERIODS] / static_cast<float>(period_->word)) : (10e5F / static_cast<float>(period_->word));
+    return S_FREQ_METER_ENABLED ? (_k_[(int)S_FREQ_FREQ_CLC] * kP[S_FREQ_NUMBER_PERIODS] / (float)period_->word) : (10e5F / (float)period_->word);
 }
 
 

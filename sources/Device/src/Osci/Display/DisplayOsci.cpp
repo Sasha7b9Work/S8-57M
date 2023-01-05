@@ -231,11 +231,11 @@ int16 DisplayOsci::ShiftInMemory::Default(TPos::E tPos)
 {
     if (tPos == TPos::Center)
     {
-        return static_cast<int16>(ENumPointsFPGA::PointsInChannel() / 2 - Grid::Width() / 2);
+        return (int16)(ENumPointsFPGA::PointsInChannel() / 2 - Grid::Width() / 2);
     }
     else if (tPos == TPos::Right)
     {
-        return static_cast<int16>(ENumPointsFPGA::PointsInChannel() - Grid::Width() - 2);
+        return (int16)(ENumPointsFPGA::PointsInChannel() - Grid::Width() - 2);
     }
 
     return 0;
@@ -244,7 +244,7 @@ int16 DisplayOsci::ShiftInMemory::Default(TPos::E tPos)
 
 void DisplayOsci::ShiftInMemory::Change(int delta)
 {
-    int16 max = static_cast<int16>(ENumPointsFPGA::PointsInChannel() - Grid::Width());
+    int16 max = (int16)(ENumPointsFPGA::PointsInChannel() - Grid::Width());
 
-    Set(Math::Add<int16>(Get(), static_cast<int16>(delta), 0, max));
+    Set(Math::Add<int16>(Get(), (int16)delta, 0, max));
 }

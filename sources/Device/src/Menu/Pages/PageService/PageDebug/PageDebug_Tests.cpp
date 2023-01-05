@@ -29,4 +29,4 @@ DEF_PAGE_1( pTests,                                                             
 )
 
 
-const Page *const PageDebug::PageTests::self = static_cast<const Page *>(&pTests);
+const Page *const PageDebug::PageTests::self = (const Page *)&pTests;

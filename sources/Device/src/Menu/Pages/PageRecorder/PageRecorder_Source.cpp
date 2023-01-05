@@ -48,4 +48,4 @@ DEF_PAGE_2( pSource,                                                            
     PageName::Recorder_Source, &PageRecorder::self, IsActive_Source, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page * const PageRecorder::Source::self = static_cast<const Page *>(&pSource);
+const Page * const PageRecorder::Source::self = (const Page *)&pSource;

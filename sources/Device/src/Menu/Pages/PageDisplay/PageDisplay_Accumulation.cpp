@@ -57,4 +57,4 @@ DEF_PAGE_2( pAccum,                                                             
     PageName::Display_Accumulation, &PageDisplay::self, IsActive_Accum, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page * const PageDisplay::Accumulation::self = static_cast<const Page *>(&pAccum);
+const Page * const PageDisplay::Accumulation::self = (const Page *)&pAccum;

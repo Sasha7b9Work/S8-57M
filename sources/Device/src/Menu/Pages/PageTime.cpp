@@ -168,4 +168,4 @@ DEF_PAGE_3( pTime,                                                              
     PageName::Time, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page * const PageTime::self = static_cast<const Page *>(&pTime);
+const Page * const PageTime::self = (const Page *)&pTime;

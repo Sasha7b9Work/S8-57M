@@ -13,7 +13,7 @@ template class Utils::AroundAverager<float>;
 template <typename T>
 Utils::Averager<T>::Averager(int _size) : buffer(nullptr), size(_size), numELements(0)
 {
-    buffer = static_cast<T *>(std::malloc(sizeof(T) * _size));
+    buffer = (T *)std::malloc(sizeof(T) * _size);
 
     if (buffer == nullptr)
     {

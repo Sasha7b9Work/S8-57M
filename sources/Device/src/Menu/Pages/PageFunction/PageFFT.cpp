@@ -111,7 +111,7 @@ DEF_PAGE_0( pCursors,
 )
 
 
-const Page * const PageFFT::Cursors::self = static_cast<const Page *>(&pCursors);
+const Page * const PageFFT::Cursors::self = (const Page *)&pCursors;
 
 static bool IsActive_FFT()
 {
@@ -138,4 +138,4 @@ DEF_PAGE_6( pFFT,                                                               
     PageName::FFT, &PageFunction::self, IsActive_FFT, Page::NormalTitle, OnOpenClose_FFT, Page::BeforeDraw, Page::HandlerKeyEvent
 )
 
-const Page * const PageFFT::self = static_cast<const Page *>(&pFFT);
+const Page * const PageFFT::self = (const Page *)&pFFT;

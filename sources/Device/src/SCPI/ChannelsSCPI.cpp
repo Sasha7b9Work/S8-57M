@@ -126,7 +126,7 @@ static pString bandwidth[] =
 
 static void SetBandwidth(Chan::E ch, int i)
 {
-    S_BANDWIDTH(ch) = static_cast<Bandwidth::E>(i);
+    S_BANDWIDTH(ch) = (Bandwidth::E)i;
     Bandwidth::Load(ch);
 }
 
@@ -156,7 +156,7 @@ static pchar FuncCoupling(pchar buffer)
 
     SCPI_REQUEST(SCPI::SendAnswer(couple[S_MODE_COUPLE(ch)]));
 
-    SCPI_PROCESS_ARRAY(couple, ModeCouple::Set(ch, static_cast<ModeCouple::E>(i)));
+    SCPI_PROCESS_ARRAY(couple, ModeCouple::Set(ch, (ModeCouple::E)i));
 }
 
 
@@ -200,7 +200,7 @@ static pchar FuncOffset(pchar buffer)
 
     if (SU::String2Int(buffer, &value, &end_str))
     {
-        RShift::Set(ch, static_cast<int16>(value * 2));
+        RShift::Set(ch, (int16)(value * 2));
 
         return end_str + 1;
     }
@@ -250,7 +250,7 @@ static pchar FuncScale(pchar buffer)
 
     SCPI_REQUEST(SCPI::SendAnswer(rangeName[S_RANGE(ch)]));
 
-    SCPI_PROCESS_ARRAY(rangeName, Range::Set(ch, static_cast<Range::E>(i)))
+    SCPI_PROCESS_ARRAY(rangeName, Range::Set(ch, (Range::E)i))
 }
 
 
@@ -348,7 +348,7 @@ static bool TestScale()
 {
     for(int i = 0; i < 5; i++)
     {
-        Range::E range = static_cast<Range::E>(std::rand() % Range::Count);
+        Range::E range = (Range::E)(std::rand() % Range::Count);
         String commandA(":channel1:range%s%c", rangeName[range], 0x0D);
 
         SCPI_APPEND_STRING(commandA);
@@ -358,7 +358,7 @@ static bool TestScale()
             SCPI_EXIT_ERROR();
         }
 
-        range = static_cast<Range::E>(std::rand() % Range::Count);
+        range = (Range::E)(std::rand() % Range::Count);
         String commandB(":channel2:range%s%c", rangeName[range], 0x0D);
 
         SCPI_APPEND_STRING(commandB);

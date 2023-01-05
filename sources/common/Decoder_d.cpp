@@ -138,12 +138,12 @@ bool DDecoder::ButtonPress(uint8 data)
     }
     else if (step == 1)
     {
-        button = static_cast<Key::E>(data);
+        button = (Key::E)data;
         return false;
     }
     else
     {
-        BufferButtons::Push(KeyEvent(button, static_cast<TypePress::E>(data)));
+        BufferButtons::Push(KeyEvent(button, (TypePress::E)data));
     }
 
     return true;
