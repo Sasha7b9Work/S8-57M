@@ -110,7 +110,7 @@ int Text::DrawSmall(int x, int y, Color color)
 
     std::memcpy(&buffer.data[5], text, std::strlen(text));
 
-    HAL_BUS::Panel::Send(buffer.data, sizeBuffer);
+    HAL_BUS::Panel::SendBuffer(buffer.data, sizeBuffer);
 
     trans_bytes += sizeBuffer;
 

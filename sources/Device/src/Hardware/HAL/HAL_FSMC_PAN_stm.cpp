@@ -188,17 +188,17 @@ namespace HAL_BUS
 
 void SBuffer::Send() const
 {
-    HAL_BUS::Panel::Send(&buffer[0], pointer);
+    HAL_BUS::Panel::SendBuffer(&buffer[0], pointer);
 }
 
 
 void HAL_BUS::Panel::SendByte(uint8 byte)
 {
-    Send(&byte, 1);
+    SendBuffer(&byte, 1);
 }
 
 
-void HAL_BUS::Panel::Send(const uint8 *data, int size)
+void HAL_BUS::Panel::SendBuffer(const uint8 *data, int size)
 {
     num_bytes += size;
 

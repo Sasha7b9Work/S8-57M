@@ -95,7 +95,7 @@ namespace HAL_BUS
         uint ElapsedUS();
 
         void SendByte(uint8 byte);
-        void Send(const uint8 *data, int size);
+        void SendBuffer(const uint8 *data, int size);
         bool Receive();
         bool InInteraction();
         void RunAfterInteraction(void (*func)());
