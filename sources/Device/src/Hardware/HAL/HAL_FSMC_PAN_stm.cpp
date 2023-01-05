@@ -198,14 +198,6 @@ void HAL_BUS::Panel::SendByte(uint8 byte)
 }
 
 
-void HAL_BUS::Panel::Send(uint8 byte0, uint8 byte1)
-{
-    uint8 buffer[2] = { byte0, byte1 };
-
-    Send(buffer, 2);
-}
-
-
 void HAL_BUS::Panel::Send(const uint8 *data, int size)
 {
     num_bytes += size;
