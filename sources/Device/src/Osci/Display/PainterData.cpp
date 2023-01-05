@@ -365,15 +365,17 @@ void DisplayOsci::PainterData::DrawModeLinesPeakDetOn(int center, const uint8 *d
 
 void DisplayOsci::PainterData::DrawModeLinesPeakDetOff(int center, const uint8 *data, float scale, int x)
 {
+    const int NUM_POINTS = Grid::Width();
+
     SBuffer buffer(Command::Paint_DrawSignal, 0);
 
     buffer.Push(Point2(x, Grid::Top()));
     buffer.Push(Point2(x, Grid::Bottom()));
-    buffer.Push(Point2(281, 0));
+    buffer.Push(Point2(NUM_POINTS, 0));
 
     buffer.Send();
 
-    for (int i = 0; i < 281; i++)
+    for (int i = 0; i < NUM_POINTS; i++)
     {
         HAL_BUS::Panel::Send(*data++);
     }
