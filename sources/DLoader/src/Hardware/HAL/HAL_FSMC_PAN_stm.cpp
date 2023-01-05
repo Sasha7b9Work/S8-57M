@@ -127,7 +127,13 @@ exit:
 }
 
 
-void HAL_BUS::Panel::Send(uint8 byte)
+void SBuffer::Send() const
+{
+    HAL_BUS::Panel::Send(&buffer[0], pointer);
+}
+
+
+void HAL_BUS::Panel::SendByte(uint8 byte)
 {
     Send(&byte, 1);
 }
@@ -140,7 +146,7 @@ void HAL_BUS::Panel::Send(uint8 byte0, uint8 byte1)
     Send(buffer, 2);
 }
 
-void HAL_BUS::Panel::Send(uint8 *data, uint size)
+void HAL_BUS::Panel::Send(const uint8 *data, int size)
 {
     if(!(GPIOA->IDR & GPIO_PIN_7) && !(GPIOC->IDR & GPIO_PIN_4)) //-V2570
     {
@@ -164,7 +170,7 @@ void HAL_BUS::Panel::Send(uint8 *data, uint size)
         GPIOE->MODER |= 0x00154000U;        // Устанавливаем для этих пинов GPIO_MODE_OUTPUT_PP
     }
 
-    for(uint i = 0; i < size; i++)
+    for(int i = 0; i < size; i++)
     {
         uint8 d = *data++;
 
@@ -218,9 +224,4 @@ void DataBus::Init()
     GPIOD->MODER &= 0x0ffffff0U;        // Настроим пины 14, 15, 0, 1 на запись D0, D1, D2, D3
 
     GPIOE->MODER &= 0xffc03fffU;        // Настроим пины 7, 8, 9, 10 на запись D4, D5, D6, D7
-}
-
-
-void SBuffer::Send() const
-{
 }
