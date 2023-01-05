@@ -124,21 +124,12 @@ void MultiHPointLine::Draw(int x, Color color)
 {
     color.SetAsCurrent();
 
-    uint8 buffer[7] =
-    {
-        Command::Paint_HPointLine,
-        0,
-        0,
-        0,
-        (uint8)(delta),
-        (uint8)(count)
-    };
-
     for (int i = 0; i < numLines; i++)
     {
-        Point2(x, y[i]).Write(&buffer[1]);
-
-        HAL_BUS::Panel::Send(buffer, 6);
+        SBuffer buffer(Command::Paint_HPointLine, Point2(x, y[i]));
+        buffer.Push((uint8)delta);
+        buffer.Push((uint8)count);
+        buffer.Send();
     }
 }
 
