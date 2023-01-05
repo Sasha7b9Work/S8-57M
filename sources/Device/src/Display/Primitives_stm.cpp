@@ -138,20 +138,11 @@ void MultiVPointLine::Draw(int y0, Color color)
 {
     color.SetAsCurrent();
 
-    uint8 buffer[6] =
-    {
-        Command::Paint_VPointLine,
-        0,
-        0,
-        0,
-        (uint8)(delta),
-        (uint8)(count)
-    };
-
     for (int i = 0; i < numLines; i++)
     {
-        Point2(x0[i], y0).Write(&buffer[1]);
-
-        HAL_BUS::Panel::Send(buffer, 6);
+        SBuffer buffer(Command::Paint_VPointLine, Point2(x0[i], y0));
+        buffer.Push((uint8)delta);
+        buffer.Push((uint8)count);
+        buffer.Send();
     }
 }
