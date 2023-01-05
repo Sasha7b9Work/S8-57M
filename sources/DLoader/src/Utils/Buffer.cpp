@@ -6,7 +6,7 @@
 
 
 
-Buffer::Buffer(uint s)
+Buffer::Buffer(int s)
 {
     Malloc(s);
 }
@@ -18,7 +18,7 @@ Buffer::~Buffer()
 }
 
 
-void Buffer::Realloc(uint _size)
+void Buffer::Realloc(int _size)
 {
     Free();
     Malloc(_size);
@@ -27,9 +27,9 @@ void Buffer::Realloc(uint _size)
 
 void Buffer::Fill(uint8 value)
 {
-    if (size)
+    if (size > 0)
     {
-        std::memset(data, value, size);
+        std::memset(data, value, (uint)size);
     }
 }
 
@@ -42,12 +42,12 @@ void Buffer::Free()
 }
 
 
-void Buffer::Malloc(uint s)
+void Buffer::Malloc(int s)
 {
     if (s > 0)
     {
-        data = (uint8 *)(std::malloc(s));
-        size = (data) ? s : 0U;
+        data = (uint8 *)(std::malloc((uint)s));
+        size = (data) ? s : 0;
 
         if(!data)
         {

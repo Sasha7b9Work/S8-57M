@@ -20,19 +20,19 @@ struct HAL
 };
 
 
-struct HAL_BUS
+namespace HAL_BUS
 {
-    static void Init();
+    void Init();
 
     // Конфигурировать для работы по шине FSMC с альтерой и памятью
-    static void ConfigureToFSMC();
+    void ConfigureToFSMC();
 
-    struct Panel
+    namespace Panel
     {
-        static void SendByte(uint8 byte);
-        static void Send(const uint8 *data, int size);
-        static bool Receive();
-        static bool InInteraction();
+        void SendByte(uint8 byte);
+        void Send(const uint8 *data, int size);
+        bool Receive();
+        bool InInteraction();
     };
 
     struct Mode
@@ -45,11 +45,9 @@ struct HAL_BUS
         };
     };
 
-    static Mode::E mode;
+    extern Mode::E mode;
 
-private:
-
-    static void InitPanel();
+    void InitPanel();
 
     // Настроить FSMC для работы с внешней RAM
     static void InitRAM();

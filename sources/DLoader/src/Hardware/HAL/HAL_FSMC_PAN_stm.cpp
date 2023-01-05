@@ -6,55 +6,61 @@
 #include <stm32f4xx_hal.h>
 
 
-struct OutPin
+namespace HAL_BUS
 {
-    OutPin(HPort::E _port, uint16 _pin) : port(_port), pin(_pin) {}
+    struct OutPin
+    {
+        OutPin(HPort::E _port, uint16 _pin) : port(_port), pin(_pin) {}
 
-    void Init()       { HAL_PIO::Init(port, pin, HMode::Output_PP, HPull::Up); SetPassive(); }
-    void SetActive()  { HAL_PIO::Reset(port, pin); }
-    void SetPassive() { HAL_PIO::Set(port, pin); }
+        void Init() { HAL_PIO::Init(port, pin, HMode::Output_PP, HPull::Up); SetPassive(); }
+        void SetActive() { HAL_PIO::Reset(port, pin); }
+        void SetPassive() { HAL_PIO::Set(port, pin); }
 
-    HPort::E port;
-    uint16 pin;
-};
-
-
-struct InPin
-{
-    InPin(HPort::E _port, uint16 _pin) : port(_port), pin(_pin) {}
-
-    void Init()        { HAL_PIO::Init(port, pin, HMode::Input, HPull::Up); }
-    bool IsActive()    { return HAL_PIO::Read(port, pin) == 0; };
-    bool IsPassive()   { return HAL_PIO::Read(port, pin) == 1; };
-    void WaitActive()  { while(IsPassive()) { } }
-    void WaitPassive() { while(IsActive()) { } }
-
-    HPort::E port;
-    uint16 pin;
-};
+        HPort::E port;
+        uint16 pin;
+    };
 
 
-struct DataBus
-{
-    /// Первоначальная инициализация
-    static void Init();
-};
+    struct InPin
+    {
+        InPin(HPort::E _port, uint16 _pin) : port(_port), pin(_pin) {}
+
+        void Init() { HAL_PIO::Init(port, pin, HMode::Input, HPull::Up); }
+        bool IsActive() { return HAL_PIO::Read(port, pin) == 0; };
+        bool IsPassive() { return HAL_PIO::Read(port, pin) == 1; };
+        void WaitActive() { while (IsPassive()) {} }
+        void WaitPassive() { while (IsActive()) {} }
+
+        HPort::E port;
+        uint16 pin;
+    };
 
 
-/// По активному состоянию этого пина панель определяет, что главный МК готов к взаимодействию
-static OutPin pinCS(PIN_CS);
-/// По активновному состоянию этого пина панель определяте, что главный МК хочет делать передачу
-static OutPin pinWR(PIN_WR);
-/// По активному состоянию этого пина панель определяте, что главный МК хочет делать чтение
-static OutPin pinRD(PIN_RD);
+    struct DataBus
+    {
+        // Первоначальная инициализация
+        static void Init();
+    };
 
-/// Активным состоянием этого пина панель сообщает о готовности к взаимодействию
-static InPin pinReadyPAN(PIN_PAN_READY);
-/// Активное состояние этого пина сообщает о том, что панель имеет данные для пеередчи
-static InPin pinDataPAN(PIN_PAN_DATA);
 
-/// true означает, что шина находится в процессе обмена с панелью и запись по обычной FSMC в альтеру и память запрещена
-static bool interactionWithPanel = false;
+    // По активному состоянию этого пина панель определяет, что главный МК готов к взаимодействию
+    static OutPin pinCS(PIN_CS);
+
+    // По активновному состоянию этого пина панель определяте, что главный МК хочет делать передачу
+    static OutPin pinWR(PIN_WR);
+
+    // По активному состоянию этого пина панель определяте, что главный МК хочет делать чтение
+    static OutPin pinRD(PIN_RD);
+
+    // Активным состоянием этого пина панель сообщает о готовности к взаимодействию
+    static InPin pinReadyPAN(PIN_PAN_READY);
+
+    // Активное состояние этого пина сообщает о том, что панель имеет данные для пеередчи
+    static InPin pinDataPAN(PIN_PAN_DATA);
+
+    // true означает, что шина находится в процессе обмена с панелью и запись по обычной FSMC в альтеру и память запрещена
+    static bool interactionWithPanel = false;
+}
 
 void HAL_BUS::InitPanel()
 {
@@ -210,7 +216,7 @@ bool HAL_BUS::Panel::InInteraction()
 }
 
 
-void DataBus::Init()
+void HAL_BUS::DataBus::Init()
 {
     // Конфигурируем ШД на чтение
 
