@@ -142,10 +142,10 @@ bool TestMemoryStruct::CheckData(const DataSettings *ds)
 
 static void PrepareDS(DataSettings *ds)
 {
-    ds->en_a = static_cast<uint>(std::rand() % 2);
-    ds->en_b = ds->en_a ? static_cast<uint>(std::rand() % 2) : 1;
-    ds->peackDet = static_cast<uint>(PeakDetMode::Disabled);
-    ds->enumPoints = static_cast<uint>(std::rand() % ENumPointsFPGA::Count);
+    ds->en_a = (uint)(std::rand() % 2);
+    ds->en_b = ds->en_a ? (uint)(std::rand() % 2) : 1;
+    ds->peackDet = (uint)(PeakDetMode::Disabled);
+    ds->enumPoints = (uint)(std::rand() % ENumPointsFPGA::Count);
 }
 
 

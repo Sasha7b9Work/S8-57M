@@ -59,7 +59,7 @@ void Sector::Erase() const
     {
         FLASH_TYPEERASE_SECTORS,
         0,
-        static_cast<uint>(number),
+        (uint)(number),
         1,
         FLASH_VOLTAGE_RANGE_3
     };

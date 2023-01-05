@@ -489,7 +489,7 @@ int CalculatePeriodAccurately(Chan::E ch)
 {
     static int period[2];
 
-    int *sums = static_cast<int *>(std::malloc(static_cast<uint>(nBytes)));
+    int *sums = static_cast<int *>(std::malloc((uint)(nBytes)));
 
     if (sums == 0)
     {
@@ -1239,7 +1239,7 @@ void InterpolationSinX_X(uint8 *data, int numPoints, TBase::E tBase)
     static const int deltas[5] = {100, 50, 20, 10, 5};
     int delta = deltas[(int)(tBase)];
 
-    uint8 *signedData = (uint8 *)(std::malloc(static_cast<uint>(numPoints) / 2U));
+    uint8 *signedData = (uint8 *)(std::malloc((uint)(numPoints) / 2U));
     if (signedData == 0)
     {
         return;

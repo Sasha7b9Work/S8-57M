@@ -299,12 +299,12 @@ void DataSettings::CopyDataFrom(const DataSettings *source)
 
     if(en_a && source->en_a)
     {
-        std::memcpy(ch_a, source->ch_a, static_cast<uint>(numBytes));
+        std::memcpy(ch_a, source->ch_a, (uint)(numBytes));
     }
 
     if((en_b != 0) && (source->en_b != 0))
     {
-        std::memcpy(ch_b, source->ch_b, static_cast<uint>(numBytes));
+        std::memcpy(ch_b, source->ch_b, (uint)(numBytes));
     }
 }
 
@@ -313,11 +313,11 @@ void DataSettings::Clear()
 {
     if (en_a)
     {
-        std::memset(ch_a, VALUE::NONE, static_cast<uint>(BytesInChannel()));
+        std::memset(ch_a, VALUE::NONE, (uint)(BytesInChannel()));
     }
 
     if (en_b)
     {
-        std::memset(ch_b, VALUE::NONE, static_cast<uint>(BytesInChannel()));
+        std::memset(ch_b, VALUE::NONE, (uint)(BytesInChannel()));
     }
 }

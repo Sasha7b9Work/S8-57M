@@ -141,7 +141,7 @@ void Record::DeleteOldPoints()
 {
     if(numPoints == maxPoints)
     {
-        uint numBytes = bytesOnPoint * static_cast<uint>(numPoints - 1);      // Столько байт будем перемещать
+        uint numBytes = bytesOnPoint * (uint)(numPoints - 1);      // Столько байт будем перемещать
 
         uint8 *dest = BeginData();
 
@@ -237,7 +237,7 @@ void Record::Init()
     numPoints = 0;
     sources = 0;
     bytesOnPoint = 0;
-    timeForPointMS = static_cast<uint>(Recorder::ScaleX::TimeForPointMS());
+    timeForPointMS = (uint)(Recorder::ScaleX::TimeForPointMS());
 
     offsetB = 0;
     offsetSensor = 0;

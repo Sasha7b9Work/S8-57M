@@ -200,7 +200,7 @@ const PacketROM *Sector::WriteData(uint numInROM, const DataSettings *ds) const
 
     uint sizeDS = sizeof(DataSettings);
 
-    uint sizeData = static_cast<uint>(ds->BytesInChannel() * 2);
+    uint sizeData = (uint)(ds->BytesInChannel() * 2);
 
     volatile uint needSpace = sizePacket + sizeDS + sizeData;
 
@@ -215,7 +215,7 @@ const PacketROM *Sector::WriteData(uint numInROM, const DataSettings *ds) const
         return nullptr;
     }
 
-    PacketROM record = { STATE_VALID, static_cast<uint16>(PacketROM::GetPackedSize(ds)), TYPE_DATA };
+    PacketROM record = { STATE_VALID, (uint16)(PacketROM::GetPackedSize(ds)), TYPE_DATA };
 
     WriteToROM(&recordAddress, &record, sizeof(record));
 

@@ -433,7 +433,7 @@ void AutoFPGA::Wait(uint timeMS)
 
 void AutoFPGA::Start()
 {
-    FPGA::GiveStart(static_cast<uint16>(~(1)), static_cast<uint16>(~(SIZE + 5)));
+    FPGA::GiveStart((uint16)(~(1)), (uint16)(~(SIZE + 5)));
 
     for (int i = 0; i < 50; i++)
     {
@@ -450,7 +450,7 @@ void AutoFPGA::Start()
 
 void AutoFPGA::ReadData(Chan::E ch, uint8 *data)
 {
-    uint16 addrRead = static_cast<uint16>(Osci::ReadLastRecord(ch) - SIZE);
+    uint16 addrRead = (uint16)(Osci::ReadLastRecord(ch) - SIZE);
 
     HAL_BUS::FPGA::Write16(WR::PRED_LO, addrRead);
     HAL_BUS::FPGA::Write8(WR::START_ADDR, 0xff);

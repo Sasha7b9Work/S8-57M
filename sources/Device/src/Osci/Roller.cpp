@@ -135,7 +135,7 @@ bool Roller::NeedDraw()
 
 bool Roller::FirstDrawThisFrame()
 {
-    return firstOnDisplay == static_cast<uint>(-1);
+    return firstOnDisplay == (uint)(-1);
 }
 
 
@@ -159,7 +159,7 @@ int Roller::FillScreenBuffer(Chan::E ch, Buffer &buffer, int width)
     }
 
     buffer.Realloc(width);
-    std::memset(buffer.data, VALUE::NONE, static_cast<uint>(width));
+    std::memset(buffer.data, VALUE::NONE, (uint)(width));
 
     uint position = 0;
     uint8 *in = ds->Data(ch);
@@ -168,7 +168,7 @@ int Roller::FillScreenBuffer(Chan::E ch, Buffer &buffer, int width)
     for(int i = firstOnDisplay; i < numBytes; i++)
     {
         out[position] = in[i];
-        Math::CircleIncrease<uint>(&position, 0, static_cast<uint>(width - 1));
+        Math::CircleIncrease<uint>(&position, 0, (uint)(width - 1));
     }
 
     return (int)(PEAKDET_ENABLED(ds) ? (position / 2 - 1) : (position - 1));

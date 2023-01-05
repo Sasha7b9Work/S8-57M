@@ -24,10 +24,10 @@ bool Osci::ReadDataChannel(Chan::E ch, uint8 *data)
 
     if(addrRead == 0xffff)
     {
-        addrRead = static_cast<uint16>(ReadLastRecord(ch) - (int)(numPoints) / TBase::DeltaPoint() - (OSCI_IN_MODE_RANDOMIZER ? 10 : 12));
+        addrRead = (uint16)(ReadLastRecord(ch) - (int)(numPoints) / TBase::DeltaPoint() - (OSCI_IN_MODE_RANDOMIZER ? 10 : 12));
     }
 
-    HAL_BUS::FPGA::Write16(WR::PRED_LO, static_cast<uint16>(addrRead));
+    HAL_BUS::FPGA::Write16(WR::PRED_LO, (uint16)(addrRead));
     HAL_BUS::FPGA::Write8(WR::START_ADDR, 0xff);
 
     uint8 *a0 = (ch == ChanA) ? RD::DATA_A : RD::DATA_B;  // -V566

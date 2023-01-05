@@ -56,7 +56,7 @@ void Timer::Init()
     HAL_TIM3::Init(54000 - 1, 1);
     HAL_TIM3::EnableIRQ(1, 1);
 
-    HAL_TIM2::Init(0, static_cast<uint>(-1));
+    HAL_TIM2::Init(0, (uint)(-1));
     HAL_TIM2::Start();
 }
 

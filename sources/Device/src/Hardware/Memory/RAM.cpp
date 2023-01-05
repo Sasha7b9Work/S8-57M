@@ -46,7 +46,7 @@ static uint *WriteToRAM(uint *dest, const void *src, int size)
     
     uint8 *address = reinterpret_cast<uint8 *>(dest);
 
-    std::memcpy(address, src, static_cast<uint>(size));
+    std::memcpy(address, src, (uint)(size));
     
     return reinterpret_cast<uint *>(address + size);
 }
@@ -117,14 +117,14 @@ struct Packet
         if (ds->en_a)
         {
             ds->ch_a = addrData;
-            std::memset(addrData, VALUE::NONE, static_cast<uint>(bytesInChannel));
+            std::memset(addrData, VALUE::NONE, (uint)(bytesInChannel));
             addrData += bytesInChannel;
         }
 
         if (ds->en_b)
         {
             ds->ch_b = addrData;
-            std::memset(addrData, VALUE::NONE, static_cast<uint>(bytesInChannel));
+            std::memset(addrData, VALUE::NONE, (uint)(bytesInChannel));
         }
 
         WriteToRAM(address, ds, sizeof(DataSettings));
@@ -331,7 +331,7 @@ uint RAM::AllocateMemoryForPacket(const DataSettings *ds)
 
 void RAM::AllocateMemoryFromBegin(int size)
 {
-    while (oldest->Address() - BEGIN < static_cast<uint>(size))
+    while (oldest->Address() - BEGIN < (uint)(size))
     {
         RemoveOldest();
     }

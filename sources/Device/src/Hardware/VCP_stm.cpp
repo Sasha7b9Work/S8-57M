@@ -49,9 +49,9 @@ void VCP::SendDataAsynch(const uint8 *buffer, int size)
 
     size = Math::Min(size, SIZE_BUFFER);
     while (!PrevSendingComplete())  {};
-    std::memcpy(trBuf, buffer, static_cast<uint>(size));
+    std::memcpy(trBuf, buffer, (uint)size);
 
-    USBD_CDC_SetTxBuffer(&hUSBD, trBuf, static_cast<uint16>(size));
+    USBD_CDC_SetTxBuffer(&hUSBD, trBuf, (uint16)size);
     USBD_CDC_TransmitPacket(&hUSBD);
 }
 
@@ -69,7 +69,7 @@ void VCP::Flush()
 
         while (pCDC->TxState == 1) {}; //-V712
 
-        USBD_CDC_SetTxBuffer(&hUSBD, buffSend, static_cast<uint16>(sizeBuffer));
+        USBD_CDC_SetTxBuffer(&hUSBD, buffSend, (uint16)(sizeBuffer));
         USBD_CDC_TransmitPacket(&hUSBD);
 
         while (pCDC->TxState == 1) {}; //-V654 //-V712
@@ -99,7 +99,7 @@ void VCP::SendDataSynch(const void *_buffer, int size)
 
                 while (pCDC->TxState == 1) {}; //-V712
 
-                std::memcpy(buffSend + sizeBuffer, static_cast<void *>(buffer), static_cast<uint>(reqBytes));
+                std::memcpy(buffSend + sizeBuffer, (void *)(buffer), (uint)(reqBytes));
                 USBD_CDC_SetTxBuffer(&hUSBD, buffSend, SIZE_BUFFER_VCP);
                 USBD_CDC_TransmitPacket(&hUSBD);
                 size -= reqBytes;
@@ -108,7 +108,7 @@ void VCP::SendDataSynch(const void *_buffer, int size)
             }
             else
             {
-                std::memcpy(buffSend + sizeBuffer, static_cast<void *>(buffer), static_cast<uint>(size));
+                std::memcpy(buffSend + sizeBuffer, (void *)(buffer), (uint)(size));
                 sizeBuffer += size;
                 size = 0;
             }
@@ -119,7 +119,7 @@ void VCP::SendDataSynch(const void *_buffer, int size)
 
 void VCP::SendStringAsynch(pchar data)
 {
-    SendDataAsynch(reinterpret_cast<uint8 *>(const_cast<char *>(data)), (int)(std::strlen(data)));
+    SendDataAsynch(reinterpret_cast<uint8 *>((char *)(data)), (int)(std::strlen(data)));
 }
 
 

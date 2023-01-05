@@ -24,10 +24,10 @@ void AveragerOsci::Process(Chan::E ch, const uint8 *dataNew, int size)
 
     if((OSCI_IN_MODE_RANDOMIZER) && (NRST_ENUM_AVERAGE_RAND > enumAverages))
     {
-        enumAverages = static_cast<uint16>(NRST_ENUM_AVERAGE_RAND);
+        enumAverages = (uint16)(NRST_ENUM_AVERAGE_RAND);
     }
 
-    uint16 numAverages = static_cast<uint16>(1 << enumAverages);
+    uint16 numAverages = (uint16)(1 << enumAverages);
 
     if (numSignals[ch] < numAverages)
     {
@@ -52,11 +52,11 @@ void AveragerOsci::Process(Chan::E ch, const uint8 *dataNew, int size)
     }
     else
     {
-        uint16 shift = static_cast<uint16>(enumAverages);
+        uint16 shift = (uint16)(enumAverages);
 
         for(int i = 0; i < size; i++)
         {
-            av[i] = static_cast<uint16>(av[i] - (av[i] >> shift) + *_new);
+            av[i] = (uint16)(av[i] - (av[i] >> shift) + *_new);
             *_new++ = (uint8)(av[i] >> shift);
         }
     }

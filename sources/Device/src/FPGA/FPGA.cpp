@@ -15,8 +15,8 @@
 namespace FPGA
 {
     bool   forcedStart = false;
-    uint16 post = static_cast<uint16>(~(512));
-    uint16 pred = static_cast<uint16>(~(512));
+    uint16 post = (uint16)(~(512));
+    uint16 pred = (uint16)(~(512));
 
     bool   isRunning = false;
 }
@@ -45,7 +45,7 @@ uint16 Osci::ReadLastRecord(Chan::E ch)
 
     if(ch == ChanA)
     {
-        address = static_cast<uint16>(HAL_BUS::FPGA::Read(RD::LAST_RECORD_LO) + ((HAL_BUS::FPGA::Read(RD::LAST_RECORD_HI)) << 8));
+        address = (uint16)(HAL_BUS::FPGA::Read(RD::LAST_RECORD_LO) + ((HAL_BUS::FPGA::Read(RD::LAST_RECORD_HI)) << 8));
 
         static const uint16 deltas[8] = { 5, 5, 5, 5, 5, 10, 5, 2 };
 

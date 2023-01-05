@@ -45,7 +45,7 @@ static void WriteByte(uint8 address, uint8 byte)
 {
     HAL_PIO::Reset(PIN_AD9286_CS);
 
-    uint value = static_cast<uint>((address << 8) + byte);
+    uint value = (uint)((address << 8) + byte);
 
     for (int i = 23; i >= 0; --i)
     {

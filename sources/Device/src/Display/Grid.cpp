@@ -214,7 +214,7 @@ void Grid::DrawGridSpectrum()
 			HLine(256).Draw(Grid::Left(), y, Color::GRID);
 
             Color::FILL.SetAsCurrent();
-            String(const_cast<char *>(strs[i])).Draw(3, y - 4);
+            String((char *)(strs[i])).Draw(3, y - 4);
         }
 
         Color::FILL.SetAsCurrent();
@@ -230,7 +230,7 @@ void Grid::DrawGridSpectrum()
 
 			HLine(256).Draw(Grid::Left(), y, Color::GRID);
 
-            String(const_cast<char *>(strs[i])).Draw(5, y - 4, Color::FILL);
+            String((char *)(strs[i])).Draw(5, y - 4, Color::FILL);
         }
     }
 
@@ -336,12 +336,12 @@ void Grid::DrawGridType3(int left, int top, int right, int bottom, int centerX, 
 
     uint16 masX[6] =
     {
-        static_cast<uint16>(left + 1),
-        static_cast<uint16>(left + 2),
-        static_cast<uint16>(centerX - 1),
-        static_cast<uint16>(centerX + 1),
-        static_cast<uint16>(right - 2),
-        static_cast<uint16>(right - 1)
+        (uint16)(left + 1),
+        (uint16)(left + 2),
+        (uint16)(centerX - 1),
+        (uint16)(centerX + 1),
+        (uint16)(right - 2),
+        (uint16)(right - 1)
     };
 
     MultiVPointLine(6, masX, deltaY, (bottom - top) / deltaY).Draw(top + deltaY, Color::GRID);

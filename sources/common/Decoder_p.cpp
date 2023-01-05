@@ -670,7 +670,7 @@ bool PDecoder::DrawText(uint8 data)
     case 4:
         numSymbols = data;
         readingSymbols = 0;
-        buffer = new char[static_cast<uint>(numSymbols + 1)];
+        buffer = new char[(uint)(numSymbols + 1)];
         break;
     default:
         buffer[readingSymbols++] = (char)(data);
@@ -700,9 +700,9 @@ bool PDecoder::SetPalette(uint8 data)
     case 0:                                                 break;
     case 1: numColor = data;                                break;
     case 2: valueColor = data;                              break;
-    case 3: valueColor |= static_cast<uint>(data) << 8;     break;
-    case 4: valueColor |= static_cast<uint>(data) << 16;    break;
-    case 5: valueColor |= static_cast<uint>(data) << 24;
+    case 3: valueColor |= (uint)(data) << 8;     break;
+    case 4: valueColor |= (uint)(data) << 16;    break;
+    case 5: valueColor |= (uint)(data) << 24;
         Color(numColor).SetValue(valueColor);
         result = true;
         break;

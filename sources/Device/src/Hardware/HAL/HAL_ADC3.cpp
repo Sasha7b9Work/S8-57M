@@ -125,7 +125,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 
         HAL_ADC_PollForConversion(&HAL_ADC3::handle, 10);
 
-        HAL_ADC3::value = static_cast<uint16>(HAL_ADC_GetValue(hadc));
+        HAL_ADC3::value = (uint16)(HAL_ADC_GetValue(hadc));
 
         HAL_ADC3::ConfigToIT();
     }

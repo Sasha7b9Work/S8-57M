@@ -180,7 +180,7 @@ void Menu::SetAutoHide(bool)
         }
         else
         {
-            Timer::SetAndStartOnce(TypeTimer::MenuAutoHide, OnTimerAutoHide, static_cast<uint>(Display::TimeMenuAutoHide()));
+            Timer::SetAndStartOnce(TypeTimer::MenuAutoHide, OnTimerAutoHide, (uint)(Display::TimeMenuAutoHide()));
         }
     }
 }

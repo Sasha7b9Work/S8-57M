@@ -107,7 +107,7 @@ void RShift::Load(Chan::E ch)
 
     shift += NRST_EX_SHIFT(ch, S_RANGE(ch));
 
-    Osci::InputController::Write(PIN_SPI3_CS1, static_cast<uint16>(mask[ch] | (shift << 2)));
+    Osci::InputController::Write(PIN_SPI3_CS1, (uint16)(mask[ch] | (shift << 2)));
 
     Osci::Restart();
 
@@ -131,17 +131,17 @@ void FPGA::LoadCalibratorMode()
 
 void TShift::LoadReal()
 {
-    FPGA::post = static_cast<uint16>(S_TIME_SHIFT - TShift::Min() + 10);
+    FPGA::post = (uint16)(S_TIME_SHIFT - TShift::Min() + 10);
     int Pred = (int)(ENumPointsFPGA::PointsInChannel()) - (int)(FPGA::post);
 
     if (Pred < 0)
     {
         Pred = 0;
     }
-    FPGA::pred = static_cast<uint16>(Pred);
+    FPGA::pred = (uint16)(Pred);
 
-    FPGA::post = static_cast<uint16>(~(FPGA::post + 1));
-    FPGA::pred = static_cast<uint16>(~(FPGA::pred + 3));
+    FPGA::post = (uint16)(~(FPGA::post + 1));
+    FPGA::pred = (uint16)(~(FPGA::pred + 3));
 
     HAL_BUS::FPGA::Write16(WR::PRED_LO, FPGA::post);
     HAL_BUS::FPGA::Write16(WR::POST_LO, FPGA::pred);
@@ -158,7 +158,7 @@ void TShift::LoadRandomize()
 {
     int k = TBase::DeltaPoint();
 
-    FPGA::post = static_cast<uint16>((S_TIME_SHIFT - TShift::Min() - GetK()) / k);
+    FPGA::post = (uint16)((S_TIME_SHIFT - TShift::Min() - GetK()) / k);
 
     if((S_TIME_SHIFT - (int)(GetK())) < TShift::Min())
     {
@@ -172,15 +172,15 @@ void TShift::LoadRandomize()
         Pred = 5;
     }
 
-    FPGA::pred = static_cast<uint16>(Pred);
+    FPGA::pred = (uint16)(Pred);
 
     if(S_DBG_SHOW_RAND_PRED_POST)
     {
         LOG_WRITE("pred = %d, post = %d", FPGA::pred, FPGA::post);
     }
 
-    FPGA::post = static_cast<uint16>(~(FPGA::post + 10));
-    FPGA::pred = static_cast<uint16>(~(FPGA::pred));
+    FPGA::post = (uint16)(~(FPGA::post + 10));
+    FPGA::pred = (uint16)(~(FPGA::pred));
 
     HAL_BUS::FPGA::Write16(WR::PRED_LO, FPGA::pred);
     HAL_BUS::FPGA::Write16(WR::POST_LO, FPGA::post);

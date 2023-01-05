@@ -163,7 +163,7 @@ void Message::PutWord(uint v)
 bool Message::Allocate(uint size)
 {
     Free();
-    data = (uint8 *)(std::malloc(static_cast<uint>(size)));  // -V106
+    data = (uint8 *)(std::malloc((uint)(size)));  // -V106
     if (data)
     {
         allocated = size;
@@ -187,8 +187,8 @@ void Message::Create::DrawHLine(Message &message, int y, int x0, int x1)
     {
         message.PutByte(Command::Paint_DrawHLine);
         message.PutByte((uint8)(y));
-        message.PutHalfWord(static_cast<uint16>(x0));
-        message.PutHalfWord(static_cast<uint16>(x1));
+        message.PutHalfWord((uint16)(x0));
+        message.PutHalfWord((uint16)(x1));
     }
 }
 
@@ -198,9 +198,9 @@ void Message::Create::DrawRectangle(Message &message, int x, int y, int width, i
     if (message.Allocate(7))
     {
         message.PutByte(Command::Paint_DrawRectangle);
-        message.PutHalfWord(static_cast<uint16>(x));
+        message.PutHalfWord((uint16)(x));
         message.PutByte((uint8)(y));
-        message.PutHalfWord(static_cast<uint16>(width));
+        message.PutHalfWord((uint16)(width));
         message.PutByte((uint8)(height));
     }
 }

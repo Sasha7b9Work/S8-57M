@@ -47,7 +47,7 @@ void Queue<T>::Push(T elem)
     {
         T *old = pointer;
         int num = iBack - iFront + 1;
-        pointer = new T[static_cast<uint>(num)];
+        pointer = new T[(uint)(num)];
         for (int i = 0; i < num - 1; i++)
         {
             pointer[i] = old[i + iFront];

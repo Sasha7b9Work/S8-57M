@@ -140,7 +140,7 @@ private:
 #pragma warning(pop)
 #endif
 
-#define MAKE_COLOR(r, g, b) (static_cast<uint>(static_cast<uint>(b) + (static_cast<uint>(g) << 8) + (static_cast<uint>(r) << 16)))
-#define R_FROM_COLOR(color) ((static_cast<uint>(color) >> 16) & 0xff)
-#define G_FROM_COLOR(color) ((static_cast<uint>(color) >> 8)  & 0xff)
-#define B_FROM_COLOR(color) ((static_cast<uint>(color))       & 0xff)
+#define MAKE_COLOR(r, g, b) ((uint)((uint)(b) + ((uint)(g) << 8) + ((uint)(r) << 16)))
+#define R_FROM_COLOR(color) (((uint)(color) >> 16) & 0xff)
+#define G_FROM_COLOR(color) (((uint)(color) >> 8)  & 0xff)
+#define B_FROM_COLOR(color) (((uint)(color))       & 0xff)

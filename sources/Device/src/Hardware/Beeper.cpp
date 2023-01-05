@@ -153,7 +153,7 @@ static void Beep(const TypeWave::E newTypeWave, const float newFreq, const float
 
     HAL_DAC1::StartDMA(points, POINTS_IN_PERIOD_SOUND);
 
-    Timer::SetAndStartOnce(TypeTimer::StopSound, Stop, static_cast<uint>(newDuration));
+    Timer::SetAndStartOnce(TypeTimer::StopSound, Stop, (uint)(newDuration));
 }
 
 

@@ -11,7 +11,7 @@
 
 void CF::LogBufferU8_HEX(const uint8 *buffer, int num)
 {
-    char *message = (char *)(std::malloc(static_cast<uint>(num * 3)));
+    char *message = (char *)(std::malloc((uint)(num * 3)));
 
     if (message == nullptr)
     {
@@ -38,7 +38,7 @@ void CF::LogBufferU8_HEX(const uint8 *buffer, int num)
 
 void CF::LogBufferU8_DEC(const uint8 *buffer, int num)
 {
-    char *message = (char *)(std::malloc(static_cast<uint>(num * 3)));
+    char *message = (char *)(std::malloc((uint)(num * 3)));
 
     if (message == nullptr)
     {

@@ -133,7 +133,7 @@ void String::Append(pchar str, int numSymbols)
     Allocate(size);
 
     std::strcpy(buffer, old.c_str());
-    std::memcpy(buffer + old.Size(), str, static_cast<uint>(numSymbols));
+    std::memcpy(buffer + old.Size(), str, (uint)(numSymbols));
     buffer[size - 1] = '\0';
 }
 
@@ -171,7 +171,7 @@ char *String::c_str() const
 bool String::Allocate(int size)
 {
     std::free(buffer);
-    buffer = (char *)(std::malloc(static_cast<uint>(size)));
+    buffer = (char *)(std::malloc((uint)(size)));
     if (buffer)
     {
         return true;
@@ -211,7 +211,7 @@ void String::Conversion(TypeConversionString::E conv)
 
 void String::RemoveFromBegin(int numSymbols)
 {
-    if (std::strlen(buffer) == static_cast<uint>(numSymbols))
+    if (std::strlen(buffer) == (uint)(numSymbols))
     {
         Free();
     }

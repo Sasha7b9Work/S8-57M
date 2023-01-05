@@ -30,7 +30,7 @@ void Buffer::Fill(uint8 value)
 {
     if (size)
     {
-        std::memset(data, value, static_cast<uint>(size));
+        std::memset(data, value, (uint)(size));
     }
 }
 
@@ -47,7 +47,7 @@ void Buffer::Malloc(int s)
 {
     if (s > 0)
     {
-        data = (uint8 *)(std::malloc(static_cast<uint>(s)));
+        data = (uint8 *)(std::malloc((uint)(s)));
         size = (data) ? s : 0;
 
         if(!data)

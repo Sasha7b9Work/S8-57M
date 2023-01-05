@@ -443,9 +443,9 @@ static char *PartWordForTransfer(char *word, const int8 *lengthSyllables, int nu
     uint length = 0;
     for (int i = 0; i <= numSyllable; i++)
     {
-        length += static_cast<uint>(lengthSyllables[i]);
+        length += (uint)(lengthSyllables[i]);
     }
-    std::memcpy(static_cast<void *>(buffer), static_cast<void *>(word), length);
+    std::memcpy((void *)(buffer), (void *)(word), length);
     buffer[length] = '-';
     buffer[length + 1] = '\0';
     return buffer;

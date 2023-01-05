@@ -83,8 +83,8 @@ void Math::Smoothing(uint8 *data, int numPoints, int numSmooth)
         return;
     }
 
-    float *buffer = static_cast<float *>(std::malloc(static_cast<uint>(numPoints * (int)(sizeof(float)))));
-    int  *num = static_cast<int *>(std::malloc(static_cast<uint>(numPoints * (int)(sizeof(int)))));
+    float *buffer = static_cast<float *>(std::malloc((uint)(numPoints * (int)(sizeof(float)))));
+    int  *num = static_cast<int *>(std::malloc((uint)(numPoints * (int)(sizeof(int)))));
 
     if (num != 0 && buffer != 0)
     {
@@ -338,7 +338,7 @@ void Math::CalculateFiltrArray(const uint8 *dataIn, uint8 *dataOut, int numPoint
 {
     if (numSmoothing < 2)
     {
-        std::memcpy(dataOut, dataIn, static_cast<uint>(numPoints)); //-V107
+        std::memcpy(dataOut, dataIn, (uint)(numPoints)); //-V107
     }
     else
     {

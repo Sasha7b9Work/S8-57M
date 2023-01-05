@@ -453,7 +453,7 @@ static char *FloatToString(float value, bool alwaysSign, int numDigits, char buf
     }
     
     bool signExist = alwaysSign || value < 0;
-    while (std::strlen(bufferOut) < static_cast<uint>(numDigits + (signExist ? 2 : 1)))
+    while (std::strlen(bufferOut) < (uint)(numDigits + (signExist ? 2 : 1)))
     {
         std::strcat(bufferOut, "0");
     }

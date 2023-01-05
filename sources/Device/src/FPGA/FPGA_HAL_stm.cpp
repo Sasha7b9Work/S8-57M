@@ -12,7 +12,7 @@ extern uint16 flagFPGA;
 
 void FPGA::Flag::Read(bool updateFreqMeter)
 {
-    flagFPGA = static_cast<uint16>(HAL_BUS::FPGA::Read(RD::FLAG_LO) | (HAL_BUS::FPGA::Read(RD::FLAG_HI) << 8));
+    flagFPGA = (uint16)(HAL_BUS::FPGA::Read(RD::FLAG_LO) | (HAL_BUS::FPGA::Read(RD::FLAG_HI) << 8));
 
     if (Flag::TrigReady() && !forcedStart)
     {

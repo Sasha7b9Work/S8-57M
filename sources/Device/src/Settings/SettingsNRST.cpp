@@ -25,7 +25,7 @@ void SettingsNRST::Init()
     SettingsNRST *saved = ROM::NRST::GetSaved();
 
     if(!saved ||                                    // Если нет сохраённых настроек
-       saved->size == static_cast<uint>(-1))        // или в памяти по этому адресу ещё не было ничего записано
+       saved->size == (uint)(-1))        // или в памяти по этому адресу ещё не было ничего записано
     {
         setNRST = defaultNRST;                      // То применяем значения по умолчанию
     }

@@ -327,7 +327,7 @@ void TBase::Set(TBase::E base)
 
 void Range::LoadBoth()
 {
-    uint16 val = static_cast<uint16>(ValueForRange(ChanB) + (ValueForRange(ChanA) << 8));
+    uint16 val = (uint16)(ValueForRange(ChanB) + (ValueForRange(ChanA) << 8));
 
     Osci::InputController::Write(PIN_SPI3_CS2, val);
 
@@ -490,9 +490,9 @@ pString Chan::Name(Chan::E ch)
 void TrigLevel::Load()
 {
     // \todo Здесь много лишних движений. Нужно что-то сделать с вводом SET_TRIGLEV_SOURCE
-    uint16 value = static_cast<uint16>(HARDWARE_ZERO - S_TRIG_LEVEL_SOURCE);
+    uint16 value = (uint16)(HARDWARE_ZERO - S_TRIG_LEVEL_SOURCE);
 
-    Osci::InputController::Write(PIN_SPI3_CS1, static_cast<uint16>(0xa000 | (value << 2)));
+    Osci::InputController::Write(PIN_SPI3_CS1, (uint16)(0xa000 | (value << 2)));
 
     Osci::Restart();
 }

@@ -360,10 +360,10 @@ void Osci::ClearDataRand()
         DataSettings *ds = RAM::Get();
         ds->Fill();
 
-        std::memset(ds->Data(ChanA), VALUE::NONE, static_cast<uint>(ds->PointsInChannel()));
-        std::memset(ds->Data(ChanB), VALUE::NONE, static_cast<uint>(ds->PointsInChannel()));
+        std::memset(ds->Data(ChanA), VALUE::NONE, (uint)(ds->PointsInChannel()));
+        std::memset(ds->Data(ChanB), VALUE::NONE, (uint)(ds->PointsInChannel()));
 
-        std::memset(IntRAM::DataRand(ChanA), VALUE::NONE, static_cast<uint>(ds->PointsInChannel()));
+        std::memset(IntRAM::DataRand(ChanA), VALUE::NONE, (uint)(ds->PointsInChannel()));
     }
 }
 
@@ -562,8 +562,8 @@ bool Gates::Calculate(uint16 value, uint16 *min, uint16 *max)
         m.Reset();
     }
 
-    *min = static_cast<uint16>(minGate);
-    *max = static_cast<uint16>(maxGate);
+    *min = (uint16)(minGate);
+    *max = (uint16)(maxGate);
 
     return (value >= *min) && (value <= *max);
 }
@@ -577,7 +577,7 @@ void Gates::RecalculateGates()
     if(S_DBG_SHOW_RAND_GATES)
     {
         static uint timePrev = 0;
-        LOG_WRITE("Новые ворота %d %d  время %d", static_cast<uint16>(minGate), static_cast<uint16>(maxGate), (TIME_MS - timePrev) / 1000);
+        LOG_WRITE("Новые ворота %d %d  время %d", (uint16)(minGate), (uint16)(maxGate), (TIME_MS - timePrev) / 1000);
         timePrev = TIME_MS;
     }
 }
@@ -592,8 +592,8 @@ void Gates::CalculateWithoutGates(uint16 *min, uint16 *max)
     }
     else
     {
-        *min = static_cast<uint16>(minGate);
-        *max = static_cast<uint16>(maxGate);
+        *min = (uint16)(minGate);
+        *max = (uint16)(maxGate);
     }
 }
 

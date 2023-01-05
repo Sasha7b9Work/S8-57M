@@ -231,7 +231,7 @@ bool FDrive::FileExist(pchar fileName)
 
 static bool GetNameFile(pchar fullPath, int numFile, char *nameFileOut, StructForReadDir *s)
 {
-    memcpy(reinterpret_cast<uint8 *>(s->nameDir), const_cast<char *>(fullPath), strlen(fullPath));
+    memcpy(reinterpret_cast<uint8 *>(s->nameDir), (char *)(fullPath), strlen(fullPath));
     s->nameDir[strlen(fullPath)] = '\0';
 
     DIR *pDir = &s->dir;
@@ -409,7 +409,7 @@ void Upgrade()
         int readedBytes = FDrive::ReadFromFile(sizeSector, buffer);
         CPU::FLASH_::WriteData(address, buffer, readedBytes);
         size -= readedBytes;
-        address += static_cast<uint>(readedBytes);
+        address += (uint)(readedBytes);
 
         percentsUpdate = 1.0F - static_cast<float>(size) / fullSize;
     }

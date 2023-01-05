@@ -45,7 +45,7 @@ static void DisableDisplayIfTimeout()
 {
     if (S_SERV_TIME_DISABLE_DISPLAY)
     {
-        uint timeWait = static_cast<uint>(S_SERV_TIME_DISABLE_DISPLAY * 60 * 1000);
+        uint timeWait = (uint)(S_SERV_TIME_DISABLE_DISPLAY * 60 * 1000);
 
         uint timeout = BufferButtons::TimeAfterControlMS();
 

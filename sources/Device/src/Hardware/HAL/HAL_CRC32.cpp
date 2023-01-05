@@ -28,5 +28,5 @@ uint HAL_CRC32::Calculate8bit(uint8 *buffer, int size)
         size -= (size % 4);
     }
 
-    return HAL_CRC_Calculate(&handle, reinterpret_cast<uint *>(buffer), static_cast<uint>(size / 4));
+    return HAL_CRC_Calculate(&handle, reinterpret_cast<uint *>(buffer), (uint)(size / 4));
 }

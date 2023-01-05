@@ -131,7 +131,7 @@ bool SU::GetWord(pchar string, Word *word, const int numWord)
     {
         if (currentWord == numWord)
         {
-            word->address = const_cast<char *>(string);
+            word->address = (char *)(string);
             ChooseSymbols(&string);
             word->numSymbols = static_cast<int8>(string - word->address);
 
@@ -191,7 +191,7 @@ bool SU::EqualsZeroStrings(char *str1, char *str2)
 
 bool SU::EqualsStrings(uint8 *str1, pchar  const str2, int size)
 {
-    return EqualsStrings(static_cast<void *>(str1), const_cast<char *>(str2), size);
+    return EqualsStrings((void *)(str1), (char *)(str2), size);
 }
 
 
@@ -427,14 +427,14 @@ bool SU::String2Int(pchar buffer, int *value, char **end)
 
     if (*end == string.DataChar())
     {
-        *end = const_cast<char *>(buffer);
+        *end = (char *)(buffer);
     }
     else
     {
-        *end = const_cast<char *>(buffer) + (*end - string.DataChar());
+        *end = (char *)(buffer) + (*end - string.DataChar());
     }
 
-    return (*end != const_cast<char *>(buffer));
+    return (*end != (char *)(buffer));
 }
 
 
