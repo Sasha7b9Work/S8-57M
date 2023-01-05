@@ -128,6 +128,12 @@ void HAL_BUS::Init()
 }
 
 
+void SBuffer::Send() const
+{
+    HAL_BUS::SendToDevice(&buffer[0], pointer);
+}
+
+
 void HAL_BUS::SendToDevice(const uint8 *data, int size)
 {
     while (size > 0)

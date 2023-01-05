@@ -186,6 +186,12 @@ namespace HAL_BUS
 }
 
 
+void SBuffer::Send() const
+{
+    HAL_BUS::Panel::Send(&buffer[0], pointer);
+}
+
+
 void HAL_BUS::Panel::Send(uint8 byte)
 {
     Send(&byte, 1);
