@@ -139,13 +139,6 @@ void HAL_BUS::Panel::SendByte(uint8 byte)
 }
 
 
-void HAL_BUS::Panel::Send(uint8 byte0, uint8 byte1)
-{
-    uint8 buffer[2] = { byte0, byte1 };
-    
-    Send(buffer, 2);
-}
-
 void HAL_BUS::Panel::Send(const uint8 *data, int size)
 {
     if(!(GPIOA->IDR & GPIO_PIN_7) && !(GPIOC->IDR & GPIO_PIN_4)) //-V2570

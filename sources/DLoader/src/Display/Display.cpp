@@ -72,7 +72,7 @@ void Display::Init()
         Color(i).LoadValueRGB();
     }
 
-    HAL_BUS::Panel::Send(Command::Display_Brightness, 110);
+    SBuffer(Command::Display_Brightness, 110).Send();
 
     Painter::BeginScene(Color::BACK);
 

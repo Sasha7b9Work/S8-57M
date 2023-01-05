@@ -163,7 +163,7 @@ static void WriteToDisplay(Color color)
     {
         lastColor = color;
 
-        HAL_BUS::Panel::Send(Command::Paint_SetColor, lastColor.value);
+        SBuffer(Command::Paint_SetColor, lastColor.value).Send();
     }
 }
 

@@ -30,7 +30,6 @@ struct HAL_BUS
     struct Panel
     {
         static void SendByte(uint8 byte);
-        static void Send(uint8 byte0, uint8 byte1);
         static void Send(const uint8 *data, int size);
         static bool Receive();
         static bool InInteraction();
