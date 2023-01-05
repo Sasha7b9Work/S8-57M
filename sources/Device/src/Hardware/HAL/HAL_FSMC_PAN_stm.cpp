@@ -192,7 +192,7 @@ void SBuffer::Send() const
 }
 
 
-void HAL_BUS::Panel::Send(uint8 byte)
+void HAL_BUS::Panel::SendByte(uint8 byte)
 {
     Send(&byte, 1);
 }

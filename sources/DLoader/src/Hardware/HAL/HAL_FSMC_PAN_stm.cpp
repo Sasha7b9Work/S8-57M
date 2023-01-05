@@ -219,3 +219,8 @@ void DataBus::Init()
 
     GPIOE->MODER &= 0xffc03fffU;        // Настроим пины 7, 8, 9, 10 на запись D4, D5, D6, D7
 }
+
+
+void SBuffer::Send() const
+{
+}

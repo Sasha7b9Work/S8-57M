@@ -48,15 +48,7 @@ struct SBuffer
     void Push(const Point2 &point)      { std::memcpy(&buffer[pointer], point.XY(), 3); pointer += 3; }
     void Push(uint8 byte)               { buffer[pointer++] = byte; }
 
-#ifdef DEVICE
     void Send() const;
-#else
-    #ifdef PANEL
-        void Send() const;
-    #else
-        void Send() const {}
-    #endif
-#endif
 
 private:
     uint8 buffer[32];

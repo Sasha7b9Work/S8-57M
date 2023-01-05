@@ -94,7 +94,7 @@ namespace HAL_BUS
         int TransBytes();
         uint ElapsedUS();
 
-        void Send(uint8 byte);
+        void SendByte(uint8 byte);
         void Send(uint8 byte0, uint8 byte1);
         void Send(const uint8 *data, int size);
         bool Receive();

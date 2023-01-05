@@ -377,7 +377,7 @@ void DisplayOsci::PainterData::DrawModeLinesPeakDetOff(int center, const uint8 *
 
     for (int i = 0; i < NUM_POINTS; i++)
     {
-        HAL_BUS::Panel::Send(*data++);
+        HAL_BUS::Panel::SendByte(*data++);
     }
 }
 
