@@ -38,15 +38,11 @@ struct SBuffer
     SBuffer(uint8 command, const Point2 &p1, const Point2 &p2) : pointer(0) { Push(command); Push(p1); Push(p2); }
     SBuffer(uint8 command, uint8 value, uint data) : pointer(0)
     {
-        Push(command);
-        Push(value);
-        Push((uint8)data);
-        Push((uint8)(data >> 8));
-        Push((uint8)(data >> 16));
-        Push((uint8)(data >> 24));
+        Push(command); Push(value); Push((uint8)data); Push((uint8)(data >> 8)); Push((uint8)(data >> 16)); Push((uint8)(data >> 24));
     }
     void Push(const Point2 &point)      { std::memcpy(&buffer[pointer], point.XY(), 3); pointer += 3; }
     void Push(uint8 byte)               { buffer[pointer++] = byte; }
+    void Push(const uint8 *data, int num_bytes) { for (int i = 0; i < num_bytes; i++) { Push(*data++); } }
 
     void Send() const;
 
