@@ -75,7 +75,7 @@ void DisplayOsci::Draw(int field)
 
     CursorsMeasurements::Draw();                        // Курсоры курсорных измерений
 
-    BottomPart::Draw(273, Grid::Bottom() + 1, field);
+    BottomPart::Draw(600, Grid::Bottom() + 1, field);
 
     DisplayFreqMeter::Update();
 
@@ -100,6 +100,8 @@ void DisplayOsci::BottomPart::Draw(int x0, int y0, int field)
         return;
     }
 
+    VLine(36).Draw(x0, y0 + 1, Color::FILL);
+
     DFont::Set(DTypeFont::_UGO2);
 
     // Флешка
@@ -113,6 +115,7 @@ void DisplayOsci::BottomPart::Draw(int x0, int y0, int field)
     }
 
     Color::FILL.SetAsCurrent();
+
     // Пиковый детектор
     if (PeakDetMode().IsEnabled())
     {
@@ -120,9 +123,7 @@ void DisplayOsci::BottomPart::Draw(int x0, int y0, int field)
         Char('\x13').Draw(x0 + 46, y0 + 11);
     }
 
-    Battery::Draw(x0, y0);
-
-    VLine(18).Draw(x0, y0 + 1, Color::FILL);
+    Battery::Draw(x0 + 2, y0 + 1);
 }
 
 

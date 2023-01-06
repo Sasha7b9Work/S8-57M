@@ -131,7 +131,7 @@ void Battery::Draw(int x, int y)
 
     float percents = CalculatePercents(akk);
 
-    DrawUGO(x + 1, y + 8, percents);
+    DrawUGO(x, y, percents);
 
     if(S_DBG_SHOW_BATTERY)
     {
