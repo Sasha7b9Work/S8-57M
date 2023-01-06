@@ -10,11 +10,11 @@ void Painter::BeginScene(Color color)
 {
     color.SetAsCurrent();
 
-    HAL_BUS::Panel::SendByte(Command::Paint_BeginScene);
+    SBuffer(Command::Paint_BeginScene).Send();
 }
 
 
 void Painter::EndScene()
 {
-    HAL_BUS::Panel::SendByte(Command::Paint_EndScene);
+    SBuffer(Command::Paint_EndScene).Send();
 }
