@@ -39,7 +39,7 @@ namespace DisplayOsci
 }
 
 
-void DisplayOsci::Render(int field)
+void DisplayOsci::Draw(int field)
 {
     DFont::SetSpacing(1);
 
