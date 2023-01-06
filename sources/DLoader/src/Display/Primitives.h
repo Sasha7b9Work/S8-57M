@@ -173,21 +173,6 @@ private:
 };
 
 
-/// \brief Нарисовать numLines горизонтальных линий, состоящих из count точек каждая с расстоянием между точками delta. Вертикальная координата
-/// первой точки каждой линии соответствует очередному элементу массива y[]
-class MultiHPointLine
-{
-public:
-    MultiHPointLine(int numLines, const uint8 *y, int delta, int count);
-    void Draw(int x, Color color = Color::NUMBER);
-private:
-    int numLines;
-    const uint8 *y;
-    int delta;
-    int count;
-};
-
-
 /// Массив вертикальных линий. Линии рисуются одна за другой. y0y1 - массив вертикальных координат.
 class VLineArray
 {
@@ -197,19 +182,4 @@ public:
 private:
     int numLines;
     uint8 *y0y1;
-};
-
-
-/// numLines вертикальных линий, состоящих из count точек каждая с расстоянием между точками delta. Горизонтальная координата
-/// первой точки каждой линии соответствует очередному элементу массива x[]
-class MultiVPointLine
-{
-public:
-    MultiVPointLine(int numLines, uint16 *x0, int delta, int count);
-    void Draw(int y0, Color color = Color::NUMBER);
-private:
-    int numLines;
-    uint16 *x0;
-    int delta;
-    int count;
 };

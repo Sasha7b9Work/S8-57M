@@ -747,11 +747,6 @@ void HPointLine::Draw(int _x, int _y)
 }
 
 
-MultiHPointLine::MultiHPointLine(int _numLines, const uint8 *_y, int _delta, int _count) : numLines(_numLines), y(_y), delta(_delta), count(_count)
-{
-}
-
-
 VLineArray::VLineArray(int _numLines, uint8 *_y0y1) : numLines(_numLines), y0y1(_y0y1)
 {
 }
@@ -767,9 +762,4 @@ void VLineArray::Draw(int x, Color color)
         uint8 y1 = *y0y1++;
         VLine(y1 - y0).Draw(x, y0);
     }
-}
-
-
-MultiVPointLine::MultiVPointLine(int _numLines, uint16 *_x0, int _delta, int _count) : numLines(_numLines), x0(_x0), delta(_delta), count(_count)
-{
 }

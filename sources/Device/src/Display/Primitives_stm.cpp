@@ -68,33 +68,8 @@ void Line::Draw(Color color)
 }
 
 
-static int trans_bytes = 0;
-static uint time = 0;
-
-
-int Text::TransBytes()
-{
-    return trans_bytes;
-}
-
-
-uint Text::ElapsedTime()
-{
-    return time;
-}
-
-
-void Text::BeginScene()
-{
-    trans_bytes = 0;
-    time = 0;
-}
-
-
 int Text::DrawSmall(int x, int y, Color color)
 {
-    uint start = TIME_TICKS;
-
     color.SetAsCurrent();
 
     int sizeBuffer = 1 + 2 + 1 + 1 + (int)std::strlen(text);
@@ -111,10 +86,6 @@ int Text::DrawSmall(int x, int y, Color color)
     std::memcpy(&buffer.data[5], text, std::strlen(text));
 
     HAL_BUS::Panel::SendBuffer(buffer.data, sizeBuffer);
-
-    trans_bytes += sizeBuffer;
-
-    time += TIME_TICKS - start;
 
     return x + DFont::GetLengthText(text) + 1;
 }

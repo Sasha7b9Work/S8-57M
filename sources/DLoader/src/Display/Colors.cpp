@@ -170,19 +170,7 @@ static void WriteToDisplay(Color color)
 
 void Color::LoadValueRGB()
 {
-    uint rgb = COLOR(value);
-
-    uint8 buffer[6] = 
-    {
-        Command::Paint_SetPalette,
-        value,
-        (uint8)(rgb),
-        (uint8)(rgb >> 8),
-        (uint8)(rgb >> 16),
-        (uint8)(rgb >> 24)
-    };
-
-    HAL_BUS::Panel::Send(buffer, 6);
+    SBuffer(Command::Paint_SetPalette, value, COLOR(value)).Send();
 }
 
 
