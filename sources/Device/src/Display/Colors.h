@@ -88,7 +88,6 @@ private:
         COLOR_GREEN = 15,
         COLOR_BLUE = 16,
 
-
         COLOR_GRAY_10 = 19,
         COLOR_GRAY_20 = 20,
         COLOR_BLUE_10 = 21,
@@ -99,13 +98,12 @@ private:
         COLOR_SEPARATOR = 26,
         COLOR_YELLOW = 27,
         COLOR_BATTERY = 28,
-        
 
-        COLOR_NUMBER = 32,
+        COLOR_NUMBER = 64,
 
-        COLOR_FLASH_10 = 33,
-        COLOR_FLASH_01 = 34,
-        COLOR_INVERSE = 35
+        COLOR_FLASH_10,
+        COLOR_FLASH_01,
+        COLOR_INVERSE
     };
 
     static Color currentColor;

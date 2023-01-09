@@ -79,9 +79,7 @@ public:
         COLOR_FLASH_01 = 17,
         COLOR_INVERSE = 18,
 
-
         COLOR_RED_10 = 21,
-
 
         COLOR_RED_25 = 24,
 
@@ -89,9 +87,7 @@ public:
         COLOR_GRAY_10 = 27,
         COLOR_GRAY_20 = 28,
 
-
-
-        COLOR_COUNT = 32
+        COLOR_COUNT = 64
     };
 
 private:
