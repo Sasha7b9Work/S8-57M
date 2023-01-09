@@ -20,8 +20,6 @@ extern uint GlobalColors[256] =
     /* 9  */    MAKE_COLOR(26 * 8, 34 * 4, 0  * 8), // 
     /* 10 */    MAKE_COLOR(13 * 8, 17 * 4, 0  * 8), // MENU_ITEM_DARK
     /* 11 */    MAKE_COLOR(31 * 8, 51 * 4, 0  * 8), // MENU_ITEM_BRIGHT
-    /* 12 */    MAKE_COLOR(0x00, 13,   0x00),       // DATA_WHITE_ACCUM_A
-    /* 13 */    MAKE_COLOR(0x00, 25,   0x00),       // DATA_WHITE_ACCUM_B
     /* 14 */    MAKE_COLOR(0xff, 0x00, 0x00),       // RED
     /* 15 */    MAKE_COLOR(0x00, 0xff, 0x00),       // GREEN
     /* 16 */    MAKE_COLOR(0x00, 0x00, 0xff),       // BLUE
@@ -47,8 +45,6 @@ Color Color::MENU_TITLE_DARK(_MENU_TITLE_DARK);
 Color Color::MENU_TITLE_BRIGHT(_MENU_ITEM_BRIGHT);
 Color Color::MENU_ITEM_DARK(_MENU_ITEM_DARK);
 Color Color::MENU_ITEM_BRIGHT(_MENU_ITEM_BRIGHT);
-Color Color::DATA_WHITE_ACCUM_A(_DATA_WHITE_ACCUM_A);
-Color Color::DATA_WHITE_ACCUM_B(_DATA_WHITE_ACCUM_B);
 Color Color::RED(_RED);
 Color Color::GREEN(_GREEN);
 Color Color::BLUE(_BLUE);

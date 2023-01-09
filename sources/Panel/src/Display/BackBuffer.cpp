@@ -84,6 +84,8 @@ void BackBuffer::Signal::Point(int x, int y)
     {
         *address = Color::Current().value;
     }
+
+    DrawRectangle(x - 1, y - 1, 2, 2);
 }
 
 

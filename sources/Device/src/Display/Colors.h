@@ -16,8 +16,6 @@ public:
     static Color MENU_TITLE_BRIGHT;
     static Color MENU_ITEM_DARK;
     static Color MENU_ITEM_BRIGHT;
-    static Color DATA_WHITE_ACCUM_A;
-    static Color DATA_WHITE_ACCUM_B;
 
     static Color RED;
 
