@@ -36,4 +36,9 @@ namespace BackBuffer
 
     // Загружает в дисплей все цвета
     void LoadPalette();
+
+    namespace Signal
+    {
+        void Point(int x, int y);
+    }
 };

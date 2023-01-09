@@ -76,6 +76,17 @@ void BackBuffer::SetPixel(int x, int y)
 }
 
 
+void BackBuffer::Signal::Point(int x, int y)
+{
+    uint8 *address = Address::Pixel(x, y);
+
+    if (address >= buffer && address < Address::end)
+    {
+        *address = Color::Current().value;
+    }
+}
+
+
 void BackBuffer::FillRegion(int x, int y, int w, int h)
 {
     for(int i = 0; i <= h; i++)
