@@ -27,8 +27,6 @@ public:
     static Color BLUE_10;
     static Color GRAY_50;
     static Color GRAY_75;
-    static Color DATA_HALF_A;
-    static Color DATA_HALF_B;
     static Color SEPARATOR;
     static Color YELLOW;
     static Color BATTERY;
@@ -64,35 +62,32 @@ private:
    
     enum
     {
-        _BLACK = 0,
-        _WHITE = 1,
-        _GRID = 2,
-        _DATA_A = 3,
-        _DATA_B = 4,
-        _MENU_FIELD = 5,
-        _MENU_TITLE = 6,
-        _MENU_TITLE_DARK = 7,
-        _MENU_TITLE_BRIGHT = 8,
-
-        _MENU_ITEM_DARK = 10,
-        _MENU_ITEM_BRIGHT = 11,
-        _DATA_WHITE_ACCUM_A = 12,   ///< Используется как для отрисовки канала на белом фоне, так и для отрисовки накопленных сигналов
-        _DATA_WHITE_ACCUM_B = 13,
-        _RED = 14,
-        _GREEN = 15,
-        _BLUE = 16,
-        _BLUE_25 = 17,
-        _BLUE_50 = 18,
-        _GRAY_10 = 19,
-        _GRAY_20 = 20,
-        _BLUE_10 = 21,
-        _GRAY_50 = 22,
-        _GRAY_75 = 23,
-        _DATA_HALF_A = 24,
-        _DATA_HALF_B = 25,
-        _SEPARATOR = 26,
-        _YELLOW = 27,
-        _BATTERY = 28,
+        _BLACK,
+        _WHITE,
+        _GRID,
+        _DATA_A,
+        _DATA_B,
+        _MENU_FIELD,
+        _MENU_TITLE,
+        _MENU_TITLE_DARK,
+        _MENU_TITLE_BRIGHT,
+        _MENU_ITEM_DARK,
+        _MENU_ITEM_BRIGHT,
+        _DATA_WHITE_ACCUM_A,   ///< Используется как для отрисовки канала на белом фоне, так и для отрисовки накопленных сигналов
+        _DATA_WHITE_ACCUM_B,
+        _RED,
+        _GREEN,
+        _BLUE,
+        _BLUE_25,
+        _BLUE_50,
+        _GRAY_10,
+        _GRAY_20,
+        _BLUE_10,
+        _GRAY_50,
+        _GRAY_75,
+        _SEPARATOR,
+        _YELLOW,
+        _BATTERY,
 
         _NUMBER = 64,
 

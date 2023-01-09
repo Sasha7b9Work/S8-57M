@@ -59,8 +59,6 @@ Color Color::GRAY_20(_GRAY_20);
 Color Color::BLUE_10(_BLUE_10);
 Color Color::GRAY_50(_GRAY_50);
 Color Color::GRAY_75(_GRAY_75);
-Color Color::DATA_HALF_A(_DATA_HALF_A);
-Color Color::DATA_HALF_B(_DATA_HALF_B);
 Color Color::SEPARATOR(_SEPARATOR);
 Color Color::YELLOW(_YELLOW);
 Color Color::BATTERY(_BATTERY);
