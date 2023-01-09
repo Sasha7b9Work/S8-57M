@@ -25,7 +25,7 @@ public:
     void Set(TypeConversionString::E conv, pchar format, ...);
 
     char *c_str() const;
-    /// Отобразить текст на экране в заданнх координатах
+    // Отобразить текст на экране в заданнх координатах
     int Draw(int x, int y, Color color = Color::Count) const;
 
     static pchar  const _ERROR;
@@ -37,7 +37,7 @@ public:
     void Append(pchar str, uint numSymbols);
 
     void Append(char symbol);
-    /// Удаляет numSymbols из начала строки
+    // Удаляет numSymbols из начала строки
     void RemoveFromBegin(uint numSymbols);
 
     void RemoveFromEnd();

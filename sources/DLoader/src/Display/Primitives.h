@@ -100,19 +100,19 @@ public:
     void DrawInCenterBoundedRect(int x, int y, int width, int height, Color color = Color::Count);
 
     int DrawWithLimitation(int x, int y, int limitX, int limitY, int limitWidth, int limitHeight);
-    /// Выводит текст на прямоугольнике цвета colorBackgound
+    // Выводит текст на прямоугольнике цвета colorBackgound
     int DrawOnBackground(int x, int y, Color colorBackground);
 
     void DrawRelativelyRight(int xRight, int y, Color color = Color::Count);
-    /// Пишет текст с переносами
+    // Пишет текст с переносами
     int DrawInRectWithTransfers(int x, int y, int width, int height, Color color = Color::Count);
-    /// Возвращает нижнюю координату прямоугольника
+    // Возвращает нижнюю координату прямоугольника
     int DrawInBoundedRectWithTransfers(int x, int y, int width, Color colorBackground, Color colorFill, Color colorBound = Color::Count);
 
     void DrawInCenterRectAndBoundIt(int x, int y, int width, int height, Color colorBackground, Color colorFill);
-    /// Пишет строку текста в центре области(x, y, width, height)цветом ColorText на прямоугольнике с шириной бордюра widthBorder цвета colorBackground
+    // Пишет строку текста в центре области(x, y, width, height)цветом ColorText на прямоугольнике с шириной бордюра widthBorder цвета colorBackground
     void DrawInCenterRectOnBackground(int x, int y, int width, int height, Color colorText, int widthBorder, Color colorBackground);
-    /// Нарисовать с выводом цифр в моноширинных позициях
+    // Нарисовать с выводом цифр в моноширинных позициях
     int DrawDigitsMonospace(int x, int y, int width, Color color = Color::Count);
 
 private:
