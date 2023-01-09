@@ -85,6 +85,8 @@ struct Command
             //                                                                места, которое нужно пропустить (там будет нарисован прямоугольник
             Paint_DrawVCursor,      // 25 |               coord                    |                height,skip           |                    |    7    |
             Paint_DrawHCursor,      // 26 |                                        |                                      |                    |    7    |
+            // Установка половинного и четвертного цвета каналов : type : bit0 - номер канала, bit1 - 0 - половинный, 1 - четвертной
+            Color_SetChannel,       // 27 |    type     |                        value                           |                             |    6    |
             Count
     };
 };

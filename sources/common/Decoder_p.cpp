@@ -68,6 +68,8 @@ namespace PDecoder
     static bool DrawVCursor(uint8);
     static bool DrawHCursor(uint8);
 
+    static bool SetColorChannel(uint8);
+
     // Эту функцию надо вызывать после выполнения последнего шага
     static void FinishCommand();
 
@@ -108,7 +110,8 @@ void PDecoder::AddData(uint8 data)
         DrawSignal,
         NullCommand,
         DrawVCursor,
-        DrawHCursor
+        DrawHCursor,
+        SetColorChannel
     };
 
     if (step == 0)
@@ -741,6 +744,33 @@ bool PDecoder::SetFont(uint8 data)
     PFont::Set((PTypeFont::E)data);
 
     return true;
+}
+
+
+bool PDecoder::SetColorChannel(uint8 data)
+{
+    static uint8 type = 0;
+    static uint value = 0;
+
+    if (step == 0)
+    {
+    }
+    else if (step == 1)
+    {
+        type = data;
+    }
+    else
+    {
+        value = (value << 4) | data;
+
+        if (step == 5)
+        {
+            BackBuffer::Signal::SetColor(type & 0x01, type & 0x02, value);
+            return true;
+        }
+    }
+
+    return false;
 }
 
 

@@ -39,6 +39,9 @@ namespace BackBuffer
 
     namespace Signal
     {
+        // type : 0 - половинный, 1 - четвертной
+        void SetColor(int ch, int type, uint value);
+
         void Point(int x, int y);
     }
 };

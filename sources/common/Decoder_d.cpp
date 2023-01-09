@@ -95,6 +95,7 @@ void DDecoder::RunStep(uint8 data)
         E,
         E,
         E,
+        E,
         E
     };
 

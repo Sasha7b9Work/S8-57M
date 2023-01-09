@@ -46,6 +46,13 @@ namespace BackBuffer
             return (y >= field * HEIGHT) && y < ((field + 1) *HEIGHT + 1);
         }
     }
+
+
+    namespace Signal
+    {
+        static uint col_ch_half[2] = { 0, 0 };      // Половинный цвет
+        static uint col_ch_quart[2] = { 0, 0 };     // Четвертной цвет
+    }
 }
 
 
@@ -261,6 +268,7 @@ void BackBuffer::LoadPalette()
     HAL_LTDC::SetColors(&COLOR(0), 256);
 }
 
+
 void BackBuffer::SendRow(int row)
 {
     uint8 *points = Display::GetBuffer() + row * Display::WIDTH;
@@ -270,4 +278,10 @@ void BackBuffer::SendRow(int row)
     std::memcpy(&data[2], points, Display::WIDTH);
 
     HAL_BUS::SendToDevice(data, Display::WIDTH + 2);
+}
+
+
+void BackBuffer::Signal::SetColor(int ch, int type, uint value)
+{
+
 }
