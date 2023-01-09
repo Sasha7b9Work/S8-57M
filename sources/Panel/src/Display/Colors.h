@@ -19,8 +19,6 @@ public:
     void SetAsCurrent() const { if (value != (uint8)(-1)) { current = *this; } };
     static Color Current() { return current; }
 
-    static Color Trig();
-
     uint8 value;
 
 private:
