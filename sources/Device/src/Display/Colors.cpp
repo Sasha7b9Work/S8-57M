@@ -9,16 +9,16 @@
 
 uint GlobalColors[256] =
 {
-    /* 0  */    MAKE_COLOR(0x00, 0x00, 0x00),   // BLACK
-    /* 1  */    MAKE_COLOR(0xff, 0xff, 0xff),   // WHITE
-    /* 2  */    MAKE_COLOR(0x60, 0x60, 0x60),   // GRID
-    /* 3  */    MAKE_COLOR(0x00, 0xdf, 0xff),   // DATA_A
-    /* 4  */    MAKE_COLOR(0x00, 0xff, 0x00),   // DATA_B
-    /* 5  */    MAKE_COLOR(0x90, 0x90, 0xa0),   // MENU_FIELD
-    /* 6  */    MAKE_COLOR(0xf8, 0xb0, 0x00),   // MENU_TITLE
-    /* 7  */    MAKE_COLOR(0x00, 0x00, 0x80),   // MENU_TITLE_DARK
-    /* 8  */    MAKE_COLOR(0xf8, 0xfc, 0x00),   // MENU_TITLE_BRIGHT
-    /* 9  */    MAKE_COLOR(0x20, 0x45, 0x20),   // BATTERY_EMPTY
+    /*  0 */    MAKE_COLOR(0x00, 0x00, 0x00),   // BLACK
+    /*  1 */    MAKE_COLOR(0xff, 0xff, 0xff),   // WHITE
+    /*  2 */    MAKE_COLOR(0x60, 0x60, 0x60),   // GRID
+    /*  3 */    MAKE_COLOR(0x00, 0xdf, 0xff),   // DATA_A
+    /*  4 */    MAKE_COLOR(0x00, 0xff, 0x00),   // DATA_B
+    /*  5 */    MAKE_COLOR(0x90, 0x90, 0xa0),   // MENU_FIELD
+    /*  6 */    MAKE_COLOR(0xf8, 0xb0, 0x00),   // MENU_TITLE
+    /*  7 */    MAKE_COLOR(0x00, 0x00, 0x80),   // MENU_TITLE_DARK
+    /*  8 */    MAKE_COLOR(0xf8, 0xfc, 0x00),   // MENU_TITLE_BRIGHT
+    /*  9 */    0,
     /* 10 */    MAKE_COLOR(0x68, 0x44, 0x00),   // MENU_ITEM_DARK
     /* 11 */    MAKE_COLOR(0xf8, 0xcc, 0x00),   // MENU_ITEM_BRIGHT
     /* 12 */    MAKE_COLOR(0x00, 0x0d, 0x00),   // DATA_WHITE_ACCUM_A
@@ -37,8 +37,7 @@ uint GlobalColors[256] =
     /* 25 */    MAKE_COLOR(0x00, 0x80, 0x00),   // DATA_HALF_B
     /* 26 */    MAKE_COLOR(0xc0, 0xc0, 0xc0),   // SEPARATOR
     /* 27 */    MAKE_COLOR(0xff, 0xff, 0x00),   // YELLOW
-    /* 28 */    MAKE_COLOR(0x00, 0x7f, 0x00),   // BATTERY
-    /* 29 */    MAKE_COLOR(0x00, 0x4c, 0x00)    // GRAY_30
+    /* 28 */    MAKE_COLOR(0x00, 0x7f, 0x00)    // BATTERY
 };
 
 
