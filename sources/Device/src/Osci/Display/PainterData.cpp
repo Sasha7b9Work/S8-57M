@@ -367,7 +367,7 @@ void DisplayOsci::PainterData::DrawModeLinesPeakDetOff(int center, const uint8 *
 {
     const int NUM_POINTS = Grid::Width();
 
-    SBuffer buffer(Command::Paint_DrawSignal, 0);   // 0,1
+    SBuffer buffer(Command::Paint_DrawSignal, 2);   // 0,1
 
     buffer.Push(Point2(x, Grid::Top()));            // 2-4
     buffer.Push(Point2(x, Grid::Bottom()));         // 5-7
