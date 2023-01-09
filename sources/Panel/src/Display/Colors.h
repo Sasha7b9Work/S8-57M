@@ -11,26 +11,6 @@ extern uint colors[256];
 class Color
 {
 public:
-    static Color MENU_FIELD;
-    static Color MENU_TITLE_DARK;
-    static Color MENU_TITLE_BRIGHT;
-    static Color MENU_ITEM_DARK;
-    static Color MENU_ITEM_BRIGHT;
-    static Color DATA_WHITE_ACCUM_A;
-    static Color DATA_WHITE_ACCUM_B;
-    static Color FLASH_10;
-    static Color FLASH_01;
-
-    static Color GREEN_10;
-
-    static Color RED_10;
-    static Color RED_25;
-
-    static Color GRAY_10;
-    static Color GRAY_20;
-    static Color GRAY_25;
-
-    static Color GRID;
 
     explicit Color(uint8 val = 0) : value(val) { }
     Color(const Color &color) : value(color.value) { }
