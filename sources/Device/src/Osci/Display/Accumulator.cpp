@@ -6,15 +6,17 @@
 #include "Settings/Settings.h"
 
 
+namespace DisplayOsci
+{
+    //  оличество отрисованных сигналов
+    static int numFrames = 0;
 
-//  оличество отрисованных сигналов
-static int numFrames = 0;
-
-
-
-// ¬озвращает номер выводимого сигнала
-static uint CurrentFrame();
-
+    namespace Accumulator
+    {
+        // ¬озвращает номер выводимого сигнала
+        static uint CurrentFrame();
+    }
+}
 
 
 void DisplayOsci::Accumulator::NextFrame()
@@ -55,7 +57,7 @@ void DisplayOsci::Accumulator::Reset()
 }
 
 
-static uint CurrentFrame()
+uint DisplayOsci::Accumulator::CurrentFrame()
 {
     return (DS) ? DS->id : 0;
 }
