@@ -47,7 +47,7 @@ int Text::DrawChar(int eX, int eY, int size, uint8 symbol, Color color)
                 {
                     if (PFont::BitIsExist(symbol, row, bit))
                     {
-                        BackBuffer::SetPoint(x, y);
+                        BackBuffer::SetPixel(x, y);
                     }
                     x++;
                 }

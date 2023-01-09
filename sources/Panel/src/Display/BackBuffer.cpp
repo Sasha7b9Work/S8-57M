@@ -65,7 +65,7 @@ void BackBuffer::EndPaint()
 }
 
 
-void BackBuffer::SetPoint(int x, int y)
+void BackBuffer::SetPixel(int x, int y)
 {
     uint8 *address = Address::Pixel(x, y);
 
@@ -152,7 +152,7 @@ void BackBuffer::DrawHPointLine(int x, int y, int delta, int count)
 {
     for (int i = 0; i < count; i++)
     {
-        SetPoint(x, y);
+        SetPixel(x, y);
         x += delta;
     }
 }
@@ -162,7 +162,7 @@ void BackBuffer::DrawVPointLine(int x, int y, int delta, int count)
 {
     for (int i = 0; i < count; i++)
     {
-        SetPoint(x, y);
+        SetPixel(x, y);
         y += delta;
     }
 }
@@ -184,7 +184,7 @@ void BackBuffer::DrawLine(int x1, int y1, int x2, int y2)
 {
     if (x1 == x2 && y1 == y2)
     {
-        SetPoint(x1, y1);
+        SetPixel(x1, y1);
         return;
     }
     else if (x1 == x2)
@@ -217,7 +217,7 @@ void BackBuffer::DrawLine(int x1, int y1, int x2, int y2)
     int i = 0;
     for (; i <= dx; i++)
     {
-        SetPoint(x, y);
+        SetPixel(x, y);
         while (e >= 0)
         {
             if (exchange)

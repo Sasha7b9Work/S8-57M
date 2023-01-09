@@ -178,6 +178,6 @@ void Display::Update1()
 
     for (int i = 10; i < 100; i += 10)
     {
-        BackBuffer::SetPoint(i, 10);
+        BackBuffer::SetPixel(i, 10);
     }
 }

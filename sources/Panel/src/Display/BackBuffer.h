@@ -13,7 +13,7 @@ namespace BackBuffer
 
     void FillRegion(int x, int y, int width, int height);
 
-    void SetPoint(int x, int y);
+    void SetPixel(int x, int y);
 
     void DrawVLine(int x, int y0, int y1);
 

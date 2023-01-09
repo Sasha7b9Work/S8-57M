@@ -629,7 +629,7 @@ bool PDecoder::DrawSignal(uint8 data)
             {
                 if (mode == 0)                              // пик дет откл, точки
                 {
-                    BackBuffer::SetPoint(x0, data + y_top);
+                    BackBuffer::SetPixel(x0, data + y_top);
                     x0++;
                 }
                 else if (mode == 1)                         // пик дет вкл, точки
