@@ -20,7 +20,6 @@ public:
     static Color MENU_ITEM_BRIGHT;
     static Color DATA_WHITE_ACCUM_A;
     static Color DATA_WHITE_ACCUM_B;
-//    static Color Count;
     static Color FLASH_10;
     static Color FLASH_01;
 
@@ -77,18 +76,7 @@ public:
         COLOR_EMPTY = 15,
         COLOR_FLASH_10 = 16,
         COLOR_FLASH_01 = 17,
-        COLOR_INVERSE = 18,
-
-        COLOR_RED_10 = 21,
-
-        COLOR_RED_25 = 24,
-
-        COLOR_GRAY_25 = 26,
-        COLOR_GRAY_10 = 27,
-        COLOR_GRAY_20 = 28
-//        ,
-//
-//        COLOR_COUNT = 64
+        COLOR_INVERSE = 18
     };
 
 private:
