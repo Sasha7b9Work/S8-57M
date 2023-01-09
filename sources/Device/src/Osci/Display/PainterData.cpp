@@ -382,6 +382,25 @@ void DisplayOsci::PainterData::DrawModeLinesPeakDetOff(int center, const uint8 *
 }
 
 
+void DisplayOsci::PainterData::DrawModePointsPeakDetOff(int center, const uint8 *data, float scale, int x)
+{
+    const int NUM_POINTS = Grid::Width();
+
+    SBuffer buffer(Command::Paint_DrawSignal, 0);
+
+    buffer.Push(Point2(x, Grid::Top()));
+    buffer.Push(Point2(x, Grid::Bottom()));
+    buffer.Push((uint8 *)&NUM_POINTS, 2);
+
+    buffer.Send();
+
+    for (int i = 0; i < NUM_POINTS; i++)
+    {
+        HAL_BUS::Panel::SendByte(*data++);
+    }
+}
+
+
 void DisplayOsci::PainterData::DrawModePoints(Chan::E ch, int left, int center, const uint8 *data, float scale)
 {
     Color::CHAN[ch].SetAsCurrent();
@@ -404,20 +423,6 @@ void DisplayOsci::PainterData::DrawModePointsPeakDetOn(int center, const uint8 *
         Pixel().Draw(x, (int)(center - (data[i] - VALUE::AVE) * scale + 0.5F));
         Pixel().Draw(x, (int)(center - (data[i + 1] - VALUE::AVE) * scale + 0.5F));
         x++;
-    }
-}
-
-
-void DisplayOsci::PainterData::DrawModePointsPeakDetOff(int center, const uint8 *data, float scale, int x)
-{
-    for (int i = 0; i < 280; i++)
-    {
-        uint8 v8 = data[i];
-        if(v8 != VALUE::NONE)
-        {
-            float value = center - (v8 - VALUE::AVE) * scale;
-            Pixel().Draw(x + i, ROUND(uint8, value));
-        }
     }
 }
 

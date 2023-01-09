@@ -619,16 +619,18 @@ bool PDecoder::DrawSignal(uint8 data)
         {
             int current_number = step - 10;     // Номер текущей точки
 
-            static uint8 prev_x = 0;              // Значение предыдущей точки
+            static uint8 prev_adc = 0;              // Значение предыдущей точки
 
             if (current_number == 0)
             {
-                prev_x = data;
+                prev_adc = data;
             }
             else
             {
                 if (mode == 0)                              // пик дет откл, точки
                 {
+                    BackBuffer::SetPoint(x0, data + y_top);
+                    x0++;
                 }
                 else if (mode == 1)                         // пик дет вкл, точки
                 {
@@ -637,13 +639,13 @@ bool PDecoder::DrawSignal(uint8 data)
                 else if (mode == 2)                         // пик дет откл, линии
                 {
                     int x1 = x0 + current_number - 1;
-                    int y1 = prev_x + y_top;
+                    int y1 = prev_adc + y_top;
                     int x2 = x1 + 1;
                     int y2 = data + y_top;
 
                     BackBuffer::DrawLine(x1, y1, x2, y2);
 
-                    prev_x = data;
+                    prev_adc = data;
                 }
                 else if (mode == 3)                         // пик дет вкл, линии
                 {
