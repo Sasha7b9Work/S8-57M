@@ -6,7 +6,7 @@
 #include "Display/BackBuffer.h"
 
 
-uint colors[256] =
+uint Color::raw[256] =
 {
     /* 0  */    MAKE_COLOR(0x00, 0x00, 0x00),       // BLACK
     /* 1  */    MAKE_COLOR(0xff, 0xff, 0xff),       // WHITE
@@ -62,9 +62,9 @@ bool operator>(const Color &left, const Color &right)
 }
 
 
-void Color::SetValue(uint raw)
+void Color::SetValue(uint _raw)
 {
-    colors[value] = raw;
+    raw[value] = _raw;
 
     BackBuffer::LoadPalette();
 }

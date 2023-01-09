@@ -3,9 +3,7 @@
 #include "defines.h"
 #include "Settings/SettingsTypes.h"
 
-extern uint colors[256];
-
-#define COLOR(x) colors[x]
+#define COLOR(x) Color::raw[x]
 
 
 class Color
@@ -20,6 +18,8 @@ public:
     static Color Current() { return current; }
 
     uint8 value;
+
+    static uint raw[256];
 
 private:
 
