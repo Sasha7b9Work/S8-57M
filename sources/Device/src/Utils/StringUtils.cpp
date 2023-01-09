@@ -17,10 +17,9 @@
 
 
 // Возвращает false, если выбор невозможен - строка кончилась.
-static bool ChooseSymbols(pchar *string);
+//static bool ChooseSymbols(pchar *string);
 // Возвращает false, если выбор невозможен - строка кончилась.
-static bool ChooseSpaces(pchar *string);
-
+//static bool ChooseSpaces(pchar *string);
 
 bool String2Int(char *str, int *value)
 {
@@ -87,74 +86,74 @@ int BCD2Int(uint bcd)
 #define  SYMBOL(x) (*(*(x)))
 
 
-static bool ChooseSymbols(pchar *string)
-{
-    if (SYMBOL(string) == 0x0d && SYMBOL(string + 1) == 0x0a)
-    {
-        return false;
-    }
+//static bool ChooseSymbols(pchar *string)
+//{
+//    if (SYMBOL(string) == 0x0d && SYMBOL(string + 1) == 0x0a)
+//    {
+//        return false;
+//    }
+//
+//    while (SYMBOL(string) != ' ' && SYMBOL(string) != 0x0d && SYMBOL(string + 1) != 0x0a)
+//    {
+//        (*string)++;
+//    }
+//
+//    return true;
+//}
 
-    while (SYMBOL(string) != ' ' && SYMBOL(string) != 0x0d && SYMBOL(string + 1) != 0x0a)
-    {
-        (*string)++;
-    }
 
-    return true;
-}
-
-
-static bool ChooseSpaces(pchar *string)
-{
-    if (SYMBOL(string) == 0x0d && SYMBOL(string + 1) == 0x0a)
-    {
-        return false;
-    }
-
-    while (SYMBOL(string) == ' ')
-    {
-        (*string)++;
-    }
-
-    return true;
-}
+//static bool ChooseSpaces(pchar *string)
+//{
+//    if (SYMBOL(string) == 0x0d && SYMBOL(string + 1) == 0x0a)
+//    {
+//        return false;
+//    }
+//
+//    while (SYMBOL(string) == ' ')
+//    {
+//        (*string)++;
+//    }
+//
+//    return true;
+//}
 
 #undef SYMBOL
 
 
-bool SU::GetWord(pchar string, Word *word, const int numWord)
-{
-    ChooseSpaces(&string);
-
-    int currentWord = 0;
-
-    while (true)
-    {
-        if (currentWord == numWord)
-        {
-            word->address = (char *)(string);
-            ChooseSymbols(&string);
-            word->numSymbols = (int8)(string - word->address);
-
-            char *pointer = word->address;
-            int numSymbols = word->numSymbols;
-            for (int i = 0; i < numSymbols; i++)
-            {
-                *pointer = (char)(std::toupper(*pointer));
-                pointer++;
-            }
-            return true;
-        }
-        if (ChooseSymbols(&string))
-        {
-            currentWord++;
-        }
-        else
-        {
-            return false;
-        }
-        ChooseSpaces(&string);
-    }
-}
+//bool SU::GetWord(pchar string, Word *word, const int numWord)
+//{
+//    ChooseSpaces(&string);
+//
+//    int currentWord = 0;
+//
+//    while (true)
+//    {
+//        if (currentWord == numWord)
+//        {
+//            word->address = (char *)(string);
+//            ChooseSymbols(&string);
+//            word->numSymbols = (int8)(string - word->address);
+//
+//            char *pointer = word->address;
+//            int numSymbols = word->numSymbols;
+//            for (int i = 0; i < numSymbols; i++)
+//            {
+//                *pointer = (char)(std::toupper(*pointer));
+//                pointer++;
+//            }
+//            return true;
+//        }
+//        if (ChooseSymbols(&string))
+//        {
+//            currentWord++;
+//        }
+//        else
+//        {
+//            return false;
+//        }
+//        ChooseSpaces(&string);
+//    }
+//}
 
 
 bool SU::WordEqualZeroString(Word *word, char* string)
