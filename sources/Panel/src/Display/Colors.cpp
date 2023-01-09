@@ -51,7 +51,6 @@ Color Color::MENU_ITEM_DARK(COLOR_MENU_ITEM_DARK);
 Color Color::MENU_ITEM_BRIGHT(COLOR_MENU_ITEM_BRIGHT);
 Color Color::DATA_WHITE_ACCUM_A(COLOR_DATA_WHITE_ACCUM_A);
 Color Color::DATA_WHITE_ACCUM_B(COLOR_DATA_WHITE_ACCUM_B);
-Color Color::Count(COLOR_COUNT);
 Color Color::FLASH_10(COLOR_FLASH_10);
 Color Color::FLASH_01(COLOR_FLASH_01);
 
@@ -68,7 +67,7 @@ Color Color::BACK(COLOR_BLACK);
 Color Color::GRID(COLOR_GRID);
 
 
-Color Color::current(Color::Count);
+Color Color::current(255);
 
 
 

@@ -20,7 +20,7 @@ public:
     static Color MENU_ITEM_BRIGHT;
     static Color DATA_WHITE_ACCUM_A;
     static Color DATA_WHITE_ACCUM_B;
-    static Color Count;
+//    static Color Count;
     static Color FLASH_10;
     static Color FLASH_01;
 
@@ -42,7 +42,7 @@ public:
     Color(const Color &color) : value(color.value) { }
 
     void SetValue(uint raw);
-    void SetAsCurrent() { if (value != Color::Count.value) { current = *this; } };
+    void SetAsCurrent() const { if (value != (uint8)(-1)) { current = *this; } };
     static Color Current() { return current; }
 
     static Color Cursors(Chan ch);
@@ -85,9 +85,10 @@ public:
 
         COLOR_GRAY_25 = 26,
         COLOR_GRAY_10 = 27,
-        COLOR_GRAY_20 = 28,
-
-        COLOR_COUNT = 64
+        COLOR_GRAY_20 = 28
+//        ,
+//
+//        COLOR_COUNT = 64
     };
 
 private:

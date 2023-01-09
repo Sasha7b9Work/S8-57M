@@ -256,7 +256,7 @@ void BackBuffer::DrawLine(int x1, int y1, int x2, int y2)
 
 void BackBuffer::LoadPalette()
 {
-    HAL_LTDC::SetColors(&COLOR(0), Color::Count.value);
+    HAL_LTDC::SetColors(&COLOR(0), 256);
 }
 
 void BackBuffer::SendRow(int row)

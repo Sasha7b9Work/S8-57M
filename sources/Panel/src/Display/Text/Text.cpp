@@ -26,7 +26,7 @@ void Text::SetSpacing(uint8 space)
 }
 
 
-int Text::DrawChar(int eX, int eY, int size, uint8 symbol, Color color)
+int Text::DrawChar(int eX, int eY, int size, uint8 symbol, const Color &color)
 {
     color.SetAsCurrent();
 
