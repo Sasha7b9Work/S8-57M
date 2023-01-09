@@ -619,22 +619,22 @@ bool PDecoder::DrawSignal(uint8 data)
         {
             int current_number = step - 10;     // Номер текущей точки
 
-            static uint8 prev = 0;              // Значение предыдущей точки
+            static uint8 prev_x = 0;              // Значение предыдущей точки
 
             if (current_number == 0)
             {
-                prev = data;
+                prev_x = data;
             }
             else
             {
                 int x1 = x0 + current_number - 1;
-                int y1 = prev + y_top;
+                int y1 = prev_x + y_top;
                 int x2 = x1 + 1;
                 int y2 = data + y_top;
 
                 BackBuffer::DrawLine(x1, y1, x2, y2);
 
-                prev = data;
+                prev_x = data;
             }
 
             if (current_number == num_points - 1)
