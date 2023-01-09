@@ -64,41 +64,41 @@ private:
    
     enum
     {
-        COLOR_BLACK = 0,
-        COLOR_WHITE = 1,
-        COLOR_GRID = 2,
-        COLOR_DATA_A = 3,
-        COLOR_DATA_B = 4,
-        COLOR_MENU_FIELD = 5,
-        COLOR_MENU_TITLE = 6,
-        COLOR_MENU_TITLE_DARK = 7,
-        COLOR_MENU_TITLE_BRIGHT = 8,
+        _BLACK = 0,
+        _WHITE = 1,
+        _GRID = 2,
+        _DATA_A = 3,
+        _DATA_B = 4,
+        _MENU_FIELD = 5,
+        _MENU_TITLE = 6,
+        _MENU_TITLE_DARK = 7,
+        _MENU_TITLE_BRIGHT = 8,
 
-        COLOR_MENU_ITEM_DARK = 10,
-        COLOR_MENU_ITEM_BRIGHT = 11,
-        COLOR_DATA_WHITE_ACCUM_A = 12,   ///< Используется как для отрисовки канала на белом фоне, так и для отрисовки накопленных сигналов
-        COLOR_DATA_WHITE_ACCUM_B = 13,
-        COLOR_RED = 14,
-        COLOR_GREEN = 15,
-        COLOR_BLUE = 16,
-        COLOR_BLUE_25 = 17,
-        COLOR_BLUE_50 = 18,
-        COLOR_GRAY_10 = 19,
-        COLOR_GRAY_20 = 20,
-        COLOR_BLUE_10 = 21,
-        COLOR_GRAY_50 = 22,
-        COLOR_GRAY_75 = 23,
-        COLOR_DATA_HALF_A = 24,
-        COLOR_DATA_HALF_B = 25,
-        COLOR_SEPARATOR = 26,
-        COLOR_YELLOW = 27,
-        COLOR_BATTERY = 28,
+        _MENU_ITEM_DARK = 10,
+        _MENU_ITEM_BRIGHT = 11,
+        _DATA_WHITE_ACCUM_A = 12,   ///< Используется как для отрисовки канала на белом фоне, так и для отрисовки накопленных сигналов
+        _DATA_WHITE_ACCUM_B = 13,
+        _RED = 14,
+        _GREEN = 15,
+        _BLUE = 16,
+        _BLUE_25 = 17,
+        _BLUE_50 = 18,
+        _GRAY_10 = 19,
+        _GRAY_20 = 20,
+        _BLUE_10 = 21,
+        _GRAY_50 = 22,
+        _GRAY_75 = 23,
+        _DATA_HALF_A = 24,
+        _DATA_HALF_B = 25,
+        _SEPARATOR = 26,
+        _YELLOW = 27,
+        _BATTERY = 28,
 
-        COLOR_NUMBER = 64,
+        _NUMBER = 64,
 
-        COLOR_FLASH_10,
-        COLOR_FLASH_01,
-        COLOR_INVERSE
+        _FLASH_10,
+        _FLASH_01,
+        _INVERSE
     };
 
     static Color currentColor;

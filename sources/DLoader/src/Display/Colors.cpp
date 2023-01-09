@@ -40,39 +40,39 @@ extern uint GlobalColors[256] =
 };
 
 
-Color Color::BLACK(COLOR_BLACK);
-Color Color::WHITE(COLOR_WHITE);
-Color Color::MENU_FIELD(COLOR_MENU_FIELD);
-Color Color::MENU_TITLE_DARK(COLOR_MENU_TITLE_DARK);
-Color Color::MENU_TITLE_BRIGHT(COLOR_MENU_ITEM_BRIGHT);
-Color Color::MENU_ITEM_DARK(COLOR_MENU_ITEM_DARK);
-Color Color::MENU_ITEM_BRIGHT(COLOR_MENU_ITEM_BRIGHT);
-Color Color::DATA_WHITE_ACCUM_A(COLOR_DATA_WHITE_ACCUM_A);
-Color Color::DATA_WHITE_ACCUM_B(COLOR_DATA_WHITE_ACCUM_B);
-Color Color::RED(COLOR_RED);
-Color Color::GREEN(COLOR_GREEN);
-Color Color::BLUE(COLOR_BLUE);
-Color Color::BLUE_25(COLOR_BLUE_25);
-Color Color::BLUE_50(COLOR_BLUE_50);
-Color Color::GRAY_10(COLOR_GRAY_10);
-Color Color::GRAY_20(COLOR_GRAY_20);
-Color Color::BLUE_10(COLOR_BLUE_10);
-Color Color::GRAY_50(COLOR_GRAY_50);
-Color Color::GRAY_75(COLOR_GRAY_75);
-Color Color::DATA_HALF_A(COLOR_DATA_HALF_A);
-Color Color::DATA_HALF_B(COLOR_DATA_HALF_B);
-Color Color::SEPARATOR(COLOR_SEPARATOR);
-Color Color::YELLOW(COLOR_YELLOW);
-Color Color::BATTERY(COLOR_BATTERY);
+Color Color::BLACK(_BLACK);
+Color Color::WHITE(_WHITE);
+Color Color::MENU_FIELD(_MENU_FIELD);
+Color Color::MENU_TITLE_DARK(_MENU_TITLE_DARK);
+Color Color::MENU_TITLE_BRIGHT(_MENU_ITEM_BRIGHT);
+Color Color::MENU_ITEM_DARK(_MENU_ITEM_DARK);
+Color Color::MENU_ITEM_BRIGHT(_MENU_ITEM_BRIGHT);
+Color Color::DATA_WHITE_ACCUM_A(_DATA_WHITE_ACCUM_A);
+Color Color::DATA_WHITE_ACCUM_B(_DATA_WHITE_ACCUM_B);
+Color Color::RED(_RED);
+Color Color::GREEN(_GREEN);
+Color Color::BLUE(_BLUE);
+Color Color::BLUE_25(_BLUE_25);
+Color Color::BLUE_50(_BLUE_50);
+Color Color::GRAY_10(_GRAY_10);
+Color Color::GRAY_20(_GRAY_20);
+Color Color::BLUE_10(_BLUE_10);
+Color Color::GRAY_50(_GRAY_50);
+Color Color::GRAY_75(_GRAY_75);
+Color Color::DATA_HALF_A(_DATA_HALF_A);
+Color Color::DATA_HALF_B(_DATA_HALF_B);
+Color Color::SEPARATOR(_SEPARATOR);
+Color Color::YELLOW(_YELLOW);
+Color Color::BATTERY(_BATTERY);
 
-Color Color::Count(COLOR_NUMBER);
-Color Color::FLASH_10(COLOR_FLASH_10);
-Color Color::FLASH_01(COLOR_FLASH_01);
+Color Color::Count(_NUMBER);
+Color Color::FLASH_10(_FLASH_10);
+Color Color::FLASH_01(_FLASH_01);
 
-Color Color::CHAN[4] = {Color(COLOR_DATA_A), Color(COLOR_DATA_B), Color(COLOR_WHITE), Color(COLOR_WHITE)};
-Color Color::FILL(COLOR_WHITE);
-Color Color::BACK(COLOR_BLACK);
-Color Color::GRID(COLOR_GRID);
+Color Color::CHAN[4] = {Color(_DATA_A), Color(_DATA_B), Color(_WHITE), Color(_WHITE)};
+Color Color::FILL(_WHITE);
+Color Color::BACK(_BLACK);
+Color Color::GRID(_GRID);
 
 
 Color Color::currentColor = Color::Count;
