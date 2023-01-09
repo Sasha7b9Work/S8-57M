@@ -79,7 +79,7 @@ struct RecordIcon
 };
 
 
-void DisplayRecorder::Draw(int field)
+void DisplayRecorder::Update(int field)
 {
     Painter::BeginScene(field, Color::BLACK);
 

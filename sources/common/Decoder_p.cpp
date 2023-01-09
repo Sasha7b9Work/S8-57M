@@ -627,14 +627,28 @@ bool PDecoder::DrawSignal(uint8 data)
             }
             else
             {
-                int x1 = x0 + current_number - 1;
-                int y1 = prev_x + y_top;
-                int x2 = x1 + 1;
-                int y2 = data + y_top;
+                if (mode == 0)                              // пик дет откл, точки
+                {
+                }
+                else if (mode == 1)                         // пик дет вкл, точки
+                {
 
-                BackBuffer::DrawLine(x1, y1, x2, y2);
+                }
+                else if (mode == 2)                         // пик дет откл, линии
+                {
+                    int x1 = x0 + current_number - 1;
+                    int y1 = prev_x + y_top;
+                    int x2 = x1 + 1;
+                    int y2 = data + y_top;
 
-                prev_x = data;
+                    BackBuffer::DrawLine(x1, y1, x2, y2);
+
+                    prev_x = data;
+                }
+                else if (mode == 3)                         // пик дет вкл, линии
+                {
+
+                }
             }
 
             if (current_number == num_points - 1)

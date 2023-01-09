@@ -8,7 +8,7 @@ struct Record;
 
 namespace DisplayRecorder
 {
-    void Draw(int field);
+    void Update(int field);
 
     // Сместить окно просмотра влево
     void MoveWindowLeft();

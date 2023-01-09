@@ -71,10 +71,10 @@ void Display::Render()
 
     static const pFuncVI funcs[Device::Mode::Count] =
     {
-        DisplayOsci::Draw,
+        DisplayOsci::Update,
         EmptyFuncVI,
         EmptyFuncVI,
-        DisplayRecorder::Draw
+        DisplayRecorder::Update
     };
 
     for (int field = 0; field < 5; field++)
