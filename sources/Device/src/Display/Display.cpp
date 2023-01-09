@@ -41,7 +41,7 @@ static void ExecuteFuncAfterUpdateOnce();
 
 void Display::Init()
 {
-    for(uint8 i = 0; i < Color::NUMBER.value; i++)
+    for(uint8 i = 0; i < Color::Count.value; i++)
     {
         Color(i).LoadValueRGB();
     }

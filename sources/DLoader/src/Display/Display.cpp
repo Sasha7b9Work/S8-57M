@@ -67,7 +67,7 @@ void Display::Init()
     timePrev = 0;
     direction = 10.0F;
 
-    for(uint8 i = 0; i < Color::NUMBER.value; i++)
+    for(uint8 i = 0; i < Color::Count.value; i++)
     {
         Color(i).LoadValueRGB();
     }

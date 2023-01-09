@@ -33,7 +33,7 @@ public:
     static Color YELLOW;
     static Color BATTERY;
 
-    static Color NUMBER;
+    static Color Count;
 
     static Color FILL;
     static Color BACK;

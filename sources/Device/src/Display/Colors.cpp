@@ -70,7 +70,7 @@ Color Color::YELLOW(COLOR_YELLOW);
 Color Color::BATTERY(COLOR_BATTERY);
 Color Color::BATTERY_EMPTY(COLOR_BATTERY_EMPTY);
 
-Color Color::NUMBER(COLOR_NUMBER);
+Color Color::Count(COLOR_NUMBER);
 Color Color::FLASH_10(COLOR_FLASH_10);
 Color Color::FLASH_01(COLOR_FLASH_01);
 
@@ -80,7 +80,7 @@ Color Color::BACK(COLOR_BLACK);
 Color Color::GRID(COLOR_GRID);
 
 
-Color Color::currentColor = Color::NUMBER;
+Color Color::currentColor = Color::Count;
 static bool  inverseColor = false;
 
 
@@ -304,7 +304,7 @@ static bool WriteFlashColor()
 
 static void WriteToDisplay(Color color)
 {
-    static Color lastColor = Color::NUMBER;
+    static Color lastColor = Color::Count;
 
     if (color != lastColor)
     {
@@ -323,7 +323,7 @@ void Color::LoadValueRGB()
 
 void Color::SetAsCurrent()
 {
-    if(value != Color::NUMBER.value)
+    if(value != Color::Count.value)
     {
         currentColor = *this;
     }

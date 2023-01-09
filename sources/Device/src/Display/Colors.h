@@ -38,7 +38,7 @@ public:
     static Color BATTERY_EMPTY;     // Этот цвет используется для отрисовки пустого поля при отрисовке заряда батареи
 
 
-    static Color NUMBER;
+    static Color Count;
 
     static Color FILL;
     static Color BACK;
