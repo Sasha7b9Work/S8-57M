@@ -41,76 +41,7 @@ uint colors[256] =
 };
 
 
-
-Color Color::BLACK(COLOR_BLACK);
-Color Color::WHITE(COLOR_WHITE);
-Color Color::MENU_FIELD(COLOR_MENU_FIELD);
-Color Color::MENU_TITLE_DARK(COLOR_MENU_TITLE_DARK);
-Color Color::MENU_TITLE_BRIGHT(COLOR_MENU_ITEM_BRIGHT);
-Color Color::MENU_ITEM_DARK(COLOR_MENU_ITEM_DARK);
-Color Color::MENU_ITEM_BRIGHT(COLOR_MENU_ITEM_BRIGHT);
-Color Color::DATA_WHITE_ACCUM_A(COLOR_DATA_WHITE_ACCUM_A);
-Color Color::DATA_WHITE_ACCUM_B(COLOR_DATA_WHITE_ACCUM_B);
-Color Color::FLASH_10(COLOR_FLASH_10);
-Color Color::FLASH_01(COLOR_FLASH_01);
-
-
-Color Color::CHAN[4] = {Color(COLOR_DATA_A), Color(COLOR_DATA_B), Color(COLOR_WHITE), Color(COLOR_WHITE)};
-Color Color::FILL(COLOR_WHITE);
-Color Color::BACK(COLOR_BLACK);
-Color Color::GRID(COLOR_GRID);
-
-
 Color Color::current(255);
-
-
-
-void Color::Log(Color)
-{
-//#define colorVal (COLOR(color.value))
-
-//    LOG_WRITE("Color %d R=%d, G=%d, B=%d", color.value, R_FROM_COLOR(colorVal), G_FROM_COLOR(colorVal), B_FROM_COLOR(colorVal));
-}
-
-
-Color Color::Cursors(Chan ch)
-{
-    return CHAN[ch];
-}
-
-
-Color Color::BorderMenu(bool shade)
-{
-    return MenuTitle(shade);
-}
-
-
-Color Color::MenuTitle(bool shade)
-{
-    return shade ? Color(COLOR_MENU_ITEM) : Color(COLOR_MENU_TITLE);
-}
-
-
-Color Color::LightShadingText()
-{
-    return MenuTitle(false);
-}
-
-
-Color Color::MenuItem(bool shade)
-{
-    return shade ? Color(COLOR_MENU_ITEM_DARK) : Color(COLOR_MENU_ITEM);
-}
-
-Color Color::Contrast(Color color)
-{
-    uint colorValue = COLOR(color.value);
-    if (R_FROM_COLOR(colorValue) > 16 || G_FROM_COLOR(colorValue) > 32 || B_FROM_COLOR(colorValue) > 16)
-    {
-        return Color(COLOR_BLACK);
-    }
-    return Color(COLOR_WHITE);
-}
 
 
 bool operator!=(const Color &left, const Color &right)

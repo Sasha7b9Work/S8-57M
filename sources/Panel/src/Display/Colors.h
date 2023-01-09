@@ -11,8 +11,6 @@ extern uint colors[256];
 class Color
 {
 public:
-    static Color BLACK;
-    static Color WHITE;
     static Color MENU_FIELD;
     static Color MENU_TITLE_DARK;
     static Color MENU_TITLE_BRIGHT;
@@ -32,52 +30,18 @@ public:
     static Color GRAY_20;
     static Color GRAY_25;
 
-    static Color FILL;
-    static Color BACK;
     static Color GRID;
-    static Color CHAN[4];
 
-    explicit Color(uint8 val = COLOR_BLACK) : value(val) { }
+    explicit Color(uint8 val = 0) : value(val) { }
     Color(const Color &color) : value(color.value) { }
 
     void SetValue(uint raw);
     void SetAsCurrent() const { if (value != (uint8)(-1)) { current = *this; } };
     static Color Current() { return current; }
 
-    static Color Cursors(Chan ch);
     static Color Trig();
-    static Color MenuItem(bool shade);      // Цвет элемента меню.
-    static Color MenuTitle(bool shade);     // Цвет заголовка страницы. inShade == true, если страница затенена
-    static Color BorderMenu(bool shade);    // Цвет окантовки меню
-    static Color LightShadingText();        // Светлый цвет в тени.
-    static Color Contrast(Color color);     // Возвращает цвет, контрастный к color. Может быть белым или чёрным.
 
     uint8 value;
-
-    static void Log(Color color);
-
-    enum
-    {
-        COLOR_BLACK = 0,
-        COLOR_WHITE = 1,
-        COLOR_GRID = 2,
-        COLOR_DATA_A = 3,
-        COLOR_DATA_B = 4,
-        COLOR_MENU_FIELD = 5,
-        COLOR_MENU_TITLE = 6,
-        COLOR_MENU_TITLE_DARK = 7,
-        COLOR_MENU_TITLE_BRIGHT = 8,
-        COLOR_MENU_ITEM = 9,
-        COLOR_MENU_ITEM_DARK = 10,
-        COLOR_MENU_ITEM_BRIGHT = 11,
-        COLOR_DATA_WHITE_ACCUM_A = 12,   // Используется как для отрисовки канала на белом фоне, так и для отрисовки накопленных сигналов
-        COLOR_DATA_WHITE_ACCUM_B = 13,
-        COLOR_GRID_WHITE = 14,
-        COLOR_EMPTY = 15,
-        COLOR_FLASH_10 = 16,
-        COLOR_FLASH_01 = 17,
-        COLOR_INVERSE = 18
-    };
 
 private:
 

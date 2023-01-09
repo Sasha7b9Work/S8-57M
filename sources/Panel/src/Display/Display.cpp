@@ -84,11 +84,7 @@ void Display::DrawStartScreen()
 {
     for (int field = 0; field < 5; field++)
     {
-        Color::BACK.SetAsCurrent();
-
         BackBuffer::BeginPaint(field);
-
-        Color::FILL.SetAsCurrent();
 
         PFont::Set(PTypeFont::_GOST28);
         Text::SetSpacing(3);
@@ -117,8 +113,6 @@ uint Display::Update()
 
     for (int field = 0; field < 5; field++)
     {
-        Color::BLACK.SetAsCurrent();
-
         BackBuffer::BeginPaint(field);
 
         Update1();
@@ -139,11 +133,8 @@ void Display::Update1()
     static int dX = 1;
     static int dY = 1;
 
-    Color::WHITE.SetAsCurrent();
-
     BackBuffer::FillRegion(x + 1, y + 1, width - 2, width - 2);
 
-    Color::BLACK.SetAsCurrent();
 
 //    Painter::DrawRectangle(x, y, width, width);
 
@@ -173,8 +164,6 @@ void Display::Update1()
         dY = 1;
         y += dY;
     }
-
-    Color::WHITE.SetAsCurrent();
 
     for (int i = 10; i < 100; i += 10)
     {
