@@ -28,8 +28,6 @@ public:
     static Color GRAY_50;
     static Color GRAY_75;
 
-    static Color DATA_HALF_A;
-    static Color DATA_HALF_B;
     static Color SEPARATOR;
     static Color YELLOW;
     static Color BATTERY;
@@ -68,40 +66,36 @@ private:
    
     enum
     {
-        COLOR_BLACK = 0,
-        COLOR_WHITE = 1,
-        COLOR_GRID = 2,
-        COLOR_DATA_A = 3,
-        COLOR_DATA_B = 4,
-        COLOR_MENU_FIELD = 5,
-        COLOR_MENU_TITLE = 6,
-        COLOR_MENU_TITLE_DARK = 7,
-        COLOR_MENU_TITLE_BRIGHT = 8,
-        COLOR_BATTERY_EMPTY = 9,
-        COLOR_MENU_ITEM_DARK = 10,
-        COLOR_MENU_ITEM_BRIGHT = 11,
-        COLOR_DATA_WHITE_ACCUM_A = 12,   // Используется как для отрисовки канала на белом фоне, так и для отрисовки накопленных сигналов
-        COLOR_DATA_WHITE_ACCUM_B = 13,
-        COLOR_RED = 14,
-        COLOR_GREEN = 15,
-        COLOR_BLUE = 16,
+        _BLACK,
+        _WHITE,
+        _GRID,
+        _DATA_A,
+        _DATA_B,
+        _MENU_FIELD,
+        _MENU_TITLE,
+        _MENU_TITLE_DARK,
+        _MENU_TITLE_BRIGHT,
+        _MENU_ITEM_DARK,
+        _MENU_ITEM_BRIGHT,
+        _RED,
+        _GREEN,
+        _BLUE,
+        _BLUE_25,
+        _BLUE_50,
+        _GRAY_10,
+        _GRAY_20,
+        _BLUE_10,
+        _GRAY_50,
+        _GRAY_75,
+        _SEPARATOR,
+        _YELLOW,
+        _BATTERY,
 
-        COLOR_GRAY_10 = 19,
-        COLOR_GRAY_20 = 20,
-        COLOR_BLUE_10 = 21,
-        COLOR_GRAY_50 = 22,
-        COLOR_GRAY_75 = 23,
-        COLOR_DATA_HALF_A = 24,
-        COLOR_DATA_HALF_B = 25,
-        COLOR_SEPARATOR = 26,
-        COLOR_YELLOW = 27,
-        COLOR_BATTERY = 28,
+        _NUMBER = 64,
 
-        COLOR_NUMBER = 64,
-
-        COLOR_FLASH_10,
-        COLOR_FLASH_01,
-        COLOR_INVERSE
+        _FLASH_10,
+        _FLASH_01,
+        _INVERSE
     };
 
     static Color currentColor;
