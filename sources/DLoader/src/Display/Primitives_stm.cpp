@@ -75,7 +75,7 @@ int Text::DrawSmall(int x, int y, Color color)
 
     Point2(x, y).Write(&buffer.data[1]);
 
-    std::memcpy(&buffer.data[5], text, std::strlen(text));
+    std::memcpy(&buffer.data[5], text, std::strlen(text)); //-V575
 
     HAL_BUS::Panel::SendBuffer(buffer.data, sizeBuffer);
 

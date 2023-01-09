@@ -23,7 +23,7 @@ PacketROM *PacketROM::Next() const
         return nullptr;
     }
 
-    return (PacketROM *)((uint8 *)((PacketROM *)this) + size);
+    return (PacketROM *)((uint8 *)((PacketROM *)this) + size); //-V650
 }
 
 
