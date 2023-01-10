@@ -181,13 +181,13 @@ void Governor::DrawLowPart(int x, int y) const
             Color::BLACK.SetAsCurrent();
             if (delta > 0)
             {
-				x = Text(Integer(GetValue()).ToString(false, 1)).DrawWithLimitation(drawX, y - delta, limX, limY, limWidth, limHeight);
-				Text(Integer(NextValue()).ToString(false, 1)).DrawWithLimitation(drawX, y + 10 - delta, limX, limY, limWidth, limHeight);
+                x = Text(Integer(GetValue()).ToString(false, 1)).DrawWithLimitation(drawX, y - delta, limX, limY, limWidth, limHeight);
+                Text(Integer(NextValue()).ToString(false, 1)).DrawWithLimitation(drawX, y + 10 - delta, limX, limY, limWidth, limHeight);
             }
             if (delta < 0)
             {
-				x = Text(Integer(GetValue()).ToString(false, 1)).DrawWithLimitation(drawX, y - delta, limX, limY, limWidth, limHeight);
-				Text(Integer(PrevValue()).ToString(false, 1)).DrawWithLimitation(drawX, y - 10 - delta, limX, limY, limWidth, limHeight);
+                x = Text(Integer(GetValue()).ToString(false, 1)).DrawWithLimitation(drawX, y - delta, limX, limY, limWidth, limHeight);
+                Text(Integer(PrevValue()).ToString(false, 1)).DrawWithLimitation(drawX, y - 10 - delta, limX, limY, limWidth, limHeight);
             }
         }
         
@@ -347,21 +347,22 @@ void Page::DrawTitle(int y) const
     DrawNestingPage(5, y);
 }
 
+
 void Page::DrawItems(int x, int y) const
 {
-    if(NumItems() == 0)
+    if (NumItems() == 0)
     {
         return;
     }
 
     for (int i = 0; i < 5; i++)
     {
-        Rectangle(Width(i) - 1, Height()).Draw(x, y + 1, ColorFrame());
+//        Rectangle(Width(i) - 1, Height()).Draw(x, y + 1, ColorFrame());
 
         Region(Width(i) - 3, Height() - 2).Fill(x + 1, y + 2, Color::BACK);
-        
+
         Item *item = GetItem(PosItemOnLeft() + i);
-        
+
         if (item)
         {
             item->Draw(x, y, false);
@@ -370,7 +371,6 @@ void Page::DrawItems(int x, int y) const
         x += Width(i) - 1;
     }
 }
-
 
 
 void Item::DrawCommonHiPart(int x, int y, bool opened) const
@@ -383,7 +383,7 @@ void Item::DrawCommonHiPart(int x, int y, bool opened) const
     Region(width, Item::Value::HEIGHT - 3).Fill(x + 1, y + (opened ? 1 : 2), colorFill);
 
     Title().Draw(x + 6, y + (opened ? 2 : 3), colorText);
-    
+
     if (opened)
     {
         HLine(width).Draw(x + 1, y + Item::Value::HEIGHT - 1, ColorFrame());
