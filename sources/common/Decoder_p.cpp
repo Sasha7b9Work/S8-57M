@@ -745,11 +745,11 @@ bool PDecoder::DrawSignal(uint8 data)
         {
             int current_number = step - 10;         // Номер текущей точки
 
-            static uint8 prev_adc = 0;              // Значение предыдущей точки
+            static int prev_y = 0;                  // Значение предыдущей точки
 
             if (current_number == 0)
             {
-                prev_adc = data;
+                prev_y = Converter::CacluateY(data);
             }
             else
             {
@@ -763,7 +763,7 @@ bool PDecoder::DrawSignal(uint8 data)
                 }
                 else if (mode == 2)                         // пик дет откл, линии
                 {
-                    int y1 = Converter::CacluateY(prev_adc);
+                    int y1 = prev_y;
                     int y2 = Converter::CacluateY(data);
 
                     if (y1 > y2)
@@ -781,7 +781,7 @@ bool PDecoder::DrawSignal(uint8 data)
 
                     x0++;
 
-                    prev_adc = data;
+                    prev_y = y2;
                 }
                 else if (mode == 3)                         // пик дет вкл, линии
                 {
