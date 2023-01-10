@@ -8,6 +8,7 @@
 #include "Display/BackBuffer.h"
 #include "Settings/Settings.h"
 #include "Display/Font/Font_p.h"
+#include "Log.h"
 
 
 namespace PDecoder
@@ -754,6 +755,7 @@ bool PDecoder::SetColorChannel(uint8 data)
         {
             int index = BackBuffer::Signal::GetColorIndex(type & 0x01, (type >> 1) & 1);
             COLOR(index) = value;
+            BackBuffer::LoadPalette();
             return true;
         }
     }
