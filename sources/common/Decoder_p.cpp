@@ -73,6 +73,24 @@ namespace PDecoder
     static void FinishCommand();
 
     static bool DrawSignal(uint8);
+
+    namespace Converter
+    {
+        static float scale = 0.0f;
+        static int y_top = 0;
+
+        static void Prepare(int bottom, int top)
+        {
+            y_top = top;
+
+            scale = (float)(bottom - top) / 250.0f;
+        }
+
+        static int CacluateY(int data)
+        {
+            return (int)(y_top + (250 - (data - 2)) * scale);
+        }
+    }
 }
 
 
@@ -561,108 +579,6 @@ bool PDecoder::SetPoint(uint8 data)
 }
 
 
-bool PDecoder::DrawSignal(uint8 data)
-{
-    volatile static uint8 mode;
-    static Point2 left_top;
-    static Point2 left_bottom;
-    static int num_points;
-
-    static int x0;
-    static int y_top;
-    static float scale;
-    volatile static int y_bottom;
-
-    if (step > 0)
-    {
-        if (step == 1)
-        {
-            mode = data;
-            BackBuffer::Signal::SetChannel((mode >> 2) & 1);
-        }
-        else if (step < 5)
-        {
-            left_top.Append(data);
-
-            if (step == 4)
-            {
-                x0 = left_top.X();
-                y_top = left_top.Y();
-            }
-        }
-        else if (step < 8)
-        {
-            left_bottom.Append(data);
-
-            if (step == 7)
-            {
-                y_bottom = left_bottom.Y();
-            }
-        }
-        else if (step == 8)
-        {
-            num_points = data;
-        }
-        else if (step == 9)
-        {
-            num_points += data << 8;
-
-            scale = (float)(y_bottom - y_top) / 250.0f;
-        }
-        else
-        {
-            int current_number = step - 10;     // Ќомер текущей точки
-
-            static uint8 prev_adc = 0;              // «начение предыдущей точки
-
-            if (current_number == 0)
-            {
-                prev_adc = data;
-            }
-            else
-            {
-                if (mode == 0)                              // пик дет откл, точки
-                {
-                    int y = (int)(y_top + (250 - (data - 2)) * scale);
-
-                    BackBuffer::Signal::DrawPoint(x0, y);
-                    x0++;
-                }
-                else if (mode == 1)                         // пик дет вкл, точки
-                {
-
-                }
-                else if (mode == 2)                         // пик дет откл, линии
-                {
-                    int x1 = x0 + current_number - 1;
-                    int y1 = prev_adc + y_top;
-                    int x2 = x1 + 1;
-                    int y2 = data + y_top;
-
-                    BackBuffer::DrawLine(x1, y1, x2, y2);
-
-                    prev_adc = data;
-                }
-                else if (mode == 3)                         // пик дет вкл, линии
-                {
-
-                }
-            }
-
-            if (current_number == num_points - 1)
-            {
-                left_top.Reset();
-                left_bottom.Reset();
-
-                return true;
-            }
-        }
-    }
-
-    return false;
-}
-
-
 bool PDecoder::DrawText(uint8 data)
 {
     static Point2 pos;
@@ -775,4 +691,102 @@ void PDecoder::FinishCommand()
 {
     step = 0;
     curFunc = 0;
+}
+
+
+bool PDecoder::DrawSignal(uint8 data)
+{
+    volatile static uint8 mode;
+    static Point2 left_top;
+    static Point2 left_bottom;
+    static int num_points;
+
+    static int x0;
+    static int y_top;
+    volatile static int y_bottom;
+
+    if (step > 0)
+    {
+        if (step == 1)
+        {
+            mode = data;
+            BackBuffer::Signal::SetChannel((mode >> 2) & 1);
+        }
+        else if (step < 5)
+        {
+            left_top.Append(data);
+
+            if (step == 4)
+            {
+                x0 = left_top.X();
+                y_top = left_top.Y();
+            }
+        }
+        else if (step < 8)
+        {
+            left_bottom.Append(data);
+
+            if (step == 7)
+            {
+                y_bottom = left_bottom.Y();
+            }
+        }
+        else if (step == 8)
+        {
+            num_points = data;
+        }
+        else if (step == 9)
+        {
+            num_points += data << 8;
+
+            Converter::Prepare(y_bottom, y_top);
+        }
+        else
+        {
+            int current_number = step - 10;         // Ќомер текущей точки
+
+            static uint8 prev_adc = 0;              // «начение предыдущей точки
+
+            if (current_number == 0)
+            {
+                prev_adc = data;
+            }
+            else
+            {
+                if (mode == 0)                              // пик дет откл, точки
+                {
+                    BackBuffer::Signal::DrawPoint(x0++, Converter::CacluateY(data));
+                }
+                else if (mode == 1)                         // пик дет вкл, точки
+                {
+
+                }
+                else if (mode == 2)                         // пик дет откл, линии
+                {
+                    int y1 = Converter::CacluateY(prev_adc);
+                    int y2 = Converter::CacluateY(data);
+
+                    BackBuffer::DrawLine(x0, y1, x0 + 1, y2);
+
+                    x0++;
+
+                    prev_adc = data;
+                }
+                else if (mode == 3)                         // пик дет вкл, линии
+                {
+
+                }
+            }
+
+            if (current_number == num_points - 1)
+            {
+                left_top.Reset();
+                left_bottom.Reset();
+
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
