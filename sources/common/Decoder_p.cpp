@@ -570,6 +570,7 @@ bool PDecoder::DrawSignal(uint8 data)
 
     static int x0;
     static int y_top;
+    static float scale;
     volatile static int y_bottom;
 
     if (step > 0)
@@ -578,8 +579,6 @@ bool PDecoder::DrawSignal(uint8 data)
         {
             mode = data;
             BackBuffer::Signal::SetChannel((mode >> 2) & 1);
-
-//            LOG_WRITE("color %d", Color::current.value);
         }
         else if (step < 5)
         {
@@ -607,6 +606,8 @@ bool PDecoder::DrawSignal(uint8 data)
         else if (step == 9)
         {
             num_points += data << 8;
+
+            scale = (float)(y_bottom - y_top) / 250.0f;
         }
         else
         {
@@ -622,7 +623,9 @@ bool PDecoder::DrawSignal(uint8 data)
             {
                 if (mode == 0)                              // пик дет откл, точки
                 {
-                    BackBuffer::Signal::DrawPoint(x0, data + y_top);
+                    int y = (int)(y_top + (250 - (data - 2)) * scale);
+
+                    BackBuffer::Signal::DrawPoint(x0, y);
                     x0++;
                 }
                 else if (mode == 1)                         // пик дет вкл, точки
