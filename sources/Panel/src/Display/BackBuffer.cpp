@@ -295,10 +295,19 @@ void BackBuffer::Signal::SetChannel(int ch)
 
 void BackBuffer::Signal::DrawPoint(int x, int y)
 {
-#define WRITE_BYTE(addr, value)                 \
-    if (addr >= buffer && addr < Address::end)  \
-    {                                           \
-        *addr = value;                          \
+#define WRITE_BYTE(_addr, value)                    \
+    if (_addr >= buffer && _addr < Address::end)    \
+    {                                               \
+        *_addr = value;                             \
+    }
+
+#define WRITE_BYTE_V(_addr, value)                  \
+    if (_addr >= buffer && _addr < Address::end)    \
+    {                                               \
+        if(*_addr != col_ch)                        \
+        {                                           \
+            *_addr = value;                         \
+        }                                           \
     }
 
     uint8 *address = Address::Pixel(x, y);
@@ -316,10 +325,10 @@ void BackBuffer::Signal::DrawPoint(int x, int y)
     for (int i = 0; i < 4; i++)
     {
         uint8 *addr = address + shift[i];
-        WRITE_BYTE(addr, col_half);
+        WRITE_BYTE_V(addr, col_half);
 
         addr = address + sh[i];
-        WRITE_BYTE(addr, col_quart);
+        WRITE_BYTE_V(addr, col_quart);
     }
 }
 
