@@ -360,7 +360,10 @@ void BackBuffer::Signal::DrawVLine(int x, int y_min, int y_max)
         y++;
     }
 
-    WRITE_BYTE_V(pixel, col_half);
+    if (y <= y_max)
+    {
+        WRITE_BYTE_V(pixel, col_half);
+    }
 
     DrawFadedLine(x - 1, y_min, y_max);
 
@@ -394,5 +397,8 @@ void BackBuffer::Signal::DrawFadedLine(int x, int y_min, int y_max)
         y++;
     }
 
-    WRITE_BYTE_V(pixel, col_quart);
+    if (y <= y_max)
+    {
+        WRITE_BYTE_V(pixel, col_quart);
+    }
 }
