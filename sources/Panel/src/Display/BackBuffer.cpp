@@ -52,7 +52,6 @@ namespace BackBuffer
     {
         static const uint8 col_ch_half[2] = { 254, 253 };   // Индекс половинного цвета
         static const uint8 col_ch_quart[2] = { 252, 251 };  // Индекс четвертного цвета
-        static int chan = 0;                                // текущций канал отрисовки
 
         // Этими цветами рисуем
         static uint8 col_ch = 0;
@@ -85,38 +84,6 @@ void BackBuffer::SetPixel(int x, int y)
     if (address >= buffer && address < Address::end)
     {
         *address = Color::current.value;
-    }
-}
-
-
-#define WRITE_BYTE(addr, value)                 \
-    if (addr >= buffer && addr < Address::end)  \
-    {                                           \
-        *addr = value;                          \
-    }
-
-
-void BackBuffer::Signal::DrawPoint(int x, int y)
-{
-    uint8 *address = Address::Pixel(x, y);
-
-    WRITE_BYTE(address, col_ch);
-
-    static const int shift[4] = { -Display::WIDTH, 1, Display::WIDTH, -1 };
-
-    static const int sh[4] =
-    {
-        -Display::WIDTH - 1, -Display::WIDTH + 1,
-        Display::WIDTH - 1, Display::WIDTH + 1
-    };
-
-    for (int i = 0; i < 4; i++)
-    {
-        uint8 *addr = address + shift[i];
-        WRITE_BYTE(addr, col_half);
-
-        addr = address + sh[i];
-        WRITE_BYTE(addr, col_quart);
     }
 }
 
@@ -155,30 +122,6 @@ void BackBuffer::DrawVLine(int x, int y0, int y1)
         pixel += WIDTH;
         y++;
     }
-}
-
-
-void BackBuffer::Signal::DrawVLine(int x, int y_min, int y_max)
-{
-    int y = y_min;
-
-    uint8 color = Color::current.value;
-
-    uint8 *pixel = Address::Pixel(x, y);
-
-    while (pixel < buffer)
-    {
-        pixel += WIDTH;
-        y++;
-    }
-
-    while (y <= y_max && pixel < Address::end)
-    {
-        *pixel = color;
-        pixel += WIDTH;
-        y++;
-    }
-
 }
 
 
@@ -343,10 +286,61 @@ int BackBuffer::Signal::GetColorIndex(int ch, int type)
 
 void BackBuffer::Signal::SetChannel(int ch)
 {
-    chan = ch;
-
     col_ch = (ch == 0) ? 3U : 4U;
 
     col_half = col_ch_half[ch];
     col_quart = col_ch_quart[ch];
+}
+
+
+void BackBuffer::Signal::DrawPoint(int x, int y)
+{
+#define WRITE_BYTE(addr, value)                 \
+    if (addr >= buffer && addr < Address::end)  \
+    {                                           \
+        *addr = value;                          \
+    }
+
+    uint8 *address = Address::Pixel(x, y);
+
+    WRITE_BYTE(address, col_ch);
+
+    static const int shift[4] = { -Display::WIDTH, 1, Display::WIDTH, -1 };
+
+    static const int sh[4] =
+    {
+        -Display::WIDTH - 1, -Display::WIDTH + 1,
+        Display::WIDTH - 1, Display::WIDTH + 1
+    };
+
+    for (int i = 0; i < 4; i++)
+    {
+        uint8 *addr = address + shift[i];
+        WRITE_BYTE(addr, col_half);
+
+        addr = address + sh[i];
+        WRITE_BYTE(addr, col_quart);
+    }
+}
+
+
+void BackBuffer::Signal::DrawVLine(int x, int y_min, int y_max)
+{
+    int y = y_min;
+
+    uint8 *pixel = Address::Pixel(x, y);
+
+    while (pixel < buffer)
+    {
+        pixel += WIDTH;
+        y++;
+    }
+
+    while (y <= y_max && pixel < Address::end)
+    {
+        *pixel = col_ch;
+        pixel += WIDTH;
+        y++;
+    }
+
 }
