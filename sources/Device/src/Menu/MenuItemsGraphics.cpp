@@ -202,6 +202,8 @@ void Governor::DrawLowPart(int x, int y) const
 
 void Choice::Draw(int x, int y, bool opened) const
 {
+    Item::Draw(x, y, opened);
+
     if (opened)
     {
         DrawOpened(x, y);
@@ -239,7 +241,7 @@ void Choice::DrawClosed(int x, int y) const
 {
     if (IsActive())
     {
-        Region(Width() - 3, Value::HEIGHT - 3).Fill(x + 1, y + Value::HEIGHT + 1, ColorBackgroundChoice());
+//        Region(Width() - 3, Value::HEIGHT - 3).Fill(x + 1, y + Value::HEIGHT + 1, ColorBackgroundChoice());
 
         int deltaY = (int)(Step());
         Color colorText = Color::BLACK;
@@ -301,7 +303,7 @@ void Page::Draw(int x, int y, bool opened) const
         }
         else
         {
-            DrawTitle(y - Menu::Title::HEIGHT);
+            DrawTitle(y - Menu::Title::HEIGHT - 5);
 
             DrawItems(x, y);
         }
@@ -357,10 +359,6 @@ void Page::DrawItems(int x, int y) const
 
     for (int i = 0; i < 5; i++)
     {
-//        Rectangle(Width(i) - 1, Height()).Draw(x, y + 1, ColorFrame());
-
-        Region(Width(i) - 3, Height() - 2).Fill(x + 1, y + 2, Color::BACK);
-
         Item *item = GetItem(PosItemOnLeft() + i);
 
         if (item)
@@ -368,7 +366,7 @@ void Page::DrawItems(int x, int y) const
             item->Draw(x, y, false);
         }
 
-        x += Width(i) - 1;
+        x += Width(i);
     }
 }
 
@@ -512,4 +510,12 @@ void GraphButton::DrawHints(int x, int y, int width) const
         y = ((yNew - y) < 22) ? (y + 22) : yNew;
         structHelp++;
     }
+}
+
+
+void Item::Draw(int x, int y, bool opened) const
+{
+    VLine line(Height() - 2);
+    line.Draw(x, y + 1, ColorFrame());
+    line.Draw(x + Width(), y + 1);
 }

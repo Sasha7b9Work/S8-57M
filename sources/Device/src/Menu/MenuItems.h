@@ -106,7 +106,7 @@ public:
 
     bool Is(TypeItem::E t) const { return data->type == (uint8)t; };
 
-    virtual void Draw(int x, int y, bool opened) const {};
+    virtual void Draw(int x, int y, bool opened) const;
 
     virtual void HandlerFX(TypePress::E type) const;
 
