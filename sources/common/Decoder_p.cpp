@@ -578,6 +578,8 @@ bool PDecoder::DrawSignal(uint8 data)
         {
             mode = data;
             BackBuffer::Signal::SetChannel((mode >> 2) & 1);
+
+//            LOG_WRITE("color %d", Color::current.value);
         }
         else if (step < 5)
         {
@@ -749,7 +751,9 @@ bool PDecoder::SetColorChannel(uint8 data)
     }
     else
     {
-        value = (value << 4) | data;
+        value >>= 8;
+        value &= 0x00ffffff;
+        value |= (data << 24);
 
         if (step == 5)
         {
