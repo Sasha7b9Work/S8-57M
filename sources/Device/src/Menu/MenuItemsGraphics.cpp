@@ -6,6 +6,7 @@
 #include "Menu/Menu.h"
 #include "Utils/Stack.h"
 #include "Utils/Values.h"
+#include "Hardware/Timer.h"
 
 
 void GovernorColor::Draw(int x, int y, bool opened) const
@@ -204,14 +205,14 @@ void Choice::Draw(int x, int y, bool opened) const
 {
     Item::Draw(x, y, opened);
 
-    if (opened)
-    {
-        DrawOpened(x, y);
-    }
-    else
-    {
-        DrawClosed(x, y);
-    }
+//    if (opened)
+//    {
+//        DrawOpened(x, y);
+//    }
+//    else
+//    {
+//        DrawClosed(x, y);
+//    }
 }
 
 
@@ -352,6 +353,14 @@ void Page::DrawTitle(int y) const
 
 void Page::DrawItems(int x, int y) const
 {
+    static TimeMeterMS meter;
+
+    if (meter.ElapsedTime() < 1000)
+    {
+        meter.Reset();
+        LOG_WRITE("x = %d, y = %d", x, y);
+    }
+
     if (NumItems() == 0)
     {
         return;
@@ -517,5 +526,5 @@ void Item::Draw(int x, int y, bool opened) const
 {
     VLine line(Height() - 2);
     line.Draw(x, y + 1, ColorFrame());
-    line.Draw(x + Width(), y + 1);
+    line.Draw(x + Width() - 5, y + 1);
 }

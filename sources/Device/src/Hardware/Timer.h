@@ -80,3 +80,25 @@ namespace Timer
     // Служебная функция. Вызывается строго из прерывания
     void ElapsedCallback();
 };
+
+
+struct TimeMeterMS
+{
+    TimeMeterMS()
+    {
+        Reset();
+    }
+
+    uint ElapsedTime() const
+    {
+        return TIME_MS - time_reset;
+    }
+
+    void Reset()
+    {
+        time_reset = TIME_MS;
+    }
+
+private:
+    uint time_reset;
+};
