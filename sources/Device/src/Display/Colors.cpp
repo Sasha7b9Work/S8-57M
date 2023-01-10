@@ -7,7 +7,7 @@
 #include "common/Command.h"
 
 
-uint GlobalColors[256] =
+uint Color::raw[256] =
 {
     MAKE_COLOR(0x00, 0x00, 0x00),   // BLACK
     MAKE_COLOR(0xff, 0xff, 0xff),   // WHITE

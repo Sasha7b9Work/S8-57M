@@ -39,6 +39,9 @@ namespace Display
 
     // Выполняет функцию, определённую для выполнения после отрисовки
     static void ExecuteFuncAfterUpdateOnce();
+
+    // Загрузить в панель цвета каналов
+    static void LoadColorChannels();
 }
 
 
@@ -50,6 +53,19 @@ void Display::Init()
     }
 
     LoadBrightness();
+
+    LoadColorChannels();
+}
+
+
+void Display::LoadColorChannels()
+{
+    for (int ch = 0; ch < 2; ch++)
+    {
+//        uint color = COLOR(Color::CHAN[ch].value);
+
+
+    };
 }
 
 

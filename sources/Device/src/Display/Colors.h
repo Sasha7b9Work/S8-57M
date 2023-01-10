@@ -59,8 +59,11 @@ public:
     uint8 value;
 
     static Color CHAN[4];
+
     // Переключить "мигающий" цвет. Если reset == true, сбрасывется на белый
     static void ChangeFlash(bool reset = false);
+
+    static uint raw[256];
 
 private:
    
@@ -150,6 +153,4 @@ private:
 #define G_FROM_COLOR(color) (((uint)(color) >> 8)  & 0xff)
 #define B_FROM_COLOR(color) (((uint)(color))       & 0xff)
 
-#define COLOR(x) GlobalColors[x]
-
-extern uint GlobalColors[256];
+#define COLOR(x) Color::raw[x]

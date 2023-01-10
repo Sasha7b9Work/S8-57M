@@ -14,9 +14,9 @@ void PageDisplay::Settings::Colors::Init()
 
 static void OnPress_ResetColors()
 {
-    GlobalColors[3] = MAKE_COLOR(0x00, 0xdf, 0xff);
-    GlobalColors[4] = MAKE_COLOR(0x00, 0xff, 0x00);
-    GlobalColors[2] = MAKE_COLOR(0x60, 0x60, 0x60);
+    Color::raw[3] = MAKE_COLOR(0x00, 0xdf, 0xff);
+    Color::raw[4] = MAKE_COLOR(0x00, 0xff, 0x00);
+    Color::raw[2] = MAKE_COLOR(0x60, 0x60, 0x60);
     PageDisplay::Settings::Colors::colorTypeA.ReInit();
     PageDisplay::Settings::Colors::colorTypeB.ReInit();
     PageDisplay::Settings::Colors::colorTypeGrid.ReInit();
