@@ -64,7 +64,11 @@ void Display::LoadColorChannels()
     {
         uint color = COLOR(Color::CHAN[ch].value);
 
+        // Посылаем половинный цвет.
+        SBuffer(Command::Color_SetChannel, (uint8)ch, Color::Div(color, 2)).Send();
 
+        // Посылаем четвертной цвет
+        SBuffer(Command::Color_SetChannel, (uint8)(ch | 2), Color::Div(color, 4)).Send();
     };
 }
 

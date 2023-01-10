@@ -338,3 +338,13 @@ void Color::ChangeFlash(bool reset)
     inverseColor = !inverseColor;
     WriteFlashColor();
 }
+
+
+uint Color::Div(uint color, int div)
+{
+    uint8 r = R_FROM_COLOR(color);
+    uint8 g = G_FROM_COLOR(color);
+    uint8 b = B_FROM_COLOR(color);
+
+    return MAKE_COLOR(r / div, g / div, b / div);
+}

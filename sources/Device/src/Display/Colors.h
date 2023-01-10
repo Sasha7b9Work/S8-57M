@@ -65,6 +65,9 @@ public:
 
     static uint raw[256];
 
+    // Разделить каждую компоненту на div
+    static uint Div(uint color, int div);
+
 private:
    
     enum
