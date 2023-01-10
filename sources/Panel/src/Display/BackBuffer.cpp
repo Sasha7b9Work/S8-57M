@@ -57,6 +57,9 @@ namespace BackBuffer
         static uint8 col_ch = 0;
         static uint8 col_half = 0;
         static uint8 col_quart = 0;
+
+        // Нарисовать блеклую линию
+        static void DrawFadedLine(int x, int y_min, int y_max);
     }
 }
 
@@ -293,8 +296,6 @@ void BackBuffer::Signal::SetChannel(int ch)
 }
 
 
-void BackBuffer::Signal::DrawPoint(int x, int y)
-{
 #define WRITE_BYTE(_addr, value)                    \
     if (_addr >= buffer && _addr < Address::end)    \
     {                                               \
@@ -310,6 +311,9 @@ void BackBuffer::Signal::DrawPoint(int x, int y)
         }                                           \
     }
 
+
+void BackBuffer::Signal::DrawPoint(int x, int y)
+{
     uint8 *address = Address::Pixel(x, y);
 
     WRITE_BYTE(address, col_ch);
@@ -352,4 +356,37 @@ void BackBuffer::Signal::DrawVLine(int x, int y_min, int y_max)
         y++;
     }
 
+    DrawFadedLine(x - 1, y_min, y_max);
+
+    DrawFadedLine(x + 1, y_min, y_max);
+}
+
+
+void BackBuffer::Signal::DrawFadedLine(int x, int y_min, int y_max)
+{
+    int y = y_min;
+
+    uint8 *pixel = Address::Pixel(x, y);
+
+    uint8 *addr = pixel - Display::WIDTH;
+
+    WRITE_BYTE_V(addr, col_quart);
+
+    while (pixel < buffer)
+    {
+        pixel += WIDTH;
+        y++;
+    }
+
+    while (y <= y_max && pixel < Address::end)
+    {
+        if (*pixel != col_ch)
+        {
+            *pixel = col_half;
+        }
+        pixel += WIDTH;
+        y++;
+    }
+
+    WRITE_BYTE_V(pixel, col_quart);
 }
