@@ -47,5 +47,7 @@ namespace BackBuffer
         int GetColorIndex(int ch, int type);
 
         void DrawPoint(int x, int y);
+
+        void DrawVLine(int x, int y_min, int y_max);
     }
 };

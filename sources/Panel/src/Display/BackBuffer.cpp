@@ -153,6 +153,30 @@ void BackBuffer::DrawVLine(int x, int y0, int y1)
 }
 
 
+void BackBuffer::Signal::DrawVLine(int x, int y_min, int y_max)
+{
+    int y = y_min;
+
+    uint8 color = Color::current.value;
+
+    uint8 *pixel = Address::Pixel(x, y);
+
+    while (pixel < buffer)
+    {
+        pixel += WIDTH;
+        y++;
+    }
+
+    while (y <= y_max && pixel < Address::end)
+    {
+        *pixel = color;
+        pixel += WIDTH;
+        y++;
+    }
+
+}
+
+
 void BackBuffer::DrawHLine(int y, int x0, int x1)
 {
     if (!Limit::Y(y))

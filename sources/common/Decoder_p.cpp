@@ -766,7 +766,14 @@ bool PDecoder::DrawSignal(uint8 data)
                     int y1 = Converter::CacluateY(prev_adc);
                     int y2 = Converter::CacluateY(data);
 
-                    BackBuffer::DrawLine(x0, y1, x0 + 1, y2);
+                    if (y1 > y2)
+                    {
+                        BackBuffer::Signal::DrawVLine(x0 + 1, y2, y1);
+                    }
+                    else
+                    {
+                        BackBuffer::DrawLine(x0, y1, x0 + 1, y2);
+                    }
 
                     x0++;
 
