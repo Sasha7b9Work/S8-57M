@@ -53,6 +53,11 @@ namespace BackBuffer
         static const uint8 col_ch_half[2] = { 254, 253 };   // Индекс половинного цвета
         static const uint8 col_ch_quart[2] = { 252, 251 };  // Индекс четвертного цвета
         static int chan = 0;                                // текущций канал отрисовки
+
+        // Этими цветами рисуем
+        static uint8 col_ch = 0;
+        static uint8 col_half = 0;
+        static uint8 col_quart = 0;
     }
 }
 
@@ -95,7 +100,7 @@ void BackBuffer::Signal::DrawPoint(int x, int y)
 {
     uint8 *address = Address::Pixel(x, y);
 
-    WRITE_BYTE(address, Color::current.value);
+    WRITE_BYTE(address, col_ch);
 
     static const int shift[4] = { -Display::WIDTH, 1, Display::WIDTH, -1 };
 
@@ -108,10 +113,10 @@ void BackBuffer::Signal::DrawPoint(int x, int y)
     for (int i = 0; i < 4; i++)
     {
         uint8 *addr = address + shift[i];
-        WRITE_BYTE(addr, col_ch_half[chan]);
+        WRITE_BYTE(addr, col_half);
 
         addr = address + sh[i];
-        WRITE_BYTE(addr, col_ch_quart[chan]);
+        WRITE_BYTE(addr, col_quart);
     }
 }
 
@@ -339,4 +344,9 @@ int BackBuffer::Signal::GetColorIndex(int ch, int type)
 void BackBuffer::Signal::SetChannel(int ch)
 {
     chan = ch;
+
+    col_ch = (ch == 0) ? 3U : 4U;
+
+    col_half = col_ch_half[ch];
+    col_quart = col_ch_quart[ch];
 }
