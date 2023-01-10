@@ -19,24 +19,27 @@
 #include <cstring>
 
 
-static void EmptyFunc() { }
+namespace Display
+{
+    static void EmptyFunc() { }
 
 
-bool Display::Message::waitKey = false;
-volatile bool Display::Message::running = false;
-bool Display::Breaker::powerOn = true;
+    bool Display::Message::waitKey = false;
+    volatile bool Display::Message::running = false;
+    bool Display::Breaker::powerOn = true;
 
 
-static pFuncVV funcOnHand = nullptr;
-static uint timeStart = 0;
-static pchar textWait = 0;
-static bool clearBackground = false;
-volatile static pFuncVV funcAdditionRender = EmptyFunc;   // Дополнительная функция рисования. Выполняется после стандартной отрисовки, но перед вызовом EndScene;
-static bool inStateDraw = false;                        // true означает, что происходит процесс отрисовки
-static pFuncVV funcAfterUpdateOnce = EmptyFunc;
+    static pFuncVV funcOnHand = nullptr;
+    static uint timeStart = 0;
+    static pchar textWait = 0;
+    static bool clearBackground = false;
+    volatile static pFuncVV funcAdditionRender = EmptyFunc;   // Дополнительная функция рисования. Выполняется после стандартной отрисовки, но перед вызовом EndScene;
+    static bool inStateDraw = false;                        // true означает, что происходит процесс отрисовки
+    static pFuncVV funcAfterUpdateOnce = EmptyFunc;
 
-// Выполняет функцию, определённую для выполнения после отрисовки
-static void ExecuteFuncAfterUpdateOnce();
+    // Выполняет функцию, определённую для выполнения после отрисовки
+    static void ExecuteFuncAfterUpdateOnce();
+}
 
 
 void Display::Init()
@@ -100,7 +103,7 @@ bool Display::InProcess()
 }
 
 
-static void ExecuteFuncAfterUpdateOnce()
+void Display::ExecuteFuncAfterUpdateOnce()
 {
     funcAfterUpdateOnce();
     funcAfterUpdateOnce = EmptyFunc;
