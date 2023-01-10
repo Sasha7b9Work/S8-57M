@@ -63,8 +63,6 @@ namespace PDecoder
     // Устанавливает расстояние между символами при выводе текста
     static bool SetTextSpacing(uint8);
 
-    static bool NullCommand(uint8);
-
     static bool DrawVCursor(uint8);
     static bool DrawHCursor(uint8);
 
@@ -108,7 +106,6 @@ void PDecoder::AddData(uint8 data)
         SetTextSpacing,
         E,
         DrawSignal,
-        NullCommand,
         DrawVCursor,
         DrawHCursor,
         SetColorChannel
@@ -563,17 +560,6 @@ bool PDecoder::SetPoint(uint8 data)
 }
 
 
-bool PDecoder::NullCommand(uint8)
-{
-    if (step == 0)
-    {
-        return false;
-    }
-
-    return true;
-}
-
-
 bool PDecoder::DrawSignal(uint8 data)
 {
     volatile static uint8 mode;
@@ -590,6 +576,7 @@ bool PDecoder::DrawSignal(uint8 data)
         if (step == 1)
         {
             mode = data;
+            BackBuffer::Signal::SetChannel((mode >> 2) & 1);
         }
         else if (step < 5)
         {

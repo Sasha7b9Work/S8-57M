@@ -15,15 +15,10 @@ public:
 
     void SetValue(uint raw);
     void SetAsCurrent() const { if (value != (uint8)(-1)) { current = *this; } };
-    static Color Current() { return current; }
 
     uint8 value;
-
-    static uint raw[256];
-
-private:
-
     static Color current;
+    static uint raw[256];
 };
 
 

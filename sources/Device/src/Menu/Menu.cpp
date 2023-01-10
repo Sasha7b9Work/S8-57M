@@ -401,7 +401,7 @@ void Menu::DrawHintItem(int x, int y, int width)
 
         if (item->Is(TypeItem::GraphButton))
         {
-            ((GraphButton *)item)->DrawHints(x, y, width);   
+            ((GraphButton *)item)->DrawHints(x, y, width);    //-V1027
         }
     }
 }

@@ -86,7 +86,7 @@ SettingsNRST *SectorNRST::GetSaved() const
 {
     PacketNRST *last = LastPacket();
 
-    return (last && last->IsEmpty()) ? nullptr : (SettingsNRST *)last;
+    return (last && last->IsEmpty()) ? nullptr : (SettingsNRST *)last; //-V1027
 }
 
 

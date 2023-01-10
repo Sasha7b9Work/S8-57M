@@ -39,6 +39,9 @@ namespace BackBuffer
 
     namespace Signal
     {
+        // Установить канал для отрисовки
+        void SetChannel(int);
+
         // type : 0 - половинный, 1 - четвертной
         void SetColor(int ch, int type, uint value);
 

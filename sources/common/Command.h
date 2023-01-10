@@ -79,14 +79,14 @@ struct Command
             AddToConsole,           // 21 | num symb    |  ..... symbols ....                                                                  |  2 + X  |
             // mode/bits : 0 - 0/1 - точки/линии
             //             1 - 0/1 - пиквоый детектор откл/вкл
+            //             2 - 0/1 - номер канал
             Paint_DrawSignal,       // 23 |    mode     |          coord_left_top Point2          |     coord_left_bottom Point2  | num_points | 10 +  X |
-            Null_command,           // 24 |   number
             //                                                                        в x хрантися длина линии, в skip - координата
             //                                                                места, которое нужно пропустить (там будет нарисован прямоугольник
-            Paint_DrawVCursor,      // 25 |               coord                    |                height,skip           |                    |    7    |
-            Paint_DrawHCursor,      // 26 |                                        |                                      |                    |    7    |
+            Paint_DrawVCursor,      // 24 |               coord                    |                height,skip           |                    |    7    |
+            Paint_DrawHCursor,      // 25 |                                        |                                      |                    |    7    |
             // Установка половинного и четвертного цвета каналов : type : bit0 - номер канала, bit1 - 0 - половинный, 1 - четвертной
-            Color_SetChannel,       // 27 |    type     |                        value                           |                             |    6    |
+            Color_SetChannel,       // 26 |    type     |                        value                           |                             |    6    |
             Count
     };
 };

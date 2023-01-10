@@ -52,6 +52,7 @@ namespace BackBuffer
     {
         static uint col_ch_half[2] = { 0, 0 };      // Половинный цвет
         static uint col_ch_quart[2] = { 0, 0 };     // Четвертной цвет
+        static int chan = 0;                        // текущций канал отрисовки
     }
 }
 
@@ -78,7 +79,7 @@ void BackBuffer::SetPixel(int x, int y)
 
     if (address >= buffer && address < Address::end)
     {
-        *address = Color::Current().value;
+        *address = Color::current.value;
     }
 }
 
@@ -89,10 +90,8 @@ void BackBuffer::Signal::Point(int x, int y)
 
     if (address >= buffer && address < Address::end)
     {
-        *address = Color::Current().value;
+        *address = Color::current.value;
     }
-
-    DrawRectangle(x - 1, y - 1, 2, 2);
 }
 
 
@@ -114,7 +113,7 @@ void BackBuffer::DrawVLine(int x, int y0, int y1)
 
     int y = y0;
 
-    uint8 color = Color::Current().value;
+    uint8 color = Color::current.value;
 
     uint8 *pixel = Address::Pixel(x, y);
 
@@ -149,7 +148,7 @@ void BackBuffer::DrawHLine(int y, int x0, int x1)
 
     uint counter = (uint)(x1 - x0 + 1);
 
-    std::memset(pixel, Color::Current().value, counter);
+    std::memset(pixel, Color::current.value, counter);
 }
 
 
@@ -164,7 +163,7 @@ void BackBuffer::DrawRectangle(int x, int y, int w, int h)
 
 void BackBuffer::Fill()
 {
-    std::memset(buffer, Color::Current().value, SIZE_BUFFER);
+    std::memset(buffer, Color::current.value, SIZE_BUFFER);
 }
 
 
@@ -283,5 +282,18 @@ void BackBuffer::SendRow(int row)
 
 void BackBuffer::Signal::SetColor(int ch, int type, uint value)
 {
+    if (type == 0)
+    {
+        col_ch_half[ch] = value;
+    }
+    else
+    {
+        col_ch_quart[ch] = value;
+    }
+}
 
+
+void BackBuffer::Signal::SetChannel(int ch)
+{
+    chan = ch;
 }
