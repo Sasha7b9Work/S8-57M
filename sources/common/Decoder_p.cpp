@@ -768,18 +768,16 @@ bool PDecoder::DrawSignal(uint8 data)
 
                     if (y1 > y2)
                     {
-                        BackBuffer::Signal::DrawVLine(x0 + 1, y2, y1);
+                        BackBuffer::Signal::DrawVLine(++x0, y2, y1);
                     }
                     else if(y1 < y2)
                     {
-                        BackBuffer::Signal::DrawVLine(x0 + 1, y1, y2);
+                        BackBuffer::Signal::DrawVLine(++x0, y1, y2);
                     }
                     else
                     {
-                        BackBuffer::Signal::DrawPoint(x0 + 1, y2);
+                        BackBuffer::Signal::DrawPoint(++x0, y2);
                     }
-
-                    x0++;
 
                     prev_y = y2;
                 }
