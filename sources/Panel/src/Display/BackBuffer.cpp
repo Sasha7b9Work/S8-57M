@@ -84,20 +84,25 @@ void BackBuffer::SetPixel(int x, int y)
 }
 
 
+#define WRITE_BYTE(addr, value)                 \
+    if (addr >= buffer && addr < Address::end)  \
+    {                                           \
+        *addr = value;                          \
+    }
+
+
 void BackBuffer::Signal::DrawPoint(int x, int y)
 {
     uint8 *address = Address::Pixel(x, y);
 
-    if (address >= buffer && address < Address::end)
-    {
-        *address = Color::current.value;
-    }
+    WRITE_BYTE(address, Color::current.value);
 
-    uint8 *top = address - Display::WIDTH;
+    static const int shift[4] = { -Display::WIDTH, 1, Display::WIDTH, -1 };
 
-    if (top >= buffer && top < Address::end)
+    for (int i = 0; i < 4; i++)
     {
-        *top = col_ch_half[chan];
+        uint8 *addr = address + shift[i];
+        WRITE_BYTE(addr, col_ch_half[chan]);
     }
 }
 

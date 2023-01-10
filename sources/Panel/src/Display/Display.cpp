@@ -64,6 +64,15 @@ void Display::Init()
     HAL_LTDC::Init((uint)buffer);
     BackBuffer::LoadPalette();
 
+    for (int ch = 0; ch < 2; ch++)
+    {
+        for (int type = 0; type < 2; type++)
+        {
+            int index = BackBuffer::Signal::GetColorIndex(ch, type);
+            COLOR(index) = 0xffffffff;
+        }
+    }
+
     DrawStartScreen();
 }
 
