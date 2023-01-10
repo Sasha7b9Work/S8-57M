@@ -99,10 +99,19 @@ void BackBuffer::Signal::DrawPoint(int x, int y)
 
     static const int shift[4] = { -Display::WIDTH, 1, Display::WIDTH, -1 };
 
+    static const int sh[4] =
+    {
+        -Display::WIDTH - 1, -Display::WIDTH + 1,
+        Display::WIDTH - 1, Display::WIDTH + 1
+    };
+
     for (int i = 0; i < 4; i++)
     {
         uint8 *addr = address + shift[i];
         WRITE_BYTE(addr, col_ch_half[chan]);
+
+        addr = address + sh[i];
+        WRITE_BYTE(addr, col_ch_quart[chan]);
     }
 }
 
