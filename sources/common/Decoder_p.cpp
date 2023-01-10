@@ -619,7 +619,7 @@ bool PDecoder::DrawSignal(uint8 data)
             {
                 if (mode == 0)                              // пик дет откл, точки
                 {
-                    BackBuffer::Signal::Point(x0, data + y_top);
+                    BackBuffer::Signal::DrawPoint(x0, data + y_top);
                     x0++;
                 }
                 else if (mode == 1)                         // пик дет вкл, точки
@@ -752,7 +752,8 @@ bool PDecoder::SetColorChannel(uint8 data)
 
         if (step == 5)
         {
-            BackBuffer::Signal::SetColor(type & 0x01, type & 0x02, value);
+            int index = BackBuffer::Signal::GetColorIndex(type & 0x01, (type >> 1) & 1);
+            COLOR(index) = value;
             return true;
         }
     }

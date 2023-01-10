@@ -42,9 +42,10 @@ namespace BackBuffer
         // Установить канал для отрисовки
         void SetChannel(int);
 
+        // Индекс цвета
         // type : 0 - половинный, 1 - четвертной
-        void SetColor(int ch, int type, uint value);
+        int GetColorIndex(int ch, int type);
 
-        void Point(int x, int y);
+        void DrawPoint(int x, int y);
     }
 };

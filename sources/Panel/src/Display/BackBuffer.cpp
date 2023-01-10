@@ -50,9 +50,9 @@ namespace BackBuffer
 
     namespace Signal
     {
-        static uint col_ch_half[2] = { 0, 0 };      // Половинный цвет
-        static uint col_ch_quart[2] = { 0, 0 };     // Четвертной цвет
-        static int chan = 0;                        // текущций канал отрисовки
+        static const uint8 col_ch_half[2] = { 254, 253 };   // Индекс половинного цвета
+        static const uint8 col_ch_quart[2] = { 252, 251 };  // Индекс четвертного цвета
+        static int chan = 0;                                // текущций канал отрисовки
     }
 }
 
@@ -84,13 +84,20 @@ void BackBuffer::SetPixel(int x, int y)
 }
 
 
-void BackBuffer::Signal::Point(int x, int y)
+void BackBuffer::Signal::DrawPoint(int x, int y)
 {
     uint8 *address = Address::Pixel(x, y);
 
     if (address >= buffer && address < Address::end)
     {
         *address = Color::current.value;
+    }
+
+    uint8 *top = address - Display::WIDTH;
+
+    if (address >= buffer && address < Address::end)
+    {
+        *top = col_ch_half[chan];
     }
 }
 
@@ -280,16 +287,14 @@ void BackBuffer::SendRow(int row)
 }
 
 
-void BackBuffer::Signal::SetColor(int ch, int type, uint value)
+int BackBuffer::Signal::GetColorIndex(int ch, int type)
 {
     if (type == 0)
     {
-        col_ch_half[ch] = value;
+        return col_ch_half[ch];
     }
-    else
-    {
-        col_ch_quart[ch] = value;
-    }
+
+    return col_ch_quart[ch];
 }
 
 
