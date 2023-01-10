@@ -95,7 +95,7 @@ void BackBuffer::Signal::DrawPoint(int x, int y)
 
     uint8 *top = address - Display::WIDTH;
 
-    if (address >= buffer && address < Address::end)
+    if (top >= buffer && top < Address::end)
     {
         *top = col_ch_half[chan];
     }
