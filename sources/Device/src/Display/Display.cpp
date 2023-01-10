@@ -62,7 +62,7 @@ void Display::LoadColorChannels()
 {
     for (int ch = 0; ch < 2; ch++)
     {
-//        uint color = COLOR(Color::CHAN[ch].value);
+        uint color = COLOR(Color::CHAN[ch].value);
 
 
     };
