@@ -343,6 +343,10 @@ void BackBuffer::Signal::DrawVLine(int x, int y_min, int y_max)
 
     uint8 *pixel = Address::Pixel(x, y);
 
+    uint8 *addr = pixel - Display::WIDTH;
+
+    WRITE_BYTE_V(addr, col_half);
+
     while (pixel < buffer)
     {
         pixel += WIDTH;
@@ -355,6 +359,8 @@ void BackBuffer::Signal::DrawVLine(int x, int y_min, int y_max)
         pixel += WIDTH;
         y++;
     }
+
+    WRITE_BYTE_V(pixel, col_half);
 
     DrawFadedLine(x - 1, y_min, y_max);
 
