@@ -104,9 +104,12 @@ public:
         static const int HEIGHT = 24;
     };
 
+    int X() const;
+    int Y(bool opened = false) const;
+
     bool Is(TypeItem::E t) const { return data->type == (uint8)t; };
 
-    virtual void Draw(int x, int y, bool opened) const;
+    virtual void Draw(bool opened) const;
 
     virtual void HandlerFX(TypePress::E type) const;
 
@@ -216,7 +219,7 @@ public:
     // Реакция на событие функциональной клавиши, соотвествующей итему
     virtual void HandlerFX(TypePress::E type) const;
 
-    virtual void Draw(int x, int y, bool opened) const;
+    virtual void Draw(bool opened) const;
 
     const DataPage *OwnData() const;
 
@@ -245,7 +248,7 @@ class Button : public Item
 public:
     Button(const DataItem *const data) : Item(data) {};
 
-    virtual void Draw(int x, int y, bool opened) const;
+    virtual void Draw(bool opened) const;
 
     virtual void HandlerFX(TypePress::E type) const;
 
@@ -272,7 +275,7 @@ class GraphButton : public Item
 public:
     GraphButton(const DataItem *const data) : Item(data) {};
 
-    virtual void Draw(int x, int y, bool opened) const;
+    virtual void Draw(bool opened) const;
 
     void DrawHints(int x, int y, int width) const;
 
@@ -321,7 +324,7 @@ public:
     void DrawOpened(int x, int y) const;
 
     // Нарисовать в закрытом виде (в строке меню)
-    void DrawClosed(int x, int y) const;
+    void DrawClosed() const;
 
     // Отобразить значение
     void DrawValue(int x, int y) const;
@@ -341,7 +344,7 @@ public:
     // Обработка события функциональной кнопки, соответствующей данному итему
     virtual void HandlerFX(TypePress::E type) const;
 
-    virtual void Draw(int x, int y, bool opened) const;
+    virtual void Draw(bool opened) const;
 
     static void Changed() { };
 
@@ -389,9 +392,9 @@ public:
     // Возвращает количество вариантов выбора в элементе по адресу choice
     int   NumChoices() const;
 
-    void  DrawOpened(int x, int y) const;
+    void  DrawOpened() const;
 
-    void  DrawClosed(int x, int y) const;
+    void  DrawClosed() const;
 
     // Возвращает имя текущего варианта выбора элемента choice, как оно записано в исходном коде программы
     String NameCurrentSubItem() const;
@@ -406,7 +409,7 @@ public:
 
     char GetSymbol();
 
-    virtual void Draw(int x, int y, bool opened) const;
+    virtual void Draw(bool opened) const;
 
     // Обработка события кнопки
     virtual bool HandlerKey(const KeyEvent &event);
@@ -435,7 +438,7 @@ class GovernorColor : public Item
 public:
     GovernorColor(const DataItem *const data) : Item(data) {};
 
-    virtual void Draw(int x, int y, bool opened) const;
+    virtual void Draw(bool opened) const;
 
     // Обработка события функциональной кнопки, соответствующей данному итему на странице
     virtual void HandlerFX(TypePress::E type) const;
@@ -450,7 +453,7 @@ private:
 
     void DrawOpened(int x, int y) const;
 
-    void DrawClosed(int x, int y) const;
+    void DrawClosed() const;
 
     void DrawValue(int x, int y) const;
 

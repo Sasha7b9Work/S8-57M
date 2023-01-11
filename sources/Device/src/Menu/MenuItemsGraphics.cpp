@@ -9,8 +9,10 @@
 #include "Hardware/Timer.h"
 
 
-void GovernorColor::Draw(int x, int y, bool opened) const
+void GovernorColor::Draw(bool opened) const
 {
+    int x = X();
+
     if (opened)
     {
         x = (x + Width() / 2) - widthOpened / 2;
@@ -20,11 +22,11 @@ void GovernorColor::Draw(int x, int y, bool opened) const
             x = 0;
         }
 
-        DrawOpened(x, y);
+        DrawOpened(x, Y());
     }
     else
     {
-        DrawClosed(x, y);
+        DrawClosed();
     }
 }
 
@@ -43,11 +45,11 @@ void GovernorColor::DrawOpened(int x, int y) const
 }
 
 
-void GovernorColor::DrawClosed(int x, int y) const
+void GovernorColor::DrawClosed() const
 {
     OwnData()->ct->Init();
-    DrawCommonHiPart(x, y, false);
-    Region(Width() + 1, Value::HEIGHT - 3).Fill(x + 1, y + 13, OwnData()->ct->color);
+    DrawCommonHiPart(X(), Y(), false);
+    Region(Width() + 1, Value::HEIGHT - 3).Fill(X() + 1, Y() + 13, OwnData()->ct->color);
 }
 
 
@@ -86,7 +88,7 @@ void GovernorColor::DrawValue(int x, int y) const
 }
 
 
-void Governor::Draw(int x, int y, bool opened) const
+void Governor::Draw(bool opened) const
 {
     if (!IsActive())
     {
@@ -95,11 +97,11 @@ void Governor::Draw(int x, int y, bool opened) const
 
     if (opened)
     {
-        DrawOpened(x, y);
+        DrawOpened(X(), Y());
     }
     else
     {
-        DrawClosed(x, y);
+        DrawClosed();
     }
 }
 
@@ -113,11 +115,11 @@ void Governor::DrawOpened(int x, int y) const
 }
 
 
-void Governor::DrawClosed(int x, int y) const
+void Governor::DrawClosed() const
 {
-    DrawLowPart(x, y + Value::HEIGHT);
-    DrawCommonHiPart(x, y, false);
-    OwnData()->afterDraw(x, y);
+    DrawLowPart(X(), Y() + Value::HEIGHT);
+    DrawCommonHiPart(X(), Y(), false);
+    OwnData()->afterDraw(X(), Y());
 }
 
 
@@ -201,44 +203,44 @@ void Governor::DrawLowPart(int x, int y) const
 }
 
 
-void Choice::Draw(int x, int y, bool opened) const
+void Choice::Draw(bool opened) const
 {
-    Item::Draw(x, y, opened);
+    Item::Draw(opened);
 
     if (opened)
     {
-        DrawOpened(x, y);
+        DrawOpened();
     }
     else
     {
-        DrawClosed(x, y);
+        DrawClosed();
     }
 }
 
 
-void Choice::DrawOpened(int x, int y) const
+void Choice::DrawOpened() const
 {
     int height = HeightOpened();
     
-    Rectangle(Width() - 1, height - 1).Draw(x, y + 1, ColorFrame());
-    DrawCommonHiPart(x, y + 1, true);
+    Rectangle(Width() - 1, height - 1).Draw(X(), Y(true) + 1, ColorFrame());
+    DrawCommonHiPart(X(), Y(true) + 1, true);
 
-    Region(Width() - 3, height - MOI_HEIGHT_TITLE + 4).Fill(x + 1, y + MOI_HEIGHT_TITLE - 5, Color::BACK);
+    Region(Width() - 3, height - MOI_HEIGHT_TITLE + 4).Fill(X() + 1, Y(true) + MOI_HEIGHT_TITLE - 5, Color::BACK);
     int8 index = *OwnData()->cell;
     for (int i = 0; i < NumChoices(); i++)
     {
-        int yItem = y + MOI_HEIGHT_TITLE + i * MOSI_HEIGHT - 7;
+        int yItem = Y(true) + MOI_HEIGHT_TITLE + i * MOSI_HEIGHT - 7;
         bool pressed = i == index;
         if (pressed)
         {
-            Region(Width() - 3, MOSI_HEIGHT - 1).Fill(x + 1, yItem + 2, ColorBackgroundChoice());
+            Region(Width() - 3, MOSI_HEIGHT - 1).Fill(X() + 1, yItem + 2, ColorBackgroundChoice());
         }
-        NameSubItem(i).Draw(x + 4, yItem + 2, pressed ? Color::BLACK : ColorBackgroundChoice());
+        NameSubItem(i).Draw(X() + 4, yItem + 2, pressed ? Color::BLACK : ColorBackgroundChoice());
     }
 }
 
 
-void Choice::DrawClosed(int x, int y) const
+void Choice::DrawClosed() const
 {
     if (IsActive())
     {
@@ -249,38 +251,38 @@ void Choice::DrawClosed(int x, int y) const
         colorText.SetAsCurrent();
         if (deltaY == 0)
         {
-            NameCurrentSubItem().Draw(x + 4, y + Value::HEIGHT + 1);
+            NameCurrentSubItem().Draw(X() + 4, Y() + Value::HEIGHT + 1);
         }
         else
         {
             Color::BACK.SetAsCurrent();
-            Text(NameCurrentSubItem()).DrawWithLimitation(x + 4, y + Value::HEIGHT - deltaY + 1, x, y + 11, Width(), Value::HEIGHT - 1);
+            Text(NameCurrentSubItem()).DrawWithLimitation(X() + 4, Y() + Value::HEIGHT - deltaY + 1, X(), Y() + 11, Width(), Value::HEIGHT - 1);
 
-            HLine(Item::Width() + 1).Draw(x + 1, y + (deltaY > 0 ? 24 : 19) - deltaY);
+            HLine(Item::Width() + 1).Draw(X() + 1, Y() + (deltaY > 0 ? 24 : 19) - deltaY);
 
-            Text(deltaY > 0 ? NameNextSubItem() : NamePrevSubItem()).DrawWithLimitation(x + 4, y + (deltaY > 0 ? (Value::HEIGHT + 13) : 9) - deltaY, x, y + 11,
+            Text(deltaY > 0 ? NameNextSubItem() : NamePrevSubItem()).DrawWithLimitation(X() + 4, Y() + (deltaY > 0 ? (Value::HEIGHT + 13) : 9) - deltaY, X(), Y() + 11,
                 Item::Width(), Value::HEIGHT - 1);
         }
 
-        OwnData()->funcAfterDraw(x, y);
+        OwnData()->funcAfterDraw(X(), Y());
     }
 
-    DrawCommonHiPart(x, y, false);
+    DrawCommonHiPart(X(), Y(), false);
 }
 
 
-void Button::Draw(int x, int y, bool) const
+void Button::Draw(bool) const
 {
-    Region(Width() - 5, Height() - 4).Fill(x + 2, y + 3, ColorTitleBackground());
+    Region(Width() - 5, Height() - 4).Fill(X() + 2, Y() + 3, ColorTitleBackground());
 
-    Text(Title().c_str()).DrawInCenterRect(x + 2, y, Width(), Height(), ColorTitleText());
+    Text(Title().c_str()).DrawInCenterRect(X() + 2, Y(), Width(), Height(), ColorTitleText());
 }
 
 
-void GraphButton::Draw(int x, int y, bool) const
+void GraphButton::Draw(bool) const
 {
-    x += 2;
-    y += 3;
+    int x = X() + 2;
+    int y = Y() + 3;
 
     Region(GraphButton::Width() - 5, GraphButton::Height() - 4).Fill(x, y, ColorTitleBackground());
 
@@ -290,7 +292,7 @@ void GraphButton::Draw(int x, int y, bool) const
 }
 
 
-void Page::Draw(int x, int y, bool opened) const
+void Page::Draw(bool opened) const
 {
     if(opened)
     {
@@ -300,18 +302,19 @@ void Page::Draw(int x, int y, bool opened) const
         {
             Item *item = GetItem(PosCurrentItem());
 
-            item->Draw(item->PositionOnScreenX(), Menu::Y0() - item->HeightOpened() + Item::Height() + 1, true);
+            //item->Draw(item->PositionOnScreenX(), Menu::Y0() - item->HeightOpened() + Item::Height() + 1, true);
+            item->Draw(opened);
         }
         else
         {
-            DrawTitle(y - Menu::Title::HEIGHT - 5);
+            DrawTitle(Y() - Menu::Title::HEIGHT - 5);
 
-            DrawItems(x, y);
+            DrawItems(X(), Y(true));
         }
     }
     else
     {
-        Item::Draw(x, y, opened);
+        Item::Draw(X(), Y(), opened);
 
         Region(Width() - 5, Height() - 4).Fill(x + 2, y + 3, ColorTitleBackground());
 

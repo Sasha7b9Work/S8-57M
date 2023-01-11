@@ -437,7 +437,7 @@ void Menu::Draw(int field)
 
             if (item)
             {
-                item->Draw(0, Y0(), true);
+                item->Draw(true);
             }
         }
     }
