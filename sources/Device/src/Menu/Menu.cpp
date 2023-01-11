@@ -420,6 +420,8 @@ void Menu::Draw(int field)
         return;
     }
 
+    Region(640, 150).Fill(0, 330, Color::GRAY_50);
+
     DFont::Set(DTypeFont::_8);
 
     if (Menu::IsShown())

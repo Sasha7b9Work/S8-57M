@@ -205,14 +205,14 @@ void Choice::Draw(int x, int y, bool opened) const
 {
     Item::Draw(x, y, opened);
 
-//    if (opened)
-//    {
-//        DrawOpened(x, y);
-//    }
-//    else
-//    {
-//        DrawClosed(x, y);
-//    }
+    if (opened)
+    {
+        DrawOpened(x, y);
+    }
+    else
+    {
+        DrawClosed(x, y);
+    }
 }
 
 
@@ -311,6 +311,8 @@ void Page::Draw(int x, int y, bool opened) const
     }
     else
     {
+        Item::Draw(x, y, opened);
+
         Region(Width() - 5, Height() - 4).Fill(x + 2, y + 3, ColorTitleBackground());
 
         Text(Title().c_str()).DrawInCenterRect(x, y - 1, Width(), Height(), ColorTitleText());
@@ -522,9 +524,13 @@ void GraphButton::DrawHints(int x, int y, int width) const
 }
 
 
-void Item::Draw(int x, int y, bool opened) const
+void Item::Draw(int x, int y, bool) const
 {
-    VLine line(Height() - 2);
-    line.Draw(x, y + 1, ColorFrame());
-    line.Draw(x + Width() - 5, y + 1);
+    VLine vline(Height() - 2);
+    vline.Draw(x, y + 1, ColorFrame());
+//    vline.Draw(x + Width() - 5, y + 1);
+
+    HLine hline(Width() - 2);
+    hline.Draw(x + 1, y);
+
 }
