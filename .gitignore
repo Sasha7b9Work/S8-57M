@@ -2,6 +2,8 @@
 *.bin
 archive.zip
 
+.vs/*
+
 sources/generated/
 sources/ThirdParty/wxWidgets/generated/
 
