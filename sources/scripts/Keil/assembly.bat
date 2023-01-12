@@ -76,7 +76,7 @@ type ..\..\Panel\Panel.out
 :BUILDING_DEVICE
 if %need_device%==0 goto LOADING
 echo on
-del /Q ..\..\Device\*.bin
+rem del /Q ..\..\Device\*.bin
 echo off
 :BUILD_DEVICE
 echo Building Device ...
