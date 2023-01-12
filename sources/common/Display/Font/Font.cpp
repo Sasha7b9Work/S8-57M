@@ -146,7 +146,7 @@ int Font::Height()
 
 bool SymbolRow::BitIsExist(int bit) const
 {
-    return row & (1 << (7 - bit));
+    return row & (1 << bit);
 }
 
 

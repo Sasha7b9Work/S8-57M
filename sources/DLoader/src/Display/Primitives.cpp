@@ -159,8 +159,8 @@ int Text::DrawCharWithLimitation(int eX, int eY, char _symbol, int limitX, int l
         {
             int x = eX;
             int y = eY + b + 9 - height;
-            int endBit = 8 - width;
-            for (int bit = 7; bit >= endBit; bit--)
+
+            for (int bit = 0; bit < width; bit++)
             {
                 if (row.BitIsExist(bit))
                 {

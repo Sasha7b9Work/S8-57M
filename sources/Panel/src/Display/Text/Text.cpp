@@ -45,6 +45,7 @@ int Text::DrawChar(int eX, int eY, uint8 _symbol, const Color &color)
         {
             int x = eX;
             int y = eY + r + delta;
+
             for (int bit = 0; bit < width; bit++)
             {
                 if (row.BitIsExist(bit))
