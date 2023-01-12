@@ -167,7 +167,7 @@ SymbolRow Symbol::GetRow(int r) const
 
 int Symbol::Width() const
 {
-    uint16 *size = (uint16 *)font + symbol * 21;
+    uint16 *size = (uint16 *)font + symbol * (Font::Height() + 1);
 
     return *size;
 }
