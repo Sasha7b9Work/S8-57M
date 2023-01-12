@@ -605,7 +605,7 @@ bool PDecoder::DrawText(uint8 data)
         if (readingSymbols == numSymbols)
         {
             buffer[readingSymbols] = 0;
-            Text::Draw(pos.X(), pos.Y(), buffer, 2);
+            Text::Draw(pos.X(), pos.Y(), buffer);
             pos.Reset();
             delete[]buffer;
             return true;

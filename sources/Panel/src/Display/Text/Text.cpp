@@ -26,7 +26,7 @@ void Text::SetSpacing(uint8 space)
 }
 
 
-int Text::DrawChar(int eX, int eY, int size, uint8 symbol, const Color &color)
+int Text::DrawChar(int eX, int eY, uint8 symbol, const Color &color)
 {
     color.SetAsCurrent();
 
@@ -35,64 +35,41 @@ int Text::DrawChar(int eX, int eY, int size, uint8 symbol, const Color &color)
 
     int delta = 9 - height;
 
-    if (size == 1)
+    for (int row = 0; row < height; row++)
     {
-        for (int row = 0; row < height; row++)
+        if (Font::RowNotEmpty(symbol, row))
         {
-            if (Font::RowNotEmpty(symbol, row))
+            int x = eX;
+            int y = eY + row + delta;
+            for (int bit = 0; bit < width; bit++)
             {
-                int x = eX;
-                int y = eY + row + delta;
-                for (int bit = 0; bit < width; bit++)
+                if (Font::BitIsExist(symbol, row, bit))
                 {
-                    if (Font::BitIsExist(symbol, row, bit))
-                    {
-                        BackBuffer::SetPixel(x, y);
-                    }
-                    x++;
+                    BackBuffer::SetPixel(x, y);
                 }
-            }
-        }
-    }
-    else
-    {
-        for (int row = 0; row < height; row++)
-        {
-            if (Font::RowNotEmpty(symbol, row))
-            {
-                int x = eX;
-                int y = eY + (row + delta) * size;
-                for (int bit = 0; bit < width; bit++)
-                {
-                    if (Font::BitIsExist(symbol, row, bit))
-                    {
-                        //                        Painter::SetPoint(x, y);
-                        BackBuffer::FillRegion(x, y, size - 1, size - 1);
-                    }
-                    x += size;
-                }
+                x++;
             }
         }
     }
 
-    return eX + width * size;
+    return eX + width;
 }
 
 
-int Text::Draw(int x, int y, pchar text, int size)
+int Text::Draw(int x, int y, pchar text)
 {
     uint numSymbols = std::strlen(text);
     for (uint i = 0; i < numSymbols; ++i)
     {
         int prevX = x;
-        x = DrawChar(x, y, size, (uint8)(text[i]));
+        x = DrawChar(x, y, (uint8)(text[i]));
 
         if (x - prevX < minWidth)
         {
             x = prevX + minWidth;
         }
 
-        x += spacing * size;
+        x += spacing;
     }
 
     return x;
