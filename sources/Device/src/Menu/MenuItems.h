@@ -97,7 +97,7 @@ public:
     // Ширина итема. pos - позиция итема на экране.
     int Width(int pos = -1) const;
 
-    void DrawCommonHiPart(int x, int y, bool opened) const;
+    void DrawCommonHiPart() const;
 
     struct Value
     {
