@@ -420,7 +420,7 @@ void Menu::Draw(int field)
         return;
     }
 
-    Region(640, 150).Fill(0, 330, Color::GRAY_50);
+    Region(640, 150).Fill(0, 330, Color::CHAN[0]);
 
     DFont::Set(DTypeFont::_8);
 

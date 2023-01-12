@@ -244,7 +244,7 @@ void Choice::DrawClosed() const
 {
     if (IsActive())
     {
-//        Region(Width() - 3, Value::HEIGHT - 3).Fill(x + 1, y + Value::HEIGHT + 1, ColorBackgroundChoice());
+        Region(Width() - 4, Value::HEIGHT - 2).Fill(X() + 1, Y() + Value::HEIGHT, ColorBackgroundChoice());
 
         int deltaY = (int)(Step());
         Color colorText = Color::BLACK;
