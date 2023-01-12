@@ -54,7 +54,7 @@ void Console::Draw()
     Font::Set(TypeFont::_5);
 
     int y = 70;
-    int h = Font::GetHeight();
+    int h = Font::Height();
 
     for (int i = 0; i < stringInConsole; i++)
     {

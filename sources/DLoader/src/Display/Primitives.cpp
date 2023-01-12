@@ -149,7 +149,7 @@ int Text::DrawCharWithLimitation(int eX, int eY, char _symbol, int limitX, int l
     Symbol symbol(_symbol);
 
     int width = symbol.Width();
-    int8 height = (int8)Font::GetHeight();
+    int height = Font::Height();
 
     for (int b = 0; b < height; b++)
     {
@@ -179,7 +179,7 @@ int Text::DrawCharWithLimitation(int eX, int eY, char _symbol, int limitX, int l
 int Text::DrawInCenterRect(int eX, int eY, int width, int eHeight, Color color)
 {
     int lenght = Font::GetLengthText(text);
-    int height = Font::GetHeight();
+    int height = Font::Height();
     int x = eX + (width - lenght) / 2;
     int y = eY + (eHeight - height) / 2 + 1;
     return Draw(x, y, color);
@@ -230,7 +230,7 @@ void Text::DrawInCenterBoundedRect(int x, int y, int width, int height, Color co
 int Text::DrawOnBackground(int x, int y, Color colorBackground)
 {
     int width = Font::GetLengthText(text);
-    int height = Font::GetHeight();
+    int height = Font::Height();
 
     Color colorText(Color::GetCurent());
     Region(width, height).Fill(x - 1, y, colorBackground);

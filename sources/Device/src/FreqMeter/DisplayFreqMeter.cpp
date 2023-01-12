@@ -130,14 +130,14 @@ void DisplayFreqMeter::DrawFrequencyMode(int x, int _y)
     _y += 4;
 
     int yF = _y;
-    int yT = _y + 4 + Font::GetHeight();
+    int yT = _y + 4 + Font::Height();
 
     x += 6;
 
     Text("F").Draw(x, yF, Color::FILL);
     Text("T").Draw(x, yT);
 
-    ProgressBarFreqMeter::Draw(x, yT + 4 + Font::GetHeight());
+    ProgressBarFreqMeter::Draw(x, yT + 4 + Font::Height());
 
     int dX = 17;
 
@@ -208,14 +208,14 @@ void DisplayFreqMeter::DrawPeriodMode(int x, int _y)
     _y += 4;
 
     int yT = _y;
-    int yF = _y + 4 + Font::GetHeight();
+    int yF = _y + 4 + Font::Height();
 
     x += 6;
 
     Text("T").Draw(x, yT, Color::FILL);
     Text("F").Draw(x, yF);
 
-    ProgressBarFreqMeter::Draw(x, yF + 4 + Font::GetHeight());
+    ProgressBarFreqMeter::Draw(x, yF + 4 + Font::Height());
 
     int dX = 17;
 

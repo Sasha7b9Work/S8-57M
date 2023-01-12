@@ -131,7 +131,7 @@ void Font::SetMinWidth(uint8 width)
 }
 
 
-int Font::GetHeight()
+int Font::Height()
 {
     static const int h[TypeFont::Count] =
     {

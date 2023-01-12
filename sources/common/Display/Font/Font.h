@@ -9,13 +9,6 @@ struct Symbol
 
     Symbol(char _symbol) : symbol((uint8)_symbol) {}
 
-    int Width() const
-    {
-        return 14;
-    }
-
-    uint8 symbol;
-
     bool operator==(const char rhs) const
     {
         return symbol == rhs;
@@ -30,6 +23,13 @@ struct Symbol
     {
         return symbol <= rhs;
     }
+
+    int Width() const
+    {
+        return 14;
+    }
+
+    uint8 symbol;
 };
 
 
@@ -63,7 +63,6 @@ public:
     static TypeFont::E Current();
     // Восстанавливает шрифт, бывший текущим перед последним вызовом SetCurrent()
     static void Pop();
-    static int GetHeight();
     static bool RowNotEmpty(uint8 symbol, int row);
     static bool BitIsExist(uint8 symbol, int row, int bit);
     // Устанавливает количество пустых пикселей между символами.
@@ -71,6 +70,7 @@ public:
     static int GetLengthText(pchar);
     static int GetSpacing();
     static void SetMinWidth(uint8 width);
+    static int Height();
 
 private:
     static const Font *fonts[TypeFont::Count];

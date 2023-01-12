@@ -33,7 +33,7 @@ int Text::DrawChar(int eX, int eY, uint8 _symbol, const Color &color)
     Symbol symbol(_symbol);
 
     int width = symbol.Width();
-    int height = Font::GetHeight();
+    int height = Font::Height();
 
     int delta = 9 - height;
 
