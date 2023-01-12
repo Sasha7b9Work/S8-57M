@@ -33,7 +33,7 @@ int Text::DrawChar(int eX, int eY, int size, uint8 symbol, const Color &color)
     uint8 width = Font::GetWidth(symbol);
     uint8 height = Font::GetHeight();
 
-    int delta = Font::IsBig() ? 0 : (9 - height);
+    int delta = 9 - height;
 
     if (size == 1)
     {

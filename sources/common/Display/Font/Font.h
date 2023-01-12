@@ -18,9 +18,6 @@ struct TypeFont
         _8,
         _UGO,
         _UGO2,
-        _GOST28,
-        _GOST72bold,    // Используется для вывода показаний мультиметра
-        _OMEGA72,       // Используется в мультиметре для вывода обозначения ом. Имеет только один символ
         Count,
         None
     } value;
@@ -37,7 +34,6 @@ public:
     static TypeFont::E Current();
     // Восстанавливает шрифт, бывший текущим перед последним вызовом SetCurrent()
     static void Pop();
-    static bool IsBig();
     static uint8 GetWidth(uint8 symbol);
     static uint8 GetWidth(char symbol);
     static uint8 GetHeight();

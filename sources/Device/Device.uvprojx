@@ -1390,34 +1390,9 @@
           <GroupName>Display/Font</GroupName>
           <Files>
             <File>
-              <FileName>AdvancedFont_d.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\AdvancedFont_d.h</FilePath>
-            </File>
-            <File>
-              <FileName>AdvancedFont_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Display\Font\AdvancedFont_d.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Font_d.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\Font_d.h</FilePath>
-            </File>
-            <File>
-              <FileName>Font_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Display\Font\Font_d.cpp</FilePath>
-            </File>
-            <File>
               <FileName>font5.inc</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\font5.inc</FilePath>
-            </File>
-            <File>
-              <FileName>font8.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\font8.inc</FilePath>
             </File>
             <File>
               <FileName>fontGOST28.inc</FileName>
@@ -1438,6 +1413,16 @@
               <FileName>fontUGO2.inc</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\fontUGO2.inc</FilePath>
+            </File>
+            <File>
+              <FileName>Font.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\Font\Font.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\Font.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3787,34 +3772,9 @@
           <GroupName>Display/Font</GroupName>
           <Files>
             <File>
-              <FileName>AdvancedFont_d.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\AdvancedFont_d.h</FilePath>
-            </File>
-            <File>
-              <FileName>AdvancedFont_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Display\Font\AdvancedFont_d.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Font_d.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\Font_d.h</FilePath>
-            </File>
-            <File>
-              <FileName>Font_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Display\Font\Font_d.cpp</FilePath>
-            </File>
-            <File>
               <FileName>font5.inc</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\font5.inc</FilePath>
-            </File>
-            <File>
-              <FileName>font8.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\font8.inc</FilePath>
             </File>
             <File>
               <FileName>fontGOST28.inc</FileName>
@@ -3835,6 +3795,16 @@
               <FileName>fontUGO2.inc</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\fontUGO2.inc</FilePath>
+            </File>
+            <File>
+              <FileName>Font.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\Font\Font.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\Font.h</FilePath>
             </File>
           </Files>
         </Group>

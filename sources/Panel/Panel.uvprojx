@@ -1366,24 +1366,14 @@
           <GroupName>Display/Font</GroupName>
           <Files>
             <File>
-              <FileName>AdvancedFont_p.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\AdvancedFont_p.h</FilePath>
-            </File>
-            <File>
-              <FileName>AdvancedFont_p.cpp</FileName>
+              <FileName>Font.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Font\AdvancedFont_p.cpp</FilePath>
+              <FilePath>..\common\Display\Font\Font.cpp</FilePath>
             </File>
             <File>
-              <FileName>Font_p.h</FileName>
+              <FileName>Font.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\Font_p.h</FilePath>
-            </File>
-            <File>
-              <FileName>Font_p.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Font\Font_p.cpp</FilePath>
+              <FilePath>..\common\Display\Font\Font.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2819,24 +2809,14 @@
           <GroupName>Display/Font</GroupName>
           <Files>
             <File>
-              <FileName>AdvancedFont_p.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\AdvancedFont_p.h</FilePath>
-            </File>
-            <File>
-              <FileName>AdvancedFont_p.cpp</FileName>
+              <FileName>Font.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Font\AdvancedFont_p.cpp</FilePath>
+              <FilePath>..\common\Display\Font\Font.cpp</FilePath>
             </File>
             <File>
-              <FileName>Font_p.h</FileName>
+              <FileName>Font.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\Font_p.h</FilePath>
-            </File>
-            <File>
-              <FileName>Font_p.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Font\Font_p.cpp</FilePath>
+              <FilePath>..\common\Display\Font\Font.h</FilePath>
             </File>
           </Files>
         </Group>

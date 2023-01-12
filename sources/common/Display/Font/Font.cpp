@@ -1,7 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "common/Display/Font/Font.h"
-#include "AdvancedFont_d.h"
 #include "common/Command.h"
 #include "common/Decoder_d.h"
 #include "Hardware/Timer.h"
@@ -19,10 +18,11 @@ static const Font *font8 = (const Font *)font_gost_type_a_14;
 
 
 #ifdef LOADER
-const Font *Font::fonts[TypeFont::Count] = {font8, font8, font8, font8, nullptr};
+    const Font *Font::fonts[TypeFont::Count] = { font8, font8, font8, font8 };
 #else
-const Font *Font::fonts[TypeFont::Count] = {&font5, font8, &fontUGO, &fontUGO2, nullptr};
+    const Font *Font::fonts[TypeFont::Count] = { &font5, font8, &fontUGO, &fontUGO2 };
 #endif
+
 const Font *Font::font = font8;
 
 TypeFont::E pushedFont = TypeFont::_8;
@@ -45,6 +45,7 @@ int Font::GetLengthText(pString text)
 }
 
 
+#ifndef PANEL
 static void SendTypeFontToPanel(TypeFont::E type)
 {
     static TypeFont::E prevType = TypeFont::Count;
@@ -55,6 +56,7 @@ static void SendTypeFontToPanel(TypeFont::E type)
         prevType = type;
     }
 }
+#endif
 
 
 TypeFont::E Font::Current()
@@ -89,20 +91,14 @@ void Font::Set(const TypeFont::E typeFont)
             font = &fontUGO2;
 #endif
             break;
-        case TypeFont::_GOST28:
-        case TypeFont::_GOST72bold:
-        {
-            font = nullptr;
-            volatile DAdvancedFont f(typeFont);
-        }       
-            break;
         case TypeFont::None:
-        case TypeFont::_OMEGA72:
         case TypeFont::Count:
             break;
         }
 
+#ifndef PANEL
         SendTypeFontToPanel(typeFont);
+#endif
 
         currentFont = typeFont;
     }
@@ -133,20 +129,9 @@ void Font::SetMinWidth(uint8 width)
 }
 
 
-static bool FontIsSmall()
-{
-    return currentFont <= TypeFont::_UGO2;
-}
-
-
 uint8 Font::GetWidth(uint8 symbol)
 {
-    if (FontIsSmall())
-    {
-        return font->symbols[symbol].width;
-    }
-
-    return DAdvancedFont().GetWidth(symbol);
+    return font->symbols[symbol].width;
 }
 
 
@@ -158,38 +143,17 @@ uint8 Font::GetWidth(char symbol)
 
 uint8 Font::GetHeight()
 {
-    if (FontIsSmall())
-    {
-        return (uint8)(font->_height * 2);
-    }
-
-    return DAdvancedFont().GetHeight();
+    return (uint8)(font->_height * 2);
 }
 
 
 bool Font::RowNotEmpty(uint8 symbol, int row)
 {
-    if (FontIsSmall())
-    {
-        return font->symbols[symbol].bytes[row] != 0;
-    }
-
-    return DAdvancedFont().RowNotEmpty(symbol, row);
+    return font->symbols[symbol].bytes[row] != 0;
 }
 
 
 bool Font::BitIsExist(uint8 symbol, int row, int bit)
 {
-    if (FontIsSmall())
-    {
-        return font->symbols[symbol].bytes[row] & (1 << (7 - bit));
-    }
-
-    return DAdvancedFont().BitIsExist(symbol, row, bit);
-}
-
-
-bool Font::IsBig()
-{
-    return !FontIsSmall();
+    return font->symbols[symbol].bytes[row] & (1 << (7 - bit));
 }

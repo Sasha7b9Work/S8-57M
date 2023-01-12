@@ -800,11 +800,6 @@
           <GroupName>Display</GroupName>
           <Files>
             <File>
-              <FileName>AdvancedFont_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\AdvancedFont_d.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Colors.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Display\Colors.cpp</FilePath>
@@ -855,19 +850,14 @@
           <GroupName>Display/Font</GroupName>
           <Files>
             <File>
-              <FileName>Font_d.cpp</FileName>
+              <FileName>Font.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Display\Font\Font_d.cpp</FilePath>
+              <FilePath>..\common\Display\Font\Font.cpp</FilePath>
             </File>
             <File>
-              <FileName>Font_d.h</FileName>
+              <FileName>Font.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\Font_d.h</FilePath>
-            </File>
-            <File>
-              <FileName>font8.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\font8.inc</FilePath>
+              <FilePath>..\common\Display\Font\Font.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -86,7 +86,7 @@ void Display::DrawStartScreen()
     {
         BackBuffer::BeginPaint(field);
 
-        Font::Set(TypeFont::_GOST28);
+        Font::Set(TypeFont::_8);
         Text::SetSpacing(3);
 
         int x0 = 85;

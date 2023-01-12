@@ -76,7 +76,7 @@ void Display::Init()
 
     Painter::BeginScene(Color::BACK);
 
-    Font::Set(TypeFont::_GOST28);
+    Font::Set(TypeFont::_8);
     Font::SetSpacing(3);
 
     int x0 = 85;
