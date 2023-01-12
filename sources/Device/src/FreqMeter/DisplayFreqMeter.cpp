@@ -149,7 +149,7 @@ void DisplayFreqMeter::DrawFrequencyMode(int x, int _y)
     char strFreq[50];
     std::strcpy(strFreq, FreqSetToString(&FreqMeter::freqActual));
 
-    Text(strFreq).DrawDigitsMonospace(x + dX, yF, Font::GetWidth('0'));
+    Text(strFreq).DrawDigitsMonospace(x + dX, yF, Symbol('0').Width());
 
     if (needSendToSCPI)
     {
@@ -162,7 +162,7 @@ void DisplayFreqMeter::DrawFrequencyMode(int x, int _y)
 
     if(time.Value() == std::numeric_limits<float>::infinity()) //-V550
     {
-        Text(EMPTY_STRING).DrawDigitsMonospace(x + dX, yT, Font::GetWidth('0'));
+        Text(EMPTY_STRING).DrawDigitsMonospace(x + dX, yT, Symbol('0').Width());
 
         if (needSendToSCPI)
         {
@@ -171,7 +171,7 @@ void DisplayFreqMeter::DrawFrequencyMode(int x, int _y)
     }
     else
     {
-        Text(time.ToStringAccuracy(false, strFreq, 6)).DrawDigitsMonospace(x + dX, yT, Font::GetWidth('0'));
+        Text(time.ToStringAccuracy(false, strFreq, 6)).DrawDigitsMonospace(x + dX, yT, Symbol('0').Width());
 
         if (needSendToSCPI)
         {
@@ -228,7 +228,7 @@ void DisplayFreqMeter::DrawPeriodMode(int x, int _y)
     char strPeriod[50];
     std::strcpy(strPeriod, PeriodSetToString(&FreqMeter::periodActual));
 
-    Text(strPeriod).DrawDigitsMonospace(x + dX, yT, Font::GetWidth('0'));
+    Text(strPeriod).DrawDigitsMonospace(x + dX, yT, Symbol('0').Width());
 
     if (needSendToSCPI)
     {
@@ -244,7 +244,7 @@ void DisplayFreqMeter::DrawPeriodMode(int x, int _y)
         strFreq = Frequency(1.0F / period).ToStringAccuracy(strPeriod, 6);
     }
 
-    strFreq.DrawDigitsMonospace(x + dX, yF, Font::GetWidth('0'));
+    strFreq.DrawDigitsMonospace(x + dX, yF, Symbol('0').Width());
 
     if (needSendToSCPI)
     {

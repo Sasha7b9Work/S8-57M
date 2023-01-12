@@ -3,6 +3,26 @@
 #include "defines.h"
 
 
+struct Symbol
+{
+    Symbol(uint8 _symbol) : symbol(_symbol) {}
+
+    Symbol(char _symbol) : symbol((uint8)_symbol) {}
+
+    int Width() const
+    {
+        return 14;
+    }
+
+    uint8 symbol;
+
+    bool operator==(const char rhs) const
+    {
+        return symbol == rhs;
+    }
+};
+
+
 struct TypeFont
 {
     enum E
@@ -33,8 +53,6 @@ public:
     static TypeFont::E Current();
     // Восстанавливает шрифт, бывший текущим перед последним вызовом SetCurrent()
     static void Pop();
-    static int GetWidth(uint8 symbol);
-    static int GetWidth(char symbol);
     static int GetHeight();
     static bool RowNotEmpty(uint8 symbol, int row);
     static bool BitIsExist(uint8 symbol, int row, int bit);

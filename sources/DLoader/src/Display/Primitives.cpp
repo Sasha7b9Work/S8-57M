@@ -63,9 +63,9 @@ int Char::Draw(int x, int y, Color color)
 {
     Font::Set(font);
 
-	String("%c", ch).Draw(x, y, color);
+    String("%c", ch).Draw(x, y, color);
 
-    int result = x + Font::GetWidth(ch) + 1;
+    int result = x + Symbol(ch).Width() + 1;
 
     Font::Pop();
 
@@ -136,7 +136,7 @@ int Text::DrawWithLimitation(int x, int y, int limitX, int limitY, int limitWidt
     while (*text)
     {
         x = DrawCharWithLimitation(x, y, *text, limitX, limitY, limitWidth, limitHeight);
-        retValue += Font::GetWidth(*text);
+        retValue += Symbol(*text).Width();
         text++;
     }
 
@@ -146,21 +146,21 @@ int Text::DrawWithLimitation(int x, int y, int limitX, int limitY, int limitWidt
 
 int Text::DrawCharWithLimitation(int eX, int eY, char _symbol, int limitX, int limitY, int limitWidth, int limitHeight)
 {
-    uint8 symbol = (uint8)(_symbol);
+    Symbol symbol(_symbol);
 
-    int8 width = (int8)Font::GetWidth(symbol);
+    int width = symbol.Width();
     int8 height = (int8)Font::GetHeight();
 
     for (int b = 0; b < height; b++)
     {
-        if(Font::RowNotEmpty(symbol, b))
+        if(Font::RowNotEmpty((uint8)_symbol, b))
         {
             int x = eX;
             int y = eY + b + 9 - height;
             int endBit = 8 - width;
             for (int bit = 7; bit >= endBit; bit--)
             {
-                if (Font::BitIsExist(symbol, b, bit))
+                if (Font::BitIsExist((uint8)_symbol, b, bit))
                 {
                     if ((x >= limitX) && (x <= (limitX + limitWidth)) && (y >= limitY) && (y <= limitY + limitHeight))
                     {
@@ -194,13 +194,13 @@ int Text::DrawDigitsMonospace(int x, int y, int width, Color color)
 
     for (uint i = 0; i < size; i++)
     {
-        char symbol = text[i];
+        Symbol symbol(text[i]);
 
         int dX = 0;
 
-        if (symbol >= 0x30 && symbol <= 0x39)
+        if (symbol.symbol >= 0x30 && symbol.symbol <= 0x39)
         {
-            int widthSymbol = Font::GetWidth((uint8)(symbol));
+            int widthSymbol = symbol.Width();
 
             dX = (width - widthSymbol) / 2;
 
@@ -210,7 +210,7 @@ int Text::DrawDigitsMonospace(int x, int y, int width, Color color)
         x = Text(String("%c", symbol)).Draw(x, y);
         x += Font::GetSpacing();
 
-        if (symbol >= 0x30 && symbol <= 0x39)
+        if (symbol.symbol >= 0x30 && symbol.symbol <= 0x39)
         {
             x += dX;
         }
@@ -568,17 +568,17 @@ static bool GetHeightTextWithTransfers(int left, int top, int right, pchar text,
 
             if (length <= 1)                            // Нет буквенных символов или один, т.е. слово не найдено
             {
-                char symbol = text[curSymbol++];
-                if (symbol == '\n')
+                Symbol symbol(text[curSymbol++]);
+                if (symbol.symbol == '\n')
                 {
                     x = right;
                     continue;
                 }
-                if (symbol == ' ' && x == left)
+                if (symbol.symbol == ' ' && x == left)
                 {
                     continue;
                 }
-                x += Font::GetWidth(symbol);
+                x += symbol.Width();
             }
             else                                            // А здесь найдено по крайней мере два буквенных символа, т.е. найдено слово
             {

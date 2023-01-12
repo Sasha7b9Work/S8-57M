@@ -26,24 +26,26 @@ void Text::SetSpacing(uint8 space)
 }
 
 
-int Text::DrawChar(int eX, int eY, uint8 symbol, const Color &color)
+int Text::DrawChar(int eX, int eY, uint8 _symbol, const Color &color)
 {
     color.SetAsCurrent();
 
-    int width = Font::GetWidth(symbol);
+    Symbol symbol(_symbol);
+
+    int width = symbol.Width();
     int height = Font::GetHeight();
 
     int delta = 9 - height;
 
     for (int row = 0; row < height; row++)
     {
-        if (Font::RowNotEmpty(symbol, row))
+        if (Font::RowNotEmpty(_symbol, row))
         {
             int x = eX;
             int y = eY + row + delta;
             for (int bit = 0; bit < width; bit++)
             {
-                if (Font::BitIsExist(symbol, row, bit))
+                if (Font::BitIsExist(_symbol, row, bit))
                 {
                     BackBuffer::SetPixel(x, y);
                 }

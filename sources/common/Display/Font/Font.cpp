@@ -16,21 +16,6 @@
 #include <cstring>
 
 
-struct Symbol
-{
-    Symbol(uint8 _symbol) : symbol(_symbol) {}
-
-    int GetWidth() const
-    {
-        return 14;
-    }
-
-
-private:
-    uint8 symbol;
-};
-
-
 static const Font *font8 = (const Font *)font_gost_type_a_14;
 
 
@@ -55,7 +40,7 @@ int Font::GetLengthText(pString text)
 
     while(*symbol)
     {
-        result += GetWidth(*symbol) + spacing; //-V1026
+        result += Symbol(*symbol).Width() + spacing; //-V1026
         symbol++;
     }
     return result * 2;
@@ -143,18 +128,6 @@ int Font::GetSpacing()
 void Font::SetMinWidth(uint8 width)
 {
     SBuffer(Command::Paint_SetMinWidthFont, width).Send();
-}
-
-
-int Font::GetWidth(uint8 symbol)
-{
-    return Symbol(symbol).GetWidth();
-}
-
-
-int Font::GetWidth(char symbol)
-{
-    return GetWidth((uint8)(symbol));
 }
 
 
