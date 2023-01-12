@@ -134,10 +134,10 @@ int Font::Height()
 {
     static const int h[TypeFont::Count] =
     {
+        5,
+        20,
         10,
-        14,
-        14,
-        14
+        10
     };
 
     return h[currentFont];

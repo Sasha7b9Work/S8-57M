@@ -251,7 +251,7 @@ void Choice::DrawClosed() const
         colorText.SetAsCurrent();
         if (deltaY == 0)
         {
-            NameCurrentSubItem().Draw(X() + 4, Y() + Value::HEIGHT + 1);
+            NameCurrentSubItem().Draw(X() + 5, Y() + Value::HEIGHT + 10);
         }
         else
         {
@@ -260,8 +260,10 @@ void Choice::DrawClosed() const
 
             HLine(Item::Width() + 1).Draw(X() + 1, Y() + (deltaY > 0 ? 24 : 19) - deltaY);
 
-            Text(deltaY > 0 ? NameNextSubItem() : NamePrevSubItem()).DrawWithLimitation(X() + 4, Y() + (deltaY > 0 ? (Value::HEIGHT + 13) : 9) - deltaY, X(), Y() + 11,
-                Item::Width(), Value::HEIGHT - 1);
+            int x = X() + 4;
+            int y = Y() + (deltaY > 0 ? (Value::HEIGHT + 13) : 9) - deltaY;
+
+            Text(deltaY > 0 ? NameNextSubItem() : NamePrevSubItem()).DrawWithLimitation(x, y, X(), Y() + 11, Item::Width(), Value::HEIGHT - 1);
         }
 
         OwnData()->funcAfterDraw(X(), Y());
@@ -350,7 +352,7 @@ void Page::DrawTitle(int y) const
 
     int delta = condDrawRSet ? -10 : 0;
 
-    Text(Title().c_str()).DrawInCenterRect(0, y - 1, Menu::Title::WIDTH + 2 + delta, Menu::Title::HEIGHT, ColorTitleText());
+    Text(Title().c_str()).DrawInCenterRect(0, y, Menu::Title::WIDTH + 2 + delta, Menu::Title::HEIGHT * 2 + 10, ColorTitleText());
 
     Color::GRAY_75.SetAsCurrent();
 
@@ -396,7 +398,7 @@ void Item::DrawCommonHiPart() const
 
     Region(width, Item::Value::HEIGHT - 2).Fill(x + 1, y + 1, colorFill);
 
-    Title().Draw(x + 6, y + (opened ? 2 : 3), colorText);
+    Title().Draw(x + 6, y + (opened ? 2 : 10), colorText);
 
     if (opened)
     {
