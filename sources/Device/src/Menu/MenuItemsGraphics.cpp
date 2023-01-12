@@ -357,14 +357,6 @@ void Page::DrawTitle(int y) const
 
 void Page::DrawItems(int x, int y) const
 {
-    static TimeMeterMS meter;
-
-    if (meter.ElapsedTime() < 1000)
-    {
-        meter.Reset();
-        LOG_WRITE("x = %d, y = %d", x, y);
-    }
-
     if (NumItems() == 0)
     {
         return;
@@ -528,10 +520,11 @@ void GraphButton::DrawHints(int x, int y, int width) const
 
 void Item::Draw(bool) const
 {
-    VLine vline(Height() - 2);
+    VLine vline(Height() - 1);
     vline.Draw(X(), Y() + 1, ColorFrame());
+    vline.Draw(X() + Width() - 2, Y() + 1);
 
-    HLine hline(Width() - 2);
+    HLine hline(Width() - 4);
     hline.Draw(X() + 1, Y());
-
+    hline.Draw(X() + 1, Y() + Height() + 1);
 }
