@@ -193,7 +193,9 @@ int Text::DrawCharWithLimitation(int eX, int eY, char _symbol, int limitX, int l
 
     for (int b = 0; b < height; b++)
     {
-        if(symbol.RowNotEmpty(b))
+        SymbolRow row = symbol.GetRow(b);
+
+        if(row.NotEmpty())
         {
             int x = eX;
             int y = eY + b + 9 - height;

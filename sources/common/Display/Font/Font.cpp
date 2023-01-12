@@ -144,13 +144,16 @@ int Font::Height()
 }
 
 
-bool Symbol::RowNotEmpty(int row) const
-{
-    return font->symbols[symbol].bytes[row] != 0;
-}
-
-
 bool Symbol::BitIsExist(int row, int bit) const
 {
     return font->symbols[symbol].bytes[row] & (1 << (7 - bit));
+}
+
+
+SymbolRow::SymbolRow(uint8 _row) : row(_row) {}
+
+
+SymbolRow Symbol::GetRow(int row) const
+{
+    return SymbolRow(font->symbols[symbol].bytes[row]);
 }

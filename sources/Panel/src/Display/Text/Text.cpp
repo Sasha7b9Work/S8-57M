@@ -37,15 +37,17 @@ int Text::DrawChar(int eX, int eY, uint8 _symbol, const Color &color)
 
     int delta = 9 - height;
 
-    for (int row = 0; row < height; row++)
+    for (int r = 0; r < height; r++)
     {
-        if (symbol.RowNotEmpty(row))
+        SymbolRow row = symbol.GetRow(r);
+
+        if (row.NotEmpty())
         {
             int x = eX;
-            int y = eY + row + delta;
+            int y = eY + r + delta;
             for (int bit = 0; bit < width; bit++)
             {
-                if (symbol.BitIsExist(row, bit))
+                if (symbol.BitIsExist(r, bit))
                 {
                     BackBuffer::SetPixel(x, y);
                 }

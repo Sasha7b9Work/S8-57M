@@ -3,6 +3,17 @@
 #include "defines.h"
 
 
+struct SymbolRow
+{
+    SymbolRow(uint8 r);
+    bool NotEmpty() const
+    {
+        return (row != 0);
+    }
+private:
+    uint8 row;
+};
+
 struct Symbol
 {
     Symbol(uint8 _symbol) : symbol(_symbol) {}
@@ -29,7 +40,7 @@ struct Symbol
         return 14;
     }
 
-    bool RowNotEmpty(int row) const;
+    SymbolRow GetRow(int row) const;
 
     bool BitIsExist(int row, int bit) const;
 
