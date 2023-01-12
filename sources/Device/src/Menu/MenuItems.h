@@ -86,7 +86,7 @@ public:
     bool HaveParent() const { return Keeper() != nullptr; };
 
     // ѕозици€ итема по горизонтали - закрытого либо раскрытого.
-    int PositionOnScreenX() const;
+    int X() const;
 
     // ¬озвращает свою позицию в списке родител€
     int PositionInKeeperList() const;
@@ -104,7 +104,6 @@ public:
         static const int HEIGHT = 24;
     };
 
-    int X() const;
     int Y(bool opened = false) const;
 
     bool Is(TypeItem::E t) const { return data->type == (uint8)t; };

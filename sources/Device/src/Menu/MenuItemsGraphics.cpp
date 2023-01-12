@@ -302,7 +302,6 @@ void Page::Draw(bool opened) const
         {
             Item *item = GetItem(PosCurrentItem());
 
-            //item->Draw(item->PositionOnScreenX(), Menu::Y0() - item->HeightOpened() + Item::Height() + 1, true);
             item->Draw(opened);
         }
         else
@@ -314,11 +313,11 @@ void Page::Draw(bool opened) const
     }
     else
     {
-        Item::Draw(X(), Y(), opened);
+        Item::Draw(opened);
 
-        Region(Width() - 5, Height() - 4).Fill(x + 2, y + 3, ColorTitleBackground());
+        Region(Width() - 5, Height() - 4).Fill(X() + 2, Y() + 3, ColorTitleBackground());
 
-        Text(Title().c_str()).DrawInCenterRect(x, y - 1, Width(), Height(), ColorTitleText());
+        Text(Title().c_str()).DrawInCenterRect(X(), Y() - 1, Width(), Height(), ColorTitleText());
     }
 }
 
@@ -377,7 +376,7 @@ void Page::DrawItems(int x, int y) const
 
         if (item)
         {
-            item->Draw(x, y, false);
+            item->Draw(false);
         }
 
         x += Width(i);
@@ -527,13 +526,12 @@ void GraphButton::DrawHints(int x, int y, int width) const
 }
 
 
-void Item::Draw(int x, int y, bool) const
+void Item::Draw(bool) const
 {
     VLine vline(Height() - 2);
-    vline.Draw(x, y + 1, ColorFrame());
-//    vline.Draw(x + Width() - 5, y + 1);
+    vline.Draw(X(), Y() + 1, ColorFrame());
 
     HLine hline(Width() - 2);
-    hline.Draw(x + 1, y);
+    hline.Draw(X() + 1, Y());
 
 }

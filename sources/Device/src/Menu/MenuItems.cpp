@@ -215,7 +215,7 @@ int Item::Width(int pos) const
 }
 
 
-int Item::PositionOnScreenX() const
+int Item::X() const
 {
     int position = PositionInKeeperList();
 
@@ -1001,4 +1001,15 @@ const DataGovernorColor *GovernorColor::OwnData() const
 const DataPage* Page::OwnData() const
 {
     return (const DataPage*)data->ad;
+}
+
+
+int Item::Y(bool opened) const
+{
+    if (opened)
+    {
+        return Menu::Y0() - HeightOpened() + Item::Height() + 1;
+    }
+
+    return Menu::Y0();
 }
