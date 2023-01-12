@@ -306,7 +306,7 @@ void Page::Draw(bool opened) const
         }
         else
         {
-            DrawTitle(Y() - Menu::Title::HEIGHT - 5);
+            DrawTitle(Y() - Menu::Title::HEIGHT - 2);
 
             DrawItems(X(), Y(true));
         }
@@ -334,9 +334,15 @@ void Page::DrawTitle(int y) const
         y = Grid::Top();
     }
 
-    Rectangle(Menu::Title::WIDTH + 1, Menu::Title::HEIGHT + 1).Draw(0, y, ColorFrame());
+    VLine vline(Menu::Title::HEIGHT - 1);
+    vline.Draw(0, y + 1, ColorFrame());
+    vline.Draw(Menu::Title::WIDTH, y + 1);
 
-    Region(Menu::Title::WIDTH - 1, Menu::Title::HEIGHT - 1).Fill(1, y + 1, Color::BACK);
+    HLine hline(Menu::Title::WIDTH - 2);
+    hline.Draw(1, y);
+    hline.Draw(1, y + Menu::Title::HEIGHT + 1);
+
+    Region(Menu::Title::WIDTH - 2, Menu::Title::HEIGHT - 1).Fill(1, y + 1, Color::BACK);
 
     bool condDrawRSet = NumSubPages() > 1 &&
         !Menu::CurrentItem()->Is(TypeItem::Governor) &&
