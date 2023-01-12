@@ -150,7 +150,7 @@ bool Symbol::RowNotEmpty(int row) const
 }
 
 
-bool Font::BitIsExist(uint8 symbol, int row, int bit)
+bool Symbol::BitIsExist(int row, int bit) const
 {
     return font->symbols[symbol].bytes[row] & (1 << (7 - bit));
 }

@@ -31,6 +31,8 @@ struct Symbol
 
     bool RowNotEmpty(int row) const;
 
+    bool BitIsExist(int row, int bit) const;
+
     uint8 symbol;
 };
 
@@ -65,7 +67,6 @@ public:
     static TypeFont::E Current();
     // Восстанавливает шрифт, бывший текущим перед последним вызовом SetCurrent()
     static void Pop();
-    static bool BitIsExist(uint8 symbol, int row, int bit);
     // Устанавливает количество пустых пикселей между символами.
     static void SetSpacing(int spacing = 1);
     static int GetLengthText(pchar);

@@ -200,7 +200,7 @@ int Text::DrawCharWithLimitation(int eX, int eY, char _symbol, int limitX, int l
             int endBit = 8 - width;
             for (int bit = 7; bit >= endBit; bit--)
             {
-                if (Font::BitIsExist((uint8)_symbol, b, bit))
+                if (symbol.BitIsExist(b, bit))
                 {
                     if ((x >= limitX) && (x <= (limitX + limitWidth)) && (y >= limitY) && (y <= limitY + limitHeight))
                     {
