@@ -17,6 +17,7 @@
 
 
 static const Font *font8 = (const Font *)font_gost_type_a_14;
+static const Font *font = font8;
 
 
 #ifdef LOADER
@@ -25,10 +26,8 @@ static const Font *font8 = (const Font *)font_gost_type_a_14;
     const Font *Font::fonts[TypeFont::Count] = { &font5, font8, &fontUGO, &fontUGO2 };
 #endif
 
-const Font *Font::font = font8;
-
-TypeFont::E pushedFont = TypeFont::_8;
-TypeFont::E currentFont = TypeFont::_8;
+static TypeFont::E pushedFont = TypeFont::_8;
+static TypeFont::E currentFont = TypeFont::_8;
 
 static int spacing = 1;
 
@@ -145,7 +144,7 @@ int Font::Height()
 }
 
 
-bool Font::RowNotEmpty(uint8 symbol, int row)
+bool Symbol::RowNotEmpty(int row) const
 {
     return font->symbols[symbol].bytes[row] != 0;
 }

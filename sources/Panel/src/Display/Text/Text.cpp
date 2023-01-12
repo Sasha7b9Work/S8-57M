@@ -39,7 +39,7 @@ int Text::DrawChar(int eX, int eY, uint8 _symbol, const Color &color)
 
     for (int row = 0; row < height; row++)
     {
-        if (Font::RowNotEmpty(_symbol, row))
+        if (symbol.RowNotEmpty(row))
         {
             int x = eX;
             int y = eY + row + delta;
