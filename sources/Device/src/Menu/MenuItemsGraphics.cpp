@@ -251,7 +251,7 @@ void Choice::DrawClosed() const
         colorText.SetAsCurrent();
         if (deltaY == 0)
         {
-            NameCurrentSubItem().Draw(X() + 5, Y() + Value::HEIGHT + 10);
+            NameCurrentSubItem().Draw(X() + 5, Y() + Value::HEIGHT + 3);
         }
         else
         {
@@ -352,7 +352,7 @@ void Page::DrawTitle(int y) const
 
     int delta = condDrawRSet ? -10 : 0;
 
-    Text(Title().c_str()).DrawInCenterRect(0, y, Menu::Title::WIDTH + 2 + delta, Menu::Title::HEIGHT * 2 + 10, ColorTitleText());
+    Text(Title().c_str()).DrawInCenterRect(0, y + 3, Menu::Title::WIDTH + 2 + delta, Menu::Title::HEIGHT, ColorTitleText());
 
     Color::GRAY_75.SetAsCurrent();
 
@@ -398,7 +398,7 @@ void Item::DrawCommonHiPart() const
 
     Region(width, Item::Value::HEIGHT - 2).Fill(x + 1, y + 1, colorFill);
 
-    Title().Draw(x + 6, y + (opened ? 2 : 10), colorText);
+    Title().Draw(x + 6, y + 4, colorText);
 
     if (opened)
     {

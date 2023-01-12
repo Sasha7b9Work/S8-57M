@@ -35,7 +35,7 @@ int Text::DrawChar(int eX, int eY, uint8 _symbol, const Color &color)
     int width = symbol.Width();
     int height = Font::Height();
 
-    int delta = 9 - height;
+    int y = eY;
 
     for (int r = 0; r < height; r++)
     {
@@ -44,7 +44,6 @@ int Text::DrawChar(int eX, int eY, uint8 _symbol, const Color &color)
         if (row.NotEmpty())
         {
             int x = eX;
-            int y = eY + r + delta;
 
             for (int bit = 0; bit < width; bit++)
             {
@@ -55,6 +54,8 @@ int Text::DrawChar(int eX, int eY, uint8 _symbol, const Color &color)
                 x++;
             }
         }
+
+        y++;
     }
 
     return eX + width;
