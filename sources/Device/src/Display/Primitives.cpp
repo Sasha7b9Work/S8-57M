@@ -202,7 +202,7 @@ int Text::DrawCharWithLimitation(int eX, int eY, char _symbol, int limitX, int l
             int endBit = 8 - width;
             for (int bit = 7; bit >= endBit; bit--)
             {
-                if (symbol.BitIsExist(b, bit))
+                if (row.BitIsExist(bit))
                 {
                     if ((x >= limitX) && (x <= (limitX + limitWidth)) && (y >= limitY) && (y <= limitY + limitHeight))
                     {

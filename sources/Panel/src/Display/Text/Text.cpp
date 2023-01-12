@@ -47,7 +47,7 @@ int Text::DrawChar(int eX, int eY, uint8 _symbol, const Color &color)
             int y = eY + r + delta;
             for (int bit = 0; bit < width; bit++)
             {
-                if (symbol.BitIsExist(r, bit))
+                if (row.BitIsExist(bit))
                 {
                     BackBuffer::SetPixel(x, y);
                 }

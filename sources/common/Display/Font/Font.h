@@ -6,10 +6,8 @@
 struct SymbolRow
 {
     SymbolRow(uint8 r);
-    bool NotEmpty() const
-    {
-        return (row != 0);
-    }
+    bool NotEmpty() const   { return (row != 0); }
+    bool BitIsExist(int bit) const;
 private:
     uint8 row;
 };
@@ -20,29 +18,15 @@ struct Symbol
 
     Symbol(char _symbol) : symbol((uint8)_symbol) {}
 
-    bool operator==(const char rhs) const
-    {
-        return symbol == rhs;
-    }
+    bool operator==(const char rhs) const { return symbol == rhs; }
 
-    bool operator>=(const char rhs) const
-    {
-        return symbol >= rhs;
-    }
+    bool operator>=(const char rhs) const { return symbol >= rhs; }
 
-    bool operator<=(const char rhs) const
-    {
-        return symbol <= rhs;
-    }
+    bool operator<=(const char rhs) const { return symbol <= rhs; }
 
-    int Width() const
-    {
-        return 14;
-    }
+    int Width() const { return 14; }
 
     SymbolRow GetRow(int row) const;
-
-    bool BitIsExist(int row, int bit) const;
 
     uint8 symbol;
 };
