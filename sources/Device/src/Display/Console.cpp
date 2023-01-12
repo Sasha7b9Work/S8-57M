@@ -51,7 +51,7 @@ void Console::Draw()
 
     inProcessDraw = true;
 
-    Font::Set(TypeFont::_5);
+    Font::Set(TypeFont::_8);
 
     int y = 70;
     int h = Font::Height();
@@ -59,7 +59,7 @@ void Console::Draw()
     for (int i = 0; i < stringInConsole; i++)
     {
         int length = Font::GetLengthText(buffer[i]);
-        Region(length, h).Fill(0, y, Color::GRAY_50);
+        Region(length + 1, h).Fill(0, y, Color::GRAY_50);
         String(buffer[i]).Draw(2, y + 1, Color::FILL);
         y += h + 1;
     }

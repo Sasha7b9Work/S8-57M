@@ -44,7 +44,7 @@ int Font::GetLengthText(pString text)
         result += Symbol(*symbol).Width() + spacing; //-V1026
         symbol++;
     }
-    return result * 2;
+    return result;
 }
 
 
