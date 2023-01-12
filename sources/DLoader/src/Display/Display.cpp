@@ -4,7 +4,7 @@
 #include "Display/Painter.h"
 #include "Display/Primitives.h"
 #include "FlashDrive/FlashDrive.h"
-#include "common/Display/Font/Font_d.h"
+#include "common/Display/Font/Font.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Math.h"
@@ -76,8 +76,8 @@ void Display::Init()
 
     Painter::BeginScene(Color::BACK);
 
-    DFont::Set(DTypeFont::_GOST28);
-    DFont::SetSpacing(3);
+    Font::Set(TypeFont::_GOST28);
+    Font::SetSpacing(3);
 
     int x0 = 85;
     int dX = 65;
@@ -94,8 +94,8 @@ void Display::Init()
 
     Painter::EndScene();
 
-    DFont::Set(DTypeFont::_8);
-    DFont::SetSpacing(1);
+    Font::Set(TypeFont::_8);
+    Font::SetSpacing(1);
 }
 
 

@@ -71,7 +71,7 @@ void DisplayOsci::HiPart::Draw(int field)
 
     x = DrawMainParameters(x, Y0 + 1); //-V2007
 
-    DFont::Set(DTypeFont::_8);
+    Font::Set(TypeFont::_8);
 
     DrawFrequency(x + 3, Y0 + 1);
 
@@ -158,7 +158,7 @@ int DisplayOsci::HiPart::DrawMainParameters(int _x, int _y)
         String("\xa5\x10%c", mode[S_TRIG_START_MODE]).Draw(x + 125, y1);
     }
 
-    DFont::Set(DTypeFont::_5);
+    Font::Set(TypeFont::_5);
 
     x += 165;
 

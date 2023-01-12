@@ -99,7 +99,7 @@ void DisplayRecorder::Update(int field)
 
     DrawMemoryWindow();
 
-    DFont::Set(DTypeFont::_8);
+    Font::Set(TypeFont::_8);
 
     Warnings::Draw();
 

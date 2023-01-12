@@ -87,7 +87,7 @@ int Text::DrawSmall(int x, int y, Color color)
 
     HAL_BUS::Panel::SendBuffer(buffer.data, sizeBuffer);
 
-    return x + DFont::GetLengthText(text) + 1;
+    return x + Font::GetLengthText(text) + 1;
 }
 
 

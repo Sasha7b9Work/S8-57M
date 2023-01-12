@@ -8,7 +8,7 @@
 #include "Display/Primitives.h"
 #include "Display/Warnings.h"
 #include "Hardware/HAL/HAL.h"
-#include "common/Display/Font/Font_d.h"
+#include "common/Display/Font/Font.h"
 #include "FlashDrive/FlashDrive.h"
 #include "Hardware/Timer.h"
 #include "Keyboard/BufferButtons.h"
@@ -84,11 +84,11 @@ void Display::Update()
 
     prevTime = TIME_MS;
 
-    DFont::SetSpacing();
+    Font::SetSpacing();
 
     Color::ChangeFlash(false);
 
-    DFont::Set(DTypeFont::_8);
+    Font::Set(TypeFont::_8);
 
     inStateDraw = true;
 
@@ -189,7 +189,7 @@ void Display::Message::Func()
         Region(width, height).Fill(x, y, Color::BACK);
         Rectangle(width, height).Draw(x, y, Color::FILL);
 
-        int length = DFont::GetLengthText(textWait);
+        int length = Font::GetLengthText(textWait);
 
         if (waitKey)
         {

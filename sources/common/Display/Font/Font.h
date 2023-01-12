@@ -3,13 +3,14 @@
 #include "defines.h"
 
 
-struct PSymbol
+struct Symbol
 {
     uchar width;
     uchar bytes[8];
 };
 
-struct PTypeFont
+
+struct TypeFont
 {
     enum E
     {
@@ -25,15 +26,15 @@ struct PTypeFont
     } value;
 };
 
-struct PFont
+struct Font
 {
     int _height;
-    PSymbol symbols[256];
+    Symbol symbols[256];
 
 public:
     // Устанавливает текущий шрифт. Ранее установленный можно восстановить функцией Pop()
-    static void Set(const PTypeFont::E typeFont);
-    static PTypeFont::E Current();
+    static void Set(const TypeFont::E typeFont);
+    static TypeFont::E Current();
     // Восстанавливает шрифт, бывший текущим перед последним вызовом SetCurrent()
     static void Pop();
     static bool IsBig();
@@ -43,9 +44,12 @@ public:
     static bool RowNotEmpty(uint8 symbol, int row);
     static bool BitIsExist(uint8 symbol, int row, int bit);
     // Устанавливает количество пустых пикселей между символами.
-    static void SetSpacing(int spacing);
+    static void SetSpacing(int spacing = 1);
+    static int GetLengthText(pchar);
+    static int GetSpacing();
+    static void SetMinWidth(uint8 width);
 
 private:
-    static const PFont *fonts[PTypeFont::Count];
-    static const PFont *font;
+    static const Font *fonts[TypeFont::Count];
+    static const Font *font;
 };

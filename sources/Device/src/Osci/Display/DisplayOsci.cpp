@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "common/Display/Font/Font_d.h"
+#include "common/Display/Font/Font.h"
 #include "Display/Grid.h"
 #include "Display/Painter.h"
 #include "Display/Primitives.h"
@@ -41,7 +41,7 @@ namespace DisplayOsci
 
 void DisplayOsci::Update(int field)
 {
-    DFont::SetSpacing(1);
+    Font::SetSpacing(1);
 
     if (needRedraw)
     {
@@ -102,7 +102,7 @@ void DisplayOsci::BottomPart::Draw(int x0, int y0, int field)
 
     VLine(36).Draw(x0, y0 + 1, Color::FILL);
 
-    DFont::Set(DTypeFont::_UGO2);
+    Font::Set(TypeFont::_UGO2);
 
     // Флешка
     if (FDrive::IsConnected())
@@ -197,7 +197,7 @@ void DisplayOsci::DrawingValueParameter::Draw()
 
 void DisplayOsci::DrawingValueParameter::DrawBoundedText(int y, const String *text, Color color)
 {
-    int length = DFont::GetLengthText(text->c_str()) + 6;
+    int length = Font::GetLengthText(text->c_str()) + 6;
     int x = Grid::Left() + Grid::Width() / 2 - length / 2;
     Region(length, 16).DrawBounded(x, y, Color::BACK, Color::FILL);
     text->Draw(x + 4, y + 4, color);

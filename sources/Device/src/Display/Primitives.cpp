@@ -82,18 +82,18 @@ Line::Line(int _x0, int _y0, int _x1, int _y1) : x0(_x0), y0(_y0), x1(_x1), y1(_
 }
 
 
-Char::Char(SymbolUGO::E _ch) : ch((char)(_ch)), font(DTypeFont::_UGO)
+Char::Char(SymbolUGO::E _ch) : ch((char)(_ch)), font(TypeFont::_UGO)
 {
 
 }
 
 
-Char::Char(SymbolUGO2::E _ch) : ch((char)(_ch)), font(DTypeFont::_UGO2)
+Char::Char(SymbolUGO2::E _ch) : ch((char)(_ch)), font(TypeFont::_UGO2)
 {
 
 }
 
-Char::Char(char _ch, DTypeFont::E type) : ch(_ch), font(type)
+Char::Char(char _ch, TypeFont::E type) : ch(_ch), font(type)
 {
 
 }
@@ -101,13 +101,13 @@ Char::Char(char _ch, DTypeFont::E type) : ch(_ch), font(type)
 
 int Char::Draw(int x, int y, Color color)
 {
-    DFont::Set(font);
+    Font::Set(font);
 
 	String("%c", ch).Draw(x, y, color);
 
-    int result = x + DFont::GetWidth(ch) + 1;
+    int result = x + Font::GetWidth(ch) + 1;
 
-    DFont::Pop();
+    Font::Pop();
 
     return result;
 }
@@ -117,7 +117,7 @@ void Char::Draw4SymbolsInRect(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
-    DFont::Set(font);
+    Font::Set(font);
 
     for (char i = 0; i < 2; i++)
     {
@@ -125,7 +125,7 @@ void Char::Draw4SymbolsInRect(int x, int y, Color color)
         String("%c", ch + i + 16).Draw(x + 16 * i, y + 16);
     }
 
-    DFont::Pop();
+    Font::Pop();
 }
 
 
@@ -133,7 +133,7 @@ void Char::Draw10SymbolsInRect(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
-    DFont::Set(font);
+    Font::Set(font);
 
     for (char i = 0; i < 5; i++)
     {
@@ -141,7 +141,7 @@ void Char::Draw10SymbolsInRect(int x, int y, Color color)
         String("%c", ch + i + 16).Draw(x + 8 * i, y + 8);
     }
 
-    DFont::Pop();
+    Font::Pop();
 }
 
 
@@ -176,7 +176,7 @@ int Text::DrawWithLimitation(int x, int y, int limitX, int limitY, int limitWidt
     while (*text)
     {
         x = DrawCharWithLimitation(x, y, *text, limitX, limitY, limitWidth, limitHeight);
-        retValue += DFont::GetWidth(*text);
+        retValue += Font::GetWidth(*text);
         text++;
     }
 
@@ -188,19 +188,19 @@ int Text::DrawCharWithLimitation(int eX, int eY, char _symbol, int limitX, int l
 {
     uint8 symbol = (uint8)(_symbol);
 
-    int8 width = (int8)DFont::GetWidth(symbol);
-    int8 height = (int8)DFont::GetHeight();
+    int8 width = (int8)Font::GetWidth(symbol);
+    int8 height = (int8)Font::GetHeight();
 
     for (int b = 0; b < height; b++)
     {
-        if(DFont::RowNotEmpty(symbol, b))
+        if(Font::RowNotEmpty(symbol, b))
         {
             int x = eX;
             int y = eY + b + 9 - height;
             int endBit = 8 - width;
             for (int bit = 7; bit >= endBit; bit--)
             {
-                if (DFont::BitIsExist(symbol, b, bit))
+                if (Font::BitIsExist(symbol, b, bit))
                 {
                     if ((x >= limitX) && (x <= (limitX + limitWidth)) && (y >= limitY) && (y <= limitY + limitHeight))
                     {
@@ -218,8 +218,8 @@ int Text::DrawCharWithLimitation(int eX, int eY, char _symbol, int limitX, int l
 
 int Text::DrawInCenterRect(int eX, int eY, int width, int eHeight, Color color)
 {
-    int lenght = DFont::GetLengthText(text);
-    int height = DFont::GetHeight();
+    int lenght = Font::GetLengthText(text);
+    int height = Font::GetHeight();
     int x = eX + (width - lenght) / 2;
     int y = eY + (eHeight - height) / 2 + 1;
     return Draw(x, y, color);
@@ -240,7 +240,7 @@ int Text::DrawDigitsMonospace(int x, int y, int width, Color color)
 
         if (symbol >= 0x30 && symbol <= 0x39)
         {
-            int widthSymbol = DFont::GetWidth((uint8)(symbol));
+            int widthSymbol = Font::GetWidth((uint8)(symbol));
 
             dX = (width - widthSymbol) / 2;
 
@@ -248,7 +248,7 @@ int Text::DrawDigitsMonospace(int x, int y, int width, Color color)
         }
 
         x = Text(String("%c", symbol)).Draw(x, y);
-        x += DFont::GetSpacing();
+        x += Font::GetSpacing();
 
         if (symbol >= 0x30 && symbol <= 0x39)
         {
@@ -269,8 +269,8 @@ void Text::DrawInCenterBoundedRect(int x, int y, int width, int height, Color co
 
 int Text::DrawOnBackground(int x, int y, Color colorBackground)
 {
-    int width = DFont::GetLengthText(text);
-    int height = DFont::GetHeight();
+    int width = Font::GetLengthText(text);
+    int height = Font::GetHeight();
 
     Color colorText(Color::GetCurent());
     Region(width, height).Fill(x - 1, y, colorBackground);
@@ -281,7 +281,7 @@ int Text::DrawOnBackground(int x, int y, Color colorBackground)
 
 void Text::DrawRelativelyRight(int xRight, int y, Color color)
 {
-    Draw(xRight - DFont::GetLengthText(text), y, color);
+    Draw(xRight - Font::GetLengthText(text), y, color);
 }
 
 
@@ -506,7 +506,7 @@ static int DrawPartWord(char *word, int x, int y, int xRight, bool draw)
     for (int i = numSyllabels - 2; i >= 0; i--)
     {
         char *subString = PartWordForTransfer(word, lengthSyllables, i, buffer);
-        int length = DFont::GetLengthText(subString);
+        int length = Font::GetLengthText(subString);
         if (xRight - x > length - 5)
         {
             if (draw)
@@ -561,7 +561,7 @@ int Text::DrawInRectWithTransfers(int eX, int eY, int eWidth, int eHeight, Color
             }
             else                                            // ј здесь найдено по крайней мере два буквенных символа, т.е. найдено слово
             {
-                int lengthString = DFont::GetLengthText(word);
+                int lengthString = Font::GetLengthText(word);
                 if (x + lengthString > right + 5)
                 {
                     int numSymb = DrawPartWord(word, x, y, right, true);
@@ -614,11 +614,11 @@ static bool GetHeightTextWithTransfers(int left, int top, int right, pchar text,
                 {
                     continue;
                 }
-                x += DFont::GetWidth(symbol);
+                x += Font::GetWidth(symbol);
             }
             else                                            // ј здесь найдено по крайней мере два буквенных символа, т.е. найдено слово
             {
-                int lengthString = DFont::GetLengthText(word);
+                int lengthString = Font::GetLengthText(word);
                 if (x + lengthString > right + 5)
                 {
                     int numSymb = DrawPartWord(word, x, y, right, false);
@@ -629,7 +629,7 @@ static bool GetHeightTextWithTransfers(int left, int top, int right, pchar text,
                 else
                 {
                     curSymbol += length;
-                    x += DFont::GetLengthText(word);
+                    x += Font::GetLengthText(word);
                 }
             }
         }
@@ -669,7 +669,7 @@ void Text::DrawInCenterRectAndBoundIt(int x, int y, int width, int height, Color
 
 void Text::DrawInCenterRectOnBackground(int x, int y, int width, int height, Color colorText, int widthBorder, Color colorBackground)
 {
-    int lenght = DFont::GetLengthText(text);
+    int lenght = Font::GetLengthText(text);
     int eX = DrawInCenterRect(x, y, width, height, colorBackground);
     int w = lenght + widthBorder * 2 - 2;
     int h = 7 + widthBorder * 2 - 1;

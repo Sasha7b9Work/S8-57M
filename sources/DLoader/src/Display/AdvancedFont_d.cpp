@@ -26,7 +26,7 @@ uint8 DAdvancedFont::GetHeight()
 }
 
 
-DAdvancedFont::DAdvancedFont(DTypeFont::E)
+DAdvancedFont::DAdvancedFont(TypeFont::E)
 {
 }
 

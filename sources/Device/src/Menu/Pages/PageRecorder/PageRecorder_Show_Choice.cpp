@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Menu/Pages/Include/PageRecorder.h"
-#include "common/Display/Font/Font_d.h"
+#include "common/Display/Font/Font.h"
 #include "Display/Symbols.h"
 #include "Display/Primitives.h"
 

@@ -1,7 +1,7 @@
 #ifdef PANEL
-const PFont font5 = {
+const Font font5 = {
 #else
-const DFont font5 = {
+const Font font5 = {
 #endif
 	5, {
 /*0*/		{ 0, { 0,	0,	0,	0,	0,	0,	0,	0	} },	

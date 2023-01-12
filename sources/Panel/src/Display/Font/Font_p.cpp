@@ -10,23 +10,23 @@
 #include <cstring>
 
 
-static const PFont *font8 = (const PFont *)font_gost_type_a_14;
+static const Font *font8 = (const Font *)font_gost_type_a_14;
 
 
-const PFont *PFont::fonts[PTypeFont::Count] = {&font5, font8, &fontUGO, &fontUGO2, nullptr};
-const PFont *PFont::font = font8;
+const Font *Font::fonts[TypeFont::Count] = {&font5, font8, &fontUGO, &fontUGO2, nullptr};
+const Font *Font::font = font8;
 
-PTypeFont::E pushedFont = PTypeFont::_8;
-PTypeFont::E currentFont = PTypeFont::_8;
+TypeFont::E pushedFont = TypeFont::_8;
+TypeFont::E currentFont = TypeFont::_8;
 
 
-PTypeFont::E PFont::Current()
+TypeFont::E Font::Current()
 {
     return currentFont;
 }
 
 
-void PFont::Set(const PTypeFont::E typeFont)
+void Font::Set(const TypeFont::E typeFont)
 {
     pushedFont = currentFont;
 
@@ -34,28 +34,28 @@ void PFont::Set(const PTypeFont::E typeFont)
     {
         switch (typeFont)
         {
-        case PTypeFont::_5:
+        case TypeFont::_5:
             font = &font5;
             break;
-        case PTypeFont::_8:
+        case TypeFont::_8:
             font = font8;
             break;
-        case PTypeFont::_UGO:
+        case TypeFont::_UGO:
             font = &fontUGO;
             break;
-        case PTypeFont::_UGO2:
+        case TypeFont::_UGO2:
             font = &fontUGO2;
             break;
-        case PTypeFont::_GOST28:
-        case PTypeFont::_GOST72bold:
-        case PTypeFont::_OMEGA72:
+        case TypeFont::_GOST28:
+        case TypeFont::_GOST72bold:
+        case TypeFont::_OMEGA72:
         {
             font = nullptr;
             volatile PAdvancedFont f(typeFont);
         }       
             break;
-        case PTypeFont::None:
-        case PTypeFont::Count:
+        case TypeFont::None:
+        case TypeFont::Count:
             break;
         }
 
@@ -64,7 +64,7 @@ void PFont::Set(const PTypeFont::E typeFont)
 }
 
 
-void PFont::Pop()
+void Font::Pop()
 {
     Set(pushedFont);
 }
@@ -72,11 +72,11 @@ void PFont::Pop()
 
 static bool FontIsSmall()
 {
-    return currentFont <= PTypeFont::_UGO2;
+    return currentFont <= TypeFont::_UGO2;
 }
 
 
-uint8 PFont::GetWidth(uint8 symbol)
+uint8 Font::GetWidth(uint8 symbol)
 {
     if (FontIsSmall())
     {
@@ -87,13 +87,13 @@ uint8 PFont::GetWidth(uint8 symbol)
 }
 
 
-uint8 PFont::GetWidth(char symbol)
+uint8 Font::GetWidth(char symbol)
 {
     return GetWidth((uint8)(symbol));
 }
 
 
-uint8 PFont::GetHeight()
+uint8 Font::GetHeight()
 {
     if (FontIsSmall())
     {
@@ -104,7 +104,7 @@ uint8 PFont::GetHeight()
 }
 
 
-bool PFont::RowNotEmpty(uint8 symbol, int row)
+bool Font::RowNotEmpty(uint8 symbol, int row)
 {
     if (FontIsSmall())
     {
@@ -115,7 +115,7 @@ bool PFont::RowNotEmpty(uint8 symbol, int row)
 }
 
 
-bool PFont::BitIsExist(uint8 symbol, int row, int bit)
+bool Font::BitIsExist(uint8 symbol, int row, int bit)
 {
     if (FontIsSmall())
     {
@@ -126,7 +126,7 @@ bool PFont::BitIsExist(uint8 symbol, int row, int bit)
 }
 
 
-bool PFont::IsBig()
+bool Font::IsBig()
 {
     return !FontIsSmall();
 }

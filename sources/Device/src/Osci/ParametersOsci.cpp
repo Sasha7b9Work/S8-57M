@@ -559,7 +559,7 @@ void RShift::Draw(Chan::E ch)
         Char(Symbol8::RSHIFT_NORMAL).Draw(x - 8, y - 8);
     }
 
-    Char((ch == ChanA) ? '1' : '2', DTypeFont::_5).Draw(x - 6, y - 12, Color::BACK);
+    Char((ch == ChanA) ? '1' : '2', TypeFont::_5).Draw(x - 6, y - 12, Color::BACK);
 }
 
 
@@ -597,7 +597,7 @@ void TrigLevel::Draw()
 
     static const char symbols[2] = { '1', '2' };
 
-    Char(symbols[ch], DTypeFont::_5).Draw(xSymbol, y - 12, Color::BACK);
+    Char(symbols[ch], TypeFont::_5).Draw(xSymbol, y - 12, Color::BACK);
 }
 
 

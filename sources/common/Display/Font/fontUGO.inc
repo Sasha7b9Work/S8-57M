@@ -1,7 +1,7 @@
 #ifdef PANEL
-const PFont fontUGO = {
+const Font fontUGO = {
 #else
-const DFont fontUGO = {
+const Font fontUGO = {
 #endif
 	8, {
 /*0*/		{ 0, { 0,	0,	0,	0,	0,	0,	0,	0	} },	

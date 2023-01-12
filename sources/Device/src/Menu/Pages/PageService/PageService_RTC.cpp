@@ -168,17 +168,17 @@ static void DrawField(int numField)
 
 static void DrawTime()
 {
-    DFont::Set(DTypeFont::_GOST72bold);
-    int spacing = DFont::GetSpacing();
-    DFont::SetSpacing(5);
+    Font::Set(TypeFont::_GOST72bold);
+    int spacing = Font::GetSpacing();
+    Font::SetSpacing(5);
     
     for (int i = 0; i < 6; i++)
     {
         DrawField(i);
     }
     
-    DFont::Set(DTypeFont::_8);
-    DFont::SetSpacing(spacing);
+    Font::Set(TypeFont::_8);
+    Font::SetSpacing(spacing);
 }
 
 static void OnOpenClose_Set(bool open)

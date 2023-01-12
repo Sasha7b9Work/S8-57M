@@ -7,7 +7,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Display/BackBuffer.h"
 #include "Settings/Settings.h"
-#include "Display/Font/Font_p.h"
+#include "Display/Font/Font.h"
 #include "Log.h"
 
 
@@ -650,7 +650,7 @@ bool PDecoder::SetFont(uint8 data)
         return false;
     }
 
-    PFont::Set((PTypeFont::E)data);
+    Font::Set((TypeFont::E)data);
 
     return true;
 }

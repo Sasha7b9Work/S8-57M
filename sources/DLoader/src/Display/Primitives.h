@@ -1,6 +1,6 @@
 #pragma once
 #include "Utils/String.h"
-#include "common/Display/Font/Font_d.h"
+#include "common/Display/Font/Font.h"
 
 
 class Region
@@ -66,13 +66,13 @@ private:
 class Char
 {
 public:
-    explicit Char(char ch, DTypeFont::E font = DTypeFont::_8);
+    explicit Char(char ch, TypeFont::E font = TypeFont::_8);
     int Draw(int x, int y, Color color = Color::Count);
     void Draw4SymbolsInRect(int x, int y, Color color = Color::Count);
     void Draw10SymbolsInRect(int x, int y, Color color = Color::Count);
 private:
     char ch;
-    DTypeFont::E font;
+    TypeFont::E font;
 };
 
 

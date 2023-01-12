@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "common/Display/Font/Font_d.h"
+#include "common/Display/Font/Font.h"
 #include "Display/Grid.h"
 #include "Display/Painter.h"
 #include "Display/Primitives.h"
@@ -66,7 +66,7 @@ void FileManager::Init()
 
 void FileManager::DrawLongString(int x, int y, pchar string, bool hightlight)
 {
-    int length = DFont::GetLengthText(string);
+    int length = Font::GetLengthText(string);
 
     Color color = Color::FILL;
     if (hightlight)
@@ -141,7 +141,7 @@ void FileManager::DrawFiles(int x, int y)
 void FileManager::DrawNameCurrentDir(int left, int top)
 {
     Color::FILL.SetAsCurrent();
-    int length = DFont::GetLengthText(currentDir);
+    int length = Font::GetLengthText(currentDir);
     if (length < 277)
     {
         String(currentDir).Draw(left + 1, top + 1);
@@ -159,7 +159,7 @@ void FileManager::DrawNameCurrentDir(int left, int top)
             {
                 return;
             }
-            length = DFont::GetLengthText(++pointer);
+            length = Font::GetLengthText(++pointer);
         }
         String(pointer).Draw(left + 1, top + 1);
     }

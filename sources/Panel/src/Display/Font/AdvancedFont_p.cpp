@@ -35,21 +35,21 @@ struct HeaderFont
 };
 
 
-PTypeFont::E PAdvancedFont::currentType = PTypeFont::None;
+TypeFont::E PAdvancedFont::currentType = TypeFont::None;
 
 
 static const unsigned char * font = nullptr;
 
 
-PAdvancedFont::PAdvancedFont(PTypeFont::E t)
+PAdvancedFont::PAdvancedFont(TypeFont::E t)
 {
     currentType = t;
     
-    if(currentType == PTypeFont::_GOST28)
+    if(currentType == TypeFont::_GOST28)
     {
         font = fontGOST28;
     }
-    else if(currentType == PTypeFont::_GOST72bold)
+    else if(currentType == TypeFont::_GOST72bold)
     {
         font = fontGOST72bold;
     }

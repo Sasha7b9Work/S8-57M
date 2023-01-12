@@ -2,7 +2,7 @@
 #pragma once
 #include "Utils/String.h"
 #include "Display/Symbols.h"
-#include "common/Display/Font/Font_d.h"
+#include "common/Display/Font/Font.h"
 
 
 
@@ -85,13 +85,13 @@ class Char
 public:
     explicit Char(SymbolUGO::E ch);
     explicit Char(SymbolUGO2::E ch);
-    explicit Char(char ch, DTypeFont::E font = DTypeFont::_8);
+    explicit Char(char ch, TypeFont::E font = TypeFont::_8);
     int Draw(int x, int y, Color color = Color::Count);
     void Draw4SymbolsInRect(int x, int y, Color color = Color::Count);
     void Draw10SymbolsInRect(int x, int y, Color color = Color::Count);
 private:
     char ch;
-    DTypeFont::E font;
+    TypeFont::E font;
 };
 
 
@@ -122,18 +122,23 @@ public:
     void DrawInCenterBoundedRect(int x, int y, int width, int height, Color color = Color::Count);
 
     int DrawWithLimitation(int x, int y, int limitX, int limitY, int limitWidth, int limitHeight);
+
     // Выводит текст на прямоугольнике цвета colorBackgound
     int DrawOnBackground(int x, int y, Color colorBackground);
 
     void DrawRelativelyRight(int xRight, int y, Color color = Color::Count);
+
     // Пишет текст с переносами
     int DrawInRectWithTransfers(int x, int y, int width, int height, Color color = Color::Count);
+
     // Возвращает нижнюю координату прямоугольника
     int DrawInBoundedRectWithTransfers(int x, int y, int width, Color colorBackground, Color colorFill, Color colorBound = Color::Count);
 
     void DrawInCenterRectAndBoundIt(int x, int y, int width, int height, Color colorBackground, Color colorFill);
+
     // Пишет строку текста в центре области(x, y, width, height)цветом ColorText на прямоугольнике с шириной бордюра widthBorder цвета colorBackground
     void DrawInCenterRectOnBackground(int x, int y, int width, int height, Color colorText, int widthBorder, Color colorBackground);
+
     // Нарисовать с выводом цифр в моноширинных позициях
     int DrawDigitsMonospace(int x, int y, int width, Color color = Color::Count);
 

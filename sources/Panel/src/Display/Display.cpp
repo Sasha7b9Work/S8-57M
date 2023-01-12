@@ -8,7 +8,7 @@
 #include "Display/Colors.h"
 #include "Hardware/Timer.h"
 #include "Display/BackBuffer.h"
-#include "Display/Font/Font_p.h"
+#include "common/Display/Font/Font.h"
 #include <cstdlib>
 #include <cstring>
 
@@ -86,7 +86,7 @@ void Display::DrawStartScreen()
     {
         BackBuffer::BeginPaint(field);
 
-        PFont::Set(PTypeFont::_GOST28);
+        Font::Set(TypeFont::_GOST28);
         Text::SetSpacing(3);
 
         int x0 = 85;

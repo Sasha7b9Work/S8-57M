@@ -2,7 +2,7 @@
 #include "defines.h"
 #include "Tables.h"
 #include "Display/Primitives.h"
-#include "common/Display/Font/Font_d.h"
+#include "common/Display/Font/Font.h"
 
 
 // Таблица символов алфавита и спецсимволов для ввода текста
@@ -86,7 +86,7 @@ void Tables::DrawStr(int index, int x, int y)
     pchar str = symbolsAlphaBet[index];
     if (index == S_MEM_INDEX_CUR_SYMBOL_MASK)
     {
-        Region(DFont::GetLengthText(str), 9).Fill(x - 1, y, Color::FLASH_10);
+        Region(Font::GetLengthText(str), 9).Fill(x - 1, y, Color::FLASH_10);
     }
 
     String(symbolsAlphaBet[index]).Draw(x, y, (index == S_MEM_INDEX_CUR_SYMBOL_MASK) ? Color::FLASH_01 : Color::FILL);

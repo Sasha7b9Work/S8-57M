@@ -1,6 +1,6 @@
 #pragma once
 #include "Colors.h"
-#include "common/Display/Font/Font_d.h"
+#include "common/Display/Font/Font.h"
 
 
 struct Painter

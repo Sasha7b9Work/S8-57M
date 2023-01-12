@@ -1,13 +1,13 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Font_d.h"
+#include "common/Display/Font/Font.h"
 
 
 struct DAdvancedFont
 {
     DAdvancedFont() {};
     // Установить действующий шрифт
-    DAdvancedFont(DTypeFont::E type);
+    DAdvancedFont(TypeFont::E);
     // Возвращает true, если в строке row есть пиксели
     bool RowNotEmpty(uint8 symbol, int row);
     // Возвращает ширину символа
@@ -20,5 +20,5 @@ struct DAdvancedFont
     bool BitIsExist(uint8 symbol, int row, int bit);
 
 private:
-    static DTypeFont::E currentType;
+    static TypeFont::E currentType;
 };

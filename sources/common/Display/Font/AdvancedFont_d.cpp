@@ -35,21 +35,21 @@ struct HeaderFont
 };
 
 
-DTypeFont::E DAdvancedFont::currentType = DTypeFont::None;
+TypeFont::E DAdvancedFont::currentType = TypeFont::None;
 
 
 static const unsigned char * font = nullptr;
 
 
-DAdvancedFont::DAdvancedFont(DTypeFont::E t)
+DAdvancedFont::DAdvancedFont(TypeFont::E t)
 {
     currentType = t;
     
-    if(currentType == DTypeFont::_GOST28)
+    if(currentType == TypeFont::_GOST28)
     {
         font = fontGOST28;
     }
-    else if(currentType == DTypeFont::_GOST72bold)
+    else if(currentType == TypeFont::_GOST72bold)
     {
         font = fontGOST72bold;
     }
