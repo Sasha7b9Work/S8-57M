@@ -224,7 +224,7 @@ int Text::DrawInCenterRect(int eX, int eY, int width, int eHeight, Color color, 
 
     if (log)
     {
-        LOG_WRITE("length = %d, width = %d", length, width);
+//        LOG_WRITE("length = %d, width = %d", length, width);
     }
 
     int height = Font::Height();

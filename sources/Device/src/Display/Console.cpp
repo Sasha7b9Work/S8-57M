@@ -59,8 +59,8 @@ void Console::Draw()
     for (int i = 0; i < stringInConsole; i++)
     {
         int length = Font::GetLengthText(buffer[i]);
-        Region(length, h).Fill(0, y, Color::BACK);
-        String(buffer[i]).Draw(2, y - 7, Color::FILL);
+        Region(length, h).Fill(0, y, Color::GRAY_50);
+        String(buffer[i]).Draw(2, y + 1, Color::FILL);
         y += h + 1;
     }
 
