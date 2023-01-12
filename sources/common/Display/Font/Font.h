@@ -5,7 +5,7 @@
 
 struct SymbolRow
 {
-    SymbolRow(uint8 r);
+    SymbolRow(uint16 r);
     bool NotEmpty() const   { return (row != 0); }
     bool BitIsExist(int bit) const;
 private:

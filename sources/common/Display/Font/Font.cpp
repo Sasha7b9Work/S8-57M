@@ -150,12 +150,16 @@ bool SymbolRow::BitIsExist(int bit) const
 }
 
 
-SymbolRow::SymbolRow(uint8 _row) : row(_row) {}
+SymbolRow::SymbolRow(uint16 _row) : row(_row) {}
 
 
-SymbolRow Symbol::GetRow(int row) const
+SymbolRow Symbol::GetRow(int r) const
 {
-    return SymbolRow(font->symbols[symbol].bytes[row]);
+    uint16 *size = (uint16 *)font + symbol * 21;
+
+    uint16 *row = size + 1 + r;
+
+    return SymbolRow(*row);
 }
 
 
