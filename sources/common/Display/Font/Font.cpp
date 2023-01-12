@@ -157,3 +157,11 @@ SymbolRow Symbol::GetRow(int row) const
 {
     return SymbolRow(font->symbols[symbol].bytes[row]);
 }
+
+
+int Symbol::Width() const
+{
+    uint16 *size = (uint16 *)font + symbol * 21;
+
+    return *size;
+}

@@ -9,7 +9,7 @@ struct SymbolRow
     bool NotEmpty() const   { return (row != 0); }
     bool BitIsExist(int bit) const;
 private:
-    uint8 row;
+    uint16 row;
 };
 
 struct Symbol
@@ -24,7 +24,7 @@ struct Symbol
 
     bool operator<=(const char rhs) const { return symbol <= rhs; }
 
-    int Width() const { return 14; }
+    int Width() const;
 
     SymbolRow GetRow(int row) const;
 
