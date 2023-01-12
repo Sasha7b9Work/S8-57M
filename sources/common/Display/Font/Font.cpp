@@ -8,13 +8,15 @@
 #include "Font8.h"
 
 #ifndef LOADER
-    #include "font5.inc"
+    #include "Font5.h"
     #include "fontUGO.inc"
     #include "fontUGO2.inc"
+
+static const Font *font5 = (const Font *)font_gost_type_a_10;
+
 #endif
 
 #include <cstring>
-
 
 static const Font *font8 = (const Font *)font_gost_type_a_14;
 static const Font *font = font8;
@@ -23,7 +25,7 @@ static const Font *font = font8;
 #ifdef LOADER
     const Font *Font::fonts[TypeFont::Count] = { font8, font8, font8, font8 };
 #else
-    const Font *Font::fonts[TypeFont::Count] = { &font5, font8, &fontUGO, &fontUGO2 };
+    const Font *Font::fonts[TypeFont::Count] = { font5, font8, &fontUGO, &fontUGO2 };
 #endif
 
 static TypeFont::E pushedFont = TypeFont::_8;
@@ -76,7 +78,7 @@ void Font::Set(const TypeFont::E typeFont)
         {
         case TypeFont::_5:
 #ifndef LOADER
-            font = &font5;
+            font = font5;
 #endif
             break;
         case TypeFont::_8:
@@ -134,7 +136,7 @@ int Font::Height()
 {
     static const int h[TypeFont::Count] =
     {
-        5,
+        14,
         20,
         10,
         10
@@ -155,7 +157,7 @@ SymbolRow::SymbolRow(uint16 _row) : row(_row) {}
 
 SymbolRow Symbol::GetRow(int r) const
 {
-    uint16 *size = (uint16 *)font + symbol * 21;
+    uint16 *size = (uint16 *)font + symbol * (Font::Height() + 1);
 
     uint16 *row = size + 1 + r;
 

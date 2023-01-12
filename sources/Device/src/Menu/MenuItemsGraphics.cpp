@@ -319,7 +319,7 @@ void Page::Draw(bool opened) const
 
         Region(Width() - 4, Height() - 1).Fill(X() + 1, Y() + 1, ColorTitleBackground());
 
-        Text(Title().c_str()).DrawInCenterRect(X(), Y() - 1, Width(), Height(), ColorTitleText());
+        Text(Title().c_str()).DrawInCenterRect(X(), Y() - 1, Width(), Height(), ColorTitleText(), true);
     }
 }
 

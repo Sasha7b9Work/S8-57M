@@ -117,7 +117,7 @@ public:
 
     int Draw(int x, int y, Color color = Color::Count);
 
-    int DrawInCenterRect(int x, int y, int width, int height, Color color = Color::Count);
+    int DrawInCenterRect(int x, int y, int width, int height, Color color = Color::Count, bool log = false);
 
     void DrawInCenterBoundedRect(int x, int y, int width, int height, Color color = Color::Count);
 

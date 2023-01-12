@@ -218,11 +218,17 @@ int Text::DrawCharWithLimitation(int eX, int eY, char _symbol, int limitX, int l
 }
 
 
-int Text::DrawInCenterRect(int eX, int eY, int width, int eHeight, Color color)
+int Text::DrawInCenterRect(int eX, int eY, int width, int eHeight, Color color, bool log)
 {
-    int lenght = Font::GetLengthText(text);
+    int length = Font::GetLengthText(text);
+
+    if (log)
+    {
+        LOG_WRITE("length = %d, width = %d", length, width);
+    }
+
     int height = Font::Height();
-    int x = eX + (width - lenght) / 2;
+    int x = eX + (width - length) / 2;
     int y = eY + (eHeight - height) / 2 + 1;
     return Draw(x, y, color);
 }

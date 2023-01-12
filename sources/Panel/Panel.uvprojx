@@ -1375,6 +1375,26 @@
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\Font.h</FilePath>
             </File>
+            <File>
+              <FileName>Font5.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\Font5.h</FilePath>
+            </File>
+            <File>
+              <FileName>Font8.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\Font8.h</FilePath>
+            </File>
+            <File>
+              <FileName>fontUGO.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\fontUGO.inc</FilePath>
+            </File>
+            <File>
+              <FileName>fontUGO2.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\fontUGO2.inc</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2817,6 +2837,26 @@
               <FileName>Font.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\Font.h</FilePath>
+            </File>
+            <File>
+              <FileName>Font5.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\Font5.h</FilePath>
+            </File>
+            <File>
+              <FileName>Font8.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\Font8.h</FilePath>
+            </File>
+            <File>
+              <FileName>fontUGO.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\fontUGO.inc</FilePath>
+            </File>
+            <File>
+              <FileName>fontUGO2.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\fontUGO2.inc</FilePath>
             </File>
           </Files>
         </Group>
