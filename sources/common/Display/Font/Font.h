@@ -36,7 +36,7 @@ public:
     static void Pop();
     static uint8 GetWidth(uint8 symbol);
     static uint8 GetWidth(char symbol);
-    static uint8 GetHeight();
+    static int GetHeight();
     static bool RowNotEmpty(uint8 symbol, int row);
     static bool BitIsExist(uint8 symbol, int row, int bit);
     // Устанавливает количество пустых пикселей между символами.

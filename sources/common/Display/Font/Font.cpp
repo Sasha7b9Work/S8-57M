@@ -129,9 +129,9 @@ void Font::SetMinWidth(uint8 width)
 }
 
 
-uint8 Font::GetWidth(uint8 symbol)
+uint8 Font::GetWidth(uint8)
 {
-    return font->symbols[symbol].width;
+    return 14;
 }
 
 
@@ -141,9 +141,17 @@ uint8 Font::GetWidth(char symbol)
 }
 
 
-uint8 Font::GetHeight()
+int Font::GetHeight()
 {
-    return (uint8)(font->_height * 2);
+    static const int h[TypeFont::Count] =
+    {
+        10,
+        14,
+        14,
+        14
+    };
+
+    return h[currentFont];
 }
 
 

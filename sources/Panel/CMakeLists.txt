@@ -34,7 +34,7 @@ file(GLOB COMMON          ../common/Command.h
                           ../common/Decoder_p.cpp)
 file(GLOB SRC             src/*.h src/*.cpp)
 file(GLOB DISPLAY         src/Display/*.h src/Display/*.cpp)
-file(GLOB DISPLAY_FONT    ../common/Display/Font/Font.h)
+file(GLOB DISPLAY_FONT    ../common/Display/Font/Font.*)
 file(GLOB DISPLAY_TEXT    src/Display/Text/*)
 file(GLOB HARDWARE        src/Hardware/*.h src/Hardware/*.cpp)
 file(GLOB HARDWARE_CMSIS  src/Hardware/CMSIS/*)
