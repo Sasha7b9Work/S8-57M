@@ -103,7 +103,7 @@ void Device::Update()
 
     Osci::Update();
 
-    Display::Render();
+    Display::Update();
 
     FDrive::Update();
 

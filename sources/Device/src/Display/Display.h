@@ -39,7 +39,7 @@ namespace Display
     void Init();
 
     // Здесь происходит вся отрисовка
-    void Render();
+    void Update();
 
     // Возвращаемое значение true означает, что дисплей находится в состоянии отрисовки
     bool InProcess();

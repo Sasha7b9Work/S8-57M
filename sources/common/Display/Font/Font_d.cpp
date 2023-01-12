@@ -6,7 +6,7 @@
 #include "common/Decoder_d.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
-#include "font8.inc"
+#include "Font8.h"
 #ifndef LOADER
 #include "font5.inc"
 #include "fontUGO.inc"
@@ -15,12 +15,15 @@
 #include <cstring>
 
 
+static const DFont *font8 = (const DFont *)font_gost_type_a_14;
+
+
 #ifdef LOADER
-const DFont *DFont::fonts[DTypeFont::Count] = {&font8, &font8, &font8, &font8, nullptr};
+const DFont *DFont::fonts[DTypeFont::Count] = {font8, font8, font8, font8, nullptr};
 #else
-const DFont *DFont::fonts[DTypeFont::Count] = {&font5, &font8, &fontUGO, &fontUGO2, nullptr};
+const DFont *DFont::fonts[DTypeFont::Count] = {&font5, font8, &fontUGO, &fontUGO2, nullptr};
 #endif
-const DFont *DFont::font = &font8;
+const DFont *DFont::font = font8;
 
 DTypeFont::E pushedFont = DTypeFont::_8;
 DTypeFont::E currentFont = DTypeFont::_8;
@@ -74,7 +77,7 @@ void DFont::Set(const DTypeFont::E typeFont)
 #endif
             break;
         case DTypeFont::_8:
-            font = &font8;
+            font = font8;
             break;
         case DTypeFont::_UGO:
 #ifndef LOADER

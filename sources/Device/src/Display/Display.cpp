@@ -73,7 +73,7 @@ void Display::LoadColorChannels()
 }
 
 
-void Display::Render()
+void Display::Update()
 {
     static uint prevTime = 0;
 

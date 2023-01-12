@@ -3,15 +3,18 @@
 #include "AdvancedFont_p.h"
 #include "common/Command.h"
 #include "Hardware/HAL/HAL.h"
-#include "font8.inc"
+#include "Font8.h"
 #include "font5.inc"
 #include "fontUGO.inc"
 #include "fontUGO2.inc"
 #include <cstring>
 
 
-const PFont *PFont::fonts[PTypeFont::Count] = {&font5, &font8, &fontUGO, &fontUGO2, nullptr};
-const PFont *PFont::font = &font8;
+static const PFont *font8 = (const PFont *)font_gost_type_a_14;
+
+
+const PFont *PFont::fonts[PTypeFont::Count] = {&font5, font8, &fontUGO, &fontUGO2, nullptr};
+const PFont *PFont::font = font8;
 
 PTypeFont::E pushedFont = PTypeFont::_8;
 PTypeFont::E currentFont = PTypeFont::_8;
@@ -35,7 +38,7 @@ void PFont::Set(const PTypeFont::E typeFont)
             font = &font5;
             break;
         case PTypeFont::_8:
-            font = &font8;
+            font = font8;
             break;
         case PTypeFont::_UGO:
             font = &fontUGO;
