@@ -238,7 +238,7 @@ int Text::DrawDigitsMonospace(int x, int y, int width, Color color)
 
         int dX = 0;
 
-        if (symbol.symbol >= 0x30 && symbol.symbol <= 0x39)
+        if (symbol >= 0x30 && symbol <= 0x39)
         {
             int widthSymbol = symbol.Width();
 
@@ -250,7 +250,7 @@ int Text::DrawDigitsMonospace(int x, int y, int width, Color color)
         x = Text(String("%c", symbol.symbol)).Draw(x, y);
         x += Font::GetSpacing();
 
-        if (symbol.symbol >= 0x30 && symbol.symbol <= 0x39)
+        if (symbol >= 0x30 && symbol <= 0x39)
         {
             x += dX;
         }

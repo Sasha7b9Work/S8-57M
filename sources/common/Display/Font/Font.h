@@ -20,6 +20,16 @@ struct Symbol
     {
         return symbol == rhs;
     }
+
+    bool operator>=(const char rhs) const
+    {
+        return symbol >= rhs;
+    }
+
+    bool operator<=(const char rhs) const
+    {
+        return symbol <= rhs;
+    }
 };
 
 
