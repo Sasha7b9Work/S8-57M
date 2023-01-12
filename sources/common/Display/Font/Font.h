@@ -3,13 +3,6 @@
 #include "defines.h"
 
 
-struct Symbol
-{
-    uchar width;
-    uchar bytes[8];
-};
-
-
 struct TypeFont
 {
     enum E
@@ -25,8 +18,14 @@ struct TypeFont
 
 struct Font
 {
+    struct FSymbol
+    {
+        uchar width;
+        uchar bytes[8];
+    };
+
     int _height;
-    Symbol symbols[256];
+    FSymbol symbols[256];
 
 public:
     // Устанавливает текущий шрифт. Ранее установленный можно восстановить функцией Pop()
@@ -34,8 +33,8 @@ public:
     static TypeFont::E Current();
     // Восстанавливает шрифт, бывший текущим перед последним вызовом SetCurrent()
     static void Pop();
-    static uint8 GetWidth(uint8 symbol);
-    static uint8 GetWidth(char symbol);
+    static int GetWidth(uint8 symbol);
+    static int GetWidth(char symbol);
     static int GetHeight();
     static bool RowNotEmpty(uint8 symbol, int row);
     static bool BitIsExist(uint8 symbol, int row, int bit);

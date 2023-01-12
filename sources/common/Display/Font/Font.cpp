@@ -6,12 +6,29 @@
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Font8.h"
+
 #ifndef LOADER
-#include "font5.inc"
-#include "fontUGO.inc"
-#include "fontUGO2.inc"
+    #include "font5.inc"
+    #include "fontUGO.inc"
+    #include "fontUGO2.inc"
 #endif
+
 #include <cstring>
+
+
+struct Symbol
+{
+    Symbol(uint8 _symbol) : symbol(_symbol) {}
+
+    int GetWidth() const
+    {
+        return 14;
+    }
+
+
+private:
+    uint8 symbol;
+};
 
 
 static const Font *font8 = (const Font *)font_gost_type_a_14;
@@ -129,13 +146,13 @@ void Font::SetMinWidth(uint8 width)
 }
 
 
-uint8 Font::GetWidth(uint8)
+int Font::GetWidth(uint8 symbol)
 {
-    return 14;
+    return Symbol(symbol).GetWidth();
 }
 
 
-uint8 Font::GetWidth(char symbol)
+int Font::GetWidth(char symbol)
 {
     return GetWidth((uint8)(symbol));
 }
