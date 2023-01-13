@@ -393,7 +393,7 @@ int Math::FindAnotherElement(const uint8 *data, uint8 value, int numElements)
 
 int Math::DigitsInIntPart(float value)
 {
-    if (value == std::numeric_limits<float>::infinity()) //-V550
+    if (value == std::numeric_limits<float>::infinity())
     {
         return 2;
     }
@@ -414,7 +414,7 @@ int Math::DigitsInIntPart(float value)
 
 float Math::RoundFloat(float value, int numDigits)
 {
-    if(value == std::numeric_limits<float>::infinity()) //-V550
+    if(value == std::numeric_limits<float>::infinity())
     {
         value = value;
     }

@@ -135,7 +135,7 @@ float ExtRAM::TestTime(int sizekB)
     {
         float time = TestTime1kB(Begin() + i * 1024);
 
-        if(time == -1.0F) //-V550
+        if(time == -1.0F)
         {
             return -1.0F;
         }

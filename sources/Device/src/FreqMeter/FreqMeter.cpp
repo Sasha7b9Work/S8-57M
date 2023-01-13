@@ -218,7 +218,7 @@ void FreqMeter::ClearMeasure()
 
 bool FreqMeter::FrequencyIsFound()
 {
-    return (frequency != 0.0F); //-V550
+    return (frequency != 0.0F);
 }
 
 

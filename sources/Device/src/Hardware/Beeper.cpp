@@ -137,7 +137,7 @@ static void Beep(const TypeWave::E newTypeWave, const float newFreq, const float
         return;
     }
 
-    if (frequency != newFreq || amplitude != newAmpl || typeWave != newTypeWave) //-V550
+    if (frequency != newFreq || amplitude != newAmpl || typeWave != newTypeWave)
     {
         frequency = newFreq;
         amplitude = newAmpl * set.serv.SoundVolume() / 100.0F;

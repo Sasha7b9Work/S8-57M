@@ -174,7 +174,7 @@ void ColorType::SetBrightness(float bright)
 
 void ColorType::BrightnessChange(int delta) // -V2506
 {
-    if ((delta > 0 && brightness == 1.0F) || (delta < 0 && brightness == 0.0F)) // -V550 //-V550
+    if ((delta > 0 && brightness == 1.0F) || (delta < 0 && brightness == 0.0F)) // -V550
     {
         return;
     }

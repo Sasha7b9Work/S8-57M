@@ -521,7 +521,7 @@ float Governor::Step() const
         if (tsGovernor.dir == DIRECTION::DECREASE)
         {
             delta *= -1.0F;
-            if (delta == 0.0F)  // -V550 //-V550
+            if (delta == 0.0F)  // -V550
             {
                 delta = -0.001F;
             }
@@ -536,7 +536,7 @@ float Governor::Step() const
         }
         else if (tsGovernor.dir == DIRECTION::INCREASE)
         {
-            if (delta == 0.0F)  // -V550 //-V550
+            if (delta == 0.0F)  // -V550
             {
                 delta = 0.001F;
             }
@@ -807,7 +807,7 @@ float Choice::Step() const
     if (tsChoice.address == this)
     {
         float delta = speed * (TIME_MS - tsChoice.timeStart);
-        if (delta == 0.0F)  // -V550 //-V550
+        if (delta == 0.0F)  // -V550
         {
             delta = 0.001F; // Таймер в несколько первых кадров может показать, что прошло 0 мс, но мы возвращаем большее число, потому что ноль будет говорить о том, что движения нет
         }
