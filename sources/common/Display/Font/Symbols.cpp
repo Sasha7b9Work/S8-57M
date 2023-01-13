@@ -14,6 +14,7 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {10, 1},    // GOVERNOR_SHIFT_3
     {11, 1},    // GOVERNOR_LEFT
     {12, 1},    // GOVERNOR_RIGHT
+    {15, 1},    // TSHIFT_NORMAL
     {19, 1},    // COUPLE_GND
     {20, 1},    // COUPLE_AC
     {21, 1},    // COUPLE_DC
@@ -26,7 +27,7 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {31, 1},    // START_MODE_HAND
     {32, 1},    // START_MODE_SINGLE
     {33, 1},    // TPOS
-    {34, 1}     // F_T
+    {34, 1},    // F_T
 };
 
 

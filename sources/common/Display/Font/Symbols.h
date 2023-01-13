@@ -7,7 +7,6 @@ struct Symbol8
 {
     enum E
     {
-        TSHIFT_NORMAL       = '\x84',  // Изображение смещения по времени
         TSHIFT_NORMAL_BACK  = '\x85',  // Фон для изображения смещения по времени
         TSHIFT_LEFT         = '\x86',  // Изображение смещения по времени при переходе за левую границу экрана
         TSHIFT_RIGHT        = '\x87',  // Изображение смещения по времени при переходе за правую границу экрана
@@ -89,6 +88,7 @@ public:
         GOVERNOR_SHIFT_3,
         GOVERNOR_LEFT,
         GOVERNOR_RIGHT,
+        TSHIFT_NORMAL,      // Изображение смещения по времени
         COUPLE_GND,
         COUPLE_AC,
         COUPLE_DC,

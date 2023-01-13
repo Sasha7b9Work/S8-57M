@@ -812,7 +812,7 @@ void TShift::Draw()
 void TShift::DrawNormal(const int x, const int y)
 {
     Char(Symbol8::TSHIFT_NORMAL_BACK).Draw(x - 3, y, Color::BACK);
-    Char(Symbol8::TSHIFT_NORMAL).Draw(x - 3, y, Color::FILL);
+    SymbolUGO(SymbolUGO::TSHIFT_NORMAL).Draw(x - 3, y, Color::FILL);
 }
 
 
