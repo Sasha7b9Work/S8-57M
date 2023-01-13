@@ -389,9 +389,15 @@ pString Range::Name(Chan::E ch)
 };
 
 
-pString ModeCouple::UGO(ModeCouple::E v)
+SymbolUGO ModeCouple::UGO(ModeCouple::E v)
 {
-    static const pString couple[] = { "\x92", "\x91", "\x90" };
+    static const SymbolUGO couple[] =
+    {
+        SymbolUGO(SymbolUGO::COUPLE_DC),
+        SymbolUGO(SymbolUGO::COUPLE_AC),
+        SymbolUGO(SymbolUGO::COUPLE_GND)
+    };
+
     return couple[v];
 }
 

@@ -3,16 +3,6 @@
 #include "common/Display/Font/Font.h"
 
 
-struct Symbol5
-{
-    enum E
-    {
-        COUPLE_AC  = '\x91',
-        COUPLE_DC  = '\x92',
-        COUPLE_GND = '\x90'
-    };
-};
-
 struct Symbol8
 {
     enum E
@@ -73,6 +63,7 @@ class Char
 public:
     explicit Char(char ch, TypeFont::E font = TypeFont::Normal, int num = 1);
     int Draw(int x, int y, Color color = Color::Count);
+    char ToChar() const { return ch; }
 protected:
     const char ch;
     const TypeFont::E font;
@@ -98,6 +89,9 @@ public:
         GOVERNOR_SHIFT_3,
         GOVERNOR_LEFT,
         GOVERNOR_RIGHT,
+        COUPLE_GND,
+        COUPLE_AC,
+        COUPLE_DC,
         Count
     };
 

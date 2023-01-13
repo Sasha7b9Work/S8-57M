@@ -1,6 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Utils/String.h"
+#include "common/Display/Font/Symbols.h"
 
 
 #define ChanA Chan::A
@@ -176,7 +177,7 @@ namespace ModeCouple
 
     void Set(Chan::E ch, ModeCouple::E couple);
 
-    pString UGO(ModeCouple::E v);
+    SymbolUGO UGO(ModeCouple::E v);
 };
 
 
