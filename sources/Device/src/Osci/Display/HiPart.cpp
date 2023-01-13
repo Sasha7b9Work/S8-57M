@@ -120,9 +120,9 @@ int DisplayOsci::HiPart::DrawMainParameters(int _x, int _y)
 
     Separator::Draw(x - 4, _y - 1);
 
-    String("ð\xa5%s", TBase::ToString(S_TIME_BASE)).Draw(x, y0, Color::FILL);
+    String("ð : %s", TBase::ToString(S_TIME_BASE)).Draw(x, y0, Color::FILL);
 
-    String("\xa5%s", TShift::ToString().c_str()).Draw(x + 75, y0);
+    String(": %s", TShift::ToString().c_str()).Draw(x + 75, y0);
 
     if (S_MEM_MODE_WORK_IS_DIR)
     {
