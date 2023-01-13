@@ -3,7 +3,7 @@
 #include "Tables.h"
 #include "Display/Grid.h"
 #include "Display/Primitives.h"
-#include "Display/Symbols.h"
+#include "common/Display/Font/Symbols.h"
 #include "FlashDrive/FileManager.h"
 #include "FlashDrive/FlashDrive.h"
 #include "Hardware/Beeper.h"

@@ -7,7 +7,7 @@
 #include "Hardware/Beeper.h"
 #include "Osci/Display/DisplayOsci.h"
 #include "Hardware/Timer.h"
-#include "Display/Symbols.h"
+#include "common/Display/Font/Symbols.h"
 #include "Menu/Pages/Include/PageFunction.h"
 #include "Settings/Settings.h"
 #include "Hardware/HAL/HAL.h"

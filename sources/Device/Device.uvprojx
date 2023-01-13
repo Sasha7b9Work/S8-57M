@@ -1370,11 +1370,6 @@
               <FilePath>.\src\Display\Primitives_stm.cpp</FilePath>
             </File>
             <File>
-              <FileName>Symbols.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Symbols.h</FilePath>
-            </File>
-            <File>
               <FileName>Warnings.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Display\Warnings.h</FilePath>
@@ -1418,6 +1413,11 @@
               <FileName>Font8.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\Font8.h</FilePath>
+            </File>
+            <File>
+              <FileName>Symbols.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\Symbols.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3747,11 +3747,6 @@
               <FilePath>.\src\Display\Primitives_stm.cpp</FilePath>
             </File>
             <File>
-              <FileName>Symbols.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Symbols.h</FilePath>
-            </File>
-            <File>
               <FileName>Warnings.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Display\Warnings.h</FilePath>
@@ -3795,6 +3790,11 @@
               <FileName>Font8.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\Font8.h</FilePath>
+            </File>
+            <File>
+              <FileName>Symbols.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\Symbols.h</FilePath>
             </File>
           </Files>
         </Group>

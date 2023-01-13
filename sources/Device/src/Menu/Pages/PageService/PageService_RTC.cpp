@@ -3,7 +3,7 @@
 #include "Osci/DeviceSettings.h"
 #include "Display/Painter.h"
 #include "Display/Primitives.h"
-#include "Display/Symbols.h"
+#include "common/Display/Font/Symbols.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Menu/MenuItems.h"

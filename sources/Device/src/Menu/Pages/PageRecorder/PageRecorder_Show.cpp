@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Display/Symbols.h"
+#include "common/Display/Font/Symbols.h"
 #include "Display/Primitives.h"
 #include "Hardware/HAL/HAL.h"
 #include "Menu/Pages/Include/PageRecorder.h"

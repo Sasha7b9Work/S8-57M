@@ -6,6 +6,11 @@
 #include <cstring>
 
 
+const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
+{
+    {'\x93', 1}     // RSHIFT_NORMAL
+};
+
 
 Circle::Circle(int r) : radius(r)
 {
@@ -82,18 +87,7 @@ Line::Line(int _x0, int _y0, int _x1, int _y1) : x0(_x0), y0(_y0), x1(_x1), y1(_
 }
 
 
-Char::Char(SymbolUGO::E _ch) : ch((char)(_ch)), font(TypeFont::Diagram)
-{
-
-}
-
-
-Char::Char(SymbolUGO2::E _ch) : ch((char)(_ch)), font(TypeFont::UGO)
-{
-
-}
-
-Char::Char(char _ch, TypeFont::E type) : ch(_ch), font(type)
+Char::Char(char _ch, TypeFont::E type, int num) : ch(_ch), font(type), num_symbols(num)
 {
 
 }
@@ -785,5 +779,10 @@ void VLineArray::Draw(int x, Color color)
 
 
 MultiVPointLine::MultiVPointLine(int _numLines, uint16 *_x0, int _delta, int _count) : numLines(_numLines), x0(_x0), delta(_delta), count(_count)
+{
+}
+
+
+SymbolUGO::SymbolUGO(E v) : Char(desc[v].code, TypeFont::UGO, desc[v].num_symbols)
 {
 }

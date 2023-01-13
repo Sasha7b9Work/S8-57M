@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Utils/String.h"
-#include "Display/Symbols.h"
+#include "common/Display/Font/Symbols.h"
 #include "common/Display/Font/Font.h"
 
 
@@ -79,21 +79,41 @@ private:
 };
 
 
-
 class Char
 {
 public:
-    explicit Char(SymbolUGO::E ch);
-    explicit Char(SymbolUGO2::E ch);
-    explicit Char(char ch, TypeFont::E font = TypeFont::Normal);
+    explicit Char(char ch, TypeFont::E font = TypeFont::Normal, int num = 1);
     int Draw(int x, int y, Color color = Color::Count);
     void Draw4SymbolsInRect(int x, int y, Color color = Color::Count);
     void Draw10SymbolsInRect(int x, int y, Color color = Color::Count);
-private:
-    char ch;
-    TypeFont::E font;
+protected:
+    const char ch;
+    const TypeFont::E font;
+    const int num_symbols;        // Может быть 1, 2, 4 или 10
 };
 
+
+class SymbolUGO : public Char
+{
+public:
+    enum E
+    {
+        RSHIFT_NORMAL,  // Символ смещения по напряжению нормальный
+        Count
+    };
+
+    SymbolUGO(E);
+
+private:
+
+    struct SymbolStruct
+    {
+        char code;
+        int num_symbols;
+    };
+
+    static const SymbolStruct desc[Count];
+};
 
 
 class Pixel
@@ -103,7 +123,6 @@ public:
     void Draw(int x, int y, Color color = Color::Count);
 private:
 };
-
 
 
 class Text

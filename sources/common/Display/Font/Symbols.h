@@ -26,7 +26,6 @@ struct Symbol8
         CROSS               = '\x88',  // Символ диагонального креста
         TPOS_1              = '\x8a',  // 2-я часть символа TPos
         TPOS_2              = '\x8b',  // 1-я часть символа TPos
-        RSHIFT_NORMAL       = '\x93',  // Символ смещения по напряжению нормальный
         TRIGLEV_NORMAL      = '\x94',  // Символ уровень синхронизации нормальный
         TRIGLEV_LOWER       = '\x95',  // Символ уровень синхронизации ниже сетки
         TRIGLEV_ABOVE       = '\x96',  // Символ уровень синхронизации выше сетки
@@ -39,13 +38,6 @@ struct Symbol8
     };
 };
 
-struct SymbolUGO
-{
-    enum E
-    {
-        Count
-    };
-};
 
 #ifdef DELETE
 #undef DELETE

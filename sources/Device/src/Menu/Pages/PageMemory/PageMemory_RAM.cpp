@@ -2,7 +2,7 @@
 #include "defines.h"
 #include "Display/Grid.h"
 #include "Display/Primitives.h"
-#include "Display/Symbols.h"
+#include "common/Display/Font/Symbols.h"
 #include "Hardware/Memory/RAM.h"
 #include "Menu/MenuItems.h"
 #include "Osci/Osci.h"

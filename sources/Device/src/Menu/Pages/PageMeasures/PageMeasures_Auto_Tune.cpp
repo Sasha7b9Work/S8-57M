@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Display/Primitives.h"
-#include "Display/Symbols.h"
+#include "common/Display/Font/Symbols.h"
 #include "Menu/MenuItems.h"
 #include "Osci/Measurements/AutoMeasurements.h"
 #include "Settings/Settings.h"
