@@ -26,7 +26,7 @@ Char::Char(char _ch, TypeFont::E type, int num) : ch(_ch), font(type), num_symbo
 }
 
 
-int Char::Draw(int x, int y, Color color)
+int Char::Draw(int x, int y, Color color) const
 {
     color.SetAsCurrent();
 
@@ -59,13 +59,13 @@ int Char::Draw(int x, int y, Color color)
 }
 
 
-void Char::Draw2SymbolsInRect(int x, int y)
+void Char::Draw2SymbolsInRect(int x, int y) const
 {
 
 }
 
 
-void Char::Draw4SymbolsInRect(int x, int y)
+void Char::Draw4SymbolsInRect(int x, int y) const
 {
     char symbol = ch;
 
@@ -79,7 +79,7 @@ void Char::Draw4SymbolsInRect(int x, int y)
 }
 
 
-void Char::Draw10SymbolsInRect(int x, int y)
+void Char::Draw10SymbolsInRect(int x, int y) const
 {
     for (char i = 0; i < 5; i++)
     {

@@ -133,10 +133,18 @@ int DisplayOsci::HiPart::DrawMainParameters(int _x, int _y)
         String(source[S_TRIG_SOURCE]).Draw(x + 10, y1, Color::Trig());
     }
 
-//    if (S_MEM_MODE_WORK_IS_DIR)
-//    {
-//        static const pString couple[] = { "\x92", "\x92", "\x91" };
-//
+    if (S_MEM_MODE_WORK_IS_DIR)
+    {
+        static const SymbolUGO couple[] =
+        {
+            SymbolUGO(SymbolUGO::COUPLE_DC),
+            SymbolUGO(SymbolUGO::COUPLE_DC),
+            SymbolUGO(SymbolUGO::COUPLE_AC)
+        };
+
+        String(":").Draw(x + 25, y1);
+        couple[S_TRIG_INPUT].Draw(x + 30, y1);
+
 //        static const pString polar[] =  { "\xa7", "\xa6" };
 //
 //        String("\xa5\x10%s\x10\xa5\x10%s\x10\xa5\x10", couple[S_TRIG_INPUT], polar[S_TRIG_POLARITY]).Draw(x + 30, y1);
@@ -146,8 +154,8 @@ int DisplayOsci::HiPart::DrawMainParameters(int _x, int _y)
 //        int x1 = x + 85;
 //        Char(filtr[S_TRIG_INPUT][0]).Draw(x1, y1);
 //        Char(filtr[S_TRIG_INPUT][1]).Draw(x1 + 16, y1);
-//    }
-//
+    }
+
 //    if (S_MEM_MODE_WORK_IS_DIR)
 //    {
 //        static char mode[] =

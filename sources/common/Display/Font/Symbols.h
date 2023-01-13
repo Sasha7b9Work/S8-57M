@@ -62,16 +62,16 @@ class Char
 {
 public:
     explicit Char(char ch, TypeFont::E font = TypeFont::Normal, int num = 1);
-    int Draw(int x, int y, Color color = Color::Count);
+    int Draw(int x, int y, Color color = Color::Count) const;
     char ToChar() const { return ch; }
 protected:
     const char ch;
     const TypeFont::E font;
     const int num_symbols;        // Может быть 1, 2, 4 или 10
 private:
-    void Draw2SymbolsInRect(int x, int y);
-    void Draw4SymbolsInRect(int x, int y);
-    void Draw10SymbolsInRect(int x, int y);
+    void Draw2SymbolsInRect(int x, int y) const;
+    void Draw4SymbolsInRect(int x, int y) const;
+    void Draw10SymbolsInRect(int x, int y) const;
 };
 
 
