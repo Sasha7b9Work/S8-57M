@@ -69,13 +69,13 @@ void DisplayOsci::HiPart::Draw(int field)
 
     DrawSeparators();
 
-    x = DrawMainParameters(x, Y0 + 1); //-V2007
+    x = DrawMainParameters(x, Y0 + 1);
 
     Font::Set(TypeFont::Normal);
 
     DrawFrequency(x + 3, Y0 + 1);
 
-    DrawTime(x + 3, Y0 + 19); //-V2007
+    DrawTime(x + 3, Y0 + 19);
 
     Separator::Draw(540, Y0);
 
@@ -83,7 +83,7 @@ void DisplayOsci::HiPart::Draw(int field)
 
     WriteCursors();
 
-    DrawPeakDet(x + 37, Y0 + 10); //-V2007
+    DrawPeakDet(x + 37, Y0 + 10);
 }
 
 
@@ -314,7 +314,7 @@ void DisplayOsci::HiPart::DrawFrequency(int x, int y)
             std::strcat(mesFreq, Frequency(freq).ToString().c_str());
         }
 
-        String(mesFreq).Draw(x + 15, y, Color::FILL); //-V2007
+        String(mesFreq).Draw(x + 15, y, Color::FILL);
     }
 }
 
