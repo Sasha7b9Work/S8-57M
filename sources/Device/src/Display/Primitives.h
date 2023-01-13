@@ -89,9 +89,9 @@ protected:
     const TypeFont::E font;
     const int num_symbols;        // Может быть 1, 2, 4 или 10
 private:
-    void Draw2SymbolsInRect(int x, int y, Color color = Color::Count);
-    void Draw4SymbolsInRect(int x, int y, Color color = Color::Count);
-    void Draw10SymbolsInRect(int x, int y, Color color = Color::Count);
+    void Draw2SymbolsInRect(int x, int y);
+    void Draw4SymbolsInRect(int x, int y);
+    void Draw10SymbolsInRect(int x, int y);
 };
 
 

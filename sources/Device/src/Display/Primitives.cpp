@@ -8,7 +8,7 @@
 
 const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
 {
-    {'\x93', 1}     // RSHIFT_NORMAL
+    {'\x01', 1}     // RSHIFT_NORMAL
 };
 
 
@@ -95,13 +95,15 @@ Char::Char(char _ch, TypeFont::E type, int num) : ch(_ch), font(type), num_symbo
 
 int Char::Draw(int x, int y, Color color)
 {
+    color.SetAsCurrent();
+
     int result = 0;
 
     if (num_symbols == 1)
     {
         Font::Set(font);
 
-        String("%c", ch).Draw(x, y, color);
+        String("%c", ch).Draw(x, y);
 
         result = x + Symbol(ch).Width() + 1;
 
@@ -124,16 +126,14 @@ int Char::Draw(int x, int y, Color color)
 }
 
 
-void Char::Draw2SymbolsInRect(int x, int y, Color color)
+void Char::Draw2SymbolsInRect(int x, int y)
 {
 
 }
 
 
-void Char::Draw4SymbolsInRect(int x, int y, Color color)
+void Char::Draw4SymbolsInRect(int x, int y)
 {
-    color.SetAsCurrent();
-
     Font::Set(font);
 
     for (char i = 0; i < 2; i++)
@@ -146,10 +146,8 @@ void Char::Draw4SymbolsInRect(int x, int y, Color color)
 }
 
 
-void Char::Draw10SymbolsInRect(int x, int y, Color color)
+void Char::Draw10SymbolsInRect(int x, int y)
 {
-    color.SetAsCurrent();
-
     Font::Set(font);
 
     for (char i = 0; i < 5; i++)

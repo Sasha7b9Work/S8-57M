@@ -556,7 +556,7 @@ void RShift::Draw(Chan::E ch)
     }
     else
     {
-//        SymbolUGO(SymbolUGO::RSHIFT_NORMAL).Draw(x - 8, y - 8);
+        SymbolUGO(SymbolUGO::RSHIFT_NORMAL).Draw(x - 8, y - 8);
     }
 
     Char((ch == ChanA) ? '1' : '2', TypeFont::Small).Draw(x - 6, y - 12, Color::BACK);
@@ -824,6 +824,6 @@ void TShift::DrawLeft()
 
 void TShift::DrawRight()
 {
-//    Char(SymbolUGO::RSHIFT_NORMAL).Draw(Grid::Right() - 7, Grid::Top(), Color::BACK);
+    Char(SymbolUGO::RSHIFT_NORMAL).Draw(Grid::Right() - 7, Grid::Top(), Color::BACK);
     Char(Symbol8::TSHIFT_RIGHT).Draw(Grid::Right() - 7, Grid::Top(), Color::FILL);
 }

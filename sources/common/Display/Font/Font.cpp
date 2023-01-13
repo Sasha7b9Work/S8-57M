@@ -10,9 +10,10 @@
 #ifndef LOADER
     #include "Font5.h"
     #include "fontUGO.inc"
-    #include "fontUGO2.inc"
+    #include "FontUGO.h"
 
 static const Font *font5 = (const Font *)font_gost_type_a_10;
+static const Font *fontUGO2 = (const Font *)font_UGO;
 
 #endif
 
@@ -25,7 +26,7 @@ static const Font *font = font8;
 #ifdef LOADER
     const Font *Font::fonts[TypeFont::Count] = { font8, font8, font8, font8 };
 #else
-    const Font *Font::fonts[TypeFont::Count] = { font5, font8, &fontUGO, &fontUGO2 };
+    const Font *Font::fonts[TypeFont::Count] = { font5, font8, &fontUGO, fontUGO2 };
 #endif
 
 static TypeFont::E pushedFont = TypeFont::Normal;
@@ -91,7 +92,7 @@ void Font::Set(const TypeFont::E typeFont)
             break;
         case TypeFont::UGO:
 #ifndef LOADER
-            font = &fontUGO2;
+            font = fontUGO2;
 #endif
             break;
         case TypeFont::None:
