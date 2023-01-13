@@ -305,7 +305,7 @@ void DisplayOsci::HiPart::DrawFrequency(int x, int y)
 
         float freq = FreqMeter::GetFrequency();
 
-        if (freq == -1.0F) //-V550 //-V2550
+        if (freq == -1.0F) //-V550
         {
             std::strcat(mesFreq, "******");
         }
@@ -436,7 +436,7 @@ void DisplayOsci::HiPart::WriteCursors()
                 Rectangle(width, 12).Draw(x, Grid::Top(), Color::FILL);
                 Region(width - 2, 10).Fill(x + 1, Grid::Top() + 1, Color::BACK);
                 String("1/dT=").Draw(x + 1, Grid::Top() + 2, colorText);
-                if (delta != 0.0F) //-V550 //-V2550
+                if (delta != 0.0F) //-V550
                 {
                     Frequency(1.0F / delta).ToString().Draw(x + 25, Grid::Top() + 2);
                 }
