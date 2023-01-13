@@ -18,7 +18,7 @@ static void OnPress_Next()
 
 static void Draw_Next(int x, int y)
 {
-    Char(SymbolUGO2::ARROW_RIGHT).Draw4SymbolsInRect(x + 2, y + 2);
+    Char(SymbolUGO2::ARROW_RIGHT, TypeFont::UGO, 4).Draw(x + 2, y + 2);
 }
 
 DEF_GRAPH_BUTTON( bNext,                                                                                                                             //--- œ¿Ãﬂ“‹ - œŒ—À≈ƒÕ»≈ - —ÎÂ‰Û˛˘ËÈ ---
@@ -35,7 +35,7 @@ static void OnPress_Prev()
 
 static void Draw_Prev(int x, int y)
 {
-    Char(SymbolUGO2::ARROW_LEFT).Draw4SymbolsInRect(x + 2, y + 2);
+    Char(SymbolUGO2::ARROW_LEFT, TypeFont::UGO, 4).Draw(x + 2, y + 2);
 }
 
 DEF_GRAPH_BUTTON( bPrev,                                                                                                                            //--- œ¿Ãﬂ“‹ - œŒ—À≈ƒÕ»≈ - œÂ‰˚‰Û˘ËÈ ---

@@ -12,7 +12,7 @@ static void OnPress_Previous()
 
 static void Draw_Previous(int x, int y)
 {
-    Char(SymbolUGO2::TRIANGLE_UP).Draw4SymbolsInRect(x + 2, y + 4);
+    Char(SymbolUGO2::TRIANGLE_UP, TypeFont::UGO, 4).Draw(x + 2, y + 4);
 }
 
 static bool IsActive_Previous()
@@ -34,7 +34,7 @@ static void OnPress_Next()
 
 static void Draw_Next(int x, int y)
 {
-    Char(SymbolUGO2::TRIANGLE_DOWN).Draw4SymbolsInRect(x + 2, y + 4);
+    Char(SymbolUGO2::TRIANGLE_DOWN, TypeFont::UGO, 4).Draw(x + 2, y + 4);
 }
 
 static bool IsActive_Next()
@@ -56,7 +56,7 @@ static void OnPress_Confirm()
 
 static void Draw_Confirm(int x, int y)
 {
-    Char(SymbolUGO2::SELECT).Draw4SymbolsInRect(x + 4, y);
+    Char(SymbolUGO2::SELECT, TypeFont::UGO, 4).Draw(x + 4, y);
 }
 
 static bool IsActive_Confirm()
@@ -77,7 +77,7 @@ static void OnPress_Leave()
 
 static void Draw_Leave(int x, int y)
 {
-    Char(SymbolUGO2::LEAVE).Draw4SymbolsInRect(x + 4, y);
+    Char(SymbolUGO2::LEAVE, TypeFont::UGO, 4).Draw(x + 4, y);
 }
 
 DEF_GRAPH_BUTTON( bLeave,                                                                                                        //--- ‘”Õ ÷»ﬂ - –≈√»—“–¿“Œ– - œ–Œ—ÃŒ“– - ¬€¡Œ– - ¬ÓÁ‚‡Ú ---
@@ -93,7 +93,7 @@ static void OnPress_Delete()
 
 static void Draw_Delete(int x, int y)
 {
-    Char(SymbolUGO2::DELETE).Draw4SymbolsInRect(x + 4, y);
+    Char(SymbolUGO2::DELETE, TypeFont::UGO, 4).Draw(x + 4, y);
 }
 
 DEF_GRAPH_BUTTON( bDelete,                                                                                                       //--- ‘”Õ ÷»ﬂ - –≈√»—“–¿“Œ– - œ–Œ—ÃŒ“– - ¬€¡Œ– - ”‰‡ÎËÚ¸ ---

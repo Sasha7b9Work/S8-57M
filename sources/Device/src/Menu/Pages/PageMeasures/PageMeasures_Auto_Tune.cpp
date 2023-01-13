@@ -9,7 +9,7 @@
 
 static void Draw_Markers(int x, int y)
 {
-    Char(SymbolUGO2::BIG_M).Draw4SymbolsInRect(x + 2, y + 2);
+    Char(SymbolUGO2::BIG_M, TypeFont::UGO, 4).Draw(x + 2, y + 2);
 }
 
 DEF_GRAPH_BUTTON( bMarkers,                                                                                                                          //--- »«Ã≈–≈Õ»ﬂ - Õ¿—“–Œ»“‹ - Ã‡ÍÂ ---
@@ -21,7 +21,7 @@ DEF_GRAPH_BUTTON( bMarkers,                                                     
 
 static void Draw_Settings(int x, int y)
 {
-    Char(SymbolUGO2::SETTINGS).Draw4SymbolsInRect(x + 2, y + 1);
+    Char(SymbolUGO2::SETTINGS, TypeFont::UGO, 4).Draw(x + 2, y + 1);
 }
 
 DEF_GRAPH_BUTTON( bSettings,                                                                                                                      //--- »«Ã≈–≈Õ»ﬂ - Õ¿—“–Œ»“‹ - Õ‡ÒÚÓÈÍ‡ ---

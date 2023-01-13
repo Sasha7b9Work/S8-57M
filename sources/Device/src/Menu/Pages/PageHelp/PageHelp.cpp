@@ -10,25 +10,25 @@
 
 static void Draw_Enter(int x, int y)
 {
-    Char(SymbolUGO2::ENTER).Draw4SymbolsInRect(x + 2, y + 2);
+    Char(SymbolUGO2::ENTER, TypeFont::UGO, 4).Draw(x + 2, y + 2);
 }
 
 
 static void Help_Draw_Leave(int x, int y)
 {
-    Char(SymbolUGO2::LEAVE).Draw4SymbolsInRect(x + 2, y + 1);
+    Char(SymbolUGO2::LEAVE, TypeFont::UGO, 4).Draw(x + 2, y + 1);
 }
 
 
 static void Draw_Prev(int x, int y)
 {
-    Char(SymbolUGO2::TRIANGLE_UP).Draw4SymbolsInRect(x + 2, y + 5);
+    Char(SymbolUGO2::TRIANGLE_UP, TypeFont::UGO, 4).Draw(x + 2, y + 5);
 }
 
 
 static void Help_Draw_Next(int x, int y)
 {
-    Char(SymbolUGO2::TRIANGLE_DOWN).Draw4SymbolsInRect(x + 2, y + 5);
+    Char(SymbolUGO2::TRIANGLE_DOWN, TypeFont::UGO, 4).Draw(x + 2, y + 5);
 }
 
 

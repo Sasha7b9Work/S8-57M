@@ -69,7 +69,7 @@ DEF_CHOICE_5( cPoints,                                                          
 
 static void Draw_Manager_Tab(int x, int y)
 {
-    Char(SymbolUGO2::TAB).Draw4SymbolsInRect(x + 2, y + 1);
+    Char(SymbolUGO2::TAB, TypeFont::UGO, 4).Draw(x + 2, y + 1);
 }
 
 DEF_GRAPH_BUTTON( bManager_Tab,                                                                                                                   //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” -  ¿“¿ÀŒ√ - Tab ---
@@ -81,7 +81,7 @@ DEF_GRAPH_BUTTON( bManager_Tab,                                                 
 
 static void Draw_Manager_LevelUp(int x, int y)
 {
-    Char(SymbolUGO2::LEAVE).Draw4SymbolsInRect(x + 2, y + 1);
+    Char(SymbolUGO2::LEAVE, TypeFont::UGO, 4).Draw(x + 2, y + 1);
 }
 
 DEF_GRAPH_BUTTON( bManager_LevelUp,                                                                                                 //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” -  ¿“¿ÀŒ√ - ¬˚ÈÚË ËÁ Í‡Ú‡ÎÓ„‡ ---
@@ -93,7 +93,7 @@ DEF_GRAPH_BUTTON( bManager_LevelUp,                                             
 
 static void Draw_Manager_LevelDown(int x, int y)
 {
-    Char(SymbolUGO2::ENTER).Draw4SymbolsInRect(x + 2, y + 2);
+    Char(SymbolUGO2::ENTER, TypeFont::UGO, 4).Draw(x + 2, y + 2);
 }
 
 DEF_GRAPH_BUTTON( bManager_LevelDown,                                                                                                 //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” -  ¿“¿ÀŒ√ - ¬ÓÈÚË ‚ Í‡Ú‡ÎÓ„ ---
@@ -157,7 +157,7 @@ static void OnPress_Mask_Delete()
 
 static void Draw_Delete(int x, int y)
 {
-    Char(SymbolUGO2::DELETE).Draw4SymbolsInRect(x + 2, y + 1);
+    Char(SymbolUGO2::DELETE, TypeFont::UGO, 4).Draw(x + 2, y + 1);
 }
 
 DEF_GRAPH_BUTTON( bMask_Delete,                                                                                                                 //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” - Ã¿— ¿ - ”‰‡ÎËÚ¸ ---
@@ -233,7 +233,7 @@ static void OnPress_Mask_Insert()
 
 static void Draw_Insert(int x, int y)
 {
-    Char(SymbolUGO2::INSERT).Draw4SymbolsInRect(x + 2, y + 2);
+    Char(SymbolUGO2::INSERT, TypeFont::UGO, 4).Draw(x + 2, y + 2);
 }
 
 DEF_GRAPH_BUTTON( bMask_Insert,                                                                                                                //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” - Ã¿— ¿ - ¬ÒÚ‡‚ËÚ¸ ---
@@ -561,7 +561,7 @@ static void Draw_SetName_Save(int x, int y)
 {
     if (FDrive::IsConnected())
     {
-        Char(SymbolUGO2::FLASH_DRIVE_BIG).Draw4SymbolsInRect(x + 2, y + 1);
+        Char(SymbolUGO2::FLASH_DRIVE_BIG, TypeFont::UGO, 4).Draw(x + 2, y + 1);
     }
 }
 

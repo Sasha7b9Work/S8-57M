@@ -23,7 +23,7 @@ static void OnPress_Right()
 
 static void Cursors_Draw_Right(int x, int y)
 {
-    Char(SymbolUGO2::TRIANGLE_RIGHT).Draw4SymbolsInRect(x + 6, y + 2);
+    Char(SymbolUGO2::TRIANGLE_RIGHT, TypeFont::UGO, 4).Draw(x + 6, y + 2);
 }
 
 DEF_GRAPH_BUTTON( bRight,
@@ -40,7 +40,7 @@ static void OnPress_Left()
 
 static void FFT_Draw_Left(int x, int y)
 {
-    Char(SymbolUGO2::TRIANGLE_LEFT).Draw4SymbolsInRect(x + 6, y + 2);
+    Char(SymbolUGO2::TRIANGLE_LEFT, TypeFont::UGO, 4).Draw(x + 6, y + 2);
 }
 
 DEF_GRAPH_BUTTON( bLeft,

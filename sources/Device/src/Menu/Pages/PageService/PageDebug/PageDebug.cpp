@@ -197,7 +197,7 @@ static void OnPress_SerialNumber_Change()
 
 static void Draw_SerialNumber_Change(int x, int y)
 {
-    Char(SymbolUGO2::TAB).Draw4SymbolsInRect(x + 2, y + 2);
+    Char(SymbolUGO2::TAB, TypeFont::UGO, 4).Draw(x + 2, y + 2);
 }
 
 DEF_GRAPH_BUTTON( bSerialNumber_Change,                                                                                                                    //--- ОТЛАДКА - С/Н - Вставить ---
@@ -213,7 +213,7 @@ static void OnPress_SerialNumber_Save()
 
 static void Draw_SerialNumber_Save(int x, int y)
 {
-    Char(SymbolUGO2::SAVE_TO_MEM).Draw4SymbolsInRect(x + 2, y + 1);
+    Char(SymbolUGO2::SAVE_TO_MEM, TypeFont::UGO, 4).Draw(x + 2, y + 1);
 }
 
 DEF_GRAPH_BUTTON( bSerialNumber_Save,                                                                                                                     //--- ОТЛАДКА - С/Н - Сохранить ---

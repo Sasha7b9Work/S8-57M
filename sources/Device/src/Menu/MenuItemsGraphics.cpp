@@ -164,7 +164,7 @@ void Governor::DrawLowPart(int x, int y) const
 
         if (IsCurrentItem())
         {
-            Char(GetSymbol()).Draw4SymbolsInRect(x + Width() - 12, y - 1, Color::BACK);
+            Char(GetSymbol(), TypeFont::UGO, 4).Draw(x + Width() - 12, y - 1, Color::BACK);
         }
     
         x = Char(Symbol8::GOVERNOR_LEFT).Draw(x + 4, y, colorTextDown);

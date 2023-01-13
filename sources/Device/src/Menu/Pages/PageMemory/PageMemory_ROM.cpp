@@ -32,7 +32,7 @@ namespace PageMemory
 
     static void Draw_Next(int x, int y)
     {
-        Char(SymbolUGO2::ARROW_RIGHT).Draw4SymbolsInRect(x + 2, y + 2);
+        Char(SymbolUGO2::ARROW_RIGHT, TypeFont::UGO, 4).Draw(x + 2, y + 2);
     }
 }
 
@@ -54,7 +54,7 @@ namespace PageMemory
 
     static void Draw_Prev(int x, int y)
     {
-        Char(SymbolUGO2::ARROW_LEFT).Draw4SymbolsInRect(x + 2, y + 2);
+        Char(SymbolUGO2::ARROW_LEFT, TypeFont::UGO, 4).Draw(x + 2, y + 2);
     }
 }
 
@@ -83,7 +83,7 @@ namespace PageMemory
 
     static void Draw_Delete(int x, int y)
     {
-        Char(SymbolUGO2::DELETE).Draw4SymbolsInRect(x + 2, y + 1);
+        Char(SymbolUGO2::DELETE, TypeFont::UGO, 4).Draw(x + 2, y + 1);
     }
 }
 
@@ -115,7 +115,7 @@ static void OnPress_Save()
 
 static void Draw_SaveToMemory(int x, int y)
 {
-    Char(SymbolUGO2::SAVE_TO_MEM).Draw4SymbolsInRect(x + 2, y + 1);
+    Char(SymbolUGO2::SAVE_TO_MEM, TypeFont::UGO, 4).Draw(x + 2, y + 1);
 }
 
 DEF_GRAPH_BUTTON                                                                                                                             //--- ПАМЯТЬ - ВНУТР ЗУ - Сохранить в памяти ---

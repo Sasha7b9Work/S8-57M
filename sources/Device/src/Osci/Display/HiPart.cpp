@@ -340,7 +340,7 @@ void DisplayOsci::HiPart::DrawRightPart(int x0, int y0)
         switch (OsciStateWork::Current())
         {
         case OsciStateWork::Stopped:    Region(20, 20).Fill(x + 3, y + 3);              break;
-        case OsciStateWork::Triggered:  Char(Symbol8::PLAY).Draw4SymbolsInRect(x, y);   break;
+        case OsciStateWork::Triggered:  Char(Symbol8::PLAY, TypeFont::UGO, 4).Draw(x, y);   break;
         case OsciStateWork::Awaiting:   Region(4, 10).Fill(x + 3, y + 3);
                                         Region(4, 10).Fill(x + 10, y + 3);              break;
         }
