@@ -1390,11 +1390,6 @@
               <FilePath>..\common\Display\Font\fontUGO.inc</FilePath>
             </File>
             <File>
-              <FileName>fontUGO2.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\fontUGO2.inc</FilePath>
-            </File>
-            <File>
               <FileName>Font.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Display\Font\Font.cpp</FilePath>
@@ -1418,6 +1413,16 @@
               <FileName>Symbols.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\Symbols.h</FilePath>
+            </File>
+            <File>
+              <FileName>Symbols.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\Font\Symbols.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FontUGO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\FontUGO.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3767,11 +3772,6 @@
               <FilePath>..\common\Display\Font\fontUGO.inc</FilePath>
             </File>
             <File>
-              <FileName>fontUGO2.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\fontUGO2.inc</FilePath>
-            </File>
-            <File>
               <FileName>Font.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Display\Font\Font.cpp</FilePath>
@@ -3795,6 +3795,16 @@
               <FileName>Symbols.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\Symbols.h</FilePath>
+            </File>
+            <File>
+              <FileName>Symbols.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\Font\Symbols.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FontUGO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\FontUGO.h</FilePath>
             </File>
           </Files>
         </Group>

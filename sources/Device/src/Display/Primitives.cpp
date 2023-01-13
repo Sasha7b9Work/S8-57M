@@ -6,13 +6,6 @@
 #include <cstring>
 
 
-const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
-{
-    {'\x01', 1},    // RSHIFT_NORMAL
-    {'\x02', 1}     // TRIGLEV_NORMAL
-};
-
-
 Circle::Circle(int r) : radius(r)
 {
 }
@@ -100,15 +93,13 @@ int Char::Draw(int x, int y, Color color)
 
     int result = 0;
 
+    Font::Set(font);
+
     if (num_symbols == 1)
     {
-        Font::Set(font);
-
         String("%c", ch).Draw(x, y);
 
         result = x + Symbol(ch).Width() + 1;
-
-        Font::Pop();
     }
     else if (num_symbols == 2)
     {
@@ -116,12 +107,14 @@ int Char::Draw(int x, int y, Color color)
     }
     else if(num_symbols == 4)
     {
-//        Draw4SymbolsInRect(x, y, color);
+        Draw4SymbolsInRect(x, y);
     }
     else if (num_symbols == 10)
     {
 //        Draw10SymbolsInRect(x, y, color);
     }
+
+    Font::Pop();
 
     return result;
 }
@@ -135,29 +128,25 @@ void Char::Draw2SymbolsInRect(int x, int y)
 
 void Char::Draw4SymbolsInRect(int x, int y)
 {
-    Font::Set(font);
+    char symbol = ch;
 
-    for (char i = 0; i < 2; i++)
+    for (int i = 0; i < 2; i++)
     {
-        String("%c", ch + i).Draw(x + 16 * i, y);
-        String("%c", ch + i + 16).Draw(x + 16 * i, y + 16);
+        for (int j = 0; j < 2; j++)
+        {
+            String("%c", symbol++).Draw(x + i * 16, y + j * 16);
+        }
     }
-
-    Font::Pop();
 }
 
 
 void Char::Draw10SymbolsInRect(int x, int y)
 {
-    Font::Set(font);
-
     for (char i = 0; i < 5; i++)
     {
         String("%c", ch + i).Draw(x + 8 * i, y);
         String("%c", ch + i + 16).Draw(x + 8 * i, y + 8);
     }
-
-    Font::Pop();
 }
 
 

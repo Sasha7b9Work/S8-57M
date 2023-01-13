@@ -32,7 +32,6 @@ struct Symbol8
         GOVERNOR_SHIFT_2    = '\x8c',  // Символ регулятора
         GOVERNOR_SHIFT_0    = '\xaa',  // Символ регулятора
         GOVERNOR_SHIFT_1    = '\xac',  // Символ регулятора
-        PLAY                = '\xae',  // Символ работы справа вверху экрана
         ARROW_UP            = '\xb9',
         ARROW_DOWN          = '\x9d'
     };
@@ -98,6 +97,7 @@ public:
     {
         RSHIFT_NORMAL,      // Символ смещения по напряжению нормальный
         TRIGLEV_NORMAL,     // Символ уровень синхронизации нормальный
+        PLAY,               // Символ работы справа вверху экрана
         Count
     };
 
