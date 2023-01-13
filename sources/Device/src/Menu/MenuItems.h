@@ -369,8 +369,8 @@ private:
 // Choice ///
 struct DataChoice
 {
-    int8 *cell;
-    pString *names;          // Варианты выбора.
+    int8           *cell;
+    pString        *names;          // Варианты выбора.
     pFuncVB         handlerChange;  // Функция должна вызываться после изменения значения элемента.
     pFuncAfterDraw  funcAfterDraw;  // Функция вызывается после отрисовки элемента. 
 };

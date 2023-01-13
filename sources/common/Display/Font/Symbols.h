@@ -100,6 +100,7 @@ public:
         START_MODE_AUTO,
         START_MODE_HAND,
         START_MODE_SINGLE,
+        TPOS,
         Count
     };
 

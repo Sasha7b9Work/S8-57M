@@ -265,11 +265,11 @@ void Choice::DrawClosed() const
 
             Text(deltaY > 0 ? NameNextSubItem() : NamePrevSubItem()).DrawWithLimitation(x, y, X(), Y() + 11, Item::Width(), Value::HEIGHT - 1);
         }
-
-        OwnData()->funcAfterDraw(X(), Y());
     }
 
     DrawCommonHiPart();
+
+    OwnData()->funcAfterDraw(X(), Y());
 }
 
 

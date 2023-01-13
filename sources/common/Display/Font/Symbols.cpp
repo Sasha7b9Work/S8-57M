@@ -24,7 +24,8 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {28, 2},    // FILTR_FULL
     {30, 1},    // START_MODE_AUTO
     {31, 1},    // START_MODE_HAND
-    {32, 1}     // START_MODE_SINGLE
+    {32, 1},    // START_MODE_SINGLE
+    {33, 1}     // TPOS
 };
 
 

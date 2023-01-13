@@ -138,14 +138,21 @@ void PageTime::OnChanged_TPos(bool active)
     TShift::Set(S_TIME_SHIFT);
 }
 
+
+static void FuncDraw_TPos(int x, int y)
+{
+    SymbolUGO(SymbolUGO::TPOS).Draw(x + 55, y + 5, Item::empty.ColorTitleText());
+}
+
+
 DEF_CHOICE_3( cTPos,                                                                                                                                                 //--- РАЗВЕРТКА - То ---
-    "\x7b",
+    "",
     "Задаёт точку привязки нулевого смещения по времени к экрану - левый край, центр, правый край."
     ,
     "Лево",
     "Центр",
     "Право",
-    S_TPOS, &PageTime::self, Item::Active, PageTime::OnChanged_TPos, Choice::AfterDraw
+    S_TPOS, &PageTime::self, Item::Active, PageTime::OnChanged_TPos, FuncDraw_TPos
 )
 
 
