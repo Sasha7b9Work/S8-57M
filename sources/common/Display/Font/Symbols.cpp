@@ -16,7 +16,12 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {12, 1},    // GOVERNOR_RIGHT
     {19, 1},    // COUPLE_GND
     {20, 1},    // COUPLE_AC
-    {21, 1}     // COUPLE_DC
+    {21, 1},    // COUPLE_DC
+    {22, 1},    // FRONT_FALL
+    {23, 1},    // FRONT_RISE
+    {24, 2},    // FILTR_HI,
+    {26, 2},    // FILTR_LOW,
+    {28, 2}     // FILTR_FULL,
 };
 
 
@@ -42,11 +47,11 @@ int Char::Draw(int x, int y, Color color) const
     }
     else if (num_symbols == 2)
     {
-        //        Draw2SymbolsInRect(x, y, color);
+        Draw2Symbols(x, y);
     }
     else if (num_symbols == 4)
     {
-        Draw4SymbolsInRect(x, y);
+        Draw4Symbols(x, y);
     }
     else if (num_symbols == 10)
     {
@@ -59,27 +64,36 @@ int Char::Draw(int x, int y, Color color) const
 }
 
 
-void Char::Draw2SymbolsInRect(int x, int y) const
+void Char::Draw2Symbols(int x, int y) const
 {
+    char symbol = ch;
 
+    int width = Symbol(symbol).Width();
+
+    for (int i = 0; i < 2; i++)
+    {
+        String("%c", symbol++).Draw(x + i * width, y);
+    }
 }
 
 
-void Char::Draw4SymbolsInRect(int x, int y) const
+void Char::Draw4Symbols(int x, int y) const
 {
     char symbol = ch;
+
+    int width = Symbol(symbol).Width();
 
     for (int j = 0; j < 2; j++)
     {
         for (int i = 0; i < 2; i++)
         {
-            String("%c", symbol++).Draw(x + i * 16, y + j * 16);
+            String("%c", symbol++).Draw(x + i * width, y + j * width);
         }
     }
 }
 
 
-void Char::Draw10SymbolsInRect(int x, int y) const
+void Char::Draw10Symbols(int x, int y) const
 {
     for (char i = 0; i < 5; i++)
     {

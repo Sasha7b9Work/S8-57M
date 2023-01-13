@@ -145,15 +145,24 @@ int DisplayOsci::HiPart::DrawMainParameters(int _x, int _y)
         String(":").Draw(x + 25, y1);
         couple[S_TRIG_INPUT].Draw(x + 30, y1);
 
-//        static const pString polar[] =  { "\xa7", "\xa6" };
-//
-//        String("\xa5\x10%s\x10\xa5\x10%s\x10\xa5\x10", couple[S_TRIG_INPUT], polar[S_TRIG_POLARITY]).Draw(x + 30, y1);
-//
-//        static const pString filtr[] = { "\xb5\xb6", "\xb3\xb4", "\xb1\xb2" };
-//
-//        int x1 = x + 85;
-//        Char(filtr[S_TRIG_INPUT][0]).Draw(x1, y1);
-//        Char(filtr[S_TRIG_INPUT][1]).Draw(x1 + 16, y1);
+        static const SymbolUGO polar[] =
+        {
+            SymbolUGO(SymbolUGO::FRONT_RISE),
+            SymbolUGO(SymbolUGO::FRONT_FALL)
+        };
+
+        String(":").Draw(x + 50, y1);
+        polar[S_TRIG_POLARITY].Draw(x + 55, y1);
+
+        static const SymbolUGO filtr[] =
+        {
+            SymbolUGO(SymbolUGO::FILTR_FULL),
+            SymbolUGO(SymbolUGO::FILTR_LOW),
+            SymbolUGO(SymbolUGO::FILTR_HI)
+        };
+
+        String(":").Draw(x + 75, y1);
+        filtr[S_TRIG_INPUT].Draw(x + 80, y1);
     }
 
 //    if (S_MEM_MODE_WORK_IS_DIR)

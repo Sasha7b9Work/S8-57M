@@ -69,9 +69,9 @@ protected:
     const TypeFont::E font;
     const int num_symbols;        // Может быть 1, 2, 4 или 10
 private:
-    void Draw2SymbolsInRect(int x, int y) const;
-    void Draw4SymbolsInRect(int x, int y) const;
-    void Draw10SymbolsInRect(int x, int y) const;
+    void Draw2Symbols(int x, int y) const;
+    void Draw4Symbols(int x, int y) const;
+    void Draw10Symbols(int x, int y) const;
 };
 
 
@@ -92,6 +92,11 @@ public:
         COUPLE_GND,
         COUPLE_AC,
         COUPLE_DC,
+        FRONT_FALL,
+        FRONT_RISE,
+        FILTR_HI,
+        FILTR_LOW,
+        FILTR_FULL,
         Count
     };
 
