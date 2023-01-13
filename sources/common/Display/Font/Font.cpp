@@ -139,8 +139,8 @@ int Font::Height()
     {
         14,
         20,
-        10,
-        10
+        16,
+        16
     };
 
     return h[currentFont];

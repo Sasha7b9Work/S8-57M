@@ -601,6 +601,15 @@ bool PDecoder::DrawText(uint8 data)
         buffer = new char[(uint)(numSymbols + 1)];
         break;
     default:
+
+        if (step == 5)
+        {
+            if (data == 1)
+            {
+                data = data;
+            }
+        }
+
         buffer[readingSymbols++] = (char)(data);
         if (readingSymbols == numSymbols)
         {

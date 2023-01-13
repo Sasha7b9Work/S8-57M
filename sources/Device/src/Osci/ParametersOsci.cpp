@@ -824,6 +824,6 @@ void TShift::DrawLeft()
 
 void TShift::DrawRight()
 {
-    Char(SymbolUGO::RSHIFT_NORMAL).Draw(Grid::Right() - 7, Grid::Top(), Color::BACK);
+    SymbolUGO(SymbolUGO::RSHIFT_NORMAL).Draw(Grid::Right() - 7, Grid::Top(), Color::BACK);
     Char(Symbol8::TSHIFT_RIGHT).Draw(Grid::Right() - 7, Grid::Top(), Color::FILL);
 }
