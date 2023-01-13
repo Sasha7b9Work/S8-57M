@@ -299,8 +299,12 @@ void DisplayOsci::HiPart::DrawFrequency(int x, int y)
 {
     if (S_MEM_MODE_WORK_IS_DIR)
     {
-        char mesFreq[20] = "\x7c=";
+        SymbolUGO(SymbolUGO::F_T).Draw(x, y, Color::FILL);
+
+        char mesFreq[20] = "=";
+
         float freq = FreqMeter::GetFrequency();
+
         if (freq == -1.0F) //-V550 //-V2550
         {
             std::strcat(mesFreq, "******");
@@ -310,7 +314,7 @@ void DisplayOsci::HiPart::DrawFrequency(int x, int y)
             std::strcat(mesFreq, Frequency(freq).ToString().c_str());
         }
 
-        String(mesFreq).Draw(x, y, Color::FILL); //-V2007
+        String(mesFreq).Draw(x + 15, y, Color::FILL); //-V2007
     }
 }
 

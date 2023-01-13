@@ -101,6 +101,7 @@ public:
         START_MODE_HAND,
         START_MODE_SINGLE,
         TPOS,
+        F_T,
         Count
     };
 
