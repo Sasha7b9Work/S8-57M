@@ -36,7 +36,7 @@ struct TypeFont
 {
     enum E
     {
-        _5,
+        Small,
         _8,
         _UGO,
         _UGO2,

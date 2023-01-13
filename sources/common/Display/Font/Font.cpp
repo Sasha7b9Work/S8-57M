@@ -76,7 +76,7 @@ void Font::Set(const TypeFont::E typeFont)
     {
         switch (typeFont)
         {
-        case TypeFont::_5:
+        case TypeFont::Small:
 #ifndef LOADER
             font = font5;
 #endif

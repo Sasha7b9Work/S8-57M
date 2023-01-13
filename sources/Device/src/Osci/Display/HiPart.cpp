@@ -158,7 +158,7 @@ int DisplayOsci::HiPart::DrawMainParameters(int _x, int _y)
         String("\xa5\x10%c", mode[S_TRIG_START_MODE]).Draw(x + 125, y1);
     }
 
-    Font::Set(TypeFont::_5);
+    Font::Set(TypeFont::Small);
 
     x += 165;
 

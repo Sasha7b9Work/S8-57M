@@ -51,7 +51,7 @@ void Console::Draw()
 
     inProcessDraw = true;
 
-    Font::Set(TypeFont::_5);
+    Font::Set(TypeFont::Small);
 
     int y = 70;
     int h = 10;

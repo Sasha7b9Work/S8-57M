@@ -135,7 +135,7 @@ void Governor::DrawValue(int x, int y) const
         value = -value;
     }
     
-    Font::Set(TypeFont::_5);
+    Font::Set(TypeFont::Small);
     bool sign = (OwnData()->min < 0);
     
     Integer(OwnData()->max).ToString(sign, 1).Draw(x + 50, y - 5, Color::WHITE);
