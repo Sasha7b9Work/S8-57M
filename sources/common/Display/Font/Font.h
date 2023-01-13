@@ -38,7 +38,7 @@ struct TypeFont
     {
         Small,
         Normal,
-        UGO,
+        Diagram,
         _UGO2,
         Count,
         None

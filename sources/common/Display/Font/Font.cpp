@@ -84,7 +84,7 @@ void Font::Set(const TypeFont::E typeFont)
         case TypeFont::Normal:
             font = font8;
             break;
-        case TypeFont::UGO:
+        case TypeFont::Diagram:
 #ifndef LOADER
             font = &fontUGO;
 #endif
