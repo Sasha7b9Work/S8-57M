@@ -88,7 +88,7 @@ Char::Char(SymbolUGO::E _ch) : ch((char)(_ch)), font(TypeFont::Diagram)
 }
 
 
-Char::Char(SymbolUGO2::E _ch) : ch((char)(_ch)), font(TypeFont::_UGO2)
+Char::Char(SymbolUGO2::E _ch) : ch((char)(_ch)), font(TypeFont::UGO)
 {
 
 }

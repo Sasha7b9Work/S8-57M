@@ -89,7 +89,7 @@ void Font::Set(const TypeFont::E typeFont)
             font = &fontUGO;
 #endif
             break;
-        case TypeFont::_UGO2:
+        case TypeFont::UGO:
 #ifndef LOADER
             font = &fontUGO2;
 #endif

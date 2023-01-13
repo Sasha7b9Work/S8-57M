@@ -38,8 +38,8 @@ struct TypeFont
     {
         Small,
         Normal,
-        Diagram,
-        _UGO2,
+        Diagram,    // Диаграммы на странице выбора автоматических измерений
+        UGO,        // Всякие значки
         Count,
         None
     } value;

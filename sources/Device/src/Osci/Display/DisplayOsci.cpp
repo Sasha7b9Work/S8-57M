@@ -102,7 +102,7 @@ void DisplayOsci::BottomPart::Draw(int x0, int y0, int field)
 
     VLine(36).Draw(x0, y0 + 1, Color::FILL);
 
-    Font::Set(TypeFont::_UGO2);
+    Font::Set(TypeFont::UGO);
 
     // Флешка
     if (FDrive::IsConnected())
