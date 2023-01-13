@@ -95,15 +95,38 @@ Char::Char(char _ch, TypeFont::E type, int num) : ch(_ch), font(type), num_symbo
 
 int Char::Draw(int x, int y, Color color)
 {
-    Font::Set(font);
+    int result = 0;
 
-	String("%c", ch).Draw(x, y, color);
+    if (num_symbols == 1)
+    {
+        Font::Set(font);
 
-    int result = x + Symbol(ch).Width() + 1;
+        String("%c", ch).Draw(x, y, color);
 
-    Font::Pop();
+        result = x + Symbol(ch).Width() + 1;
+
+        Font::Pop();
+    }
+    else if (num_symbols == 2)
+    {
+        Draw2SymbolsInRect(x, y, color);
+    }
+    else if(num_symbols == 4)
+    {
+        Draw4SymbolsInRect(x, y, color);
+    }
+    else if (num_symbols == 10)
+    {
+        Draw10SymbolsInRect(x, y, color);
+    }
 
     return result;
+}
+
+
+void Char::Draw2SymbolsInRect(int x, int y, Color color)
+{
+
 }
 
 

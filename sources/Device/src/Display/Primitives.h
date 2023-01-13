@@ -85,11 +85,13 @@ public:
     explicit Char(char ch, TypeFont::E font = TypeFont::Normal, int num = 1);
     int Draw(int x, int y, Color color = Color::Count);
     void Draw4SymbolsInRect(int x, int y, Color color = Color::Count);
-    void Draw10SymbolsInRect(int x, int y, Color color = Color::Count);
 protected:
     const char ch;
     const TypeFont::E font;
     const int num_symbols;        // Может быть 1, 2, 4 или 10
+private:
+    void Draw2SymbolsInRect(int x, int y, Color color = Color::Count);
+    void Draw10SymbolsInRect(int x, int y, Color color = Color::Count);
 };
 
 
