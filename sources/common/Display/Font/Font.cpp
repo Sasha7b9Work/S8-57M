@@ -28,8 +28,8 @@ static const Font *font = font8;
     const Font *Font::fonts[TypeFont::Count] = { font5, font8, &fontUGO, &fontUGO2 };
 #endif
 
-static TypeFont::E pushedFont = TypeFont::_8;
-static TypeFont::E currentFont = TypeFont::_8;
+static TypeFont::E pushedFont = TypeFont::Normal;
+static TypeFont::E currentFont = TypeFont::Normal;
 
 static int spacing = 1;
 
@@ -81,7 +81,7 @@ void Font::Set(const TypeFont::E typeFont)
             font = font5;
 #endif
             break;
-        case TypeFont::_8:
+        case TypeFont::Normal:
             font = font8;
             break;
         case TypeFont::_UGO:

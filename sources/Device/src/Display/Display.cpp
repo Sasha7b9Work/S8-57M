@@ -88,7 +88,7 @@ void Display::Update()
 
     Color::ChangeFlash(false);
 
-    Font::Set(TypeFont::_8);
+    Font::Set(TypeFont::Normal);
 
     inStateDraw = true;
 

@@ -115,5 +115,5 @@ void PageChoiceMeasures::Draw()
         }
     }
 
-    Font::Set(TypeFont::_8);
+    Font::Set(TypeFont::Normal);
 }

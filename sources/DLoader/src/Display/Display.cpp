@@ -76,7 +76,7 @@ void Display::Init()
 
     Painter::BeginScene(Color::BACK);
 
-    Font::Set(TypeFont::_8);
+    Font::Set(TypeFont::Normal);
     Font::SetSpacing(3);
 
     int x0 = 85;
@@ -94,7 +94,7 @@ void Display::Init()
 
     Painter::EndScene();
 
-    Font::Set(TypeFont::_8);
+    Font::Set(TypeFont::Normal);
     Font::SetSpacing(1);
 }
 

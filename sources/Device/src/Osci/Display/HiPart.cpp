@@ -71,7 +71,7 @@ void DisplayOsci::HiPart::Draw(int field)
 
     x = DrawMainParameters(x, Y0 + 1); //-V2007
 
-    Font::Set(TypeFont::_8);
+    Font::Set(TypeFont::Normal);
 
     DrawFrequency(x + 3, Y0 + 1);
 

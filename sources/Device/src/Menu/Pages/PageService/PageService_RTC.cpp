@@ -168,7 +168,7 @@ static void DrawField(int numField)
 
 static void DrawTime()
 {
-    Font::Set(TypeFont::_8);
+    Font::Set(TypeFont::Normal);
     int spacing = Font::GetSpacing();
     Font::SetSpacing(5);
     
@@ -177,7 +177,7 @@ static void DrawTime()
         DrawField(i);
     }
     
-    Font::Set(TypeFont::_8);
+    Font::Set(TypeFont::Normal);
     Font::SetSpacing(spacing);
 }
 

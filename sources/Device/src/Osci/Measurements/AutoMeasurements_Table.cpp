@@ -23,7 +23,7 @@ void TableMeasures::Draw()
         return;
     }
 
-    Font::Set(TypeFont::_8);
+    Font::Set(TypeFont::Normal);
 
     top = Grid::Bottom();
 

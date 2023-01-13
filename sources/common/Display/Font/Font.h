@@ -37,7 +37,7 @@ struct TypeFont
     enum E
     {
         Small,
-        _8,
+        Normal,
         _UGO,
         _UGO2,
         Count,

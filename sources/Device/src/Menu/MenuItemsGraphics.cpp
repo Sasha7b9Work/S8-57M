@@ -141,7 +141,7 @@ void Governor::DrawValue(int x, int y) const
     Integer(OwnData()->max).ToString(sign, 1).Draw(x + 50, y - 5, Color::WHITE);
     Integer(OwnData()->min).ToString(sign, 1).Draw(x + 50, y + 1);
     
-    Font::Set(TypeFont::_8);
+    Font::Set(TypeFont::Normal);
 
     DrawValueWithSelectedPosition(x + 3, y, value, NumDigits(), currentDigit, true);
 

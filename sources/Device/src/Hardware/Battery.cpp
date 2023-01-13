@@ -135,7 +135,7 @@ void Battery::Draw(int x, int y)
 
     if(S_DBG_SHOW_BATTERY)
     {
-        Font::Set(TypeFont::_8);
+        Font::Set(TypeFont::Normal);
 
         Text(String("%4.2f Â", akk)).Draw(x + 10, y, Color::FILL);
         Text(String("%4.1f %%", percents)).Draw(x + 10, y + 9);

@@ -66,7 +66,7 @@ private:
 class Char
 {
 public:
-    explicit Char(char ch, TypeFont::E font = TypeFont::_8);
+    explicit Char(char ch, TypeFont::E font = TypeFont::Normal);
     int Draw(int x, int y, Color color = Color::Count);
     void Draw4SymbolsInRect(int x, int y, Color color = Color::Count);
     void Draw10SymbolsInRect(int x, int y, Color color = Color::Count);

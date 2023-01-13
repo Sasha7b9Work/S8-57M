@@ -59,7 +59,7 @@ void DisplayFreqMeter::Update()
         SCPI::Sender::freqMeter = false;
     }
 
-    Font::Set(TypeFont::_8);
+    Font::Set(TypeFont::Normal);
     int spacing = Font::GetSpacing();
     Font::SetSpacing(1);
 

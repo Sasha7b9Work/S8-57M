@@ -64,7 +64,7 @@ void Console::Draw()
         y += h;
     }
 
-    Font::Set(TypeFont::_8);
+    Font::Set(TypeFont::Normal);
 
     inProcessDraw = false;
 }
