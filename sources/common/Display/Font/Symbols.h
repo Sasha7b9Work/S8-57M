@@ -1,5 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "common/Display/Font/Font.h"
 
 
 struct Symbol5
@@ -71,4 +72,44 @@ struct SymbolUGO2
         TRIANGLE_RIGHT  = '\x8e',   // Стрелка треугольником вправо
         SELECT          = '\xa0'    // Символ выбора
     };
+};
+
+
+class Char
+{
+public:
+    explicit Char(char ch, TypeFont::E font = TypeFont::Normal, int num = 1);
+    int Draw(int x, int y, Color color = Color::Count);
+protected:
+    const char ch;
+    const TypeFont::E font;
+    const int num_symbols;        // Может быть 1, 2, 4 или 10
+private:
+    void Draw2SymbolsInRect(int x, int y);
+    void Draw4SymbolsInRect(int x, int y);
+    void Draw10SymbolsInRect(int x, int y);
+};
+
+
+class SymbolUGO : public Char
+{
+public:
+    enum E
+    {
+        RSHIFT_NORMAL,      // Символ смещения по напряжению нормальный
+        TRIGLEV_NORMAL,     // Символ уровень синхронизации нормальный
+        Count
+    };
+
+    SymbolUGO(E);
+
+private:
+
+    struct SymbolStruct
+    {
+        char code;
+        int num_symbols;
+    };
+
+    static const SymbolStruct desc[Count];
 };
