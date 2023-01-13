@@ -17,8 +17,6 @@ struct Symbol8
 {
     enum E
     {
-        GOVERNOR_LEFT       = '\x80',
-        GOVERNOR_RIGHT      = '\x81',
         TSHIFT_NORMAL       = '\x84',  // Изображение смещения по времени
         TSHIFT_NORMAL_BACK  = '\x85',  // Фон для изображения смещения по времени
         TSHIFT_LEFT         = '\x86',  // Изображение смещения по времени при переходе за левую границу экрана
@@ -98,6 +96,8 @@ public:
         GOVERNOR_SHIFT_1,
         GOVERNOR_SHIFT_2,
         GOVERNOR_SHIFT_3,
+        GOVERNOR_LEFT,
+        GOVERNOR_RIGHT,
         Count
     };
 

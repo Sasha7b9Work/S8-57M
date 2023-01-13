@@ -11,7 +11,9 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     { 7, 1},    // GOVERNOR_SHIFT_0
     { 8, 1},    // GOVERNOR_SHIFT_1
     { 9, 1},    // GOVERNOR_SHIFT_2
-    {10, 1}     // GOVERNOR_SHIFT_3
+    {10, 1},    // GOVERNOR_SHIFT_3
+    {11, 1},    // GOVERNOR_LEFT
+    {12, 1}     // GOVERNOR_RIGHT
 };
 
 

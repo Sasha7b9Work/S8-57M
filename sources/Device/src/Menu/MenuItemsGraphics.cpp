@@ -40,7 +40,7 @@ void GovernorColor::DrawOpened(int x, int y) const
     Rectangle(width, height).Draw(x, y, ColorFrame());
     Region(width - 2, height / 2 - 2).Fill(x + 1, y + 1, OwnData()->ct->color);
     HLine(width).Draw(x, y + Height() / 2 + 2, ColorFrame());
-    Text(Title().c_str()).DrawInCenterRect(x +  1, y - 1, width, Height() / 2 + 2, ColorTitleText());
+    Text(Title().c_str()).DrawInCenterRect(x + 1, y - 1, width, Height() / 2 + 2, ColorTitleText());
     DrawValue(x + 1, y + 14);
 }
 
@@ -58,7 +58,7 @@ void GovernorColor::DrawValue(int x, int y) const
     ColorType *ct = OwnData()->ct;
 
     int8 field = ct->currentField;
-    const pString texts[4] = {"ßð", "Ñí", "Çë", "Êð"};
+    const pString texts[4] = { "ßð", "Ñí", "Çë", "Êð" };
 
     uint color = COLOR(ct->color.value);
     uint red = R_FROM_COLOR(color);
@@ -126,21 +126,21 @@ void Governor::DrawClosed() const
 void Governor::DrawValue(int x, int y) const
 {
     int signGovernor = (GetValue() < 0) ? -1 : 1;
-    
+
     int value = GetValue();
-    
-    
+
+
     if (signGovernor == -1)
     {
         value = -value;
     }
-    
+
     Font::Set(TypeFont::Small);
     bool sign = (OwnData()->min < 0);
-    
+
     Integer(OwnData()->max).ToString(sign, 1).Draw(x + 50, y - 5, Color::WHITE);
     Integer(OwnData()->min).ToString(sign, 1).Draw(x + 50, y + 1);
-    
+
     Font::Set(TypeFont::Normal);
 
     DrawValueWithSelectedPosition(x + 3, y, value, NumDigits(), currentDigit, true);
@@ -166,9 +166,9 @@ void Governor::DrawLowPart(int x, int y) const
         {
             GetSymbol().Draw(x + Width() - 12, y - 1, Color::BACK);
         }
-    
-        x = Char(Symbol8::GOVERNOR_LEFT).Draw(x + 4, y, colorTextDown);
-        
+
+        x = SymbolUGO(SymbolUGO::GOVERNOR_LEFT).Draw(x + 4, y, colorTextDown);
+
         int delta = (int)(Step());
         if (delta == 0)
         {
@@ -193,8 +193,8 @@ void Governor::DrawLowPart(int x, int y) const
                 Text(Integer(PrevValue()).ToString(false, 1)).DrawWithLimitation(drawX, y - 10 - delta, limX, limY, limWidth, limHeight);
             }
         }
-        
-        Char(Symbol8::GOVERNOR_RIGHT).Draw(x + 1, y, colorTextDown);
+
+        SymbolUGO(SymbolUGO::GOVERNOR_RIGHT).Draw(x + 1, y, colorTextDown);
     }
     else
     {
@@ -221,7 +221,7 @@ void Choice::Draw(bool opened) const
 void Choice::DrawOpened() const
 {
     int height = HeightOpened();
-    
+
     Rectangle(Width() - 1, height - 1).Draw(X(), Y(true) + 1, ColorFrame());
     DrawCommonHiPart();
 
@@ -296,7 +296,7 @@ void GraphButton::Draw(bool) const
 
 void Page::Draw(bool opened) const
 {
-    if(opened)
+    if (opened)
     {
         OwnData()->funcBeforeDraw();
 
@@ -410,26 +410,26 @@ void Item::DrawCommonHiPart() const
 void Governor::DrawValueWithSelectedPosition(int x, int y, int value, int numDigits, int selPosFromEnd, bool) const
 {
     Stack<uint8> stack(numDigits);
-    
-    for(int i = 0; i < numDigits; i++)
+
+    for (int i = 0; i < numDigits; i++)
     {
         stack.Push((uint8)(value % 10));
         value /= 10;
     }
-    
+
     int height = 8;
-    
+
     for (int i = 0; i < numDigits; i++)
     {
-        if (selPosFromEnd == ((int)(numDigits) - (int)(i) - 1))
+        if (selPosFromEnd == ((int)(numDigits)-(int)(i)-1))
         {
             Region(5, height).Fill(x - 1, y, Color::FILL);
         }
-        
+
         uint8 val = stack.Pop();
-        
+
         Char((char)(val + 48)).Draw(x, y, Color::BACK);
-        
+
         x += 6;
     }
 }
