@@ -198,9 +198,6 @@ void DisplayOsci::HiPart::WriteTextVoltage(Chan::E ch, int x, int y)
         Region(91, 8).Fill(x, y, color);
     }
 
-    x += 50;
-    y += 50;
-
     String((ch == ChanA) ? "1ê" : "2ê").Draw(x + 1, y, colorDraw);
     String(":").Draw(x + 18, y);
     ModeCouple::UGO(S_MODE_COUPLE(ch)).Draw(x + 23, y);

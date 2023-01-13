@@ -285,7 +285,7 @@ static char *VoltageToString(float voltage, bool alwaysSign, char buffer[20])
 
     static const pString suf[4] =
     {
-        "\x10ìêÂ", "\x10ìÂ", "\x10Â", "\x10êÂ"
+        "ìêÂ", "ìÂ", "Â", "êÂ"
     };
 
     static const float factor[4] = { 1e6F, 1e3F, 1.0F, 1e-3F };
