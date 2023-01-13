@@ -4,6 +4,7 @@
 #include "Display/Colors.h"
 #include "Utils/String.h"
 #include "MenuItemsDefs.h"
+#include "common/Display/Font/Symbols.h"
 
 
 class Page;
@@ -329,7 +330,7 @@ public:
     void DrawValue(int x, int y) const;
 
     // ¬озвращает символ ручки, соответствующий текущему значению
-    char GetSymbol() const;
+    SymbolUGO GetSymbol() const;
 
     // ¬озвращает значение, установленное в регул€торе
     int16 GetValue() const;
@@ -406,7 +407,7 @@ public:
     // ¬озвращает им€ варианта выбора элемента choice в позиции i как оно записано в исходном коде программы
     String NameSubItem(int i) const;
 
-    char GetSymbol();
+    SymbolUGO GetSymbol();
 
     virtual void Draw(bool opened) const;
 

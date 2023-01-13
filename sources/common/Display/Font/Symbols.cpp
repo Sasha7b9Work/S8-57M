@@ -5,9 +5,13 @@
 
 const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
 {
-    {'\x01', 1},    // RSHIFT_NORMAL
-    {'\x02', 1},    // TRIGLEV_NORMAL
-    {'\x03', 4}     // PLAY
+    { 1, 1},    // RSHIFT_NORMAL
+    { 2, 1},    // TRIGLEV_NORMAL
+    { 3, 4},    // PLAY
+    { 7, 1},    // GOVERNOR_SHIFT_0
+    { 8, 1},    // GOVERNOR_SHIFT_1
+    { 9, 1},    // GOVERNOR_SHIFT_2
+    {10, 1}     // GOVERNOR_SHIFT_3
 };
 
 
@@ -60,9 +64,9 @@ void Char::Draw4SymbolsInRect(int x, int y)
 {
     char symbol = ch;
 
-    for (int i = 0; i < 2; i++)
+    for (int j = 0; j < 2; j++)
     {
-        for (int j = 0; j < 2; j++)
+        for (int i = 0; i < 2; i++)
         {
             String("%c", symbol++).Draw(x + i * 16, y + j * 16);
         }

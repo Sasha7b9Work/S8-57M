@@ -650,21 +650,24 @@ void Governor::SetValue(int16 v) const
 }
 
 
-char Governor::GetSymbol() const
+SymbolUGO Governor::GetSymbol() const
 {
-    static const char chars[] =
+    static const SymbolUGO symbols[] =
     {
-        Symbol8::GOVERNOR_SHIFT_0,
-        Symbol8::GOVERNOR_SHIFT_1,
-        Symbol8::GOVERNOR_SHIFT_2,
-        Symbol8::GOVERNOR_SHIFT_3
+        SymbolUGO(SymbolUGO::GOVERNOR_SHIFT_0),
+        SymbolUGO(SymbolUGO::GOVERNOR_SHIFT_1),
+        SymbolUGO(SymbolUGO::GOVERNOR_SHIFT_2),
+        SymbolUGO(SymbolUGO::GOVERNOR_SHIFT_3)
     };
+
     int value = GetValue();
+
     while (value < 0)
     {
         value += 4;
     }
-    return chars[value % 4];
+
+    return symbols[value % 4];
 }
 
 
@@ -790,7 +793,7 @@ void Choice::StartChange(int delta) const
 }
 
 
-char Choice::GetSymbol()
+SymbolUGO Choice::GetSymbol()
 {
     return ((Governor*)this)->GetSymbol();   //-V1027
 }

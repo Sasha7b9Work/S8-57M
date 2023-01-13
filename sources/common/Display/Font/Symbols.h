@@ -17,7 +17,6 @@ struct Symbol8
 {
     enum E
     {
-        GOVERNOR_SHIFT_3    = '\x0e',  // Символ регулятора
         GOVERNOR_LEFT       = '\x80',
         GOVERNOR_RIGHT      = '\x81',
         TSHIFT_NORMAL       = '\x84',  // Изображение смещения по времени
@@ -29,9 +28,6 @@ struct Symbol8
         TPOS_2              = '\x8b',  // 1-я часть символа TPos
         TRIGLEV_LOWER       = '\x95',  // Символ уровень синхронизации ниже сетки
         TRIGLEV_ABOVE       = '\x96',  // Символ уровень синхронизации выше сетки
-        GOVERNOR_SHIFT_2    = '\x8c',  // Символ регулятора
-        GOVERNOR_SHIFT_0    = '\xaa',  // Символ регулятора
-        GOVERNOR_SHIFT_1    = '\xac',  // Символ регулятора
         ARROW_UP            = '\xb9',
         ARROW_DOWN          = '\x9d'
     };
@@ -98,6 +94,10 @@ public:
         RSHIFT_NORMAL,      // Символ смещения по напряжению нормальный
         TRIGLEV_NORMAL,     // Символ уровень синхронизации нормальный
         PLAY,               // Символ работы справа вверху экрана
+        GOVERNOR_SHIFT_0,   // Символ регулятора
+        GOVERNOR_SHIFT_1,
+        GOVERNOR_SHIFT_2,
+        GOVERNOR_SHIFT_3,
         Count
     };
 
