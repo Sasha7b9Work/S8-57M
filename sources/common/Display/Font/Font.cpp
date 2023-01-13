@@ -19,7 +19,7 @@ static const Font *fontUGO2 = (const Font *)font_ugo;
 
 #include <cstring>
 
-static const Font *font8 = (const Font *)font_gost_type_a_14;
+static const Font *font8 = (const Font *)font_gost_type_a_16;
 static const Font *font = font8;
 
 
@@ -138,7 +138,7 @@ int Font::Height()
     static const int h[TypeFont::Count] =
     {
         14,
-        20,
+        19,
         16,
         16
     };
