@@ -126,50 +126,52 @@ int DisplayOsci::HiPart::DrawMainParameters(int _x, int _y)
 
     if (S_MEM_MODE_WORK_IS_DIR)
     {
-        pString source[3] = { "1", "2", "\x82" };
+        pString source[2] = { "1", "2" };
 
-        String("с\xa5\x10%s", source[S_TRIG_SOURCE]).Draw(x, y1, Color::Trig());
+        String("c:").Draw(x, y1, Color::Trig());
+
+        String(source[S_TRIG_SOURCE]).Draw(x + 10, y1, Color::Trig());
     }
 
-    if (S_MEM_MODE_WORK_IS_DIR)
-    {
-        static const pString couple[] = { "\x92", "\x92", "\x91" };
-
-        static const pString polar[] =  { "\xa7", "\xa6" };
-
-        String("\xa5\x10%s\x10\xa5\x10%s\x10\xa5\x10", couple[S_TRIG_INPUT], polar[S_TRIG_POLARITY]).Draw(x + 30, y1);
-
-        static const pString filtr[] = { "\xb5\xb6", "\xb3\xb4", "\xb1\xb2" };
-
-        int x1 = x + 85;
-        Char(filtr[S_TRIG_INPUT][0]).Draw(x1, y1);
-        Char(filtr[S_TRIG_INPUT][1]).Draw(x1 + 16, y1);
-    }
-
-    if (S_MEM_MODE_WORK_IS_DIR)
-    {
-        static char mode[] =
-        {
-            '\xb7',
-            '\xa0',
-            '\xb0'
-        };
-
-        String("\xa5\x10%c", mode[S_TRIG_START_MODE]).Draw(x + 125, y1);
-    }
-
-    Font::Set(TypeFont::Small);
+//    if (S_MEM_MODE_WORK_IS_DIR)
+//    {
+//        static const pString couple[] = { "\x92", "\x92", "\x91" };
+//
+//        static const pString polar[] =  { "\xa7", "\xa6" };
+//
+//        String("\xa5\x10%s\x10\xa5\x10%s\x10\xa5\x10", couple[S_TRIG_INPUT], polar[S_TRIG_POLARITY]).Draw(x + 30, y1);
+//
+//        static const pString filtr[] = { "\xb5\xb6", "\xb3\xb4", "\xb1\xb2" };
+//
+//        int x1 = x + 85;
+//        Char(filtr[S_TRIG_INPUT][0]).Draw(x1, y1);
+//        Char(filtr[S_TRIG_INPUT][1]).Draw(x1 + 16, y1);
+//    }
+//
+//    if (S_MEM_MODE_WORK_IS_DIR)
+//    {
+//        static char mode[] =
+//        {
+//            '\xb7',
+//            '\xa0',
+//            '\xb0'
+//        };
+//
+//        String("\xa5\x10%c", mode[S_TRIG_START_MODE]).Draw(x + 125, y1);
+//    }
+//
+//    Font::Set(TypeFont::Small);
 
     x += 165;
 
     Separator::Draw(x - 3, y0 - 1);
 
-    if (S_MEM_MODE_WORK_IS_DIR)
-    {
-        WriteStringAndNumber("накопл", x, y0 - 6, 0, ENumAccum::ToString(S_DISP_ENUM_ACCUM));
-        WriteStringAndNumber("усредн", x, y0 + 6, S_OSCI_NUM_AVERAGE);
-        WriteStringAndNumber("сглаж", x, y0 + 18, S_DISP_NUM_SMOOTH);
-    }
+//    if (S_MEM_MODE_WORK_IS_DIR)
+//    {
+//        WriteStringAndNumber("накопл", x, y0 - 6, 0, ENumAccum::ToString(S_DISP_ENUM_ACCUM));
+//        WriteStringAndNumber("усредн", x, y0 + 6, S_OSCI_NUM_AVERAGE);
+//        WriteStringAndNumber("сглаж", x, y0 + 18, S_DISP_NUM_SMOOTH);
+//    }
 
     x += 80;
 
