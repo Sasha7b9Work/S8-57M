@@ -109,15 +109,15 @@ int Char::Draw(int x, int y, Color color)
     }
     else if (num_symbols == 2)
     {
-        Draw2SymbolsInRect(x, y, color);
+//        Draw2SymbolsInRect(x, y, color);
     }
     else if(num_symbols == 4)
     {
-        Draw4SymbolsInRect(x, y, color);
+//        Draw4SymbolsInRect(x, y, color);
     }
     else if (num_symbols == 10)
     {
-        Draw10SymbolsInRect(x, y, color);
+//        Draw10SymbolsInRect(x, y, color);
     }
 
     return result;
