@@ -97,6 +97,9 @@ public:
         FILTR_HI,
         FILTR_LOW,
         FILTR_FULL,
+        START_MODE_AUTO,
+        START_MODE_HAND,
+        START_MODE_SINGLE,
         Count
     };
 

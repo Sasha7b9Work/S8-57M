@@ -165,30 +165,32 @@ int DisplayOsci::HiPart::DrawMainParameters(int _x, int _y)
         filtr[S_TRIG_INPUT].Draw(x + 80, y1);
     }
 
-//    if (S_MEM_MODE_WORK_IS_DIR)
-//    {
-//        static char mode[] =
-//        {
-//            '\xb7',
-//            '\xa0',
-//            '\xb0'
-//        };
-//
-//        String("\xa5\x10%c", mode[S_TRIG_START_MODE]).Draw(x + 125, y1);
-//    }
-//
-//    Font::Set(TypeFont::Small);
+    if (S_MEM_MODE_WORK_IS_DIR)
+    {
+        static const SymbolUGO mode[] =
+        {
+            SymbolUGO(SymbolUGO::START_MODE_AUTO),
+            SymbolUGO(SymbolUGO::START_MODE_HAND),
+            SymbolUGO(SymbolUGO::START_MODE_SINGLE)
+        };
+
+        String(":").Draw(x + 120, y1);
+        mode[S_TRIG_START_MODE].Draw(x + 125, y1);
+    }
+
+    Font::Set(TypeFont::Small);
 
     x += 165;
 
     Separator::Draw(x - 3, y0 - 1);
 
-//    if (S_MEM_MODE_WORK_IS_DIR)
-//    {
-//        WriteStringAndNumber("Ì‡ÍÓÔÎ", x, y0 - 6, 0, ENumAccum::ToString(S_DISP_ENUM_ACCUM));
-//        WriteStringAndNumber("ÛÒÂ‰Ì", x, y0 + 6, S_OSCI_NUM_AVERAGE);
-//        WriteStringAndNumber("Ò„Î‡Ê", x, y0 + 18, S_DISP_NUM_SMOOTH);
-//    }
+    if (S_MEM_MODE_WORK_IS_DIR)
+    {
+        int d = 8;
+        WriteStringAndNumber("Õ¿ ŒœÀ", x, y0 - 6 + d, 0, ENumAccum::ToString(S_DISP_ENUM_ACCUM));
+        WriteStringAndNumber("”—–≈ƒÕ", x, y0 + 6 + d, S_OSCI_NUM_AVERAGE);
+        WriteStringAndNumber("—√À¿∆", x, y0 + 18 + d, S_DISP_NUM_SMOOTH);
+    }
 
     x += 80;
 
@@ -247,7 +249,7 @@ void DisplayOsci::HiPart::WriteStringAndNumber(pchar text, int x, int y, int num
         std::snprintf(buffer, SIZE, "%d", number);
     }
 
-    Text(buffer).DrawRelativelyRight(x + 80, y);
+    Text(buffer).DrawRelativelyRight(x + 75, y);
 }
 
 

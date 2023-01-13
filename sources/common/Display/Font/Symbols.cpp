@@ -19,9 +19,12 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {21, 1},    // COUPLE_DC
     {22, 1},    // FRONT_FALL
     {23, 1},    // FRONT_RISE
-    {24, 2},    // FILTR_HI,
-    {26, 2},    // FILTR_LOW,
-    {28, 2}     // FILTR_FULL,
+    {24, 2},    // FILTR_HI
+    {26, 2},    // FILTR_LOW
+    {28, 2},    // FILTR_FULL
+    {30, 1},    // START_MODE_AUTO
+    {31, 1},    // START_MODE_HAND
+    {32, 1}     // START_MODE_SINGLE
 };
 
 
