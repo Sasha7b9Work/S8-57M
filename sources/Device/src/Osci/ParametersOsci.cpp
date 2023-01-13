@@ -74,19 +74,19 @@ static const struct RangeStruct
 }
 ranges[Range::Count][2] =
 {
-    {RangeStruct("2\x10ìÂ"),  RangeStruct("20\x10ìÂ")},
-    {RangeStruct("5\x10ìÂ"),  RangeStruct("50\x10ìÂ")},
-    {RangeStruct("10\x10ìÂ"), RangeStruct("0.1\x10Â")},
-    {RangeStruct("20\x10ìÂ"), RangeStruct("0.2\x10Â")},
-    {RangeStruct("50\x10ìÂ"), RangeStruct("0.5\x10Â")},
-    {RangeStruct("0.1\x10Â"), RangeStruct("1\x10Â")},
-    {RangeStruct("0.2\x10Â"), RangeStruct("2\x10Â")},
-    {RangeStruct("0.5\x10Â"), RangeStruct("5\x10Â")},
-    {RangeStruct("1\x10Â"),   RangeStruct("10\x10Â")},
-    {RangeStruct("2\x10Â"),   RangeStruct("20\x10Â")},
-    {RangeStruct("5\x10Â"),   RangeStruct("50\x10Â")},
-    {RangeStruct("10\x10Â"),  RangeStruct("100\x10Â")},
-    {RangeStruct("20\x10Â"),  RangeStruct("200\x10Â")}
+    {RangeStruct("2ìÂ"),  RangeStruct("20ìÂ")},
+    {RangeStruct("5ìÂ"),  RangeStruct("50ìÂ")},
+    {RangeStruct("10ìÂ"), RangeStruct("0.1Â")},
+    {RangeStruct("20ìÂ"), RangeStruct("0.2Â")},
+    {RangeStruct("50ìÂ"), RangeStruct("0.5Â")},
+    {RangeStruct("0.1Â"), RangeStruct("1Â")},
+    {RangeStruct("0.2Â"), RangeStruct("2Â")},
+    {RangeStruct("0.5Â"), RangeStruct("5Â")},
+    {RangeStruct("1Â"),   RangeStruct("10Â")},
+    {RangeStruct("2Â"),   RangeStruct("20Â")},
+    {RangeStruct("5Â"),   RangeStruct("50Â")},
+    {RangeStruct("10Â"),  RangeStruct("100Â")},
+    {RangeStruct("20Â"),  RangeStruct("200Â")}
 };
 
 

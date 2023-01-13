@@ -198,11 +198,16 @@ void DisplayOsci::HiPart::WriteTextVoltage(Chan::E ch, int x, int y)
         Region(91, 8).Fill(x, y, color);
     }
 
-    String("%s\xa5%c\xa5%s", (ch == ChanA) ? "1ê" : "2ê", ModeCouple::UGO(S_MODE_COUPLE(ch)).ToChar(), Range::ToString(ch, S_DIVIDER(ch))).
-        Draw(x + 1, y, colorDraw);
+    x += 50;
+    y += 50;
 
-    String("\xa5%s", RShift::ToString(S_RSHIFT(ch), range, S_DIVIDER(ch)).c_str()).
-        Draw(x + 92, y);
+    String((ch == ChanA) ? "1ê" : "2ê").Draw(x + 1, y, colorDraw);
+    String(":").Draw(x + 18, y);
+    ModeCouple::UGO(S_MODE_COUPLE(ch)).Draw(x + 23, y);
+    String(":").Draw(x + 37, y);
+    String(Range::ToString(ch, S_DIVIDER(ch))).Draw(x + 45, y);
+    String(":").Draw(x + 80, y);
+    RShift::ToString(S_RSHIFT(ch), range, S_DIVIDER(ch)).Draw(x + 85, y);
 }
 
 
