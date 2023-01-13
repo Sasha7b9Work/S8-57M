@@ -592,7 +592,7 @@ void TrigLevel::Draw()
     }
     else
     {
-        Char(Symbol8::TRIGLEV_NORMAL).Draw(x + 1, y - 8);
+        SymbolUGO(SymbolUGO::TRIGLEV_NORMAL).Draw(x + 1, y - 8);
     }
 
     static const char symbols[2] = { '1', '2' };
@@ -818,7 +818,7 @@ void TShift::DrawNormal(const int x, const int y)
 
 void TShift::DrawLeft()
 {
-    Char(Symbol8::TRIGLEV_NORMAL).Draw(Grid::Left(), Grid::Top(), Color::BACK);
+    SymbolUGO(SymbolUGO::TRIGLEV_NORMAL).Draw(Grid::Left(), Grid::Top(), Color::BACK);
     Char(Symbol8::TSHIFT_LEFT).Draw(Grid::Left(), Grid::Top(), Color::FILL);
 }
 

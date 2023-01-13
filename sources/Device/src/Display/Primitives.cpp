@@ -8,7 +8,8 @@
 
 const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
 {
-    {'\x01', 1}     // RSHIFT_NORMAL
+    {'\x01', 1},    // RSHIFT_NORMAL
+    {'\x02', 1}     // TRIGLEV_NORMAL
 };
 
 

@@ -100,7 +100,8 @@ class SymbolUGO : public Char
 public:
     enum E
     {
-        RSHIFT_NORMAL,  // Символ смещения по напряжению нормальный
+        RSHIFT_NORMAL,      // Символ смещения по напряжению нормальный
+        TRIGLEV_NORMAL,     // Символ уровень синхронизации нормальный
         Count
     };
 
