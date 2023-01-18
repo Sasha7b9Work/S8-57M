@@ -28,6 +28,8 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {32, 1},    // START_MODE_SINGLE
     {33, 1},    // TPOS
     {34, 1},    // F_T
+    {42, 1},    // TSHIFT_LEFT
+    {43, 1}     // TSHIFT_RIGHT
 };
 
 

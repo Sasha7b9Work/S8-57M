@@ -819,11 +819,11 @@ void TShift::DrawNormal(const int x, const int y)
 void TShift::DrawLeft()
 {
     SymbolUGO(SymbolUGO::TRIGLEV_NORMAL).Draw(Grid::Left(), Grid::Top(), Color::BACK);
-    Char(Symbol8::TSHIFT_LEFT).Draw(Grid::Left(), Grid::Top(), Color::FILL);
+    SymbolUGO(SymbolUGO::TSHIFT_LEFT).Draw(Grid::Left(), Grid::Top(), Color::FILL);
 }
 
 void TShift::DrawRight()
 {
     SymbolUGO(SymbolUGO::RSHIFT_NORMAL).Draw(Grid::Right() - 7, Grid::Top(), Color::BACK);
-    Char(Symbol8::TSHIFT_RIGHT).Draw(Grid::Right() - 7, Grid::Top(), Color::FILL);
+    SymbolUGO(SymbolUGO::TSHIFT_RIGHT).Draw(Grid::Right() - 7, Grid::Top(), Color::FILL);
 }
