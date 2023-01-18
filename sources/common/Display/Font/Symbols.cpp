@@ -29,7 +29,8 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {33, 1},    // TPOS
     {34, 1},    // F_T
     {42, 1},    // TSHIFT_LEFT
-    {43, 1}     // TSHIFT_RIGHT
+    {43, 1},    // TSHIFT_RIGHT
+    {44, 1}     // TSHIFT_NORMAL_BACK
 };
 
 
