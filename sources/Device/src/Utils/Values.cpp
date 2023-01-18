@@ -369,7 +369,7 @@ char *Current::ToString(char buffer[50]) const
 
 char *Phase::ToString(char bufferOut[20]) const
 {
-    std::sprintf(bufferOut, "%s\xa8", Float(value).ToString(false, 4).c_str());
+    std::sprintf(bufferOut, "%s\x31", Float(value).ToString(false, 4).c_str());
     return bufferOut;
 }
 

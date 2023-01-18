@@ -26,14 +26,17 @@
 #define IN_RANGE(x, min, max)               ((x) >= (min) && (x) <= (max))
 
 
-/// Возвращает true, если value входит в диапазон [min; max]
+// Возвращает true, если value входит в диапазон [min; max]
 bool IntInRange(int value, int min, int max);
-/// Возвращает номер младшего бита, равного единице
+
+// Возвращает номер младшего бита, равного единице
 int LowSignedBit(uint value);
-/// Возвращает максимальное значение из трёх
+
+// Возвращает максимальное значение из трёх
 float MaxFloat(float val1, float val2, float val3);
-/// \brief Сравнивает два числа. Возвращает true, если числа отличаются друг от друга не более, чем на epsilonPart. При этом для расчёта epsilonPart 
-/// используется большее в смысле модуля число.
+
+// \brief Сравнивает два числа. Возвращает true, если числа отличаются друг от друга не более, чем на epsilonPart. При этом для расчёта epsilonPart 
+// используется большее в смысле модуля число.
 bool FloatsIsEquals(float value0, float value1, float epsilonPart);
 
 bool IsEquals(float x, float y);
