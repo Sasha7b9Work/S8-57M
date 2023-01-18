@@ -29,11 +29,15 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {32, 1},    // START_MODE_SINGLE
     {33, 1},    // TPOS
     {34, 1},    // F_T
+    {39, 1},    // ARROW_UP
+    {40, 1},    // ARROW_DOWN
     {42, 1},    // TSHIFT_LEFT
     {43, 1},    // TSHIFT_RIGHT
     {44, 1},    // TSHIFT_NORMAL_BACK
     {45, 1},    // TPOS_1
-    {46, 1}     // TPOS_2
+    {46, 1},    // TPOS_2
+    {47, 1},    // TRIGLEV_LOWER
+    {48, 1}     // TRIGLEV_ABOVE
 };
 
 

@@ -542,14 +542,14 @@ void RShift::Draw(Chan::E ch)
 
     if (y > Grid::ChannelBottom())
     {
-        Char(Symbol8::TRIGLEV_LOWER).Draw(x + 1, Grid::ChannelBottom() - 11);
+        SymbolUGO(SymbolUGO::TRIGLEV_LOWER).Draw(x + 1, Grid::ChannelBottom() - 11);
         Pixel().Draw(x + 3, Grid::ChannelBottom() - 2);
         y = Grid::ChannelBottom() - 7;
         x += 1;
     }
     else if (y < Grid::Top())
     {
-        Char(Symbol8::TRIGLEV_ABOVE).Draw(x + 1, Grid::Top() + 2);
+        SymbolUGO(SymbolUGO::TRIGLEV_ABOVE).Draw(x + 1, Grid::Top() + 2);
         Pixel().Draw(x + 3, Grid::Top() + 2);
         y = Grid::Top() + 7;
         x += 1;
@@ -578,14 +578,14 @@ void TrigLevel::Draw()
 
     if (y > Grid::ChannelBottom())
     {
-        Char(Symbol8::TRIGLEV_LOWER).Draw(x + 3, Grid::ChannelBottom() - 11);
+        SymbolUGO(SymbolUGO::TRIGLEV_LOWER).Draw(x + 3, Grid::ChannelBottom() - 11);
         Pixel().Draw(x + 5, Grid::ChannelBottom() - 2);
         y = Grid::ChannelBottom() - 7;
         xSymbol--;
     }
     else if (y < Grid::Top())
     {
-        Char(Symbol8::TRIGLEV_ABOVE).Draw(x + 3, Grid::Top() + 2);
+        SymbolUGO(SymbolUGO::TRIGLEV_ABOVE).Draw(x + 3, Grid::Top() + 2);
         Pixel().Draw(x + 5, Grid::Top() + 2);
         y = Grid::Top() + 7;
         xSymbol--;
