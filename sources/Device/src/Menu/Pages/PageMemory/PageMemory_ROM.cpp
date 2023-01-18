@@ -209,7 +209,7 @@ namespace PageMemory
         }
         else
         {
-            String(Symbol8::CROSS).Draw(x + 3, y + 1);
+            SymbolUGO(SymbolUGO::CROSS).Draw(x + 3, y + 1);
         }
     }
 

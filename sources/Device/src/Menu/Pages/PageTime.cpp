@@ -48,7 +48,7 @@ void TPos::Draw()
     
     Region(6, 6).Fill(x0, y, Color::BACK);
 
-    Char(Symbol8::TPOS_1).Draw(x0, y, Color::FILL);
+    SymbolUGO(SymbolUGO::TPOS_1).Draw(x0, y, Color::FILL);
 }
 
 
