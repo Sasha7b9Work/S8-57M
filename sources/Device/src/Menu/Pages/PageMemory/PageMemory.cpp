@@ -81,7 +81,7 @@ DEF_GRAPH_BUTTON( bManager_Tab,                                                 
 
 static void Draw_Manager_LevelUp(int x, int y)
 {
-    Char(SymbolUGO2::LEAVE, TypeFont::UGO, 4).Draw(x + 2, y + 1);
+    SymbolUGO(SymbolUGO::LEAVE).Draw(x + 2, y + 1);
 }
 
 DEF_GRAPH_BUTTON( bManager_LevelUp,                                                                                                 //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” -  ¿“¿ÀŒ√ - ¬˚ÈÚË ËÁ Í‡Ú‡ÎÓ„‡ ---
@@ -93,7 +93,7 @@ DEF_GRAPH_BUTTON( bManager_LevelUp,                                             
 
 static void Draw_Manager_LevelDown(int x, int y)
 {
-    Char(SymbolUGO2::ENTER, TypeFont::UGO, 4).Draw(x + 2, y + 2);
+    SymbolUGO(SymbolUGO::ENTER).Draw(x + 2, y + 2);
 }
 
 DEF_GRAPH_BUTTON( bManager_LevelDown,                                                                                                 //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” -  ¿“¿ÀŒ√ - ¬ÓÈÚË ‚ Í‡Ú‡ÎÓ„ ---
@@ -561,7 +561,7 @@ static void Draw_SetName_Save(int x, int y)
 {
     if (FDrive::IsConnected())
     {
-        Char(SymbolUGO2::FLASH_DRIVE_BIG, TypeFont::UGO, 4).Draw(x + 2, y + 1);
+        SymbolUGO(SymbolUGO::FLASH_DRIVE_BIG).Draw(x + 2, y + 1);
     }
 }
 

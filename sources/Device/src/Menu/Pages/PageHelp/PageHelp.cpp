@@ -10,13 +10,13 @@
 
 static void Draw_Enter(int x, int y)
 {
-    Char(SymbolUGO2::ENTER, TypeFont::UGO, 4).Draw(x + 2, y + 2);
+    SymbolUGO(SymbolUGO::ENTER).Draw(x + 2, y + 2);
 }
 
 
 static void Help_Draw_Leave(int x, int y)
 {
-    Char(SymbolUGO2::LEAVE, TypeFont::UGO, 4).Draw(x + 2, y + 1);
+    SymbolUGO(SymbolUGO::LEAVE).Draw(x + 2, y + 1);
 }
 
 

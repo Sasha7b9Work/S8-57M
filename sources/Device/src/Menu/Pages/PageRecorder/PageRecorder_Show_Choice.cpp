@@ -77,7 +77,7 @@ static void OnPress_Leave()
 
 static void Draw_Leave(int x, int y)
 {
-    Char(SymbolUGO2::LEAVE, TypeFont::UGO, 4).Draw(x + 4, y);
+    SymbolUGO(SymbolUGO::LEAVE).Draw(x + 4, y);
 }
 
 DEF_GRAPH_BUTTON( bLeave,                                                                                                        //--- тсмйжхъ - пецхярпюрнп - опнялнрп - бшанп - бНГБПЮР ---

@@ -20,11 +20,6 @@ struct SymbolUGO2
 {
     enum E
     {
-        ROM             = '\x40',   // Микросхемка
-        FLASH_DRIVE_BIG = '\x42',   // Символ флешки
-        FOLDER          = '\x46',   // Каталог
-        LEAVE           = '\x48',   // Значок выхода
-        ENTER           = '\x4a',   // Значок "Enter"
         TRIANGLE_UP     = '\x4c',   // Стрелка треугольником вверх
         TRIANGLE_DOWN   = '\x4e',   // Стрекла треугольником вниз
         BIG_M           = '\x60',   // Большая буква "М"
@@ -102,6 +97,12 @@ public:
         INSERT,             // ВНЕШН ЗУ-ИМЯ-ВСТАВИТЬ
         ARROW_LEFT,
         SAVE_TO_MEM,
+        ROM,                // Микросхемка
+        FLASH_DRIVE_BIG,    // Символ флешки
+        DELETE_2,
+        FOLDER,             // Каталог
+        LEAVE,              // Значок выхода
+        ENTER,              // Значок "Enter"
         Count
     };
 

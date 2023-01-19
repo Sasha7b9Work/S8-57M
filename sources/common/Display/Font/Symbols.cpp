@@ -42,7 +42,13 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {64, 4},    // DELETE
     {68, 4},    // INSERT
     {72, 4},    // ARROW_LEFT
-    {76, 4}     // SAVE_TO_MEM
+    {76, 4},    // SAVE_TO_MEM
+    {84, 4},    // ROM
+    {88, 4},    // FLASH_DRIVE_BIG
+    {92, 4},    // DELETE_2
+    {96, 4},    // FOLDER
+    {100, 4},   // LEAVE
+    {104, 4}    // ENTER
 };
 
 
