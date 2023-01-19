@@ -35,7 +35,7 @@ static void OnPress_Prev()
 
 static void Draw_Prev(int x, int y)
 {
-    Char(SymbolUGO2::ARROW_LEFT, TypeFont::UGO, 4).Draw(x + 2, y + 2);
+    SymbolUGO(SymbolUGO::ARROW_LEFT).Draw(x + 2, y + 2);
 }
 
 DEF_GRAPH_BUTTON( bPrev,                                                                                                                            //--- ПАМЯТЬ - ПОСЛЕДНИЕ - Предыдущий ---

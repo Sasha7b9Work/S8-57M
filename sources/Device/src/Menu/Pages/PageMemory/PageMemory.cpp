@@ -185,7 +185,7 @@ static void OnPress_Mask_Backspace()
 
 static void Draw_Backspace(int x, int y)
 {
-    Char(SymbolUGO2::ARROW_LEFT).Draw(x + 2, y + 1);
+    SymbolUGO(SymbolUGO::ARROW_LEFT).Draw(x + 2, y + 1);
 }
 
 DEF_GRAPH_BUTTON( bMask_Backspace,                                                                                                      //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” - Ã¿— ¿ - Backspace ---

@@ -37,7 +37,9 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {45, 1},    // TPOS_1
     {46, 1},    // TPOS_2
     {47, 1},    // TRIGLEV_LOWER
-    {48, 1}     // TRIGLEV_ABOVE
+    {48, 1},    // TRIGLEV_ABOVE
+    {59, 2},    // PEAK_DET
+    {61, 4}     // ARROW_LEFT
 };
 
 
