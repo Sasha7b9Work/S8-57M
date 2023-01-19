@@ -39,8 +39,10 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {47, 1},    // TRIGLEV_LOWER
     {48, 1},    // TRIGLEV_ABOVE
     {59, 2},    // PEAK_DET
-    {61, 4},    // ARROW_LEFT
-    {64, 4}     // DELETE
+    {64, 4},    // DELETE
+    {68, 4},    // INSERT
+    {72, 4},    // ARROW_LEFT
+    {76, 4}     // SAVE_TO_MEM
 };
 
 

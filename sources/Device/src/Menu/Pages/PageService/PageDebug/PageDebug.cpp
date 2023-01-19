@@ -213,7 +213,7 @@ static void OnPress_SerialNumber_Save()
 
 static void Draw_SerialNumber_Save(int x, int y)
 {
-    Char(SymbolUGO2::SAVE_TO_MEM, TypeFont::UGO, 4).Draw(x + 2, y + 1);
+    SymbolUGO(SymbolUGO::SAVE_TO_MEM).Draw(x + 2, y + 1);
 }
 
 DEF_GRAPH_BUTTON( bSerialNumber_Save,                                                                                                                     //--- ОТЛАДКА - С/Н - Сохранить ---

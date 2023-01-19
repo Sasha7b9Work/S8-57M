@@ -233,7 +233,7 @@ static void OnPress_Mask_Insert()
 
 static void Draw_Insert(int x, int y)
 {
-    Char(SymbolUGO2::INSERT, TypeFont::UGO, 4).Draw(x + 2, y + 2);
+    SymbolUGO(SymbolUGO::INSERT).Draw(x + 2, y + 2);
 }
 
 DEF_GRAPH_BUTTON( bMask_Insert,                                                                                                                //--- ÏÀÌßÒÜ - ÂÍÅØÍ ÇÓ - ÌÀÑÊÀ - Âñòàâèòü ---

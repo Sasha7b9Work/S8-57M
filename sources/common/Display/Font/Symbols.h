@@ -20,8 +20,6 @@ struct SymbolUGO2
 {
     enum E
     {
-        INSERT          = '\x26',   // ВНЕШН ЗУ-ИМЯ-ВСТАВИТЬ
-        SAVE_TO_MEM     = '\x2c',
         ROM             = '\x40',   // Микросхемка
         FLASH_DRIVE_BIG = '\x42',   // Символ флешки
         FOLDER          = '\x46',   // Каталог
@@ -100,8 +98,10 @@ public:
         TRIGLEV_LOWER,      // Символ уровень синхронизации ниже сетки
         TRIGLEV_ABOVE,      // Символ уровень синхронизации выше сетки
         PEAK_DET_LEFT,      // Левая часть значка пикового детектора
-        ARROW_LEFT,
         DELETE,             // ВНЕШН ЗУ-МАСКА-УДАЛИТЬ
+        INSERT,             // ВНЕШН ЗУ-ИМЯ-ВСТАВИТЬ
+        ARROW_LEFT,
+        SAVE_TO_MEM,
         Count
     };
 

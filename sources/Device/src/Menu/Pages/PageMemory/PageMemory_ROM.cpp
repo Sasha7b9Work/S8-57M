@@ -115,7 +115,7 @@ static void OnPress_Save()
 
 static void Draw_SaveToMemory(int x, int y)
 {
-    Char(SymbolUGO2::SAVE_TO_MEM, TypeFont::UGO, 4).Draw(x + 2, y + 1);
+    SymbolUGO(SymbolUGO::SAVE_TO_MEM).Draw(x + 2, y + 1);
 }
 
 DEF_GRAPH_BUTTON                                                                                                                             //--- ПАМЯТЬ - ВНУТР ЗУ - Сохранить в памяти ---
