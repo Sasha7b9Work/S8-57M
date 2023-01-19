@@ -48,7 +48,9 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {92, 4},    // DELETE_2
     {96, 4},    // FOLDER
     {100, 4},   // LEAVE
-    {104, 4}    // ENTER
+    {104, 4},   // ENTER
+    {108, 4},   // TRIANGLE_UP
+    {112, 4}    // TRIANGLE_DOWN
 };
 
 

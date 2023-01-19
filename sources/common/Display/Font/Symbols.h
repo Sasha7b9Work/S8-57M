@@ -20,8 +20,6 @@ struct SymbolUGO2
 {
     enum E
     {
-        TRIANGLE_UP     = '\x4c',   // Стрелка треугольником вверх
-        TRIANGLE_DOWN   = '\x4e',   // Стрекла треугольником вниз
         BIG_M           = '\x60',   // Большая буква "М"
         SETTINGS        = '\x62',   // Значок настроек
         ARROW_RIGHT     = '\x64',
@@ -103,6 +101,8 @@ public:
         FOLDER,             // Каталог
         LEAVE,              // Значок выхода
         ENTER,              // Значок "Enter"
+        TRIANGLE_UP,        // Стрелка треугольником вверх
+        TRIANGLE_DOWN,      // Стрекла треугольником вниз
         Count
     };
 
