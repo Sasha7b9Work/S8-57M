@@ -93,7 +93,7 @@ static void OnPress_Delete()
 
 static void Draw_Delete(int x, int y)
 {
-    Char(SymbolUGO2::DELETE, TypeFont::UGO, 4).Draw(x + 4, y);
+    SymbolUGO(SymbolUGO::DELETE).Draw(x + 4, y);
 }
 
 DEF_GRAPH_BUTTON( bDelete,                                                                                                       //--- ‘”Õ ÷»ﬂ - –≈√»—“–¿“Œ– - œ–Œ—ÃŒ“– - ¬€¡Œ– - ”‰‡ÎËÚ¸ ---

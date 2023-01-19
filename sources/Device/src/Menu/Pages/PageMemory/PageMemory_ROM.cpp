@@ -83,7 +83,7 @@ namespace PageMemory
 
     static void Draw_Delete(int x, int y)
     {
-        Char(SymbolUGO2::DELETE, TypeFont::UGO, 4).Draw(x + 2, y + 1);
+        SymbolUGO(SymbolUGO::DELETE).Draw(x + 2, y + 1);
     }
 }
 

@@ -157,7 +157,7 @@ static void OnPress_Mask_Delete()
 
 static void Draw_Delete(int x, int y)
 {
-    Char(SymbolUGO2::DELETE, TypeFont::UGO, 4).Draw(x + 2, y + 1);
+    SymbolUGO(SymbolUGO::DELETE).Draw(x + 2, y + 1);
 }
 
 DEF_GRAPH_BUTTON( bMask_Delete,                                                                                                                 //--- œ¿Ãﬂ“‹ - ¬Õ≈ÿÕ «” - Ã¿— ¿ - ”‰‡ÎËÚ¸ ---
