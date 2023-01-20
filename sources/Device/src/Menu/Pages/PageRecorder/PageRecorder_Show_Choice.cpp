@@ -12,7 +12,7 @@ static void OnPress_Previous()
 
 static void Draw_Previous(int x, int y)
 {
-    Char(SymbolUGO2::TRIANGLE_UP, TypeFont::UGO, 4).Draw(x + 2, y + 4);
+    SymbolUGO(SymbolUGO::TRIANGLE_UP).Draw(x + 2, y + 4);
 }
 
 static bool IsActive_Previous()
@@ -34,7 +34,7 @@ static void OnPress_Next()
 
 static void Draw_Next(int x, int y)
 {
-    Char(SymbolUGO2::TRIANGLE_DOWN, TypeFont::UGO, 4).Draw(x + 2, y + 4);
+    SymbolUGO(SymbolUGO::TRIANGLE_DOWN).Draw(x + 2, y + 4);
 }
 
 static bool IsActive_Next()

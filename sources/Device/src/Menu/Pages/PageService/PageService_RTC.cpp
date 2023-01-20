@@ -83,7 +83,7 @@ static void OnPress_SetUp()
 
 static void Draw_Up(int x, int y)
 {
-    Char(SymbolUGO2::TRIANGLE_UP, TypeFont::UGO, 4).Draw(x + 2, y + 4);
+    SymbolUGO(SymbolUGO2::TRIANGLE_UP, TypeFont::UGO, 4).Draw(x + 2, y + 4);
 }
 
 DEF_GRAPH_BUTTON( bSet_Up,

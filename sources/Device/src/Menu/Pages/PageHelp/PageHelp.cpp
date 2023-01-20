@@ -22,13 +22,13 @@ static void Help_Draw_Leave(int x, int y)
 
 static void Draw_Prev(int x, int y)
 {
-    Char(SymbolUGO2::TRIANGLE_UP, TypeFont::UGO, 4).Draw(x + 2, y + 5);
+    SymbolUGO(SymbolUGO::TRIANGLE_UP).Draw(x + 2, y + 5);
 }
 
 
 static void Help_Draw_Next(int x, int y)
 {
-    Char(SymbolUGO2::TRIANGLE_DOWN, TypeFont::UGO, 4).Draw(x + 2, y + 5);
+    SymbolUGO(SymbolUGO::TRIANGLE_DOWN).Draw(x + 2, y + 5);
 }
 
 
