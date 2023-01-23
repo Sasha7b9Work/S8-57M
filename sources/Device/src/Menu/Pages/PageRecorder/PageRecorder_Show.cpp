@@ -14,7 +14,7 @@ static void Draw_Right(int x, int y)
 {
     for (int i = 0; i < 2; i++)
     {
-        Char(SymbolUGO2::TRIANGLE_RIGHT, TypeFont::UGO, 4).Draw(x + i * 12, y + 2);
+        SymbolUGO(SymbolUGO::TRIANGLE_RIGHT).Draw(x + i * 12, y + 2);
     }
 }
 
@@ -29,7 +29,7 @@ static void Draw_Left(int x, int y)
 {
     for (int i = 0; i < 2; i++)
     {
-        Char(SymbolUGO2::TRIANGLE_LEFT, TypeFont::UGO, 4).Draw(x + i * 12, y + 2);
+        SymbolUGO(SymbolUGO::TRIANGLE_LEFT).Draw(x + i * 12, y + 2);
     }
 }
 

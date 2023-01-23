@@ -28,8 +28,6 @@ struct SymbolUGO2
         ETHERNET        = '\x82',   // Символ Ethernet внизу экрана
         USB             = '\x84',   // Символ USB внизу экрана
         MATH_FUNC_MUL   = '\x8a',   // МАТЕМАТИКА-ФУНКЦИЯ-УМНОЖЕНИЕ
-        TRIANGLE_LEFT   = '\x8c',   // Стрелка треугольником влево
-        TRIANGLE_RIGHT  = '\x8e',   // Стрелка треугольником вправо
         SELECT          = '\xa0'    // Символ выбора
     };
 };
@@ -103,6 +101,8 @@ public:
         ENTER,              // Значок "Enter"
         TRIANGLE_UP,        // Стрелка треугольником вверх
         TRIANGLE_DOWN,      // Стрекла треугольником вниз
+        TRIANGLE_LEFT,      // Стрелка треугольником влево
+        TRIANGLE_RIGHT,     // Стрелка треугольником вправо
         Count
     };
 
@@ -112,7 +112,7 @@ private:
 
     struct SymbolStruct
     {
-        char code;
+        uint8 code;
         int num_symbols;
     };
 

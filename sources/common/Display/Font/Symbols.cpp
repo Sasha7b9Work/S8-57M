@@ -50,7 +50,9 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {100, 4},   // LEAVE
     {104, 4},   // ENTER
     {108, 4},   // TRIANGLE_UP
-    {112, 4}    // TRIANGLE_DOWN
+    {112, 4},   // TRIANGLE_DOWN
+    {160, 4},   // TRIANGLE_LEFT
+    {164, 4}    // TRIANGLE_RIGHT
 };
 
 

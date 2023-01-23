@@ -168,10 +168,10 @@ int TableMeasures::DY()
 {
     if (S_MEAS_SOURCE_IS_A_B)
     {
-        return 30;
+        return 60;
     }
 
-    return 21;
+    return 42;
 }
 
 
