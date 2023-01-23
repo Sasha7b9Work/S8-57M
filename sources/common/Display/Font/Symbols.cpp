@@ -51,12 +51,13 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {104, 4},   // ENTER
     {108, 4},   // TRIANGLE_UP
     {112, 4},   // TRIANGLE_DOWN
+    {120, 4},   // SETTINGS
     {160, 4},   // TRIANGLE_LEFT
     {164, 4}    // TRIANGLE_RIGHT
 };
 
 
-Char::Char(char _ch, TypeFont::E type, int num) : ch(_ch), font(type), num_symbols(num)
+Char::Char(char _ch, TypeFont::E type, int num) : ch((uint8)_ch), font(type), num_symbols(num)
 {
 
 }
@@ -97,7 +98,7 @@ int Char::Draw(int x, int y, Color color) const
 
 void Char::Draw2Symbols(int x, int y) const
 {
-    char symbol = ch;
+    uint8 symbol = ch;
 
     int width = Symbol(symbol).Width();
 
@@ -110,7 +111,7 @@ void Char::Draw2Symbols(int x, int y) const
 
 void Char::Draw4Symbols(int x, int y) const
 {
-    char symbol = ch;
+    uint8 symbol = ch;
 
     int width = Symbol(symbol).Width();
 

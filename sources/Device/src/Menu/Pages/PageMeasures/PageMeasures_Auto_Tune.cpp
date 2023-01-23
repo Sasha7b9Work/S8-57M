@@ -21,7 +21,7 @@ DEF_GRAPH_BUTTON( bMarkers,                                                     
 
 static void Draw_Settings(int x, int y)
 {
-    Char(SymbolUGO2::SETTINGS, TypeFont::UGO, 4).Draw(x + 2, y + 1);
+    SymbolUGO(SymbolUGO::SETTINGS).Draw(x + 2, y + 1);
 }
 
 DEF_GRAPH_BUTTON( bSettings,                                                                                                                      //--- »«Ã≈–≈Õ»ﬂ - Õ¿—“–Œ»“‹ - Õ‡ÒÚÓÈÍ‡ ---

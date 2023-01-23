@@ -21,7 +21,6 @@ struct SymbolUGO2
     enum E
     {
         BIG_M           = '\x60',   // Большая буква "М"
-        SETTINGS        = '\x62',   // Значок настроек
         ARROW_RIGHT     = '\x64',
         TAB             = '\x6e',
         FLASH_DRIVE     = '\x80',   // Символ флешки внизу экрана
@@ -38,9 +37,9 @@ class Char
 public:
     explicit Char(char ch, TypeFont::E font = TypeFont::Normal, int num = 1);
     int Draw(int x, int y, Color color = Color::Count) const;
-    char ToChar() const { return ch; }
+    char ToChar() const { return (char)ch; }
 protected:
-    const char ch;
+    const uint8 ch;
     const TypeFont::E font;
     const int num_symbols;        // Может быть 1, 2, 4 или 10
 private:
@@ -101,6 +100,7 @@ public:
         ENTER,              // Значок "Enter"
         TRIANGLE_UP,        // Стрелка треугольником вверх
         TRIANGLE_DOWN,      // Стрекла треугольником вниз
+        SETTINGS,           // Значок настроек
         TRIANGLE_LEFT,      // Стрелка треугольником влево
         TRIANGLE_RIGHT,     // Стрелка треугольником вправо
         Count
