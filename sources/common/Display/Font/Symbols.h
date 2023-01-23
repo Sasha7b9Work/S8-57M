@@ -20,14 +20,14 @@ struct SymbolUGO2
 {
     enum E
     {
-        BIG_M           = '\x60',   // Большая буква "М"
-        ARROW_RIGHT     = '\x64',
-        TAB             = '\x6e',
-        FLASH_DRIVE     = '\x80',   // Символ флешки внизу экрана
-        ETHERNET        = '\x82',   // Символ Ethernet внизу экрана
-        USB             = '\x84',   // Символ USB внизу экрана
-        MATH_FUNC_MUL   = '\x8a',   // МАТЕМАТИКА-ФУНКЦИЯ-УМНОЖЕНИЕ
-        SELECT          = '\xa0'    // Символ выбора
+        BIG_M           = (uint8)'\x60',   // Большая буква "М"
+        ARROW_RIGHT     = (uint8)'\x64',
+        TAB             = (uint8)'\x6e',
+        FLASH_DRIVE     = (uint8)'\x80',   // Символ флешки внизу экрана
+        ETHERNET        = (uint8)'\x82',   // Символ Ethernet внизу экрана
+        USB             = (uint8)'\x84',   // Символ USB внизу экрана
+        MATH_FUNC_MUL   = (uint8)'\x8a',   // МАТЕМАТИКА-ФУНКЦИЯ-УМНОЖЕНИЕ
+        SELECT          = (uint8)'\xa0'    // Символ выбора
     };
 };
 
@@ -35,7 +35,7 @@ struct SymbolUGO2
 class Char
 {
 public:
-    explicit Char(char ch, TypeFont::E font = TypeFont::Normal, int num = 1);
+    explicit Char(uint8 ch, TypeFont::E font = TypeFont::Normal, int num = 1);
     int Draw(int x, int y, Color color = Color::Count) const;
     char ToChar() const { return (char)ch; }
 protected:
@@ -113,7 +113,7 @@ private:
     struct SymbolStruct
     {
         uint8 code;
-        int num_symbols;
+        int  num_symbols;
     };
 
     static const SymbolStruct desc[Count];

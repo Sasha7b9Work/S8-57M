@@ -149,7 +149,7 @@ void Governor::DrawValue(int x, int y) const
     {
         int startX = x + 40;
 
-        Char(signGovernor < 0 ? '\x9b' : '\x9a').Draw(startX - 30, y);
+        Char(signGovernor < 0 ? (uint8)'\x9b' : (uint8)'\x9a').Draw(startX - 30, y);
     }
 }
 
@@ -428,7 +428,7 @@ void Governor::DrawValueWithSelectedPosition(int x, int y, int value, int numDig
 
         uint8 val = stack.Pop();
 
-        Char((char)(val + 48)).Draw(x, y, Color::BACK);
+        Char((uint8)(val + 48)).Draw(x, y, Color::BACK);
 
         x += 6;
     }

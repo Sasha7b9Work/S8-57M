@@ -338,14 +338,14 @@ static void DrawFileMask(int x, int y)
     {
         if (*ch >= 32)
         {
-            Char(*ch).Draw(x, y);
+            Char((uint8)*ch).Draw(x, y);
         }
         else
         {
             if (*ch == 0x07)
             {
                 x = Char('%').Draw(x, y);
-                x = Char(0x30 | *(ch + 1)).Draw(x, y);
+                x = Char((uint8)(0x30 | *(ch + 1))).Draw(x, y);
                 x = Char('N').Draw(x, y);
                 ch++;
             }

@@ -501,7 +501,7 @@ int Text::DrawInRectWithTransfers(int eX, int eY, int eWidth, int eHeight, Color
                 {
                     continue;
                 }
-                x = Char(symbol).Draw(x, y);
+                x = Char((uint8)symbol).Draw(x, y);
             }
             else                                            // ј здесь найдено по крайней мере два буквенных символа, т.е. найдено слово
             {

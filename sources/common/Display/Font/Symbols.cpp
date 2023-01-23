@@ -57,7 +57,7 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
 };
 
 
-Char::Char(char _ch, TypeFont::E type, int num) : ch((uint8)_ch), font(type), num_symbols(num)
+Char::Char(uint8 _ch, TypeFont::E type, int num) : ch((uint8)_ch), font(type), num_symbols(num)
 {
 
 }
