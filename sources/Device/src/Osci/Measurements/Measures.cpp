@@ -28,7 +28,7 @@ static const StructMeasure s_meas[TypeMeasure::Count] =
     DEF_STRUCT_MEASURE("U ср",         92 - 22),
     DEF_STRUCT_MEASURE("U скз",        102 - 22),
     DEF_STRUCT_MEASURE("Выброс+",      112 - 22),
-    DEF_STRUCT_MEASURE("Выброс-",      122 - 22),
+    DEF_STRUCT_MEASURE("Выброс-",      122 - 22), 
     DEF_STRUCT_MEASURE("Период",       132 - 22),
     DEF_STRUCT_MEASURE("Частота",      142 - 22),
     DEF_STRUCT_MEASURE("Вр нараст",    152 - 22),
@@ -39,8 +39,8 @@ static const StructMeasure s_meas[TypeMeasure::Count] =
     DEF_STRUCT_MEASURE("Скважн-",      202 - 22),
     DEF_STRUCT_MEASURE("Задержка\xa7", 212 - 22),
     DEF_STRUCT_MEASURE("Задержка\xa6", 222 - 22),
-    DEF_STRUCT_MEASURE("Фаза\xa7",     232 - 22),
-    DEF_STRUCT_MEASURE("Фаза\xa6",     242 - 22)
+    DEF_STRUCT_MEASURE("Фаза\xa7",     212 - 22),
+    DEF_STRUCT_MEASURE("Фаза\xa6",     222 - 22)
 };
 
 
