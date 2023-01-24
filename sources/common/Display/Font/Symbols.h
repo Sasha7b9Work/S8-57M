@@ -3,15 +3,6 @@
 #include "common/Display/Font/Font.h"
 
 
-struct Symbol8
-{
-    enum E
-    {
-
-    };
-};
-
-
 #ifdef DELETE
 #undef DELETE
 #endif
