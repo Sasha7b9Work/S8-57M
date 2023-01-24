@@ -90,7 +90,7 @@ void PageChoiceMeasures::Draw()
     int x = MeasuresOnDisplay::IsVertical() ? (Grid::Right() - 3 * Grid::Width() / 5) : Grid::Left();
     int y = Grid::Top();
     int dX = Grid::Width() / 5;
-    int dY = 22;
+    int dY = 44;
     int maxRow = MeasuresOnDisplay::IsVertical() ? 8 : 5;
     int maxCol = MeasuresOnDisplay::IsVertical() ? 3 : 5;
 
@@ -109,7 +109,7 @@ void PageChoiceMeasures::Draw()
                 Region(dX - 2, dY - 2).Fill(x0 + 1, y0 + 1, (active ? Color::FLASH_10 : Color::BACK));
                 Char((SymbolUGO::E)Measure::GetChar(meas), TypeFont::Diagram, 10).Draw(x0 + 2, y0 + 1, active ? Color::FLASH_01 : Color::FILL);
                 Font::Set(TypeFont::Small);
-                Text(TypeMeasure::GetName(meas)).DrawRelativelyRight(x0 + dX, y0 + 12);
+                Text(TypeMeasure::GetName(meas)).DrawRelativelyRight(x0 + dX, y0 + 24);
                 meas = (TypeMeasure::E)((int)(meas) + 1);    // meas++;
             }
         }
