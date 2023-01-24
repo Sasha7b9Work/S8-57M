@@ -71,7 +71,7 @@ void TableMeasures::Cell::Draw(int x, int y)
     {
         Color color = active ? Color::BACK : Color::FILL;
 
-        measure.Name().Draw(x + 4, y + 2, color);
+        measure.Name().Draw(x + 4, y + 3, color);
 
 //        if (type == S_MEAS_MARKED)
 //        {

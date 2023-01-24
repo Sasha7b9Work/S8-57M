@@ -420,8 +420,6 @@ void Menu::Draw(int field)
         return;
     }
 
-    Region(640, 150).Fill(0, 330, Color::CHAN[0]);
-
     Font::Set(TypeFont::Normal);
 
     if (Menu::IsShown())
