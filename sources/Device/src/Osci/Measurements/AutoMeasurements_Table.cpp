@@ -166,12 +166,14 @@ int TableMeasures::GetDeltaGridLeft()
 
 int TableMeasures::DY()
 {
+    int result = 42;
+
     if (S_MEAS_SOURCE_IS_A_B)
     {
-        return 60;
+        result = 60;
     }
 
-    return 42;
+    return result;
 }
 
 

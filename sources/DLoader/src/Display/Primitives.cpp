@@ -131,16 +131,18 @@ int Text::Draw(int x, int y, Color color)
 
 int Text::DrawWithLimitation(int x, int y, int limitX, int limitY, int limitWidth, int limitHeight)
 {
-    int retValue = x;
+    int result = x;
 
-    while (*text)
+    pchar pointer = text;
+
+    while (*pointer)
     {
-        x = DrawCharWithLimitation(x, y, *text, limitX, limitY, limitWidth, limitHeight);
-        retValue += Symbol(*text).Width();
-        text++;
+        x = DrawCharWithLimitation(x, y, *pointer, limitX, limitY, limitWidth, limitHeight);
+        result += Symbol(*pointer).Width(); //-V1026
+        pointer++;
     }
 
-    return retValue + 1;
+    return result + 1;
 }
 
 
@@ -209,7 +211,7 @@ int Text::DrawDigitsMonospace(int x, int y, int width, Color color)
             x += dX;
         }
 
-        x = Text(String("%c", symbol)).Draw(x, y);
+        x = Text(String("%c", symbol.symbol)).Draw(x, y);
         x += Font::GetSpacing();
 
         if (symbol.symbol >= 0x30 && symbol.symbol <= 0x39)
