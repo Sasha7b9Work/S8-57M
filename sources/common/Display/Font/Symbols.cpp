@@ -87,7 +87,7 @@ int Char::Draw(int x, int y, Color color) const
     }
     else if (num_symbols == 10)
     {
-        //        Draw10SymbolsInRect(x, y, color);
+        Draw10Symbols(x, y);
     }
 
     Font::Pop();
@@ -127,9 +127,15 @@ void Char::Draw4Symbols(int x, int y) const
 
 void Char::Draw10Symbols(int x, int y) const
 {
-    for (char i = 0; i < 5; i++)
+    uint8 symbol = ch;
+
+    int width = Symbol(symbol).Width();
+
+    for (int j = 0; j < 2; j++)
     {
-        String("%c", ch + i).Draw(x + 8 * i, y);
-        String("%c", ch + i + 16).Draw(x + 8 * i, y + 8);
+        for (int i = 0; i < 5; i++)
+        {
+            String("%c", symbol++).Draw(x + i * width, y + j * width);
+        }
     }
 }

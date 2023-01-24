@@ -66,7 +66,7 @@ public:
 
     static void SetMarkerTime(Chan::E ch, int num, int value);
 
-    static char GetChar(TypeMeasure::E measure);
+    static uint8 GetChar(TypeMeasure::E measure);
 
     static void ShortPressOnSmallButonMarker();
 

@@ -7,40 +7,40 @@
 
 struct StructMeasure
 {
-    pchar name;
-    const char UGO;
-    uint8      notUsed0;
-    uint8      notUsed1;
-    uint8      notUsed2;
+    pchar       name;
+    const uint8 UGO;
+    uint8       notUsed0;
+    uint8       notUsed1;
+    uint8       notUsed2;
 };
 
 #define DEF_STRUCT_MEASURE(name, ugo) {name, ugo, 0, 0, 0}
 
 static const StructMeasure s_meas[TypeMeasure::Count] =
 {
-    DEF_STRUCT_MEASURE("",            '\x00'),
-    DEF_STRUCT_MEASURE("U макс",      '\x20'),
-    DEF_STRUCT_MEASURE("U мин",       '\x25'),
-    DEF_STRUCT_MEASURE("U пик",       '\x2a'),
-    DEF_STRUCT_MEASURE("U макс уст",  '\x40'),
-    DEF_STRUCT_MEASURE("U мин уст",   '\x45'),
-    DEF_STRUCT_MEASURE("U амп",       '\x4a'),
-    DEF_STRUCT_MEASURE("U ср",        '\x60'),
-    DEF_STRUCT_MEASURE("U скз",       '\x65'),
-    DEF_STRUCT_MEASURE("Выброс+",     '\x6a'),
-    DEF_STRUCT_MEASURE("Выброс-",     '\x80'),
-    DEF_STRUCT_MEASURE("Период",      '\x85'),
-    DEF_STRUCT_MEASURE("Частота",     '\x8a'),
-    DEF_STRUCT_MEASURE("Вр нараст",   '\xa0'),
-    DEF_STRUCT_MEASURE("Вр спада",    '\xa5'),
-    DEF_STRUCT_MEASURE("Длит+",       '\xaa'),
-    DEF_STRUCT_MEASURE("Длит-",       '\xc0'),
-    DEF_STRUCT_MEASURE("Скважн+",     '\xc5'),
-    DEF_STRUCT_MEASURE("Скважн-",     '\xca'),
-    DEF_STRUCT_MEASURE("Задержка\xa7",'\xe0'),
-    DEF_STRUCT_MEASURE("Задержка\xa6",'\xe5'),
-    DEF_STRUCT_MEASURE("Фаза\xa7",    '\xe0'),
-    DEF_STRUCT_MEASURE("Фаза\xa6",    '\xe5')
+    DEF_STRUCT_MEASURE("",             22 - 22),
+    DEF_STRUCT_MEASURE("U макс",       32 - 22),
+    DEF_STRUCT_MEASURE("U мин",        42 - 22),
+    DEF_STRUCT_MEASURE("U пик",        52 - 22),
+    DEF_STRUCT_MEASURE("U макс уст",   62 - 22),
+    DEF_STRUCT_MEASURE("U мин уст",    72 - 22),
+    DEF_STRUCT_MEASURE("U амп",        82 - 22),
+    DEF_STRUCT_MEASURE("U ср",         92 - 22),
+    DEF_STRUCT_MEASURE("U скз",        102 - 22),
+    DEF_STRUCT_MEASURE("Выброс+",      112 - 22),
+    DEF_STRUCT_MEASURE("Выброс-",      122 - 22),
+    DEF_STRUCT_MEASURE("Период",       132 - 22),
+    DEF_STRUCT_MEASURE("Частота",      142 - 22),
+    DEF_STRUCT_MEASURE("Вр нараст",    152 - 22),
+    DEF_STRUCT_MEASURE("Вр спада",     162 - 22),
+    DEF_STRUCT_MEASURE("Длит+",        172 - 22),
+    DEF_STRUCT_MEASURE("Длит-",        182 - 22),
+    DEF_STRUCT_MEASURE("Скважн+",      192 - 22),
+    DEF_STRUCT_MEASURE("Скважн-",      202 - 22),
+    DEF_STRUCT_MEASURE("Задержка\xa7", 212 - 22),
+    DEF_STRUCT_MEASURE("Задержка\xa6", 222 - 22),
+    DEF_STRUCT_MEASURE("Фаза\xa7",     232 - 22),
+    DEF_STRUCT_MEASURE("Фаза\xa6",     242 - 22)
 };
 
 
@@ -66,7 +66,7 @@ void Measure::SetActive(int row, int col)
 }
 
 
-char Measure::GetChar(TypeMeasure::E measure)
+uint8 Measure::GetChar(TypeMeasure::E measure)
 {
     return s_meas[measure].UGO;
 }

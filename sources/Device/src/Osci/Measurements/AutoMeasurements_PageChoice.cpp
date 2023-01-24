@@ -107,9 +107,11 @@ void PageChoiceMeasures::Draw()
                 bool active = (meas == posCursor);
                 Rectangle(dX, dY).Draw(x0, y0, Color::WHITE);
                 Region(dX - 2, dY - 2).Fill(x0 + 1, y0 + 1, (active ? Color::FLASH_10 : Color::BACK));
-                Char((SymbolUGO::E)Measure::GetChar(meas), TypeFont::Diagram, 10).Draw(x0 + 2, y0 + 1, active ? Color::FLASH_01 : Color::FILL);
+
+                Char((SymbolUGO::E)Measure::GetChar(meas), TypeFont::Diagram, 10).Draw(x0 + 5, y0 + 4, active ? Color::FLASH_01 : Color::FILL);
+
                 Font::Set(TypeFont::Small);
-                Text(TypeMeasure::GetName(meas)).DrawRelativelyRight(x0 + dX, y0 + 24);
+                Text(TypeMeasure::GetName(meas)).DrawRelativelyRight(x0 + dX, y0 + 28);
                 meas = (TypeMeasure::E)((int)(meas) + 1);    // meas++;
             }
         }
