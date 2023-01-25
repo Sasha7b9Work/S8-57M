@@ -114,7 +114,7 @@ int Text::DrawWithLimitation(int x, int y, int limitX, int limitY, int limitWidt
     while (*pointer)
     {
         x = DrawCharWithLimitation(x, y, *pointer, limitX, limitY, limitWidth, limitHeight);
-        result += Symbol(*pointer).Width();
+        result += Symbol(*pointer).Width(); //-V1026
         pointer++;
     }
 

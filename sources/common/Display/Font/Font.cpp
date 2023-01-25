@@ -12,15 +12,15 @@
     #include "FontUGO2.h"
     #include "FontUGO.h"
 
-static const Font *font5 = (const Font *)font_gost_type_a_10;
-static const Font *fontUGO2 = (const Font *)font_ugo;
-static const Font *fontUGO = (const Font *)font_ugo2;
+static const Font *font5 = (const Font *)font_gost_type_a_10; //-V641
+static const Font *fontUGO2 = (const Font *)font_ugo; //-V641
+static const Font *fontUGO = (const Font *)font_ugo2; //-V641
 
 #endif
 
 #include <cstring>
 
-static const Font *font8 = (const Font *)font_gost_type_b_16;
+static const Font *font8 = (const Font *)font_gost_type_b_16; //-V641
 static const Font *font = font8;
 
 

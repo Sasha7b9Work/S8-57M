@@ -285,6 +285,8 @@ void Button::Draw(bool) const
 
 void GraphButton::Draw(bool) const
 {
+    Item::Draw(false);
+
     int x = X() + 2;
     int y = Y() + 3;
 
