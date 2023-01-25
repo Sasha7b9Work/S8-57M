@@ -275,9 +275,11 @@ void Choice::DrawClosed() const
 
 void Button::Draw(bool) const
 {
-    Region(Width() - 5, Height() - 4).Fill(X() + 2, Y() + 3, ColorTitleBackground());
+    Item::Draw(false);
 
-    Text(Title().c_str()).DrawInCenterRect(X() + 2, Y(), Width(), Height(), ColorTitleText());
+    Region(Width() - 4, Height() - 1).Fill(X() + 1, Y() + 1, ColorTitleBackground());
+
+    Text(Title().c_str()).DrawInCenterRect(X() + 2, Y() + 2, Width(), Height(), ColorTitleText());
 }
 
 
@@ -319,7 +321,7 @@ void Page::Draw(bool opened) const
 
         Region(Width() - 4, Height() - 1).Fill(X() + 1, Y() + 1, ColorTitleBackground());
 
-        Text(Title().c_str()).DrawInCenterRect(X(), Y() - 1, Width(), Height(), ColorTitleText(), true);
+        Text(Title().c_str()).DrawInCenterRect(X(), Y() + 2, Width(), Height(), ColorTitleText(), true);
     }
 }
 

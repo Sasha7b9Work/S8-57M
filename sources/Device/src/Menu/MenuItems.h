@@ -18,11 +18,11 @@ typedef bool (*pFuncActive)();
 struct DataItem
 {
     uint8               type;       // Тип итема
-    pchar title;      // Заголовок итема
-    pchar hint;       // Подсказка для режима помощи
-    const Page *const *keeper;     // Адрес страницы, которой принадлежит. Для Page_Main = 0
+    pchar               title;      // Заголовок итема
+    pchar               hint;       // Подсказка для режима помощи
+    const Page *const  *keeper;     // Адрес страницы, которой принадлежит. Для Page_Main = 0
     pFuncActive         funcActive; // Указатель на функцию, которая определяет, активен ли данный итем
-    const void *ad;         // Указатель на структуру с данными, специфическими для каждого подкласса Item
+    const void         *ad;         // Указатель на структуру с данными, специфическими для каждого подкласса Item
 };
 
 
