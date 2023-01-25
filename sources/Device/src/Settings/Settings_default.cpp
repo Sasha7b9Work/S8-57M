@@ -35,7 +35,7 @@ const Settings Settings::defaultSettings =
         TypeGrid::_1,               // typeGrid
         100,                        // brightness
         MenuAutoHide::None,         // menuAutoHide
-        370,                        // shiftInMemory
+        232,                        // shiftInMemory
         ChanA                       // lastAffectedChannel
     },
 

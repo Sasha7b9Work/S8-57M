@@ -218,6 +218,8 @@ int16 DisplayOsci::ShiftInMemory::Get()
 
 void DisplayOsci::ShiftInMemory::Set(int16 shift)
 {
+    LOG_WRITE("%d", shift);
+
     set.disp._shiftInMemory = shift;
 }
 

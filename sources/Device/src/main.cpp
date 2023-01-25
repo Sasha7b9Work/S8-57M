@@ -31,7 +31,7 @@ int main(void)
 
         if (TIME_MS >= time_start + 1000)
         {
-            LOG_WRITE("fps %d", num_frames);
+//            LOG_WRITE("fps %d", num_frames);
             num_frames = 0;
             time_start = TIME_MS;
         }
