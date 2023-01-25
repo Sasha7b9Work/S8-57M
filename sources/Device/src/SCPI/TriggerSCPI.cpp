@@ -35,7 +35,7 @@ namespace SCPI_TRIG
     static bool TestSource();
 
 
-    static pString inputs[] =
+    static pcharc inputs[] =
     {
         " FULL",
         " HF",
@@ -44,7 +44,7 @@ namespace SCPI_TRIG
     };
 
 
-    static pString trig_modes[] =
+    static pcharc trig_modes[] =
     {
         " AUTO",
         " NORMAL",
@@ -53,7 +53,7 @@ namespace SCPI_TRIG
     };
 
 
-    static pString polarities[] =
+    static pcharc polarities[] =
     {
         " RISE",
         " FALL",
@@ -61,7 +61,7 @@ namespace SCPI_TRIG
     };
 
 
-    static pString sources[] =
+    static pcharc sources[] =
     {
         " 1",
         " 2",

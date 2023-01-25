@@ -36,7 +36,7 @@ static TypeFont::E currentFont = TypeFont::Normal;
 static int spacing = 1;
 
 
-int Font::GetLengthText(pString text)
+int Font::GetLengthText(pcharc text)
 {
     int result = 0;
     char *symbol = (char *)text;

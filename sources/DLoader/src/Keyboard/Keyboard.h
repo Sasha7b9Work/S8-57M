@@ -49,7 +49,7 @@ struct Key
     bool IsArrow() const { return value >= Left && value <= Down; };
     // Возвращает true, если кнопка управляет параметром сигнала - развёрткой там, смещением
     bool IsControlSignal() const;
-    pString Name();
+    pcharc Name();
 };
 
 
@@ -67,7 +67,7 @@ struct TypePress
     } value;
 
     explicit TypePress(E v) : value(v)  { };
-    pString ToString();
+    pcharc ToString();
     bool IsLong() const { return value == Long; };
 };
 

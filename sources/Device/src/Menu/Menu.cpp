@@ -378,7 +378,7 @@ void Menu::DrawHintItem(int x, int y, int width)
 {
     if (itemHint)
     {
-        static pString names[TypeItem::Count] =
+        static pcharc names[TypeItem::Count] =
         {
             "",                   // Item_None
             "",                   // Item::Type::Choice

@@ -67,7 +67,7 @@ namespace Recorder
 
         static void Change(int delta);
 
-        static pString ToString();
+        static pcharc ToString();
         
         // Возвращает скорость потребления памяти в байтах/сек
         static int BytesToSec();

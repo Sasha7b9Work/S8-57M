@@ -25,15 +25,15 @@ namespace DisplayFreqMeter
 
     bool needSendToSCPI = false;
 
-    static pString FreqSetToString(const BitSet32 *fr);
+    static pcharc FreqSetToString(const BitSet32 *fr);
 
-    static pString PeriodSetToString(const BitSet32 *pr);
+    static pcharc PeriodSetToString(const BitSet32 *pr);
 
     // Возвращает порядок младшего разряда считанного значения счётчика периода при данных настройках
     static int LowOrder(FreqMeter::FreqClc::E freqCLC, FreqMeter::NumberPeriods::E numPeriods);
 
     // Преобразует 6 разрядов числа, хранящиеся в стеке, в текстовую строку периода. Младший значащий разряд хранится на вершине стека. order - его порядок
-    static pString StackToString(Stack<uint> *stack, int order);
+    static pcharc StackToString(Stack<uint> *stack, int order);
 
     // Записывает 6 разрядов из стека stack в буфер buffer. Младший разряд на вершине стека. Точку ставить на point позиции, начиная с buffer[0]
     static void WriteStackToBuffer(Stack<uint> *stack, int point, pchar suffix);
@@ -253,7 +253,7 @@ void DisplayFreqMeter::DrawPeriodMode(int x, int _y)
 }
 
 
-pString DisplayFreqMeter::FreqSetToString(const BitSet32 *fr)
+pcharc DisplayFreqMeter::FreqSetToString(const BitSet32 *fr)
 {
     if(fr->word < 2)
     {
@@ -450,7 +450,7 @@ int DisplayFreqMeter::LowOrder(FreqMeter::FreqClc::E freqCLC, FreqMeter::NumberP
 }
 
 
-pString DisplayFreqMeter::PeriodSetToString(const BitSet32 *pr)
+pcharc DisplayFreqMeter::PeriodSetToString(const BitSet32 *pr)
 {
     if(pr->word == 0)
     {
@@ -503,7 +503,7 @@ pString DisplayFreqMeter::PeriodSetToString(const BitSet32 *pr)
 }
 
 
-pString DisplayFreqMeter::StackToString(Stack<uint> *stack, int order)
+pcharc DisplayFreqMeter::StackToString(Stack<uint> *stack, int order)
 {
     static const struct StructOrder
     {

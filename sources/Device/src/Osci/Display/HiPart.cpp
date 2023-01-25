@@ -28,7 +28,7 @@ namespace DisplayOsci
         static void WriteTextVoltage(Chan::E ch, int x, int y);
 
         // Выводит наименование параметра (text) и его числовое (number) значение или символьное (number_c)
-        static void WriteStringAndNumber(pchar text, int x, int y, int number, pString number_c = nullptr);
+        static void WriteStringAndNumber(pchar text, int x, int y, int number, pcharc number_c = nullptr);
 
         static void DrawTime(int x, int y);
 
@@ -126,7 +126,7 @@ int DisplayOsci::HiPart::DrawMainParameters(int _x, int _y)
 
     if (S_MEM_MODE_WORK_IS_DIR)
     {
-        pString source[2] = { "1", "2" };
+        pcharc source[2] = { "1", "2" };
 
         String("c:").Draw(x, y1, Color::Trig());
 
@@ -229,7 +229,7 @@ void DisplayOsci::HiPart::WriteTextVoltage(Chan::E ch, int x, int y)
 }
 
 
-void DisplayOsci::HiPart::WriteStringAndNumber(pchar text, int x, int y, int number, pString number_c)
+void DisplayOsci::HiPart::WriteStringAndNumber(pchar text, int x, int y, int number, pcharc number_c)
 {
     String(text).Draw(x, y, Color::FILL);
 
@@ -342,7 +342,7 @@ void DisplayOsci::HiPart::DrawRightPart(int x0, int y0)
     // Режим работы
     if (!S_MEM_MODE_WORK_IS_DIR)
     {
-        static const pString strs[] =
+        static const pcharc strs[] =
         {
             "ИЗМ",
             "ПОСЛ",

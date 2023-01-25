@@ -54,7 +54,7 @@ static bool TestScale();
 static void HintScale(String *);
 
 
-static pString displays[] =
+static pcharc displays[] =
 {
     " OFF",
     " ON",
@@ -62,7 +62,7 @@ static pString displays[] =
 };
 
 
-static pString rangeName[] =
+static pcharc rangeName[] =
 {
     " 2MV",
     " 5MV",
@@ -116,7 +116,7 @@ static pchar FuncBalance(pchar buffer)
 }
 
 
-static pString bandwidth[] =
+static pcharc bandwidth[] =
 {
     " FULL",
     " 20MHZ",
@@ -141,7 +141,7 @@ static pchar FuncBandwidth(pchar buffer)
 }
 
 
-static pString couple[] =
+static pcharc couple[] =
 {
     " DC",
     " AC",
@@ -209,7 +209,7 @@ static pchar FuncOffset(pchar buffer)
 }
 
 
-static pString probe[] =
+static pcharc probe[] =
 {
     " X1",
     " X10",

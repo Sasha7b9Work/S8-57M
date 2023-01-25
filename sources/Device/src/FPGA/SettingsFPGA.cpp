@@ -318,9 +318,9 @@ String RShift::ToString(int16 rShiftRel, Range::E range, Divider::E divider)
 }
 
 
-pString TBase::Name(TBase::E tBase)
+pcharc TBase::Name(TBase::E tBase)
 {
-    static pString names[TBase::Count] =
+    static pcharc names[TBase::Count] =
     {
         "2нс",
         "5нс",
@@ -358,12 +358,12 @@ pString TBase::Name(TBase::E tBase)
 }
 
 
-pString Range::Name(Chan::E ch)
+pcharc Range::Name(Chan::E ch)
 {
     static const struct StructRange
     {
         pchar  name;
-        StructRange(pString nRU)
+        StructRange(pcharc nRU)
         {
             name = nRU;
         }

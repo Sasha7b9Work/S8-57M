@@ -15,9 +15,9 @@ void ENumAverage::Set(ENumAverage::E v)
 }
 
 
-pString ENumAccum::ToString(ENumAccum::E v)
+pcharc ENumAccum::ToString(ENumAccum::E v)
 {
-    static const pString strings[ENumAccum::Count] =
+    static const pcharc strings[ENumAccum::Count] =
     {
         "1",
         "2",

@@ -53,7 +53,7 @@ void PageMemory::OnChanged_LengthMemoryChannel(bool active)
     Osci::OnChangedLengthMemoryChannel();
 }
 
-static pString namesLengthMemory[] = {"512", "1k", "2k", "4k", "8k", "16k", "32k"};
+static pcharc namesLengthMemory[] = {"512", "1k", "2k", "4k", "8k", "16k", "32k"};
 
 DEF_CHOICE_5( cPoints,                                                                                                                                               //--- ѕјћя“№ - “очки ---
     "ƒлина пам€ти",
@@ -313,7 +313,7 @@ static void DrawSetMask()
 
     DrawFileMask(x0 + deltaX, y0 + 65);
 
-    static pString strings[] =
+    static pcharc strings[] =
     {
         "%y - год, %m - мес€ц, %d - день",
         "%H - часы, %M - минуты, %S - секунды",

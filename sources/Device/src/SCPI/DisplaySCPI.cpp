@@ -54,7 +54,7 @@ static pchar const grids[] =
 };
 
 
-static pString mapping[] =
+static pcharc mapping[] =
 {
     " LINES",
     " DOTS",
@@ -75,7 +75,7 @@ const StructSCPI SCPI::display[] =
 };
 
 
-static pString accumulationDirect[] =
+static pcharc accumulationDirect[] =
 {
     " OFF",
     " 2",
@@ -118,11 +118,11 @@ static void SetAverage(int i)
     ENumAverage::Set(ave[i]);
 }
 
-static pString averagesDirect[] = { " 1", " 2", " 4", " 8", " 16", " 32", " 64", " 128", " 256", "" };
+static pcharc averagesDirect[] = { " 1", " 2", " 4", " 8", " 16", " 32", " 64", " 128", " 256", "" };
 
 static pchar FuncAverages(pchar buffer)
 {
-    static pString averages[] = { " 128", " 16", " 256", " 8", " 2", " 32", " 64", " 1", " 4", "" };
+    static pcharc averages[] = { " 128", " 16", " 256", " 8", " 2", " 32", " 64", " 1", " 4", "" };
 
     SCPI_REQUEST(SCPI::SendAnswer(averagesDirect[S_OSCI_ENUM_AVERAGE]));
 
@@ -148,7 +148,7 @@ static pchar FuncBrightness(pchar buffer)
 }
 
 
-static pString fps[] =
+static pcharc fps[] =
 {
     " 25",
     " 10",
@@ -182,7 +182,7 @@ static pchar FuncMapping(pchar buffer)
 }
 
 
-static pString smoothingsDirect[] =
+static pcharc smoothingsDirect[] =
 {
     " 1",
     " 2",
@@ -222,7 +222,7 @@ static pchar FuncSmoothing(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(smoothingsDirect[S_DISP_ENUM_SMOOTH]));
 
-    static pString smoothings[] = { " 10", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " 1", "" };
+    static pcharc smoothings[] = { " 10", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9", " 1", "" };
 
     SCPI_PROCESS_ARRAY(smoothings, SetSmoothing(i));
 }

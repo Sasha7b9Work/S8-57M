@@ -212,7 +212,7 @@ char *TimeToString(float time, bool alwaysSign, char buffer[20])
         return buffer;
     }
 
-    pString suffix[4] = { "нс", "мкс", "мс", "с" };
+    pcharc suffix[4] = { "нс", "мкс", "мс", "с" };
 
     static const float factor[4] = { 1e9F, 1e6F, 1e3F, 1.0F };
 
@@ -283,7 +283,7 @@ static char *VoltageToString(float voltage, bool alwaysSign, char buffer[20])
         return buffer;
     }
 
-    static const pString suf[4] =
+    static const pcharc suf[4] =
     {
         "мк¬", "м¬", "¬", "к¬"
     };
@@ -333,7 +333,7 @@ char *Current::ToString(char buffer[50]) const
         return buffer;
     }
 
-    pString suf[4] =
+    pcharc suf[4] =
     {
         "\x10мкј", "\x10мј", "\x10ј", "\x10кј"
     };

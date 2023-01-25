@@ -69,8 +69,8 @@ namespace VALUE
 // Массив структур описаний масштабов по напряжению.
 static const struct RangeStruct
 {
-    pString name;     // Название диапазона в текстовом виде, пригодном для вывода на экран.
-    RangeStruct(pString nRU) : name(nRU) {};
+    pcharc name;     // Название диапазона в текстовом виде, пригодном для вывода на экран.
+    RangeStruct(pcharc nRU) : name(nRU) {};
 }
 ranges[Range::Count][2] =
 {
@@ -217,13 +217,13 @@ void TBase::Change(int delta)
 }
 
 
-pString TBase::ToString(TBase::E tBase)
+pcharc TBase::ToString(TBase::E tBase)
 {
     // Структура для описания диапазона масштаба по времени.
     static const struct StructTBase
     {
         pchar name;    // Название диапазона в текстовом виде, пригодном для вывода на экран.
-        StructTBase(pString nRU)
+        StructTBase(pcharc nRU)
         {
             name = nRU;
         };
@@ -383,13 +383,13 @@ void Range::LoadBoth()
 }
 
 
-pString Range::ToString(Chan::E ch, Divider::E divider)
+pcharc Range::ToString(Chan::E ch, Divider::E divider)
 {
     return ranges[S_RANGE(ch)][divider].name;
 }
 
 
-pString Range::ToString(Range::E range, Divider::E _divider)
+pcharc Range::ToString(Range::E range, Divider::E _divider)
 {
     return ranges[range][_divider].name;
 }
@@ -475,9 +475,9 @@ void RShift::DrawBoth()
 }
 
 
-pString Chan::Name(Chan::E ch)
+pcharc Chan::Name(Chan::E ch)
 {
-    static pString names[Chan::Count] =
+    static pcharc names[Chan::Count] =
     {
         "Канал 1",
         "Канал 2"

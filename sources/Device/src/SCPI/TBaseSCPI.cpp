@@ -35,7 +35,7 @@ namespace SCPI_TBASE
 
 
 
-    static pString tBaseNames[] =
+    static pcharc tBaseNames[] =
     {
         " 2NS",
         " 5NS",
@@ -71,7 +71,7 @@ namespace SCPI_TBASE
     };
 
 
-    static pString peakdets[] =
+    static pcharc peakdets[] =
     {
         " OFF",
         " ON",
@@ -79,7 +79,7 @@ namespace SCPI_TBASE
     };
 
 
-    static pString tposes[] =
+    static pcharc tposes[] =
     {
         " LEFT",
         " CENTER",
@@ -100,7 +100,7 @@ const StructSCPI SCPI::tBase[] =
 };
 
 
-static pString modes[] =
+static pcharc modes[] =
 {
     " EQUAL",
     " REAL",

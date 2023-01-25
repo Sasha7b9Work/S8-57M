@@ -9,9 +9,9 @@
 static const Key::E *allowedKeys = 0;
 
 
-pString Key::Name()
+pcharc Key::Name()
 {
-    static const pString names[Key::Count] =
+    static const pcharc names[Key::Count] =
     {
         "None",
         "Функция",
@@ -54,9 +54,9 @@ pString Key::Name()
 }
 
 
-pString TypePress::ToString()
+pcharc TypePress::ToString()
 {
-    static const pString names[TypePress::Count] =
+    static const pcharc names[TypePress::Count] =
     {
         "Вниз",
         "Повтор",

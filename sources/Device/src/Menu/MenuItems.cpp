@@ -756,7 +756,7 @@ void Choice::ChangeIndex(int delta) const
 
 int Choice::NumChoices() const
 {
-    pString *name = OwnData()->names;
+    pcharc *name = OwnData()->names;
 
     int result = 0;
 

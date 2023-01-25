@@ -23,11 +23,11 @@ struct PageHelpContent
     pchar  const titleHint[2];        // \brief Название страницы на русском и английском языке, а затем содержимое на русском и английском 
                                             // (для случая TypePage_Description)
     void              *pages[MAX_PAGES];    // Массив содержит адреса ссылаемых страниц в случае TypePage_Content
-    pString Title() const
+    pcharc Title() const
     {
         return titleHint[0];
     }
-    pString Hint() const
+    pcharc Hint() const
     {
         return titleHint[1];
     }

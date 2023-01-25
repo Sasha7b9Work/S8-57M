@@ -82,7 +82,7 @@ static void DebugShowSetInfo_Draw()
         DRAW_FORMAT("correctionTime : %d", NRST_CORRECTION_TIME); //-V2528
         //    DRAW_FORMAT("numAveForRand : %d", NRST_NUM_AVE_FOR_RAND); //-V2528
 
-        //    pString s[3] = {"выключено", "настроено автоматически", "задано вручную"};
+        //    pcharc s[3] = {"выключено", "настроено автоматически", "задано вручную"};
         //    DRAW_FORMAT("stretchADCtype : %s", (ExtraStretch::Type() < 3 ? s[ExtraStretch::Type()] : "!!! неправильное значение !!!")); //-V547 //-V2528
 
         x = String("stretchADC :").Draw(x0, INC_Y) + 5; //-V2528

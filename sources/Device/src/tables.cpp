@@ -6,7 +6,7 @@
 
 
 // Таблица символов алфавита и спецсимволов для ввода текста
-pString Tables::symbolsAlphaBet[0x48] =
+pcharc Tables::symbolsAlphaBet[0x48] =
 {
     /* 0x00 */ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", /* 0x19 */
     /* 0x1a */ " ", "_", "-", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", /* 0x26 */
@@ -17,7 +17,7 @@ pString Tables::symbolsAlphaBet[0x48] =
 };
 
 
-pString Tables::Get(int index)
+pcharc Tables::Get(int index)
 {
     return symbolsAlphaBet[index];
 }
@@ -58,7 +58,7 @@ ENumSignalsInSec::E Tables::ENumSignalsInSecToENUM(int numSignalsInSec)
 
 pchar Tables_RangeNameFromValue(Range::E range)
 {
-    static const struct StructName { pString name; } names[Range::Count] =
+    static const struct StructName { pcharc name; } names[Range::Count] =
     {
         "Range_2mV",
         "Range_5mV",
@@ -75,7 +75,7 @@ pchar Tables_RangeNameFromValue(Range::E range)
         "Range_20V"
     };
 
-    pString name = names[range].name;
+    pcharc name = names[range].name;
 
     return name;
 }

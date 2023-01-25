@@ -52,9 +52,9 @@ namespace TBase
         Count
     };
 
-    pString Name(TBase::E tBase);
+    pcharc Name(TBase::E tBase);
 
-    pString ToString(TBase::E tBase);
+    pcharc ToString(TBase::E tBase);
 
     void Set(E v = Count);
 
@@ -120,11 +120,11 @@ namespace Range
 
     void Set(Chan::E ch, E range);
 
-    pString Name(Chan::E ch);
+    pcharc Name(Chan::E ch);
 
-    pString ToString(Chan::E ch, Divider::E divider);
+    pcharc ToString(Chan::E ch, Divider::E divider);
 
-    pString ToString(Range::E range, Divider::E divider);
+    pcharc ToString(Range::E range, Divider::E divider);
 
     // Возвращает напряжение, соответствующее верхней границе сетки
     float MaxVoltageOnScreen(Range::E range);

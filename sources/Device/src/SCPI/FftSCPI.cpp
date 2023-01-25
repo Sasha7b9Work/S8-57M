@@ -51,7 +51,7 @@ static pchar FFT_FuncData(pchar buffer)
 }
 
 
-static pString display[] =
+static pcharc display[] =
 {
     " ON",
     " OFF",
@@ -71,7 +71,7 @@ static pchar FFT_FuncDisplay(pchar buffer)
 }
 
 
-static pString scale[] =
+static pcharc scale[] =
 {
     " LOG",
     " LINEAR",
@@ -86,7 +86,7 @@ static pchar FFT_FuncScale(pchar buffer)
 }
 
 
-static pString source[] =
+static pcharc source[] =
 {
     " 1",
     " 2",
@@ -102,7 +102,7 @@ static pchar FuncSource(pchar buffer)
 }
 
 
-static pString window[] =
+static pcharc window[] =
 {
     " RECTANGLE",
     " HAMMING",

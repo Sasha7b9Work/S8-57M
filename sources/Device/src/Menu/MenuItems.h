@@ -259,7 +259,7 @@ public:
 struct StructHelpDrawButton
 {
     pFuncDrawUGO    funcDrawUGO;    // Указатель на функцию отрисовки изображения варианта кнопки
-    pString         helpUGO;        // Подпись к данному изображению.
+    pcharc         helpUGO;        // Подпись к данному изображению.
 };
 
 struct DataGraphButton
@@ -370,7 +370,7 @@ private:
 struct DataChoice
 {
     int8           *cell;
-    pString        *names;          // Варианты выбора.
+    pcharc        *names;          // Варианты выбора.
     pFuncVB         handlerChange;  // Функция должна вызываться после изменения значения элемента.
     pFuncAfterDraw  funcAfterDraw;  // Функция вызывается после отрисовки элемента. 
 };

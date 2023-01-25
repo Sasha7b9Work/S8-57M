@@ -72,7 +72,7 @@ struct ENumAccum
         Count
     };
 
-    static pString ToString(ENumAccum::E v);
+    static pcharc ToString(ENumAccum::E v);
 };
 
 

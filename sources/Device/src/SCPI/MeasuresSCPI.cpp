@@ -31,7 +31,7 @@ const StructSCPI SCPI::measures[] =
 };
 
 
-static pString display[] =
+static pcharc display[] =
 {
     " OFF",
     " ON",
@@ -51,7 +51,7 @@ static pchar FuncDisplay(pchar buffer)
 }
 
 
-static pString source[] =
+static pcharc source[] =
 {
     " 1",
     " 2",
@@ -67,7 +67,7 @@ static pchar FuncSource(pchar buffer)
 }
 
 
-static pString values[] =
+static pcharc values[] =
 {
     " NNNNNNN",     // None,
     " VMAX",        // VoltageMax,

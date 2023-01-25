@@ -58,7 +58,7 @@ void GovernorColor::DrawValue(int x, int y) const
     ColorType *ct = OwnData()->ct;
 
     int8 field = ct->currentField;
-    const pString texts[4] = { "ßð", "Ñí", "Çë", "Êð" };
+    const pcharc texts[4] = { "ßð", "Ñí", "Çë", "Êð" };
 
     uint color = COLOR(ct->color.value);
     uint red = R_FROM_COLOR(color);

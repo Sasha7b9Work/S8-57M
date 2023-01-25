@@ -9,7 +9,7 @@
 #endif
 
 
-typedef const char  *const  pString;
+typedef const char  *const  pcharc;
 typedef const char         *pchar;
 typedef unsigned char       uchar;
 typedef signed char         int8;
@@ -259,7 +259,7 @@ struct Chan
         Count
     };
 
-    static pString Name(Chan::E ch);
+    static pcharc Name(Chan::E ch);
 };
 
 

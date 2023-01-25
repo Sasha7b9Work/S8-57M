@@ -196,12 +196,12 @@ void Recorder::ScaleX::Change(int delta)
 }
 
 
-pString Recorder::ScaleX::ToString()
+pcharc Recorder::ScaleX::ToString()
 {
     static const struct StructScaleX
     {
         pchar name;
-        StructScaleX(pString nRU)
+        StructScaleX(pcharc nRU)
         {
             name = nRU;
         };

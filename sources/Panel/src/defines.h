@@ -11,7 +11,7 @@
 #include <stm32f4xx_hal.h>
 
 
-typedef const char *const  pString;
+typedef const char *const  pcharc;
 typedef unsigned int       uint;
 typedef unsigned short int uint16;
 typedef signed short int   int16;

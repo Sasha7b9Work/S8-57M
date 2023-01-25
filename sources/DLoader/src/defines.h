@@ -28,7 +28,7 @@ typedef unsigned char        uchar;
 typedef signed   short int   int16;
 typedef unsigned short int   uint16;
 typedef unsigned int         uint;
-typedef const    char *const pString;
+typedef const    char *const pcharc;
 typedef uint16               col_val;
 
 typedef void  (*pFuncVV)();

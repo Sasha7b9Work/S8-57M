@@ -48,7 +48,7 @@ const StructSCPI SCPI::freqmeter[] =
 };
 
 
-static pString periodsReverse[] =
+static pcharc periodsReverse[] =
 {
     " 1E0",
     " 1E1",
@@ -77,7 +77,7 @@ static pchar FuncAvePeriods(pchar buffer)
 }
 
 
-static pString labels[] =
+static pcharc labels[] =
 {
     " 100KHZ",
     " 1MHZ",
@@ -104,7 +104,7 @@ static pchar FuncLabels(pchar buffer)
 }
 
 
-static pString measures[] =
+static pcharc measures[] =
 {
     " FREQUENCY",
     " PERIOD",
@@ -134,7 +134,7 @@ static void SetMode(int i)
 
 static pchar FuncMode(pchar buffer)
 {
-    static pString mode[] =
+    static pcharc mode[] =
     {
         " OFF",
         " ON",
@@ -147,7 +147,7 @@ static pchar FuncMode(pchar buffer)
 }
 
 
-static pString time[] =
+static pcharc time[] =
 {
     " 100MS",
     " 1S",

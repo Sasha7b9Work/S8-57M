@@ -168,7 +168,7 @@ static pchar FuncAutoSearch(pchar buffer)
 }
 
 
-static pString calibratorMode[] =
+static pcharc calibratorMode[] =
 {
     " AC",
     " DC",
@@ -190,7 +190,7 @@ static pchar FuncCalibratorMode(pchar buffer)
 }
 
 
-static pString length[] =
+static pcharc length[] =
 {
     " 512",
     " 1K",

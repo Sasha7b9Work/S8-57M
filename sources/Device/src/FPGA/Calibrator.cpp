@@ -75,7 +75,7 @@ bool Calibrator::BalanceChannel(Chan::E ch, bool showHint)
 
     setNRST.SetExtraShift(0);
 
-    static const pString messages[Chan::Count] =
+    static const pcharc messages[Chan::Count] =
     {
         "Балансирую канал 1",
         "Балансирую канал 2"
