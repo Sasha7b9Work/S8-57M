@@ -121,13 +121,13 @@ static void DrawScreenArea()
 
 int DisplayOsci::MemoryWindow::Width()
 {
-    return 270;
+    return 270 * 2;
 }
 
 
 int DisplayOsci::MemoryWindow::Height()
 {
-    return 17;
+    return 17 * 2;
 }
 
 
@@ -139,5 +139,5 @@ int DisplayOsci::MemoryWindow::X()
 
 int DisplayOsci::MemoryWindow::Y()
 {
-    return ::Display::HEIGHT - 19;
+    return ::Display::HEIGHT - 19 * 2;
 }
