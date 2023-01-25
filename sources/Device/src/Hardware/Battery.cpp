@@ -89,10 +89,10 @@ static float CalculatePercents(float volts)
 
 static void DrawUGO(int x, int y, float percents)
 {
-    int widthFull = 43;
-    int widthSmall = 6;
+    int widthFull = 43 * 2;
+    int widthSmall = 6 * 2;
 
-    int dY = 5;
+    int dY = 5 * 2;
 
     Rectangle(widthFull - widthSmall, 8 + dY).Draw(x + widthSmall + 1, y - dY, percents <= 25.0F ? Color::RED : Color::BATTERY);
     Rectangle(widthSmall, 4 + dY).Draw(x + 1, y + 2 - dY);
@@ -121,7 +121,7 @@ static void DrawFilled(int x, int y, int full, float percents)
     //    }
     //}
 
-    Region(filled, 9).Fill(x + full - filled, y, percents <= 25.0F ? Color::RED : Color::BATTERY);
+    Region(filled, 17).Fill(x + full - filled, y - 6, percents <= 25.0F ? Color::RED : Color::BATTERY);
 }
 
 

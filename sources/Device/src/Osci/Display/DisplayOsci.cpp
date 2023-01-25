@@ -75,7 +75,7 @@ void DisplayOsci::Update(int field)
 
     CursorsMeasurements::Draw();                        // Курсоры курсорных измерений
 
-    BottomPart::Draw(500, Grid::Bottom() + 1, field);
+    BottomPart::Draw(540, Grid::Bottom() + 1, field);
 
     DisplayFreqMeter::Update();
 
@@ -100,7 +100,7 @@ void DisplayOsci::BottomPart::Draw(int x0, int y0, int field)
         return;
     }
 
-    VLine(36).Draw(x0, y0 + 1, Color::FILL);
+    VLine(33).Draw(x0, y0 + 2, Color::FILL);
 
     Font::Set(TypeFont::UGO);
 
@@ -123,7 +123,7 @@ void DisplayOsci::BottomPart::Draw(int x0, int y0, int field)
         Char('\x13').Draw(x0 + 46, y0 + 11);
     }
 
-    Battery::Draw(x0 + 2, y0 + 1);
+    Battery::Draw(x0 + 5, y0 + 20);
 }
 
 
