@@ -100,8 +100,8 @@ void TableMeasures::Cell::DrawStringMeasure(int x, int y)
 
     switch (S_MEAS_SOURCE)
     {
-    case MeasuresSource::A:     measureA.Draw(x + 10, y + 22, colA);                                 break;
-    case MeasuresSource::B:     measureB.Draw(x + 10, y + 22, colB);                                 break;
+    case MeasuresSource::A:     measureA.Draw(x + 10, y + 22, colA);    break;
+    case MeasuresSource::B:     measureB.Draw(x + 10, y + 22, colB);    break;
     case MeasuresSource::A_B:   measureA.Draw(x + 10, y + 22, colA);
                                 measureB.Draw(x + 10, y + 40, colB);    break;
     }

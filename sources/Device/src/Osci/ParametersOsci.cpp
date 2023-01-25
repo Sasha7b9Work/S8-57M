@@ -559,7 +559,7 @@ void RShift::Draw(Chan::E ch)
         SymbolUGO(SymbolUGO::RSHIFT_NORMAL).Draw(x - 8, y - 8);
     }
 
-    Char((ch == ChanA) ? (uint8)('1') : (uint8)('2'), TypeFont::Small).Draw(x - 6, y - 12, Color::BACK);
+    Char((ch == ChanA) ? (uint8)('1') : (uint8)('2'), TypeFont::Small).Draw(x - 6, y - 6, Color::BACK);
 }
 
 
@@ -597,7 +597,7 @@ void TrigLevel::Draw()
 
     static const char symbols[2] = { '1', '2' };
 
-    Char((uint8)symbols[ch], TypeFont::Small).Draw(xSymbol, y - 12, Color::BACK);
+    Char((uint8)symbols[ch], TypeFont::Small).Draw(xSymbol, y - 6, Color::BACK);
 }
 
 

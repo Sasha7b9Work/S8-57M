@@ -75,7 +75,7 @@ void DisplayOsci::Update(int field)
 
     CursorsMeasurements::Draw();                        // Курсоры курсорных измерений
 
-    BottomPart::Draw(600, Grid::Bottom() + 1, field);
+    BottomPart::Draw(500, Grid::Bottom() + 1, field);
 
     DisplayFreqMeter::Update();
 

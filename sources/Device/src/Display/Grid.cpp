@@ -165,8 +165,10 @@ void Grid::DrawGridSignal(int left, int top, int width, int height)
 
     if (top == Grid::Top())
     {
-        HLine(left - 1).Draw(1, top);
+        HLine(left - 4).Draw(1, top);
+        HLine(left - 4).Draw(1, bottom);
         HLine(Display::WIDTH - right - 4).Draw(right + 2, top);
+        HLine(Display::WIDTH - right - 4).Draw(right + 2, bottom);
 
         VLine line(bottom - top - 4);
 
