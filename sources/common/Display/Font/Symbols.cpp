@@ -14,8 +14,8 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {10, 1},    // GOVERNOR_SHIFT_3
     {11, 1},    // GOVERNOR_LEFT
     {12, 1},    // GOVERNOR_RIGHT
-    {18, 1},    // CROSS
     {15, 1},    // TSHIFT_NORMAL
+    {18, 1},    // CROSS
     {19, 1},    // COUPLE_GND
     {20, 1},    // COUPLE_AC
     {21, 1},    // COUPLE_DC
