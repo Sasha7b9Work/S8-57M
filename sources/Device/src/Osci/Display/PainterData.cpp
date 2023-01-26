@@ -124,20 +124,24 @@ void DisplayOsci::PainterData::DrawSpectrumChannel(const float *spectrum, Color 
     int gridLeft = Grid::Left();
     int gridBottom = Grid::MathBottom();
     int gridHeight = Grid::MathHeight();
+
     for (int i = 0; i < 256; i++)
     {
         int height = (int)(gridHeight * spectrum[i]);
 
-        VLine(height).Draw(gridLeft + i, gridBottom - height);
+        VLine line(height);
+
+        line.Draw(gridLeft + i * 2, gridBottom - height);
+        line.Draw(gridLeft + i * 2 + 1, gridBottom - height);
     }
 }
 
 
 void DisplayOsci::PainterData::WriteParametersFFT(Chan::E ch, float freq0, float density0, float freq1, float density1)
 {
-    int x = Grid::Left() + 259;
-    int y = Grid::ChannelBottom() + 5;
-    int dY = 10;
+    int x = Grid::Left() + 259 * 2;
+    int y = Grid::ChannelBottom() + 5 * 2;
+    int dY = 10 * 2;
 
     char buffer[20];
     Color::FILL.SetAsCurrent();
@@ -150,11 +154,11 @@ void DisplayOsci::PainterData::WriteParametersFFT(Chan::E ch, float freq0, float
 
     if(ch == ChanA)
     {
-        y += dY + 2;
+        y += dY + 4;
     }
     else
     {
-        y += dY * 3 + 4;
+        y += dY * 6 + 8;
     }
 
     Color::CHAN[ch].SetAsCurrent();
@@ -205,10 +209,11 @@ void DisplayOsci::PainterData::DrawSpectrum(const uint8 *dataIn, int numPoints, 
 
         WriteParametersFFT(ch, freq0, density0, freq1, density1);
 
-        VLine(Grid::MathBottom() - Grid::ChannelBottom()).Draw(Grid::Left() + S_FFT_POS_CUR_0, Grid::ChannelBottom(), Color::GRID);
-        VLine(Grid::MathBottom() - Grid::ChannelBottom()).Draw(Grid::Left() + S_FFT_POS_CUR_1, Grid::ChannelBottom());
-        Rectangle(s * 2, s * 2).Draw(S_FFT_POS_CUR_0 + Grid::Left() - s, y0 - s, Color::FILL);
-        Rectangle(s * 2, s * 2).Draw(S_FFT_POS_CUR_1 + Grid::Left() - s, y1 - s);
+        VLine(Grid::MathBottom() - Grid::ChannelBottom()).Draw(Grid::Left() + S_FFT_POS_CUR_0 * 2, Grid::ChannelBottom(), Color::GRID);
+        VLine(Grid::MathBottom() - Grid::ChannelBottom()).Draw(Grid::Left() + S_FFT_POS_CUR_1 * 2, Grid::ChannelBottom());
+
+        Rectangle(s * 2, s * 2).Draw(S_FFT_POS_CUR_0 * 2 + Grid::Left() - s, y0 - s, Color::FILL);
+        Rectangle(s * 2, s * 2).Draw(S_FFT_POS_CUR_1 * 2 + Grid::Left() - s, y1 - s);
 
         std::free(spectrum);
     }

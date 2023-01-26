@@ -213,7 +213,7 @@ void Grid::DrawGridSpectrum()
         {
             int y = MathTop() + (int)(i * scale);
 
-            HLine(256).Draw(Grid::Left(), y, Color::GRID);
+            HLine(256 * 2).Draw(Grid::Left(), y, Color::GRID);
 
             Color::FILL.SetAsCurrent();
             String((char *)(strs[i])).Draw(3, y - 4);
@@ -232,11 +232,11 @@ void Grid::DrawGridSpectrum()
 
             HLine(256).Draw(Grid::Left(), y, Color::GRID);
 
-            String((char *)(strs[i])).Draw(5, y - 4, Color::FILL);
+            String((char *)(strs[i])).Draw(10, y - 4, Color::FILL);
         }
     }
 
-    VLine(Grid::MathBottom() - MathTop()).Draw(Grid::Left() + 256, MathTop(), Color::FILL);
+    VLine(Grid::MathBottom() - MathTop()).Draw(Grid::Left() + 256 * 2, MathTop(), Color::FILL);
 }
 
 
