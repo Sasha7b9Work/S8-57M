@@ -5,7 +5,7 @@
 
 
 // Преобразует перечисление в количество точек
-#define ENUM_TO_REL_POINTS(enum)    ((int)(1 << ((int)(enum) + 9)))
+#define ENUM_TO_REL_POINTS(num)    ((int)(1 << ((int)(num) + 10)))
 
 
 // Режим работы.
@@ -88,7 +88,6 @@ struct ENumPointsFPGA
 
     enum E
     {
-        _512,
         _1k,
         _2k,
         _4k,

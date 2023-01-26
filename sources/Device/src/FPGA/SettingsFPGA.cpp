@@ -281,11 +281,10 @@ int TShift::Min()
     }
     m[ENumPointsFPGA::Count] =
     {
-        StructENumPoints(-256 * mul + k,  -128 * mul + k, 0 * mul + k),  // 512
-        StructENumPoints(-512 * mul + k,  -256 * mul + k, 0 * mul + k),  // 1024
-        StructENumPoints(-1024 * mul + k,  -512 * mul + k, 0 * mul + k),  // 2048
-        StructENumPoints(-2048 * mul + k, -1024 * mul + k, 0 * mul + k),  // 4096
-        StructENumPoints(-4096 * mul + k, -2048 * mul + k, 0 * mul + k)   // 8192
+        StructENumPoints(-512 * mul + k,  -256 * mul + k, 0 * mul + k),     // 1024
+        StructENumPoints(-1024 * mul + k,  -512 * mul + k, 0 * mul + k),    // 2048
+        StructENumPoints(-2048 * mul + k, -1024 * mul + k, 0 * mul + k),    // 4096
+        StructENumPoints(-4096 * mul + k, -2048 * mul + k, 0 * mul + k)     // 8192
     };
 
     return m[S_ENUMPOINTS_FPGA].m[S_TPOS];

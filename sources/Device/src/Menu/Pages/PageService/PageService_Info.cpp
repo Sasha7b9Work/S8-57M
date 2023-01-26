@@ -13,10 +13,10 @@ static void Information_Draw()
     for (int i = 0; i < 5; i++)
     {
         Painter::BeginScene(i, Color::BACK);
-        int x = 65;
-        int dY = 20;
-        int y = 20;
-        Rectangle(319, 239).Draw(0, 0, Color::FILL);
+        int x = 140;
+        int dY = 30;
+        int y = 70;
+        Rectangle(Display::WIDTH - 1, Display::HEIGHT - 1).Draw(0, 0, Color::FILL);
         y += dY;
         y += dY;
 
