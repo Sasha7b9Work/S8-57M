@@ -381,64 +381,64 @@ void DisplayOsci::HiPart::WriteCursors()
     {
         int x = 0;
         int y1 = 0;
-        int y2 = 0 + 9;
+        int y2 = 0 + 9 * 2;
 
         VLine separator(Grid::Top() - 3);
 
         separator.Draw(x, 1, Color::FILL);
-        separator.Draw(102, 1);
-        separator.Draw(203, 1);
+        separator.Draw(102 * 2, 1);
+        separator.Draw(203 * 2, 1);
 
-        x += 3;
+        x += 3 * 2;
         Chan::E source = S_CURS_SOURCE;
         Color colorText = Color::CHAN[source];
         if (!CursorsControl::IsDisabledU())
         {
             String("1:").Draw(x, y1, colorText);
             String("2:").Draw(x, y2);
-            x += 7;
+            x += 7 * 2;
             CursorsMeasurements::Voltage(source, 0).Draw(x, y1);
             CursorsMeasurements::Voltage(source, 1).Draw(x, y2);
-            x = 49;
+            x = 49 * 2;
             float pos0 = MathFPGA::VoltageCursor(CursorsMeasurements::PosU(source, 0), S_RANGE(source), S_RSHIFT(source));
             float pos1 = MathFPGA::VoltageCursor(CursorsMeasurements::PosU(source, 1), S_RANGE(source), S_RSHIFT(source));
             float delta = std::fabsf(pos1 - pos0) * Divider::ToAbs(S_DIVIDER(source));
             String(":dU=").Draw(x, y1);
-            Voltage(delta).ToString(false).Draw(x + 17, y1);
+            Voltage(delta).ToString(false).Draw(x + 17 * 2, y1);
             String(':').Draw(x, y2);
-            CursorsMeasurements::PercentsU(source).Draw(x + 10, y2);
+            CursorsMeasurements::PercentsU(source).Draw(x + 10 * 2, y2);
         }
 
-        x = 101;
-        x += 3;
+        x = 101 * 2;
+        x += 3 * 2;
         if (!CursorsControl::IsDisabledT())
         {
             colorText.SetAsCurrent();
             String("1:").Draw(x, y1);
             String("2:").Draw(x, y2);
-            x += 7;
+            x += 7 * 2;
             CursorsMeasurements::Time(source, 0).Draw(x, y1);
             CursorsMeasurements::Time(source, 1).Draw(x, y2);
-            x = 153;
+            x = 153 * 2;
 
             float pos0 = MathFPGA::TimeCursor(CursorsMeasurements::PosT(source, 0), S_TIME_BASE);
             float pos1 = MathFPGA::TimeCursor(CursorsMeasurements::PosT(source, 1), S_TIME_BASE);
             float delta = std::fabsf(pos1 - pos0);
             String(":dT=").Draw(x, y1);
-            Time(delta).ToString(false).Draw(x + 17, y1);
+            Time(delta).ToString(false).Draw(x + 17 * 2, y1);
             String(':').Draw(x, y2);
-            CursorsMeasurements::PercentsT(source).Draw(x + 8, y2);
+            CursorsMeasurements::PercentsT(source).Draw(x + 8 * 2, y2);
 
             if (S_CURS_SHOW_FREQ)
             {
-                int width = 65;
+                int width = 65 * 2;
                 x = Grid::Right() - width;
-                Rectangle(width, 12).Draw(x, Grid::Top(), Color::FILL);
-                Region(width - 2, 10).Fill(x + 1, Grid::Top() + 1, Color::BACK);
-                String("1/dT=").Draw(x + 1, Grid::Top() + 2, colorText);
+                Rectangle(width, 12 * 2).Draw(x, Grid::Top(), Color::FILL);
+                Region(width - 2, 10 * 2).Fill(x + 1 * 2, Grid::Top() + 1 * 2, Color::BACK);
+                String("1/dT=").Draw(x + 1 * 2, Grid::Top() + 2 * 2, colorText);
                 if (delta != 0.0F)
                 {
-                    Frequency(1.0F / delta).ToString().Draw(x + 25, Grid::Top() + 2);
+                    Frequency(1.0F / delta).ToString().Draw(x + 25 * 2, Grid::Top() + 2 * 2);
                 }
             }
         }
