@@ -434,7 +434,7 @@ void DisplayOsci::HiPart::WriteCursors()
                 int width = 65 * 2;
                 x = Grid::Right() - width;
                 Rectangle(width, 12 * 2).Draw(x, Grid::Top(), Color::FILL);
-                Region(width - 2, 10 * 2).Fill(x + 1 * 2, Grid::Top() + 1 * 2, Color::BACK);
+                Region(width - 2 * 2, 10 * 2).Fill(x + 1 * 2, Grid::Top() + 1 * 2, Color::BACK);
                 String("1/dT=").Draw(x + 1 * 2, Grid::Top() + 2 * 2, colorText);
                 if (delta != 0.0F)
                 {
