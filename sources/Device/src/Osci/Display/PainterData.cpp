@@ -383,7 +383,7 @@ void DisplayOsci::PainterData::DrawPeakDetOff(Chan::E ch, int center, const uint
     SBuffer buffer(Command::Paint_DrawSignal, (uint8)((mode << 1) | ((int)ch << 2)));   // 0,1
 
     buffer.Push(Point2(x, Grid::Top()));                    // 2-4
-    buffer.Push(Point2(x, Grid::Bottom()));                 // 5-7
+    buffer.Push(Point2(x, Grid::ChannelBottom()));          // 5-7
     buffer.Push((uint8 *)&NUM_POINTS, 2);                   // 8-10
 
     buffer.Send();

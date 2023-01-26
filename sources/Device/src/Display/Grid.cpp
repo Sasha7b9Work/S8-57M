@@ -112,7 +112,7 @@ int Grid::ChannelBottom()
 
 int Grid::ChannelCenterHeight()
 {
-    return (Top() + Bottom()) / 2;
+    return (Top() + ChannelBottom()) / 2;
 }
 
 
