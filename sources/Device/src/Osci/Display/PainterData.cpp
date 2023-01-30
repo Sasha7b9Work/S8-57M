@@ -39,8 +39,9 @@ namespace DisplayOsci
         static void DrawModeLines(Chan::E ch, int left, int center, const uint8 *data, float scale);
 
         // mode : 0 - точки, 1 - линии
-        static void DrawPeakDetOff(Chan::E ch, int center, const uint8 *data, float scale, int x, int mode);
+        static void DrawPeakDetOff(Chan::E ch, const uint8 *data, int x, int mode);
 
+        // mode : 0 - точки, 1 - линии
         static void DrawModeLinesPeakDetOn(int center, const uint8 *data, float scale, int x);
         static void DrawModePointsPeakDetOn(int center, const uint8 *data, float scale, int x);
 
@@ -349,7 +350,7 @@ void DisplayOsci::PainterData::DrawModeLines(Chan::E ch, int left, int center, c
     }
     else
     {
-        DrawPeakDetOff(ch, center, data, scale, x, 1);
+        DrawPeakDetOff(ch, data, x, 1);
     }
 }
 
@@ -364,7 +365,7 @@ void DisplayOsci::PainterData::DrawModePoints(Chan::E ch, int left, int center, 
     }
     else
     {
-        DrawPeakDetOff(ch, center, data, scale, left, 0);
+        DrawPeakDetOff(ch, data, left, 0);
     }
 }
 
@@ -378,10 +379,14 @@ void DisplayOsci::PainterData::DrawModeLinesPeakDetOn(int center, const uint8 *d
 
         VLine(min - max).Draw(x++, max);
     }
+
+//    const int NUM_POINTS = Grid::Width();
+//
+//    SBuffer buffer(Command)
 }
 
 
-void DisplayOsci::PainterData::DrawPeakDetOff(Chan::E ch, int center, const uint8 *data, float scale, int x, int mode)
+void DisplayOsci::PainterData::DrawPeakDetOff(Chan::E ch, const uint8 *data, int x, int mode)
 {
     const int NUM_POINTS = Grid::Width();
 
