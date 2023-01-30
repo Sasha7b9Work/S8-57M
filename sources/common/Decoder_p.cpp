@@ -756,9 +756,9 @@ bool PDecoder::DrawSignal(uint8 data)
         }
         else
         {
-            int index_byte = step - 10;         // Номер текущей точки
+            int index_byte = step - 10;                 // Номер текущей точки
 
-            static int prev_y = 0;                  // Значение предыдущей точки
+            static int prev_y = 0;                      // Значение предыдущей точки
 
             if (index_byte == 0)
             {
@@ -766,28 +766,30 @@ bool PDecoder::DrawSignal(uint8 data)
             }
             else
             {
-                if ((mode & 2))                     // Пик дет включён
+                if ((mode & 2))                         // Пик дет включён
                 {
                     static uint8 prev_data = 0;
 
-                    if (index_byte & 1)
+                    if (index_byte & 1)                 // для нечётных иксов
                     {
                         prev_data = data;
                     }
-
-                    if (mode & 1)                   // линии
+                    else
                     {
+                        if (mode & 1)                   // линии
+                        {
 
-                    }
-                    else                            // Точки
-                    {
-                        BackBuffer::Signal::DrawPoint(x, Converter::CacluateY(prev_data));
-                        BackBuffer::Signal::DrawPoint(x++, Converter::CacluateY(data));
+                        }
+                        else                            // Точки
+                        {
+                            BackBuffer::Signal::DrawPoint(x, Converter::CacluateY(prev_data));
+                            BackBuffer::Signal::DrawPoint(x++, Converter::CacluateY(data));
+                        }
                     }
                 }
-                else                                // Пик дет отключён
+                else                                    // Пик дет отключён
                 {
-                    if (mode & 1)                   // линии
+                    if (mode & 1)                       // линии
                     {
                         int y1 = prev_y;
                         int y2 = Converter::CacluateY(data);
