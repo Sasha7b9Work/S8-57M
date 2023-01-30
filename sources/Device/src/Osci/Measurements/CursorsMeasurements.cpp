@@ -22,7 +22,7 @@ namespace CursorsMeasurements
 }
 
 
-float CursorsMeasurements::PosU(Chan::E ch, int numCur)
+float CursorsMeasurements::PosU(Ch::E ch, int numCur)
 {
     return S_CURS_POS_U(ch, numCur) / (Grid::Bottom() == Grid::FullBottom() ? 1.0F : 2.0F);
 }
@@ -35,7 +35,7 @@ bool CursorsMeasurements::NecessaryDraw()
 }
 
 
-String CursorsMeasurements::Voltage(Chan::E source, int numCur)
+String CursorsMeasurements::Voltage(Ch::E source, int numCur)
 {
     float voltage = MathFPGA::VoltageCursor(PosU(source, numCur), S_RANGE(source), S_RSHIFT(source));
     if (S_DIVIDER(source) == Divider::_10)
@@ -47,7 +47,7 @@ String CursorsMeasurements::Voltage(Chan::E source, int numCur)
 }
 
 
-String CursorsMeasurements::Time(Chan::E source, int numCur)
+String CursorsMeasurements::Time(Ch::E source, int numCur)
 {
     float time = MathFPGA::TimeCursor(CursorsMeasurements::PosT(source, numCur), S_TIME_BASE);
 
@@ -55,7 +55,7 @@ String CursorsMeasurements::Time(Chan::E source, int numCur)
 }
 
 
-float CursorsMeasurements::PosT(Chan::E ch, int num)
+float CursorsMeasurements::PosT(Ch::E ch, int num)
 {
     float result = 0.0F;
     std::memcpy(&result, &S_CURS_POS_T(ch, num), sizeof(result));
@@ -63,7 +63,7 @@ float CursorsMeasurements::PosT(Chan::E ch, int num)
 }
 
 
-void CursorsMeasurements::SetCursPosT_temp(Chan::E ch, int num, float value)
+void CursorsMeasurements::SetCursPosT_temp(Ch::E ch, int num, float value)
 {
     std::memcpy(&S_CURS_POS_T(ch, num), &value, sizeof(value));
 }
@@ -71,7 +71,7 @@ void CursorsMeasurements::SetCursPosT_temp(Chan::E ch, int num, float value)
 
 void CursorsMeasurements::Draw()
 {
-    Chan::E source = S_CURS_SOURCE;
+    Ch::E source = S_CURS_SOURCE;
 
     Color::CHAN[source].SetAsCurrent();
 
@@ -149,7 +149,7 @@ void CursorsMeasurements::DrawHorizontal(int y, int xTearing)
 
 void CursorsMeasurements::UpdateCursorsForLook()
 {
-//    Chan::E source = CURS_SOURCE;
+//    Ch::E source = CURS_SOURCE;
 
     if (S_CURS_ACTIVE_IS_T && (S_CURS_LOOK_MODE_IS_VOLTAGE(ChanA) || S_CURS_LOOK_MODE_IS_BOTH(ChanA)))
     {
@@ -170,7 +170,7 @@ void CursorsMeasurements::UpdateCursorsForLook()
 }
 
 
-String CursorsMeasurements::PercentsU(Chan::E source)
+String CursorsMeasurements::PercentsU(Ch::E source)
 {
     // \todo Тут дикая дичь. Эта строчка вызывает HardFault. Возможно, из-за включенного выравнивания Settings. Надо подумать
     // float dPerc = dUperc(source);     
@@ -182,7 +182,7 @@ String CursorsMeasurements::PercentsU(Chan::E source)
 }
 
 
-String CursorsMeasurements::PercentsT(Chan::E source)
+String CursorsMeasurements::PercentsT(Ch::E source)
 {
     float dPerc = 100.0F;
     std::memcpy(&dPerc, &S_CURS_DT_PERCENTS(source), sizeof(float));

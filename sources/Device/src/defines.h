@@ -250,7 +250,7 @@ extern BitField gBF;   // @brief —труктура сделана volatile, потому что иначе пр
 
 #define BUTTON_SIZE wxSize(70, 30)
 
-struct Chan
+struct Ch
 {
     enum E
     {
@@ -259,7 +259,7 @@ struct Chan
         Count
     };
 
-    static pcharc Name(Chan::E ch);
+    static pcharc Name(Ch::E ch);
 };
 
 

@@ -4,8 +4,8 @@
 #include "common/Display/Font/Symbols.h"
 
 
-#define ChanA Chan::A
-#define ChanB Chan::B
+#define ChanA Ch::A
+#define ChanB Ch::B
 #define setA  set.ch[ChanA]
 #define setB  set.ch[ChanB]
 
@@ -118,18 +118,18 @@ namespace Range
         Count
     };
 
-    void Set(Chan::E ch, E range);
+    void Set(Ch::E, E range);
 
-    pcharc Name(Chan::E ch);
+    pcharc Name(Ch::E);
 
-    pcharc ToString(Chan::E ch, Divider::E divider);
+    pcharc ToString(Ch::E, Divider::E divider);
 
     pcharc ToString(Range::E range, Divider::E divider);
 
     // Возвращает напряжение, соответствующее верхней границе сетки
     float MaxVoltageOnScreen(Range::E range);
 
-    void Change(Chan::E ch, int16 delta);
+    void Change(Ch::E, int16 delta);
 
     // Загружаться эта настройка может только для обоих каналов одновременно
     void LoadBoth();
@@ -139,13 +139,13 @@ namespace Range
 namespace RShift
 {
     // Этим конструктором можно установить значение
-    void Set(Chan::E ch, int16 rShift);
+    void Set(Ch::E, int16 rShift);
 
     // Изменить на delta
-    void Change(Chan::E ch, int16 delta);
+    void Change(Ch::E, int16 delta);
 
     // Загрузить в аппаратуру
-    void Load(Chan::E ch);
+    void Load(Ch::E);
 
     // Отрисовать оба на экране
     void DrawBoth();
@@ -175,7 +175,7 @@ namespace ModeCouple
         Count
     };
 
-    void Set(Chan::E ch, ModeCouple::E couple);
+    void Set(Ch::E, ModeCouple::E couple);
 
     SymbolUGO UGO(ModeCouple::E v);
 };
@@ -191,7 +191,7 @@ namespace Bandwidth
         _20MHz,
     };
 
-    void Load(Chan::E ch);
+    void Load(Ch::E);
 };
 
 
@@ -223,7 +223,7 @@ namespace Trig
 
 namespace TrigLevel
 {
-    void Set(Chan::E ch, int16 level);
+    void Set(Ch::E, int16 level);
 
     // Загрузить уровень синхронизации в аппаратную часть
     void Load();

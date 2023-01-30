@@ -15,7 +15,7 @@ namespace Handlers
     static KeyEvent event;
 
     // Общий обработчик изменения параметра канала - масштаба или смещения
-    static void OnChangeParameterChannel(pFuncVChI16, Chan::E, int16);
+    static void OnChangeParameterChannel(pFuncVChI16, Ch::E, int16);
 
     // Пустой обработчик
     static void Empty();
@@ -29,7 +29,7 @@ namespace Handlers
     // Открывает страницу или закрывает меню в зависимости от того, какая страница сейчас раскрыта
     static void ShowHidePage(const Page *page);
 
-    static void ChangeRShift(Chan::E ch, int16 delta);
+    static void ChangeRShift(Ch::E ch, int16 delta);
 
     // Обработчики нажатия кнопок
     static void OnTime();      // Key::Time
@@ -118,7 +118,7 @@ void Handlers::Empty()
 {
 }
 
-void Handlers::ChangeRShift(Chan::E ch, int16 delta)
+void Handlers::ChangeRShift(Ch::E ch, int16 delta)
 {
     if (!Device::InModeRecorder())
     {
@@ -153,7 +153,7 @@ void Handlers::OnRangeB()
 }
 
 
-void Handlers::OnChangeParameterChannel(pFuncVChI16 func, Chan::E ch, int16 delta)
+void Handlers::OnChangeParameterChannel(pFuncVChI16 func, Ch::E ch, int16 delta)
 {
     func(ch, delta);
 }

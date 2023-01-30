@@ -4,8 +4,8 @@
 #include "Menu/MenuItems.h"
 
 
-typedef void (*pFuncVChI16)(Chan::E, int16);
-typedef void (*pFuncVCh)(Chan::E);
+typedef void (*pFuncVChI16)(Ch::E, int16);
+typedef void (*pFuncVCh)(Ch::E);
 typedef void (*pFuncVI)(int);
 
 

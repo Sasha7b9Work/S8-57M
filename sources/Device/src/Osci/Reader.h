@@ -12,7 +12,7 @@ extern uint16 *ave[2];
 
 #define DS          pDS             // Указатель на настройки текущего рисуемого сигнала.
 
-#define ENABLE_CH_DS(ch)  (((ch) == Chan::A) ? DS->en_a : DS->en_b)
+#define ENABLE_CH_DS(ch)  (((ch) == Ch::A) ? DS->en_a : DS->en_b)
 
 #define IN(ch)  (dataIN[(int)(ch)])
 #define IN_A    IN(ChanA)
@@ -47,8 +47,8 @@ extern uint16 *ave[2];
 // В этой структуре будут храниться точки, подготовленные для вывода на экран
 struct StructDataDrawing
 {
-    uint8       data[Chan::Count][281 * 2];    // Данные обоих каналов. Точек в два раза больше, чем на экране, для пикового детектора
-    bool        needDraw[Chan::Count];         // Если true, то канал 1 надо рисовать
+    uint8       data[Ch::Count][281 * 2];    // Данные обоих каналов. Точек в два раза больше, чем на экране, для пикового детектора
+    bool        needDraw[Ch::Count];         // Если true, то канал 1 надо рисовать
     uint8       notUsed0[2];
     int         posBreak;                      // Позиция в координатах сетки, на которой нужно рисовать линию разрыва поточечного вывода
     ModeWork::E forMode;                       // Для какого режима считываются данные

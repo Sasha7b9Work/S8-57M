@@ -39,7 +39,7 @@ void FPGA::ForcedStart()
 }
 
 
-uint16 Osci::ReadLastRecord(Chan::E ch)
+uint16 Osci::ReadLastRecord(Ch::E ch)
 {
     static uint16 address = 0;
 

@@ -13,16 +13,16 @@
 static void DisplayUpdate();
 
 // Нахоит сигнал на канале ch. Возвращает true, если сигнал найден и параметры сигнала в tBase, range
-static bool FindSignal(Chan::E ch, TBase::E *tBase, Range::E *range, ModeCouple::E *couple);
-static bool FullSearchSignal(Chan::E ch, const Settings *old);
+static bool FindSignal(Ch::E ch, TBase::E *tBase, Range::E *range, ModeCouple::E *couple);
+static bool FullSearchSignal(Ch::E ch, const Settings *old);
 
 // Отмасштабировать сигнал. Если onlyReduce - только сжать
-static void ScaleChannel(Chan::E ch, bool onlyReduce);
+static void ScaleChannel(Ch::E ch, bool onlyReduce);
 
 // Находит частоту на канале ch
-static bool FindFrequency(Chan::E ch, float *outFreq, Range::E *outRange, ModeCouple::E *couple);
-static bool FindFrequencyForRanges(Chan::E ch, uint timeWaitMS, float *outFreq, Range::E *outRange);
-static bool FindFrequencyForRange(Chan::E ch, Range::E range, uint timeWaitMS, float *outFreq);
+static bool FindFrequency(Ch::E ch, float *outFreq, Range::E *outRange, ModeCouple::E *couple);
+static bool FindFrequencyForRanges(Ch::E ch, uint timeWaitMS, float *outFreq, Range::E *outRange);
+static bool FindFrequencyForRange(Ch::E ch, Range::E range, uint timeWaitMS, float *outFreq);
 
 // Ожидает импульса синхронизации в течение timeWaitMS миллисекунд и возвращает true, если синхронизация пришла
 static bool WaitSync(uint timeWaitMS);
@@ -35,10 +35,10 @@ namespace AutoFPGA
 {
     static const int SIZE = 300;
     void Start();
-    void ReadData(Chan::E ch, uint8 *data);
+    void ReadData(Ch::E ch, uint8 *data);
 
     // Прочитать данные и проверить, что они не выходят за пределы минимального и максимального. Если false - выход за экран
-    float ReadAndCalculateMinMax(Chan::E ch);
+    float ReadAndCalculateMinMax(Ch::E ch);
 
     void Wait(uint timeMS);
 }
@@ -84,7 +84,7 @@ void Osci::RunAutoSearch()
 }
 
 
-static bool FullSearchSignal(Chan::E ch, const Settings *old)
+static bool FullSearchSignal(Ch::E ch, const Settings *old)
 {
     TBase::E tBase = TBase::Count;
     Range::E range = Range::Count;
@@ -103,8 +103,8 @@ static bool FullSearchSignal(Chan::E ch, const Settings *old)
 
         Osci::Init();
 
-        ScaleChannel(ChanA, ch == Chan::B);
-        ScaleChannel(ChanB, ch == Chan::A);
+        ScaleChannel(ChanA, ch == Ch::B);
+        ScaleChannel(ChanB, ch == Ch::A);
 
         Osci::Init();
 
@@ -115,7 +115,7 @@ static bool FullSearchSignal(Chan::E ch, const Settings *old)
 }
 
 
-static bool FindSignal(Chan::E ch, TBase::E *tBase, Range::E *outRange, ModeCouple::E *couple)
+static bool FindSignal(Ch::E ch, TBase::E *tBase, Range::E *outRange, ModeCouple::E *couple)
 {
     float frequency = 0.0F;
 
@@ -130,7 +130,7 @@ static bool FindSignal(Chan::E ch, TBase::E *tBase, Range::E *outRange, ModeCoup
 }
 
 
-static bool FindFrequency(Chan::E ch, float *outFreq, Range::E *outRange, ModeCouple::E *couple)
+static bool FindFrequency(Ch::E ch, float *outFreq, Range::E *outRange, ModeCouple::E *couple)
 {
     Osci::Stop();
     ModeCouple::Set(ch, ModeCouple::AC);
@@ -161,7 +161,7 @@ static bool FindFrequency(Chan::E ch, float *outFreq, Range::E *outRange, ModeCo
 }
 
 
-static bool FindFrequencyForRanges(Chan::E ch, uint timeWaitMS, float *outFreq, Range::E *outRange)
+static bool FindFrequencyForRanges(Ch::E ch, uint timeWaitMS, float *outFreq, Range::E *outRange)
 {
     bool result = false;
 
@@ -196,7 +196,7 @@ static bool FindFrequencyForRanges(Chan::E ch, uint timeWaitMS, float *outFreq, 
 }
 
 
-static bool FindFrequencyForRange(Chan::E ch, Range::E range, uint timeWaitMS, float *outFreq)
+static bool FindFrequencyForRange(Ch::E ch, Range::E range, uint timeWaitMS, float *outFreq)
 {
     DisplayUpdate();
 
@@ -371,7 +371,7 @@ void FrequencyMeter::State::Restore()
 }
 
 
-static void ScaleChannel(Chan::E ch, bool onlyReduce)
+static void ScaleChannel(Ch::E ch, bool onlyReduce)
 {
     float delta = AutoFPGA::ReadAndCalculateMinMax(ch);
 
@@ -392,7 +392,7 @@ static void ScaleChannel(Chan::E ch, bool onlyReduce)
 }
 
 
-float AutoFPGA::ReadAndCalculateMinMax(Chan::E ch)
+float AutoFPGA::ReadAndCalculateMinMax(Ch::E ch)
 {
     Buffer buffer(AutoFPGA::SIZE);
 
@@ -448,7 +448,7 @@ void AutoFPGA::Start()
 }
 
 
-void AutoFPGA::ReadData(Chan::E ch, uint8 *data)
+void AutoFPGA::ReadData(Ch::E ch, uint8 *data)
 {
     uint16 addrRead = (uint16)(Osci::ReadLastRecord(ch) - SIZE);
 

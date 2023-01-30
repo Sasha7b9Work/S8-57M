@@ -10,7 +10,7 @@
 namespace Osci
 {
     // „итать данные канала в пам€ить data
-    bool ReadDataChannel(Chan::E ch, uint8 *data);
+    bool ReadDataChannel(Ch::E ch, uint8 *data);
 
     bool ReadDataChannelRand(uint8 *address, uint8 *data);
 
@@ -18,7 +18,7 @@ namespace Osci
 }
 
 
-bool Osci::ReadDataChannel(Chan::E ch, uint8 *data)
+bool Osci::ReadDataChannel(Ch::E ch, uint8 *data)
 {
     int numPoints = ENumPointsFPGA::PointsInChannel();
 

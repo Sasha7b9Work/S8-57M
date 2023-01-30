@@ -16,7 +16,7 @@ namespace PageCursorsMeasures
         static const float MAX_POS_T = 560.0f;
 
         // Установить источник курсорных измерений
-        static void SetCursSource(Chan::E ch);
+        static void SetCursSource(Ch::E ch);
     }
 }
 
@@ -47,7 +47,7 @@ static void Draw_ChannelB(int x, int y)
 
 void PageCursorsMeasures::Set::OnPress_Channel()
 {
-    Chan::E source = S_CURS_SOURCE_IS_A ? ChanB : ChanA;
+    Ch::E source = S_CURS_SOURCE_IS_A ? ChanB : ChanA;
     SetCursSource(source);
 }
 
@@ -136,7 +136,7 @@ static void Draw_T(int x, int y)
         else
         {
             bool condLeft = false, condDown = false;
-            Chan::E source = S_CURS_SOURCE;
+            Ch::E source = S_CURS_SOURCE;
 
             CalculateConditions((int16)CursorsMeasurements::PosT(source, 0), (int16)CursorsMeasurements::PosT(source, 1),
                                 S_CURS_CONTROL_T(source), &condLeft, &condDown);
@@ -224,7 +224,7 @@ void PageCursorsMeasures::Set::OnPress_U()
 
 static void Draw_U(int x, int y)
 {
-    Chan::E source = S_CURS_SOURCE;
+    Ch::E source = S_CURS_SOURCE;
     if (CursorsControl::IsDisabledU())
     {
         Draw_U_disable(x, y);
@@ -402,32 +402,32 @@ const Page * const PageCursorsMeasures::Set::self = (const Page *)&pSet;
 
 
 
-void PageCursorsMeasures::Set::SetCursSource(Chan::E ch)
+void PageCursorsMeasures::Set::SetCursSource(Ch::E ch)
 {
     S_CURS_SOURCE = ch;
 }
 
 
-void PageCursorsMeasures::Set::IncCursCntrlU(Chan::E ch)
+void PageCursorsMeasures::Set::IncCursCntrlU(Ch::E ch)
 {
     Math::CircleIncrease<int8>((int8 *)&S_CURS_CONTROL_U(ch), 0, 3);
 }
 
 
-void PageCursorsMeasures::Set::IncCursCntrlT(Chan::E ch)
+void PageCursorsMeasures::Set::IncCursCntrlT(Ch::E ch)
 {
     Math::CircleIncrease<int8>((int8 *)&S_CURS_CONTROL_T(ch), 0, 3);
 }
 
 
-void PageCursorsMeasures::Set::SetCursPos100(Chan::E ch)
+void PageCursorsMeasures::Set::SetCursPos100(Ch::E ch)
 {
     S_CURS_DU_PERCENTS(ch) = (float)std::fabsf(S_CURS_POS_U0(ch) - S_CURS_POS_U1(ch));
     S_CURS_DT_PERCENTS(ch) = (float)std::fabsf(CursorsMeasurements::PosT(ch, 0) - CursorsMeasurements::PosT(ch, 1));
 }
 
 
-void PageCursorsMeasures::Set::SetShiftCursPosU(Chan::E ch, int numCur, float delta)
+void PageCursorsMeasures::Set::SetShiftCursPosU(Ch::E ch, int numCur, float delta)
 {
     S_CURS_POS_U(ch, numCur) = Math::LimitationRet(S_CURS_POS_U(ch, numCur) - delta, 0.0F, MAX_POS_U);
 
@@ -438,7 +438,7 @@ void PageCursorsMeasures::Set::SetShiftCursPosU(Chan::E ch, int numCur, float de
 }
 
 
-void PageCursorsMeasures::Set::SetShiftCursPosT(Chan::E ch, int numCur, float delta)
+void PageCursorsMeasures::Set::SetShiftCursPosT(Ch::E ch, int numCur, float delta)
 {
     // \todo одинаковые ветки
     // CURsT_POS(ch, numCur) = LimitationFloat(CURsT_POS(ch, numCur) + delta, 0, MAX_POS_T);   
@@ -453,7 +453,7 @@ void PageCursorsMeasures::Set::SetShiftCursPosT(Chan::E ch, int numCur, float de
 
 void PageCursorsMeasures::Set::UpdateCursorsForLook()
 {
-    Chan::E source = S_CURS_SOURCE;
+    Ch::E source = S_CURS_SOURCE;
 
     if (S_CURS_ACTIVE_IS_T && (S_CURS_LOOK_MODE_IS_VOLTAGE(ChanA) || S_CURS_LOOK_MODE_IS_BOTH(ChanA)))
     {
@@ -474,13 +474,13 @@ void PageCursorsMeasures::Set::UpdateCursorsForLook()
 }
 
 
-void PageCursorsMeasures::Set::SetCursorU(Chan::E ch, int numCur, float pos)
+void PageCursorsMeasures::Set::SetCursorU(Ch::E ch, int numCur, float pos)
 {
     S_CURS_POS_U(ch, numCur) = Math::LimitationRet(pos, 0.0F, MAX_POS_U);
 }
 
 
-void PageCursorsMeasures::Set::SetCursorT(Chan::E ch, int numCur, float pos)
+void PageCursorsMeasures::Set::SetCursorT(Ch::E ch, int numCur, float pos)
 {
     // \todo одинаковые ветки
     // CURsT_POS(ch, numCur) = LimitationFloat(pos, 0, MAX_POS_T);

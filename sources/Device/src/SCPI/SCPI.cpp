@@ -38,7 +38,7 @@ static String data;
 
 static String badSymbols;
 
-bool SCPI::Sender::osci[Chan::Count] = { false, false };
+bool SCPI::Sender::osci[Ch::Count] = { false, false };
 bool SCPI::Sender::freqMeter = false;
 bool SCPI::Sender::tester = false;
 bool SCPI::Sender::multimeter = false;

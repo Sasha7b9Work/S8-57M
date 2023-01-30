@@ -139,7 +139,7 @@ bool Roller::FirstDrawThisFrame()
 }
 
 
-int Roller::FillScreenBuffer(Chan::E ch, Buffer &buffer, int width)
+int Roller::FillScreenBuffer(Ch::E ch, Buffer &buffer, int width)
 {
     int numBytes = currentPoint;
 

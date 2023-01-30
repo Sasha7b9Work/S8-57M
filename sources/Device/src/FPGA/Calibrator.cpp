@@ -15,16 +15,16 @@
 
 
 // Откалибровать канал Ch
-static bool CalibrateChannel(Chan::E ch);
+static bool CalibrateChannel(Ch::E ch);
 
 // Балансировать канал на одном диапазоне
-static void BalanceRange(Chan::E ch, Range::E range);
+static void BalanceRange(Ch::E ch, Range::E range);
 
 // "Растянуть" канал
-static bool StretchChannel(Chan::E ch);
+static bool StretchChannel(Ch::E ch);
 
 // Найти коэффициент растяжки канала
-static float FindStretchChannel(Chan::E ch);
+static float FindStretchChannel(Ch::E ch);
 
 
 void Calibrator::Calibrate()
@@ -52,7 +52,7 @@ void Calibrator::Calibrate()
 }
 
 
-static bool CalibrateChannel(Chan::E ch)
+static bool CalibrateChannel(Ch::E ch)
 {
     Display::Message::ShowAndWaitKey(ch == ChanA ?  "Подключите встроенный калибратор ко входу 1 и нажмите любую кнопку" :
                                                       "Подключите встроенный калибратор ко входу 2 и нажмите любую кнопку", true);
@@ -67,7 +67,7 @@ static bool CalibrateChannel(Chan::E ch)
 }
 
 
-bool Calibrator::BalanceChannel(Chan::E ch, bool showHint)
+bool Calibrator::BalanceChannel(Ch::E ch, bool showHint)
 {
     Settings old = set;
 
@@ -75,7 +75,7 @@ bool Calibrator::BalanceChannel(Chan::E ch, bool showHint)
 
     setNRST.SetExtraShift(0);
 
-    static const pcharc messages[Chan::Count] =
+    static const pcharc messages[Ch::Count] =
     {
         "Балансирую канал 1",
         "Балансирую канал 2"
@@ -111,7 +111,7 @@ bool Calibrator::BalanceChannel(Chan::E ch, bool showHint)
 }
 
 
-static void BalanceRange(Chan::E ch, Range::E range)
+static void BalanceRange(Ch::E ch, Range::E range)
 {
     Osci::Stop();
 
@@ -158,7 +158,7 @@ static void BalanceRange(Chan::E ch, Range::E range)
 }
 
 
-static bool StretchChannel(Chan::E ch)
+static bool StretchChannel(Ch::E ch)
 {
     SettingsNRST old = setNRST;
 
@@ -188,7 +188,7 @@ static bool StretchChannel(Chan::E ch)
 }
 
 
-static float FindStretchChannel(Chan::E ch)
+static float FindStretchChannel(Ch::E ch)
 {
 #define NUM_POINTS 300
     

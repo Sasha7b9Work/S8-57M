@@ -38,11 +38,11 @@ void DisplayOsci::MemoryWindow::Draw()
 
     DrawScreenArea();
 
-    Chan::E chans[2] = { S_DISP_LAST_AFFECTED_CHANNEL_IS_A ? ChanB : ChanA, S_DISP_LAST_AFFECTED_CHANNEL_IS_A ? ChanA : ChanB };
+    Ch::E chans[2] = { S_DISP_LAST_AFFECTED_CHANNEL_IS_A ? ChanB : ChanA, S_DISP_LAST_AFFECTED_CHANNEL_IS_A ? ChanA : ChanB };
 
     for (int i = 0; i < 2; i++)
     {
-        Chan::E ch = chans[i];
+        Ch::E ch = chans[i];
         if (S_CHANNEL_ENABLED(ch))
         {
             Color::CHAN[ch].SetAsCurrent();

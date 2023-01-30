@@ -178,7 +178,7 @@ void DisplayOsci::DrawingValueParameter::Draw()
         case RShiftA:
         case RShiftB:
         {
-            Chan::E ch = ((parameter == RangeA) || (parameter == RShiftA)) ? ChanA : ChanB;
+            Ch::E ch = ((parameter == RangeA) || (parameter == RShiftA)) ? ChanA : ChanB;
             char *channels[2] = { "1", "2" };
             String text("%sê: %s %s", channels[ch], Range::ToString(ch, S_DIVIDER(ch)), RShift::ToString(S_RSHIFT(ch), S_RANGE(ch), S_DIVIDER(ch)).c_str());
             DrawBoundedText(y, &text, Color::CHAN[ch]);

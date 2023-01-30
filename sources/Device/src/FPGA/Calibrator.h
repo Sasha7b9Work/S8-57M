@@ -9,7 +9,7 @@ namespace Calibrator
     void Calibrate();
 
     // Балансировать канал на всех диапазонах
-    bool BalanceChannel(Chan::E ch, bool showHint);
+    bool BalanceChannel(Ch::E, bool showHint);
 
     struct Mode
     {

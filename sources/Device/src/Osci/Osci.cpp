@@ -27,10 +27,10 @@
 
 namespace Osci
 {
-    static void SendDataToSCPI(Chan::E ch);
+    static void SendDataToSCPI(Ch::E ch);
 
     // „итать данные канала в пам€ить data
-    bool ReadDataChannel(Chan::E ch, uint8 *data);
+    bool ReadDataChannel(Ch::E ch, uint8 *data);
 
     bool ReadDataChannelRand(uint8 *address, uint8 *data);
 
@@ -611,12 +611,12 @@ OsciStateWork::E OsciStateWork::Current()
 
 void Osci::SendDataToSCPI()
 {
-    SendDataToSCPI(Chan::A);
-    SendDataToSCPI(Chan::B);
+    SendDataToSCPI(Ch::A);
+    SendDataToSCPI(Ch::B);
 }
 
 
-void Osci::SendDataToSCPI(Chan::E ch)
+void Osci::SendDataToSCPI(Ch::E ch)
 {
     if (!SCPI::Sender::osci[ch] || ENABLE_CH_DS(ch) == 0)
     {
@@ -631,7 +631,7 @@ void Osci::SendDataToSCPI(Chan::E ch)
 
     uint8 *data = ((DataSettings *)DS)->Data(ch);
 
-    SCPI::SendData(ch == Chan::A ? "1: " : "2: ");
+    SCPI::SendData(ch == Ch::A ? "1: " : "2: ");
 
     for (int i = 0; i < numBytes - 1; i++)
     {

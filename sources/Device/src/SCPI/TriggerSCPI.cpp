@@ -134,7 +134,7 @@ pchar SCPI_TRIG::FuncSource(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(sources[S_TRIG_SOURCE]));
 
-    SCPI_PROCESS_ARRAY(sources, TrigSource::Set((Chan::E)i));
+    SCPI_PROCESS_ARRAY(sources, TrigSource::Set((Ch::E)i));
 }
 
 

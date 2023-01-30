@@ -9,5 +9,5 @@ namespace MathFPGA
 
     float TimeCursor(float shiftCurT, TBase::E tBase);
 
-    void CalculateFFT(float *data, int numPoints, float *result, float *freq0, float *density0, float *freq1, float *density1, int *y0, int *y1, Chan::E ch);
+    void CalculateFFT(float *data, int numPoints, float *result, float *freq0, float *density0, float *freq1, float *density1, int *y0, int *y1, Ch::E);
 };

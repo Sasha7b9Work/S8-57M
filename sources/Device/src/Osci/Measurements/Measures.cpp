@@ -136,13 +136,13 @@ void Measure::ShortPressOnSmallButonMarker()
 }
 
 
-void Measure::SetMarkerVoltage(Chan::E ch, int num, float value)
+void Measure::SetMarkerVoltage(Ch::E ch, int num, float value)
 {
     AutoMeasurements::markerVoltage[ch][num] = (int)(value);
 }
 
 
-void Measure::SetMarkerTime(Chan::E ch, int num, int value)
+void Measure::SetMarkerTime(Ch::E ch, int num, int value)
 {
     AutoMeasurements::markerTime[ch][num] = value;
 }

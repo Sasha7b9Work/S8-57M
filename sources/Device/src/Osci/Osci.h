@@ -55,7 +55,7 @@ namespace Osci
 
     void ReadData();
 
-    uint16 ReadLastRecord(Chan::E ch);
+    uint16 ReadLastRecord(Ch::E);
 
     // Обработать флаг предзапуска
     void ProcessFlagPred();
@@ -90,7 +90,7 @@ namespace Roller
     DataSettings *GetDS();
 
     // Заполняет buffer точками для отрисовки. width - ширина окна для отрисовки. Возвращает позицию, в которой нужно рисовать разделитель
-    int FillScreenBuffer(Chan::E ch, Buffer &buffer, int width);
+    int FillScreenBuffer(Ch::E, Buffer &buffer, int width);
 };
 
 

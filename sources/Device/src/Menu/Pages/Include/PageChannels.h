@@ -50,5 +50,5 @@ namespace PageChannelB
 
 namespace PageChannel
 {
-    extern void Enable(Chan::E ch, int enable);
+    extern void Enable(Ch::E, int enable);
 };

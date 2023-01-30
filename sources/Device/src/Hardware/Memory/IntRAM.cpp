@@ -28,13 +28,13 @@ namespace IntRAM
 }
 
 
-uint16 *IntRAM::Averager32k(Chan::E ch)
+uint16 *IntRAM::Averager32k(Ch::E ch)
 {
     return ave[ch];
 }
 
 
-uint8 *IntRAM::DataRand(Chan::E ch)
+uint8 *IntRAM::DataRand(Ch::E ch)
 {
     return rand[ch];
 }

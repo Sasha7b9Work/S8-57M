@@ -89,7 +89,7 @@ static void DebugShowSetInfo_Draw()
 
         //    for (int ch = 0; ch < 2; ch++)
         //    {
-        //        String("%f", ExtraStretch::GetValue((Chan::E>(ch))).Draw(x, y + dY * ch);
+        //        String("%f", ExtraStretch::GetValue((Ch::E>(ch))).Draw(x, y + dY * ch);
         //    }
 
         y += dY;

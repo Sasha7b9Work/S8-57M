@@ -71,7 +71,7 @@ bool SettingsNRST::operator!=(const SettingsNRST &rhs)
 
 void SettingsNRST::SetExtraShift(int8 shift)
 {
-    for(int ch = 0; ch < Chan::Count; ch++)
+    for(int ch = 0; ch < Ch::Count; ch++)
     {
         for(int range = 0; range < Range::Count; range++)
         {

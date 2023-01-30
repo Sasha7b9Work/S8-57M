@@ -11,22 +11,22 @@ namespace CursorsMeasurements
     bool  NecessaryDraw();
 
     // Получить позицию курсора напряжения
-    float PosU(Chan::E ch, int numCur);
+    float PosU(Ch::E, int numCur);
 
     // Возвращает значение курсора времени
-    float PosT(Chan::E ch, int num);
+    float PosT(Ch::E, int num);
 
     // Получить строку курсора напряжения
-    String Voltage(Chan::E source, int numCur);
+    String Voltage(Ch::E source, int numCur);
 
     // Получть строку курсора времени
-    String Time(Chan::E source, int numCur);
+    String Time(Ch::E source, int numCur);
 
     // Возвращает строку процентных измерений по напряжению
-    String PercentsU(Chan::E source);
+    String PercentsU(Ch::E source);
 
     // Возвращает строку процентных измерений по времени
-    String PercentsT(Chan::E source);
+    String PercentsT(Ch::E source);
 
-    void SetCursPosT_temp(Chan::E ch, int num, float value);
+    void SetCursPosT_temp(Ch::E, int num, float value);
 };

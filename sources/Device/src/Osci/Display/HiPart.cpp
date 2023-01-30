@@ -25,7 +25,7 @@ namespace DisplayOsci
         static void DrawRightPart(int x0, int y0);
 
         // Ќаписать параметры вертикального тракта заданного канала
-        static void WriteTextVoltage(Chan::E ch, int x, int y);
+        static void WriteTextVoltage(Ch::E ch, int x, int y);
 
         // ¬ыводит наименование параметра (text) и его числовое (number) значение или символьное (number_c)
         static void WriteStringAndNumber(pchar text, int x, int y, int number, pcharc number_c = nullptr);
@@ -200,7 +200,7 @@ int DisplayOsci::HiPart::DrawMainParameters(int _x, int _y)
 }
 
 
-void DisplayOsci::HiPart::WriteTextVoltage(Chan::E ch, int x, int y)
+void DisplayOsci::HiPart::WriteTextVoltage(Ch::E ch, int x, int y)
 {
     if (!S_CHANNEL_ENABLED(ch))
     {
@@ -390,7 +390,7 @@ void DisplayOsci::HiPart::WriteCursors()
         separator.Draw(203 * 2, 1);
 
         x += 3 * 2;
-        Chan::E source = S_CURS_SOURCE;
+        Ch::E source = S_CURS_SOURCE;
         Color colorText = Color::CHAN[source];
         if (!CursorsControl::IsDisabledU())
         {

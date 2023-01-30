@@ -83,7 +83,7 @@ struct DataSettings
     
     bool EqualsCurrentSettings() const;
     
-    uint8 *Data(Chan::E ch) { return ch == ChanA ? ch_a : ch_b; }
+    uint8 *Data(Ch::E ch) { return ch == ChanA ? ch_a : ch_b; }
     
     //  опировать данные из source с проверкой безопасности
     void CopyDataFrom(const DataSettings *source);

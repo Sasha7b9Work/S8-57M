@@ -11,7 +11,7 @@
 #include <cstring>
 
 
-#define EXTRACT_CHANNEL(x) Chan::E ch = (*(buffer - (x)) == '1') ? ChanA : ChanB;    /* (buffer - 7) указывает на номер канала - 1 или 2 */
+#define EXTRACT_CHANNEL(x) Ch::E ch = (*(buffer - (x)) == '1') ? ChanA : ChanB;    /* (buffer - 7) указывает на номер канала - 1 или 2 */
 
 // :CHANNEL{1|2}:BALANCE
 static pchar FuncBalance(pchar);
@@ -124,7 +124,7 @@ static pcharc bandwidth[] =
 };
 
 
-static void SetBandwidth(Chan::E ch, int i)
+static void SetBandwidth(Ch::E ch, int i)
 {
     S_BANDWIDTH(ch) = (Bandwidth::E)i;
     Bandwidth::Load(ch);
@@ -182,7 +182,7 @@ static pchar FuncDisplay(pchar buffer)
 }
 
 
-static void SendAnswerForOffst(Chan::E ch)
+static void SendAnswerForOffst(Ch::E ch)
 {
     String answer("%d", set.ch[ch]._rShift / 2);
     SCPI::SendAnswer(answer.c_str());

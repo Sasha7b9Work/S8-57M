@@ -14,40 +14,40 @@
 #include <cstring>
 #include <limits>
 
-static float CalculateVoltageMax(Chan::E ch);
-static float CalculateVoltageMin(Chan::E ch);
-static float CalculateVoltagePic(Chan::E ch);
-static float CalculateVoltageMaxSteady(Chan::E ch);
-static float CalculateVoltageMinSteady(Chan::E ch);
-static float CalculateVoltageAmpl(Chan::E ch);
-static float CalculateVoltageAverage(Chan::E ch);
-static float CalculateVoltageRMS(Chan::E ch);
-static float CalculateVoltageVybrosPlus(Chan::E ch);
-static float CalculateVoltageVybrosMinus(Chan::E ch);
-static float CalculatePeriod(Chan::E ch);
-static int   CalculatePeriodAccurately(Chan::E ch); // Точно вычисляет период или целое число периодов в точках сигнала.
-static float CalculateFreq(Chan::E ch);
-static float CalculateTimeNarastaniya(Chan::E ch);
-static float CalculateTimeSpada(Chan::E ch);
-static float CalculateDurationPlus(Chan::E ch);
-static float CalculateDurationMinus(Chan::E ch);
-static float CalculateSkvaznostPlus(Chan::E ch);
-static float CalculateSkvaznostMinus(Chan::E ch);
+static float CalculateVoltageMax(Ch::E ch);
+static float CalculateVoltageMin(Ch::E ch);
+static float CalculateVoltagePic(Ch::E ch);
+static float CalculateVoltageMaxSteady(Ch::E ch);
+static float CalculateVoltageMinSteady(Ch::E ch);
+static float CalculateVoltageAmpl(Ch::E ch);
+static float CalculateVoltageAverage(Ch::E ch);
+static float CalculateVoltageRMS(Ch::E ch);
+static float CalculateVoltageVybrosPlus(Ch::E ch);
+static float CalculateVoltageVybrosMinus(Ch::E ch);
+static float CalculatePeriod(Ch::E ch);
+static int   CalculatePeriodAccurately(Ch::E ch); // Точно вычисляет период или целое число периодов в точках сигнала.
+static float CalculateFreq(Ch::E ch);
+static float CalculateTimeNarastaniya(Ch::E ch);
+static float CalculateTimeSpada(Ch::E ch);
+static float CalculateDurationPlus(Ch::E ch);
+static float CalculateDurationMinus(Ch::E ch);
+static float CalculateSkvaznostPlus(Ch::E ch);
+static float CalculateSkvaznostMinus(Ch::E ch);
 
 
-static float CalculateMinRel(Chan::E ch);           // Возвращает минимальное значение относительного сигнала.
-static float CalculateMinSteadyRel(Chan::E ch);     // Возвращает минимальное установившееся значение относительного сигнала.
-static float CalculateMaxRel(Chan::E ch);           // Возвращает максимальное значение относительного сигнала.
-static float CalculateMaxSteadyRel(Chan::E ch);     // Возвращает максимальное установившееся значение относительного сигнала.
-static float CalculateAverageRel(Chan::E ch);       // Возвращает среденее значение относительного сигнала.
-static float CalculatePicRel(Chan::E ch);
-static float CalculateDelayPlus(Chan::E ch);
-static float CalculateDelayMinus(Chan::E ch);
-static float CalculatePhazaPlus(Chan::E ch);
-static float CalculatePhazaMinus(Chan::E ch);
+static float CalculateMinRel(Ch::E ch);           // Возвращает минимальное значение относительного сигнала.
+static float CalculateMinSteadyRel(Ch::E ch);     // Возвращает минимальное установившееся значение относительного сигнала.
+static float CalculateMaxRel(Ch::E ch);           // Возвращает максимальное значение относительного сигнала.
+static float CalculateMaxSteadyRel(Ch::E ch);     // Возвращает максимальное установившееся значение относительного сигнала.
+static float CalculateAverageRel(Ch::E ch);       // Возвращает среденее значение относительного сигнала.
+static float CalculatePicRel(Ch::E ch);
+static float CalculateDelayPlus(Ch::E ch);
+static float CalculateDelayMinus(Ch::E ch);
+static float CalculatePhazaPlus(Ch::E ch);
+static float CalculatePhazaMinus(Ch::E ch);
 // \brief Найти точку пересечения сигнала с горизонтальной линией, проведённой на уровне yLine. numItersection - порядковый номер пересечения, 
 // начинается с 1. downToTop - если true, ищем пересечение сигнала со средней линией при прохождении из "-" в "+".
-static float FindIntersectionWithHorLine(Chan::E ch, int numIntersection, bool downToUp, uint8 yLine);
+static float FindIntersectionWithHorLine(Ch::E ch, int numIntersection, bool downToUp, uint8 yLine);
 // Делить val1 на val2. Возвращает nan, если результат неопределён
 static float Divide(float val1, float val2);
 
@@ -59,7 +59,7 @@ static int lastByte = 0;
 static int nBytes = 0;
 
 
-typedef float (*pFuncFCh)(Chan::E);
+typedef float (*pFuncFCh)(Ch::E ch);
 typedef char *(*pFuncPCFBPC)(float, bool, char*);
 
 typedef struct
@@ -104,8 +104,8 @@ static const MeasureCalculate sMeas[TypeMeasure::Count] =
 };
 
 
-int AutoMeasurements::markerTime[Chan::Count][2] = {{Integer::ERROR}, {Integer::ERROR}};
-int AutoMeasurements::markerVoltage[Chan::Count][2] = {{Integer::ERROR}, {Integer::ERROR}};
+int AutoMeasurements::markerTime[Ch::Count][2] = {{Integer::ERROR}, {Integer::ERROR}};
+int AutoMeasurements::markerVoltage[Ch::Count][2] = {{Integer::ERROR}, {Integer::ERROR}};
 int8 AutoMeasurements::posActive = 0;
 
 typedef struct
@@ -135,12 +135,12 @@ static bool picIsCalculating[2] = {false, false};
 namespace AutoMeasurements
 {
     // Привести смещение канала ch по вертикали к текущему
-    static void CountedToCurrentRShift(Chan::E ch, uint numBytes, const uint8 *in, uint8 *out);
+    static void CountedToCurrentRShift(Ch::E ch, uint numBytes, const uint8 *in, uint8 *out);
 
     // Данные из IN_A, IN_B пересчитать к текущим настройкам и записать в OUT_A, OUT_B
     static void CountedToCurrentSettings();
 
-    static void CountedToCurrentSettings(Chan::E ch, uint numBytes, const uint8 *in, uint8 *out);
+    static void CountedToCurrentSettings(Ch::E ch, uint numBytes, const uint8 *in, uint8 *out);
 
     // Вписать значения данных в разрещённый диапазон
     static void LimitationData(uint8 *inOut, uint numBytes);
@@ -238,7 +238,7 @@ void AutoMeasurements::CalculateMeasures()
 
 
 
-float CalculateVoltageMax(Chan::E ch)
+float CalculateVoltageMax(Ch::E ch)
 {
     float max = CalculateMaxRel(ch);
     EXIT_IF_ERROR_FLOAT(max); //-V2507
@@ -258,7 +258,7 @@ float CalculateVoltageMax(Chan::E ch)
 
 
 
-float CalculateVoltageMin(Chan::E ch)
+float CalculateVoltageMin(Ch::E ch)
 {
     float min = CalculateMinRel(ch);
     EXIT_IF_ERROR_FLOAT(min); //-V2507
@@ -272,7 +272,7 @@ float CalculateVoltageMin(Chan::E ch)
 
 
 
-float CalculateVoltagePic(Chan::E ch)
+float CalculateVoltagePic(Ch::E ch)
 {
     float max = CalculateVoltageMax(ch);
     float min = CalculateVoltageMin(ch);
@@ -289,7 +289,7 @@ float CalculateVoltagePic(Chan::E ch)
 
 
 
-float CalculateVoltageMinSteady(Chan::E ch)
+float CalculateVoltageMinSteady(Ch::E ch)
 {
     float min = CalculateMinSteadyRel(ch);
     EXIT_IF_ERROR_FLOAT(min); //-V2507
@@ -303,7 +303,7 @@ float CalculateVoltageMinSteady(Chan::E ch)
 
 
 
-float CalculateVoltageMaxSteady(Chan::E ch)
+float CalculateVoltageMaxSteady(Ch::E ch)
 {
     float max = CalculateMaxSteadyRel(ch);
 
@@ -319,7 +319,7 @@ float CalculateVoltageMaxSteady(Chan::E ch)
 
 
 
-float CalculateVoltageVybrosPlus(Chan::E ch)
+float CalculateVoltageVybrosPlus(Ch::E ch)
 {
     float max = CalculateMaxRel(ch);
     float maxSteady = CalculateMaxSteadyRel(ch);
@@ -338,7 +338,7 @@ float CalculateVoltageVybrosPlus(Chan::E ch)
 
 
 
-float CalculateVoltageVybrosMinus(Chan::E ch)
+float CalculateVoltageVybrosMinus(Ch::E ch)
 {
     float min = CalculateMinRel(ch);
     float minSteady = CalculateMinSteadyRel(ch);
@@ -356,7 +356,7 @@ float CalculateVoltageVybrosMinus(Chan::E ch)
 
 
 
-float CalculateVoltageAmpl(Chan::E ch)
+float CalculateVoltageAmpl(Ch::E ch)
 {
     float max = CalculateVoltageMaxSteady(ch);
     float min = CalculateVoltageMinSteady(ch);
@@ -373,7 +373,7 @@ float CalculateVoltageAmpl(Chan::E ch)
 
 
 
-float CalculateVoltageAverage(Chan::E ch)
+float CalculateVoltageAverage(Ch::E ch)
 {
     int period = CalculatePeriodAccurately(ch);
 
@@ -400,7 +400,7 @@ float CalculateVoltageAverage(Chan::E ch)
 
 
 
-float CalculateVoltageRMS(Chan::E ch)
+float CalculateVoltageRMS(Ch::E ch)
 {
     int period = CalculatePeriodAccurately(ch);
 
@@ -431,7 +431,7 @@ float CalculateVoltageRMS(Chan::E ch)
 
 
 
-float CalculatePeriod(Chan::E ch)
+float CalculatePeriod(Ch::E ch)
 {
     static float period[2] = {0.0F, 0.0F};
 
@@ -485,7 +485,7 @@ float CalculatePeriod(Chan::E ch)
 
 
 
-int CalculatePeriodAccurately(Chan::E ch)
+int CalculatePeriodAccurately(Ch::E ch)
 {
     static int period[2];
 
@@ -583,7 +583,7 @@ int CalculatePeriodAccurately(Chan::E ch)
 
 
 
-float CalculateFreq(Chan::E ch)
+float CalculateFreq(Ch::E ch)
 {
     float period = CalculatePeriod(ch);
 
@@ -592,7 +592,7 @@ float CalculateFreq(Chan::E ch)
 
 
 
-float FindIntersectionWithHorLine(Chan::E ch, int numIntersection, bool downToUp, uint8 yLine)
+float FindIntersectionWithHorLine(Ch::E ch, int numIntersection, bool downToUp, uint8 yLine)
 {
     int num = 0;
     int x = firstByte;
@@ -635,7 +635,7 @@ float FindIntersectionWithHorLine(Chan::E ch, int numIntersection, bool downToUp
 
 
 
-float CalculateDurationPlus(Chan::E ch)
+float CalculateDurationPlus(Ch::E ch)
 {
     float aveValue = CalculateAverageRel(ch);
     EXIT_IF_ERROR_FLOAT(aveValue); //-V2507
@@ -663,7 +663,7 @@ float CalculateDurationPlus(Chan::E ch)
 
 
 
-float CalculateDurationMinus(Chan::E ch)
+float CalculateDurationMinus(Ch::E ch)
 {
     float aveValue = CalculateAverageRel(ch);
     EXIT_IF_ERROR_FLOAT(aveValue); //-V2507
@@ -691,7 +691,7 @@ float CalculateDurationMinus(Chan::E ch)
 
 
 
-float CalculateTimeNarastaniya(Chan::E ch)   /** \todo Здесь, возможно, нужно увеличить точность - брать не целые значени расстояний между 
+float CalculateTimeNarastaniya(Ch::E ch)   /** \todo Здесь, возможно, нужно увеличить точность - брать не целые значени расстояний между 
                                               отсчётами по времени, а рассчитывать пересечения линий. */
 {
     float maxSteady = CalculateMaxSteadyRel(ch);
@@ -730,7 +730,7 @@ float CalculateTimeNarastaniya(Chan::E ch)   /** \todo Здесь, возможно, нужно ув
 
 
 
-float CalculateTimeSpada(Chan::E ch)        // \todo Аналогично времени нарастания
+float CalculateTimeSpada(Ch::E ch)        // \todo Аналогично времени нарастания
 {
     float maxSteady = CalculateMaxSteadyRel(ch);
     float minSteady = CalculateMinSteadyRel(ch);
@@ -768,7 +768,7 @@ float CalculateTimeSpada(Chan::E ch)        // \todo Аналогично времени нарастан
 
 
 
-float CalculateSkvaznostPlus(Chan::E ch)
+float CalculateSkvaznostPlus(Ch::E ch)
 {
     float period = CalculatePeriod(ch);
     float duration = CalculateDurationPlus(ch);
@@ -780,7 +780,7 @@ float CalculateSkvaznostPlus(Chan::E ch)
 
 
 
-float CalculateSkvaznostMinus(Chan::E ch)
+float CalculateSkvaznostMinus(Ch::E ch)
 {
     float period = CalculatePeriod(ch);
     float duration = CalculateDurationMinus(ch);
@@ -792,7 +792,7 @@ float CalculateSkvaznostMinus(Chan::E ch)
 
 
 
-float CalculateMinSteadyRel(Chan::E ch)
+float CalculateMinSteadyRel(Ch::E ch)
 {
     static float min[2] = {255.0F, 255.0F};
 
@@ -872,7 +872,7 @@ float CalculateMinSteadyRel(Chan::E ch)
 
 
 
-float CalculateMaxSteadyRel(Chan::E ch)
+float CalculateMaxSteadyRel(Ch::E ch)
 {
     static float max[2] = {255.0F, 255.0F};
 
@@ -953,7 +953,7 @@ float CalculateMaxSteadyRel(Chan::E ch)
 
 
 
-float CalculateMaxRel(Chan::E ch)
+float CalculateMaxRel(Ch::E ch)
 {
     static float max[2] = {0.0F, 0.0F};
 
@@ -969,7 +969,7 @@ float CalculateMaxRel(Chan::E ch)
 
 
 
-float CalculateMinRel(Chan::E ch)
+float CalculateMinRel(Ch::E ch)
 {
     static float min[2] = {255.0F, 255.0F};
 
@@ -985,7 +985,7 @@ float CalculateMinRel(Chan::E ch)
 
 
 
-float CalculateAverageRel(Chan::E ch)
+float CalculateAverageRel(Ch::E ch)
 {
     static float _ave[2] = {0.0F, 0.0F};
 
@@ -1001,7 +1001,7 @@ float CalculateAverageRel(Chan::E ch)
 
 
 
-float CalculatePicRel(Chan::E ch)
+float CalculatePicRel(Ch::E ch)
 {
     static float pic[2] = {0.0F, 0.0F};
 
@@ -1018,7 +1018,7 @@ float CalculatePicRel(Chan::E ch)
 
 
 
-float CalculateDelayPlus(Chan::E ch)
+float CalculateDelayPlus(Ch::E ch)
 {
     float periodA = CalculatePeriod(ChanA);
     float periodB = CalculatePeriod(ChanB);
@@ -1036,8 +1036,8 @@ float CalculateDelayPlus(Chan::E ch)
 
     float averageFirst = (ch == ChanA) ? averageA : averageB;
     float averageSecond = (ch == ChanA) ? averageB : averageA;
-    Chan::E firstChannel = ch;
-    Chan::E secondChannel = (ch == ChanA) ? ChanB : ChanA;
+    Ch::E firstChannel = ch;
+    Ch::E secondChannel = (ch == ChanA) ? ChanB : ChanA;
 
     float firstIntersection = FindIntersectionWithHorLine(firstChannel, 1, true, (uint8)(averageFirst));
     float secondIntersection = FindIntersectionWithHorLine(secondChannel, 1, true, (uint8)(averageSecond));
@@ -1056,7 +1056,7 @@ float CalculateDelayPlus(Chan::E ch)
 
 
 
-float CalculateDelayMinus(Chan::E ch)
+float CalculateDelayMinus(Ch::E ch)
 {
     float period0 = CalculatePeriod(ChanA);
     float period1 = CalculatePeriod(ChanB);
@@ -1075,8 +1075,8 @@ float CalculateDelayMinus(Chan::E ch)
 
     float averageFirst = (ch == ChanA) ? average0 : average1;
     float averageSecond = (ch == ChanA) ? average1 : average0;
-    Chan::E firstChannel = ch;
-    Chan::E secondChannel = (ch == ChanA) ? ChanB : ChanA;
+    Ch::E firstChannel = ch;
+    Ch::E secondChannel = (ch == ChanA) ? ChanB : ChanA;
 
     float firstIntersection = FindIntersectionWithHorLine(firstChannel, 1, false, (uint8)(averageFirst));
     float secondIntersection = FindIntersectionWithHorLine(secondChannel, 1, false, (uint8)(averageSecond));
@@ -1103,7 +1103,7 @@ float CalculateDelayMinus(Chan::E ch)
 
 
 
-float CalculatePhazaPlus(Chan::E ch)
+float CalculatePhazaPlus(Ch::E ch)
 {
     float delay = CalculateDelayPlus(ch);
     float period = CalculatePeriod(ch);
@@ -1116,7 +1116,7 @@ float CalculatePhazaPlus(Chan::E ch)
 
 
 
-float CalculatePhazaMinus(Chan::E ch)
+float CalculatePhazaMinus(Ch::E ch)
 {
     float delay = CalculateDelayMinus(ch);
     float period = CalculatePeriod(ch);
@@ -1132,7 +1132,7 @@ float CalculatePhazaMinus(Chan::E ch)
 }
 
 
-float Measure::CalculateCursorU(Chan::E ch, float posCurT)
+float Measure::CalculateCursorU(Ch::E ch, float posCurT)
 {
     if(!CHOICE_BUFFER)
     {
@@ -1152,7 +1152,7 @@ float Measure::CalculateCursorU(Chan::E ch, float posCurT)
 
 
 
-float Measure::CalculateCursorT(Chan::E ch, float posCurU, int numCur)
+float Measure::CalculateCursorT(Ch::E ch, float posCurU, int numCur)
 {
     uint8 *dataIn = CHOICE_BUFFER;
 
@@ -1326,7 +1326,7 @@ void InterpolationSinX_X(uint8 *data, int numPoints, TBase::E tBase)
 
 
 
-String Measure::GetStringMeasure(Chan::E ch, char* buffer, int lenBuf)
+String Measure::GetStringMeasure(Ch::E ch, char* buffer, int lenBuf)
 {
     TypeMeasure::E type = GetType();
 
@@ -1491,7 +1491,7 @@ void AutoMeasurements::CountedToCurrentSettings()
 }
 
 
-void AutoMeasurements::CountedToCurrentSettings(Chan::E ch, uint numBytes, const uint8 *in, uint8 *out)
+void AutoMeasurements::CountedToCurrentSettings(Ch::E ch, uint numBytes, const uint8 *in, uint8 *out)
 {
     CountedToCurrentRShift(ch, numBytes, in, out);
 }
@@ -1512,7 +1512,7 @@ void AutoMeasurements::LimitationData(uint8 *inOut, uint numBytes)
 }
 
 
-void AutoMeasurements::CountedToCurrentRShift(Chan::E ch, uint numBytes, const uint8 *in, uint8 *out)
+void AutoMeasurements::CountedToCurrentRShift(Ch::E ch, uint numBytes, const uint8 *in, uint8 *out)
 {
     int16 shiftDS = RSHIFT_DS(ch);
     Range::E rangeDS = RANGE_DS(ch);

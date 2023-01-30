@@ -7,7 +7,7 @@
 // Источник синхронизации
 struct TrigSource
 {
-    static void Set(Chan::E ch = Chan::Count);
+    static void Set(Ch::E = Ch::Count);
 };
 
 
@@ -85,10 +85,10 @@ struct TrigStartMode
 
 struct SettingsTrig
 {
-    Chan::E          _source;
+    Ch::E            _source;
     TrigInput::E     _input;
     TrigPolarity::E  _polarity;
-    int16            _level[Chan::Count];
+    int16            _level[Ch::Count];
     TrigStartMode::E _startMode;         // Режим запуска.
     TrigModeFind::E  _notUsed2;          // Поиск синхронизации - вручную или автоматически.
                                          // \todo разрядности trig_holdOff недостаточно

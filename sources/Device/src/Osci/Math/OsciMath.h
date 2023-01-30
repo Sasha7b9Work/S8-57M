@@ -6,7 +6,7 @@ struct DataSettings;
 
 namespace AveragerOsci
 {
-    void Process(Chan::E ch, const uint8 *newData, int size);
+    void Process(Ch::E, const uint8 *newData, int size);
     void SettingChanged();
 };
 

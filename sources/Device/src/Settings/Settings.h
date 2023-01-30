@@ -33,7 +33,7 @@ public:
 
     SettingsMenu            menu;
     SettingsDisplay         disp;
-    SettingsChannel         ch[Chan::Count];
+    SettingsChannel         ch[Ch::Count];
     SettingsTrig            trig;
     SettingsTime            time;
     SettingsMemory          mem;

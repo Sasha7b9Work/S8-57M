@@ -70,9 +70,9 @@ namespace AutoMeasurements
 
     char *Float2String(float, bool, char buffer[20]);
 
-    extern int markerTime[Chan::Count][2];
+    extern int markerTime[Ch::Count][2];
 
-    extern int markerVoltage[Chan::Count][2];
+    extern int markerVoltage[Ch::Count][2];
 
     // ѕозици€ активного измерени€ (на котором курсор)
     extern int8 posActive;

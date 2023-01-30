@@ -34,23 +34,23 @@ namespace DisplayOsci
         // Нарисовать данные из ППЗУ
         static void DrawROM();
 
-        static void DrawChannel(Chan::E ch);
+        static void DrawChannel(Ch::E ch);
 
-        static void DrawModeLines(Chan::E, const uint8 *data);
-        static void DrawModePoints(Chan::E, const uint8 *data);
+        static void DrawModeLines(Ch::E ch, const uint8 *data);
+        static void DrawModePoints(Ch::E ch, const uint8 *data);
 
         // mode : 0 - точки, 1 - линии
-        static void DrawPeakDetOff(Chan::E, const uint8 *data, int mode);
-        static void DrawPeakDetOn(Chan::E, const uint8 *data, int mode);
+        static void DrawPeakDetOff(Ch::E ch, const uint8 *data, int mode);
+        static void DrawPeakDetOn(Ch::E ch, const uint8 *data, int mode);
 
         // Нарисовать спектр
         static void DrawSpectrum();
 
-        static void DrawSpectrum(const uint8 *dataIn, int numPoints, Chan::E ch);
+        static void DrawSpectrum(const uint8 *dataIn, int numPoints, Ch::E);
 
-        static void DrawSpectrumChannel(const float *spectrum, Color color);
+        static void DrawSpectrumChannel(const float *spectrum, Color);
 
-        static void WriteParametersFFT(Chan::E ch, float freq0, float density0, float freq1, float density1);
+        static void WriteParametersFFT(Ch::E ch, float freq0, float density0, float freq1, float density1);
     }
 }
 
@@ -134,7 +134,7 @@ void DisplayOsci::PainterData::DrawSpectrumChannel(const float *spectrum, Color 
 }
 
 
-void DisplayOsci::PainterData::WriteParametersFFT(Chan::E ch, float freq0, float density0, float freq1, float density1)
+void DisplayOsci::PainterData::WriteParametersFFT(Ch::E ch, float freq0, float density0, float freq1, float density1)
 {
     int x = Grid::Left() + 259 * 2;
     int y = Grid::ChannelBottom() + 5 * 2;
@@ -168,7 +168,7 @@ void DisplayOsci::PainterData::WriteParametersFFT(Chan::E ch, float freq0, float
 }
 
 
-void DisplayOsci::PainterData::DrawSpectrum(const uint8 *dataIn, int numPoints, Chan::E ch)
+void DisplayOsci::PainterData::DrawSpectrum(const uint8 *dataIn, int numPoints, Ch::E ch)
 {
     if (!S_CHANNEL_ENABLED(ch))
     {
@@ -281,7 +281,7 @@ void DisplayOsci::PainterData::DrawROM()
 }
 
 
-void DisplayOsci::PainterData::DrawChannel(Chan::E ch)
+void DisplayOsci::PainterData::DrawChannel(Ch::E ch)
 {
     if (!S_CHANNEL_ENABLED(ch))
     {
@@ -332,7 +332,7 @@ void DisplayOsci::PainterData::DrawChannel(Chan::E ch)
 }
 
 
-void DisplayOsci::PainterData::DrawModeLines(Chan::E ch, const uint8 *data)
+void DisplayOsci::PainterData::DrawModeLines(Ch::E ch, const uint8 *data)
 {
     Color::CHAN[ch].SetAsCurrent();
 
@@ -347,7 +347,7 @@ void DisplayOsci::PainterData::DrawModeLines(Chan::E ch, const uint8 *data)
 }
 
 
-void DisplayOsci::PainterData::DrawModePoints(Chan::E ch, const uint8 *data)
+void DisplayOsci::PainterData::DrawModePoints(Ch::E ch, const uint8 *data)
 {
     Color::CHAN[ch].SetAsCurrent();
 
@@ -362,12 +362,12 @@ void DisplayOsci::PainterData::DrawModePoints(Chan::E ch, const uint8 *data)
 }
 
 
-void DisplayOsci::PainterData::DrawPeakDetOn(Chan::E, const uint8 *data, int mode)
+void DisplayOsci::PainterData::DrawPeakDetOn(Ch::E ch, const uint8 *data, int mode)
 {
 }
 
 
-void DisplayOsci::PainterData::DrawPeakDetOff(Chan::E ch, const uint8 *data, int mode)
+void DisplayOsci::PainterData::DrawPeakDetOff(Ch::E ch, const uint8 *data, int mode)
 {
     const int NUM_POINTS = Grid::Width();
 

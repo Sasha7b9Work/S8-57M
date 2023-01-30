@@ -173,17 +173,17 @@ struct CursorsMovement
 struct SettingsCursorsMeasures
 {
     bool               _showCursors;             // Показывать ли курсоры.
-    CursorsLookMode::E _lookMode[Chan::Count];   // Режимы слежения за курсорами для двух пар курсоров.
+    CursorsLookMode::E _lookMode[Ch::Count];   // Режимы слежения за курсорами для двух пар курсоров.
     bool               _showFreq;                // Установленное в true значение, что нужно показывать на экране 1/dT между курсорами.
     CursorsActive::E   _active;                  // Какие курсоры сейас активны.
-    Chan::E            _source;                  // Источник - к какому каналу относятся курсоры.
-    CursorsControl::E  _cntrlU[Chan::Count];     // Активные курсоры напряжения.
-    CursorsControl::E  _cntrlT[Chan::Count];     // Активные курсоры времени.
+    Ch::E              _source;                  // Источник - к какому каналу относятся курсоры.
+    CursorsControl::E  _cntrlU[Ch::Count];     // Активные курсоры напряжения.
+    CursorsControl::E  _cntrlT[Ch::Count];     // Активные курсоры времени.
     CursorsMovement::E _movement;                // Как перемещаться курсорам - по точкам или процентам.
     float              _deltaU100percents[2];    // Расстояние между курсорами напряжения для 100%, для обоих каналов.
     float              _deltaT100percents[2];    // Расстояние между курсорами времени для 100%, для обоих каналов.
-    float              _posCurU[Chan::Count][2]; // Текущие позиции курсоров напряжения обоих каналов.
-    float              _posCurT[Chan::Count][2]; // Текущие позиции курсоров времени обоих каналов.
+    float              _posCurU[Ch::Count][2]; // Текущие позиции курсоров напряжения обоих каналов.
+    float              _posCurT[Ch::Count][2]; // Текущие позиции курсоров времени обоих каналов.
 };
 
 
@@ -273,32 +273,32 @@ namespace PageCursorsMeasures
         void OnPress_Channel();
 
         // Выбрать следующий курсор
-        void IncCursCntrlU(Chan::E ch);
+        void IncCursCntrlU(Ch::E);
 
         // Выбрать следующий курсор
-        void IncCursCntrlT(Chan::E ch);
+        void IncCursCntrlT(Ch::E);
 
         void OnPress_U();
 
         void OnPress_T();
 
-        void SetCursPos100(Chan::E ch);
+        void SetCursPos100(Ch::E);
 
         // Изменить значение позиции курсора напряжения на delta точек
-        void SetShiftCursPosU(Chan::E ch, int numCur, float delta);
+        void SetShiftCursPosU(Ch::E, int numCur, float delta);
 
         // Изменить значение позиции курсора времени на delta точек
-        void SetShiftCursPosT(Chan::E ch, int numCur, float delta);
+        void SetShiftCursPosT(Ch::E, int numCur, float delta);
 
         bool HandlerKey(const KeyEvent &event);
 
         void UpdateCursorsForLook();
 
         // Установить позицию курсора напряжения
-        void SetCursorU(Chan::E ch, int numCur, float pos);
+        void SetCursorU(Ch::E, int numCur, float pos);
 
         // Установить позицию курсора времени
-        void SetCursorT(Chan::E ch, int numCur, float pos);
+        void SetCursorT(Ch::E, int numCur, float pos);
 
         // Возвращает true, если вращение ручки УСТАНОВКА будет перемещать курсоры/курсоры
         bool IsRegSetActiveOnCursors();

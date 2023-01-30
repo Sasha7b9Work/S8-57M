@@ -51,20 +51,20 @@ public:
 
     TypeMeasure::E GetType();
 
-    String GetStringMeasure(Chan::E ch, char *buffer, int lenBuf);
+    String GetStringMeasure(Ch::E, char *buffer, int lenBuf);
 
     // ”станавливает активным следующее или предыдущее измерение
     static void ChangeActive(int delta);
 
     // –ассчитать позицию курсора напр€жени€, соответствующю заданной позиции курсора posCurT
-    static float CalculateCursorU(Chan::E ch, float posCurT);
+    static float CalculateCursorU(Ch::E, float posCurT);
 
     // –ассчитать позицию курсора времени, соответствующую заданной позиции курсора напр€жени€ posCurU
-    static float CalculateCursorT(Chan::E ch, float posCurU, int numCur);
+    static float CalculateCursorT(Ch::E, float posCurU, int numCur);
 
-    static void SetMarkerVoltage(Chan::E ch, int num, float value);
+    static void SetMarkerVoltage(Ch::E, int num, float value);
 
-    static void SetMarkerTime(Chan::E ch, int num, int value);
+    static void SetMarkerTime(Ch::E, int num, int value);
 
     static uint8 GetChar(TypeMeasure::E measure);
 

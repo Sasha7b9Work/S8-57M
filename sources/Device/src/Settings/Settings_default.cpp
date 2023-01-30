@@ -66,7 +66,7 @@ const Settings Settings::defaultSettings =
         ChanA,                      // source
         TrigInput::Full,            // input
         TrigPolarity::Rising,       // polarity
-        { 0, 0},                    // lev[Chan::Count]
+        { 0, 0},                    // lev[Ch::Count]
         TrigStartMode::Auto,        // startMode
         TrigModeFind::Hand,         // modeFind
         10,                         // holdOff
@@ -106,15 +106,15 @@ const Settings Settings::defaultSettings =
         true,                                                   // showFreq
         CursorsActive::None,                                    // active
         ChanA,                                                  // source
-        {CursorsControl::Disabled, CursorsControl::Disabled},   // cntrlU[Chan::Count]
-        {CursorsControl::Disabled, CursorsControl::Disabled},   // cntrlT[Chan::Count]
+        {CursorsControl::Disabled, CursorsControl::Disabled},   // cntrlU[Ch::Count]
+        {CursorsControl::Disabled, CursorsControl::Disabled},   // cntrlT[Ch::Count]
         CursorsMovement::Pixels,                                // movement
         {80,  80},                                              // deltaU100percents[2]
         {120, 120},                                             // deltaT100percents[2]
-        {                                                       // posCurU[Chan::Count][2]
+        {                                                       // posCurU[Ch::Count][2]
         { 60, 140 },                                            // Канал 1
         { 60, 140 }},                                           // Канал 2
-        {                                                       // posCurT[Chan::Count][2]
+        {                                                       // posCurT[Ch::Count][2]
         { 80, 200 },                                            // Канал 1
         { 80, 200 }}                                            // Канал 2
     },

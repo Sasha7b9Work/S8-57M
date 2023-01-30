@@ -40,9 +40,9 @@ void TrigStartMode::Set(TrigStartMode::E v)
 }
 
 
-void TrigSource::Set(Chan::E ch)
+void TrigSource::Set(Ch::E ch)
 {
-    if (ch != Chan::Count)
+    if (ch != Ch::Count)
     {
         S_TRIG_SOURCE = ch;
     }
@@ -73,12 +73,12 @@ void TrigInput::Set(E v)
 }
 
 
-static bool NeedLoadRShift(Chan::E ch)
+static bool NeedLoadRShift(Ch::E ch)
 {
     bool result = true;
 
-    static Range::E prevRanges[Chan::Count] = { Range::Count, Range::Count };
-    static int16 prevShift[Chan::Count] = { -1000, -1000 };
+    static Range::E prevRanges[Ch::Count] = { Range::Count, Range::Count };
+    static int16 prevShift[Ch::Count] = { -1000, -1000 };
 
     if((prevShift[ch] == S_RSHIFT(ch)) && (prevRanges[ch] == S_RANGE(ch)))
     {
@@ -92,7 +92,7 @@ static bool NeedLoadRShift(Chan::E ch)
 }
 
 
-void RShift::Load(Chan::E ch)
+void RShift::Load(Ch::E ch)
 {
     if(!NeedLoadRShift(ch))
     {
@@ -213,7 +213,7 @@ void TShift::Change(const int delta)
 }
 
 
-void Range::Change(Chan::E ch, int16 delta)
+void Range::Change(Ch::E ch, int16 delta)
 {
     if (Recorder::InRecordingMode())
     {
@@ -239,7 +239,7 @@ void Range::Change(Chan::E ch, int16 delta)
 }
 
 
-void RShift::Set(Chan::E ch, int16 rShift)
+void RShift::Set(Ch::E ch, int16 rShift)
 {
     ::Math::Limitation(&rShift, RShift::MIN, MAX);
     S_RSHIFT(ch) = rShift;
@@ -248,7 +248,7 @@ void RShift::Set(Chan::E ch, int16 rShift)
 }
 
 
-void RShift::Change(Chan::E ch, int16 delta)
+void RShift::Change(Ch::E ch, int16 delta)
 {
     ::Math::AdditionThisLimitation<int16>(&S_RSHIFT(ch), STEP * delta, MIN, MAX);
     RShift::Load(ch);
@@ -357,7 +357,7 @@ pcharc TBase::Name(TBase::E tBase)
 }
 
 
-pcharc Range::Name(Chan::E ch)
+pcharc Range::Name(Ch::E ch)
 {
     static const struct StructRange
     {
@@ -401,7 +401,7 @@ SymbolUGO ModeCouple::UGO(ModeCouple::E v)
 }
 
 
-void Bandwidth::Load(Chan::E ch)
+void Bandwidth::Load(Ch::E ch)
 {
     static const StructPIN pinsLF[2] = { {PIN_LF1}, {PIN_LF2} };
 
@@ -409,7 +409,7 @@ void Bandwidth::Load(Chan::E ch)
 }
 
 
-void ModeCouple::Set(Chan::E ch, ModeCouple::E couple)
+void ModeCouple::Set(Ch::E ch, ModeCouple::E couple)
 {
     S_MODE_COUPLE(ch) = couple;
     Range::LoadBoth();

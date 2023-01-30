@@ -15,7 +15,7 @@
 static uint16 numSignals[2] = { 0, 0 };
 
 
-void AveragerOsci::Process(Chan::E ch, const uint8 *dataNew, int size)
+void AveragerOsci::Process(Ch::E ch, const uint8 *dataNew, int size)
 {
     uint8 *_new = (uint8 *)dataNew;
     uint16 *av = AVE_DATA(ch);

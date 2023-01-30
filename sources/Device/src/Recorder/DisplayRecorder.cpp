@@ -36,7 +36,7 @@ namespace DisplayRecorder
     static void DrawData();
 
     // Нарисовать данные канала, начиная с точки start
-    static void DrawChannel(Chan::E ch);
+    static void DrawChannel(Ch::E ch);
 
     // Нарисовать данные датчика
     static void DrawSensor();
@@ -56,10 +56,10 @@ namespace DisplayRecorder
     static char *TimeCursor(int numCur, char buffer[30]);
 
 
-    static char *VoltageCursor(Chan::E, int, char[30]);
+    static char *VoltageCursor(Ch::E ch, int, char[30]);
 
     // Дописывает в buffer символьное представление value
-    static void VoltagePoint(Chan::E ch, uint8 value, char buffer[30]);
+    static void VoltagePoint(Ch::E ch, uint8 value, char buffer[30]);
 
 
     static char *VoltageSensor(int numCur, char[30]);
@@ -178,7 +178,7 @@ char *DisplayRecorder::TimeCursor(int numCur, char buffer[30])
 }
 
 
-void DisplayRecorder::VoltagePoint(Chan::E ch, uint8 value, char buffer[30])
+void DisplayRecorder::VoltagePoint(Ch::E ch, uint8 value, char buffer[30])
 {
     if (value > VALUE::MAX)
     {
@@ -197,13 +197,13 @@ void DisplayRecorder::VoltagePoint(Chan::E ch, uint8 value, char buffer[30])
 }
 
 
-char *DisplayRecorder::VoltageCursor(Chan::E ch, int numCur, char buffer[30])
+char *DisplayRecorder::VoltageCursor(Ch::E ch, int numCur, char buffer[30])
 {
     HAL_BUS_CONFIGURE_TO_FSMC();
 
     int numPoint = startPoint + posCursor[numCur];
 
-    Point16 *point = (ch == Chan::A) ? displayed->ValueA(numPoint) : displayed->ValueB(numPoint);
+    Point16 *point = (ch == Ch::A) ? displayed->ValueA(numPoint) : displayed->ValueB(numPoint);
 
     if (numPoint < displayed->NumPoints())
     {
@@ -321,7 +321,7 @@ void DisplayRecorder::DrawData()
 }
 
 
-void DisplayRecorder::DrawChannel(Chan::E ch)
+void DisplayRecorder::DrawChannel(Ch::E ch)
 {
     int numPoints = displayed->NumPoints();
 

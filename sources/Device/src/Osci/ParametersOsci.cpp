@@ -119,7 +119,7 @@ namespace RShift
     };
 
     // Отрисовать маркер вертикального смещения на сетке
-    static void Draw(Chan::E ch);
+    static void Draw(Ch::E ch);
 }
 
 
@@ -170,7 +170,7 @@ namespace TShift
 }
 
 
-static uint8 ValueForRange(Chan::E ch);
+static uint8 ValueForRange(Ch::E ch);
 
 
 namespace TrigLevel
@@ -383,7 +383,7 @@ void Range::LoadBoth()
 }
 
 
-pcharc Range::ToString(Chan::E ch, Divider::E divider)
+pcharc Range::ToString(Ch::E ch, Divider::E divider)
 {
     return ranges[S_RANGE(ch)][divider].name;
 }
@@ -395,7 +395,7 @@ pcharc Range::ToString(Range::E range, Divider::E _divider)
 }
 
 
-static uint8 ValueForRange(Chan::E ch) // -V2506
+static uint8 ValueForRange(Ch::E ch) // -V2506
 {
     static const uint8 datas[ModeCouple::Count] =
     {
@@ -435,7 +435,7 @@ static uint8 ValueForRange(Chan::E ch) // -V2506
 
 void TrigLevel::Find()
 {
-    Chan::E ch = S_TRIG_SOURCE;
+    Ch::E ch = S_TRIG_SOURCE;
 
     if (DS && ENABLED_DS(ch))
     {
@@ -475,9 +475,9 @@ void RShift::DrawBoth()
 }
 
 
-pcharc Chan::Name(Chan::E ch)
+pcharc Ch::Name(Ch::E ch)
 {
-    static pcharc names[Chan::Count] =
+    static pcharc names[Ch::Count] =
     {
         "Канал 1",
         "Канал 2"
@@ -508,7 +508,7 @@ void TrigLevel::Change(int16 delta)
 }
 
 
-void TrigLevel::Set(Chan::E ch, int16 newLevel)
+void TrigLevel::Set(Ch::E ch, int16 newLevel)
 {
     S_TRIG_LEVEL(ch) = newLevel;
 
@@ -526,7 +526,7 @@ bool Trig::SyncPulse()
 }
 
 
-void RShift::Draw(Chan::E ch)
+void RShift::Draw(Ch::E ch)
 {
     Color::CHAN[ch].SetAsCurrent();
 
@@ -565,7 +565,7 @@ void RShift::Draw(Chan::E ch)
 
 void TrigLevel::Draw()
 {
-    Chan::E ch = S_TRIG_SOURCE;
+    Ch::E ch = S_TRIG_SOURCE;
 
     float scale = 1.0F / ((MAX - MIN) / 2.4F / Grid::Height());
 
@@ -744,7 +744,7 @@ void VALUE::PointsFromVoltage(const float *voltage, int numPoints, Range::E rang
 }
 
 
-void Range::Set(Chan::E ch, E range)
+void Range::Set(Ch::E ch, E range)
 {
     set.disp.SetLastAffectedChannel(ch);
 

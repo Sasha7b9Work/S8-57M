@@ -127,7 +127,7 @@ namespace SCPI
 
     namespace Sender
     {
-        extern bool osci[Chan::Count];  // Установленное в true значение означает, что данне осциллографа нужно послать в SCPI
+        extern bool osci[Ch::Count];  // Установленное в true значение означает, что данне осциллографа нужно послать в SCPI
         extern bool freqMeter;          // Установленное в true значение означает, что нужно посылать измеренное частотомером значение в SCPI
         extern bool tester;             // Посылать данные тестера компонентов
         extern bool multimeter;         // Посылать в SCPI данные мультиметра
