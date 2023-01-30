@@ -685,8 +685,13 @@ bool PDecoder::SetColorChannel(uint8 data)
 
         if (step == 5)
         {
-            int index = BackBuffer::Signal::GetColorIndex(type & 0x01, (type >> 1) & 1);
+            int ch = type & 0x01;
+            int t = (type >> 1) & 1;
+            int index = BackBuffer::Signal::GetColorIndex(ch, t);
             COLOR(index) = value;
+
+            LOG_WRITE("ch = %d, type = %d, index = %d, color = %x", ch, type, index, COLOR(index));
+
             BackBuffer::LoadPalette();
             return true;
         }
@@ -762,15 +767,15 @@ bool PDecoder::DrawSignal(uint8 data)
             }
             else
             {
-                if (mode == 0)                              // пик дет откл, точки
+                if ((mode & 3) == 0)                        // пик дет откл, точки
                 {
                     BackBuffer::Signal::DrawPoint(x0++, Converter::CacluateY(data));
                 }
-                else if (mode == 1)                         // пик дет вкл, точки
+                else if ((mode & 3) == 1)                   // пик дет вкл, точки
                 {
 
                 }
-                else if (mode == 2)                         // пик дет откл, линии
+                else if ((mode & 3) == 2)                   // пик дет откл, линии
                 {
                     int y1 = prev_y;
                     int y2 = Converter::CacluateY(data);
@@ -790,7 +795,7 @@ bool PDecoder::DrawSignal(uint8 data)
 
                     prev_y = y2;
                 }
-                else if (mode == 3)                         // пик дет вкл, линии
+                else if ((mode & 3) == 3)                   // пик дет вкл, линии
                 {
 
                 }
