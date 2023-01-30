@@ -34,14 +34,14 @@ namespace DisplayOsci
         // Нарисовать данные из ППЗУ
         static void DrawROM();
 
-        static void DrawChannel(Ch::E ch);
+        static void DrawChannel(Ch::E);
 
-        static void DrawModeLines(Ch::E ch, const uint8 *data);
-        static void DrawModePoints(Ch::E ch, const uint8 *data);
+        static void DrawModeLines(Ch::E, const uint8 *data);
+        static void DrawModePoints(Ch::E, const uint8 *data);
 
         // mode : 0 - точки, 1 - линии
-        static void DrawPeakDetOff(Ch::E ch, const uint8 *data, int mode);
-        static void DrawPeakDetOn(Ch::E ch, const uint8 *data, int mode);
+        static void DrawPeakDetOff(Ch::E, const uint8 *data, int mode);
+        static void DrawPeakDetOn(Ch::E, const uint8 *data, int mode);
 
         // Нарисовать спектр
         static void DrawSpectrum();
@@ -50,7 +50,7 @@ namespace DisplayOsci
 
         static void DrawSpectrumChannel(const float *spectrum, Color);
 
-        static void WriteParametersFFT(Ch::E ch, float freq0, float density0, float freq1, float density1);
+        static void WriteParametersFFT(Ch::E, float freq0, float density0, float freq1, float density1);
     }
 }
 
@@ -364,6 +364,21 @@ void DisplayOsci::PainterData::DrawModePoints(Ch::E ch, const uint8 *data)
 
 void DisplayOsci::PainterData::DrawPeakDetOn(Ch::E ch, const uint8 *data, int mode)
 {
+    const int NUM_POINTS = Grid::Width();
+
+    SBuffer buffer(Command::Paint_DrawSignal, (uint8(mode | 2 | ((int)ch << 2))));
+
+    buffer.Push(Point2(Grid::Left(), Grid::Top()));
+    buffer.Push(Point2(Grid::Left(), Grid::ChannelBottom()));
+    buffer.Push((uint8 *)&NUM_POINTS, 2);
+
+    buffer.Send();
+
+    for (int i = 0; i < NUM_POINTS; i++)
+    {
+        HAL_BUS::Panel::SendByte(*data++);
+        HAL_BUS::Panel::SendByte(*data++);
+    }
 }
 
 
@@ -371,11 +386,11 @@ void DisplayOsci::PainterData::DrawPeakDetOff(Ch::E ch, const uint8 *data, int m
 {
     const int NUM_POINTS = Grid::Width();
 
-    SBuffer buffer(Command::Paint_DrawSignal, (uint8)((mode << 1) | ((int)ch << 2)));   // 0,1
+    SBuffer buffer(Command::Paint_DrawSignal, (uint8)(mode | ((int)ch << 2)));  // 0,1
 
-    buffer.Push(Point2(Grid::Left(), Grid::Top()));             // 2-4
-    buffer.Push(Point2(Grid::Left(), Grid::ChannelBottom()));   // 5-7
-    buffer.Push((uint8 *)&NUM_POINTS, 2);                       // 8-10
+    buffer.Push(Point2(Grid::Left(), Grid::Top()));                             // 2-4
+    buffer.Push(Point2(Grid::Left(), Grid::ChannelBottom()));                   // 5-7
+    buffer.Push((uint8 *)&NUM_POINTS, 2);                                       // 8-10
 
     buffer.Send();
 

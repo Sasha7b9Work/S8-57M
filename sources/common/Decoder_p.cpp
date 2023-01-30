@@ -766,37 +766,43 @@ bool PDecoder::DrawSignal(uint8 data)
             }
             else
             {
-                if ((mode & 3) == 0)                        // пик дет откл, точки
+                if ((mode & 2))                     // Пик дет включён
                 {
-                    BackBuffer::Signal::DrawPoint(x0++, Converter::CacluateY(data));
-                }
-                else if ((mode & 3) == 1)                   // пик дет вкл, точки
-                {
-
-                }
-                else if ((mode & 3) == 2)                   // пик дет откл, линии
-                {
-                    int y1 = prev_y;
-                    int y2 = Converter::CacluateY(data);
-
-                    if (y1 > y2)
+                    if (mode & 1)
                     {
-                        BackBuffer::Signal::DrawVLine(++x0, y2, y1);
-                    }
-                    else if(y1 < y2)
-                    {
-                        BackBuffer::Signal::DrawVLine(++x0, y1, y2);
+
                     }
                     else
                     {
-                        BackBuffer::Signal::DrawPoint(++x0, y2);
+
                     }
-
-                    prev_y = y2;
                 }
-                else if ((mode & 3) == 3)                   // пик дет вкл, линии
+                else                                // Пик дет отключён
                 {
+                    if (mode & 1)                   // линии
+                    {
+                        int y1 = prev_y;
+                        int y2 = Converter::CacluateY(data);
 
+                        if (y1 > y2)
+                        {
+                            BackBuffer::Signal::DrawVLine(++x0, y2, y1);
+                        }
+                        else if (y1 < y2)
+                        {
+                            BackBuffer::Signal::DrawVLine(++x0, y1, y2);
+                        }
+                        else
+                        {
+                            BackBuffer::Signal::DrawPoint(++x0, y2);
+                        }
+
+                        prev_y = y2;
+                    }
+                    else
+                    {
+                        BackBuffer::Signal::DrawPoint(x0++, Converter::CacluateY(data));
+                    }
                 }
             }
 
