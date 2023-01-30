@@ -8,6 +8,7 @@
 #include "Display/BackBuffer.h"
 #include "Settings/Settings.h"
 #include "Display/Font/Font.h"
+#include "Hardware/Timer.h"
 #include "Log.h"
 
 
@@ -689,6 +690,7 @@ bool PDecoder::SetColorChannel(uint8 data)
             int t = (type >> 1) & 1;
             int index = BackBuffer::Signal::GetColorIndex(ch, t);
             COLOR(index) = value;
+            Timer::PauseOnTime(10);
             BackBuffer::LoadPalette();
             return true;
         }

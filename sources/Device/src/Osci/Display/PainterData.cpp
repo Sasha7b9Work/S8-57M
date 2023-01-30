@@ -36,16 +36,12 @@ namespace DisplayOsci
 
         static void DrawChannel(Chan::E ch);
 
-        static void DrawModeLines(Chan::E ch, int left, int center, const uint8 *data, float scale);
+        static void DrawModeLines(Chan::E, int left, const uint8 *data);
+        static void DrawModePoints(Chan::E, int left, const uint8 *data);
 
         // mode : 0 - точки, 1 - линии
-        static void DrawPeakDetOff(Chan::E ch, const uint8 *data, int x, int mode);
-
-        // mode : 0 - точки, 1 - линии
-        static void DrawModeLinesPeakDetOn(int center, const uint8 *data, float scale, int x);
-        static void DrawModePointsPeakDetOn(int center, const uint8 *data, float scale, int x);
-
-        static void DrawModePoints(Chan::E ch, int left, int center, const uint8 *data, float scale);
+        static void DrawPeakDetOff(Chan::E, const uint8 *data, int x, int mode);
+        static void DrawPeakDetOn(Chan::E, const uint8 *data, int x, int mode);
 
         // Ќарисовать спектр
         static void DrawSpectrum();
@@ -324,11 +320,11 @@ void DisplayOsci::PainterData::DrawChannel(Chan::E ch)
 
     if (S_DISP_MAPPING_IS_LINES)
     {
-        DrawModeLines(ch, left, center, data, scale);
+        DrawModeLines(ch, left, data);
     }
     else
     {
-        DrawModePoints(ch, left, center, data, scale);
+        DrawModePoints(ch, left, data);
     }
 
     if(posSeparator > 0)
@@ -338,7 +334,7 @@ void DisplayOsci::PainterData::DrawChannel(Chan::E ch)
 }
 
 
-void DisplayOsci::PainterData::DrawModeLines(Chan::E ch, int left, int center, const uint8 *data, float scale)
+void DisplayOsci::PainterData::DrawModeLines(Chan::E ch, int left, const uint8 *data)
 {
     Color::CHAN[ch].SetAsCurrent();
 
@@ -346,7 +342,7 @@ void DisplayOsci::PainterData::DrawModeLines(Chan::E ch, int left, int center, c
 
     if (PEAKDET_ENABLED(DS))
     {
-        DrawModeLinesPeakDetOn(center, data, scale, x);
+        DrawPeakDetOn(ch, data, x, 1);
     }
     else
     {
@@ -355,13 +351,13 @@ void DisplayOsci::PainterData::DrawModeLines(Chan::E ch, int left, int center, c
 }
 
 
-void DisplayOsci::PainterData::DrawModePoints(Chan::E ch, int left, int center, const uint8 *data, float scale)
+void DisplayOsci::PainterData::DrawModePoints(Chan::E ch, int left, const uint8 *data)
 {
     Color::CHAN[ch].SetAsCurrent();
 
     if (PEAKDET_ENABLED(DS))
     {
-        DrawModePointsPeakDetOn(center, data, scale, left);
+        DrawPeakDetOn(ch, data, left, 0);
     }
     else
     {
@@ -370,19 +366,8 @@ void DisplayOsci::PainterData::DrawModePoints(Chan::E ch, int left, int center, 
 }
 
 
-void DisplayOsci::PainterData::DrawModeLinesPeakDetOn(int center, const uint8 *data, float scale, int x)
+void DisplayOsci::PainterData::DrawPeakDetOn(Chan::E, const uint8 *data, int x, int mode)
 {
-    for (int i = 0; i < 281 * 2; i += 2)
-    {
-        int min = (int)(center - (data[i] - VALUE::AVE) * scale + 0.5F);
-        int max = (int)(center - (data[i + 1] - VALUE::AVE) * scale + 0.5F);
-
-        VLine(min - max).Draw(x++, max);
-    }
-
-//    const int NUM_POINTS = Grid::Width();
-//
-//    SBuffer buffer(Command)
 }
 
 
@@ -401,17 +386,6 @@ void DisplayOsci::PainterData::DrawPeakDetOff(Chan::E ch, const uint8 *data, int
     for (int i = 0; i < NUM_POINTS; i++)
     {
         HAL_BUS::Panel::SendByte(*data++);
-    }
-}
-
-
-void DisplayOsci::PainterData::DrawModePointsPeakDetOn(int center, const uint8 *data, float scale, int x)
-{
-    for (int i = 0; i < 281 * 2; i += 2)
-    {
-        Pixel().Draw(x, (int)(center - (data[i] - VALUE::AVE) * scale + 0.5F));
-        Pixel().Draw(x, (int)(center - (data[i + 1] - VALUE::AVE) * scale + 0.5F));
-        x++;
     }
 }
 
