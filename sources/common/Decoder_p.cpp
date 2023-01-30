@@ -778,7 +778,18 @@ bool PDecoder::DrawSignal(uint8 data)
                     {
                         if (mode & 1)                   // линии
                         {
+                            int y_min = Converter::CacluateY(prev_data);
+                            int y_max = Converter::CacluateY(data);
 
+                            if (y_max < y_min)
+                            {
+                                BackBuffer::Signal::DrawVLine(x++, y_max, y_min);
+                            }
+                            else
+                            {
+                                BackBuffer::Signal::DrawVLine(x++, y_min, y_max);
+                            }
+                            
                         }
                         else                            // Точки
                         {
