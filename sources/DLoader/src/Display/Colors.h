@@ -48,7 +48,7 @@ public:
 
     void LoadValueRGB();
 
-    Color& operator=(const Color &color);
+    Color& operator=(const Color &);
 
     uint8 value;
 
