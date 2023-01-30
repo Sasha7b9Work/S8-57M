@@ -69,9 +69,9 @@ void Osci::RunAutoSearch()
 {
     Settings old = set;
 
-    if (!FullSearchSignal(ChanA, &old))
+    if (!FullSearchSignal(ChA, &old))
     {
-        if (!FullSearchSignal(ChanB, &old))
+        if (!FullSearchSignal(ChB, &old))
         {
             DISPLAY_SHOW_WARNING("Сигнал не обнаружен");
 
@@ -103,8 +103,8 @@ static bool FullSearchSignal(Ch::E ch, const Settings *old)
 
         Osci::Init();
 
-        ScaleChannel(ChanA, ch == Ch::B);
-        ScaleChannel(ChanB, ch == Ch::A);
+        ScaleChannel(ChA, ch == Ch::B);
+        ScaleChannel(ChB, ch == Ch::A);
 
         Osci::Init();
 
@@ -455,7 +455,7 @@ void AutoFPGA::ReadData(Ch::E ch, uint8 *data)
     HAL_BUS::FPGA::Write16(WR::PRED_LO, addrRead);
     HAL_BUS::FPGA::Write8(WR::START_ADDR, 0xff);
 
-    uint8 *a0 = (ch == ChanA) ? RD::DATA_A : RD::DATA_B;
+    uint8 *a0 = (ch == ChA) ? RD::DATA_A : RD::DATA_B;
     uint8 *a1 = a0 + 1;
 
     HAL_BUS::FPGA::SetAddrData(a0, a1);

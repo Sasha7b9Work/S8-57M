@@ -15,21 +15,21 @@ extern uint16 *ave[2];
 #define ENABLE_CH_DS(ch)  (((ch) == Ch::A) ? DS->en_a : DS->en_b)
 
 #define IN(ch)  (dataIN[(int)(ch)])
-#define IN_A    IN(ChanA)
-#define IN_B    IN(ChanB)
+#define IN_A    IN(ChA)
+#define IN_B    IN(ChB)
 #define OUT(ch) (dataOUT[(int)(ch)])
-#define OUT_A   OUT(ChanA)
-#define OUT_B   OUT(ChanB)
+#define OUT_A   OUT(ChA)
+#define OUT_B   OUT(ChB)
 
 #define AVE_DATA(ch) ave[(int)(ch)]
-#define AVE_1        AVE_DATA(ChanA)
-#define AVE_2        AVE_DATA(ChanB)
+#define AVE_1        AVE_DATA(ChA)
+#define AVE_2        AVE_DATA(ChB)
 
 
 #define RANGE_DS(ch)    (RANGE(DS, ch))
 #define RSHIFT_DS(ch)   (RSHIFT(DS, ch))
-#define RSHIFT_DS_A     (RSHIFT(DS, ChanA))
-#define RSHIFT_DS_B     (RSHIFT(DS, ChanB))
+#define RSHIFT_DS_A     (RSHIFT(DS, ChA))
+#define RSHIFT_DS_B     (RSHIFT(DS, ChB))
 #define TBASE_DS        (TBASE(DS))
 
 

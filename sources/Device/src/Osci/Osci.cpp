@@ -94,8 +94,8 @@ void Osci::Init()
     RAM::Init();
     FPGA::LoadRegUPR();
     Range::LoadBoth();
-    RShift::Load(ChanA);
-    RShift::Load(ChanB);
+    RShift::Load(ChA);
+    RShift::Load(ChB);
     TrigInput::Load();
     TrigLevel::Load();
     TrigPolarity().Load();
@@ -213,11 +213,11 @@ static void UpdateFPGA()
                 {
                     if(ENABLED_A(last))
                     {
-                        AveragerOsci::Process(ChanA, last->ch_a, last->BytesInChannel());
+                        AveragerOsci::Process(ChA, last->ch_a, last->BytesInChannel());
                     }
                     if(ENABLED_B(last))
                     {
-                        AveragerOsci::Process(ChanB, last->ch_b, last->BytesInChannel());
+                        AveragerOsci::Process(ChB, last->ch_b, last->BytesInChannel());
                     }
                 }
             }
@@ -360,10 +360,10 @@ void Osci::ClearDataRand()
         DataSettings *ds = RAM::Get();
         ds->Fill();
 
-        std::memset(ds->Data(ChanA), VALUE::NONE, (uint)(ds->PointsInChannel()));
-        std::memset(ds->Data(ChanB), VALUE::NONE, (uint)(ds->PointsInChannel()));
+        std::memset(ds->Data(ChA), VALUE::NONE, (uint)(ds->PointsInChannel()));
+        std::memset(ds->Data(ChB), VALUE::NONE, (uint)(ds->PointsInChannel()));
 
-        std::memset(IntRAM::DataRand(ChanA), VALUE::NONE, (uint)(ds->PointsInChannel()));
+        std::memset(IntRAM::DataRand(ChA), VALUE::NONE, (uint)(ds->PointsInChannel()));
     }
 }
 
@@ -374,9 +374,9 @@ void Osci::ReadData()
 
     DataSettings &ds = *RAM::PrepareForNewData();
 
-    if(ReadDataChannel(ChanA, ds.ch_a))
+    if(ReadDataChannel(ChA, ds.ch_a))
     {
-        if(ReadDataChannel(ChanB, ds.ch_b))
+        if(ReadDataChannel(ChB, ds.ch_b))
         {
             if (SampleType::IsReal())
             {
@@ -402,7 +402,7 @@ bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *data)
 
     uint8 *dataWrite = data + infoRead.posFirst;                                // —юда запишем первую считанную точку
 
-    uint8 *interpolated = IntRAM::DataRand(ChanA) + infoRead.posFirst;
+    uint8 *interpolated = IntRAM::DataRand(ChA) + infoRead.posFirst;
 
     uint8 *last = data + ENumPointsFPGA::PointsInChannel();
 

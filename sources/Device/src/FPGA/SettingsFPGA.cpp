@@ -235,7 +235,7 @@ void Range::Change(Ch::E ch, int16 delta)
 
     DisplayOsci::SetFlagRedraw();
 
-    DisplayOsci::DrawingValueParameter::Enable((ch == ChanA) ? DisplayOsci::DrawingValueParameter::RangeA : DisplayOsci::DrawingValueParameter::RangeB);
+    DisplayOsci::DrawingValueParameter::Enable((ch == ChA) ? DisplayOsci::DrawingValueParameter::RangeA : DisplayOsci::DrawingValueParameter::RangeB);
 }
 
 
@@ -244,7 +244,7 @@ void RShift::Set(Ch::E ch, int16 rShift)
     ::Math::Limitation(&rShift, RShift::MIN, MAX);
     S_RSHIFT(ch) = rShift;
     Load(ch);
-    DisplayOsci::DrawingValueParameter::Enable((ch == ChanA) ? DisplayOsci::DrawingValueParameter::RShiftA : DisplayOsci::DrawingValueParameter::RShiftB);
+    DisplayOsci::DrawingValueParameter::Enable((ch == ChA) ? DisplayOsci::DrawingValueParameter::RShiftA : DisplayOsci::DrawingValueParameter::RShiftB);
 }
 
 
@@ -252,7 +252,7 @@ void RShift::Change(Ch::E ch, int16 delta)
 {
     ::Math::AdditionThisLimitation<int16>(&S_RSHIFT(ch), STEP * delta, MIN, MAX);
     RShift::Load(ch);
-    DisplayOsci::DrawingValueParameter::Enable((ch == ChanA) ? DisplayOsci::DrawingValueParameter::RShiftA : DisplayOsci::DrawingValueParameter::RShiftB);
+    DisplayOsci::DrawingValueParameter::Enable((ch == ChA) ? DisplayOsci::DrawingValueParameter::RShiftA : DisplayOsci::DrawingValueParameter::RShiftB);
 }
 
 

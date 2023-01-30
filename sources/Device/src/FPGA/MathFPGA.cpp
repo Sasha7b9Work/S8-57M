@@ -204,7 +204,7 @@ void MathFPGA::CalculateFFT(float *dataR, int numPoints, float *result, float *f
 
     if (DisplayOsci::PainterData::needSendToSCPI_FFT)
     {
-        SCPI::SendData(ch == ChanA ? "1 : " : "2 : ");
+        SCPI::SendData(ch == ChA ? "1 : " : "2 : ");
 
         char buffer[50];
         for(int i = 0; i < 255; i++)

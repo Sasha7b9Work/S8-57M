@@ -183,24 +183,24 @@ void AutoMeasurements::CalculateMeasures()
             {
                 if(type == S_MEAS_MARKED || S_MEAS_MARKED == TypeMeasure::None)
                 {
-                    markerTime[ChanA][0] = Integer::ERROR;
-                    markerTime[ChanA][1] = Integer::ERROR;
-                    markerTime[ChanB][0] = Integer::ERROR;
-                    markerTime[ChanB][1] = Integer::ERROR;
-                    markerVoltage[ChanA][0] = Integer::ERROR;
-                    markerVoltage[ChanA][1] = Integer::ERROR;
-                    markerVoltage[ChanB][0] = Integer::ERROR;
-                    markerVoltage[ChanB][1] = Integer::ERROR;
+                    markerTime[ChA][0] = Integer::ERROR;
+                    markerTime[ChA][1] = Integer::ERROR;
+                    markerTime[ChB][0] = Integer::ERROR;
+                    markerTime[ChB][1] = Integer::ERROR;
+                    markerVoltage[ChA][0] = Integer::ERROR;
+                    markerVoltage[ChA][1] = Integer::ERROR;
+                    markerVoltage[ChB][0] = Integer::ERROR;
+                    markerVoltage[ChB][1] = Integer::ERROR;
                 }
                 
                 if(VIEW_MEASURES_A)
                 {
-                    values[(int)(type)].value[ChanA] = func(ChanA);
+                    values[(int)(type)].value[ChA] = func(ChA);
                 }
                 
                 if(VIEW_MEASURES_B)
                 {
-                    values[(int)(type)].value[ChanB] = func(ChanB);
+                    values[(int)(type)].value[ChB] = func(ChB);
                 }
             }
         }
@@ -222,13 +222,13 @@ void AutoMeasurements::CalculateMeasures()
 
             if (VIEW_MEASURES_A)    
             {
-                values[type].value[ChanA] = func(ChanA);
-                SCPI::SendMeasure(measure.GetStringMeasure(ChanA, buffer, 49));
+                values[type].value[ChA] = func(ChA);
+                SCPI::SendMeasure(measure.GetStringMeasure(ChA, buffer, 49));
             }
             if (VIEW_MEASURES_B)
             {
-                values[type].value[ChanB] = func(ChanB);
-                SCPI::SendMeasure(measure.GetStringMeasure(ChanB, buffer, 49));
+                values[type].value[ChB] = func(ChB);
+                SCPI::SendMeasure(measure.GetStringMeasure(ChB, buffer, 49));
             }
         }
 
@@ -1020,8 +1020,8 @@ float CalculatePicRel(Ch::E ch)
 
 float CalculateDelayPlus(Ch::E ch)
 {
-    float periodA = CalculatePeriod(ChanA);
-    float periodB = CalculatePeriod(ChanB);
+    float periodA = CalculatePeriod(ChA);
+    float periodB = CalculatePeriod(ChB);
 
     EXIT_IF_ERRORS_FLOAT(periodA, periodB); //-V2507
     if(!Math::FloatsIsEquals(periodA, periodB, 1.05F))
@@ -1029,15 +1029,15 @@ float CalculateDelayPlus(Ch::E ch)
         return Float::ERROR;
     }
 
-    float averageA = CalculateAverageRel(ChanA);
-    float averageB = CalculateAverageRel(ChanB);
+    float averageA = CalculateAverageRel(ChA);
+    float averageB = CalculateAverageRel(ChB);
 
     EXIT_IF_ERRORS_FLOAT(averageA, averageB); //-V2507
 
-    float averageFirst = (ch == ChanA) ? averageA : averageB;
-    float averageSecond = (ch == ChanA) ? averageB : averageA;
+    float averageFirst = (ch == ChA) ? averageA : averageB;
+    float averageSecond = (ch == ChA) ? averageB : averageA;
     Ch::E firstChannel = ch;
-    Ch::E secondChannel = (ch == ChanA) ? ChanB : ChanA;
+    Ch::E secondChannel = (ch == ChA) ? ChB : ChA;
 
     float firstIntersection = FindIntersectionWithHorLine(firstChannel, 1, true, (uint8)(averageFirst));
     float secondIntersection = FindIntersectionWithHorLine(secondChannel, 1, true, (uint8)(averageSecond));
@@ -1058,8 +1058,8 @@ float CalculateDelayPlus(Ch::E ch)
 
 float CalculateDelayMinus(Ch::E ch)
 {
-    float period0 = CalculatePeriod(ChanA);
-    float period1 = CalculatePeriod(ChanB);
+    float period0 = CalculatePeriod(ChA);
+    float period1 = CalculatePeriod(ChB);
 
     EXIT_IF_ERRORS_FLOAT(period0, period1); //-V2507
 
@@ -1068,15 +1068,15 @@ float CalculateDelayMinus(Ch::E ch)
         return Float::ERROR;
     }
 
-    float average0 = CalculateAverageRel(ChanA);
-    float average1 = CalculateAverageRel(ChanB);
+    float average0 = CalculateAverageRel(ChA);
+    float average1 = CalculateAverageRel(ChB);
 
     EXIT_IF_ERRORS_FLOAT(average0, average1); //-V2507
 
-    float averageFirst = (ch == ChanA) ? average0 : average1;
-    float averageSecond = (ch == ChanA) ? average1 : average0;
+    float averageFirst = (ch == ChA) ? average0 : average1;
+    float averageSecond = (ch == ChA) ? average1 : average0;
     Ch::E firstChannel = ch;
-    Ch::E secondChannel = (ch == ChanA) ? ChanB : ChanA;
+    Ch::E secondChannel = (ch == ChA) ? ChB : ChA;
 
     float firstIntersection = FindIntersectionWithHorLine(firstChannel, 1, false, (uint8)(averageFirst));
     float secondIntersection = FindIntersectionWithHorLine(secondChannel, 1, false, (uint8)(averageSecond));
@@ -1336,7 +1336,7 @@ String Measure::GetStringMeasure(Ch::E ch, char* buffer, int lenBuf)
     }
 
     buffer[0] = '\0';
-    std::strcpy(buffer, (ch == ChanA) ? "1: " : "2: ");
+    std::strcpy(buffer, (ch == ChA) ? "1: " : "2: ");
 
     if(!isSet || values[(int)(type)].value[(int)(ch)] == Float::ERROR)
     {
@@ -1477,7 +1477,7 @@ void AutoMeasurements::CountedToCurrentSettings()
     {
         Smoother::Run(IN_A, OUT_A, NUM_BYTES, S_DISP_NUM_SMOOTH);
         std::memcpy(IN_A, OUT_A, NUM_BYTES);
-        CountedToCurrentSettings(ChanA, NUM_BYTES, IN_A, OUT_A);
+        CountedToCurrentSettings(ChA, NUM_BYTES, IN_A, OUT_A);
         LimitationData(OUT_A, NUM_BYTES);
     }
 
@@ -1485,7 +1485,7 @@ void AutoMeasurements::CountedToCurrentSettings()
     {
         Smoother::Run(IN_B, OUT_B, NUM_BYTES, S_DISP_NUM_SMOOTH);
         std::memcpy(IN_B, OUT_B, NUM_BYTES);
-        CountedToCurrentSettings(ChanB, NUM_BYTES, IN_B, OUT_B);
+        CountedToCurrentSettings(ChB, NUM_BYTES, IN_B, OUT_B);
         LimitationData(OUT_B, NUM_BYTES);
     }
 }

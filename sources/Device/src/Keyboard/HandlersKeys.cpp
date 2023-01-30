@@ -131,25 +131,25 @@ void Handlers::ChangeRShift(Ch::E ch, int16 delta)
 
 void Handlers::OnRShiftA()
 {
-    OnChangeParameterChannel(ChangeRShift, ChanA, (event.key == Key::RShiftMoreA) ? 1 : -1);
+    OnChangeParameterChannel(ChangeRShift, ChA, (event.key == Key::RShiftMoreA) ? 1 : -1);
 }
 
 
 void Handlers::OnRShiftB()
 {
-    OnChangeParameterChannel(ChangeRShift, ChanB, (event.key == Key::RShiftMoreB) ? 1 : -1);
+    OnChangeParameterChannel(ChangeRShift, ChB, (event.key == Key::RShiftMoreB) ? 1 : -1);
 }
 
 
 void Handlers::OnRangeA()
 {
-    OnChangeParameterChannel(Range::Change, ChanA, (event.key == Key::RangeMoreA) ? 1 : -1);
+    OnChangeParameterChannel(Range::Change, ChA, (event.key == Key::RangeMoreA) ? 1 : -1);
 }
 
 
 void Handlers::OnRangeB()
 {
-    OnChangeParameterChannel(Range::Change, ChanB, (event.key == Key::RangeMoreB) ? 1 : -1);
+    OnChangeParameterChannel(Range::Change, ChB, (event.key == Key::RangeMoreB) ? 1 : -1);
 }
 
 
@@ -292,7 +292,7 @@ void Handlers::OnChannelA()
     }
     else if (event.IsLong())
     {
-        RShift::Set(ChanA, 0);
+        RShift::Set(ChA, 0);
     }
 }
 
@@ -307,7 +307,7 @@ void Handlers::OnChannelB()
     }
     else if (event.IsLong())
     {
-        RShift::Set(ChanB, 0);
+        RShift::Set(ChB, 0);
     }
 }
 

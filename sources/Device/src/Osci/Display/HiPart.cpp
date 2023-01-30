@@ -113,8 +113,8 @@ int DisplayOsci::HiPart::DrawMainParameters(int _x, int _y)
     const int dY = 18;
     int y1 = _y + dY;
 
-    WriteTextVoltage(ChanA, x + 2, y0);
-    WriteTextVoltage(ChanB, x + 2, y1);
+    WriteTextVoltage(ChA, x + 2, y0);
+    WriteTextVoltage(ChB, x + 2, y1);
 
     x += 191;
 
@@ -219,7 +219,7 @@ void DisplayOsci::HiPart::WriteTextVoltage(Ch::E ch, int x, int y)
         Region(91, 8).Fill(x, y, color);
     }
 
-    String((ch == ChanA) ? "1ê" : "2ê").Draw(x + 1, y, colorDraw);
+    String((ch == ChA) ? "1ê" : "2ê").Draw(x + 1, y, colorDraw);
     String(":").Draw(x + 18, y);
     ModeCouple::UGO(S_MODE_COUPLE(ch)).Draw(x + 23, y);
     String(":").Draw(x + 37, y);

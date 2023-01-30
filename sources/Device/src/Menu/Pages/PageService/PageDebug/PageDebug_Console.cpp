@@ -53,7 +53,7 @@ DEF_CHOICE_2( cRShiftA,                                                         
     "",
     DISABLE_RU,
     ENABLE_RU,
-    S_DBG_SHOW_RSHIFT(ChanA), &PageDebug::PageRegisters::self, IsActive_Registers, Choice::Changed, Choice::AfterDraw
+    S_DBG_SHOW_RSHIFT(ChA), &PageDebug::PageRegisters::self, IsActive_Registers, Choice::Changed, Choice::AfterDraw
 )
 
 
@@ -62,7 +62,7 @@ DEF_CHOICE_2( cRShiftB,                                                         
     "",
     DISABLE_RU,
     ENABLE_RU,
-    S_DBG_SHOW_RSHIFT(ChanB), &PageDebug::PageRegisters::self, IsActive_Registers, Choice::Changed, Choice::AfterDraw
+    S_DBG_SHOW_RSHIFT(ChB), &PageDebug::PageRegisters::self, IsActive_Registers, Choice::Changed, Choice::AfterDraw
 )
 
 
@@ -80,7 +80,7 @@ DEF_CHOICE_2( cRangeA,                                                          
     "",
     DISABLE_RU,
     ENABLE_RU,
-    S_DBG_SHOW_RANGE(ChanA), &PageDebug::PageRegisters::self, IsActive_Registers, Choice::Changed, Choice::AfterDraw
+    S_DBG_SHOW_RANGE(ChA), &PageDebug::PageRegisters::self, IsActive_Registers, Choice::Changed, Choice::AfterDraw
 )
 
 
@@ -89,7 +89,7 @@ DEF_CHOICE_2( cRangeB,                                                          
     "",
     DISABLE_RU,
     ENABLE_RU,
-    S_DBG_SHOW_RANGE(ChanB), &PageDebug::PageRegisters::self, IsActive_Registers, Choice::Changed, Choice::AfterDraw
+    S_DBG_SHOW_RANGE(ChB), &PageDebug::PageRegisters::self, IsActive_Registers, Choice::Changed, Choice::AfterDraw
 )
 
 
@@ -107,7 +107,7 @@ DEF_CHOICE_2( cChanParamA,                                                      
     "",
     DISABLE_RU,
     ENABLE_RU,
-    S_DBG_SHOW_CHAN_PARAM(ChanA), &PageDebug::PageRegisters::self, IsActive_Registers, Choice::Changed, Choice::AfterDraw
+    S_DBG_SHOW_CHAN_PARAM(ChA), &PageDebug::PageRegisters::self, IsActive_Registers, Choice::Changed, Choice::AfterDraw
 )
 
 
@@ -116,7 +116,7 @@ DEF_CHOICE_2( cChanParamB,                                                      
     "",
     DISABLE_RU,
     ENABLE_RU,
-    S_DBG_SHOW_CHAN_PARAM(ChanB), &PageDebug::PageRegisters::self, IsActive_Registers, Choice::Changed, Choice::AfterDraw
+    S_DBG_SHOW_CHAN_PARAM(ChB), &PageDebug::PageRegisters::self, IsActive_Registers, Choice::Changed, Choice::AfterDraw
 )
 
 

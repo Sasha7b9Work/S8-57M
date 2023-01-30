@@ -83,6 +83,6 @@ void SettingsNRST::SetExtraShift(int8 shift)
 
 void SettingsNRST::ResetExtraStretch()
 {
-    NRST_EX_STRETCH(ChanA) = 1.0F;
-    NRST_EX_STRETCH(ChanB) = 1.0F;
+    NRST_EX_STRETCH(ChA) = 1.0F;
+    NRST_EX_STRETCH(ChB) = 1.0F;
 }

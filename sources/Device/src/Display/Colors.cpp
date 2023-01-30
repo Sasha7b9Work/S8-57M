@@ -247,13 +247,13 @@ Color Color::Trig()
 {
     Color result = Color::FILL;
 
-    if(S_TRIG_SOURCE == ChanA)
+    if(S_TRIG_SOURCE == ChA)
     {
-        result = CHAN[ChanA];
+        result = CHAN[ChA];
     }
     else // S_TRIG_SOURCE == TrigSource::B
     {
-        result = CHAN[ChanB];
+        result = CHAN[ChB];
     }
 
     return result;

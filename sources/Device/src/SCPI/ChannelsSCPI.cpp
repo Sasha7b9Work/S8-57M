@@ -11,7 +11,7 @@
 #include <cstring>
 
 
-#define EXTRACT_CHANNEL(x) Ch::E ch = (*(buffer - (x)) == '1') ? ChanA : ChanB;    /* (buffer - 7) указывает на номер канала - 1 или 2 */
+#define EXTRACT_CHANNEL(x) Ch::E ch = (*(buffer - (x)) == '1') ? ChA : ChB;    /* (buffer - 7) указывает на номер канала - 1 или 2 */
 
 // :CHANNEL{1|2}:BALANCE
 static pchar FuncBalance(pchar);

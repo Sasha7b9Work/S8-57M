@@ -43,7 +43,7 @@ uint16 Osci::ReadLastRecord(Ch::E ch)
 {
     static uint16 address = 0;
 
-    if(ch == ChanA)
+    if(ch == ChA)
     {
         address = (uint16)(HAL_BUS::FPGA::Read(RD::LAST_RECORD_LO) + ((HAL_BUS::FPGA::Read(RD::LAST_RECORD_HI)) << 8));
 

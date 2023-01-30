@@ -10,12 +10,12 @@
 #define S_RSHIFT_MATH           set.math._rShift
 
 #define S_CHANNEL_ENABLED(chan) set.ch[chan]._enabled
-#define S_CHANNEL_ENABLED_A     S_CHANNEL_ENABLED(ChanA)
-#define S_CHANNEL_ENABLED_B     S_CHANNEL_ENABLED(ChanB)
+#define S_CHANNEL_ENABLED_A     S_CHANNEL_ENABLED(ChA)
+#define S_CHANNEL_ENABLED_B     S_CHANNEL_ENABLED(ChB)
 
 #define S_INVERSE(chan)         set.ch[chan]._inverse
-#define S_INVERSE_A             S_INVERSE(ChanA)
-#define S_INVERSE_B             S_INVERSE(ChanB)
+#define S_INVERSE_A             S_INVERSE(ChA)
+#define S_INVERSE_B             S_INVERSE(ChB)
 
 
 struct SettingsChannel

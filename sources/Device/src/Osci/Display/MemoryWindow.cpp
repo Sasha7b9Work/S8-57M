@@ -38,7 +38,7 @@ void DisplayOsci::MemoryWindow::Draw()
 
     DrawScreenArea();
 
-    Ch::E chans[2] = { S_DISP_LAST_AFFECTED_CHANNEL_IS_A ? ChanB : ChanA, S_DISP_LAST_AFFECTED_CHANNEL_IS_A ? ChanA : ChanB };
+    Ch::E chans[2] = { S_DISP_LAST_AFFECTED_CHANNEL_IS_A ? ChB : ChA, S_DISP_LAST_AFFECTED_CHANNEL_IS_A ? ChA : ChB };
 
     for (int i = 0; i < 2; i++)
     {

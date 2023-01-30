@@ -47,7 +47,7 @@ DEF_CHOICE_3( cCoupleA,                                                         
 
 static void OnChanged_BandwidthA(bool)
 {
-    Bandwidth::Load(ChanA);
+    Bandwidth::Load(ChA);
 }
 
 DEF_CHOICE_2( cBandwidthA,                                                                                                                                         //--- КАНАЛ 1 - Полоса ---
@@ -55,7 +55,7 @@ DEF_CHOICE_2( cBandwidthA,                                                      
     "Задаёт полосу пропускания канала",
     "Полная",
     "20МГц",
-    S_BANDWIDTH(ChanA), &PageChannelA::self, Item::Active, OnChanged_BandwidthA, Choice::AfterDraw
+    S_BANDWIDTH(ChA), &PageChannelA::self, Item::Active, OnChanged_BandwidthA, Choice::AfterDraw
 )
 
 
@@ -67,7 +67,7 @@ static void Balance(Ch::E ch)
 
 static void OnPress_BalanceA()
 {
-    Balance(ChanA);
+    Balance(ChA);
 }
 
 DEF_BUTTON( bBalanceA,                                                                                                                                      //--- КАНАЛ 1 - Балансировать ---
@@ -136,7 +136,7 @@ DEF_CHOICE_3( cCoupleB,                                                         
 
 static void OnChanged_BandwidthB(bool)
 {
-    Bandwidth::Load(ChanB);
+    Bandwidth::Load(ChB);
 }
 
 DEF_CHOICE_2( cBandwidthB,                                                                                                                                         //--- КАНАЛ 2 - Полоса ---
@@ -144,13 +144,13 @@ DEF_CHOICE_2( cBandwidthB,                                                      
     "",
     "Полная",
     "20МГц",
-    S_BANDWIDTH(ChanB), &PageChannelB::self, Item::Active, OnChanged_BandwidthB, Choice::AfterDraw
+    S_BANDWIDTH(ChB), &PageChannelB::self, Item::Active, OnChanged_BandwidthB, Choice::AfterDraw
 )
 
 
 static void OnPress_BalanceB()
 {
-    Balance(ChanB);
+    Balance(ChB);
 }
 
 DEF_BUTTON( bBalanceB,                                                                                                                                       //--- КАНАЛ 2 - Балансировка ---

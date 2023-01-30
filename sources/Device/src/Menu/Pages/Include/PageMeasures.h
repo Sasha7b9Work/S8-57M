@@ -156,7 +156,7 @@ struct CursorsMovement
 #define S_CURS_SHOW_FREQ            (set.curs._showFreq)
 
 #define S_CURS_SOURCE               (set.curs._source)
-#define S_CURS_SOURCE_IS_A          (S_CURS_SOURCE == ChanA)
+#define S_CURS_SOURCE_IS_A          (S_CURS_SOURCE == ChA)
 
 #define S_CURS_DU_PERCENTS(chan)    (set.curs._deltaU100percents[chan])
 #define S_CURS_DT_PERCENTS(chan)    (set.curs._deltaT100percents[chan])

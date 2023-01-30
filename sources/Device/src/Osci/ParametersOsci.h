@@ -4,10 +4,10 @@
 #include "common/Display/Font/Symbols.h"
 
 
-#define ChanA Ch::A
-#define ChanB Ch::B
-#define setA  set.ch[ChanA]
-#define setB  set.ch[ChanB]
+#define ChA Ch::A
+#define ChB Ch::B
+#define setA  set.ch[ChA]
+#define setB  set.ch[ChB]
 
 
 struct DataSettings;
@@ -162,8 +162,8 @@ namespace RShift
 
 // Режим канала по входу.
 #define S_MODE_COUPLE(chan)         (set.ch[chan]._couple)
-#define S_MODE_COUPLE_A             S_MODE_COUPLE(ChanA)
-#define S_MODE_COUPLE_B             S_MODE_COUPLE(ChanB)
+#define S_MODE_COUPLE_A             S_MODE_COUPLE(ChA)
+#define S_MODE_COUPLE_B             S_MODE_COUPLE(ChB)
 #define S_MODE_COUPLE_IS_DC(chan)   (S_MODE_COUPLE(chan) == ModeCouple::DC)
 namespace ModeCouple
 {

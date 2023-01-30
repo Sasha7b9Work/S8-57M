@@ -54,7 +54,7 @@ uint8 *InterpolatorLinear::FindEmptyElement(uint8 * const start)
 {
     uint8 *element = start;
 
-    uint8 *interpol = IntRAM::DataRand(ChanA) + (start - begin);
+    uint8 *interpol = IntRAM::DataRand(ChA) + (start - begin);
 
     while(element != end)
     {
@@ -73,7 +73,7 @@ uint8 *InterpolatorLinear::FindEmptyElement(uint8 * const start)
 uint8 *InterpolatorLinear::FindReadedElement(uint8 * const start)
 {
     uint8 *element = start;
-    uint8 *interpol = IntRAM::DataRand(ChanA) + (start - begin);
+    uint8 *interpol = IntRAM::DataRand(ChA) + (start - begin);
     
     while(element != end)
     {

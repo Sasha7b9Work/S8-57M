@@ -47,7 +47,7 @@ static void Draw_ChannelB(int x, int y)
 
 void PageCursorsMeasures::Set::OnPress_Channel()
 {
-    Ch::E source = S_CURS_SOURCE_IS_A ? ChanB : ChanA;
+    Ch::E source = S_CURS_SOURCE_IS_A ? ChB : ChA;
     SetCursSource(source);
 }
 
@@ -455,19 +455,19 @@ void PageCursorsMeasures::Set::UpdateCursorsForLook()
 {
     Ch::E source = S_CURS_SOURCE;
 
-    if (S_CURS_ACTIVE_IS_T && (S_CURS_LOOK_MODE_IS_VOLTAGE(ChanA) || S_CURS_LOOK_MODE_IS_BOTH(ChanA)))
+    if (S_CURS_ACTIVE_IS_T && (S_CURS_LOOK_MODE_IS_VOLTAGE(ChA) || S_CURS_LOOK_MODE_IS_BOTH(ChA)))
     {
         SetCursorU(source, 0, Measure::CalculateCursorU(source, CursorsMeasurements::PosT(source, 0)));
     }
-    if (S_CURS_ACTIVE_IS_T && (S_CURS_LOOK_MODE_IS_VOLTAGE(ChanB) || S_CURS_LOOK_MODE_IS_BOTH(ChanB)))
+    if (S_CURS_ACTIVE_IS_T && (S_CURS_LOOK_MODE_IS_VOLTAGE(ChB) || S_CURS_LOOK_MODE_IS_BOTH(ChB)))
     {
         SetCursorU(source, 1, Measure::CalculateCursorU(source, CursorsMeasurements::PosT(source, 1)));
     }
-    if (S_CURS_ACTIVE_IS_U && (S_CURS_LOOK_MODE_IS_TIME(ChanA) || S_CURS_LOOK_MODE_IS_BOTH(ChanA)))
+    if (S_CURS_ACTIVE_IS_U && (S_CURS_LOOK_MODE_IS_TIME(ChA) || S_CURS_LOOK_MODE_IS_BOTH(ChA)))
     {
         SetCursorT(source, 0, Measure::CalculateCursorT(source, S_CURS_POS_U0(source), 0));
     }
-    if (S_CURS_ACTIVE_IS_U && (S_CURS_LOOK_MODE_IS_TIME(ChanB) || S_CURS_LOOK_MODE_IS_BOTH(ChanB)))
+    if (S_CURS_ACTIVE_IS_U && (S_CURS_LOOK_MODE_IS_TIME(ChB) || S_CURS_LOOK_MODE_IS_BOTH(ChB)))
     {
         SetCursorT(source, 1, Measure::CalculateCursorT(source, S_CURS_POS_U1(source), 1));
     }

@@ -126,15 +126,15 @@ void Recorder::Stop()
 
 void Recorder::StoreOsciSettings()
 {
-    osci.storedRShift[ChanA] = S_RSHIFT_A;
-    osci.storedRShift[ChanB] = S_RSHIFT_B;
+    osci.storedRShift[ChA] = S_RSHIFT_A;
+    osci.storedRShift[ChB] = S_RSHIFT_B;
 }
 
 
 void Recorder::RestoreOsciSettings()
 {
-    RShift::Set(ChanA, osci.storedRShift[ChanA]);
-    RShift::Set(ChanB, osci.storedRShift[ChanB]);
+    RShift::Set(ChA, osci.storedRShift[ChA]);
+    RShift::Set(ChB, osci.storedRShift[ChB]);
 }
 
 

@@ -92,11 +92,11 @@ void TableMeasures::Cell::DrawStringMeasure(int x, int y)
 
     char buffer[_SIZE_BUFFER_];
 
-    String measureA = measure.GetStringMeasure(ChanA, buffer, _SIZE_BUFFER_);
-    String measureB = measure.GetStringMeasure(ChanB, buffer, _SIZE_BUFFER_);
+    String measureA = measure.GetStringMeasure(ChA, buffer, _SIZE_BUFFER_);
+    String measureB = measure.GetStringMeasure(ChB, buffer, _SIZE_BUFFER_);
 
-    Color colA = Color::CHAN[ChanA];
-    Color colB = Color::CHAN[ChanB];
+    Color colA = Color::CHAN[ChA];
+    Color colB = Color::CHAN[ChB];
 
     switch (S_MEAS_SOURCE)
     {

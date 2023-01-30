@@ -117,9 +117,9 @@ void DisplayRecorder::DrawSettings(int x, int y)
 
         Text(Recorder::ScaleX::ToString()).Draw(x + 2, y + 2);
 
-        Text(Range::ToString(ChanA, S_DIVIDER_A)).Draw(x + 2, y + 11, Color::CHAN[ChanA]);
+        Text(Range::ToString(ChA, S_DIVIDER_A)).Draw(x + 2, y + 11, Color::CHAN[ChA]);
 
-        Text(Range::ToString(ChanB, S_DIVIDER_B)).Draw(x + 2, y + 20, Color::CHAN[ChanB]);
+        Text(Range::ToString(ChB, S_DIVIDER_B)).Draw(x + 2, y + 20, Color::CHAN[ChB]);
     }
 }
 
@@ -263,9 +263,9 @@ void DisplayRecorder::DrawParametersCursors()
 
     y += d;
 
-    DRAW_IF_ENABLED(enA, Text(VoltageCursor(ChanA, 0, buffer)).Draw(x1, y, Color::CHAN[ChanA]));
+    DRAW_IF_ENABLED(enA, Text(VoltageCursor(ChA, 0, buffer)).Draw(x1, y, Color::CHAN[ChA]));
 
-    DRAW_IF_ENABLED(enB, Text(VoltageCursor(ChanB, 0, buffer)).Draw(x1, y, Color::CHAN[ChanB]));
+    DRAW_IF_ENABLED(enB, Text(VoltageCursor(ChB, 0, buffer)).Draw(x1, y, Color::CHAN[ChB]));
 
     DRAW_IF_ENABLED(enSensor, Text(VoltageSensor(0, buffer)).Draw(x1, y, Color::FILL));
 
@@ -273,9 +273,9 @@ void DisplayRecorder::DrawParametersCursors()
 
     y += d;
 
-    DRAW_IF_ENABLED(enA, Text(VoltageCursor(ChanA, 1, buffer)).Draw(x1, y, Color::CHAN[ChanA]));
+    DRAW_IF_ENABLED(enA, Text(VoltageCursor(ChA, 1, buffer)).Draw(x1, y, Color::CHAN[ChA]));
 
-    DRAW_IF_ENABLED(enB, Text(VoltageCursor(ChanB, 1, buffer)).Draw(x1, y, Color::CHAN[ChanB]));
+    DRAW_IF_ENABLED(enB, Text(VoltageCursor(ChB, 1, buffer)).Draw(x1, y, Color::CHAN[ChB]));
 
     DRAW_IF_ENABLED(enSensor, Text(VoltageSensor(1, buffer)).Draw(x1, y, Color::FILL));
 
@@ -306,12 +306,12 @@ void DisplayRecorder::DrawData()
 
     if(displayed->ContainsChannelA())
     {
-        DrawChannel(ChanA);
+        DrawChannel(ChA);
     }
 
     if(displayed->ContainsChannelB())
     {
-        DrawChannel(ChanB);
+        DrawChannel(ChB);
     }
 
     if(displayed->ContainsSensor())

@@ -93,13 +93,13 @@ void DisplayOsci::PainterData::DrawCurrent()
 
     if(S_DISP_LAST_AFFECTED_CHANNEL_IS_A)
     {
-        DrawChannel(ChanB);
-        DrawChannel(ChanA);
+        DrawChannel(ChB);
+        DrawChannel(ChA);
     }
     else
     {
-        DrawChannel(ChanA);
-        DrawChannel(ChanB);
+        DrawChannel(ChA);
+        DrawChannel(ChB);
     }
 
     // \todo Время отрисовки - 30 мс
@@ -109,8 +109,8 @@ void DisplayOsci::PainterData::DrawCurrent()
 
 void DisplayOsci::PainterData::DrawRAM()
 {
-    DrawChannel(ChanA);
-    DrawChannel(ChanB);
+    DrawChannel(ChA);
+    DrawChannel(ChB);
     DisplayOsci::MemoryWindow::Draw();
 }
 
@@ -149,7 +149,7 @@ void DisplayOsci::PainterData::WriteParametersFFT(Ch::E ch, float freq0, float d
 
     Text(AutoMeasurements::Freq2String(freq1, false, buffer)).Draw(x, y);
 
-    if(ch == ChanA)
+    if(ch == ChA)
     {
         y += dY + 4;
     }
@@ -238,23 +238,23 @@ void DisplayOsci::PainterData::DrawSpectrum()
     
         if (S_FFT_SOURCE_IS_A)
         {
-            DrawSpectrum(OUT_A, numPoints, ChanA);
+            DrawSpectrum(OUT_A, numPoints, ChA);
         }
         else if (S_FFT_SOURCE_IS_B)
         {
-            DrawSpectrum(OUT_B, numPoints, ChanB);
+            DrawSpectrum(OUT_B, numPoints, ChB);
         }
         else
         {
             if (S_DISP_LAST_AFFECTED_CHANNEL_IS_A)
             {
-                DrawSpectrum(OUT_B, numPoints, ChanB);
-                DrawSpectrum(OUT_A, numPoints, ChanA);
+                DrawSpectrum(OUT_B, numPoints, ChB);
+                DrawSpectrum(OUT_A, numPoints, ChA);
             }
             else
             {
-                DrawSpectrum(OUT_A, numPoints, ChanA);
-                DrawSpectrum(OUT_B, numPoints, ChanB);
+                DrawSpectrum(OUT_A, numPoints, ChA);
+                DrawSpectrum(OUT_B, numPoints, ChB);
             }
         }
     

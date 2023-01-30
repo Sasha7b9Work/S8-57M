@@ -20,7 +20,7 @@ uint8 *dataIN[2] = { ccm[0], ccm[1] };
 uint8 *dataOUT[2] = { ccm[2], ccm[3] };
 
 // 
-uint16 *ave[2] = { IntRAM::Averager32k(ChanA), IntRAM::Averager32k(ChanB) };
+uint16 *ave[2] = { IntRAM::Averager32k(ChA), IntRAM::Averager32k(ChB) };
 
 DataSettings ds;
 

@@ -316,8 +316,8 @@ void TBase::Set(TBase::E base)
 
     TShift::Load();
 
-    Bandwidth::Load(ChanA);
-    Bandwidth::Load(ChanB);
+    Bandwidth::Load(ChA);
+    Bandwidth::Load(ChB);
 
     MessageMgr::OsciSettingsEffectOnAverageChanged();
 
@@ -327,7 +327,7 @@ void TBase::Set(TBase::E base)
 
 void Range::LoadBoth()
 {
-    uint16 val = (uint16)(ValueForRange(ChanB) + (ValueForRange(ChanA) << 8));
+    uint16 val = (uint16)(ValueForRange(ChB) + (ValueForRange(ChA) << 8));
 
     Osci::InputController::Write(PIN_SPI3_CS2, val);
 
@@ -363,18 +363,18 @@ void Range::LoadBoth()
     HAL_PIO::Write(PIN_A3, _GET_BIT(valueB, 1));
     HAL_PIO::Write(PIN_A4, _GET_BIT(valueB, 0));
 
-    Bandwidth::Load(ChanA);
-    Bandwidth::Load(ChanB);
+    Bandwidth::Load(ChA);
+    Bandwidth::Load(ChB);
 
     if(S_DISP_LAST_AFFECTED_CHANNEL_IS_A)
     {
-        RShift::Load(ChanB);
-        RShift::Load(ChanA);
+        RShift::Load(ChB);
+        RShift::Load(ChA);
     }
     else
     {
-        RShift::Load(ChanA);
-        RShift::Load(ChanB);
+        RShift::Load(ChA);
+        RShift::Load(ChB);
     }
 
     Osci::Restart();
@@ -464,13 +464,13 @@ void RShift::DrawBoth()
 {
     if(S_DISP_LAST_AFFECTED_CHANNEL_IS_A)
     {
-        RShift::Draw(ChanB);
-        RShift::Draw(ChanA);
+        RShift::Draw(ChB);
+        RShift::Draw(ChA);
     }
     else
     {
-        RShift::Draw(ChanA);
-        RShift::Draw(ChanB);
+        RShift::Draw(ChA);
+        RShift::Draw(ChB);
     }
 }
 
@@ -559,7 +559,7 @@ void RShift::Draw(Ch::E ch)
         SymbolUGO(SymbolUGO::RSHIFT_NORMAL).Draw(x - 8, y - 8);
     }
 
-    Char((ch == ChanA) ? (uint8)('1') : (uint8)('2'), TypeFont::Small).Draw(x - 6, y - 6, Color::BACK);
+    Char((ch == ChA) ? (uint8)('1') : (uint8)('2'), TypeFont::Small).Draw(x - 6, y - 6, Color::BACK);
 }
 
 
@@ -752,7 +752,7 @@ void Range::Set(Ch::E ch, E range)
 
     LoadBoth();
 
-    DisplayOsci::DrawingValueParameter::Enable((ch == ChanA) ? DisplayOsci::DrawingValueParameter::RangeA : DisplayOsci::DrawingValueParameter::RangeB);
+    DisplayOsci::DrawingValueParameter::Enable((ch == ChA) ? DisplayOsci::DrawingValueParameter::RangeA : DisplayOsci::DrawingValueParameter::RangeB);
 }
 
 
