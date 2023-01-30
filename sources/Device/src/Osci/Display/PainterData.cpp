@@ -36,12 +36,12 @@ namespace DisplayOsci
 
         static void DrawChannel(Chan::E ch);
 
-        static void DrawModeLines(Chan::E, int left, const uint8 *data);
-        static void DrawModePoints(Chan::E, int left, const uint8 *data);
+        static void DrawModeLines(Chan::E, const uint8 *data);
+        static void DrawModePoints(Chan::E, const uint8 *data);
 
         // mode : 0 - точки, 1 - линии
-        static void DrawPeakDetOff(Chan::E, const uint8 *data, int x, int mode);
-        static void DrawPeakDetOn(Chan::E, const uint8 *data, int x, int mode);
+        static void DrawPeakDetOff(Chan::E, const uint8 *data, int mode);
+        static void DrawPeakDetOn(Chan::E, const uint8 *data, int mode);
 
         // Нарисовать спектр
         static void DrawSpectrum();
@@ -299,8 +299,6 @@ void DisplayOsci::PainterData::DrawChannel(Chan::E ch)
 
     int center = (Grid::Bottom() - Grid::Top()) / 2 + Grid::Top();
 
-    int left = Grid::Left();
-
     float scale = (float)Grid::Height() / (VALUE::MAX - VALUE::MIN);
 
     if (S_FFT_ENABLED)
@@ -320,11 +318,11 @@ void DisplayOsci::PainterData::DrawChannel(Chan::E ch)
 
     if (S_DISP_MAPPING_IS_LINES)
     {
-        DrawModeLines(ch, left, data);
+        DrawModeLines(ch, data);
     }
     else
     {
-        DrawModePoints(ch, left, data);
+        DrawModePoints(ch, data);
     }
 
     if(posSeparator > 0)
@@ -334,52 +332,50 @@ void DisplayOsci::PainterData::DrawChannel(Chan::E ch)
 }
 
 
-void DisplayOsci::PainterData::DrawModeLines(Chan::E ch, int left, const uint8 *data)
-{
-    Color::CHAN[ch].SetAsCurrent();
-
-    int x = left;
-
-    if (PEAKDET_ENABLED(DS))
-    {
-        DrawPeakDetOn(ch, data, x, 1);
-    }
-    else
-    {
-        DrawPeakDetOff(ch, data, x, 1);
-    }
-}
-
-
-void DisplayOsci::PainterData::DrawModePoints(Chan::E ch, int left, const uint8 *data)
+void DisplayOsci::PainterData::DrawModeLines(Chan::E ch, const uint8 *data)
 {
     Color::CHAN[ch].SetAsCurrent();
 
     if (PEAKDET_ENABLED(DS))
     {
-        DrawPeakDetOn(ch, data, left, 0);
+        DrawPeakDetOn(ch, data, 1);
     }
     else
     {
-        DrawPeakDetOff(ch, data, left, 0);
+        DrawPeakDetOff(ch, data, 1);
     }
 }
 
 
-void DisplayOsci::PainterData::DrawPeakDetOn(Chan::E, const uint8 *data, int x, int mode)
+void DisplayOsci::PainterData::DrawModePoints(Chan::E ch, const uint8 *data)
+{
+    Color::CHAN[ch].SetAsCurrent();
+
+    if (PEAKDET_ENABLED(DS))
+    {
+        DrawPeakDetOn(ch, data, 0);
+    }
+    else
+    {
+        DrawPeakDetOff(ch, data, 0);
+    }
+}
+
+
+void DisplayOsci::PainterData::DrawPeakDetOn(Chan::E, const uint8 *data, int mode)
 {
 }
 
 
-void DisplayOsci::PainterData::DrawPeakDetOff(Chan::E ch, const uint8 *data, int x, int mode)
+void DisplayOsci::PainterData::DrawPeakDetOff(Chan::E ch, const uint8 *data, int mode)
 {
     const int NUM_POINTS = Grid::Width();
 
     SBuffer buffer(Command::Paint_DrawSignal, (uint8)((mode << 1) | ((int)ch << 2)));   // 0,1
 
-    buffer.Push(Point2(x, Grid::Top()));                    // 2-4
-    buffer.Push(Point2(x, Grid::ChannelBottom()));          // 5-7
-    buffer.Push((uint8 *)&NUM_POINTS, 2);                   // 8-10
+    buffer.Push(Point2(Grid::Left(), Grid::Top()));             // 2-4
+    buffer.Push(Point2(Grid::Left(), Grid::ChannelBottom()));   // 5-7
+    buffer.Push((uint8 *)&NUM_POINTS, 2);                       // 8-10
 
     buffer.Send();
 

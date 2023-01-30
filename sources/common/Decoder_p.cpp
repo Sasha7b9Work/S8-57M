@@ -690,7 +690,7 @@ bool PDecoder::SetColorChannel(uint8 data)
             int t = (type >> 1) & 1;
             int index = BackBuffer::Signal::GetColorIndex(ch, t);
             COLOR(index) = value;
-            Timer::PauseOnTime(10);
+            Timer::PauseOnTime(50);
             BackBuffer::LoadPalette();
             return true;
         }
