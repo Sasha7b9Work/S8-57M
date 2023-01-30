@@ -100,7 +100,7 @@ static void OnPress_SetDown()
 
 static void Draw_Down(int x, int y)
 {
-    Char(SymbolUGO::TRIANGLE_DOWN).Draw(x + 2, y + 4);
+    SymbolUGO(SymbolUGO::TRIANGLE_DOWN).Draw(x + 2, y + 4);
 }
 
 DEF_GRAPH_BUTTON( bSet_Down,
