@@ -689,9 +689,6 @@ bool PDecoder::SetColorChannel(uint8 data)
             int t = (type >> 1) & 1;
             int index = BackBuffer::Signal::GetColorIndex(ch, t);
             COLOR(index) = value;
-
-            LOG_WRITE("ch = %d, type = %d, index = %d, color = %x", ch, type, index, COLOR(index));
-
             BackBuffer::LoadPalette();
             return true;
         }
