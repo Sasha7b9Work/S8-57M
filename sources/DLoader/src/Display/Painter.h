@@ -5,7 +5,7 @@
 
 struct Painter
 {
-    static void BeginScene(Color color);
+    static void BeginScene(Color);
 
     static void EndScene();
 };

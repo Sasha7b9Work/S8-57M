@@ -50,7 +50,7 @@ public:
     // Возвращает текущий цвет отрисовки
     static Color GetCurent();
 
-    static void Log(Color color);
+    static void Log(Color);
 
     void LoadValueRGB();
 

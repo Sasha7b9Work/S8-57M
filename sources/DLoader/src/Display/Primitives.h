@@ -53,7 +53,7 @@ class Line
 {
 public:
     Line(int x0, int y0, int x1, int y1);
-    void Draw(Color color = Color::Count);
+    void Draw(Color = Color::Count);
 private:
     int x0;
     int y0;
