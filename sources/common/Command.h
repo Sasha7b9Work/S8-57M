@@ -80,7 +80,7 @@ struct Command
             // mode/bits : 0 - 0/1 - точки/линии
             //             1 - 0/1 - пиквоый детектор откл/вкл
             //             2 - 0/1 - номер канал
-            Paint_DrawSignal,       // 23 |    mode     |          coord_left_top Point2          |     coord_left_bottom Point2  | num_points | 10 +  X |
+            Paint_DrawSignal,       // 23 |    mode     |          coord_left_top Point2          |     coord_left_bottom Point2  | num_bytes | 10 +  X |
             //                                                                        в x хрантися длина линии, в skip - координата
             //                                                                места, которое нужно пропустить (там будет нарисован прямоугольник
             Paint_DrawVCursor,      // 24 |               coord                    |                height,skip           |                    |    7    |

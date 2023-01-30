@@ -364,40 +364,33 @@ void DisplayOsci::PainterData::DrawModePoints(Ch::E ch, const uint8 *data)
 
 void DisplayOsci::PainterData::DrawPeakDetOn(Ch::E ch, const uint8 *data, int mode)
 {
-    const int NUM_POINTS = Grid::Width();
+    const int NUM_BYTES = Grid::Width() * 2;
 
     SBuffer buffer(Command::Paint_DrawSignal, (uint8(mode | 2 | ((int)ch << 2))));
 
     buffer.Push(Point2(Grid::Left(), Grid::Top()));
     buffer.Push(Point2(Grid::Left(), Grid::ChannelBottom()));
-    buffer.Push((uint8 *)&NUM_POINTS, 2);
+    buffer.Push((uint8 *)&NUM_BYTES, 2);
 
     buffer.Send();
 
-    for (int i = 0; i < NUM_POINTS; i++)
-    {
-        HAL_BUS::Panel::SendByte(*data++);
-        HAL_BUS::Panel::SendByte(*data++);
-    }
+    HAL_BUS::Panel::SendBuffer(data, NUM_BYTES);
 }
 
 
 void DisplayOsci::PainterData::DrawPeakDetOff(Ch::E ch, const uint8 *data, int mode)
 {
-    const int NUM_POINTS = Grid::Width();
+    const int NUM_BYTES = Grid::Width();
 
     SBuffer buffer(Command::Paint_DrawSignal, (uint8)(mode | ((int)ch << 2)));  // 0,1
 
     buffer.Push(Point2(Grid::Left(), Grid::Top()));                             // 2-4
     buffer.Push(Point2(Grid::Left(), Grid::ChannelBottom()));                   // 5-7
-    buffer.Push((uint8 *)&NUM_POINTS, 2);                                       // 8-10
+    buffer.Push((uint8 *)&NUM_BYTES, 2);                                        // 8-10
 
     buffer.Send();
 
-    for (int i = 0; i < NUM_POINTS; i++)
-    {
-        HAL_BUS::Panel::SendByte(*data++);
-    }
+    HAL_BUS::Panel::SendBuffer(data, NUM_BYTES);
 }
 
 

@@ -712,9 +712,9 @@ bool PDecoder::DrawSignal(uint8 data)
     volatile static uint8 mode;
     static Point2 left_top;
     static Point2 left_bottom;
-    static int num_points;
+    static int num_bytes;
 
-    static int x0;
+    static int x;
     static int y_top;
     volatile static int y_bottom;
 
@@ -731,7 +731,7 @@ bool PDecoder::DrawSignal(uint8 data)
 
             if (step == 4)
             {
-                x0 = left_top.X();
+                x = left_top.X();
                 y_top = left_top.Y();
             }
         }
@@ -746,21 +746,21 @@ bool PDecoder::DrawSignal(uint8 data)
         }
         else if (step == 8)
         {
-            num_points = data;
+            num_bytes = data;
         }
         else if (step == 9)
         {
-            num_points += data << 8;
+            num_bytes += (data << 8);
 
             Converter::Prepare(y_bottom, y_top);
         }
         else
         {
-            int current_number = step - 10;         // Номер текущей точки
+            int index_byte = step - 10;         // Номер текущей точки
 
             static int prev_y = 0;                  // Значение предыдущей точки
 
-            if (current_number == 0)
+            if (index_byte == 0)
             {
                 prev_y = Converter::CacluateY(data);
             }
@@ -768,13 +768,21 @@ bool PDecoder::DrawSignal(uint8 data)
             {
                 if ((mode & 2))                     // Пик дет включён
                 {
-                    if (mode & 1)
+                    static uint8 prev_data = 0;
+
+                    if (index_byte & 1)
+                    {
+                        prev_data = data;
+                    }
+
+                    if (mode & 1)                   // линии
                     {
 
                     }
-                    else
+                    else                            // Точки
                     {
-
+                        BackBuffer::Signal::DrawPoint(x, Converter::CacluateY(prev_data));
+                        BackBuffer::Signal::DrawPoint(x++, Converter::CacluateY(data));
                     }
                 }
                 else                                // Пик дет отключён
@@ -786,27 +794,27 @@ bool PDecoder::DrawSignal(uint8 data)
 
                         if (y1 > y2)
                         {
-                            BackBuffer::Signal::DrawVLine(++x0, y2, y1);
+                            BackBuffer::Signal::DrawVLine(++x, y2, y1);
                         }
                         else if (y1 < y2)
                         {
-                            BackBuffer::Signal::DrawVLine(++x0, y1, y2);
+                            BackBuffer::Signal::DrawVLine(++x, y1, y2);
                         }
                         else
                         {
-                            BackBuffer::Signal::DrawPoint(++x0, y2);
+                            BackBuffer::Signal::DrawPoint(++x, y2);
                         }
 
                         prev_y = y2;
                     }
                     else
                     {
-                        BackBuffer::Signal::DrawPoint(x0++, Converter::CacluateY(data));
+                        BackBuffer::Signal::DrawPoint(x++, Converter::CacluateY(data));
                     }
                 }
             }
 
-            if (current_number == num_points - 1)
+            if (index_byte == num_bytes - 1)
             {
                 left_top.Reset();
                 left_bottom.Reset();
