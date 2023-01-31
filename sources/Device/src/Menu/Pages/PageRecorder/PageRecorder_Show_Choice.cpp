@@ -56,7 +56,7 @@ static void OnPress_Confirm()
 
 static void Draw_Confirm(int x, int y)
 {
-    Char(SymbolUGO2::SELECT, TypeFont::UGO, 4).Draw(x + 4, y);
+    SymbolUGO(SymbolUGO::SELECT).Draw(x + 4, y);
 }
 
 static bool IsActive_Confirm()

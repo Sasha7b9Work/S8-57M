@@ -53,7 +53,8 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {112, 4},   // TRIANGLE_DOWN
     {120, 4},   // SETTINGS
     {160, 4},   // TRIANGLE_LEFT
-    {164, 4}    // TRIANGLE_RIGHT
+    {164, 4},   // TRIANGLE_RIGHT
+    {168, 4}    // SELECT
 };
 
 
@@ -113,7 +114,7 @@ void Char::Draw4Symbols(int x, int y) const
 {
     uint8 symbol = ch;
 
-    int width = Symbol(symbol).Width();
+    int width = 16;
 
     for (int j = 0; j < 2; j++)
     {

@@ -48,7 +48,7 @@ static void OnPress_SetLeft()
 
 static void Draw_Left(int x, int y)
 {
-    SymbolUGO(SymbolUGO::TRIANGLE_LEFT).Draw(x + 2, y + 2);
+    SymbolUGO(SymbolUGO::TRIANGLE_LEFT).Draw(x + 2, y);
 }
 
 DEF_GRAPH_BUTTON( bSet_Left,
@@ -66,7 +66,7 @@ static void OnPress_SetRight()
 
 static void Draw_Right(int x, int y)
 {
-    SymbolUGO(SymbolUGO::TRIANGLE_RIGHT).Draw(x + 2, y + 2);
+    SymbolUGO(SymbolUGO::TRIANGLE_RIGHT).Draw(x + 2, y);
 }
 
 DEF_GRAPH_BUTTON( bSet_Right,
@@ -83,7 +83,7 @@ static void OnPress_SetUp()
 
 static void Draw_Up(int x, int y)
 {
-    SymbolUGO(SymbolUGO::TRIANGLE_UP).Draw(x + 2, y + 4);
+    SymbolUGO(SymbolUGO::TRIANGLE_UP).Draw(x + 2, y + 6);
 }
 
 DEF_GRAPH_BUTTON( bSet_Up,
@@ -100,7 +100,7 @@ static void OnPress_SetDown()
 
 static void Draw_Down(int x, int y)
 {
-    SymbolUGO(SymbolUGO::TRIANGLE_DOWN).Draw(x + 2, y + 4);
+    SymbolUGO(SymbolUGO::TRIANGLE_DOWN).Draw(x + 2, y + 6);
 }
 
 DEF_GRAPH_BUTTON( bSet_Down,
@@ -118,7 +118,7 @@ static void OnPress_SetPick()
 
 static void Draw_Pick(int x, int y)
 {
-    Char(SymbolUGO2::SELECT, TypeFont::UGO, 4).Draw(x + 2 , y);
+    SymbolUGO(SymbolUGO::SELECT).Draw(x + 2 , y - 4);
 }
 
 DEF_GRAPH_BUTTON(bSet_Pick,
