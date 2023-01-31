@@ -203,9 +203,9 @@ static void OnOpenClose_Set(bool open)
 
 static void BeforeDraw_Set()
 {
-    if (PageService::psRTC == nullptr)                   // Если страница открыта непредусмотренным способом
+    if (PageService::psRTC == nullptr)          // Если страница открыта непредусмотренным способом
     {
-        OnOpenClose_Set(true);              // подведём подготовительные операции
+        OnOpenClose_Set(true);                  // подведём подготовительные операции
     }
 
     for (int i = 0; i < 5; i++)
@@ -213,6 +213,8 @@ static void BeforeDraw_Set()
         Painter::BeginScene(i, Color::BACK);
 
         PageService::DrawTime();
+
+        Painter::EndScene();
     }
 }
 
