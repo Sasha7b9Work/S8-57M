@@ -307,7 +307,7 @@ void Osci::ChangedTrigStartMode()
 }
 
 
-void Osci::InputController::Init()
+void Osci::CircuitController::Init()
 {
     HAL_PIO::Init(PIN_SPI3_SCK, HMode::Output_PP, HPull::Down);     // SPI3_SCK
     HAL_PIO::Init(PIN_SPI3_DAT, HMode::Output_PP, HPull::Down);     // SPI3_DAT
@@ -324,7 +324,7 @@ void Osci::InputController::Init()
     HAL_PIO::Init(PIN_LFS, HMode::Output_PP, HPull::Down);          // LFS
 }
 
-void Osci::InputController::Write(HPort::E portCS, uint16 pinCS, uint16 value)
+void Osci::CircuitController::Write(HPort::E portCS, uint16 pinCS, uint16 value)
 {
     HAL_PIO::Reset(portCS, pinCS);
 

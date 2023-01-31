@@ -67,7 +67,7 @@ namespace Osci
     void SendDataToSCPI();
 
     // ”правитель входными цеп€ми
-    struct InputController
+    struct CircuitController
     {
         static void Init();
         static void Write(HPort::E port, uint16 pin, uint16 value);

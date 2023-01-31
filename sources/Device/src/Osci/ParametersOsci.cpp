@@ -329,11 +329,11 @@ void Range::LoadBoth()
 {
     uint16 val = (uint16)(ValueForRange(ChB) + (ValueForRange(ChA) << 8));
 
-    Osci::InputController::Write(PIN_SPI3_CS2, val);
+    Osci::CircuitController::Write(PIN_SPI3_CS2, val);
 
     PAUSE_ON_MS(10);                // Задержка нужна, чтобы импульсные реле успели отработать
 
-    Osci::InputController::Write(PIN_SPI3_CS2, 0);    // Записываем ноль, чтобы реле не потребляли энергии
+    Osci::CircuitController::Write(PIN_SPI3_CS2, 0);    // Записываем ноль, чтобы реле не потребляли энергии
 
     //DEF__STRUCT(StructRange, uint8) vals[Range::Count] =
     static const uint8 vals[Range::Count] =
@@ -492,7 +492,7 @@ void TrigLevel::Load()
     // \todo Здесь много лишних движений. Нужно что-то сделать с вводом SET_TRIGLEV_SOURCE
     uint16 value = (uint16)(HARDWARE_ZERO - S_TRIG_LEVEL_SOURCE);
 
-    Osci::InputController::Write(PIN_SPI3_CS1, (uint16)(0xa000 | (value << 2)));
+    Osci::CircuitController::Write(PIN_SPI3_CS1, (uint16)(0xa000 | (value << 2)));
 
     Osci::Restart();
 }

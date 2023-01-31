@@ -17,7 +17,7 @@ void FPGA::Init()
 {
     forcedStart = false;
 
-    Osci::InputController::Init();
+    Osci::CircuitController::Init();
 
     HAL_PIO::Set(PIN_SPI3_CS1);
     HAL_PIO::Set(PIN_SPI3_CS2);

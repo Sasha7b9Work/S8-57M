@@ -107,7 +107,7 @@ void RShift::Load(Ch::E ch)
 
     shift += NRST_EX_SHIFT(ch, S_RANGE(ch));
 
-    Osci::InputController::Write(PIN_SPI3_CS1, (uint16)(mask[ch] | (shift << 2)));
+    Osci::CircuitController::Write(PIN_SPI3_CS1, (uint16)(mask[ch] | (shift << 2)));
 
     Osci::Restart();
 
