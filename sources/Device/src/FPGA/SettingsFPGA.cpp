@@ -12,6 +12,7 @@
 #include "Utils/Math.h"
 #include "Utils/Values.h"
 #include "Hardware/HAL/HAL_PIO.h"
+#include "Display/Grid.h"
 
 
 namespace RShift
@@ -21,7 +22,7 @@ namespace RShift
 
     extern const int16 MIN = -480;
     extern const int16 MAX = 480;
-    extern const int16 STEP = (((MAX - MIN) / 24) / 20);
+    extern const int16 STEP = (MAX - MIN) / 24 / Grid::SIZE_CELL;
 }
 
 
