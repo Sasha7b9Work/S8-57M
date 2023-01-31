@@ -87,7 +87,7 @@ DEF_PAGE_3( pRand,                                                              
     &gGateMin,
     &gGateMax,
     &cAverage,
-    PageName::Debug_Rand, &PageDebug::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::Debug_Rand, &PageDebug::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page *const PageDebug::PageRand::self = (const Page *)&pRand;

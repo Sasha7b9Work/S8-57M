@@ -89,7 +89,7 @@ DEF_PAGE_2( pRAM,                                                               
     &bPrev,
     &bNext,
     PageName::Memory_Last,
-    &PageMemory::self, Item::Active, Page::NormalTitle, OnOpenClose_RAM, AfterDraw_RAM, HandlerKey_RAM
+    &PageMemory::self, Item::Active, Page::NormalTitle, OnOpenClose_RAM, HandlerKey_RAM
 )
 
 const Page *const PageRAM::self = (const Page *)&pRAM;

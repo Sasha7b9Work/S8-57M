@@ -54,7 +54,7 @@ DEF_PAGE_2( pAccum,                                                             
     "Настройки режима отображения последних сигналов на экране",
     &cNumber,
     &bClear,
-    PageName::Display_Accumulation, &PageDisplay::self, IsActive_Accum, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::Display_Accumulation, &PageDisplay::self, IsActive_Accum, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageDisplay::Accumulation::self = (const Page *)&pAccum;

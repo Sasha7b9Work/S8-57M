@@ -60,7 +60,7 @@ DEF_PAGE_2( pMeasures,                                                          
     PageCursorsMeasures::self,
     PageAutoMeasures::self,
     //PageMath::self,
-    PageName::Measures, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::Measures, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page *const PageMeasures::self = (const Page *)&pMeasures;

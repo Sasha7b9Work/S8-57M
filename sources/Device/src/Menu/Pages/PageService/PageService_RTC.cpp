@@ -266,7 +266,7 @@ DEF_PAGE_5( pSet,
     &bSet_Down,
     &bSet_Pick,
     PageName::Service_RTC,
-    &PageService::self, Item::Active, Page::NormalTitle, OnOpenClose_Set, BeforeDraw_Set, HandlerKey_Set
+    &PageService::self, Item::Active, Page::NormalTitle, OnOpenClose_Set, HandlerKey_Set
 )
 
 const Page * const PageRTC::self = (const Page *)&pSet;

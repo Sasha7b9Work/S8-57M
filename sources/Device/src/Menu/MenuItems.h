@@ -154,12 +154,11 @@ public:
 //// Page ///
 struct DataPage
 {
-    uint8               name;            // Имя из перечисления Page::Name
-    const Item *const *items;           // Здесь указатели на пункты этой страницы
-    pFuncBV             normalTitle;     // Показывать заголовок страницы в нормальном виде
-    pFuncVB             funcOnOpenClose; // Будет вызываться при открытии/закрытии страницы. При открытии в неё передаётся true, при закрытии - false
-    pFuncVV             funcBeforeDraw;  // Будет вызываться после отрисовки страницы
-    pFuncBKE            handlerKey;      // При нажатии кнопки в первую очередь вызывается эта функция (при открытой странице). Если она обработала событие клавиатуры, то возвращает true
+    uint8               name;               // Имя из перечисления Page::Name
+    const Item *const *items;               // Здесь указатели на пункты этой страницы
+    pFuncBV             normalTitle;        // Показывать заголовок страницы в нормальном виде
+    pFuncVB             funcOnOpenClose;    // Будет вызываться при открытии/закрытии страницы. При открытии в неё передаётся true, при закрытии - false
+    pFuncBKE            handlerKey;         // При нажатии кнопки в первую очередь вызывается эта функция (при открытой странице). Если она обработала событие клавиатуры, то возвращает true
 };
 
 // Описывает страницу меню
@@ -226,8 +225,6 @@ public:
     const Item *ItemForFuncKey(Key::E key) const;
 
     PageName::E GetName() const;
-
-    static void BeforeDraw() {}
 
     static void OpenClose(bool) {}
 

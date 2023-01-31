@@ -143,7 +143,7 @@ DEF_PAGE_5(pManager,                                                            
     &Item::empty,
     &bExit,
     PageName::Memory_Drive_Manager,
-    &PageDrive::self, IsActive_Drive_Manager, Page::NormalTitle, PageMemory::OnOpenClose_Drive_Manager, Page::BeforeDraw, FileManager::HandlerKey
+    &PageDrive::self, IsActive_Drive_Manager, Page::NormalTitle, PageMemory::OnOpenClose_Drive_Manager, FileManager::HandlerKey
 )
 
 const Page * const PageDrive::Manager::self = (const Page *)&pManager;
@@ -373,22 +373,6 @@ static bool HandlerKey_Mask(const KeyEvent &event)
 }
 
 
-/*
-DEF_PAGE_SB( pMask,                                                                                                                                       //--- Память - ВНЕШН ЗУ - МАСКА ---
-    "МАСКА", "MASK",
-    "Режим ввода маски для автоматического именования файлов",
-    "Input mode mask for automatic file naming",
-    &bDrive_Mask_Exit,      // ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Выход
-    &bMask_Delete,    // ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Удалить
-    0,
-    0,
-    &bMask_Backspace, // ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Backspace
-    &bMask_Insert,    // ПАМЯТЬ - ВНЕШН ЗУ - МАСКА - Вставить
-    Page::Name::SB_Memory_Drive_Mask, &pDrive, IsActive_Mask, OnPress_Drive_Mask, FuncDrawPage, OnRegSet_Drive_Mask
-)
-*/
-
-
 DEF_PAGE_3( pMask,                                                                                                                                        //--- Память - ВНЕШН ЗУ - МАСКА ---
     "МАСКА",
     "Режим ввода маски для автоматического именования файлов",
@@ -396,7 +380,7 @@ DEF_PAGE_3( pMask,                                                              
     &bMask_Backspace,
     &bMask_Insert,
     PageName::Memory_Drive_Mask,
-    &PageDrive::self, IsActive_Mask, Page::NormalTitle, OnOpenClose_Mask, Page::BeforeDraw, HandlerKey_Mask
+    &PageDrive::self, IsActive_Mask, Page::NormalTitle, OnOpenClose_Mask, HandlerKey_Mask
 )
 
 const Page * const PageDrive::Mask::self = (const Page *)&pMask;
@@ -408,7 +392,7 @@ DEF_PAGE_4( pMemory,                                                            
     &cPoints,
     PageRAM::self,
     PageROM::self,
-    PageDrive::self,  PageName::Memory, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageDrive::self,  PageName::Memory, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageMemory::self = (const Page *)&pMemory;
@@ -606,7 +590,7 @@ DEF_PAGE_4( pSetName,                                                           
     &bSetName_Backspace,
     &bSetName_Insert,
     &bSetName_Save,
-    PageName::Memory_SetName, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, HandlerKey_SetName
+    PageName::Memory_SetName, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, HandlerKey_SetName
 )
 
 const Page * const PageDrive::SetName::self = (const Page *)&pSetName;

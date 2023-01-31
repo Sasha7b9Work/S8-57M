@@ -302,8 +302,6 @@ void Page::Draw(bool opened) const
 {
     if (opened)
     {
-        OwnData()->funcBeforeDraw();
-
         if (CurrentItemIsOpened())
         {
             Item *item = GetItem(PosCurrentItem());

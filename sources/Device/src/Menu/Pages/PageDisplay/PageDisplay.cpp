@@ -120,7 +120,7 @@ DEF_PAGE_7( pDisplay,                                                           
     &cType,
     &cRefreshFPS,
     PageDisplay::Settings::self,
-    PageName::Display, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::Display, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageDisplay::self = (const Page *)&pDisplay;

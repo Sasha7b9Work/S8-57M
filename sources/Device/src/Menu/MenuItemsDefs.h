@@ -136,51 +136,51 @@ static const DataItem di##name = { TypeItem::GovernorColor, title, hint, keeper,
 static const GraphButton name(&di##name);
 
 
-#define DEF_PAGE_0(name, title, namePage, keeper, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows)                                                                                                       \
+#define DEF_PAGE_0(name, title, namePage, keeper, normalTitle, funcOpenClose, funcArrows)                                                                                                   \
 static const Item * const i##name[] = { nullptr };                                                                                                                                          \
-static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows };                                                                             \
+static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \
 static const DataItem di##name = { TypeItem::Page, title, "", keeper, Item::Active, &dp##name };                                                                                            \
 static const Page name(&di##name);
 
-#define DEF_PAGE_1(name, title, hint, item1, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows)                                                          \
+#define DEF_PAGE_1(name, title, hint, item1, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcArrows)                                                                          \
 static const Item * const i##name[] = { (Item *)item1, nullptr };                                                                                                                           \
-static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows };                                                                             \
+static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \
 static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
 static const Page name(&di##name);
 
-#define DEF_PAGE_2(name, title, hint, item1, item2, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows)                                                   \
+#define DEF_PAGE_2(name, title, hint, item1, item2, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcArrows)                                                                   \
 static const Item * const  i##name[] = { (Item *)item1, (Item *)item2, nullptr };                                                                                                           \
-static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows };                                                                             \
+static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \
 static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
 static const Page name(&di##name);
 
-#define DEF_PAGE_3(name, title, hint, item1, item2, item3, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows)                                            \
+#define DEF_PAGE_3(name, title, hint, item1, item2, item3, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcArrows)                                                            \
 static const Item * const i##name[] = { (Item *)(item1), (Item *)(item2), (Item *)(item3), nullptr };                                                                                       \
-static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows };                                                                             \
+static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \
 static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name};                                                                                             \
 static const Page name(&di##name);
 
-#define DEF_PAGE_4(name, title, hint, item1, item2, item3, item4, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows)                                     \
+#define DEF_PAGE_4(name, title, hint, item1, item2, item3, item4, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcArrows)                                                     \
 static const Item * const i##name[] = { (Item *)item1, (Item *)item2, (Item *)item3, (Item *)item4, nullptr };                                                                              \
-static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows };                                                                             \
+static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \
 static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
 static const Page name(&di##name);
 
-#define DEF_PAGE_5(name, title, hint,  item1, item2, item3, item4, item5, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows)                             \
+#define DEF_PAGE_5(name, title, hint,  item1, item2, item3, item4, item5, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcArrows)                                             \
 static const Item * const i##name[] = { (Item *)item1, (Item *)item2, (Item *)item3, (Item *)item4, (Item *)item5, nullptr };                                                               \
-static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows };                                                                             \
+static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \
 static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
 static const Page name(&di##name);
 
-#define DEF_PAGE_5_VAR(name, title, hint,  item1, item2, item3, item4, item5, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows)                         \
+#define DEF_PAGE_5_VAR(name, title, hint,  item1, item2, item3, item4, item5, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcArrows)                                         \
 static const Item *i##name[] = { (Item *)item1, (Item *)item2, (Item *)item3, (Item *)item4, (Item *)item5, nullptr };                                                                      \
-static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows };                                                                             \
+static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \
 static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
 static const Page name(&di##name);
 
-#define DEF_PAGE_6(name, title, hint, item1, item2, item3, item4, item5, item6, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows)                       \
+#define DEF_PAGE_6(name, title, hint, item1, item2, item3, item4, item5, item6, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcArrows)                                       \
 static const Item * const i##name[] = { (Item *)item1, (Item *)item2, (Item *)item3, (Item *)item4, (Item *)item5, (Item *)item6, nullptr };                                                \
-static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows };                                                                             \
+static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \
 static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
 static const Page name(&di##name);
 
@@ -190,59 +190,59 @@ static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose
 static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
 static const Page name(&di##name);
 
-#define DEF_PAGE_7(name, title, hint, item1, item2, item3, item4, item5, item6, item7, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows)                \
+#define DEF_PAGE_7(name, title, hint, item1, item2, item3, item4, item5, item6, item7, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcArrows)                                \
 static const Item * const i##name[] = { (Item *)item1, (Item *)item2, (Item *)item3, (Item *)item4, (Item *)item5, (Item *)item6, (Item *)item7, nullptr };                                 \
-static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows };                                                                             \
+static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \
 static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
 static const Page name(&di##name);
 
-#define DEF_PAGE_7_VAR(name, title, hint, item1, item2, item3, item4, item5, item6, item7, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows)            \
+#define DEF_PAGE_7_VAR(name, title, hint, item1, item2, item3, item4, item5, item6, item7, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcArrows)                            \
 static const Item * i##name[] = { (Item *)item1, (Item *)item2, (Item *)item3, (Item *)item4, (Item *)item5, (Item *)item6, (Item *)item7, nullptr };                                       \
-static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows };                                                                             \
+static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \
 static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
 static const Page name(&di##name);
 
-#define DEF_PAGE_8(name, title, hint, item1, item2, item3, item4, item5, item6, item7, item8, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows)         \
+#define DEF_PAGE_8(name, title, hint, item1, item2, item3, item4, item5, item6, item7, item8, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcArrows)                         \
 static const Item * const  i##name[] = { (Item *)item1, (Item *)item2, (Item *)item3, (Item *)item4, (Item *)item5, (Item *)item6, (Item *)item7, (Item *)item8, nullptr };                 \
-static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows };                                                                             \
+static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \
 static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
 static const Page name(&di##name);
 
-#define DEF_PAGE_8_VAR(name, title, hint, item1, item2, item3, item4, item5, item6, item7, item8, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows)     \
+#define DEF_PAGE_8_VAR(name, title, hint, item1, item2, item3, item4, item5, item6, item7, item8, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcArrows)                     \
 static const Item * i##name[] = { (Item *)item1, (Item *)item2, (Item *)item3, (Item *)item4, (Item *)item5, (Item *)item6, (Item *)item7, (Item *)item8, nullptr };                        \
-static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows };                                                                             \
+static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \
 static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
 static const Page name(&di##name);
 
-#define DEF_PAGE_9(name, title, hint, item1, item2, item3, item4, item5, item6, item7, item8, item9, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows)  \
+#define DEF_PAGE_9(name, title, hint, item1, item2, item3, item4, item5, item6, item7, item8, item9, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcArrows)                  \
 static const Item * const  i##name[] = { (Item *)item1, (Item *)item2, (Item *)item3, (Item *)item4, (Item *)item5, (Item *)item6, (Item *)item7, (Item *)item8, (Item *)item9, nullptr };  \
-static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows };                                                                             \
+static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \
 static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
 static const Page name(&di##name);
 
 #define DEF_PAGE_12(name, title, hint, item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12, namePage, keeper, funcActive, normalTitle, funcOpenClose,     \
-    funcBeforeDraw, funcArrows)                                                                                                                                                             \
+    funcArrows)                                                                                                                                                                             \
 static const Item * const  i##name[] = { (Item *)item1, (Item *)item2, (Item *)item3, (Item *)item4, (Item *)item5,                                                                         \
     (Item *)item6, (Item *)item7, (Item *)item8, (Item *)item9, (Item *)item10, (Item *)item11, (Item *)item12, nullptr };                                                                  \
-static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcBeforeDraw, funcArrows };                                                                             \
+static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \
 static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
 static const Page name(&di##name);
 
 
 #define DEF_CHOICE_2(name, title, hint, name1, name2, cell, keeper, funcActive, funcChanged, funcAfterDraw)                                                                                 \
-static const pcharc n##name[] = { name1, name2, nullptr };                                                                                                                                 \
-static const DataChoice dc##name[] = {{ (int8 *)&cell, n##name, funcChanged, funcAfterDraw }};                                                                                            \
+static const pcharc n##name[] = { name1, name2, nullptr };                                                                                                                                  \
+static const DataChoice dc##name[] = {{ (int8 *)&cell, n##name, funcChanged, funcAfterDraw }};                                                                                              \
 static const DataItem di##name = { TypeItem::Choice, title, hint, keeper, funcActive, &dc##name };                                                                                          \
 static const Choice name(&di##name);
 
 #define DEF_CHOICE_3(name, title, hint, name1, name2, name3, cell, keeper, funcActive, funcChanged, funcAfterDraw)                                                                          \
-static const pcharc n##name[] = { name1, name2, name3, nullptr };                                                                                                                          \
+static const pcharc n##name[] = { name1, name2, name3, nullptr };                                                                                                                           \
 static const DataChoice dc##name[] = {{ (int8 *)&cell, n##name, funcChanged, funcAfterDraw }};                                                                                              \
 static const DataItem di##name = { TypeItem::Choice, title, hint, keeper, funcActive, &dc##name };                                                                                          \
 static const Choice name(&di##name);
 
 #define DEF_CHOICE_4(name, title, hint, name1, name2, name3, name4, cell, keeper, funcActive, funcChanged, funcAfterDraw)                                                                   \
-static const pcharc n##name[] = { name1, name2, name3, name4, nullptr };                                                                                                                   \
+static const pcharc n##name[] = { name1, name2, name3, name4, nullptr };                                                                                                                    \
 static const DataChoice dc##name[] = {{ (int8 *)&cell, n##name, funcChanged, funcAfterDraw }};                                                                                              \
 static const DataItem di##name = { TypeItem::Choice, title, hint, keeper, funcActive, &dc##name };                                                                                          \
 static const Choice name(&di##name);

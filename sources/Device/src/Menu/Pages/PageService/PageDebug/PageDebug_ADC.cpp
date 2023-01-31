@@ -38,7 +38,7 @@ DEF_PAGE_2( pADC,
     "",
     &gExShift1,
     &gExShift2,
-    PageName::Debug_ADC, &PageDebug::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::Debug_ADC, &PageDebug::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageDebug::PageADC::self = (const Page *)&pADC;

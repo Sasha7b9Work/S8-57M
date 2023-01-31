@@ -43,7 +43,7 @@ DEF_PAGE_2( pCalibrate,                                                         
     "”правлением калибратором и калибровка осциллографа",
     &cCalibrator,
     &bCalibrate,
-    PageName::Service_Calibrator, &PageService::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::Service_Calibrator, &PageService::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageService::Calibrate::self = (const Page *)&pCalibrate;

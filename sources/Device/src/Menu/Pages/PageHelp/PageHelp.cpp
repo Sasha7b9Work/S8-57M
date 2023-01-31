@@ -72,7 +72,7 @@ DEF_PAGE_4( pHelp,                                                              
     &bHelpLeave,
     &bPrev,
     &bHelpNext,
-    PageName::Help, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, HelpContent::Draw, HandlerKey_Help
+    PageName::Help, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, HandlerKey_Help
 )
 
 const Page *const PageHelp::self = (const Page *)&pHelp;

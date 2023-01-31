@@ -25,7 +25,7 @@ DEF_PAGE_1( pTests,                                                             
     "Выполнение тестов",
     &bRun,
     PageName::Debug_Tests,
-    &PageDebug::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    &PageDebug::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 

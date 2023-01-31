@@ -118,7 +118,7 @@ DEF_PAGE_5( pSettings,                                                          
     0,
     0,
     PageName::Debug_Settings,
-    &PageDebug::self, Item::Active, Page::NormalTitle, OnOpenClose_Settings, Page::BeforeDraw, Page::HandlerKeyEvent
+    &PageDebug::self, Item::Active, Page::NormalTitle, OnOpenClose_Settings, Page::HandlerKeyEvent
 )
 
 const Page * const PageDebug::PageSettings::self = (const Page *)&pSettings;
@@ -243,7 +243,7 @@ DEF_PAGE_2( pSerialNumber,                                                      
     &bSerialNumber_Change,
     &bSerialNumber_Save,
     PageName::Debug_SerialNumber,
-    &PageDebug::self, Item::Active, Page::NormalTitle, OnOpenClose_SerialNumber, Page::BeforeDraw, HandlerKey_SerialNumber
+    &PageDebug::self, Item::Active, Page::NormalTitle, OnOpenClose_SerialNumber, HandlerKey_SerialNumber
 )
 
 const Page * const PageDebug::PageSerialNumber::self = (const Page *)&pSerialNumber;
@@ -261,7 +261,7 @@ DEF_PAGE_8( pDebug,                                                             
     PageDebug::PageTests::self,
     &bSaveSettings,
     PageName::Debug,
-    &PageService::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    &PageService::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageDebug::self = (const Page *)&pDebug;

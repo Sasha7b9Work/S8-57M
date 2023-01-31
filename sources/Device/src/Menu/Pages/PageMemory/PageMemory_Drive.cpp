@@ -57,7 +57,7 @@ DEF_PAGE_1(pDrive,   //-V1027                                                   
     //&cSaveAs,
     //&cAutoconnect,
     PageName::Memory_Drive,
-    &PageMemory::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    &PageMemory::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page *const PageDrive::self = (const Page *)&pDrive;

@@ -97,7 +97,7 @@ DEF_PAGE_5( pTrig,                                                              
     &cPolarity,
     &cFiltr,
     &bSearch,
-    PageName::Trig, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::Trig, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageTrig::self = (const Page *)&pTrig;

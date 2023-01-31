@@ -63,7 +63,7 @@ DEF_PAGE_8_VAR( pService,                                                       
     &gTimeDisableDisplay,
     PageService::Information::self,
     &Item::empty,
-    PageName::Service, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::Service, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageService::self = (const Page *)&pService;

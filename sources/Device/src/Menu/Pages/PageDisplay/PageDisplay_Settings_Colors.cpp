@@ -66,7 +66,7 @@ DEF_PAGE_4( pColors,                                                            
     &gcChannelA,
     &gcChannelB,
     &gcGrid,
-    PageName::Display_Settings_Colors, &PageDisplay::Settings::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::Display_Settings_Colors, &PageDisplay::Settings::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageDisplay::Settings::Colors::self = (const Page *)&pColors;

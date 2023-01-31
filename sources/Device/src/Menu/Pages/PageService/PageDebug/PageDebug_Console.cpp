@@ -153,7 +153,7 @@ DEF_PAGE_12( pRegisters,                                                        
     &cChanParamB,
     &cTBase,
     &cTShift,
-    PageName::Debug_Console_Registers, &PageDebug::PageConsole::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::Debug_Console_Registers, &PageDebug::PageConsole::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageDebug::PageRegisters::self = (const Page *)&pRegisters;
@@ -183,7 +183,7 @@ DEF_PAGE_4( pConsole,                                                           
     &gNumStrings,
     &cShowGate,
     &cShowPredPost,
-    PageName::Debug_Console, &PageDebug::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::Debug_Console, &PageDebug::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageDebug::PageConsole::self = (const Page *)&pConsole;

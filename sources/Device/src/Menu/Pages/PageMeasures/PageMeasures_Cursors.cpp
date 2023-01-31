@@ -44,7 +44,7 @@ DEF_PAGE_3( pCursors,                                                           
     &cShow,
     &cShowFreq,
     PageCursorsMeasures::Set::self,
-    PageName::CursorsMeasures, &PageMeasures::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::CursorsMeasures, &PageMeasures::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageCursorsMeasures::self = (const Page *)&pCursors;

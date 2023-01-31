@@ -19,7 +19,7 @@ DEF_PAGE_1( pBattery,                                                           
     "БАТАРЕЯ",
     "Функции работы с аккумуляторами",
     &cShow,
-    PageName::Service_Battery, &PageService::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::Service_Battery, &PageService::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageService::Battery::self = (const Page *)&pBattery;

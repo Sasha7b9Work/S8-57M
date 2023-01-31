@@ -110,7 +110,7 @@ DEF_PAGE_5( pShow,                                                              
     &cSpeed,
     &cCursor,
     &cInfo,
-    PageName::Recorder_Show, &PageRecorder::self, IsActive_PageShow, Page::NormalTitle, OnOpenClose_PageShow, Page::BeforeDraw, HandlerKey_PageShow
+    PageName::Recorder_Show, &PageRecorder::self, IsActive_PageShow, Page::NormalTitle, OnOpenClose_PageShow, HandlerKey_PageShow
 )
 
 const Page * const PageRecorder::Show::self = (const Page *)&pShow;

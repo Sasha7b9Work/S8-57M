@@ -103,7 +103,7 @@ DEF_PAGE_5_VAR( pFreqMeter,                                                     
     &Item::empty,
     &Item::empty,
     &Item::empty,
-    PageName::FreqMeter, &PageFunction::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::FreqMeter, &PageFunction::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageFreqMeter::self = (const Page *)&pFreqMeter;

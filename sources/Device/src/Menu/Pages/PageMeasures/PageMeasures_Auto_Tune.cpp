@@ -52,7 +52,7 @@ DEF_PAGE_1( pTune,
     "Переход в режим точной настройки количества и видов измерений",
     //&bMarkers,
     &bSettings,
-    PageName::AutoMeasures_Tune, &PageAutoMeasures::self, IsActive_Tune, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, HandlerKey_Tune
+    PageName::AutoMeasures_Tune, &PageAutoMeasures::self, IsActive_Tune, Page::NormalTitle, Page::OpenClose, HandlerKey_Tune
 )
 
 const Page *const PageAutoMeasures::Tune::self = (const Page *)&pTune;

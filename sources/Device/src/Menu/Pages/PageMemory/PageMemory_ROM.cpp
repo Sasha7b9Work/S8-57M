@@ -260,7 +260,7 @@ DEF_PAGE_5                                                                      
     &bDelete,
     &bTypeSignal,
     PageName::Memory_Internal,
-    &PageMemory::self, Item::Active, PageMemory::NormalTitle_ROM, PageMemory::OnOpenClose_ROM, PageMemory::AfterDraw_ROM, PageMemory::HandlerKey_ROM
+    &PageMemory::self, Item::Active, PageMemory::NormalTitle_ROM, PageMemory::OnOpenClose_ROM, PageMemory::HandlerKey_ROM
 )
 
 const Page *const PageROM::self = (const Page *)&pROM;

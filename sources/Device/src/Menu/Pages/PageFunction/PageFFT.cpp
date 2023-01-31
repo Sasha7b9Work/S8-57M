@@ -107,7 +107,7 @@ static void OnCursors_BeforeDraw()
 
 DEF_PAGE_0( pCursors,
     " ”–—Œ–€",
-    PageName::FFT_Cursors, &PageFFT::self, ShowTitle, Page::OpenClose, OnCursors_BeforeDraw, HandlerKey_FFT_Cursors
+    PageName::FFT_Cursors, &PageFFT::self, ShowTitle, Page::OpenClose, HandlerKey_FFT_Cursors
 )
 
 
@@ -135,7 +135,7 @@ DEF_PAGE_6( pFFT,                                                               
     &cWindow,
     &pCursors,
     &cRange,
-    PageName::FFT, &PageFunction::self, IsActive_FFT, Page::NormalTitle, OnOpenClose_FFT, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::FFT, &PageFunction::self, IsActive_FFT, Page::NormalTitle, OnOpenClose_FFT, Page::HandlerKeyEvent
 )
 
 const Page * const PageFFT::self = (const Page *)&pFFT;

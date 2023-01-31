@@ -109,7 +109,7 @@ DEF_PAGE_5( pRecorder,                                                          
     &bClear,
     &bStart,
     &bExit,
-    PageName::Recorder, &PageFunction::self, Item::Active, Page::NormalTitle, OnOpenClose_Recorder, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::Recorder, &PageFunction::self, Item::Active, Page::NormalTitle, OnOpenClose_Recorder, Page::HandlerKeyEvent
 )
 
 const Page *const PageRecorder::self = (const Page *)&pRecorder;

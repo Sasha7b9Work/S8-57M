@@ -13,7 +13,7 @@ DEF_PAGE_3( pFunction,                                                          
     PageFreqMeter::self,
     PageFFT::self,
     PageRecorder::self,
-    PageName::Function, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::Function, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageFunction::self = (const Page *)&pFunction;

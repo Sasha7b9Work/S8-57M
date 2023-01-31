@@ -112,7 +112,7 @@ DEF_PAGE_5( pChoice,
     &bLeave,
     &bDelete,
     PageName::Recorder_Show_Choice,
-    &PageRecorder::Show::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    &PageRecorder::Show::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 

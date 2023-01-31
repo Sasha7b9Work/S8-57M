@@ -171,7 +171,7 @@ DEF_PAGE_3( pTime,                                                              
     &cSample,
     &cTPos,
 //  &cShiftXtype,
-    PageName::Time, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::Time, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageTime::self = (const Page *)&pTime;

@@ -52,7 +52,7 @@ DEF_PAGE_3( pSettings,                                                          
     PageDisplay::Settings::Colors::self,
     &gBrightness,
     &cAutoHide,
-    PageName::Display_Settings, &PageDisplay::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::BeforeDraw, Page::HandlerKeyEvent
+    PageName::Display_Settings, &PageDisplay::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageDisplay::Settings::self = (const Page *)&pSettings;
