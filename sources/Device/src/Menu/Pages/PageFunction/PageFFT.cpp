@@ -97,7 +97,7 @@ static bool ShowTitle()
 }
 
 
-static void OnCursors_BeforeDraw()
+static void OnCursors_BeforeDraw(int)
 {
     Region(60, 20).DrawBounded(0, 219, Color::BACK, Color::FILL);
 

@@ -8,33 +8,33 @@
 #include <cstdio>
 
 
-static void Information_Draw()
+static void Information_Draw(int field)
 {
-    for (int i = 0; i < 5; i++)
+    Region(Display::WIDTH, Display::HEIGHT).Fill(0, 0, Color::BACK);
+
+    int x = 140;
+    int dY = 30;
+    int y = 70;
+    Rectangle(Display::WIDTH - 1, Display::HEIGHT - 1).Draw(0, 0, Color::FILL);
+    y += dY;
+    y += dY;
+
+    char buffer[100];
+
+    std::sprintf(buffer, MODEL_RU);
+    String(buffer).Draw(x, y);
+
+    y += 2 * dY;
+
+    String("Программное обеспечение : версия %s", VERSION).Draw(x, y);
+
+    y += dY - 1;
+
+    String("CRC32 %s", CRC32_DEVICE).Draw(x + 123, y);
+
+    if (field == 4)
     {
-        Painter::BeginScene(i, Color::BACK);
-        int x = 140;
-        int dY = 30;
-        int y = 70;
-        Rectangle(Display::WIDTH - 1, Display::HEIGHT - 1).Draw(0, 0, Color::FILL);
-        y += dY;
-        y += dY;
-
-        char buffer[100];
-
-        std::sprintf(buffer, MODEL_RU);
-        String(buffer).Draw(x, y);
-
-        y += 2 * dY;
-
-        String("Программное обеспечение : версия %s", VERSION).Draw(x, y);
-
-        y += dY - 1;
-
-        String("CRC32 %s", CRC32_DEVICE).Draw(x + 123, y);
-
         Menu::Draw(4);
-        Painter::EndScene();
     }
 }
 

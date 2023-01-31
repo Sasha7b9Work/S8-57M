@@ -21,7 +21,8 @@
 
 namespace Display
 {
-    static void EmptyFunc() { }
+    static void EmptyFuncI(int) { }
+    static void EmptyFuncV() { }
 
 
     bool Display::Message::waitKey = false;
@@ -33,9 +34,9 @@ namespace Display
     static uint timeStart = 0;
     static pchar textWait = 0;
     static bool clearBackground = false;
-    volatile static pFuncVV funcAdditionRender = EmptyFunc;   // Дополнительная функция рисования. Выполняется после стандартной отрисовки, но перед вызовом EndScene;
+    volatile static pFuncVI funcAdditionRender = EmptyFuncI;   // Дополнительная функция рисования. Выполняется после стандартной отрисовки, но перед вызовом EndScene;
     static bool inStateDraw = false;                        // true означает, что происходит процесс отрисовки
-    static pFuncVV funcAfterUpdateOnce = EmptyFunc;
+    static pFuncVV funcAfterUpdateOnce = EmptyFuncV;
 
     // Выполняет функцию, определённую для выполнения после отрисовки
     static void ExecuteFuncAfterUpdateOnce();
@@ -106,7 +107,7 @@ void Display::Update()
 
         Console::Draw();
 
-        funcAdditionRender();
+        funcAdditionRender(field);
 
         Painter::EndScene();
     }
@@ -126,7 +127,7 @@ bool Display::InProcess()
 void Display::ExecuteFuncAfterUpdateOnce()
 {
     funcAfterUpdateOnce();
-    funcAfterUpdateOnce = EmptyFunc;
+    funcAfterUpdateOnce = EmptyFuncV;
 }
 
 
@@ -260,15 +261,15 @@ void Display::Message::ShowAndWaitKey(pchar text, bool eraseBackground)
 
 void Display::AdditionalFunctionDraw::Remove()
 {
-    funcAdditionRender = EmptyFunc;
+    funcAdditionRender = EmptyFuncI;
 }
 
 
-void Display::AdditionalFunctionDraw::Set(pFuncVV func, uint time)
+void Display::AdditionalFunctionDraw::Set(pFuncVI func, uint time)
 {
     if (func == 0)
     {
-        func = EmptyFunc;
+        func = EmptyFuncI;
     }
 
     funcAdditionRender = func;

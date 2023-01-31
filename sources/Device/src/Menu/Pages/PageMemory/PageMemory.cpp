@@ -29,9 +29,9 @@ int ENumPointsFPGA::PointsInChannel()
 }
 
 
-static void DrawSetMask();  // Эта функция рисует, когда выбран режим задания маски.
+static void DrawSetMask(int field);             // Эта функция рисует, когда выбран режим задания маски.
 static void DrawFileMask(int x, int y);
-static void DrawSetName();  // Эта функция рисует, когда нужно задать имя файла для сохранения
+static void DrawSetName(int field);             // Эта функция рисует, когда нужно задать имя файла для сохранения
        void OnMemExtSetMaskNameRegSet(int angle, int maxIndex);
 
 
@@ -259,7 +259,7 @@ static void OnOpenClose_Mask(bool open)
     }
 }
 
-static void DrawSetMask()
+static void DrawSetMask(int)
 {
     int x0 = Grid::Left() + 40;
     int y0 = Grid::Top() + 20;
@@ -417,7 +417,7 @@ void PageMemory::SaveSignalToFlashDrive()
     }
 }
 
-static void DrawSetName()
+static void DrawSetName(int field)
 {
     int x0 = Grid::Left() + 40;
     int y0 = Grid::Top() + 60;

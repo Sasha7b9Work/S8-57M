@@ -191,14 +191,9 @@ void PageService::DrawTime()
 }
 
 
-static void SetRTC_Draw()
+static void SetRTC_Draw(int)
 {
-    for (int i = 0; i < 5; i++)
-    {
-        PageService::DrawTime();
-
-        Painter::EndScene();
-    }
+    PageService::DrawTime();
 }
 
 
