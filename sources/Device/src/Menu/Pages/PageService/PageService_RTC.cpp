@@ -12,37 +12,45 @@
 #include "Utils/Values.h"
 
 
-// —труктура используетс€ при работе со страницей установки текущего времени
-struct StructRTC
+
+namespace PageService
 {
-    int        curField;
-    PackedTime time;
-    StructRTC() : curField(0) { time = HAL_RTC::GetPackedTime(); };
-    // »зменить значение текущего пол€ на +/- 1
-    void ChangeCurrentField(int delta)
+    // —труктура используетс€ при работе со страницей установки текущего времени
+    struct StructRTC
     {
-        typedef void (PackedTime::*PackedTimeFunc)(int);
-
-        static const PackedTimeFunc funcs[] =
+        int        curField;
+        PackedTime time;
+        StructRTC() : curField(0) { time = HAL_RTC::GetPackedTime(); };
+        // »зменить значение текущего пол€ на +/- 1
+        void ChangeCurrentField(int delta)
         {
-            &PackedTime::ChangeHours, &PackedTime::ChangeMinutes, &PackedTime::ChangeSeconds,
-            &PackedTime::ChangeDay,   &PackedTime::ChangeMonth,   &PackedTime::ChangeYear
+            typedef void (PackedTime:: *PackedTimeFunc)(int);
+
+            static const PackedTimeFunc funcs[] =
+            {
+                &PackedTime::ChangeHours, &PackedTime::ChangeMinutes, &PackedTime::ChangeSeconds,
+                &PackedTime::ChangeDay,   &PackedTime::ChangeMonth,   &PackedTime::ChangeYear
+            };
+
+            PackedTimeFunc func = funcs[curField];
+
+            (time.*func)(delta);
         };
-
-        PackedTimeFunc func = funcs[curField];
-
-        (time.*func)(delta);
     };
-};
 
-// ”казатель на структуру с рабочей информацией. ѕам€ть под структуру выдел€етс€ при открытии страницы и освобождаетс€ при закрытии.
-// “акже нужно провер€ть значение этого указател€ в функции отрисовки. ≈сли оно равно nullptr, значит, страница была открыта нестандартным способом и нужно провести инициализацию.
-static StructRTC *psRTC = nullptr;
+    // ”казатель на структуру с рабочей информацией. ѕам€ть под структуру выдел€етс€ при открытии страницы и освобождаетс€ при закрытии.
+    // “акже нужно провер€ть значение этого указател€ в функции отрисовки. ≈сли оно равно nullptr, значит, страница была открыта нестандартным способом и нужно провести инициализацию.
+    static StructRTC *psRTC = nullptr;
+
+    static void DrawField(int numField);
+
+    static void DrawTime();
+}
 
 
 static void OnPress_SetLeft()
 {
-    Math::CircleDecrease(&psRTC->curField, 0, 5);
+    Math::CircleDecrease(&PageService::psRTC->curField, 0, 5);
     Color::ChangeFlash(true);
 }
 
@@ -60,7 +68,7 @@ DEF_GRAPH_BUTTON( bSet_Left,
 
 static void OnPress_SetRight()
 {
-    Math::CircleIncrease(&psRTC->curField, 0, 5);
+    Math::CircleIncrease(&PageService::psRTC->curField, 0, 5);
     Color::ChangeFlash(true);
 }
 
@@ -78,7 +86,7 @@ DEF_GRAPH_BUTTON( bSet_Right,
 
 static void OnPress_SetUp()
 {
-    psRTC->ChangeCurrentField(1);
+    PageService::psRTC->ChangeCurrentField(1);
 }
 
 static void Draw_Up(int x, int y)
@@ -95,7 +103,7 @@ DEF_GRAPH_BUTTON( bSet_Up,
 
 static void OnPress_SetDown()
 {
-    psRTC->ChangeCurrentField(-1);
+    PageService::psRTC->ChangeCurrentField(-1);
 }
 
 static void Draw_Down(int x, int y)
@@ -112,7 +120,7 @@ DEF_GRAPH_BUTTON( bSet_Down,
 
 static void OnPress_SetPick()
 {
-    HAL_RTC::SetPackedTime(psRTC->time);
+    HAL_RTC::SetPackedTime(PageService::psRTC->time);
     Menu::CloseOpenedItem();
 }
 
@@ -133,7 +141,7 @@ static void DrawDigit(int x, int y, int digit)
     Integer(digit).ToString(false).Draw(x, y);
 }
 
-static void DrawField(int numField)
+void PageService::DrawField(int numField)
 {
     int x0 = 30;
     int y0 = 20;
@@ -166,7 +174,7 @@ static void DrawField(int numField)
     }
 }
 
-static void DrawTime()
+void PageService::DrawTime()
 {
     Font::Set(TypeFont::Normal);
     int spacing = Font::GetSpacing();
@@ -185,17 +193,17 @@ static void OnOpenClose_Set(bool open)
 {
     if (open)
     {
-        psRTC = new StructRTC();
+        PageService::psRTC = new PageService::StructRTC();
     }
     else
     {
-        delete psRTC;
+        delete PageService::psRTC;
     }
 }
 
 static void BeforeDraw_Set()
 {
-    if (psRTC == nullptr)                   // ≈сли страница открыта непредусмотренным способом
+    if (PageService::psRTC == nullptr)                   // ≈сли страница открыта непредусмотренным способом
     {
         OnOpenClose_Set(true);              // подведЄм подготовительные операции
     }
@@ -204,7 +212,7 @@ static void BeforeDraw_Set()
     {
         Painter::BeginScene(i, Color::BACK);
 
-        DrawTime();
+        PageService::DrawTime();
     }
 }
 
