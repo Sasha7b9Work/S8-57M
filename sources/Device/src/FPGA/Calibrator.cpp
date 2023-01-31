@@ -149,11 +149,11 @@ static void BalanceRange(Ch::E ch, Range::E range)
 
     if (delta > 0.0F)
     {
-        NRST_EX_SHIFT(ch, range) = (int8)(delta * 200.0F / 125.0F + 0.5F);
+        NRST_EX_SHIFT(ch, range) = (int8)(delta * 400.0F / 125.0F + 0.5F);
     }
     else
     {
-        NRST_EX_SHIFT(ch, range) = (int8)(delta * 200.0F / 125.0F - 0.5F);
+        NRST_EX_SHIFT(ch, range) = (int8)(delta * 400.0F / 125.0F - 0.5F);
     }
 }
 
