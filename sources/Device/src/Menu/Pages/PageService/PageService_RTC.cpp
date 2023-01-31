@@ -174,6 +174,7 @@ void PageService::DrawField(int numField)
     }
 }
 
+
 void PageService::DrawTime()
 {
     Font::Set(TypeFont::Normal);
@@ -189,34 +190,34 @@ void PageService::DrawTime()
     Font::SetSpacing(spacing);
 }
 
-static void OnOpenClose_Set(bool open)
-{
-    if (open)
-    {
-        PageService::psRTC = new PageService::StructRTC();
-    }
-    else
-    {
-        delete PageService::psRTC;
-    }
-}
 
-static void BeforeDraw_Set()
+static void SetRTC_Draw()
 {
-    if (PageService::psRTC == nullptr)          // Если страница открыта непредусмотренным способом
-    {
-        OnOpenClose_Set(true);                  // подведём подготовительные операции
-    }
-
     for (int i = 0; i < 5; i++)
     {
-        Painter::BeginScene(i, Color::BACK);
-
         PageService::DrawTime();
 
         Painter::EndScene();
     }
 }
+
+
+static void OnOpenClose_Set(bool open)
+{
+    if (open)
+    {
+        PageService::psRTC = new PageService::StructRTC();
+
+        Display::AdditionalFunctionDraw::Set(SetRTC_Draw);
+    }
+    else
+    {
+        delete PageService::psRTC;
+
+        Display::AdditionalFunctionDraw::Remove();
+    }
+}
+
 
 static bool HandlerKey_Set(const KeyEvent &event)
 {
@@ -257,6 +258,7 @@ static bool HandlerKey_Set(const KeyEvent &event)
     return true;                        // А все остальные кнопки якобы обработаны - чтобы не происходило неправильных переключений на другие страницы
 }
 
+
 DEF_PAGE_5( pSet,
     "ВРЕМЯ",
     "Установка текущего времени",
@@ -268,5 +270,6 @@ DEF_PAGE_5( pSet,
     PageName::Service_RTC,
     &PageService::self, Item::Active, Page::NormalTitle, OnOpenClose_Set, HandlerKey_Set
 )
+
 
 const Page * const PageRTC::self = (const Page *)&pSet;

@@ -54,11 +54,11 @@ static void OnOpenClose_Page(bool enter)
 {
     if (enter)
     {
-        Display::AddFunctionRender::Set(Information_Draw);
+        Display::AdditionalFunctionDraw::Set(Information_Draw);
     }
     else
     {
-        Display::AddFunctionRender::Remove();
+        Display::AdditionalFunctionDraw::Remove();
     }
 }
 

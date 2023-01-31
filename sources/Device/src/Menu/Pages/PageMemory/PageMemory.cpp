@@ -251,11 +251,11 @@ static void OnOpenClose_Mask(bool open)
 {
     if(open)
     {
-        Display::AddFunctionRender::Set(DrawSetMask);
+        Display::AdditionalFunctionDraw::Set(DrawSetMask);
     }
     else
     {
-        Display::AddFunctionRender::Remove();
+        Display::AdditionalFunctionDraw::Remove();
     }
 }
 
@@ -404,7 +404,7 @@ void PageMemory::SaveSignalToFlashDrive()
     {
         if (S_MEM_FILE_NAMING_MODE_IS_MANUALLY)
         {
-            Display::AddFunctionRender::Set(DrawSetName);
+            Display::AdditionalFunctionDraw::Set(DrawSetName);
         }
         else
         {

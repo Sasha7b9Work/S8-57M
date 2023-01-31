@@ -258,13 +258,13 @@ void Display::Message::ShowAndWaitKey(pchar text, bool eraseBackground)
 }
 
 
-void Display::AddFunctionRender::Remove()
+void Display::AdditionalFunctionDraw::Remove()
 {
     funcAdditionRender = EmptyFunc;
 }
 
 
-void Display::AddFunctionRender::Set(pFuncVV func, uint time)
+void Display::AdditionalFunctionDraw::Set(pFuncVV func, uint time)
 {
     if (func == 0)
     {
@@ -275,7 +275,7 @@ void Display::AddFunctionRender::Set(pFuncVV func, uint time)
 
     if (time)
     {
-        Timer::SetAndStartOnce(TypeTimer::RemoveAddFunction, AddFunctionRender::Remove, time);
+        Timer::SetAndStartOnce(TypeTimer::RemoveAddFunction, AdditionalFunctionDraw::Remove, time);
     }
 }
 
