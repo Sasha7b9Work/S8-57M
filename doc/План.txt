@@ -5,6 +5,4 @@
 
 *** На каких страницах нужно дорисовать перед отрисовкой меню ***
 PageHelp
-PageRAM  - AfterDraw_RAM
-pCursors - OnCursors_BeforeDraw
 pROM     - PageMemory::AfterDraw_ROM

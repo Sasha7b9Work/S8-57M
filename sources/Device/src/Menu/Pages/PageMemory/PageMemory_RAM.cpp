@@ -44,6 +44,21 @@ DEF_GRAPH_BUTTON( bPrev,                                                        
     &PageRAM::self, Item::Active, OnPress_Prev, Draw_Prev
 )
 
+static void AfterDraw_RAM(int num_field)
+{
+    if (num_field == 0)
+    {
+        int width = 76;
+        int height = 19;
+        int x0 = Grid::Right() - width + 1;
+        Region(width, height).Fill(Grid::Right() - width, Grid::Top(), Color::BACK);
+        Rectangle(width, height).Draw(Grid::Right() - width, Grid::Top(), Color::FILL);
+        int y = Grid::Top() + 3;
+        Integer(RAM::currentSignal + 1).ToString(false, 3).Draw(x0 + 2, y);
+        String("/").Draw(x0 + 33, y);
+        Integer((int)(RAM::NumberDatas())).ToString(false, 3).Draw(x0 + 45, y);
+    }
+}
 
 static void OnOpenClose_RAM(bool enter)
 {
@@ -55,9 +70,12 @@ static void OnOpenClose_RAM(bool enter)
         Osci::Stop();
         S_MEM_MODE_WORK = ModeWork::RAM;
         RAM::currentSignal = 0;
+        Display::AdditionalFunctionDraw::Set(AfterDraw_RAM);
     }
     else
     {
+        Display::AdditionalFunctionDraw::Remove();
+
         S_MEM_MODE_WORK = ModeWork::Dir;
 
         if (RUN_FPGA_BEFORE_SB)
@@ -65,17 +83,6 @@ static void OnOpenClose_RAM(bool enter)
             Osci::Start(true);
         }
     }
-}
-
-static void AfterDraw_RAM()
-{
-    int width = 40;
-    int height = 10;
-    Region(width, height).Fill(Grid::Right() - width, Grid::Top(), Color::BACK);
-    Rectangle(width, height).Draw(Grid::Right() - width, Grid::Top(), Color::FILL);
-    Integer(RAM::currentSignal + 1).ToString(false, 3).Draw(Grid::Right() - width + 2, Grid::Top() + 1);
-    String("/").Draw(Grid::Right() - width + 17, Grid::Top() + 1);
-    Integer((int)(RAM::NumberDatas())).ToString(false, 3).Draw(Grid::Right() - width + 23, Grid::Top() + 1);
 }
 
 static bool HandlerKey_RAM(const KeyEvent &)

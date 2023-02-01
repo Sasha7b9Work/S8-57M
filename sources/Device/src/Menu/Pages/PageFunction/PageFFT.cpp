@@ -97,11 +97,16 @@ static bool ShowTitle()
 }
 
 
-static void OnCursors_BeforeDraw(int)
+static void OnCursors_Draw(int field)
 {
-    Region(60, 20).DrawBounded(0, 219, Color::BACK, Color::FILL);
+    if (field == 4)
+    {
+        int y = Display::HEIGHT - Item::Height() - 1;
 
-    Text(S_FFT_ACTIVE_CURSOR_IS_0 ? "Курсор 1" : "Курсор 2").Draw(12, 224, Color::FILL);
+        Region(Item::empty.Width(), Item::Height()).DrawBounded(0, y, Color::BACK, Color::FILL);
+
+        Text(S_FFT_ACTIVE_CURSOR_IS_0 ? "КУРСОР 1" : "КУРСОР 2").Draw(28, y + 15, Color::FILL);
+    }
 }
 
 
@@ -118,11 +123,20 @@ static bool IsActive_FFT()
     return S_MATH_MODE_DRAW_IS_DISABLED;
 }
 
-static void OnOpenClose_FFT(bool)
+static void OnOpenClose_FFT(bool open)
 {
     if (!IsActive_FFT())
     {
         Display::ShowWarning("Отключите математическую функцию");
+    }
+
+    if (open)
+    {
+        Display::AdditionalFunctionDraw::Set(OnCursors_Draw);
+    }
+    else
+    {
+        Display::AdditionalFunctionDraw::Remove();
     }
 }
 
