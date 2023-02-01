@@ -169,47 +169,25 @@ DEF_GRAPH_BUTTON_HINTS_3                                                        
 
 namespace PageMemory
 {
-    static void OnOpenClose_ROM(bool open)
-    {
-        if (open)
-        {
-            Color::ChangeFlash(true);
-        }
-
-        S_MEM_MODE_WORK = open ? ModeWork::ROM : ModeWork::Dir;
-    }
-
-    static void AfterDraw_ROM()
-    {
-        // Теперь нарисуем состояние памяти
-
-        bool exist[ROM::Data::MAX_NUM_SAVED_WAVES] = { false };
-
-        ROM::Data::GetInfo(exist);
-
-        for (int i = 0; i < ROM::Data::MAX_NUM_SAVED_WAVES; i++)
-        {
-            DrawMemoryCell(i, exist[i]);
-        }
-    }
+    static void Draw_ROM(int num_field);
 
     static void DrawMemoryCell(int num, bool exist)
     {
-        int x = Grid::Left() + 2 + num * 12;
-        int y = Grid::FullBottom() - 13;
-        int width = 12;
-        Region(width, 10).Fill(x, y, num == NUM_ROM_SIGNAL ? Color::FLASH_10 : Color::BACK);
-        Rectangle(width, 10).Draw(x, y, Color::FILL);
+        int x = Grid::Left() + 2 + num * 24;
+        int y = Grid::FullBottom() - 27;
+        int width = 24;
+        Region(width, 20).Fill(x, y, num == NUM_ROM_SIGNAL ? Color::FLASH_10 : Color::BACK);
+        Rectangle(width, 20).Draw(x, y, Color::FILL);
 
         Color((num == NUM_ROM_SIGNAL) ? Color::FLASH_01 : Color::FILL).SetAsCurrent();
 
         if (exist)
         {
-            Integer(num + 1).ToString(false, 2).Draw(x + 2, y + 1);
+            Integer(num + 1).ToString(false, 2).Draw(x + 4, y + 3);
         }
         else
         {
-            SymbolUGO(SymbolUGO::CROSS).Draw(x + 3, y + 1);
+            SymbolUGO(SymbolUGO::CROSS).Draw(x + 4, y + 2);
         }
     }
 
@@ -246,6 +224,22 @@ namespace PageMemory
     {
         return false;
     }
+
+    static void OnOpenClose_ROM(bool open)
+    {
+        if (open)
+        {
+            Color::ChangeFlash(true);
+
+            Display::AdditionalFunctionDraw::Set(Draw_ROM);
+        }
+        else
+        {
+            Display::AdditionalFunctionDraw::Remove();
+        }
+
+        S_MEM_MODE_WORK = open ? ModeWork::ROM : ModeWork::Dir;
+    }
 }
 
 
@@ -264,3 +258,24 @@ DEF_PAGE_5                                                                      
 )
 
 const Page *const PageROM::self = (const Page *)&pROM;
+
+
+namespace PageMemory
+{
+    static void Draw_ROM(int num_field)
+    {
+        if (num_field == 4 && pROM.IsCurrentItem())
+        {
+            // Теперь нарисуем состояние памяти
+
+            bool exist[ROM::Data::MAX_NUM_SAVED_WAVES] = { false };
+
+            ROM::Data::GetInfo(exist);
+
+            for (int i = 0; i < ROM::Data::MAX_NUM_SAVED_WAVES; i++)
+            {
+                DrawMemoryCell(i, exist[i]);
+            }
+        }
+    }
+}

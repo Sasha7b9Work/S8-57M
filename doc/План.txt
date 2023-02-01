@@ -3,4 +3,4 @@
 
 *** На каких страницах нужно дорисовать перед отрисовкой меню ***
 PageHelp
-pROM     - PageMemory::AfterDraw_ROM
+
