@@ -42,7 +42,7 @@ namespace PageService
     // Также нужно проверять значение этого указателя в функции отрисовки. Если оно равно nullptr, значит, страница была открыта нестандартным способом и нужно провести инициализацию.
     static StructRTC *psRTC = nullptr;
 
-    static void DrawField(int numField);
+    static void DrawField(int x, int y, int numField, pchar separator);
 
     static void DrawTime();
 }
@@ -141,53 +141,57 @@ static void DrawDigit(int x, int y, int digit)
     Integer(digit).ToString(false).Draw(x, y);
 }
 
-void PageService::DrawField(int numField)
+void PageService::DrawField(int x, int y, int numField, pchar separator)
 {
-    int x0 = 30;
-    int y0 = 20;
-
-    int posX = (numField % 3);
-
-    int x = x0 + posX * 93;
-    int y = numField < 3 ? y0 : y0 + 100;
-
     uint fields[6] = { psRTC->time.hours, psRTC->time.minutes, psRTC->time.seconds, psRTC->time.day, psRTC->time.month, psRTC->time.year };
 
     Color::FILL.SetAsCurrent();
 
+    int width = 30;
+    int dx = width / 2;
+    int height = 20;
+
     if (numField == psRTC->curField)
     {
-        Region(76, 70).Fill(x - 2, y - 2, Color::FLASH_10);
+        Region(width, height).Fill(x - 2, y - 2, Color::FLASH_10);
         Color::FLASH_01.SetAsCurrent();
     }
 
     Integer value((int)(fields[numField]));
 
     DrawDigit(x, y, value[1]);
-    DrawDigit(x + 38, y, value[0]);
+    DrawDigit(x + dx, y, value[0]);
 
-    if (posX < 2)
-    {
-        const char separator[2] = { (numField < 3) ? ':' : '.', '\0' };
-
-        Text(separator).Draw(x + 79, y, Color::FILL);
-    }
+    Text(separator).Draw(x + width + 1, y, Color::FILL);
 }
 
 
 void PageService::DrawTime()
 {
     Font::Set(TypeFont::Normal);
-    int spacing = Font::GetSpacing();
-    Font::SetSpacing(5);
-    
+
+    const int width = 114;
+    const int height = 54;
+    const int x0 = Display::WIDTH / 2 - width / 2;
+    const int y0 = Display::HEIGHT / 2 - height / 2;
+
+    Region(width, height).DrawBounded(x0, y0, Color::BACK, Color::FILL);
+
     for (int i = 0; i < 6; i++)
     {
-        DrawField(i);
+        int posX = (i % 3);
+        int x = x0 + 4 + posX * 40;
+        int y = 4 + ((i < 3) ? y0 : y0 + 30);
+
+        pchar separator = "";
+
+        if (posX < 2)
+        {
+            separator = (i < 3) ? ":" : ".";
+        }
+
+        DrawField(x, y, i, separator);
     }
-    
-    Font::Set(TypeFont::Normal);
-    Font::SetSpacing(spacing);
 }
 
 

@@ -8,4 +8,3 @@ PageHelp
 PageRAM  - AfterDraw_RAM
 pCursors - OnCursors_BeforeDraw
 pROM     - PageMemory::AfterDraw_ROM
-СЕРВИС-ВРЕМЯ-УСТАНОВИТЬ-pSet - BeforeDraw_Set
