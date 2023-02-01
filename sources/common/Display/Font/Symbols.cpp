@@ -54,7 +54,8 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {120, 4},   // SETTINGS
     {160, 4},   // TRIANGLE_LEFT
     {164, 4},   // TRIANGLE_RIGHT
-    {168, 4}    // SELECT
+    {168, 4},   // SELECT
+    {172, 4}    // ARROW_RIGHT
 };
 
 

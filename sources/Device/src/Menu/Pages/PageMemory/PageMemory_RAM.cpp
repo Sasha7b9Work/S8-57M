@@ -18,7 +18,7 @@ static void OnPress_Next()
 
 static void Draw_Next(int x, int y)
 {
-    Char(SymbolUGO2::ARROW_RIGHT, TypeFont::UGO, 4).Draw(x + 2, y + 2);
+    SymbolUGO(SymbolUGO::ARROW_RIGHT).Draw(x + 2, y + 2);
 }
 
 DEF_GRAPH_BUTTON( bNext,                                                                                                                             //--- œ¿Ãﬂ“‹ - œŒ—À≈ƒÕ»≈ - —ÎÂ‰Û˛˘ËÈ ---

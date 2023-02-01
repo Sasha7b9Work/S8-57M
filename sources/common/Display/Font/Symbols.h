@@ -12,7 +12,6 @@ struct SymbolUGO2
     enum E
     {
         BIG_M           = (uint8)'\x60',   // Большая буква "М"
-        ARROW_RIGHT     = (uint8)'\x64',
         TAB             = (uint8)'\x6e',
         FLASH_DRIVE     = (uint8)'\x80',   // Символ флешки внизу экрана
         ETHERNET        = (uint8)'\x82',   // Символ Ethernet внизу экрана
@@ -94,6 +93,7 @@ public:
         TRIANGLE_LEFT,      // Стрелка треугольником влево
         TRIANGLE_RIGHT,     // Стрелка треугольником вправо
         SELECT,             // Символ выбора
+        ARROW_RIGHT,
         Count
     };
 
