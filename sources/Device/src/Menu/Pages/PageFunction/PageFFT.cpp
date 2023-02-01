@@ -124,7 +124,7 @@ static void OnCursors_Draw(int field)
     {
         int y = Display::HEIGHT - Item::Height() - 1;
 
-        Region(Item::empty.Width(), Item::Height()).DrawBounded(0, y, Color::BACK, Color::FILL);
+        Region(Item::empty.Width(), Item::Height()).FillBounded(0, y, Color::BACK, Color::FILL);
 
         Text(S_FFT_ACTIVE_CURSOR_IS_0 ? "йспянп 1" : "йспянп 2").Draw(28, y + 15, Color::FILL);
     }

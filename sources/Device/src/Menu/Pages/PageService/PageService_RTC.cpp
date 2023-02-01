@@ -175,7 +175,7 @@ void PageService::DrawTime()
     const int x0 = Display::WIDTH / 2 - width / 2;
     const int y0 = Display::HEIGHT / 2 - height / 2;
 
-    Region(width, height).DrawBounded(x0, y0, Color::BACK, Color::FILL);
+    Region(width, height).FillBounded(x0, y0, Color::BACK, Color::FILL);
 
     for (int i = 0; i < 6; i++)
     {

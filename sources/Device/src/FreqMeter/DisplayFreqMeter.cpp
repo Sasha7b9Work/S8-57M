@@ -38,7 +38,7 @@ namespace DisplayFreqMeter
     // Записывает 6 разрядов из стека stack в буфер buffer. Младший разряд на вершине стека. Точку ставить на point позиции, начиная с buffer[0]
     static void WriteStackToBuffer(Stack<uint> *stack, int point, pchar suffix);
 
-    static void DrawFrequencyMode(int x, int _y);
+    static void DrawFrequencyMode(int x, int _y, int full_lenght);
 
     static void DrawPeriodMode(int x, int y);
 }
@@ -63,27 +63,21 @@ void DisplayFreqMeter::Update()
     int spacing = Font::GetSpacing();
     Font::SetSpacing(1);
 
-    int width = 200;
-    int height = S_FREQ_MODE_MEASURE_IS_FREQUENCY ? 90 : 75;
+    const int width = 147;
 
-    int x = Grid::Left() + (Grid::Width() - width) / 2;
-    int y = Grid::Top() + (Grid::Height() / 2 - height) / 2;
+    const int height = 49 + (S_FREQ_MODE_MEASURE_IS_FREQUENCY ? 15 : 0);
 
-    if(S_FREQ_MODE_MEASURE_IS_FREQUENCY)
-    {
-        y += 7;
-    }
+    int x = Grid::Left();
+    int y = Grid::Top();
 
-
-    Region(width - 2, height - 2).Fill(x + 1, y + 1, Color::BACK);
-    Rectangle(width, height).Draw(x, y, Color::FILL);
+    Region(width, height).FillBounded(x, y, Color::BACK, Color::FILL);
 
     x += 2;
     y += 2;
 
     if(S_FREQ_MODE_MEASURE_IS_FREQUENCY)
     {
-        DrawFrequencyMode(x, y);
+        DrawFrequencyMode(x, y, width);
     }
     else
     {
@@ -125,7 +119,7 @@ static float ConvertFrequencyToAbs(pchar strFreq)
 }
 
 
-void DisplayFreqMeter::DrawFrequencyMode(int x, int _y)
+void DisplayFreqMeter::DrawFrequencyMode(int x, int _y, int full_length)
 {
     _y += 4;
 
@@ -137,7 +131,7 @@ void DisplayFreqMeter::DrawFrequencyMode(int x, int _y)
     Text("F").Draw(x, yF, Color::FILL);
     Text("T").Draw(x, yT);
 
-    ProgressBarFreqMeter::Draw(x, yT + 4 + Font::Height());
+    ProgressBarFreqMeter::Draw(x, yT + 4 + Font::Height(), full_length - 12);
 
     int dX = 17;
 
@@ -215,7 +209,7 @@ void DisplayFreqMeter::DrawPeriodMode(int x, int _y)
     Text("T").Draw(x, yT, Color::FILL);
     Text("F").Draw(x, yF);
 
-    ProgressBarFreqMeter::Draw(x, yF + 4 + Font::Height());
+    ProgressBarFreqMeter::Draw(x, yF + 4 + Font::Height(), 0);
 
     int dX = 17;
 
@@ -562,26 +556,24 @@ void DisplayFreqMeter::WriteStackToBuffer(Stack<uint> *stack, int point, pchar s
 }
 
 
-void ProgressBarFreqMeter::Draw(int x, int y)
+void ProgressBarFreqMeter::Draw(int x, int y, int full_length)
 {
     if(S_FREQ_MODE_MEASURE_IS_FREQUENCY && (FreqMeter::timeStartMeasureFreq != 0))
     {
         static const float time[FreqMeter::TimeCounting::Count] = { 100.0F, 1000.0F, 10000.0F };
 
-        int length = 185;
-
         float percents = (TIME_MS - FreqMeter::timeStartMeasureFreq) / time[S_FREQ_TIME_COUNTING];
 
-        int width = (int)(length * percents);
+        int width = (int)(full_length * percents);
 
-        if(width > length)
+        if(width > full_length)
         {
-            width = length;
+            width = full_length;
         }
 
-        if(S_FREQ_TIME_COUNTING_IS_100ms && (width > length / 2))
+        if(S_FREQ_TIME_COUNTING_IS_100ms && (width > full_length / 2))
         {
-            width = length;
+            width = full_length;
         }
 
         Region(width, 3).Fill(x, y, Color::FILL);

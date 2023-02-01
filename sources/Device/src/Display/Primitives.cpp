@@ -38,7 +38,7 @@ Region::Region(int _width, int _height) : width(_width), height(_height)
 }
 
 
-void Region::DrawBounded(int x, int y, Color colorFill, Color colorBound)
+void Region::FillBounded(int x, int y, Color colorFill, Color colorBound)
 {
     Region(width - 2, height - 2).Fill(x + 1, y + 1, colorFill);
     Rectangle(width, height).Draw(x, y, colorBound);
@@ -208,7 +208,7 @@ int Text::DrawDigitsMonospace(int x, int y, int width, Color color)
 
 void Text::DrawInCenterBoundedRect(int x, int y, int width, int height, Color color)
 {
-    Region(width, height).DrawBounded(x, y, Color::BACK, color);
+    Region(width, height).FillBounded(x, y, Color::BACK, color);
     DrawInCenterRect(x, y, width, height, color);
 }
 
@@ -607,7 +607,7 @@ int Text::DrawInBoundedRectWithTransfers(int x, int y, int width, Color colorBac
 
 void Text::DrawInCenterRectAndBoundIt(int x, int y, int width, int height, Color colorBackground, Color colorFill)
 {
-    Region(width, height).DrawBounded(x, y, colorBackground, colorFill);
+    Region(width, height).FillBounded(x, y, colorBackground, colorFill);
 
     colorFill.SetAsCurrent();
 

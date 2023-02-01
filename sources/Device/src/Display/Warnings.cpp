@@ -135,7 +135,7 @@ void WarningStruct::Draw(int x, int y) const
 {
     int width = Font::GetLengthText(message.c_str());
 
-    Region(width + 3, 10).DrawBounded(x, y, Color::FLASH_10, Color::FILL);
+    Region(width + 3, 10).FillBounded(x, y, Color::FLASH_10, Color::FILL);
 
     Text(message).Draw(x + 2, y + 1, Color::FLASH_01);
 }

@@ -23,7 +23,7 @@ class Region
 public:
     Region(int width, int height);
     void Fill(int x, int y, Color color = Color::Count);
-    void DrawBounded(int x, int y, Color colorFill, Color colorBound);
+    void FillBounded(int x, int y, Color colorFill, Color colorBound);
 private:
     int width;
     int height;

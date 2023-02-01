@@ -395,7 +395,7 @@ void Item::DrawCommonHiPart() const
 
     int width = Width() - 4;
 
-    Color colorFill = (IsPressed() && IsActive()) ? Color::WHITE : Color::BLACK;
+    Color colorFill = ColorTitleBackground();
     Color colorText = ColorTitleText();
 
     Region(width, Item::Value::HEIGHT - 2).Fill(x + 1, y + 1, colorFill);

@@ -15,5 +15,5 @@ namespace DisplayFreqMeter
 
 namespace ProgressBarFreqMeter
 {
-    void Draw(int x, int y);
+    void Draw(int x, int y, int full_length);
 };

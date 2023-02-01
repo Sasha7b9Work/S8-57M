@@ -113,7 +113,7 @@ void DisplayRecorder::DrawSettings(int x, int y)
 {
     if (Menu::OpenedItem() == PageRecorder::self)
     {
-        Region(30, 30).DrawBounded(x, y, Color::BACK, Color::FILL);
+        Region(30, 30).FillBounded(x, y, Color::BACK, Color::FILL);
 
         Text(Recorder::ScaleX::ToString()).Draw(x + 2, y + 2);
 
@@ -255,7 +255,7 @@ void DisplayRecorder::DrawParametersCursors()
     if (enB)      { height += dHeight; }
     if (enSensor) { height += dHeight; }
 
-    Region(width + 2, height).DrawBounded(x - 2, 10, Color::BACK, Color::FILL);
+    Region(width + 2, height).FillBounded(x - 2, 10, Color::BACK, Color::FILL);
 
     char buffer[30];
     
@@ -386,7 +386,7 @@ void DisplayRecorder::DrawMemoryWindow()
         prevNumPoints = numPoints;
     }
 
-    Region(319, 5).DrawBounded(0, 3, Color::BACK, Color::FILL);
+    Region(319, 5).FillBounded(0, 3, Color::BACK, Color::FILL);
 
     int width = (int)(320.0F / numPoints * 320.0F + 0.5F);
 
@@ -402,7 +402,7 @@ void DisplayRecorder::DrawMemoryWindow()
         x = (int)((float)startPoint / numPoints * 320.0F + 0.5F);
     }
 
-    Region(width, 10).DrawBounded(x, 0, Color::BACK, Color::FILL);
+    Region(width, 10).FillBounded(x, 0, Color::BACK, Color::FILL);
 }
 
 

@@ -199,7 +199,7 @@ void DisplayOsci::DrawingValueParameter::DrawBoundedText(int y, const String *te
 {
     int length = Font::GetLengthText(text->c_str()) + 6;
     int x = Grid::Left() + Grid::Width() / 2 - length / 2;
-    Region(length, 16).DrawBounded(x, y, Color::BACK, Color::FILL);
+    Region(length, 16).FillBounded(x, y, Color::BACK, Color::FILL);
     text->Draw(x + 4, y + 4, color);
 }
 
