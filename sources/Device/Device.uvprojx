@@ -1410,11 +1410,6 @@
               <FilePath>..\common\Display\Font\FontUGO.h</FilePath>
             </File>
             <File>
-              <FileName>FontUGO2.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\FontUGO2.h</FilePath>
-            </File>
-            <File>
               <FileName>FontSmall.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\FontSmall.h</FilePath>
@@ -1423,6 +1418,11 @@
               <FileName>FontNormal.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\FontNormal.h</FilePath>
+            </File>
+            <File>
+              <FileName>FontDIAG.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\FontDIAG.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3792,11 +3792,6 @@
               <FilePath>..\common\Display\Font\FontUGO.h</FilePath>
             </File>
             <File>
-              <FileName>FontUGO2.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\FontUGO2.h</FilePath>
-            </File>
-            <File>
               <FileName>FontSmall.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\FontSmall.h</FilePath>
@@ -3805,6 +3800,11 @@
               <FileName>FontNormal.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\FontNormal.h</FilePath>
+            </File>
+            <File>
+              <FileName>FontDIAG.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\FontDIAG.h</FilePath>
             </File>
           </Files>
         </Group>

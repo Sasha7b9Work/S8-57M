@@ -2760,8 +2760,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Display\Font\FontUGO2.h</PathWithFileName>
-      <FilenameWithoutPath>FontUGO2.h</FilenameWithoutPath>
+      <PathWithFileName>..\common\Display\Font\FontSmall.h</PathWithFileName>
+      <FilenameWithoutPath>FontSmall.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2772,8 +2772,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Display\Font\FontSmall.h</PathWithFileName>
-      <FilenameWithoutPath>FontSmall.h</FilenameWithoutPath>
+      <PathWithFileName>..\common\Display\Font\FontNormal.h</PathWithFileName>
+      <FilenameWithoutPath>FontNormal.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -2784,8 +2784,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Display\Font\FontNormal.h</PathWithFileName>
-      <FilenameWithoutPath>FontNormal.h</FilenameWithoutPath>
+      <PathWithFileName>..\common\Display\Font\FontDIAG.h</PathWithFileName>
+      <FilenameWithoutPath>FontDIAG.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

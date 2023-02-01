@@ -9,7 +9,7 @@
 
 #ifndef LOADER
     #include "FontSmall.h"
-    #include "FontUGO2.h"
+    #include "FontDIAG.h"
     #include "FontUGO.h"
 
 static const Font *font5 = (const Font *)font_gost_type_a_10; //-V641
