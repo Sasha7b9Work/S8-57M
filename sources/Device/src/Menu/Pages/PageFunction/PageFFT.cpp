@@ -7,6 +7,8 @@
 #include "Settings/Settings.h"
 
 
+static void OnCursors_Draw(int field);
+
 
 static bool IsActive_Parameter()
 {
@@ -97,9 +99,28 @@ static bool ShowTitle()
 }
 
 
+static void OnOpenClose_Cursors(bool open)
+{
+    if (open)
+    {
+        Display::AdditionalFunctionDraw::Set(OnCursors_Draw);
+    }
+    else
+    {
+        Display::AdditionalFunctionDraw::Remove();
+    }
+}
+
+
+DEF_PAGE_0( pCursors,
+    "КУРСОРЫ",
+    PageName::FFT_Cursors, &PageFFT::self, ShowTitle, OnOpenClose_Cursors, HandlerKey_FFT_Cursors
+)
+
+
 static void OnCursors_Draw(int field)
 {
-    if (field == 4)
+    if (field == 4 && pCursors.IsCurrentItem())
     {
         int y = Display::HEIGHT - Item::Height() - 1;
 
@@ -108,12 +129,6 @@ static void OnCursors_Draw(int field)
         Text(S_FFT_ACTIVE_CURSOR_IS_0 ? "КУРСОР 1" : "КУРСОР 2").Draw(28, y + 15, Color::FILL);
     }
 }
-
-
-DEF_PAGE_0( pCursors,
-    "КУРСОРЫ",
-    PageName::FFT_Cursors, &PageFFT::self, ShowTitle, Page::OpenClose, HandlerKey_FFT_Cursors
-)
 
 
 const Page * const PageFFT::Cursors::self = (const Page *)&pCursors;
@@ -128,15 +143,6 @@ static void OnOpenClose_FFT(bool open)
     if (!IsActive_FFT())
     {
         Display::ShowWarning("Отключите математическую функцию");
-    }
-
-    if (open)
-    {
-        Display::AdditionalFunctionDraw::Set(OnCursors_Draw);
-    }
-    else
-    {
-        Display::AdditionalFunctionDraw::Remove();
     }
 }
 
