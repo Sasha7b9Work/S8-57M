@@ -1385,11 +1385,6 @@
           <GroupName>Display/Font</GroupName>
           <Files>
             <File>
-              <FileName>fontUGO.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\fontUGO.inc</FilePath>
-            </File>
-            <File>
               <FileName>Font.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Display\Font\Font.cpp</FilePath>
@@ -1398,16 +1393,6 @@
               <FileName>Font.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\Font.h</FilePath>
-            </File>
-            <File>
-              <FileName>Font5.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\Font5.h</FilePath>
-            </File>
-            <File>
-              <FileName>Font8.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\Font8.h</FilePath>
             </File>
             <File>
               <FileName>Symbols.h</FileName>
@@ -1423,6 +1408,21 @@
               <FileName>FontUGO.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\FontUGO.h</FilePath>
+            </File>
+            <File>
+              <FileName>FontUGO2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\FontUGO2.h</FilePath>
+            </File>
+            <File>
+              <FileName>FontSmall.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\FontSmall.h</FilePath>
+            </File>
+            <File>
+              <FileName>FontNormal.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\FontNormal.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -3767,11 +3767,6 @@
           <GroupName>Display/Font</GroupName>
           <Files>
             <File>
-              <FileName>fontUGO.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\fontUGO.inc</FilePath>
-            </File>
-            <File>
               <FileName>Font.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Display\Font\Font.cpp</FilePath>
@@ -3780,16 +3775,6 @@
               <FileName>Font.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\Font.h</FilePath>
-            </File>
-            <File>
-              <FileName>Font5.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\Font5.h</FilePath>
-            </File>
-            <File>
-              <FileName>Font8.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\Font8.h</FilePath>
             </File>
             <File>
               <FileName>Symbols.h</FileName>
@@ -3805,6 +3790,21 @@
               <FileName>FontUGO.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\FontUGO.h</FilePath>
+            </File>
+            <File>
+              <FileName>FontUGO2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\FontUGO2.h</FilePath>
+            </File>
+            <File>
+              <FileName>FontSmall.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\FontSmall.h</FilePath>
+            </File>
+            <File>
+              <FileName>FontNormal.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\FontNormal.h</FilePath>
             </File>
           </Files>
         </Group>

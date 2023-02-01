@@ -5,10 +5,10 @@
 #include "common/Decoder_d.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
-#include "Font8.h"
+#include "FontNormal.h"
 
 #ifndef LOADER
-    #include "Font5.h"
+    #include "FontSmall.h"
     #include "FontUGO2.h"
     #include "FontUGO.h"
 

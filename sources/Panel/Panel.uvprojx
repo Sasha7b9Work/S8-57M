@@ -1376,24 +1376,29 @@
               <FilePath>..\common\Display\Font\Font.h</FilePath>
             </File>
             <File>
-              <FileName>Font5.h</FileName>
+              <FileName>Symbols.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\Font5.h</FilePath>
+              <FilePath>..\common\Display\Font\Symbols.h</FilePath>
             </File>
             <File>
-              <FileName>Font8.h</FileName>
+              <FileName>FontUGO2.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\Font8.h</FilePath>
+              <FilePath>..\common\Display\Font\FontUGO2.h</FilePath>
             </File>
             <File>
-              <FileName>fontUGO.inc</FileName>
+              <FileName>FontUGO.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\fontUGO.inc</FilePath>
+              <FilePath>..\common\Display\Font\FontUGO.h</FilePath>
             </File>
             <File>
-              <FileName>fontUGO2.inc</FileName>
+              <FileName>FontSmall.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\fontUGO2.inc</FilePath>
+              <FilePath>..\common\Display\Font\FontSmall.h</FilePath>
+            </File>
+            <File>
+              <FileName>FontNormal.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\FontNormal.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2839,24 +2844,29 @@
               <FilePath>..\common\Display\Font\Font.h</FilePath>
             </File>
             <File>
-              <FileName>Font5.h</FileName>
+              <FileName>Symbols.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\Font5.h</FilePath>
+              <FilePath>..\common\Display\Font\Symbols.h</FilePath>
             </File>
             <File>
-              <FileName>Font8.h</FileName>
+              <FileName>FontUGO2.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\Font8.h</FilePath>
+              <FilePath>..\common\Display\Font\FontUGO2.h</FilePath>
             </File>
             <File>
-              <FileName>fontUGO.inc</FileName>
+              <FileName>FontUGO.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\fontUGO.inc</FilePath>
+              <FilePath>..\common\Display\Font\FontUGO.h</FilePath>
             </File>
             <File>
-              <FileName>fontUGO2.inc</FileName>
+              <FileName>FontSmall.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Display\Font\fontUGO2.inc</FilePath>
+              <FilePath>..\common\Display\Font\FontSmall.h</FilePath>
+            </File>
+            <File>
+              <FileName>FontNormal.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Font\FontNormal.h</FilePath>
             </File>
           </Files>
         </Group>
