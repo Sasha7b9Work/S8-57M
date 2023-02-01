@@ -32,7 +32,7 @@ namespace PageMemory
 
     static void Draw_Next(int x, int y)
     {
-        SymbolUGO(SymbolUGO::ARROW_RIGHT).Draw(x + 2, y + 2);
+        SymbolUGO(SymbolUGO::ARROW_RIGHT).Draw(x + 2, y);
     }
 }
 
@@ -54,7 +54,7 @@ namespace PageMemory
 
     static void Draw_Prev(int x, int y)
     {
-        SymbolUGO(SymbolUGO::ARROW_LEFT).Draw(x + 2, y + 2);
+        SymbolUGO(SymbolUGO::ARROW_LEFT).Draw(x + 2, y);
     }
 }
 
@@ -83,7 +83,7 @@ namespace PageMemory
 
     static void Draw_Delete(int x, int y)
     {
-        SymbolUGO(SymbolUGO::DELETE).Draw(x + 2, y + 1);
+        SymbolUGO(SymbolUGO::DELETE).Draw(x + 2, y - 1);
     }
 }
 
@@ -115,7 +115,7 @@ static void OnPress_Save()
 
 static void Draw_SaveToMemory(int x, int y)
 {
-    SymbolUGO(SymbolUGO::SAVE_TO_MEM).Draw(x + 2, y + 1);
+    SymbolUGO(SymbolUGO::SAVE_TO_MEM).Draw(x + 2, y);
 }
 
 DEF_GRAPH_BUTTON                                                                                                                             //--- œ¿Ãﬂ“‹ - ¬Õ”“– «” - —Óı‡ÌËÚ¸ ‚ Ô‡ÏˇÚË ---
@@ -134,17 +134,17 @@ static void OnPress_TypeSignal()
 
 static void Draw_Recorded(int x, int y)
 {
-    Text("«¿œ").Draw(x + 1, y + 5);
+    Text("«¿œ").Draw(x + 1, y + 7);
 }
 
 static void Draw_Current(int x, int y)
 {
-    Text("“≈ ").Draw(x + 1, y + 5);
+    Text("“≈ ").Draw(x + 1, y + 7);
 }
 
 static void Draw_Both(int x, int y)
 {
-    Text("Œ¡¿").Draw(x + 1, y + 5);
+    Text("Œ¡¿").Draw(x + 1, y + 7);
 }
 
 static void Draw_TypeSignal(int x, int y)
