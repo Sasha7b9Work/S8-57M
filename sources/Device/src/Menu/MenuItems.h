@@ -126,7 +126,7 @@ public:
     static bool Active() { return true; }
 
     // Возвращает цвет фона заголовка итема
-    Color ColorTitleBackground() const { return IsPressed() ? Color::FILL : Color::BACK; };
+    Color ColorTitleBackground() const { return IsPressed() ? Color::FILL : Color::TITLE_BACKGROUND; };
 
     // Возвращает цвет, которым нужно рисовать на заголовке итема
     Color ColorTitleText() const

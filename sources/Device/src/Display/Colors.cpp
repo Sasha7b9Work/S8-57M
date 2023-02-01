@@ -32,7 +32,8 @@ uint Color::raw[256] =
     MAKE_COLOR(0xc0, 0xc0, 0xc0),   // GRAY_75
     MAKE_COLOR(0xc0, 0xc0, 0xc0),   // SEPARATOR
     MAKE_COLOR(0xff, 0xff, 0x00),   // YELLOW
-    MAKE_COLOR(0x00, 0x7f, 0x00)    // BATTERY
+    MAKE_COLOR(0x00, 0x7f, 0x00),   // BATTERY
+    MAKE_COLOR(0x18, 0x30, 0x18)    // TITLE_BACKGROUND
 };
 
 
@@ -53,6 +54,8 @@ Color Color::GRAY_75(_GRAY_75);
 Color Color::SEPARATOR(_SEPARATOR);
 Color Color::YELLOW(_YELLOW);
 Color Color::BATTERY(_BATTERY);
+Color Color::TITLE_BACKGROUND(_TITLE_BACKGROUND);
+
 Color Color::Count(_NUMBER);
 Color Color::FLASH_10(_FLASH_10);
 Color Color::FLASH_01(_FLASH_01);

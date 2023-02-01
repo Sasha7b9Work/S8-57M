@@ -287,10 +287,10 @@ void GraphButton::Draw(bool) const
 {
     Item::Draw(false);
 
-    int x = X() + 2;
-    int y = Y() + 3;
+    int x = X() + 1;
+    int y = Y() + 1;
 
-    Region(Width() - 5, Height() - 4).Fill(x, y, ColorTitleBackground());
+    Region(Width() - 4, Height() - 1).Fill(x, y, ColorTitleBackground());
 
     ColorTitleText().SetAsCurrent();
 

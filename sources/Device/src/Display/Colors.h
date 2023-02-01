@@ -31,8 +31,7 @@ public:
     static Color SEPARATOR;
     static Color YELLOW;
     static Color BATTERY;
-    static Color BATTERY_EMPTY;     // Этот цвет используется для отрисовки пустого поля при отрисовке заряда батареи
-
+    static Color TITLE_BACKGROUND;
 
     static Color Count;
 
@@ -96,6 +95,7 @@ private:
         _SEPARATOR,
         _YELLOW,
         _BATTERY,
+        _TITLE_BACKGROUND,
 
         _NUMBER = 64,
 
