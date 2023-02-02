@@ -110,7 +110,12 @@ DEF_CHOICE_2( cViewMode,                                                        
 )
 
 
-DEF_PAGE_7( pDisplay,                                                                                                                                                       //--- ДИСПЛЕЙ ---
+DEF_EMPTY_ITEM(d8, &PageDisplay::self)
+DEF_EMPTY_ITEM(d9, &PageDisplay::self)
+DEF_EMPTY_ITEM(d10, &PageDisplay::self)
+
+
+DEF_PAGE_10( pDisplay,                                                                                                                                                       //--- ДИСПЛЕЙ ---
     "ДИСПЛЕЙ",
     "Содержит настройки отображения дисплея.",
     &cViewMode,
@@ -120,6 +125,9 @@ DEF_PAGE_7( pDisplay,                                                           
     &cType,
     &cRefreshFPS,
     PageDisplay::Settings::self,
+    &d8,
+    &d9,
+    &d10,
     PageName::Display, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
