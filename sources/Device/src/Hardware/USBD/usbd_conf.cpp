@@ -200,7 +200,7 @@ void HAL_PCD_MspDeInit(PCD_HandleTypeDef * hpcd)
   */
 void HAL_PCD_SetupStageCallback(PCD_HandleTypeDef * hpcd)
 {
-  USBD_LL_SetupStage(hpcd->pData, (uint8_t *) hpcd->Setup);
+  USBD_LL_SetupStage((USBD_HandleTypeDef *)hpcd->pData, (uint8_t *) hpcd->Setup);
 }
 
 /**
@@ -211,7 +211,7 @@ void HAL_PCD_SetupStageCallback(PCD_HandleTypeDef * hpcd)
   */
 void HAL_PCD_DataOutStageCallback(PCD_HandleTypeDef * hpcd, uint8_t epnum)
 {
-  USBD_LL_DataOutStage(hpcd->pData, epnum, hpcd->OUT_ep[epnum].xfer_buff);
+  USBD_LL_DataOutStage((USBD_HandleTypeDef *)hpcd->pData, epnum, hpcd->OUT_ep[epnum].xfer_buff);
 }
 
 /**
@@ -222,7 +222,7 @@ void HAL_PCD_DataOutStageCallback(PCD_HandleTypeDef * hpcd, uint8_t epnum)
   */
 void HAL_PCD_DataInStageCallback(PCD_HandleTypeDef * hpcd, uint8_t epnum)
 {
-  USBD_LL_DataInStage(hpcd->pData, epnum, hpcd->IN_ep[epnum].xfer_buff);
+  USBD_LL_DataInStage((USBD_HandleTypeDef *)hpcd->pData, epnum, hpcd->IN_ep[epnum].xfer_buff);
 }
 
 /**
@@ -232,7 +232,7 @@ void HAL_PCD_DataInStageCallback(PCD_HandleTypeDef * hpcd, uint8_t epnum)
   */
 void HAL_PCD_SOFCallback(PCD_HandleTypeDef * hpcd)
 {
-  USBD_LL_SOF(hpcd->pData);
+  USBD_LL_SOF((USBD_HandleTypeDef *)hpcd->pData);
 }
 
 /**
@@ -259,10 +259,10 @@ void HAL_PCD_ResetCallback(PCD_HandleTypeDef * hpcd)
     speed = USBD_SPEED_FULL;
     break;
   }
-  USBD_LL_SetSpeed(hpcd->pData, speed);
+  USBD_LL_SetSpeed((USBD_HandleTypeDef *)hpcd->pData, speed);
 
   /* Reset Device */
-  USBD_LL_Reset(hpcd->pData);
+  USBD_LL_Reset((USBD_HandleTypeDef *)hpcd->pData);
 }
 
 /**
@@ -272,7 +272,7 @@ void HAL_PCD_ResetCallback(PCD_HandleTypeDef * hpcd)
   */
 void HAL_PCD_SuspendCallback(PCD_HandleTypeDef * hpcd)
 {
-  USBD_LL_Suspend(hpcd->pData);
+  USBD_LL_Suspend((USBD_HandleTypeDef *)hpcd->pData);
 }
 
 /**
