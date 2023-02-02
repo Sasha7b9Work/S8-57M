@@ -152,18 +152,6 @@ static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose
 static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
 static const Page name(&di##name);
 
-#define DEF_PAGE_5_VAR(name, title, hint,  item1, item2, item3, item4, item5, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcArrows)                                         \
-static const Item *i##name[] = { (Item *)item1, (Item *)item2, (Item *)item3, (Item *)item4, (Item *)item5, nullptr };                                                                      \
-static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \
-static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
-static const Page name(&di##name);
-
-#define DEF_PAGE_8_VAR(name, title, hint, item1, item2, item3, item4, item5, item6, item7, item8, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcArrows)                     \
-static const Item * i##name[] = { (Item *)item1, (Item *)item2, (Item *)item3, (Item *)item4, (Item *)item5, (Item *)item6, (Item *)item7, (Item *)item8, nullptr };                        \
-static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \
-static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
-static const Page name(&di##name);
-
 #define DEF_PAGE_9(name, title, hint, item1, item2, item3, item4, item5, item6, item7, item8, item9, namePage, keeper, funcActive, normalTitle, funcOpenClose, funcArrows)                  \
 static const Item * const  i##name[] = { (Item *)item1, (Item *)item2, (Item *)item3, (Item *)item4, (Item *)item5, (Item *)item6, (Item *)item7, (Item *)item8, (Item *)item9, nullptr };  \
 static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \

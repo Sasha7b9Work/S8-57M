@@ -95,7 +95,7 @@ DEF_CHOICE_6( cNumPeriods,                                                      
 )
 
 
-DEF_PAGE_5_VAR( pFreqMeter,                                                                                                                                    //--- тсмйжхъ - вюярнрнлеп ---
+DEF_PAGE_5( pFreqMeter,                                                                                                                                    //--- тсмйжхъ - вюярнрнлеп ---
     "вюярнрнлеп",
     "",
     &cEnable,
