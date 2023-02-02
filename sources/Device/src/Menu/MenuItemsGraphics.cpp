@@ -287,7 +287,7 @@ void EmptyItem::Draw(bool) const
 {
     Item::Draw(false);
 
-    Region(Width() - 4, Height() - 1).Fill(X() + 1, Y() + 1, ColorTitleBackground());
+    Region(Width() - 4, Height() - 1).Fill(X() + 1, Y() + 1, Color::BACK);
 }
 
 

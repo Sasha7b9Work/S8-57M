@@ -92,7 +92,7 @@ struct PageName
 
 
 #define DEF_EMPTY_ITEM(name, keeper)                                                                                                                                                        \
-static const DataItem di##name = { TypeItem::Empty, "", "", keeper, nullptr, nullptr };                                                                                                     \
+static const DataItem di##name = { TypeItem::Empty, "", "", keeper, Item::Active, nullptr };                                                                                                     \
 static const EmptyItem name(&di##name);
 
 
