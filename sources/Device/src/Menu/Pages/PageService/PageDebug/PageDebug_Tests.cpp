@@ -20,10 +20,20 @@ DEF_BUTTON( bRun,                                                               
 )
 
 
-DEF_PAGE_1( pTests,                                                                                                                                                 //--- ОТЛАДКА - ТЕСТЫ ---
+DEF_EMPTY_ITEM(e2, &PageDebug::PageTests::self)
+DEF_EMPTY_ITEM(e3, &PageDebug::PageTests::self)
+DEF_EMPTY_ITEM(e4, &PageDebug::PageTests::self)
+DEF_EMPTY_ITEM(e5, &PageDebug::PageTests::self)
+
+
+DEF_PAGE_5(pTests,                                                                                                                                                 //--- ОТЛАДКА - ТЕСТЫ ---
     "ТЕСТЫ",
     "Выполнение тестов",
     &bRun,
+    &e2,
+    &e3,
+    &e4,
+    &e5,
     PageName::Debug_Tests,
     &PageDebug::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )

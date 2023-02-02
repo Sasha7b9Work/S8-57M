@@ -62,10 +62,21 @@ static void OnOpenClose_Page(bool enter)
     }
 }
 
-DEF_PAGE_1 ( pInfo,
+
+DEF_EMPTY_ITEM(e23, &PageService::Information::self)
+DEF_EMPTY_ITEM(e33, &PageService::Information::self)
+DEF_EMPTY_ITEM(e43, &PageService::Information::self)
+DEF_EMPTY_ITEM(e53, &PageService::Information::self)
+
+
+DEF_PAGE_5(pInfo,
     "ИНФОРМАЦИЯ",
     "Информация об изделии",
     &bClose,
+    &e23,
+    &e33,
+    &e43,
+    &e53,
     PageName::Service_Info, &PageService::self, Item::Active, Page::NormalTitle, OnOpenClose_Page, Page::HandlerKeyEvent
 )
 
