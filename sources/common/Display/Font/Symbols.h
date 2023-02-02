@@ -15,7 +15,6 @@ struct SymbolUGO2
         TAB             = (uint8)'\x6e',
         FLASH_DRIVE     = (uint8)'\x80',   // Символ флешки внизу экрана
         ETHERNET        = (uint8)'\x82',   // Символ Ethernet внизу экрана
-        USB             = (uint8)'\x84',   // Символ USB внизу экрана
         MATH_FUNC_MUL   = (uint8)'\x8a'    // МАТЕМАТИКА-ФУНКЦИЯ-УМНОЖЕНИЕ
     };
 };
@@ -94,6 +93,7 @@ public:
         TRIANGLE_RIGHT,     // Стрелка треугольником вправо
         SELECT,             // Символ выбора
         ARROW_RIGHT,
+        USB,
         Count
     };
 

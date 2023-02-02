@@ -9,7 +9,7 @@ namespace Battery
 
     void Init();
 
-    void Draw(int x, int y);
+    void Draw(int x, int y, int width);
 
     // Возвращает значение напряжения батареи
     float GetVoltage();

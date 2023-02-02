@@ -104,26 +104,29 @@ void DisplayOsci::BottomPart::Draw(int x0, int y0, int field)
 
     Font::Set(TypeFont::UGO);
 
-    // Флешка
-    if (FDrive::IsConnected())
-    {
-    }
+    Color::FILL.SetAsCurrent();
 
     if (VCP::connectedToUSB || VCP::cableUSBisConnected)
     {
-        Char(SymbolUGO2::USB, TypeFont::UGO, 4).Draw(x0 + 72, y0 + 2, VCP::connectedToUSB ? Color::WHITE : Color::FLASH_01);
-    }
+        SymbolUGO(SymbolUGO::USB).Draw(x0 + 65, y0 + 2, VCP::connectedToUSB ? Color::WHITE : Color::FLASH_01);
 
-    Color::FILL.SetAsCurrent();
+        Battery::Draw(x0 + 5, y0 + 24, 50);
+    }
+    else
+    {
+        Battery::Draw(x0 + 5, y0 + 24, 85);
+    }
 
     // Пиковый детектор
     if (PeakDetMode().IsEnabled())
     {
-        Char('\x12').Draw(x0 + 38, y0 + 11);
-        Char('\x13').Draw(x0 + 46, y0 + 11);
+        // SymbolUGO(SymbolUGO::PEAK_DET_LEFT).Draw(x0 + 38, y0 + 11);
     }
 
-    Battery::Draw(x0 + 5, y0 + 20);
+    // Флешка
+    if (FDrive::IsConnected())
+    {
+    }
 }
 
 

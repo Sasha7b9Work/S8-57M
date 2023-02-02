@@ -9,34 +9,38 @@
 #include "Utils/Averager.h"
 
 
-static const float MAX_ADC_REL = (float)((1 << 12) - 1);     // Максимальное значение, которое возможно считать с АЦП
-static const float MAX_ADC_ABS = 3.0F;                                  // Напряжение, соответствующее MAX_ADC_REL
-const float Battery::SHUTDOWN_VOLTAGE = 5.4F;
+namespace Battery
+{
+    static const float MAX_ADC_REL = (float)((1 << 12) - 1);     // Максимальное значение, которое возможно считать с АЦП
+    static const float MAX_ADC_ABS = 3.0F;                                  // Напряжение, соответствующее MAX_ADC_REL
+    const float Battery::SHUTDOWN_VOLTAGE = 5.4F;
 
-static bool isBusy = false;
+    static bool isBusy = false;
 
-static Utils::AroundAverager<float> averager(32);
+    static Utils::AroundAverager<float> averager(32);
 
-// Возвращает true, если зарядное устройство подключено
-static bool ChargerIsConnected();
+    // Возвращает true, если зарядное устройство подключено
+    static bool ChargerIsConnected();
 
-// Перевод считанного значения ЦАП источника в вольты
-static float ChargerADC_ToVoltage(uint value);
+    // Перевод считанного значения ЦАП источника в вольты
+    static float ChargerADC_ToVoltage(uint value);
 
-// Перевод считанного значения ЦАП батареи в вольты
-static float BatteryADC_ToVoltage(float value);
+    // Перевод считанного значения ЦАП батареи в вольты
+    static float ADC_ToVoltage(float value);
 
-// Рассчитать процент отставшегося заряда
-static float CalculatePercents(float volts);
+    // Рассчитать процент отставшегося заряда
+    static float CalculatePercents(float volts);
 
-// Отобразить заряд батареи в графическом виде
-static void DrawUGO(int x, int y, float procents);
+    // Отобразить заряд батареи в графическом виде
+    static void DrawUGO(int x, int y, float procents, int width);
 
-static void DrawFilled(int x, int y, int full, float percents);
+    static void DrawFilled(int x, int y, int full, float percents);
 
-// Значения, соответствующие 100% и 0%, для текущих напряжения аккумуляторов akk и источника заряда pow
-static float Voltage100();
-static float Voltage0();
+    // Значения, соответствующие 100% и 0%, для текущих напряжения аккумуляторов akk и источника заряда pow
+    static float Voltage100();
+    static float Voltage0();
+}
+
 
 void Battery::Init()
 {
@@ -60,17 +64,17 @@ float Battery::GetVoltage()
 
     isBusy = false;
 
-    return BatteryADC_ToVoltage((float)averager.Value());
+    return ADC_ToVoltage((float)averager.Value());
 }
 
 
 float Battery::GetVoltageAverage()
 {
-    return BatteryADC_ToVoltage((float)averager.Value());
+    return ADC_ToVoltage((float)averager.Value());
 }
 
 
-static float CalculatePercents(float volts)
+float Battery::CalculatePercents(float volts)
 {
     if (volts >= Voltage100())
     {
@@ -87,12 +91,12 @@ static float CalculatePercents(float volts)
 }
 
 
-static void DrawUGO(int x, int y, float percents)
+void Battery::DrawUGO(int x, int y, float percents, int width)
 {
-    int widthFull = 43 * 2;
-    int widthSmall = 6 * 2;
+    int widthFull = width;
+    int widthSmall = width / 7;
 
-    int dY = 5 * 2;
+    int dY = 9 * 2;
 
     Rectangle(widthFull - widthSmall, 8 + dY).Draw(x + widthSmall + 1, y - dY, percents <= 25.0F ? Color::RED : Color::BATTERY);
     Rectangle(widthSmall, 4 + dY).Draw(x + 1, y + 2 - dY);
@@ -101,37 +105,21 @@ static void DrawUGO(int x, int y, float percents)
 }
 
 
-static void DrawFilled(int x, int y, int full, float percents)
+void Battery::DrawFilled(int x, int y, int full, float percents)
 {
     int filled = (int)(full * percents / 100.0F + 0.5F);
-
-    //if (ChargerIsConnected() && percents < 100.0F)
-    //{
-    //    int onePart = 1000 / full;
-    //
-    //    int time = (int)(TIME_MS % 1000);
-    //
-    //    int area = time / onePart;
-    //
-    //    Region(area, 9).Fill(x + full - area, y, Color::BATTERY_EMPTY);
-    //
-    //    if (filled > area)
-    //    {
-    //        filled = area;
-    //    }
-    //}
 
     Region(filled, 17).Fill(x + full - filled, y - 6, percents <= 25.0F ? Color::RED : Color::BATTERY);
 }
 
 
-void Battery::Draw(int x, int y)
+void Battery::Draw(int x, int y, int width)
 {
     float akk = GetVoltage();
 
     float percents = CalculatePercents(akk);
 
-    DrawUGO(x, y, percents);
+    DrawUGO(x, y, percents, width);
 
     if(S_DBG_SHOW_BATTERY)
     {
@@ -143,7 +131,7 @@ void Battery::Draw(int x, int y)
 }
 
 
-static float ChargerADC_ToVoltage(uint value)
+float Battery::ChargerADC_ToVoltage(uint value)
 {
     float result = (value / MAX_ADC_REL) * MAX_ADC_ABS;
 
@@ -153,7 +141,7 @@ static float ChargerADC_ToVoltage(uint value)
 }
 
 
-static float BatteryADC_ToVoltage(float value)
+float Battery::ADC_ToVoltage(float value)
 {
     float result = (value / MAX_ADC_REL) * MAX_ADC_ABS;
 
@@ -163,19 +151,19 @@ static float BatteryADC_ToVoltage(float value)
 }
 
 
-static float Voltage100()
+float Battery::Voltage100()
 {
     return ChargerIsConnected() ? 8.301F : 8.3F;
 }
 
 
-static float Voltage0()
+float Battery::Voltage0()
 {
     return ChargerIsConnected() ? Battery::SHUTDOWN_VOLTAGE : Battery::SHUTDOWN_VOLTAGE; //-V583
 }
 
 
-static bool ChargerIsConnected()
+bool Battery::ChargerIsConnected()
 {
     uint pow = HAL_ADC1::ValueCharger();
 

@@ -55,7 +55,8 @@ const SymbolUGO::SymbolStruct SymbolUGO::desc[SymbolUGO::Count] =
     {160, 4},   // TRIANGLE_LEFT
     {164, 4},   // TRIANGLE_RIGHT
     {168, 4},   // SELECT
-    {172, 4}    // ARROW_RIGHT
+    {172, 4},   // ARROW_RIGHT
+    {176, 4}    // USB
 };
 
 
