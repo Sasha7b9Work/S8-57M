@@ -65,13 +65,18 @@ DEF_GRAPH_BUTTON( bHelpNext,                                                    
     &PageHelp::self, Item::Active, HelpContent::NextParagraph, Help_Draw_Next
 )
 
-DEF_PAGE_4( pHelp,                                                                                                                                                           //--- ѕќћќў№ ---
+
+DEF_EMPTY_ITEM(e5, &PageHelp::self)
+
+
+DEF_PAGE_5( pHelp,                                                                                                                                                           //--- ѕќћќў№ ---
     "ѕќћќў№",
     "ќткрыть разделы помощи",
     &bEnter,
     &bHelpLeave,
     &bPrev,
     &bHelpNext,
+    &e5,
     PageName::Help, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, HandlerKey_Help
 )
 

@@ -392,13 +392,18 @@ DEF_PAGE_5( pMask,                                                              
 const Page * const PageDrive::Mask::self = (const Page *)&pMask;
 
 
-DEF_PAGE_4( pMemory,                                                                                                                                                         //--- ѕяћя“№ ---
+DEF_EMPTY_ITEM(c, &PageMemory::self)
+
+
+DEF_PAGE_5( pMemory,                                                                                                                                                         //--- ѕяћя“№ ---
     "ѕјћя“№",
     "–абота с внешней и внутренней пам€тью.",
     &cPoints,
     PageRAM::self,
     PageROM::self,
-    PageDrive::self,  PageName::Memory, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
+    PageDrive::self,
+    &c,
+    PageName::Memory, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageMemory::self = (const Page *)&pMemory;
@@ -589,13 +594,18 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
     Beeper::RegulatorSwitchRotate();
 }
 
-DEF_PAGE_4( pSetName,                                                                                                             //--- —траница вызываетс€ дл€ ввода имени файла ---
+
+DEF_EMPTY_ITEM(d, &PageDrive::SetName::self)
+
+
+DEF_PAGE_5( pSetName,                                                                                                             //--- —траница вызываетс€ дл€ ввода имени файла ---
     "",
     "",
     &bSetName_Delete,
     &bSetName_Backspace,
     &bSetName_Insert,
     &bSetName_Save,
+    &d,
     PageName::Memory_SetName, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, HandlerKey_SetName
 )
 

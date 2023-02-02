@@ -59,13 +59,17 @@ DEF_GOVERNOR_COLOR( gcGrid,                                                     
 )
 
 
-DEF_PAGE_4( pColors,                                                                                                                                    //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА ---
+DEF_EMPTY_ITEM(a, &PageDisplay::Settings::Colors::self)
+
+
+DEF_PAGE_5( pColors,                                                                                                                                    //--- ДИСПЛЕЙ - НАСТРОЙКИ - ЦВЕТА ---
     "ЦВЕТА",
     "Выбор цветов дисплея",
     &bReset,
     &gcChannelA,
     &gcChannelB,
     &gcGrid,
+    &a,
     PageName::Display_Settings_Colors, &PageDisplay::Settings::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 

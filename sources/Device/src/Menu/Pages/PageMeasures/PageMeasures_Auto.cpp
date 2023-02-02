@@ -55,13 +55,17 @@ DEF_CHOICE_3( cChannels,                                                        
 )
 
 
-DEF_PAGE_4( pAuto,                                                                                                                                                 //--- ИЗМЕРЕНИЯ - АВТО ---
+DEF_EMPTY_ITEM(e511, &PageAutoMeasures::self)
+
+
+DEF_PAGE_5( pAuto,                                                                                                                                                 //--- ИЗМЕРЕНИЯ - АВТО ---
     "АВТОМАТ",
     "Доступ к настройкам автоматических измерений",
     &cIsShow,
     &cNumber,
     &cChannels,
     PageAutoMeasures::Tune::self,
+    &e511,
     PageName::AutoMeasures, &PageMeasures::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 

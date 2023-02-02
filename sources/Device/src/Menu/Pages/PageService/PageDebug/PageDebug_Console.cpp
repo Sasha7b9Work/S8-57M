@@ -176,13 +176,17 @@ DEF_CHOICE_2( cShowPredPost,
 )
 
 
-DEF_PAGE_4( pConsole,                                                                                                                                             //--- ОТЛАДКА - КОНСОЛЬ ---
+DEF_EMPTY_ITEM(b, &PageDebug::PageConsole::self)
+
+
+DEF_PAGE_5( pConsole,                                                                                                                                             //--- ОТЛАДКА - КОНСОЛЬ ---
     "КОНСОЛЬ",
     "Управляет отображением и параметрами отладочной консоли",
     &cShow,
     &gNumStrings,
     &cShowGate,
     &cShowPredPost,
+    &b,
     PageName::Debug_Console, &PageDebug::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
