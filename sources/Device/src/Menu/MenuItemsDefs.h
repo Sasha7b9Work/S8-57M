@@ -159,10 +159,10 @@ static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose
 static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
 static const Page name(&di##name);
 
-#define DEF_PAGE_12(name, title, hint, item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12, namePage, keeper, funcActive, normalTitle, funcOpenClose,     \
-    funcArrows)                                                                                                                                                                             \
+#define DEF_PAGE_15(name, title, hint, item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12, item13, item14, item15,                                       \
+    namePage, keeper, funcActive, normalTitle, funcOpenClose, funcArrows)                                                                                                                   \
 static const Item * const  i##name[] = { (Item *)item1, (Item *)item2, (Item *)item3, (Item *)item4, (Item *)item5,                                                                         \
-    (Item *)item6, (Item *)item7, (Item *)item8, (Item *)item9, (Item *)item10, (Item *)item11, (Item *)item12, nullptr };                                                                  \
+    (Item *)item6, (Item *)item7, (Item *)item8, (Item *)item9, (Item *)item10, (Item *)item11, (Item *)item12, (Item *)item13, (Item *)item14, (Item *)item15, nullptr };                  \
 static const DataPage dp##name = { namePage, i##name, normalTitle, funcOpenClose, funcArrows };                                                                                             \
 static const DataItem di##name = { TypeItem::Page, title, hint, keeper, funcActive, &dp##name };                                                                                            \
 static const Page name(&di##name);

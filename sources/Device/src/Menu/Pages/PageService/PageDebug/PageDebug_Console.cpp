@@ -138,7 +138,12 @@ DEF_CHOICE_2( cTShift,                                                          
 )
 
 
-DEF_PAGE_12( pRegisters,                                                                                                                               //--- Œ“À¿ƒ ¿ -  ŒÕ—ŒÀ‹ - –≈√»—“–€ ---
+DEF_EMPTY_ITEM(e13, &PageDebug::PageRegisters::self)
+DEF_EMPTY_ITEM(e14, &PageDebug::PageRegisters::self)
+DEF_EMPTY_ITEM(e15, &PageDebug::PageRegisters::self)
+
+
+DEF_PAGE_15( pRegisters,                                                                                                                               //--- Œ“À¿ƒ ¿ -  ŒÕ—ŒÀ‹ - –≈√»—“–€ ---
     "–≈√»—“–€",
     "",
     &cShowAll,
@@ -153,6 +158,9 @@ DEF_PAGE_12( pRegisters,                                                        
     &cChanParamB,
     &cTBase,
     &cTShift,
+    &e13,
+    &e14,
+    &e15,
     PageName::Debug_Console_Registers, &PageDebug::PageConsole::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 

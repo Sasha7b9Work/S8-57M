@@ -52,6 +52,7 @@ DEF_GOVERNOR( gTimeDisableDisplay,
 )
 
 
+DEF_EMPTY_ITEM(f8, &PageService::self)
 DEF_EMPTY_ITEM(f9, &PageService::self)
 DEF_EMPTY_ITEM(f10, &PageService::self)
 
@@ -66,7 +67,7 @@ DEF_PAGE_10( pService,                                                          
     PageRTC::self,
     &gTimeDisableDisplay,
     PageService::Information::self,
-    &Item::empty,
+    &f8,
     &f9,
     &f10,
     PageName::Service, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
