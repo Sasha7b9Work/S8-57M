@@ -47,10 +47,20 @@ DEF_CHOICE_2(cAutoconnect,                                                      
 )
 
 
-DEF_PAGE_1(pDrive,   //-V1027                                                                                                                                     //--- ÏÀÌ‗ÒÜ - ÂÍÅØÍ ÇÓ ---
+DEF_EMPTY_ITEM(e2, &PageDrive::self)
+DEF_EMPTY_ITEM(e3, &PageDrive::self)
+DEF_EMPTY_ITEM(e4, &PageDrive::self)
+DEF_EMPTY_ITEM(e5, &PageDrive::self)
+
+
+DEF_PAGE_5(pDrive,   //-V1027                                                                                                                                     //--- ÏÀÌ‗ÒÜ - ÂÍÅØÍ ÇÓ ---
     "ÂÍÅØÍ ÇÓ",
     "Ðאבמעא ס גםורםטל חאןמלטםא‏שטל ףסענמיסעגמל.",
     &cModeBtnMemory,
+    &e2,
+    &e3,
+    &e4,
+    &e5,
     //PageDrive::Manager::self,
     //&cName,
     //PageDrive::Mask::self,

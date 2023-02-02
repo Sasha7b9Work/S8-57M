@@ -283,6 +283,14 @@ void Button::Draw(bool) const
 }
 
 
+void EmptyItem::Draw(bool) const
+{
+    Item::Draw(false);
+
+    Region(Width() - 4, Height() - 1).Fill(X() + 1, Y() + 1, ColorTitleBackground());
+}
+
+
 void GraphButton::Draw(bool) const
 {
     Item::Draw(false);

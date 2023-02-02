@@ -91,6 +91,10 @@ struct PageName
 };
 
 
+#define DEF_EMPTY_ITEM(name, keeper)                                                                                                                                                        \
+static const DataItem di##name = { TypeItem::Empty, "", "", keeper, nullptr, nullptr };                                                                                                     \
+static const EmptyItem name(&di##name);
+
 
 #define DEF_BUTTON(name, title, hint, keeper, funcActive, handlerPress)                                                                                                                     \
 static const DataButton db##name = { handlerPress };                                                                                                                                        \

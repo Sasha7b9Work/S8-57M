@@ -38,6 +38,7 @@ struct TypeItem
         Governor,       // Регулятор - позволяет выбрать любое целое числовое значение из заранее заданного диапазаона. Диапазон не может превышать [ -(1 << 16) / 2 , (1 << 16) / 2]
         GovernorColor,  // Позволяет выбрать цвет.
         GraphButton,    // Кнопка для режима малых кнопок
+        Empty,
         Count
     } value;
 
@@ -234,7 +235,7 @@ public:
 };
 
 
-// Button ///
+// Button //
 struct DataButton
 {
     pFuncVV     handlerPress;   // Функция, которая вызывается при нажатии на кнопку.
@@ -252,7 +253,18 @@ public:
     const DataButton *OwnData() const { return (const DataButton *)data->ad; } //-V2571
 };
 
-/////// GraphButton ///
+
+// Empty Item //
+class EmptyItem : public Item
+{
+public:
+    EmptyItem(const DataItem *const data) : Item(data) {};
+
+    virtual void Draw(bool opened) const;
+};
+
+
+// GraphButton //
 struct StructHelpDrawButton
 {
     pFuncDrawUGO    funcDrawUGO;    // Указатель на функцию отрисовки изображения варианта кнопки
