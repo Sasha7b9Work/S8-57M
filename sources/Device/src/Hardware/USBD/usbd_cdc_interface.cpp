@@ -30,12 +30,10 @@ uint32_t UserTxBufPtrIn = 0;    /* Increment this pointer or roll it back to
 uint32_t UserTxBufPtrOut = 0;   /* Increment this pointer or roll it back to
                                  * start address when data are sent over USB */
 
-/* UART handler declaration */
+
 UART_HandleTypeDef UartHandle;
-/* TIM handler declaration */
+
 TIM_HandleTypeDef TimHandle;
-/* USB handler declaration */
-extern USBD_HandleTypeDef USBD_Device;
 
 /* Private function prototypes ----------------------------------------------- */
 static int8_t CDC_Itf_Init(void);
@@ -45,7 +43,7 @@ static int8_t CDC_Itf_Receive(uint8_t* pbuf, uint32_t *Len);
 static int8_t CDC_Itf_TransmitCplt(uint8_t *pbuf, uint32_t *Len, uint8_t epnum);
 static void Error_Handler(void);
 static void ComPort_Config(void);
-static void TIM_Config(void);
+
 
 USBD_CDC_ItfTypeDef USBD_CDC_fops = {
   CDC_Itf_Init,
@@ -184,10 +182,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)
 
     buffptr = UserTxBufPtrOut;
 
-    USBD_CDC_SetTxBuffer(&USBD_Device, (uint8_t *) & UserTxBuffer[buffptr],
-                         buffsize);
+    USBD_CDC_SetTxBuffer((USBD_HandleTypeDef *)VCP::handleUSBD, (uint8_t *) & UserTxBuffer[buffptr], buffsize);
 
-    if (USBD_CDC_TransmitPacket(&USBD_Device) == USBD_OK)
+    if (USBD_CDC_TransmitPacket((USBD_HandleTypeDef *)VCP::handleUSBD) == USBD_OK)
     {
       UserTxBufPtrOut += buffsize;
       if (UserTxBufPtrOut == APP_RX_DATA_SIZE)
@@ -198,26 +195,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef * htim)
   }
 }
 
-/**
-  * @brief  Rx Transfer completed callback
-  * @param  huart: UART handle
-  * @retval None
-  */
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef * huart)
-{
-  /* Increment Index for buffer writing */
-  UserTxBufPtrIn++;
-
-  /* To avoid buffer overflow */
-  if (UserTxBufPtrIn == APP_RX_DATA_SIZE)
-  {
-    UserTxBufPtrIn = 0;
-  }
-
-  /* Start another reception: provide the buffer pointer with offset and the
-   * buffer size */
-  HAL_UART_Receive_IT(huart, (uint8_t *) (UserTxBuffer + UserTxBufPtrIn), 1);
-}
 
 /**
   * @brief  CDC_Itf_DataRx
@@ -259,7 +236,7 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef * huart)
 {
   /* Initiate next USB packet transfer once UART completes transfer
    * (transmitting data over Tx line) */
-  USBD_CDC_ReceivePacket(&USBD_Device);
+    USBD_CDC_ReceivePacket((USBD_HandleTypeDef *)VCP::handleUSBD);
 }
 
 /**
@@ -346,30 +323,6 @@ static void ComPort_Config(void)
    * size */
   HAL_UART_Receive_IT(&UartHandle, (uint8_t *) (UserTxBuffer + UserTxBufPtrIn),
                       1);
-}
-
-/**
-  * @brief  TIM_Config: Configure TIMx timer
-  * @param  None.
-  * @retval None
-  */
-static void TIM_Config(void)
-{
-  /* Set TIMx instance */
-  TimHandle.Instance = TIMx;
-
-  /* Initialize TIM3 peripheral as follows: + Period = (CDC_POLLING_INTERVAL *
-   * 10000) - 1 + Prescaler = ((APB1 frequency / 1000000) - 1) + ClockDivision
-   * = 0 + Counter direction = Up */
-  TimHandle.Init.Period = (CDC_POLLING_INTERVAL * 1000) - 1;
-  TimHandle.Init.Prescaler = 84 - 1;
-  TimHandle.Init.ClockDivision = 0;
-  TimHandle.Init.CounterMode = TIM_COUNTERMODE_UP;
-  if (HAL_TIM_Base_Init(&TimHandle) != HAL_OK)
-  {
-    /* Initialization Error */
-    Error_Handler();
-  }
 }
 
 /**

@@ -34,6 +34,13 @@
 #define USBD_INTERFACE_FS_STRING      "VCP Interface"
 #define USBD_SERIALNUMBER_FS_STRING   "00000000001B"
 
+
+#ifdef WIN32
+    #undef __ALIGN_BEGIN
+    #define __ALIGN_BEGIN
+    #define __ALIGN_END
+#endif
+
 /* Private macro ------------------------------------------------------------- */
 /* Private function prototypes ----------------------------------------------- */
 uint8_t *USBD_VCP_DeviceDescriptor(USBD_SpeedTypeDef speed, uint16_t * length);

@@ -47,6 +47,7 @@
     #define __STATIC_INLINE inline
     #define __RBIT(x)   0
     #define __CLZ
+    #define __PACKED
 #endif
 
 /* Exported types ------------------------------------------------------------*/
