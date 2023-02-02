@@ -23,7 +23,7 @@
 /* Private define ------------------------------------------------------------ */
 /* Private macro ------------------------------------------------------------- */
 /* Private variables --------------------------------------------------------- */
-PCD_HandleTypeDef hpcd;
+//PCD_HandleTypeDef hpcd;
 
 /* Private function prototypes ----------------------------------------------- */
 /* Private functions --------------------------------------------------------- */
@@ -39,9 +39,9 @@ PCD_HandleTypeDef hpcd;
   * @param  hpcd: PCD handle
   * @retval None
   */
-void HAL_PCD_SetupStageCallback(PCD_HandleTypeDef * hpcd)
+void HAL_PCD_SetupStageCallback(PCD_HandleTypeDef * handle)
 {
-  USBD_LL_SetupStage((USBD_HandleTypeDef *)hpcd->pData, (uint8_t *) hpcd->Setup);
+  USBD_LL_SetupStage((USBD_HandleTypeDef *)handle->pData, (uint8_t *)handle->Setup);
 }
 
 /**
@@ -50,9 +50,9 @@ void HAL_PCD_SetupStageCallback(PCD_HandleTypeDef * hpcd)
   * @param  epnum: Endpoint Number
   * @retval None
   */
-void HAL_PCD_DataOutStageCallback(PCD_HandleTypeDef * hpcd, uint8_t epnum)
+void HAL_PCD_DataOutStageCallback(PCD_HandleTypeDef * handle, uint8_t epnum)
 {
-  USBD_LL_DataOutStage((USBD_HandleTypeDef *)hpcd->pData, epnum, hpcd->OUT_ep[epnum].xfer_buff);
+  USBD_LL_DataOutStage((USBD_HandleTypeDef *)handle->pData, epnum, handle->OUT_ep[epnum].xfer_buff);
 }
 
 /**
