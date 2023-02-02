@@ -258,7 +258,11 @@ DEF_PAGE_5( pSerialNumber,                                                      
 const Page * const PageDebug::PageSerialNumber::self = (const Page *)&pSerialNumber;
 
 
-DEF_PAGE_8( pDebug,                                                                                                                                                         //--- Œ“À¿ƒ ¿ ---
+DEF_EMPTY_ITEM(e9, &PageDebug::self)
+DEF_EMPTY_ITEM(e10, &PageDebug::self)
+
+
+DEF_PAGE_10( pDebug,                                                                                                                                                         //--- Œ“À¿ƒ ¿ ---
     "Œ“À¿ƒ ¿",
     "",
     PageDebug::PageConsole::self,
@@ -269,8 +273,9 @@ DEF_PAGE_8( pDebug,                                                             
     &bSaveFirmware,
     PageDebug::PageTests::self,
     &bSaveSettings,
-    PageName::Debug,
-    &PageService::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
+    &e9,
+    &e10,
+    PageName::Debug, &PageService::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
 const Page * const PageDebug::self = (const Page *)&pDebug;
