@@ -595,7 +595,7 @@ void OnMemExtSetMaskNameRegSet(int angle, int maxIndex)
 }
 
 
-DEF_EMPTY_ITEM(d, &PageDrive::SetName::self)
+DEF_EMPTY_ITEM(d5, &PageDrive::SetName::self)
 
 
 DEF_PAGE_5( pSetName,                                                                                                             //--- Страница вызывается для ввода имени файла ---
@@ -605,7 +605,7 @@ DEF_PAGE_5( pSetName,                                                           
     &bSetName_Backspace,
     &bSetName_Insert,
     &bSetName_Save,
-    &d,
+    &d5,
     PageName::Memory_SetName, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, HandlerKey_SetName
 )
 
