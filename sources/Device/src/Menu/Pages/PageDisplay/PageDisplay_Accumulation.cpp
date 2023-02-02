@@ -49,11 +49,20 @@ static bool IsActive_Accum()
     return !OSCI_IN_MODE_RANDOMIZER;
 }
 
-DEF_PAGE_2( pAccum,                                                                                                                           //--- ДИСПЛЕЙ - НАКОПЛЕНИЕ ---
+
+DEF_EMPTY_ITEM(e3, &PageDisplay::Accumulation::self)
+DEF_EMPTY_ITEM(e4, &PageDisplay::Accumulation::self)
+DEF_EMPTY_ITEM(e5, &PageDisplay::Accumulation::self)
+
+
+DEF_PAGE_5( pAccum,                                                                                                                           //--- ДИСПЛЕЙ - НАКОПЛЕНИЕ ---
     "НАКОПЛЕНИЕ",
     "Настройки режима отображения последних сигналов на экране",
     &cNumber,
     &bClear,
+    &e3,
+    &e4,
+    &e5,
     PageName::Display_Accumulation, &PageDisplay::self, IsActive_Accum, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 

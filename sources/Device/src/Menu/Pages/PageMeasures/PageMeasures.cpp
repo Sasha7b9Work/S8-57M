@@ -54,11 +54,19 @@ bool CursorsControl::IsEnabled2U()
 }
 
 
-DEF_PAGE_2( pMeasures,                                                                                                                                                    //--- ИЗМЕРЕНИЯ ---
+DEF_EMPTY_ITEM(e3, &PageMeasures::self)
+DEF_EMPTY_ITEM(e4, &PageMeasures::self)
+DEF_EMPTY_ITEM(e5, &PageMeasures::self)
+
+
+DEF_PAGE_5( pMeasures,                                                                                                                                                    //--- ИЗМЕРЕНИЯ ---
     "ИЗМЕРЕНИЯ",
     "Доступ к настройкам измерений - курсорных и автоматических",
     PageCursorsMeasures::self,
     PageAutoMeasures::self,
+    &e3,
+    &e4,
+    &e5,
     //PageMath::self,
     PageName::Measures, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )

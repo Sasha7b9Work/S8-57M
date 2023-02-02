@@ -90,11 +90,20 @@ static bool HandlerKey_RAM(const KeyEvent &)
     return false;
 }
 
-DEF_PAGE_2( pRAM,                                                                                                                                                //--- ПАМЯТЬ - ПОСЛЕДНИЕ ---
+
+DEF_EMPTY_ITEM(e35, &PageRAM::self)
+DEF_EMPTY_ITEM(e45, &PageRAM::self)
+DEF_EMPTY_ITEM(e55, &PageRAM::self)
+
+
+DEF_PAGE_5(pRAM,                                                                                                                                                //--- ПАМЯТЬ - ПОСЛЕДНИЕ ---
     "ПОСЛЕДНИЕ",
     "Переход в режим работы с последними полученными сигналами",
     &bPrev,
     &bNext,
+    &e35,
+    &e45,
+    &e55,
     PageName::Memory_Last,
     &PageMemory::self, Item::Active, Page::NormalTitle, OnOpenClose_RAM, HandlerKey_RAM
 )

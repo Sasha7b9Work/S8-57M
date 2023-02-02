@@ -237,11 +237,20 @@ static bool HandlerKey_SerialNumber(const KeyEvent &)
     return false;
 }
 
-DEF_PAGE_2( pSerialNumber,                                                                                                                                            //--- ОТЛАДКА - С/Н ---
+
+DEF_EMPTY_ITEM(e3, &PageDebug::PageSerialNumber::self)
+DEF_EMPTY_ITEM(e4, &PageDebug::PageSerialNumber::self)
+DEF_EMPTY_ITEM(e5, &PageDebug::PageSerialNumber::self)
+
+
+DEF_PAGE_5( pSerialNumber,                                                                                                                                            //--- ОТЛАДКА - С/Н ---
     "С/Н",
     "Запись серийного номера в OTP-память. ВНИМАНИЕ!!! ОТP-память - память с однократной записью.",
     &bSerialNumber_Change,
     &bSerialNumber_Save,
+    &e3,
+    &e4,
+    &e5,
     PageName::Debug_SerialNumber,
     &PageDebug::self, Item::Active, Page::NormalTitle, OnOpenClose_SerialNumber, HandlerKey_SerialNumber
 )

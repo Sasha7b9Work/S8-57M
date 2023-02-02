@@ -33,11 +33,19 @@ DEF_GOVERNOR( gExShift2,
 )
 
 
-DEF_PAGE_2( pADC,
+DEF_EMPTY_ITEM(e36, &PageDebug::PageADC::self)
+DEF_EMPTY_ITEM(e46, &PageDebug::PageADC::self)
+DEF_EMPTY_ITEM(e56, &PageDebug::PageADC::self)
+
+
+DEF_PAGE_5( pADC,
     "¿÷œ",
     "",
     &gExShift1,
     &gExShift2,
+    &e36,
+    &e46,
+    &e56,
     PageName::Debug_ADC, &PageDebug::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 

@@ -48,10 +48,10 @@ static bool HandlerKey_Tune(const KeyEvent &event)
 }
 
 
-DEF_EMPTY_ITEM(e2, &PageAutoMeasures::Tune::self)
-DEF_EMPTY_ITEM(e3, &PageAutoMeasures::Tune::self)
-DEF_EMPTY_ITEM(e4, &PageAutoMeasures::Tune::self)
-DEF_EMPTY_ITEM(e5, &PageAutoMeasures::Tune::self)
+DEF_EMPTY_ITEM(e24, &PageAutoMeasures::Tune::self)
+DEF_EMPTY_ITEM(e34, &PageAutoMeasures::Tune::self)
+DEF_EMPTY_ITEM(e44, &PageAutoMeasures::Tune::self)
+DEF_EMPTY_ITEM(e54, &PageAutoMeasures::Tune::self)
 
 
 DEF_PAGE_5( pTune,  
@@ -59,10 +59,10 @@ DEF_PAGE_5( pTune,
     "Переход в режим точной настройки количества и видов измерений",
     //&bMarkers,
     &bSettings,
-    &e2,
-    &e3,
-    &e4,
-    &e5,
+    &e24,
+    &e34,
+    &e44,
+    &e54,
     PageName::AutoMeasures_Tune, &PageAutoMeasures::self, IsActive_Tune, Page::NormalTitle, Page::OpenClose, HandlerKey_Tune
 )
 

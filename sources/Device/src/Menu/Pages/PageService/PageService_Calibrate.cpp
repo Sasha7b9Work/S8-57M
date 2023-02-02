@@ -38,11 +38,19 @@ DEF_BUTTON( bCalibrate,                                                         
 )
 
 
-DEF_PAGE_2( pCalibrate,                                                                                                                                         //--- СЕРВИС - КАЛИБРАТОР ---
+DEF_EMPTY_ITEM(e38, &PageService::Calibrate::self)
+DEF_EMPTY_ITEM(e48, &PageService::Calibrate::self)
+DEF_EMPTY_ITEM(e58, &PageService::Calibrate::self)
+
+
+DEF_PAGE_5( pCalibrate,                                                                                                                                         //--- СЕРВИС - КАЛИБРАТОР ---
     "КАЛИБРОВКА",
     "Управлением калибратором и калибровка осциллографа",
     &cCalibrator,
     &bCalibrate,
+    &e38,
+    &e48,
+    &e58,
     PageName::Service_Calibrator, &PageService::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
