@@ -81,12 +81,18 @@ DEF_CHOICE_4(cAverage,
 )
 
 
-DEF_PAGE_3( pRand,                                                                                                                                               //--- Œ“À¿ƒ ¿ - –¿Õƒ-“Œ– ---
+DEF_EMPTY_ITEM(e422, &PageDebug::PageRand::self)
+DEF_EMPTY_ITEM(e522, &PageDebug::PageRand::self)
+
+
+DEF_PAGE_5( pRand,                                                                                                                                               //--- Œ“À¿ƒ ¿ - –¿Õƒ-“Œ– ---
     "–¿Õƒ-“Œ–",
     "",
     &gGateMin,
     &gGateMax,
     &cAverage,
+    &e422,
+    &e522,
     PageName::Debug_Rand, &PageDebug::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 

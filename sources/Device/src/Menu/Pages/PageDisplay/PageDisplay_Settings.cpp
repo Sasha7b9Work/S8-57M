@@ -46,12 +46,18 @@ DEF_CHOICE_6( cAutoHide,                                                        
 )
 
 
-DEF_PAGE_3( pSettings,                                                                                                                                          //--- ДИСПЛЕЙ - НАСТРОЙКИ ---
+DEF_EMPTY_ITEM(e411, &PageDisplay::Settings::self)
+DEF_EMPTY_ITEM(e511, &PageDisplay::Settings::self)
+
+
+DEF_PAGE_5( pSettings,                                                                                                                                          //--- ДИСПЛЕЙ - НАСТРОЙКИ ---
     "НАСТРОЙКИ",
     "Дополнительные настройки дисплея",
     PageDisplay::Settings::Colors::self,
     &gBrightness,
     &cAutoHide,
+    &e411,
+    &e511,
     PageName::Display_Settings, &PageDisplay::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 

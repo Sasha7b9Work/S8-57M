@@ -373,12 +373,18 @@ static bool HandlerKey_Mask(const KeyEvent &event)
 }
 
 
-DEF_PAGE_3( pMask,                                                                                                                                        //--- Память - ВНЕШН ЗУ - МАСКА ---
+DEF_EMPTY_ITEM(e444, &PageDrive::Mask::self)
+DEF_EMPTY_ITEM(e544, &PageDrive::Mask::self)
+
+
+DEF_PAGE_5( pMask,                                                                                                                                        //--- Память - ВНЕШН ЗУ - МАСКА ---
     "МАСКА",
     "Режим ввода маски для автоматического именования файлов",
     &bMask_Delete,
     &bMask_Backspace,
     &bMask_Insert,
+    &e444,
+    &e544,
     PageName::Memory_Drive_Mask,
     &PageDrive::self, IsActive_Mask, Page::NormalTitle, OnOpenClose_Mask, HandlerKey_Mask
 )

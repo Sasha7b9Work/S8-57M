@@ -40,9 +40,9 @@ static bool IsActive_Source()
 }
 
 
-DEF_EMPTY_ITEM(e3, &PageRecorder::Source::self)
-DEF_EMPTY_ITEM(e4, &PageRecorder::Source::self)
-DEF_EMPTY_ITEM(e5, &PageRecorder::Source::self)
+DEF_EMPTY_ITEM(e344, &PageRecorder::Source::self)
+DEF_EMPTY_ITEM(e444, &PageRecorder::Source::self)
+DEF_EMPTY_ITEM(e544, &PageRecorder::Source::self)
 
 
 DEF_PAGE_5( pSource,                                                                                                                               //--- ФУНКЦИЯ - РЕГИСТРАТОР - ИСТОЧНИК ---
@@ -50,9 +50,9 @@ DEF_PAGE_5( pSource,                                                            
     "Выбор записываемых сигналов",
     &cChanA,
     &cChanB,
-    &e3,
-    &e4,
-    &e5,
+    &e344,
+    &e444,
+    &e544,
     //&cSensor,
     PageName::Recorder_Source, &PageRecorder::self, IsActive_Source, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )

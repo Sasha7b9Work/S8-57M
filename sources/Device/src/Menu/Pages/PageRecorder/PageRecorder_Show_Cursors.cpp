@@ -50,12 +50,18 @@ DEF_GRAPH_BUTTON( bLeft,
 )
 
 
-DEF_PAGE_3(pRecorderCursors,
+DEF_EMPTY_ITEM(e433, &PageRecorder::Show::Cursors::self)
+DEF_EMPTY_ITEM(e533, &PageRecorder::Show::Cursors::self)
+
+
+DEF_PAGE_5( pRecorderCursors,
     "КУРСОРЫ",
     "Работа курсорами",
     &cChoice,
     &bLeft,
     &bRight,
+    &e433,
+    &e533,
     PageName::Recorder_Show_Choice_Cursors,
     &PageRecorder::Show::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )

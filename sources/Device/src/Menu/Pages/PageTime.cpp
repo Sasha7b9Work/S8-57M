@@ -164,12 +164,19 @@ DEF_CHOICE_2( cShiftXtype,                                                      
     S_LINKING_TSHIFT, &PageTime::self, Item::Active, Choice::Changed, Choice::AfterDraw
 )
 
-DEF_PAGE_3( pTime,                                                                                                                                                        //--- РАЗВЕРТКА ---
+
+DEF_EMPTY_ITEM(e4, &PageTime::self)
+DEF_EMPTY_ITEM(e5, &PageTime::self)
+
+
+DEF_PAGE_5( pTime,                                                                                                                                                        //--- РАЗВЕРТКА ---
     "РАЗВ",
     "Содержит настройки развёртки",
     &cPeakDet,
     &cSample,
     &cTPos,
+    &e4,
+    &e5,
 //  &cShiftXtype,
     PageName::Time, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )

@@ -50,9 +50,9 @@ static bool IsActive_Accum()
 }
 
 
-DEF_EMPTY_ITEM(e3, &PageDisplay::Accumulation::self)
-DEF_EMPTY_ITEM(e4, &PageDisplay::Accumulation::self)
-DEF_EMPTY_ITEM(e5, &PageDisplay::Accumulation::self)
+DEF_EMPTY_ITEM(e30, &PageDisplay::Accumulation::self)
+DEF_EMPTY_ITEM(e40, &PageDisplay::Accumulation::self)
+DEF_EMPTY_ITEM(e50, &PageDisplay::Accumulation::self)
 
 
 DEF_PAGE_5( pAccum,                                                                                                                           //--- ДИСПЛЕЙ - НАКОПЛЕНИЕ ---
@@ -60,9 +60,9 @@ DEF_PAGE_5( pAccum,                                                             
     "Настройки режима отображения последних сигналов на экране",
     &cNumber,
     &bClear,
-    &e3,
-    &e4,
-    &e5,
+    &e30,
+    &e40,
+    &e50,
     PageName::Display_Accumulation, &PageDisplay::self, IsActive_Accum, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 

@@ -38,12 +38,18 @@ DEF_CHOICE_2( cShowFreq,                                                        
 )
 
 
-DEF_PAGE_3( pCursors,                                                                                                                                                     //--- ÈÇÌÅÐÅÍÈß ---
+DEF_EMPTY_ITEM(e49, &PageCursorsMeasures::self)
+DEF_EMPTY_ITEM(e59, &PageCursorsMeasures::self)
+
+
+DEF_PAGE_5( pCursors,                                                                                                                                                     //--- ÈÇÌÅÐÅÍÈß ---
     "ÊÓÐÑÎÐÛ",
     "Êóðñîðíûå èçìåðåíèÿ",
     &cShow,
     &cShowFreq,
     PageCursorsMeasures::Set::self,
+    &e49,
+    &e59,
     PageName::CursorsMeasures, &PageMeasures::self, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 

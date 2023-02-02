@@ -7,12 +7,18 @@
 #include "Menu/Pages/Include/PageRecorder.h"
 
 
-DEF_PAGE_3( pFunction,                                                                                                                                                      //--- ‘”Õ ÷»ﬂ ---
+DEF_EMPTY_ITEM(e4, &PageFunction::self)
+DEF_EMPTY_ITEM(e5, &PageFunction::self)
+
+
+DEF_PAGE_5( pFunction,                                                                                                                                                      //--- ‘”Õ ÷»ﬂ ---
     "‘”Õ ÷»ﬂ",
     "¬˚·Ó ÙÛÌÍˆËË",
     PageFreqMeter::self,
     PageFFT::self,
     PageRecorder::self,
+    &e4,
+    &e5,
     PageName::Function, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
