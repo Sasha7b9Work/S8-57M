@@ -106,9 +106,9 @@ void DisplayOsci::BottomPart::Draw(int x0, int y0, int field)
 
     Color::FILL.SetAsCurrent();
 
-    if (VCP::connectedToUSB || VCP::cableUSBisConnected)
+    if (VCP::client_connected || VCP::cable_connected)
     {
-        SymbolUGO(SymbolUGO::USB).Draw(x0 + 65, y0 + 2, VCP::connectedToUSB ? Color::WHITE : Color::FLASH_01);
+        SymbolUGO(SymbolUGO::USB).Draw(x0 + 65, y0 + 2, VCP::client_connected ? Color::WHITE : Color::FLASH_01);
 
         Battery::Draw(x0 + 5, y0 + 24, 50);
     }

@@ -9,7 +9,7 @@
 
 
 
-DEF_CHOICE_2( cShow,                                                                                                                                 //--- ОТЛАДКА - КОНСОЛЬ - Показывать ---
+DEF_CHOICE_2( cConsoleShow,                                                                                                                                 //--- ОТЛАДКА - КОНСОЛЬ - Показывать ---
     "Показывать",
     "",
     "Нет",
@@ -190,7 +190,7 @@ DEF_EMPTY_ITEM(b, &PageDebug::PageConsole::self)
 DEF_PAGE_5( pConsole,                                                                                                                                             //--- ОТЛАДКА - КОНСОЛЬ ---
     "КОНСОЛЬ",
     "Управляет отображением и параметрами отладочной консоли",
-    &cShow,
+    &cConsoleShow,
     &gNumStrings,
     &cShowGate,
     &cShowPredPost,

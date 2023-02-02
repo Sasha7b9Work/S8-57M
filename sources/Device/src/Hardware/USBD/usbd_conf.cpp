@@ -27,12 +27,12 @@ void HAL_PCD_SetupStageCallback(PCD_HandleTypeDef *hpcd)
         {                                                           //
             if (prevLength != 0)                                    //
             {                                                       //
-                VCP::cableUSBisConnected = true;                    // Это потому, что при включении прибора с подключенным шнуром
-                VCP::connectedToUSB = true;                         // GOVNOCODE Таким вот замысловатым образом определяем, что к нам подконнектился хост (
+                VCP::cable_connected = true;                    // Это потому, что при включении прибора с подключенным шнуром
+                VCP::client_connected = true;                         // GOVNOCODE Таким вот замысловатым образом определяем, что к нам подконнектился хост (
             }                                                       //
             else                                                    //
             {                                                       //
-                VCP::connectedToUSB = false;                        //
+                VCP::client_connected = false;                        //
                 //Settings::Save();                                 // При отконнекчивании сохраняем настройки
             }                                                       // \todo Возможно, это не нужно делать
             //CONNECTED_TO_USB = prevLength != 0;                   // 
@@ -263,13 +263,10 @@ USBD_StatusTypeDef USBD_LL_Transmit(USBD_HandleTypeDef *pdev,
 }
 
 
-USBD_StatusTypeDef USBD_LL_PrepareReceive(USBD_HandleTypeDef *pdev, 
-                                          uint8_t  ep_addr,                                      
-                                          uint8_t  *pbuf,
-                                          uint16_t  size)
+USBD_StatusTypeDef USBD_LL_PrepareReceive(USBD_HandleTypeDef *pdev, uint8_t ep_addr, uint8_t *pbuf, uint32_t size)
 {
     HAL_PCD_EP_Receive((PCD_HandleTypeDef *)pdev->pData, ep_addr, pbuf, size);
-    return USBD_OK;   
+    return USBD_OK;
 }
 
 
@@ -282,13 +279,6 @@ uint32_t USBD_LL_GetRxDataSize(USBD_HandleTypeDef *pdev, uint8_t  ep_addr)
 USBD_StatusTypeDef USBD_LL_Transmit(USBD_HandleTypeDef *pdev, uint8_t ep_addr, uint8_t *pbuf, uint32_t size)
 {
     HAL_PCD_EP_Transmit((PCD_HandleTypeDef *)pdev->pData, ep_addr, pbuf, size);
-    return USBD_OK;
-}
-
-
-USBD_StatusTypeDef USBD_LL_PrepareReceive(USBD_HandleTypeDef *pdev, uint8_t ep_addr, uint8_t *pbuf, uint32_t size)
-{
-    HAL_PCD_EP_Receive((PCD_HandleTypeDef *)pdev->pData, ep_addr, pbuf, size);
     return USBD_OK;
 }
 

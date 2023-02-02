@@ -271,7 +271,7 @@ int Recorder::ScaleX::TimeForPointMS()
 
 void Recorder::ScaleX::Load()
 {
-    static const uint8 values[Count] =
+    static const uint8 vals[Count] =
     {
         BIN_U8(01010110),  // -V2501  // 100ms  
         BIN_U8(01010111),  // -V2501  // 200ms  
@@ -282,7 +282,7 @@ void Recorder::ScaleX::Load()
         BIN_U8(01011110)   // -V2501  // 10s
     };
 
-    HAL_BUS::FPGA::Write8(WR::TBASE, values[S_REC_SCALE_X]);
+    HAL_BUS::FPGA::Write8(WR::TBASE, vals[S_REC_SCALE_X]);
 
     if (Recorder::InRecordingMode())
     {

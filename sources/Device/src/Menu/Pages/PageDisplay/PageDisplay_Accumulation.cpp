@@ -36,7 +36,7 @@ void PageDisplay::Accumulation::OnPress_Accumulation_Clear()
     DisplayOsci::SetFlagRedraw();
 }
 
-DEF_BUTTON( bClear,                                                                                                                                 //--- ДИСПЛЕЙ - НАКОПЛЕНИЕ - Очистить ---
+DEF_BUTTON( bAccumClear,                                                                                                          //--- ДИСПЛЕЙ - НАКОПЛЕНИЕ - Очистить ---
     "Очистить",
     "Очищает экран от накопленных сигналов.",
     &PageDisplay::Accumulation::self, IsActive_Accum_Clear, PageDisplay::Accumulation::OnPress_Accumulation_Clear
@@ -59,7 +59,7 @@ DEF_PAGE_5( pAccum,                                                             
     "НАКОПЛЕНИЕ",
     "Настройки режима отображения последних сигналов на экране",
     &cNumber,
-    &bClear,
+    &bAccumClear,
     &e30,
     &e40,
     &e50,

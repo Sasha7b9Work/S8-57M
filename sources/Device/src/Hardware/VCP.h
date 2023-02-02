@@ -30,9 +30,9 @@ namespace VCP
 
     void Flush();
 
-    extern bool connectedToUSB;
+    extern bool client_connected;
 
-    extern bool cableUSBisConnected;
+    extern bool cable_connected;
 
     extern void *handleUSBD;
 

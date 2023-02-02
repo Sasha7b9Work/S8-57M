@@ -34,7 +34,7 @@ static bool TestData();
 static void HintData(String *);
 
 // :CHANNEL{1|2}:DISPLAY
-static pchar FuncDisplay(pchar);
+static pchar FuncDisplayC(pchar);
 static bool TestDisplay();
 static void HintDisplay(String *);
 
@@ -87,7 +87,7 @@ static const StructSCPI chan[] =
     SCPI_LEAF("BANDWIDTH", FuncBandwidth, TestBandwidth, "",                             HintBandwidth),
     SCPI_LEAF("COUPLING",  FuncCoupling,  TestCoupling,  "",                             HintCoupling),
     SCPI_LEAF("DATA?",     FuncData,      TestData,      "",                             HintData),
-    SCPI_LEAF("DISPLAY",   FuncDisplay,   TestDisplay,   "Turns channel display on/off", HintDisplay),
+    SCPI_LEAF("DISPLAY",   FuncDisplayC,  TestDisplay,   "Turns channel display on/off", HintDisplay),
     SCPI_LEAF("OFFSET",    FuncOffset,    TestOffset,    "",                             HintOffset),
     SCPI_LEAF("PROBE",     FuncProbe,     TestProbe,     "",                             HintProbe),
     SCPI_LEAF("SCALE",     FuncScale,     TestScale,     "Vertical zoom control",        HintScale),
@@ -172,7 +172,7 @@ static pchar FuncData(pchar buffer)
 }
 
 
-static pchar FuncDisplay(pchar buffer)
+static pchar FuncDisplayC(pchar buffer)
 {
     EXTRACT_CHANNEL(9);
 

@@ -8,13 +8,13 @@
 
 // :MEASURE:DISPLAY
 static pchar FuncDisplay(pchar);
-static void HintDisplay(String *);
-static bool TestDisplay();
+static void HintDisplayM(String *);
+static bool TestDisplayM();
 
 // :MEASURE:SOURCE
 static pchar FuncSource(pchar);
-static void HintSource(String *);
-static bool TestSource();
+static void HintSourceM(String *);
+static bool TestSourceM();
 
 // :MEASURE:VALUE
 static pchar Meas_FuncValue(pchar);
@@ -24,14 +24,14 @@ static bool Meas_TestValue();
 
 const StructSCPI SCPI::measures[] =
 {
-    SCPI_LEAF(":DISPLAY", FuncDisplay,    TestDisplay,    "", HintDisplay),
-    SCPI_LEAF(":SOURCE",  FuncSource,     TestSource,     "", HintSource),
+    SCPI_LEAF(":DISPLAY", FuncDisplay,    TestDisplayM,   "", HintDisplayM),
+    SCPI_LEAF(":SOURCE",  FuncSource,     TestSourceM,    "", HintSourceM),
     SCPI_LEAF(":VALUE",   Meas_FuncValue, Meas_TestValue, "", Meas_HintValue),
     SCPI_EMPTY()
 };
 
 
-static pcharc display[] =
+static pcharc displ[] =
 {
     " OFF",
     " ON",
@@ -47,20 +47,20 @@ static pchar FuncDisplay(pchar buffer)
 {
     SCPI_REQUEST(SCPI::SendAnswer(S_MEAS_SHOW ? " ON" : " OFF"));
 
-    SCPI_PROCESS_ARRAY(display, DisplayMeasures(i));
+    SCPI_PROCESS_ARRAY(displ, DisplayMeasures(i));
 }
 
 
-static pcharc source[] =
-{
-    " 1",
-    " 2",
-    " BOTH",
-    ""
-};
-
 static pchar FuncSource(pchar buffer)
 {
+    static pcharc source[] =
+    {
+        " 1",
+        " 2",
+        " BOTH",
+        ""
+    };
+
     SCPI_REQUEST(SCPI::SendAnswer(source[S_MEAS_SOURCE]));
 
     SCPI_PROCESS_ARRAY(source, S_MEAS_SOURCE = (MeasuresSource::E)i);
@@ -115,13 +115,13 @@ static pchar Meas_FuncValue(pchar buffer)
 }
 
 
-static void HintDisplay(String *)
+static void HintDisplayM(String *)
 {
 
 }
 
 
-static void HintSource(String *)
+static void HintSourceM(String *)
 {
 
 }
@@ -133,13 +133,13 @@ static void Meas_HintValue(String *)
 }
 
 
-static bool TestDisplay()
+static bool TestDisplayM()
 {
     return false;
 }
 
 
-static bool TestSource()
+static bool TestSourceM()
 {
     return false;
 }

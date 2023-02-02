@@ -20,7 +20,7 @@ static void FFT_HintScale(String *);
 static bool FFT_TestScale();
 
 // :FFT:SOUCRE
-static pchar FuncSource(pchar);
+static pchar FFT_FuncSource(pchar);
 static void HintSource(String *);
 static bool TestSource();
 
@@ -35,8 +35,8 @@ const StructSCPI SCPI::fft[] =
     SCPI_LEAF(":DATA?",   FFT_FuncData,    FFT_TestData,    "", FFT_HintData),
     SCPI_LEAF(":DISPLAY", FFT_FuncDisplay, FFT_TestDisplay, "", FFT_HintDisplay),
     SCPI_LEAF(":SCALE",   FFT_FuncScale,   FFT_TestScale,   "", FFT_HintScale),
-    SCPI_LEAF(":SOURCE",  FuncSource,  TestSource,  "", HintSource),
-    SCPI_LEAF(":WINDOW",  FuncWindow,  TestWindow,  "", HintWindow),
+    SCPI_LEAF(":SOURCE",  FFT_FuncSource,  TestSource,  "", HintSource),
+    SCPI_LEAF(":WINDOW",  FuncWindow,      TestWindow,  "", HintWindow),
     SCPI_EMPTY()
 };
 
@@ -86,16 +86,16 @@ static pchar FFT_FuncScale(pchar buffer)
 }
 
 
-static pcharc source[] =
+static pchar FFT_FuncSource(pchar buffer)
 {
-    " 1",
-    " 2",
-    " BOTH",
-    ""
-};
+    static pcharc source[] =
+    {
+        " 1",
+        " 2",
+        " BOTH",
+        ""
+    };
 
-static pchar FuncSource(pchar buffer)
-{
     SCPI_REQUEST(SCPI::SendAnswer(source[S_FFT_SOURCE]));
 
     SCPI_PROCESS_ARRAY(source, S_FFT_SOURCE = (SourceFFT::E)i);
