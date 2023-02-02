@@ -95,7 +95,13 @@ DEF_CHOICE_2( cInverseA,                                                        
 )
 
 
-DEF_PAGE_6( pChanA,                                                                                                                                                         //--- КАНАЛ 1 ---
+DEF_EMPTY_ITEM(a7, &PageChannelA::self)
+DEF_EMPTY_ITEM(a8, &PageChannelA::self)
+DEF_EMPTY_ITEM(a9, &PageChannelA::self)
+DEF_EMPTY_ITEM(a10, &PageChannelA::self)
+
+
+DEF_PAGE_10( pChanA,                                                                                                                                                         //--- КАНАЛ 1 ---
     "КАНАЛ 1",
     "Содержит настройки канала 1.",
     &cInputA,
@@ -104,6 +110,10 @@ DEF_PAGE_6( pChanA,                                                             
     &cDividerA,
     &bBalanceA,
     &cInverseA,
+    &a7,
+    &a8,
+    &a9,
+    &a10,
     PageName::ChannelA, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 
@@ -178,7 +188,13 @@ DEF_CHOICE_2( cInverseB,                                                        
 )
 
 
-DEF_PAGE_6( pChanB,                                                                                                                                                         //--- КАНАЛ 2 ---
+DEF_EMPTY_ITEM(b7, &PageChannelB::self)
+DEF_EMPTY_ITEM(b8, &PageChannelB::self)
+DEF_EMPTY_ITEM(b9, &PageChannelB::self)
+DEF_EMPTY_ITEM(b10, &PageChannelB::self)
+
+
+DEF_PAGE_10( pChanB,                                                                                                                                                         //--- КАНАЛ 2 ---
     "КАНАЛ 2",
     "Содержит настройки канала 2.",
     &cInputB,
@@ -187,6 +203,10 @@ DEF_PAGE_6( pChanB,                                                             
     &cDividerB,
     &bBalanceB,
     &cInverseB,
+    &b7,
+    &b8,
+    &b9,
+    &b10,
     PageName::ChannelB, nullptr, Item::Active, Page::NormalTitle, Page::OpenClose, Page::HandlerKeyEvent
 )
 

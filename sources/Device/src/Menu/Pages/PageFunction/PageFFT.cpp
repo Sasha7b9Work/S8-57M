@@ -146,7 +146,14 @@ static void OnOpenClose_FFT(bool open)
     }
 }
 
-DEF_PAGE_6( pFFT,                                                                                                                                                   //--- СЕРВИС - СПЕКТР ---
+
+DEF_EMPTY_ITEM(c7, &PageFFT::self)
+DEF_EMPTY_ITEM(c8, &PageFFT::self)
+DEF_EMPTY_ITEM(c9, &PageFFT::self)
+DEF_EMPTY_ITEM(c10, &PageFFT::self)
+
+
+DEF_PAGE_10( pFFT,                                                                                                                                                   //--- СЕРВИС - СПЕКТР ---
     "СПЕКТР",
     "Отображение спектра входного сигнала",
     &cView,
@@ -155,6 +162,10 @@ DEF_PAGE_6( pFFT,                                                               
     &cWindow,
     &pCursors,
     &cRange,
+    &c7,
+    &c8,
+    &c9,
+    &c10,
     PageName::FFT, &PageFunction::self, IsActive_FFT, Page::NormalTitle, OnOpenClose_FFT, Page::HandlerKeyEvent
 )
 
