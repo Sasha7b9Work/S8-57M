@@ -923,6 +923,9 @@ USBD_StatusTypeDef USBD_LL_DevConnected(USBD_HandleTypeDef *pdev)
   */
 USBD_StatusTypeDef USBD_LL_DevDisconnected(USBD_HandleTypeDef *pdev)
 {
+    VCP::cable_connected = false;
+    VCP::client_connected = false;
+
     USBD_StatusTypeDef   ret = USBD_OK;
 
     /* Free Class Resources */

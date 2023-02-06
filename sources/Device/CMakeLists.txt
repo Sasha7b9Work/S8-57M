@@ -19,7 +19,7 @@ include_directories(..
                     src/Hardware/USBH
                     src/Hardware/USBD)
 
-add_definitions(-DSTM32F437xx -DDEVICE -DVS_KEIL)
+add_definitions(-DSTM32F437xx -DDEVICE -DVS_KEIL -DUSE_USB_FS)
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -Wall")
 
