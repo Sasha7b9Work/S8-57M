@@ -1,5 +1,7 @@
+#include "defines.h"
 #include "stm32f4xx_hal.h"
 #include "usbd_core.h"
+#include "Hardware/VCP.h"
 
 /**
   * @brief  Setup stage callback.
@@ -9,6 +11,31 @@
 void HAL_PCD_SetupStageCallback(PCD_HandleTypeDef *handle)
 {
     USBD_LL_SetupStage((USBD_HandleTypeDef *)handle->pData, (uint8_t *)handle->Setup);
+
+    USBD_HandleTypeDef *pdev = (USBD_HandleTypeDef *)handle->pData; //
+    USBD_SetupReqTypedef request = pdev->request;                   //
+    //
+
+    static uint16 prevLength = 7;                                   //
+    //
+    if (request.wLength == 0)                                       //
+    {                                                               //
+//        if (CABLE_USB_IS_CONNECTED)                               //
+        {                                                           //
+            if (prevLength != 0)                                    //
+            {                                                       //
+                VCP::cable_connected = true;                        // Это потому, что при включении прибора с подключенным шнуром
+                VCP::client_connected = true;                       // GOVNOCODE Таким вот замысловатым образом определяем, что к нам подконнектился хост (
+            }                                                       //
+            else                                                    //
+            {                                                       //
+                VCP::client_connected = false;                      //
+                //Settings::Save();                                 // При отконнекчивании сохраняем настройки
+            }                                                       // \todo Возможно, это не нужно делать
+            //CONNECTED_TO_USB = prevLength != 0;                   // 
+        }                                                           //
+    }                                                               //
+    prevLength = request.wLength;                                   //
 }
 
 /**
@@ -145,66 +172,35 @@ void HAL_PCD_DisconnectCallback(PCD_HandleTypeDef *hpcd)
   */
 USBD_StatusTypeDef USBD_LL_Init(USBD_HandleTypeDef *pdev)
 {
-    /* Change Systick prioity */
     NVIC_SetPriority(SysTick_IRQn, 0);
 
-#ifdef USE_USB_FS
-    /* Set LL Driver parameters */
-    hpcd.Instance = USB_OTG_FS;
-    hpcd.Init.dev_endpoints = 4;
-    hpcd.Init.use_dedicated_ep1 = 0;
-    hpcd.Init.dma_enable = 0;
-    hpcd.Init.low_power_enable = 0;
-    hpcd.Init.phy_itface = PCD_PHY_EMBEDDED;
-    hpcd.Init.Sof_enable = 0;
-    hpcd.Init.speed = PCD_SPEED_FULL;
-    hpcd.Init.vbus_sensing_enable = DISABLE;
-    /* Link The driver to the stack */
-    hpcd.pData = pdev;
-    pdev->pData = &hpcd;
-    /* Initialize LL Driver */
-    HAL_PCD_Init(&hpcd);
+    if (pdev->id == VCP::DEVICE_FS)
+    {
+        PCD_HandleTypeDef *handlePCD = (PCD_HandleTypeDef *)VCP::handlePCD;
+        // Link The driver to the stack
+        handlePCD->pData = pdev;
+        pdev->pData = handlePCD;
 
-    HAL_PCDEx_SetRxFiFo(&hpcd, 0x80);
-    HAL_PCDEx_SetTxFiFo(&hpcd, 0, 0x40);
-    HAL_PCDEx_SetTxFiFo(&hpcd, 1, 0x80);
+        handlePCD->Instance = USB_OTG_FS;
+        handlePCD->Init.dev_endpoints = 4;
+        handlePCD->Init.speed = PCD_SPEED_FULL;
+        handlePCD->Init.dma_enable = DISABLE;
+        //        handlePCD->Init.ep0_mps = DEP0CTL_MPS_64;
+        handlePCD->Init.phy_itface = PCD_PHY_EMBEDDED;
+        handlePCD->Init.Sof_enable = DISABLE;
+        handlePCD->Init.low_power_enable = DISABLE;
+        handlePCD->Init.lpm_enable = DISABLE;
+        handlePCD->Init.vbus_sensing_enable = ENABLE;
+        handlePCD->Init.use_dedicated_ep1 = DISABLE;
 
+        // Initialize LL Driver
+        HAL_PCD_Init(handlePCD);
 
-#endif
-#ifdef USE_USB_HS
-    /* Set LL Driver parameters */
-    hpcd.Instance = USB_OTG_HS;
-    hpcd.Init.dev_endpoints = 6;
-    hpcd.Init.use_dedicated_ep1 = 0;
+        HAL_PCDEx_SetRxFiFo(handlePCD, 0x80);
+        HAL_PCDEx_SetTxFiFo(handlePCD, 0, 0x40);
+        HAL_PCDEx_SetTxFiFo(handlePCD, 1, 0x80);
+    }
 
-    /* Be aware that enabling USB-DMA mode will result in data being sent only by
-     * multiple of 4 packet sizes. This is due to the fact that USB DMA does not
-     * allow sending data from non word-aligned addresses. For this specific
-     * application, it is advised to not enable this option unless required. */
-    hpcd.Init.dma_enable = 0;
-
-    hpcd.Init.low_power_enable = 0;
-
-#ifdef USE_USB_HS_IN_FS
-    hpcd.Init.phy_itface = PCD_PHY_EMBEDDED;
-    hpcd.Init.speed = PCD_SPEED_HIGH_IN_FULL;
-#else
-    hpcd.Init.phy_itface = PCD_PHY_ULPI;
-    hpcd.Init.speed = PCD_SPEED_HIGH;
-#endif
-    hpcd.Init.Sof_enable = 0;
-    hpcd.Init.vbus_sensing_enable = DISABLE;
-    /* Link The driver to the stack */
-    hpcd.pData = pdev;
-    pdev->pData = &hpcd;
-    /* Initialize LL Driver */
-    HAL_PCD_Init(&hpcd);
-
-    HAL_PCDEx_SetRxFiFo(&hpcd, 0x200);
-    HAL_PCDEx_SetTxFiFo(&hpcd, 0, 0x40);
-    HAL_PCDEx_SetTxFiFo(&hpcd, 1, 0x80);
-
-#endif
     return USBD_OK;
 }
 

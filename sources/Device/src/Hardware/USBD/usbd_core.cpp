@@ -1,3 +1,4 @@
+#include "defines.h"
 #include "usbd_core.h"
 #include "Hardware/VCP.h"
 
