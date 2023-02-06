@@ -1,6 +1,7 @@
+#include "defines.h"
 #include "ff_gen_drv.h"
 #include "usbh_diskio.h"
-#include "FlashDrive/f"
+#include "FlashDrive/FlashDrive.h"
 #include <stm32f4xx_hal.h>
 
 /* Private typedef -----------------------------------------------------------*/
@@ -86,11 +87,13 @@ DRESULT USBH_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
     MSC_LUNTypeDef info;
     USBH_StatusTypeDef  status = USBH_OK;
 
-    if (((DWORD)buff & 3) && (((HCD_HandleTypeDef *)hUSBHost.pData)->Init.dma_enable))
+    USBH_HandleTypeDef *host = (USBH_HandleTypeDef *)FDrive::handle;
+
+    if (((DWORD)buff & 3) && (((HCD_HandleTypeDef *)host->pData)->Init.dma_enable))
     {
         while ((count--) && (status == USBH_OK))
         {
-            status = USBH_MSC_Read(&hUSBHost, lun, sector + count, (uint8_t *)scratch, 1);
+            status = USBH_MSC_Read(host, lun, sector + count, (uint8_t *)scratch, 1);
 
             if (status == USBH_OK)
             {
@@ -104,7 +107,7 @@ DRESULT USBH_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
     }
     else
     {
-        status = USBH_MSC_Read(&hUSBHost, lun, sector, buff, count);
+        status = USBH_MSC_Read(host, lun, sector, buff, count);
     }
 
     if (status == USBH_OK)
@@ -113,7 +116,7 @@ DRESULT USBH_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
     }
     else
     {
-        USBH_MSC_GetLUNInfo(&hUSBHost, lun, &info);
+        USBH_MSC_GetLUNInfo(host, lun, &info);
 
         switch (info.sense.asc)
         {
@@ -148,14 +151,16 @@ DRESULT USBH_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count)
     MSC_LUNTypeDef info;
     USBH_StatusTypeDef  status = USBH_OK;
 
-    if (((DWORD)buff & 3) && (((HCD_HandleTypeDef *)hUSBHost.pData)->Init.dma_enable))
+    USBH_HandleTypeDef *host = (USBH_HandleTypeDef *)FDrive::handle;
+
+    if (((DWORD)buff & 3) && (((HCD_HandleTypeDef *)host->pData)->Init.dma_enable))
     {
 
         while (count--)
         {
             memcpy(scratch, &buff[count * _MAX_SS], _MAX_SS);
 
-            status = USBH_MSC_Write(&hUSBHost, lun, sector + count, (BYTE *)scratch, 1);
+            status = USBH_MSC_Write(host, lun, sector + count, (BYTE *)scratch, 1);
             if (status == USBH_FAIL)
             {
                 break;
@@ -164,7 +169,7 @@ DRESULT USBH_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count)
     }
     else
     {
-        status = USBH_MSC_Write(&hUSBHost, lun, sector, (BYTE *)buff, count);
+        status = USBH_MSC_Write(host, lun, sector, (BYTE *)buff, count);
     }
 
     if (status == USBH_OK)
@@ -173,7 +178,7 @@ DRESULT USBH_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count)
     }
     else
     {
-        USBH_MSC_GetLUNInfo(&hUSBHost, lun, &info);
+        USBH_MSC_GetLUNInfo(host, lun, &info);
 
         switch (info.sense.asc)
         {
@@ -221,7 +226,7 @@ DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff)
 
         /* Get number of sectors on the disk (DWORD) */
     case GET_SECTOR_COUNT:
-        if (USBH_MSC_GetLUNInfo(&hUSBHost, lun, &info) == USBH_OK)
+        if (USBH_MSC_GetLUNInfo((USBH_HandleTypeDef *)FDrive::handle, lun, &info) == USBH_OK)
         {
             *(DWORD *)buff = info.capacity.block_nbr;
             res = RES_OK;
@@ -234,7 +239,7 @@ DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff)
 
         /* Get R/W sector size (WORD) */
     case GET_SECTOR_SIZE:
-        if (USBH_MSC_GetLUNInfo(&hUSBHost, lun, &info) == USBH_OK)
+        if (USBH_MSC_GetLUNInfo((USBH_HandleTypeDef *)FDrive::handle, lun, &info) == USBH_OK)
         {
             *(DWORD *)buff = info.capacity.block_size;
             res = RES_OK;
@@ -248,7 +253,7 @@ DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff)
         /* Get erase block size in unit of sector (DWORD) */
     case GET_BLOCK_SIZE:
 
-        if (USBH_MSC_GetLUNInfo(&hUSBHost, lun, &info) == USBH_OK)
+        if (USBH_MSC_GetLUNInfo((USBH_HandleTypeDef *)FDrive::handle, lun, &info) == USBH_OK)
         {
             *(DWORD *)buff = (DWORD)(info.capacity.block_size / USB_DEFAULT_BLOCK_SIZE);
             res = RES_OK;
