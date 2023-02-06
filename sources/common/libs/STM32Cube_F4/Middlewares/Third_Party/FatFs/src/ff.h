@@ -66,7 +66,6 @@ typedef char TCHAR;
 #endif
 
 
-
 /* Type of file size variables */
 
 #if _FS_EXFAT

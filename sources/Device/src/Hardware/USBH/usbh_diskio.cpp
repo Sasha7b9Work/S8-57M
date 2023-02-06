@@ -1,5 +1,6 @@
 #include "ff_gen_drv.h"
 #include "usbh_diskio.h"
+#include "FlashDrive/f"
 #include <stm32f4xx_hal.h>
 
 /* Private typedef -----------------------------------------------------------*/
@@ -9,7 +10,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 static DWORD scratch[_MAX_SS / 4];
-extern USBH_HandleTypeDef  hUSBHost;
+
 
 /* Private function prototypes -----------------------------------------------*/
 DSTATUS USBH_initialize(BYTE);
@@ -60,7 +61,7 @@ DSTATUS USBH_status(BYTE lun)
 {
     DRESULT res = RES_ERROR;
 
-    if (USBH_MSC_UnitIsReady(&hUSBHost, lun))
+    if (USBH_MSC_UnitIsReady((USBH_HandleTypeDef *)FDrive::handle, lun))
     {
         res = RES_OK;
     }
@@ -249,7 +250,7 @@ DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff)
 
         if (USBH_MSC_GetLUNInfo(&hUSBHost, lun, &info) == USBH_OK)
         {
-            *(DWORD *)buff = info.capacity.block_size / USB_DEFAULT_BLOCK_SIZE;
+            *(DWORD *)buff = (DWORD)(info.capacity.block_size / USB_DEFAULT_BLOCK_SIZE);
             res = RES_OK;
         }
         else
