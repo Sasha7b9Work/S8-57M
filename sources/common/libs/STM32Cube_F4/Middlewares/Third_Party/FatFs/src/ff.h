@@ -78,8 +78,10 @@ typedef DWORD FSIZE_t;
 #endif
 
 
-#undef WCHAR
-#define WCHAR char
+#ifdef WIN32
+	#undef WCHAR
+	#define WCHAR char
+#endif
 
 
 /* File system object structure (FATFS) */
