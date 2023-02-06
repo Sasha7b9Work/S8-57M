@@ -334,19 +334,21 @@ USBD_StatusTypeDef USBD_LL_Init(USBD_HandleTypeDef * pdev)
   NVIC_SetPriority(SysTick_IRQn, 0);
 
 #ifdef USE_USB_FS
-  /* Set LL Driver parameters */
-  hpcd.Instance = USB_OTG_FS;
-  hpcd.Init.dev_endpoints = 4;
-  hpcd.Init.use_dedicated_ep1 = 0;
-  hpcd.Init.dma_enable = 0;
-  hpcd.Init.low_power_enable = 0;
-  hpcd.Init.phy_itface = PCD_PHY_EMBEDDED;
-  hpcd.Init.Sof_enable = 0;
-  hpcd.Init.speed = PCD_SPEED_FULL;
-  hpcd.Init.vbus_sensing_enable = DISABLE;
-  /* Link The driver to the stack */
+    hpcd.Instance = USB_OTG_FS;
+    hpcd.Init.dev_endpoints = 4;
+    hpcd.Init.speed = PCD_SPEED_FULL;
+    hpcd.Init.dma_enable = DISABLE;
+    //        handlePCD->Init.ep0_mps = DEP0CTL_MPS_64;
+    hpcd.Init.phy_itface = PCD_PHY_EMBEDDED;
+    hpcd.Init.Sof_enable = DISABLE;
+    hpcd.Init.low_power_enable = DISABLE;
+    hpcd.Init.lpm_enable = DISABLE;
+    hpcd.Init.vbus_sensing_enable = ENABLE;
+    hpcd.Init.use_dedicated_ep1 = DISABLE;
+
   hpcd.pData = pdev;
   pdev->pData = &hpcd;
+
   /* Initialize LL Driver */
   HAL_PCD_Init(&hpcd);
 
