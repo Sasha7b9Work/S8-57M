@@ -19,16 +19,6 @@ USBD_CDC_LineCodingTypeDef LineCoding = {
 #define APP_RX_DATA_SIZE  64
 static uint8_t UserRxBuffer[APP_RX_DATA_SIZE];/* Received Data over USB are stored in this buffer */
 
-uint32_t UserTxBufPtrIn = 0;    /* Increment this pointer or roll it back to
-                                 * start address when data are received over
-                                 * USART */
-uint32_t UserTxBufPtrOut = 0;   /* Increment this pointer or roll it back to
-                                 * start address when data are sent over USB */
-
-
-UART_HandleTypeDef UartHandle;
-
-TIM_HandleTypeDef TimHandle;
 
 /* Private function prototypes ----------------------------------------------- */
 static int8_t CDC_Itf_Init(void);
@@ -36,7 +26,6 @@ static int8_t CDC_Itf_DeInit(void);
 static int8_t CDC_Itf_Control(uint8_t cmd, uint8_t *pbuf, uint16_t length);
 static int8_t CDC_Itf_Receive(uint8_t *pbuf, uint32_t *Len);
 static int8_t CDC_Itf_TransmitCplt(uint8_t *pbuf, uint32_t *Len, uint8_t epnum);
-static void Error_Handler(void);
 
 
 USBD_CDC_ItfTypeDef USBD_CDC_fops = {
@@ -169,27 +158,4 @@ static int8_t CDC_Itf_Receive(uint8_t *buffer, uint32_t *length)
 static int8_t CDC_Itf_TransmitCplt(uint8_t *Buf, uint32_t *Len, uint8_t epnum)
 {
     return (0);
-}
-
-/**
-  * @brief  Tx Transfer completed callback
-  * @param  huart: UART handle
-  * @retval None
-  */
-void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
-{
-    /* Initiate next USB packet transfer once UART completes transfer
-     * (transmitting data over Tx line) */
-    USBD_CDC_ReceivePacket((USBD_HandleTypeDef *)VCP::handleUSBD);
-}
-
-
-/**
-  * @brief  This function is executed in case of error occurrence.
-  * @param  None
-  * @retval None
-  */
-static void Error_Handler(void)
-{
-    /* Add your own code here */
 }
