@@ -66,10 +66,6 @@ DSTATUS USBH_status(BYTE lun)
     {
         res = RES_OK;
     }
-    else
-    {
-        res = RES_ERROR;
-    }
 
     return (DSTATUS)res;
 }
@@ -128,7 +124,6 @@ DRESULT USBH_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
             break;
 
         default:
-            res = RES_ERROR;
             break;
         }
     }
@@ -195,7 +190,6 @@ DRESULT USBH_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count)
             break;
 
         default:
-            res = RES_ERROR;
             break;
         }
     }
@@ -231,10 +225,6 @@ DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff)
             *(DWORD *)buff = info.capacity.block_nbr;
             res = RES_OK;
         }
-        else
-        {
-            res = RES_ERROR;
-        }
         break;
 
         /* Get R/W sector size (WORD) */
@@ -243,10 +233,6 @@ DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff)
         {
             *(DWORD *)buff = info.capacity.block_size;
             res = RES_OK;
-        }
-        else
-        {
-            res = RES_ERROR;
         }
         break;
 
@@ -257,10 +243,6 @@ DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff)
         {
             *(DWORD *)buff = (DWORD)(info.capacity.block_size / USB_DEFAULT_BLOCK_SIZE);
             res = RES_OK;
-        }
-        else
-        {
-            res = RES_ERROR;
         }
         break;
 
