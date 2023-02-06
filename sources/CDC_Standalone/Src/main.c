@@ -46,12 +46,6 @@ int main(void)
   /* Configure the system clock to 168 MHz */
   SystemClock_Config();
 
-  /* Configure LED1, LED2, LED3 and LED4 */
-  BSP_LED_Init(LED1);
-  BSP_LED_Init(LED2);
-  BSP_LED_Init(LED3);
-  BSP_LED_Init(LED4);
-
   /* Init Device Library */
   USBD_Init(&USBD_Device, &VCP_Desc, 0);
 
@@ -139,10 +133,6 @@ static void Toggle_Leds(void)
 
   if (ticks++ == 0xfffff)
   {
-    BSP_LED_Toggle(LED1);
-    BSP_LED_Toggle(LED2);
-    BSP_LED_Toggle(LED3);
-    BSP_LED_Toggle(LED4);
     ticks = 0;
   }
 }
