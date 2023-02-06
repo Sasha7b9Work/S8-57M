@@ -1,24 +1,6 @@
-/**
-  ******************************************************************************
-  * @file    usbh_diskio_dma.c
-  * @author  MCD Application Team
-  * @brief   USB Host Disk I/O driver (with internal DMA).
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2017 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
-
-  /* Includes ------------------------------------------------------------------*/
 #include "ff_gen_drv.h"
 #include "usbh_diskio.h"
+#include <stm32f4xx_hal.h>
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -87,7 +69,7 @@ DSTATUS USBH_status(BYTE lun)
         res = RES_ERROR;
     }
 
-    return res;
+    return (DSTATUS)res;
 }
 /**
   * @brief  Reads Sector(s)
