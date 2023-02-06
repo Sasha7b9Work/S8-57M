@@ -76,12 +76,9 @@ static int8_t CDC_Itf_Init(void)
   */
 static int8_t CDC_Itf_DeInit(void)
 {
-    /* DeInitialize the UART peripheral */
-    if (HAL_UART_DeInit(&UartHandle) != HAL_OK)
-    {
-        /* Initialization Error */
-        Error_Handler();
-    }
+    VCP::cable_connected = false;
+    VCP::client_connected = false;
+
     return (USBD_OK);
 }
 
