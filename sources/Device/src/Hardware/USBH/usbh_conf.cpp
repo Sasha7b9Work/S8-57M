@@ -1,36 +1,11 @@
-/**
-  ******************************************************************************
-  * @file    FatFs/FatFs_USBDisk/Src/usbh_conf.c
-  * @author  MCD Application Team
-  * @brief   USB Host configuration file.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2017 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
-  /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
 #include "usbh_core.h"
 #include <stm32f4xx_hal.h>
 
 
-HCD_HandleTypeDef hhcd;
+//HCD_HandleTypeDef hhcd;
 
-/*******************************************************************************
-                       HCD BSP Routines
-*******************************************************************************/
-/**
-  * @brief  Initializes the HCD MSP.
-  * @param  hhcd: HCD handle
-  * @retval None
-  */
+
 void HAL_HCD_MspInit(HCD_HandleTypeDef *hhcd)
 {
     GPIO_InitTypeDef  GPIO_InitStruct;
