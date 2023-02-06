@@ -1,7 +1,31 @@
-#pragma once
-#include <stdlib.h>
-#include <cstring>
+/**
+  ******************************************************************************
+  * @file    FatFs/FatFs_USBDisk/Inc/usbh_conf.h
+  * @author  MCD Application Team
+  * @brief   General low level driver configuration
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2017 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
+/* Define to prevent recursive inclusion -------------------------------------*/
+#ifndef __USBH_CONF_H
+#define __USBH_CONF_H
 
+/* Includes ------------------------------------------------------------------*/
+#include "stm32f4xx.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/* Exported types ------------------------------------------------------------*/
 #define USBH_MAX_NUM_ENDPOINTS                2
 #define USBH_MAX_NUM_INTERFACES               2
 #define USBH_MAX_NUM_CONFIGURATION            1
@@ -12,26 +36,46 @@
 #define USBH_DEBUG_LEVEL                      0
 #define USBH_USE_OS                           0
 
-#include "stm32f4xx.h"
-
-
+/* Exported constants --------------------------------------------------------*/
+/* Exported macro ------------------------------------------------------------*/
+/* CMSIS OS macros */   
 #if (USBH_USE_OS == 1)
   #include "cmsis_os.h"
   #define   USBH_PROCESS_PRIO    osPriorityNormal
-#endif    
+#endif
 
+/* Memory management macros */   
 #define USBH_malloc               malloc
 #define USBH_free                 free
 #define USBH_memset               memset
 #define USBH_memcpy               memcpy
-
-
+    
+/* DEBUG macros */   
 #if (USBH_DEBUG_LEVEL > 0)
-#define USBH_UsrLog(...)  Log_Write(__VA_ARGS__)
-#define USBH_ErrLog(...)  Log_Write(__VA_ARGS__)
-#define USBH_DbgLog(...)  Log_Write(__VA_ARGS__)
+#define USBH_UsrLog(...)   printf(__VA_ARGS__);\
+                           printf("\n");
 #else
-#define USBH_UsrLog(...) {}
-#define USBH_ErrLog(...) {}
-#define USBH_DbgLog(...) {}
+#define USBH_UsrLog(...)   
+#endif 
+                            
+                            
+#if (USBH_DEBUG_LEVEL > 1)
+
+#define USBH_ErrLog(...)   printf("ERROR: ") ;\
+                           printf(__VA_ARGS__);\
+                           printf("\n");
+#else
+#define USBH_ErrLog(...)   
+#endif 
+                                                      
+#if (USBH_DEBUG_LEVEL > 2)                         
+#define  USBH_DbgLog(...)   printf("DEBUG : ") ;\
+                            printf(__VA_ARGS__);\
+                            printf("\n");
+#else
+#define USBH_DbgLog(...)                         
 #endif
+
+/* Exported functions ------------------------------------------------------- */
+
+#endif /* __USB_CONF_H */

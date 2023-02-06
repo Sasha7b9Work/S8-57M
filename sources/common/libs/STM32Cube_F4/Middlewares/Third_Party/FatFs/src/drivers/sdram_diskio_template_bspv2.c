@@ -1,13 +1,14 @@
 /**
   ******************************************************************************
-  * @file    sram_diskio_template.c
+  * @file    sdram_diskio_template_bspv2.c
   * @author  MCD Application Team
-  * @brief   SRAM Disk I/O template driver.This file needs to be copied under the
-             application project alongside the respective header file
+  * @brief   SDRAM Disk I/O template driver base on BSP v2 API.
+  *          This file needs to be copied under the application project
+  *          alongside the respective header file.
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2017 STMicroelectronics. All rights reserved.
+  * Copyright (c) 2017-2019 STMicroelectronics. All rights reserved.
   *
   * This software component is licensed by ST under BSD 3-Clause license,
   * the "License"; You may not use this file except in compliance with the
@@ -16,40 +17,47 @@
   *
   ******************************************************************************
 **/
+
 /* Includes ------------------------------------------------------------------*/
 #include "ff_gen_drv.h"
-#include "sram_diskio.h"
+#include "sdram_diskio.h"
+
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Block Size in Bytes */
 #define BLOCK_SIZE                512
 
+#define BSP_SDRAM_INSTANCE 0
+
+#if BSP_SDRAM_INSTANCE >= SDRAM_INSTANCES_NBR
+#error "Wrong BSP_SDRAM_INSTANCE value"
+#endif
 /* Private variables ---------------------------------------------------------*/
 /* Disk status */
 static volatile DSTATUS Stat = STA_NOINIT;
 
 /* Private function prototypes -----------------------------------------------*/
-DSTATUS SRAMDISK_initialize (BYTE);
-DSTATUS SRAMDISK_status (BYTE);
-DRESULT SRAMDISK_read (BYTE, BYTE*, DWORD, UINT);
+DSTATUS SDRAMDISK_initialize (BYTE);
+DSTATUS SDRAMDISK_status (BYTE);
+DRESULT SDRAMDISK_read (BYTE, BYTE*, DWORD, UINT);
 #if _USE_WRITE == 1
-  DRESULT SRAMDISK_write (BYTE, const BYTE*, DWORD, UINT);
+  DRESULT SDRAMDISK_write (BYTE, const BYTE*, DWORD, UINT);
 #endif /* _USE_WRITE == 1 */
 #if _USE_IOCTL == 1
-  DRESULT SRAMDISK_ioctl (BYTE, BYTE, void*);
+  DRESULT SDRAMDISK_ioctl (BYTE, BYTE, void*);
 #endif /* _USE_IOCTL == 1 */
 
-const Diskio_drvTypeDef SRAMDISK_Driver =
+const Diskio_drvTypeDef  SDRAMDISK_Driver =
 {
-  SRAMDISK_initialize,
-  SRAMDISK_status,
-  SRAMDISK_read,
-#if  _USE_WRITE == 1
-  SRAMDISK_write,
-#endif /* _USE_WRITE == 1 */
+  SDRAMDISK_initialize,
+  SDRAMDISK_status,
+  SDRAMDISK_read,
+#if  _USE_WRITE
+  SDRAMDISK_write,
+#endif  /* _USE_WRITE == 1 */
 #if  _USE_IOCTL == 1
-  SRAMDISK_ioctl,
+  SDRAMDISK_ioctl,
 #endif /* _USE_IOCTL == 1 */
 };
 
@@ -60,14 +68,14 @@ const Diskio_drvTypeDef SRAMDISK_Driver =
   * @param  lun : not used
   * @retval DSTATUS: Operation status
   */
-DSTATUS SRAMDISK_initialize(BYTE lun)
+DSTATUS SDRAMDISK_initialize(BYTE lun)
 {
   Stat = STA_NOINIT;
 
-  /* Configure the SRAM device */
-  if(BSP_SRAM_Init() == SRAM_OK)
+  /* Configure the SDRAM device */
+  if(BSP_SDRAM_Init(BSP_SDRAM_INSTANCE) == BSP_ERROR_NONE)
   {
-     Stat &= ~STA_NOINIT;
+    Stat &= ~STA_NOINIT;
   }
 
   return Stat;
@@ -78,7 +86,7 @@ DSTATUS SRAMDISK_initialize(BYTE lun)
   * @param  lun : not used
   * @retval DSTATUS: Operation status
   */
-DSTATUS SRAMDISK_status(BYTE lun)
+DSTATUS SDRAMDISK_status(BYTE lun)
 {
   return Stat;
 }
@@ -91,14 +99,15 @@ DSTATUS SRAMDISK_status(BYTE lun)
   * @param  count: Number of sectors to read (1..128)
   * @retval DRESULT: Operation result
   */
-DRESULT SRAMDISK_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
+DRESULT SDRAMDISK_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
 {
-  uint32_t BufferSize = (BLOCK_SIZE * count);
-  uint8_t *pMem = (uint8_t *) (SRAM_DEVICE_ADDR + (sector * BLOCK_SIZE));
+  uint32_t *pSrcBuffer = (uint32_t *)buff;
+  uint32_t BufferSize = (BLOCK_SIZE * count)/4;
+  uint32_t *pSdramAddress = (uint32_t *) (SDRAM_DEVICE_ADDR + (sector * BLOCK_SIZE));
 
   for(; BufferSize != 0; BufferSize--)
   {
-    *buff++ = *(__IO uint8_t *)pMem++;
+    *pSrcBuffer++ = *(__IO uint32_t *)pSdramAddress++;
   }
 
   return RES_OK;
@@ -113,14 +122,15 @@ DRESULT SRAMDISK_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
   * @retval DRESULT: Operation result
   */
 #if _USE_WRITE == 1
-DRESULT SRAMDISK_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count)
+DRESULT SDRAMDISK_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count)
 {
-  uint32_t BufferSize = (BLOCK_SIZE * count);
-  uint8_t *pMem = (uint8_t *) (SRAM_DEVICE_ADDR + (sector * BLOCK_SIZE));
+  uint32_t *pDstBuffer = (uint32_t *)buff;
+  uint32_t BufferSize = (BLOCK_SIZE * count)/4;
+  uint32_t *pSramAddress = (uint32_t *) (SDRAM_DEVICE_ADDR + (sector * BLOCK_SIZE));
 
   for(; BufferSize != 0; BufferSize--)
   {
-    *(__IO uint8_t *)pMem++ = *buff++;
+    *(__IO uint32_t *)pSramAddress++ = *pDstBuffer++;
   }
 
   return RES_OK;
@@ -135,7 +145,7 @@ DRESULT SRAMDISK_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count)
   * @retval DRESULT: Operation result
   */
 #if _USE_IOCTL == 1
-DRESULT SRAMDISK_ioctl(BYTE lun, BYTE cmd, void *buff)
+DRESULT SDRAMDISK_ioctl(BYTE lun, BYTE cmd, void *buff)
 {
   DRESULT res = RES_ERROR;
 
@@ -150,7 +160,7 @@ DRESULT SRAMDISK_ioctl(BYTE lun, BYTE cmd, void *buff)
 
   /* Get number of sectors on the disk (DWORD) */
   case GET_SECTOR_COUNT :
-    *(DWORD*)buff = SRAM_DEVICE_SIZE / BLOCK_SIZE;
+    *(DWORD*)buff = SDRAM_DEVICE_SIZE / BLOCK_SIZE;
     res = RES_OK;
     break;
 
@@ -163,7 +173,7 @@ DRESULT SRAMDISK_ioctl(BYTE lun, BYTE cmd, void *buff)
   /* Get erase block size in unit of sector (DWORD) */
   case GET_BLOCK_SIZE :
     *(DWORD*)buff = 1;
-    res = RES_OK;
+	res = RES_OK;
     break;
 
   default:
