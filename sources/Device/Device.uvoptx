@@ -159,7 +159,7 @@
           <Type>0</Type>
           <LineNumber>438</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134465828</Address>
+          <Address>134473952</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -173,18 +173,18 @@
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>220</LineNumber>
+          <LineNumber>80</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134505920</Address>
+          <Address>134382534</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;1&gt;.\src\Menu\MenuItems.cpp</Filename>
+          <Filename>&lt;1&gt;.\src\Hardware\HAL\HAL_IT.cpp</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\S8_57\src/Menu/MenuItems.cpp\220</Expression>
+          <Expression>\\S8_57\src/Hardware/HAL/HAL_IT.cpp\80</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
