@@ -73,12 +73,12 @@ file(GLOB LIBS_USBH     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Hos
 file(GLOB VS                               ../common/_VS/*.h ../common/_VS/*.cpp)
 file(GLOB VS_STD_INCLUDES                  ../common/_VS/std_includes/*)
 
-file(GLOB HARDWARE                         src/Hardware/*.h src/Hardware/*.cpp)
-file(GLOB HARDWARE_CMSIS                   src/Hardware/CMSIS/*)
-file(GLOB HARDWARE_HAL                     src/Hardware/HAL/*)
-file(GLOB HARDWARE_MEMORY                  src/Hardware/Memory/*)
-file(GLOB HARDWARE_USBD                    src/Hardware/USBD/*)
-file(GLOB HARDWARE_USBH                    src/Hardware/USBH/*)
+file(GLOB HARDWARE                         src/Hardware/*.*)
+file(GLOB HARDWARE_CMSIS                   src/Hardware/CMSIS/*.*)
+file(GLOB HARDWARE_HAL                     src/Hardware/HAL/*.*)
+file(GLOB HARDWARE_MEMORY                  src/Hardware/Memory/*.*)
+file(GLOB HARDWARE_USBD                    src/Hardware/USBD/*.*)
+file(GLOB HARDWARE_USBH                    src/Hardware/USBH/*.*)
 file(GLOB DOC                              ../doc/*)
 file(GLOB COMMON                           ../common/Command.h
                                            ../common/common_defines.h
