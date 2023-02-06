@@ -1,7 +1,7 @@
-;********************************************************************************
-;* File Name          : startup_stm32f429xx.s
+;*******************************************************************************
+;* File Name          : startup_stm32f437xx.s
 ;* Author             : MCD Application Team
-;* Description        : STM32F429x devices vector table for MDK-ARM toolchain. 
+;* Description        : STM32F437x devices vector table for MDK-ARM toolchain. 
 ;*                      This module performs:
 ;*                      - Set the initial SP
 ;*                      - Set the initial PC == Reset_Handler
@@ -10,7 +10,6 @@
 ;*                        calls main()).
 ;*                      After Reset the CortexM4 processor is in Thread mode,
 ;*                      priority is Privileged, and the Stack is set to Main.
-;* <<< Use Configuration Wizard in Context Menu >>>   
 ;*******************************************************************************
 ;* @attention
 ;*
@@ -22,14 +21,15 @@
 ;* If no LICENSE file comes with this software, it is provided AS-IS.
 ;*
 ;*******************************************************************************
-
+;* <<< Use Configuration Wizard in Context Menu >>>
+;
 ; Amount of memory (in bytes) allocated for Stack
 ; Tailor this value to your application needs
 ; <h> Stack Configuration
 ;   <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
-Stack_Size      EQU     0x500;
+Stack_Size      EQU     0x00000400
 
                 AREA    STACK, NOINIT, READWRITE, ALIGN=3
 Stack_Mem       SPACE   Stack_Size
@@ -40,7 +40,7 @@ __initial_sp
 ;   <o>  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ; </h>
 
-Heap_Size      EQU     0x1500;
+Heap_Size       EQU     0x00000200
 
                 AREA    HEAP, NOINIT, READWRITE, ALIGN=3
 __heap_base
@@ -154,7 +154,7 @@ __Vectors       DCD     __initial_sp               ; Top of Stack
                 DCD     OTG_HS_WKUP_IRQHandler            ; USB OTG HS Wakeup through EXTI                         
                 DCD     OTG_HS_IRQHandler                 ; USB OTG HS                                      
                 DCD     DCMI_IRQHandler                   ; DCMI  
-                DCD     0                          ; Reserved				                              
+                DCD     CRYP_IRQHandler                   ; CRYPTO				                              
                 DCD     HASH_RNG_IRQHandler               ; Hash and Rng
                 DCD     FPU_IRQHandler                    ; FPU
                 DCD     UART7_IRQHandler                  ; UART7
@@ -163,8 +163,8 @@ __Vectors       DCD     __initial_sp               ; Top of Stack
                 DCD     SPI5_IRQHandler                   ; SPI5
                 DCD     SPI6_IRQHandler                   ; SPI6
                 DCD     SAI1_IRQHandler                   ; SAI1
-                DCD     LTDC_IRQHandler                   ; LTDC
-                DCD     LTDC_ER_IRQHandler                ; LTDC error
+                DCD     0                                 ; Reserved
+                DCD     0                                 ; Reserved
                 DCD     DMA2D_IRQHandler                  ; DMA2D
                                          
 __Vectors_End
@@ -309,7 +309,8 @@ Default_Handler PROC
                 EXPORT  OTG_HS_EP1_IN_IRQHandler          [WEAK]                      
                 EXPORT  OTG_HS_WKUP_IRQHandler            [WEAK]                        
                 EXPORT  OTG_HS_IRQHandler                 [WEAK]                                      
-                EXPORT  DCMI_IRQHandler                   [WEAK]                                                                                 
+                EXPORT  DCMI_IRQHandler                   [WEAK]
+                EXPORT  CRYP_IRQHandler     			  [WEAK]
                 EXPORT  HASH_RNG_IRQHandler               [WEAK]
                 EXPORT  FPU_IRQHandler                    [WEAK]
                 EXPORT  UART7_IRQHandler                  [WEAK]
@@ -318,8 +319,6 @@ Default_Handler PROC
                 EXPORT  SPI5_IRQHandler                   [WEAK]
                 EXPORT  SPI6_IRQHandler                   [WEAK]
                 EXPORT  SAI1_IRQHandler                   [WEAK]
-                EXPORT  LTDC_IRQHandler                   [WEAK]
-                EXPORT  LTDC_ER_IRQHandler                [WEAK]
                 EXPORT  DMA2D_IRQHandler                  [WEAK]
 
 WWDG_IRQHandler                                                       
@@ -400,7 +399,8 @@ OTG_HS_EP1_OUT_IRQHandler
 OTG_HS_EP1_IN_IRQHandler                            
 OTG_HS_WKUP_IRQHandler                                
 OTG_HS_IRQHandler                                                   
-DCMI_IRQHandler                                                                                                             
+DCMI_IRQHandler 
+CRYP_IRQHandler
 HASH_RNG_IRQHandler
 FPU_IRQHandler  
 UART7_IRQHandler                  
@@ -408,9 +408,7 @@ UART8_IRQHandler
 SPI4_IRQHandler                   
 SPI5_IRQHandler                   
 SPI6_IRQHandler                   
-SAI1_IRQHandler                   
-LTDC_IRQHandler                   
-LTDC_ER_IRQHandler                 
+SAI1_IRQHandler                                   
 DMA2D_IRQHandler                  
                 B       .
 
@@ -445,4 +443,3 @@ __user_initial_stackheap
                  ENDIF
 
                  END
-

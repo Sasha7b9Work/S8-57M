@@ -181,16 +181,6 @@ void USARTx_IRQHandler(void)
 }
 
 /**
-  * @brief  This function handles TIM interrupt request.
-  * @param  None
-  * @retval None
-  */
-void TIMx_IRQHandler(void)
-{
-  HAL_TIM_IRQHandler(&TimHandle);
-}
-
-/**
   * @brief  This function handles PPP interrupt request.
   * @param  None
   * @retval None
