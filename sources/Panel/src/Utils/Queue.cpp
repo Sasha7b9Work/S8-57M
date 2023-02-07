@@ -5,6 +5,12 @@
 
 template class Queue<uint8>;
 
+template Queue<uint8>::Queue();
+template Queue<uint8>::~Queue();
+template void Queue<uint8>::Push(uint8);
+template uint8 Queue<uint8>::Front();
+template int Queue<uint8>::Size() const;
+
 
 template<typename T>
 Queue<T>::Queue() : pointer(nullptr), iFront(0), iBack(0)

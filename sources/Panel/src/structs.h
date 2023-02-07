@@ -3,11 +3,6 @@
 #include "defines.h"
 
 
-#ifndef WIN32
-#pragma anon_unions
-#endif
-
-
 union BitSet16 //-V2514
 {
     uint16 halfWord;

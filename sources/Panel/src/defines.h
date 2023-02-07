@@ -1,6 +1,20 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
+
+#ifndef WIN32
+
+//    #pragma GCC diagnostic ignored "-Wunused-function"
+//    #pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+//    #pragma GCC diagnostic ignored "-Wunused-template"
+//    #pragma GCC diagnostic ignored "-Wglobal-constructors"
+//    #pragma GCC diagnostic ignored "-Wmissing-prototypes"
+//    #pragma GCC diagnostic ignored "-Wcast-qual"
+    #pragma GCC diagnostic ignored "-Winvalid-source-encoding"
+//    #pragma GCC diagnostic ignored "-Wformat-nonliteral"
+#endif
+
+
 #ifdef WIN32
 #define __attribute(x)
 #define __attribute__(x)
