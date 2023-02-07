@@ -126,6 +126,7 @@ void DisplayOsci::BottomPart::Draw(int x0, int y0, int field)
     // Флешка
     if (FDrive::IsConnected())
     {
+        LOG_WRITE("flash connected");
     }
 }
 
