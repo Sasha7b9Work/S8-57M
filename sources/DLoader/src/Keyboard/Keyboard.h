@@ -44,9 +44,9 @@ struct Key
         Count
     } value;
 
-    explicit Key(E v = None) : value(v) {};
-    bool IsFunctional() const { return value >= F1 && value <= F5; };
-    bool IsArrow() const { return value >= Left && value <= Down; };
+    explicit Key(E v = None) : value(v) {}
+    bool IsFunctional() const { return value >= F1 && value <= F5; }
+    bool IsArrow() const { return value >= Left && value <= Down; }
     // Возвращает true, если кнопка управляет параметром сигнала - развёрткой там, смещением
     bool IsControlSignal() const;
     pcharc Name();
@@ -66,16 +66,16 @@ struct TypePress
         Count
     } value;
 
-    explicit TypePress(E v) : value(v)  { };
+    explicit TypePress(E v) : value(v)  { }
     pcharc ToString();
-    bool IsLong() const { return value == Long; };
+    bool IsLong() const { return value == Long; }
 };
 
 
 
 struct KeyEvent
 {
-    explicit KeyEvent(Key::E k = Key::None, TypePress::E t = TypePress::None) : key(k), type(t) { };
+    explicit KeyEvent(Key::E k = Key::None, TypePress::E t = TypePress::None) : key(k), type(t) { }
     Key::E key;
     TypePress::E type;
     // Возвращает true, если кнопка означает увеличение
@@ -84,14 +84,14 @@ struct KeyEvent
     // Возвращает 1, если кнопка означает увеличение, и -1 в обратном случае
     int Delta() const { return IsIncrease() ? 1 : -1; }
     
-    bool IsLeft() const { return key == Key::Left; };
-    bool IsRight() const { return key == Key::Right; };
-    bool IsUp() const { return key == Key::Up; };
-    bool IsDown() const { return key == Key::Down; };
+    bool IsLeft() const { return key == Key::Left; }
+    bool IsRight() const { return key == Key::Right; }
+    bool IsUp() const { return key == Key::Up; }
+    bool IsDown() const { return key == Key::Down; }
     bool IsArrow() const;
     
-    bool IsPress() const { return type == TypePress::Press; };
-    bool IsRepeat() const { return type == TypePress::Repeat; };
+    bool IsPress() const { return type == TypePress::Press; }
+    bool IsRepeat() const { return type == TypePress::Repeat; }
     bool IsLong() const { return type == TypePress::Long; }
     bool IsRelease() const { return type == TypePress::Release; }
 };

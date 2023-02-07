@@ -41,7 +41,7 @@ static SPI_HandleTypeDef handleSPI =
         SPI_CRCCALCULATION_DISABLED,    // Init.CRCCalculation
         7                               // InitCRCPolynomial
     },
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, HAL_UNLOCKED, HAL_SPI_STATE_RESET, 0
+    nullptr, 0, 0, nullptr, 0, 0, nullptr, nullptr, nullptr, nullptr, HAL_UNLOCKED, HAL_SPI_STATE_RESET, 0
 };
 
 

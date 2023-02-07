@@ -118,7 +118,7 @@ void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
     case HOST_USER_CONNECTION:
         connection++;
         state = State::Mount;
-        f_mount(NULL, (TCHAR const *)"", 0);
+        f_mount(nullptr, (TCHAR const *)"", 0);
         break;
 
     case HOST_USER_DISCONNECTION:
@@ -411,7 +411,7 @@ void Upgrade()
         size -= readedBytes;
         address += (uint)(readedBytes);
 
-        percentsUpdate = 1.0F - (float)size / fullSize;
+        percentsUpdate = 1.0F - (float)size / (float)fullSize;
     }
 
     FDrive::CloseOpenedFile();
