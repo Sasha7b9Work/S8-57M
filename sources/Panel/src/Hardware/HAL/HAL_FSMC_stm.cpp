@@ -35,11 +35,11 @@
         /*              15,14    1,0   ѕишем 00 в биты портов 15, 14, 1, 0      */  \
         GPIOD->MODER &= 0x0ffffff0;                                                 \
         /* ѕишем 00 в биты портов 10, 9, 8, 7                                   */  \
-        GPIOE->MODER &= 0xffc03fff;
+        GPIOE->MODER &= 0xffc03fff
 
 #define CONFIG_TO_WRITE                                                             \
         GPIOD->MODER |= 0x50000005;                                                 \
-        GPIOE->MODER |= 0x00154000;
+        GPIOE->MODER |= 0x00154000
 
 
 
@@ -47,7 +47,7 @@ namespace HAL_BUS
 {
     struct OutPin
     {
-        OutPin(GPIO_TypeDef *_gpio, uint16 _pin) : gpio(_gpio), pin(_pin) {};
+        OutPin(GPIO_TypeDef *_gpio, uint16 _pin) : gpio(_gpio), pin(_pin) {}
 
         void Init()
         {
@@ -69,7 +69,7 @@ namespace HAL_BUS
 
     struct InPin
     {
-        InPin(GPIO_TypeDef *_gpio, uint16 _pin) : gpio(_gpio), pin(_pin) {};
+        InPin(GPIO_TypeDef *_gpio, uint16 _pin) : gpio(_gpio), pin(_pin) {}
 
         void Init()
         {
@@ -235,9 +235,9 @@ namespace HAL_BUS
 
     void DataBus::WriteValue(uint8 value)
     {
-        GPIOD->ODR = (GPIOD->ODR & 0x3ffc) + ((value & 3) << 14) + ((value >> 2) & 3);
+        GPIOD->ODR = (GPIOD->ODR & 0x3ffc) + (uint)((value & 3) << 14) + ((value >> 2) & 3);
 
-        GPIOE->ODR = (GPIOE->ODR & 0xf87f) + ((value & 0xF0) << 3);
+        GPIOE->ODR = (GPIOE->ODR & 0xf87f) + (uint)((value & 0xF0) << 3);
     }
 }
 

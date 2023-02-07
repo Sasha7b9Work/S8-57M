@@ -60,13 +60,13 @@ typedef enum
   LPM_L0 = 0x00, /* on */
   LPM_L1 = 0x01, /* LPM L1 sleep */
   LPM_L2 = 0x02, /* suspend */
-  LPM_L3 = 0x03, /* off */
+  LPM_L3 = 0x03  /* off */
 } PCD_LPM_StateTypeDef;
 
 typedef enum
 {
   PCD_LPM_L0_ACTIVE = 0x00, /* on */
-  PCD_LPM_L1_ACTIVE = 0x01, /* LPM L1 sleep */
+  PCD_LPM_L1_ACTIVE = 0x01  /* LPM L1 sleep */
 } PCD_LPM_MsgTypeDef;
 
 typedef enum
@@ -76,7 +76,7 @@ typedef enum
   PCD_BCD_STD_DOWNSTREAM_PORT       = 0xFD,
   PCD_BCD_CHARGING_DOWNSTREAM_PORT  = 0xFC,
   PCD_BCD_DEDICATED_CHARGING_PORT   = 0xFB,
-  PCD_BCD_DISCOVERY_COMPLETED       = 0x00,
+  PCD_BCD_DISCOVERY_COMPLETED       = 0x00
 
 } PCD_BCD_MsgTypeDef;
 

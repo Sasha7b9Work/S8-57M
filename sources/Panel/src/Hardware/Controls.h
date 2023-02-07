@@ -54,10 +54,10 @@ struct Control
             Release,
             Long
         } value;
-        Action(E v) : value(v) {};
+        Action(E v) : value(v) {}
     } action;
 
-    Control(E v = K_None, Action::E a = Action::Press) : value(v), action(a) {};
+    Control(E v = K_None, Action::E a = Action::Press) : value(v), action(a) {}
     bool IsRepeatable() const;
-    operator uint8() const { return (uint8)value; };
+    operator uint8() const { return (uint8)value; }
 };

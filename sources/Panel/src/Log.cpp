@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "log.h"
+#include "Log.h"
 #include "common/Command.h"
 #include "Hardware/HAL/HAL.h"
 #include <Display/Display.h>
@@ -26,7 +26,7 @@ void Log::Write(TypeTrace type, pchar format, ...)
     {
         buffer[0] = 0;
         std::strcat(buffer, "!!! ERROR !!! ");
-        while (*pointer++) {};
+        while (*pointer++) {}
         ++pointer;
     }
     va_list args;

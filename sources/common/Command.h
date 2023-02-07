@@ -16,13 +16,13 @@ struct Point2        // от слова dimensions
     Point2(int x = 0, int y = 0)  { xy = (uint)(x | (y << 10)); Reset(); }
     // При приёме следующего байта добавляем его этой функцией
     void Append(uint8 byte)       { *pointer = byte; pointer++; }
-    void Reset()                  { pointer = (uint8 *)&xy;;   }
+    void Reset()                  { pointer = (uint8 *)&xy;     }
     // Берём 10 последних бит
-    int X() const                 { return (int)(xy & 0x3ff);  }
+    int X() const                 { return (int)(xy & 0x3ff);   }
     int Width() const             { return X(); }
     int Y() const                 { int result = (int)(xy >> 10); if (result & (1 << 13)) result |= 0xffffe000; return result; }
     int Height() const            { return Y(); }
-    void Write(uint8 *dest) const { std::memcpy(dest, &xy, 3); }
+    void Write(uint8 *dest) const { std::memcpy(dest, &xy, 3);  }
     const uint *XY() const { return &xy; }
 private:
     uint xy;

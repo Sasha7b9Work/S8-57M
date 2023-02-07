@@ -89,7 +89,7 @@ namespace PDecoder
 
         static int CacluateY(int data)
         {
-            return (int)(y_top + (250 - (data - 2)) * scale);
+            return (int)((float)y_top + (250.0f - ((float)data - 2.0f)) * scale);
         }
     }
 }
@@ -100,7 +100,7 @@ void PDecoder::AddData(uint8 data)
     static const struct StructFunc
     {
         pFuncBU8 func;
-        StructFunc(pFuncBU8 f) : func(f) {};
+        StructFunc(pFuncBU8 f) : func(f) {}
     }
     command[Command::Count] =
     {
@@ -458,7 +458,7 @@ bool PDecoder::DrawVCursor(uint8 data)
             height_skip.Reset();
 
             return true;
-        };
+        }
     }
 
     return false;
@@ -682,7 +682,7 @@ bool PDecoder::SetColorChannel(uint8 data)
     {
         value >>= 8;
         value &= 0x00ffffff;
-        value |= (data << 24);
+        value |= (uint)(data << 24);
 
         if (step == 5)
         {
@@ -703,7 +703,7 @@ bool PDecoder::SetColorChannel(uint8 data)
 void PDecoder::FinishCommand()
 {
     step = 0;
-    curFunc = 0;
+    curFunc = nullptr;
 }
 
 

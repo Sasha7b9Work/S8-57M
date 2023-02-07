@@ -24,6 +24,14 @@
  extern "C" {
 #endif
 
+
+#ifndef WIN32
+
+    #pragma GCC diagnostic ignored "-Wpadded"
+
+#endif
+
+
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 

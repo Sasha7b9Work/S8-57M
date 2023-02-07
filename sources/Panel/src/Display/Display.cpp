@@ -33,7 +33,7 @@ void Display::SetField(uint offset, uint8 *data, int num_bytes)
     hDMA2D.Init.ColorMode = DMA2D_INPUT_L8;
     hDMA2D.Init.OutputOffset = 0;
 
-    hDMA2D.XferCpltCallback = NULL;
+    hDMA2D.XferCpltCallback = nullptr;
 
     hDMA2D.LayerCfg[1].AlphaMode = DMA2D_NO_MODIF_ALPHA;
     hDMA2D.LayerCfg[1].InputAlpha = 0xFF;

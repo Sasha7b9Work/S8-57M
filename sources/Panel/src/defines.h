@@ -4,14 +4,24 @@
 
 #ifndef WIN32
 
-//    #pragma GCC diagnostic ignored "-Wunused-function"
-//    #pragma GCC diagnostic ignored "-Wmissing-field-initializers"
-//    #pragma GCC diagnostic ignored "-Wunused-template"
-//    #pragma GCC diagnostic ignored "-Wglobal-constructors"
-//    #pragma GCC diagnostic ignored "-Wmissing-prototypes"
-//    #pragma GCC diagnostic ignored "-Wcast-qual"
     #pragma GCC diagnostic ignored "-Winvalid-source-encoding"
-//    #pragma GCC diagnostic ignored "-Wformat-nonliteral"
+    #pragma GCC diagnostic ignored "-Wpadded"
+    #pragma GCC diagnostic ignored "-Wc++98-compat-pedantic"
+    #pragma GCC diagnostic ignored "-Wold-style-cast"
+    #pragma GCC diagnostic ignored "-Wself-assign"
+    #pragma GCC diagnostic ignored "-Wmissing-noreturn"
+    #pragma GCC diagnostic ignored "-Wmissing-prototypes"
+    #pragma GCC diagnostic ignored "-Wdeprecated-copy"
+    #pragma GCC diagnostic ignored "-Wmissing-variable-declarations"
+    #pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+    #pragma GCC diagnostic ignored "-Wglobal-constructors"
+    #pragma GCC diagnostic ignored "-Wexit-time-destructors"
+    #pragma GCC diagnostic ignored "-Wundefined-func-template"
+    #pragma GCC diagnostic ignored "-Wformat-nonliteral"
+    #pragma GCC diagnostic ignored "-Wgnu-anonymous-struct"
+    #pragma GCC diagnostic ignored "-Wcast-align"
+    #pragma GCC diagnostic ignored "-Wcast-qual"
+
 #endif
 
 
@@ -35,10 +45,6 @@ typedef signed char        int8;
 typedef const char        *pchar;
 
 typedef void(*pFuncVV)(void);
-
-#ifndef WIN32
-#define nullptr 0
-#endif
 
 #define ERROR_VALUE_UINT8 255
 

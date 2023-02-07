@@ -316,7 +316,7 @@ void BackBuffer::Signal::DrawPoint(int x, int y)
 {
     uint8 *address = Address::Pixel(x, y);
 
-    WRITE_BYTE(address, col_ch);
+    WRITE_BYTE(address, col_ch)
 
     static const int shift[4] = { -Display::WIDTH, 1, Display::WIDTH, -1 };
 
@@ -329,10 +329,10 @@ void BackBuffer::Signal::DrawPoint(int x, int y)
     for (int i = 0; i < 4; i++)
     {
         uint8 *addr = address + shift[i];
-        WRITE_BYTE_V(addr, col_half);
+        WRITE_BYTE_V(addr, col_half)
 
         addr = address + sh[i];
-        WRITE_BYTE_V(addr, col_quart);
+        WRITE_BYTE_V(addr, col_quart)
     }
 }
 
@@ -345,7 +345,7 @@ void BackBuffer::Signal::DrawVLine(int x, int y_min, int y_max)
 
     uint8 *addr = pixel - Display::WIDTH;
 
-    WRITE_BYTE_V(addr, col_half);
+    WRITE_BYTE_V(addr, col_half)
 
     while (pixel < buffer)
     {
@@ -362,7 +362,7 @@ void BackBuffer::Signal::DrawVLine(int x, int y_min, int y_max)
 
     if (y <= y_max)
     {
-        WRITE_BYTE_V(pixel, col_half);
+        WRITE_BYTE_V(pixel, col_half)
     }
 
     DrawFadedLine(x - 1, y_min, y_max);
@@ -379,7 +379,7 @@ void BackBuffer::Signal::DrawFadedLine(int x, int y_min, int y_max)
 
     uint8 *addr = pixel - Display::WIDTH;
 
-    WRITE_BYTE_V(addr, col_quart);
+    WRITE_BYTE_V(addr, col_quart)
 
     while (pixel < buffer)
     {
@@ -399,6 +399,6 @@ void BackBuffer::Signal::DrawFadedLine(int x, int y_min, int y_max)
 
     if (y <= y_max)
     {
-        WRITE_BYTE_V(pixel, col_quart);
+        WRITE_BYTE_V(pixel, col_quart)
     }
 }

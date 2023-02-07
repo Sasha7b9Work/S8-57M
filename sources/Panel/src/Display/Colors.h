@@ -14,7 +14,7 @@ public:
     Color(const Color &color) : value(color.value) { }
 
     void SetValue(uint raw);
-    void SetAsCurrent() const { if (value != (uint8)(-1)) { current = *this; } };
+    void SetAsCurrent() const { if (value != (uint8)(-1)) { current = *this; } }
 
     uint8 value;
     static Color current;

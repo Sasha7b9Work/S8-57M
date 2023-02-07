@@ -12,8 +12,8 @@ union BitSet16 //-V2514
         uint8 byte0;
         uint8 byte1;
     };
-    explicit BitSet16(uint16 v) : halfWord(v) {};
-    explicit BitSet16(uint8 v0, uint8 v1) : byte0(v0), byte1(v1) {};
+    explicit BitSet16(uint16 v) : halfWord(v) {}
+    explicit BitSet16(uint8 v0, uint8 v1) : byte0(v0), byte1(v1) {}
 };
 
 

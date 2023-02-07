@@ -51,12 +51,12 @@ static GPIO_TypeDef* slsPorts[Keyboard::NUM_SL] = {GPIOE, GPIOC, GPIOC, GPIOC, G
 static uint16 rls[Keyboard::NUM_RL]             = {RL0,   RL1,   RL2,   RL3,   RL4,   RL5};
 static GPIO_TypeDef* rlsPorts[Keyboard::NUM_RL] = {GPIOB, GPIOB, GPIOD, GPIOC, GPIOC, GPIOC};
 
-#define SET_SL(n)   HAL_GPIO_WritePin(slsPorts[n], sls[n], GPIO_PIN_SET);
+#define SET_SL(n)   HAL_GPIO_WritePin(slsPorts[n], sls[n], GPIO_PIN_SET)
 #define SET_ALL_SL  HAL_GPIO_WritePin(GPIOA, SL7, GPIO_PIN_SET);                                    \
                     HAL_GPIO_WritePin(GPIOC, SL1 | SL2 | SL3 | SL4 | SL5 | SL6, GPIO_PIN_SET);      \
-                    HAL_GPIO_WritePin(GPIOE, SL0, GPIO_PIN_SET);
-#define RESET_SL(n) HAL_GPIO_WritePin(slsPorts[n], sls[n], GPIO_PIN_RESET);
-#define READ_RL(n)  HAL_GPIO_ReadPin(rlsPorts[n], rls[n]);
+                    HAL_GPIO_WritePin(GPIOE, SL0, GPIO_PIN_SET)
+#define RESET_SL(n) HAL_GPIO_WritePin(slsPorts[n], sls[n], GPIO_PIN_RESET)
+#define READ_RL(n)  HAL_GPIO_ReadPin(rlsPorts[n], rls[n])
 
 #define BUTTON_IS_PRESS(state) ((state) == 0)
 

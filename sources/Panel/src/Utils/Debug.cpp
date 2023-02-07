@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "log.h"
+#include "Log.h"
 #include "Debug.h"
 #include "Hardware/Timer.h"
 
@@ -9,7 +9,7 @@
 uint  Debug::timeStart = 0;
 uint  Debug::timeCounter = 0;
 uint  Debug::timeStartCounter = 0;
-char *Debug::file = 0;
+char *Debug::file = nullptr;
 int   Debug::line = 0;
 uint  Debug::size = 0;
 
