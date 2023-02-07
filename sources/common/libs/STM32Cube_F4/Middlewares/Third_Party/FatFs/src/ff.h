@@ -66,6 +66,7 @@ typedef char TCHAR;
 #endif
 
 
+
 /* Type of file size variables */
 
 #if _FS_EXFAT
@@ -76,6 +77,7 @@ typedef QWORD FSIZE_t;
 #else
 typedef DWORD FSIZE_t;
 #endif
+
 
 
 /* File system object structure (FATFS) */
@@ -93,7 +95,7 @@ typedef struct {
 	WORD	ssize;			/* Sector size (512, 1024, 2048 or 4096) */
 #endif
 #if _USE_LFN != 0
-	WCHAR *lfnbuf;			/* LFN working buffer */
+	WCHAR*	lfnbuf;			/* LFN working buffer */
 #endif
 #if _FS_EXFAT
 	BYTE*	dirbuf;			/* Directory entry block scratchpad buffer */

@@ -2,18 +2,8 @@
 #include "ff_gen_drv.h"
 #include "usbh_diskio.h"
 #include "FlashDrive/FlashDrive.h"
-#include <stm32f4xx_hal.h>
-
-/* Private typedef -----------------------------------------------------------*/
-/* Private define ------------------------------------------------------------*/
-
-#define USB_DEFAULT_BLOCK_SIZE 512
-
-/* Private variables ---------------------------------------------------------*/
-static DWORD scratch[_MAX_SS / 4];
 
 
-/* Private function prototypes -----------------------------------------------*/
 DSTATUS USBH_initialize(BYTE);
 DSTATUS USBH_status(BYTE);
 DRESULT USBH_read(BYTE, BYTE *, DWORD, UINT);
@@ -43,10 +33,9 @@ const Diskio_drvTypeDef  USBH_Driver =
 
 /**
   * @brief  Initializes a Drive
-  * @param  lun : lun id
   * @retval DSTATUS: Operation status
   */
-DSTATUS USBH_initialize(BYTE lun)
+DSTATUS USBH_initialize(BYTE)
 {
     /* CAUTION : USB Host library has to be initialized in the application */
 
@@ -69,6 +58,7 @@ DSTATUS USBH_status(BYTE lun)
 
     return (DSTATUS)res;
 }
+
 /**
   * @brief  Reads Sector(s)
   * @param  lun : lun id
@@ -81,38 +71,14 @@ DRESULT USBH_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
 {
     DRESULT res = RES_ERROR;
     MSC_LUNTypeDef info;
-    USBH_StatusTypeDef  status = USBH_OK;
 
-    USBH_HandleTypeDef *host = (USBH_HandleTypeDef *)FDrive::handle;
-
-    if (((DWORD)buff & 3) && (((HCD_HandleTypeDef *)host->pData)->Init.dma_enable))
-    {
-        while ((count--) && (status == USBH_OK))
-        {
-            status = USBH_MSC_Read(host, lun, sector + count, (uint8_t *)scratch, 1);
-
-            if (status == USBH_OK)
-            {
-                memcpy(&buff[count * _MAX_SS], scratch, _MAX_SS);
-            }
-            else
-            {
-                break;
-            }
-        }
-    }
-    else
-    {
-        status = USBH_MSC_Read(host, lun, sector, buff, count);
-    }
-
-    if (status == USBH_OK)
+    if (USBH_MSC_Read((USBH_HandleTypeDef *)FDrive::handle, lun, sector, buff, count) == USBH_OK)
     {
         res = RES_OK;
     }
     else
     {
-        USBH_MSC_GetLUNInfo(host, lun, &info);
+        USBH_MSC_GetLUNInfo((USBH_HandleTypeDef *)FDrive::handle, lun, &info);
 
         switch (info.sense.asc)
         {
@@ -121,9 +87,6 @@ DRESULT USBH_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
         case SCSI_ASC_NOT_READY_TO_READY_CHANGE:
             USBH_ErrLog("USB Disk is not ready!");
             res = RES_NOTRDY;
-            break;
-
-        default:
             break;
         }
     }
@@ -144,36 +107,14 @@ DRESULT USBH_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count)
 {
     DRESULT res = RES_ERROR;
     MSC_LUNTypeDef info;
-    USBH_StatusTypeDef  status = USBH_OK;
 
-    USBH_HandleTypeDef *host = (USBH_HandleTypeDef *)FDrive::handle;
-
-    if (((DWORD)buff & 3) && (((HCD_HandleTypeDef *)host->pData)->Init.dma_enable))
-    {
-
-        while (count--)
-        {
-            memcpy(scratch, &buff[count * _MAX_SS], _MAX_SS);
-
-            status = USBH_MSC_Write(host, lun, sector + count, (BYTE *)scratch, 1);
-            if (status == USBH_FAIL)
-            {
-                break;
-            }
-        }
-    }
-    else
-    {
-        status = USBH_MSC_Write(host, lun, sector, (BYTE *)buff, count);
-    }
-
-    if (status == USBH_OK)
+    if (USBH_MSC_Write((USBH_HandleTypeDef *)FDrive::handle, lun, sector, (BYTE *)buff, count) == USBH_OK)
     {
         res = RES_OK;
     }
     else
     {
-        USBH_MSC_GetLUNInfo(host, lun, &info);
+        USBH_MSC_GetLUNInfo((USBH_HandleTypeDef *)FDrive::handle, lun, &info);
 
         switch (info.sense.asc)
         {
@@ -187,9 +128,6 @@ DRESULT USBH_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count)
         case SCSI_ASC_NOT_READY_TO_READY_CHANGE:
             USBH_ErrLog("USB Disk is not ready!");
             res = RES_NOTRDY;
-            break;
-
-        default:
             break;
         }
     }
@@ -222,14 +160,14 @@ DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff)
     case GET_SECTOR_COUNT:
         if (USBH_MSC_GetLUNInfo((USBH_HandleTypeDef *)FDrive::handle, lun, &info) == USBH_OK)
         {
-            *(DWORD *)buff = info.capacity.block_nbr;
+            *(DWORD *)buff = info.capacity.block_nbr; //-V525
             res = RES_OK;
         }
         break;
 
         /* Get R/W sector size (WORD) */
     case GET_SECTOR_SIZE:
-        if (USBH_MSC_GetLUNInfo((USBH_HandleTypeDef *)FDrive::handle, lun, &info) == USBH_OK)
+        if (USBH_MSC_GetLUNInfo((USBH_HandleTypeDef *)FDrive::handle, lun, &info) == USBH_OK) //-V1037
         {
             *(DWORD *)buff = info.capacity.block_size;
             res = RES_OK;
@@ -241,13 +179,14 @@ DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff)
 
         if (USBH_MSC_GetLUNInfo((USBH_HandleTypeDef *)FDrive::handle, lun, &info) == USBH_OK)
         {
-            *(DWORD *)buff = (DWORD)(info.capacity.block_size / USB_DEFAULT_BLOCK_SIZE);
+            *(DWORD *)buff = info.capacity.block_size;
             res = RES_OK;
         }
         break;
 
     default:
         res = RES_PARERR;
+        break;
     }
 
     return res;

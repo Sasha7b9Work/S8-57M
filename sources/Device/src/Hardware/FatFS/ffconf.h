@@ -1,26 +1,15 @@
-/**
-  *
-  *  Portions COPYRIGHT 2017 STMicroelectronics
-  *  Copyright (C) 2017, ChaN, all right reserved.
-  *
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2017 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
-
 /*---------------------------------------------------------------------------/
 /  FatFs - FAT file system module configuration file
 /---------------------------------------------------------------------------*/
 
 #define _FFCONF 68300	/* Revision ID */
+
+#include "stm32f4xx_hal.h"
+
+#include "usbh_core.h"
+#include "usbh_msc.h"
+
+#define  HOST_HANDLE   handleUSBH 
 
 /*---------------------------------------------------------------------------/
 / Function Configurations
@@ -179,12 +168,12 @@
 
 
 #define	_MULTI_PARTITION	0
-/* This option switches support of multi-partition on a physical drive.
+/* This option switches support of multi-partition on a physical FDrive::
 /  By default (0), each logical drive number is bound to the same physical drive
 /  number and only an FAT volume found on the physical drive will be mounted.
 /  When multi-partition is enabled (1), each logical drive number can be bound to
 /  arbitrary physical drive and partition listed in the VolToPart[]. Also f_fdisk()
-/  function will be available. */
+/  funciton will be available. */
 
 
 #define	_MIN_SS		512

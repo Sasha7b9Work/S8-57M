@@ -10,7 +10,6 @@
 #include "Osci/Osci.h"
 #include "Settings/Settings.h"
 #include "Utils/Math.h"
-#include <cstring>
 
 
 int ENumPointsFPGA::BytesInChannel()
