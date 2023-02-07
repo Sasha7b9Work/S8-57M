@@ -4,13 +4,10 @@
 #include <cstdlib>
 
 
-namespace Utils
-{
-    template class AroundAverager<float>;
-    template AroundAverager<float>::AroundAverager(int);
-    template void AroundAverager<float>::Push(float);
-    template float AroundAverager<float>::Value();
-}
+
+//template class Utils::Averager<float>;
+template class Utils::AroundAverager<float>;
+
 
 
 template <typename T>
@@ -26,7 +23,7 @@ Utils::Averager<T>::Averager(int _size) : buffer(nullptr), size(_size), numELeme
 
 
 template <typename T>
-Utils::Averager<T>::~Averager<T>()
+Utils::Averager<T>::~Averager()
 {
     std::free(buffer);
 }
@@ -84,11 +81,11 @@ void Utils::AroundAverager<T>::Push(T elem)
     else if (pushed == parts)
     {
         value += elem;
-        value /= (float)pushed;
+        value /= pushed;
     }
     else
     {
-        value = (1.0F - 1.0F / (float)parts) * value + (1.0F / (float)parts) * elem;
+        value = (1.0F - 1.0F / parts) * value + (1.0F / parts) * elem;
     }
 }
 
@@ -98,7 +95,7 @@ T Utils::AroundAverager<T>::Value()
 {
     if (pushed < parts)
     {
-        return value / (float)pushed;
+        return value / pushed;
     }
 
     return value;

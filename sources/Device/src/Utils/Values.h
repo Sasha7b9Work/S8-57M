@@ -8,7 +8,7 @@
 class Hex
 {
 public:
-    Hex(uint v) : value(v) {}
+    Hex(uint v) : value(v) {};
     
     // Преобразует значение в текстовую строку в шестнадцатиричном виде. depth задаёт разрядность числа - 8, 16 или 32 бит.
     char* ToHex(int depth, char bufferOut[9]) const;
@@ -19,12 +19,12 @@ public:
     // Возвращает символ в позиции pos от последнего (младшего)
     char DigitInPosition(int pos) const;
 
-    void Set(uint v) { value = v; }
+    void Set(uint v) { value = v; };
     
     // Возвращает число десятичных разрядов.
     int NumDigits() const;
 
-    operator uint() const { return value; }
+    operator uint() const { return value; };
 
 private:
 

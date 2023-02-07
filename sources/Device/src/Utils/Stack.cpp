@@ -7,22 +7,6 @@
 template class Stack<uint>;
 template class Stack<int8>;
 template class Stack<uint8>;
-template Stack<uint>::Stack(int);
-template Stack<uint8>::Stack(int);
-template Stack<int8>::Stack(int);
-template Stack<uint>::~Stack();
-template Stack<uint8>::~Stack();
-template Stack<int8>::~Stack();
-template uint Stack<uint>::Pop();
-template uint8 Stack<uint8>::Pop();
-template int8 Stack<int8>::Pop();
-template void Stack<uint>::Push(uint);
-template void Stack<uint8>::Push(uint8);
-template void Stack<int8>::Push(int8);
-template int Stack<uint>::NumFirstZeros() const;
-template int Stack<uint>::Size() const;
-template int Stack<int8>::Size() const;
-template bool Stack<uint>::Empty() const;
 
 
 template <typename T>

@@ -62,7 +62,7 @@ bool Osci::ReadDataChannel(Ch::E ch, uint8 *data)
             {
                 int delta = VALUE::AVE - (int)(*a1);
 
-                int result = (int)(VALUE::AVE - (int)((float)delta * stretch));
+                int result = (int)(VALUE::AVE - (int)(delta * stretch));
 
                 if(result < VALUE::MIN)
                 {

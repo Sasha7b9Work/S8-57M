@@ -16,7 +16,7 @@ struct Device
             Recorder,
             Count
         } value;
-        explicit Mode(E v) : value(v) {}
+        explicit Mode(E v) : value(v) {};
     };
 
     static void Init();

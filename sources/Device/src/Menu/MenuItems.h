@@ -42,7 +42,7 @@ struct TypeItem
         Count
     } value;
 
-    explicit TypeItem(E v) : value(v) {}
+    explicit TypeItem(E v) : value(v) {};
 };
 
 
@@ -54,7 +54,7 @@ public:
 
     Item(const DataItem *const data = nullptr);
 
-    virtual ~Item() { }
+    virtual ~Item() { };
 
     // Количество пунктов меню, умещающиееся на экране
     static const int NUM_ON_DISPLAY = 5;
@@ -74,7 +74,7 @@ public:
     String Title() const;
 
     // Возвращает true, если контрол находится в активном состоянии (реагирует на органы управления)
-    bool IsActive() const { return data->funcActive(); }
+    bool IsActive() const { return data->funcActive(); };
 
     bool IsCurrentItem() const;
 
@@ -85,7 +85,7 @@ public:
     bool ExistKeeper(const Page *keeper) const;
 
     // Имеет родителя - не является главной страницей меню
-    bool HaveParent() const { return Keeper() != nullptr; }
+    bool HaveParent() const { return Keeper() != nullptr; };
 
     // Позиция итема по горизонтали - закрытого либо раскрытого.
     int X() const;
@@ -108,14 +108,14 @@ public:
 
     int Y(bool opened = false) const;
 
-    bool Is(TypeItem::E t) const { return data->type == (uint8)t; }
+    bool Is(TypeItem::E t) const { return data->type == (uint8)t; };
 
     virtual void Draw(bool opened) const;
 
     virtual void HandlerFX(TypePress::E type) const;
 
     // Обработка события кнопки
-    virtual bool HandlerKey(const KeyEvent &) { return false; }
+    virtual bool HandlerKey(const KeyEvent &) { return false; };
 
     // Возвращает высоту в пикселях открытого элемента Choice или Page::Name
     virtual int HeightOpened() const;
@@ -127,7 +127,7 @@ public:
     static bool Active() { return true; }
 
     // Возвращает цвет фона заголовка итема
-    Color ColorTitleBackground() const { return IsPressed() ? Color::FILL : Color::TITLE_BACKGROUND; }
+    Color ColorTitleBackground() const { return IsPressed() ? Color::FILL : Color::TITLE_BACKGROUND; };
 
     // Возвращает цвет, которым нужно рисовать на заголовке итема
     Color ColorTitleText() const
@@ -143,12 +143,12 @@ public:
     }
 
     // Цвет обводки итема
-    Color ColorFrame() const { return Color::FILL; }
+    Color ColorFrame() const { return Color::FILL; };
 
     // Возвращает цвет, которым нужно заполнять участок выбора
     Color ColorBackgroundChoice() const;
 
-    bool IsPage() const { return data->type == TypeItem::Page; }
+    bool IsPage() const { return data->type == TypeItem::Page; };
 };
 
 
@@ -166,7 +166,7 @@ struct DataPage
 class Page : public Item
 {
 public:
-    Page(const DataItem *const _data) : Item(_data) {}
+    Page(const DataItem *const data) : Item(data) {};
 
     // Возвращает true, если текущий элемент страницы открыт
     bool CurrentItemIsOpened() const;
@@ -214,12 +214,12 @@ public:
     bool IsSubPage(const Page *parent);
 
     // Обработка события кнопки
-    virtual bool HandlerKey(const KeyEvent &event) override;
+    virtual bool HandlerKey(const KeyEvent &event);
 
     // Реакция на событие функциональной клавиши, соотвествующей итему
-    virtual void HandlerFX(TypePress::E type) const override;
+    virtual void HandlerFX(TypePress::E type) const;
 
-    virtual void Draw(bool opened) const override;
+    virtual void Draw(bool opened) const;
 
     const DataPage *OwnData() const;
 
@@ -244,11 +244,11 @@ struct DataButton
 class Button : public Item
 {
 public:
-    Button(const DataItem *const _data) : Item(_data) {}
+    Button(const DataItem *const data) : Item(data) {};
 
-    virtual void Draw(bool opened) const override;
+    virtual void Draw(bool opened) const;
 
-    virtual void HandlerFX(TypePress::E type) const override;
+    virtual void HandlerFX(TypePress::E type) const;
 
     const DataButton *OwnData() const { return (const DataButton *)data->ad; } //-V2571
 };
@@ -258,9 +258,9 @@ public:
 class EmptyItem : public Item
 {
 public:
-    EmptyItem(const DataItem *const _data) : Item(_data) {}
+    EmptyItem(const DataItem *const data) : Item(data) {};
 
-    virtual void Draw(bool opened) const override;
+    virtual void Draw(bool opened) const;
 };
 
 
@@ -282,13 +282,13 @@ struct DataGraphButton
 class GraphButton : public Item
 {
 public:
-    GraphButton(const DataItem *const _data) : Item(_data) {}
+    GraphButton(const DataItem *const data) : Item(data) {};
 
-    virtual void Draw(bool opened) const override;
+    virtual void Draw(bool opened) const;
 
     void DrawHints(int x, int y, int width) const;
 
-    virtual void HandlerFX(TypePress::E type) const override;
+    virtual void HandlerFX(TypePress::E type) const;
 
     const DataGraphButton *OwnData() const { return (const DataGraphButton *)data->ad; } //-V2571
 
@@ -309,7 +309,7 @@ struct DataGovernor
 class Governor : public Item
 {
 public:
-    Governor(const DataItem *const _data) : Item(_data) {}
+    Governor(const DataItem *const data) : Item(data) {};
 
     // Возвращает следующее большее значение, которое может принять governor.
     int16 NextValue() const;
@@ -348,16 +348,16 @@ public:
     void SetValue(int16 v) const;
 
     // Обработка события кнопки
-    virtual bool HandlerKey(const KeyEvent &event) override;
+    virtual bool HandlerKey(const KeyEvent &event);
 
     // Обработка события функциональной кнопки, соответствующей данному итему
-    virtual void HandlerFX(TypePress::E type) const override;
+    virtual void HandlerFX(TypePress::E type) const;
 
-    virtual void Draw(bool opened) const override;
+    virtual void Draw(bool opened) const;
 
-    static void Changed() { }
+    static void Changed() { };
 
-    static void AfterDraw(int, int) { }
+    static void AfterDraw(int, int) { };
 
     const DataGovernor *OwnData() const { return (const DataGovernor *)data->ad; } //-V2571
 
@@ -387,7 +387,7 @@ struct DataChoice
 class Choice : public Item
 {
 public:
-    Choice(const DataItem *const _data) : Item(_data) {}
+    Choice(const DataItem *const data) : Item(data) {};
 
     // Запускает процесс изменения значения на delta
     void  StartChange(int delta) const;
@@ -418,21 +418,21 @@ public:
 
     SymbolUGO GetSymbol();
 
-    virtual void Draw(bool opened) const override;
+    virtual void Draw(bool opened) const;
 
     // Обработка события кнопки
-    virtual bool HandlerKey(const KeyEvent &event) override;
+    virtual bool HandlerKey(const KeyEvent &event);
 
     // Обработка события функциональной кнопки, соответствующей данному итему
-    virtual void HandlerFX(TypePress::E type) const override;
+    virtual void HandlerFX(TypePress::E type) const;
 
-    virtual int HeightOpened() const override;
+    virtual int HeightOpened() const;
 
     const DataChoice *OwnData() const { return (const DataChoice *)data->ad; } //-V2571
 
-    static void Changed(bool) {}
+    static void Changed(bool) {};
 
-    static void AfterDraw(int, int) {}
+    static void AfterDraw(int, int) {};
 };
 
 
@@ -445,16 +445,16 @@ struct DataGovernorColor
 class GovernorColor : public Item
 {
 public:
-    GovernorColor(const DataItem *const _data) : Item(_data) {}
+    GovernorColor(const DataItem *const data) : Item(data) {};
 
-    virtual void Draw(bool opened) const override;
+    virtual void Draw(bool opened) const;
 
     // Обработка события функциональной кнопки, соответствующей данному итему на странице
-    virtual void HandlerFX(TypePress::E type) const override;
+    virtual void HandlerFX(TypePress::E type) const;
 
-    virtual bool HandlerKey(const KeyEvent &event) override;
+    virtual bool HandlerKey(const KeyEvent &event);
 
-    virtual int HeightOpened() const override { return 27; }
+    virtual int HeightOpened() const { return 27; };
 
     const DataGovernorColor *OwnData() const;
 

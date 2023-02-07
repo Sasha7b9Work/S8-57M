@@ -3,31 +3,6 @@
 
 #define DEBUG
 
-#ifndef WIN32
-
-    #pragma GCC diagnostic ignored "-Winvalid-source-encoding"
-    #pragma GCC diagnostic ignored "-Wpadded"
-    #pragma GCC diagnostic ignored "-Wc++98-compat-pedantic"
-    #pragma GCC diagnostic ignored "-Wold-style-cast"
-    #pragma GCC diagnostic ignored "-Wself-assign"
-    #pragma GCC diagnostic ignored "-Wmissing-noreturn"
-    #pragma GCC diagnostic ignored "-Wmissing-prototypes"
-    #pragma GCC diagnostic ignored "-Wdeprecated-copy"
-    #pragma GCC diagnostic ignored "-Wmissing-variable-declarations"
-    #pragma GCC diagnostic ignored "-Wmissing-field-initializers"
-    #pragma GCC diagnostic ignored "-Wglobal-constructors"
-    #pragma GCC diagnostic ignored "-Wexit-time-destructors"
-    #pragma GCC diagnostic ignored "-Wundefined-func-template"
-    #pragma GCC diagnostic ignored "-Wformat-nonliteral"
-    #pragma GCC diagnostic ignored "-Wgnu-anonymous-struct"
-    #pragma GCC diagnostic ignored "-Wcast-align"
-    #pragma GCC diagnostic ignored "-Wcast-qual"
-    #pragma GCC diagnostic ignored "-Wbackslash-newline-escape"
-    #pragma GCC diagnostic ignored "-Wcomment"
-    #pragma GCC diagnostic ignored "-Wzero-as-null-pointer-constant"
-
-#endif
-
 #ifdef WIN32
 #define __attribute(x)
 #define __attribute__(x)
@@ -62,6 +37,8 @@ typedef unsigned int   uint32_t;
 #ifndef __IO
 #define __IO
 #endif
+#else
+#define nullptr 0
 #endif
 
 
@@ -77,6 +54,13 @@ inline void EmptyFuncVB(bool) { };
 
 
 #define UNUSED_PARAMETER(x)(void)x
+
+
+#ifndef _WIN32
+#if __ARMCLIB_VERSION < 6070001
+#pragma anon_unions
+#endif
+#endif
 
 
 #define _SET_BIT_VALUE(value, numBit, bitValue) ((value) |= ((bitValue) << (numBit)))
@@ -126,8 +110,8 @@ union BitSet16 //-V2514
         uint8 byte0;
         uint8 byte1;
     };
-    explicit BitSet16(uint16 v = 0) : halfWord(v) {}
-    explicit BitSet16(uint8 v0, uint8 v1) : byte0(v0), byte1(v1) {}
+    explicit BitSet16(uint16 v = 0) : halfWord(v) {};
+    explicit BitSet16(uint8 v0, uint8 v1) : byte0(v0), byte1(v1) {};
 };
 
 union BitSet32 //-V2514
