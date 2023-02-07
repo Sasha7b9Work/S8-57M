@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "device.h"
+#include "Device.h"
 #include "Display/Display.h"
 #include "Hardware/Battery.h"
 #include "Hardware/PowerBreaker.h"

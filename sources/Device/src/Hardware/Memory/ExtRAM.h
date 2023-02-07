@@ -18,7 +18,7 @@ public:
     // Читает из внешней памяти address в буфер buffer данные, size кратен 4
     static void Read(uint8 *buffer, int size, const uint8 *address);
 
-    static void Fill(uint8 *begin = 0, uint8 value = 0, int size = 0);
+    static void Fill(uint8 *begin = nullptr, uint8 value = 0, int size = 0);
 
     // Возвращает сколько процентов данных считанных неправильно.
     static float Test1();

@@ -26,7 +26,7 @@ namespace TableMeasures
     struct Cell
     {
     public:
-        Cell(int _row, int _col) : row(_row), col(_col) {};
+        Cell(int _row, int _col) : row(_row), col(_col) {}
         void Draw(int x, int y);
 
     private:

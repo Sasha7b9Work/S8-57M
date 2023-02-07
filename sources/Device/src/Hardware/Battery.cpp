@@ -13,7 +13,7 @@ namespace Battery
 {
     static const float MAX_ADC_REL = (float)((1 << 12) - 1);     // Максимальное значение, которое возможно считать с АЦП
     static const float MAX_ADC_ABS = 3.0F;                                  // Напряжение, соответствующее MAX_ADC_REL
-    const float Battery::SHUTDOWN_VOLTAGE = 5.4F;
+    const float SHUTDOWN_VOLTAGE = 5.4F;
 
     static bool isBusy = false;
 
@@ -107,7 +107,7 @@ void Battery::DrawUGO(int x, int y, float percents, int width)
 
 void Battery::DrawFilled(int x, int y, int full, float percents)
 {
-    int filled = (int)(full * percents / 100.0F + 0.5F);
+    int filled = (int)((float)full * percents / 100.0F + 0.5F);
 
     Region(filled, 17).Fill(x + full - filled, y - 6, percents <= 25.0F ? Color::RED : Color::BATTERY);
 }
@@ -125,15 +125,15 @@ void Battery::Draw(int x, int y, int width)
     {
         Font::Set(TypeFont::Normal);
 
-        Text(String("%4.2f В", akk)).Draw(x + 10, y, Color::FILL);
-        Text(String("%4.1f %%", percents)).Draw(x + 10, y + 9);
+        Text(String("%4.2f В", (double)akk)).Draw(x + 10, y, Color::FILL);
+        Text(String("%4.1f %%", (double)percents)).Draw(x + 10, y + 9);
     }
 }
 
 
 float Battery::ChargerADC_ToVoltage(uint value)
 {
-    float result = (value / MAX_ADC_REL) * MAX_ADC_ABS;
+    float result = ((float)value / MAX_ADC_REL) * MAX_ADC_ABS;
 
     result *= 124.0F / 24.0F;
 

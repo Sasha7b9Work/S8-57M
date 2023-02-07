@@ -24,6 +24,11 @@
  extern "C" {
 #endif
 
+
+#ifndef WIN32
+    #pragma GCC diagnostic ignored "-Wconditional-uninitialized"
+#endif
+
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 

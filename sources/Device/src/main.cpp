@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "device.h"
+#include "Device.h"
 #include "Hardware/AT25160N.h"
 #include "Hardware/Timer.h"
 #include "Hardware/Memory/ExtRAM.h"

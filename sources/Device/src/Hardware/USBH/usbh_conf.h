@@ -1,6 +1,6 @@
 #pragma once
 #include <stdlib.h>
-#include <cstring>
+#include <string.h>
 
 #define USBH_MAX_NUM_ENDPOINTS                2
 #define USBH_MAX_NUM_INTERFACES               2

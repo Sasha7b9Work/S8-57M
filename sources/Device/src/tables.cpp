@@ -60,19 +60,19 @@ pchar Tables_RangeNameFromValue(Range::E range)
 {
     static const struct StructName { pcharc name; } names[Range::Count] =
     {
-        "Range_2mV",
-        "Range_5mV",
-        "Range_10mV",
-        "Range_20mV",
-        "Range_50mV",
-        "Range_100mV",
-        "Range_200mV",
-        "Range_500mV",
-        "Range_1V",
-        "Range_2V",
-        "Range_5V",
-        "Range_10V",
-        "Range_20V"
+        { "Range_2mV" },
+        { "Range_5mV" },
+        { "Range_10mV" },
+        { "Range_20mV" },
+        { "Range_50mV" },
+        { "Range_100mV" },
+        { "Range_200mV" },
+        { "Range_500mV" },
+        { "Range_1V" },
+        { "Range_2V" },
+        { "Range_5V" },
+        { "Range_10V" },
+        { "Range_20V" }
     };
 
     pcharc name = names[range].name;

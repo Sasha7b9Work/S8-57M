@@ -32,7 +32,7 @@ struct PacketROM
     bool IsErased() const { return (state == STATE_ERASED); }
     bool IsValid() const { return (state == STATE_VALID); }
 
-    uint Address() const { return (uint)this; };
+    uint Address() const { return (uint)this; }
 
     PacketROM *Next() const;
     
@@ -61,7 +61,7 @@ struct Sector
         _02_BOOT_3,     // /
         _03_NRST_1,     // \ Несбрасываемые настройки
         _04_NRST_2,     // / 
-        _05_FIRM_1,     // \ 
+        _05_FIRM_1,     // |
         _06_FIRM_2,     // | Основная прошивка
         _07_FIRM_3,     // /
         _08,
@@ -76,7 +76,7 @@ struct Sector
         _16,
         _17,
         _18,
-        _19_DATA_1,     // \ 
+        _19_DATA_1,     // |
         _20_DATA_2,     // | Сохранённые данные
         _21_DATA_3,     // | 
         _22_DATA_4,     // |

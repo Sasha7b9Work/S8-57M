@@ -5,7 +5,20 @@
 
 
 template class Queue<WarningStruct>;
-template class Queue<String *>;
+template Queue<WarningStruct>::Queue();
+template Queue<String *>::Queue();
+template Queue<WarningStruct>::~Queue();
+template Queue<String *>::~Queue();
+template WarningStruct &Queue<WarningStruct>::operator[](int);
+template String *&Queue<String *>::operator[](int);
+template WarningStruct Queue<WarningStruct>::Back();
+template String* Queue<String *>::Back();
+template WarningStruct Queue<WarningStruct>::Front();
+template int Queue<WarningStruct>::Size() const;
+template int Queue<String *>::Size() const;
+template bool Queue<WarningStruct>::IsEmpty() const;
+template void Queue<WarningStruct>::Push(WarningStruct);
+template void Queue<String *>::Push(String *);
 template class Queue<int>;
 
 
