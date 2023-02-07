@@ -74,9 +74,6 @@ public:
     static int FindAnotherElement(const uint8 *data, uint8 value, int numElements);
 
     static int DigitsInIntPart(float value);
-    // \brief Округляет число с плавающей точкой. numDigits - полное число знаков, по которым производится округление.
-    // Например, RoundFloat(12.37137, 4) округлит до 12.40)
-    static float RoundFloat(float value, int numDigits);
 };
 
 

@@ -1,5 +1,14 @@
 #pragma once
 
+#pragma GCC diagnostic ignored "-Wunused-function"
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
+#pragma GCC diagnostic ignored "-Wunused-template"
+#pragma GCC diagnostic ignored "-Wglobal-constructors"
+#pragma GCC diagnostic ignored "-Wmissing-prototypes"
+#pragma GCC diagnostic ignored "-Wcast-qual"
+#pragma GCC diagnostic ignored "-Winvalid-source-encoding"
+#pragma GCC diagnostic ignored "-Wformat-nonliteral"
+
 #define DEBUG
 
 #define LANG_RU true
@@ -16,8 +25,6 @@
     #define __STATIC_INLINE inline
     #define __RBIT(x) 1
     #define __CLZ(x)  1
-#else
-    #define nullptr 0
 #endif
 
 

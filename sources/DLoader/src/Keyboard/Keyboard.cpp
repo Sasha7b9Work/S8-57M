@@ -3,7 +3,7 @@
 
 
 /// Указатель на массив кнопок, которые разрешены для обработки. Если == 0, то разрешены все кнопки
-static const Key::E *allowedKeys = 0;
+static const Key::E *allowedKeys = nullptr;
 
 
 pcharc Key::Name()
@@ -127,13 +127,13 @@ void Keyboard::Lock(const Key::E *const keys)
 
 void Keyboard::Unlock()
 {
-    allowedKeys = 0;
+    allowedKeys = nullptr;
 }
 
 
 bool Keyboard::KeyIsActive(Key::E key)
 {
-    if (allowedKeys == 0)
+    if (allowedKeys == nullptr)
     {
         return true;
     }

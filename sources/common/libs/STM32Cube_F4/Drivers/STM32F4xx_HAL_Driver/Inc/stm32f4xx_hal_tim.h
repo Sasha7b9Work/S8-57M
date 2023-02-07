@@ -303,7 +303,7 @@ typedef enum
 {
   HAL_TIM_CHANNEL_STATE_RESET             = 0x00U,    /*!< TIM Channel initial state                         */
   HAL_TIM_CHANNEL_STATE_READY             = 0x01U,    /*!< TIM Channel ready for use                         */
-  HAL_TIM_CHANNEL_STATE_BUSY              = 0x02U,    /*!< An internal process is ongoing on the TIM channel */
+  HAL_TIM_CHANNEL_STATE_BUSY              = 0x02U     /*!< An internal process is ongoing on the TIM channel */
 } HAL_TIM_ChannelStateTypeDef;
 
 /**
@@ -313,7 +313,7 @@ typedef enum
 {
   HAL_DMA_BURST_STATE_RESET             = 0x00U,    /*!< DMA Burst initial state */
   HAL_DMA_BURST_STATE_READY             = 0x01U,    /*!< DMA Burst ready for use */
-  HAL_DMA_BURST_STATE_BUSY              = 0x02U,    /*!< Ongoing DMA Burst       */
+  HAL_DMA_BURST_STATE_BUSY              = 0x02U     /*!< Ongoing DMA Burst       */
 } HAL_TIM_DMABurstStateTypeDef;
 
 /**

@@ -67,7 +67,7 @@ void DDecoder::RunStep(uint8 data)
     static const struct StructFunc
     {
         pFuncBU8 func;
-        StructFunc(pFuncBU8 f) : func(f) {};
+        StructFunc(pFuncBU8 f) : func(f) {}
     }
     commands[Command::Count] =
     {
@@ -188,7 +188,7 @@ bool DDecoder::AddToConsole(uint8 data)
 void DDecoder::FinishCommand()
 {
     step = 0;
-    curFunc = 0;
+    curFunc = nullptr;
 }
 
 
