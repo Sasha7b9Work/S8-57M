@@ -80,7 +80,7 @@ private:
 class Pixel
 {
 public:
-    Pixel() {}
+    Pixel() {};
     void Draw(int x, int y, Color color = Color::Count);
 private:
 };

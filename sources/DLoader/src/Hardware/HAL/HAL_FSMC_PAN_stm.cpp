@@ -26,8 +26,8 @@ namespace HAL_BUS
         InPin(HPort::E _port, uint16 _pin) : port(_port), pin(_pin) {}
 
         void Init() { HAL_PIO::Init(port, pin, HMode::Input, HPull::Up); }
-        bool IsActive() { return HAL_PIO::Read(port, pin) == 0; }
-        bool IsPassive() { return HAL_PIO::Read(port, pin) == 1; }
+        bool IsActive() { return HAL_PIO::Read(port, pin) == 0; };
+        bool IsPassive() { return HAL_PIO::Read(port, pin) == 1; };
         void WaitActive() { while (IsPassive()) {} }
         void WaitPassive() { while (IsActive()) {} }
 
@@ -115,7 +115,7 @@ bool HAL_BUS::Panel::Receive()
     }
     
     //                                                 4,5,6,7              2,3                          0,1
-    data = (uint8)(((GPIOE->IDR >> 3) & 0xF0) | ((GPIOD->IDR << 2) & 0x0C) | (GPIOD->IDR >> 14));
+    data = (uint8)((GPIOE->IDR >> 3) & 0xF0 | (GPIOD->IDR << 2) & 0x0C | (GPIOD->IDR >> 14));
 
     DDecoder::AddData(data);
     

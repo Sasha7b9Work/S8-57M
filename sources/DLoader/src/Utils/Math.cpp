@@ -53,7 +53,7 @@ void Math::Smoothing(uint8 *data, int numPoints, int numSmooth)
     
     for (int i = 1; i < numPoints; i++)
     {
-        data[i] = (uint8)(buffer[i] / (float)num[i] + 0.5F);
+        data[i] = (uint8)(buffer[i] / num[i] + 0.5F);
     }
 
     std::free(buffer);
@@ -158,7 +158,7 @@ uint8 Math::MinFromArray(const uint8 *data, int firstPoint, int lastPoint)
 float RandFloat(float min, float max)
 {
     float delta = max - min;
-    return min + (((float)std::rand() / (float)RAND_MAX) * delta);
+    return min + ((std::rand() / (float)RAND_MAX) * delta);
 }
 
 
@@ -169,7 +169,7 @@ float Math::GetIntersectionWithHorizontalLine(int x0, int y0, int x1, int y1, in
         return (float)x1;
     }
 
-    return (float)(yHorLine - y0) / ((float)(y1 - y0) / (float)(x1 - x0)) + (float)x0;
+    return (yHorLine - y0) / ((float)(y1 - y0) / (float)(x1 - x0)) + x0;
 }
 
 
@@ -206,7 +206,7 @@ uint8 Math::CalculateFiltr(const uint8 *data, int x, int numPoints, int numSmoot
         }
     }
 
-    return (uint8)((float)sum / (float)count);
+    return (uint8)(sum / (float)count);
 }
 
 
@@ -247,7 +247,7 @@ void Math::CalculateFiltrArray(const uint8 *dataIn, uint8 *dataOut, int numPoint
                 }
             }
 
-            dataOut[i] = (uint8)((float)sum / (float)count);
+            dataOut[i] = (uint8)(sum / (float)count);
         }
     }
 }
@@ -337,6 +337,22 @@ int Math::DigitsInIntPart(float value)
     } while (absValue >= 1.0F);
 
     return num;
+}
+
+
+float Math::RoundFloat(float value, int numDigits)
+{
+    float absValue = fabsf(value);
+
+    int digsInInt = Math::DigitsInIntPart(absValue);
+
+    if (digsInInt < numDigits)  // Подстрахуемся
+    {
+        int pow = Pow10(numDigits - digsInInt);
+        absValue = ((int)(absValue * pow + 0.5F)) / (float)pow;
+    }
+
+    return value > 0.0F ? absValue : -absValue;
 }
 
 

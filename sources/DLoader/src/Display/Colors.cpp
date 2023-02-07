@@ -6,7 +6,7 @@
 #include "Utils/Math.h"
 
 
-uint GlobalColors[256] =
+extern uint GlobalColors[256] =
 {
     /* 0  */    MAKE_COLOR(0x00, 0x00, 0x00),       // BLACK
     /* 1  */    MAKE_COLOR(0xff, 0xff, 0xff),       // WHITE

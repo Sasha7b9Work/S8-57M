@@ -155,7 +155,7 @@ void Display::Update()
 
         int height = 30;
         int fullWidth = 280;
-        int width = (int)((float)fullWidth * FDrive::PercentsUpdated());
+        int width = (int)(fullWidth * FDrive::PercentsUpdated());
 
         Region(width, height).Fill(20, 130);
         Rectangle(fullWidth, height).Draw(20, 130);
@@ -174,7 +174,7 @@ void DrawProgressBar(uint dT)
     const int X = 10;
     const int Y = 200;
     
-    float step = (float)dT / direction;
+    float step = dT / direction;
 
     value += step;
 
@@ -226,25 +226,25 @@ static void DrawBigMNIPI()
 
     uint time = TIME_MS - startTime;
 
-    int numColor = (int)((float)time / (float)TIME_WAIT * 14.0F);
+    int numColor = (int)(time / (float)TIME_WAIT * 14.0F);
     Limitation(&numColor, 0, 13);
 
 
 
     ((Color)((uint8)(numColor + 2))).SetAsCurrent();
 
-    float amplitude = 3.0F - ((float)time / (TIME_WAIT / 2.0F)) * 3;
+    float amplitude = 3.0F - (time / (TIME_WAIT / 2.0F)) * 3;
     LIMIT_BELOW(amplitude, 0.0F);
     float frequency = 0.05F;
 
-    float radius = 5000.0F * (TIME_WAIT) / 3000.0F / (float)time;
+    float radius = 5000.0F * (TIME_WAIT) / 3000.0F / time;
     LIMIT_BELOW(radius, 0);
 
     float shift[240];
 
     for (int i = 0; i < 240; i++)
     {
-        shift[i] = WAVE_OR_ALL ? amplitude * std::sinf(frequency * (float)time + (float)i / 5.0F) : 0;
+        shift[i] = WAVE_OR_ALL ? amplitude * std::sinf(frequency * time + i / 5.0F) : 0;
     }
 
     for (int i = 0; i < numPoints; i++)
