@@ -570,9 +570,6 @@ void FDrive::SaveScreenToFlash()
 
     uint8 pixels[Display::WIDTH];
 
-    Beeper::ResetCount();
-    DDecoder::Reset();
-
     for(int row = Display::HEIGHT - 1; row >= 0; row--)
     {
         ReadRow(row, pixels);
@@ -580,19 +577,11 @@ void FDrive::SaveScreenToFlash()
         FDrive::WriteToFile(pixels, Display::WIDTH, &structForWrite);
     }
 
-    int counter = Beeper::GetCount();
-    counter = counter;
-
-    int num_bytes = DDecoder::GetNumBytes();
-    num_bytes = num_bytes;
-
-    LOG_WRITE("%d beeper", Beeper::GetCount());
-
     FDrive::CloseFile(&structForWrite);
 
-    DISPLAY_SHOW_WARNING("Файл сохранён");
-
     HAL_BUS::Panel::AllowOtherActions();
+
+    DISPLAY_SHOW_WARNING("Файл сохранён");
 }
 
 
@@ -612,9 +601,7 @@ void FDrive::CreateFileName(char name[256])
 
 void FDrive::ReadRow(int row, uint8 pixels[Display::WIDTH])
 {
-    while(DDecoder::Update())                                       // Обрабатываем данные, которые приняты на данный момент
-    {
-    }
+    DDecoder::Clear();
 
     SBuffer(Command::Display_ReadRow, Point2(row)).Send();
 

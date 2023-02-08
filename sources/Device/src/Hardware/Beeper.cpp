@@ -41,18 +41,6 @@ namespace Beeper
 }
 
 
-void Beeper::ResetCount()
-{
-    num_count = 0;
-}
-
-
-int Beeper::GetCount()
-{
-    return num_count;
-}
-
-
 void Beeper::Init()
 {
     HAL_DAC1::Init();

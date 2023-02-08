@@ -17,11 +17,6 @@ struct TypeWave
 
 namespace Beeper
 {
-    void ResetCount();
-
-    int GetCount();
-
-
     void Init();
 
     // Звук нажатия на кнопку.

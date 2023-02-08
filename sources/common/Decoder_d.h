@@ -9,10 +9,7 @@ typedef bool(*pFuncBU8)(uint8);
 
 namespace DDecoder
 {
-    void Reset();
-
-    int GetNumBytes();
-
+    void Clear();
 
     void AddData(uint8 data);
 
