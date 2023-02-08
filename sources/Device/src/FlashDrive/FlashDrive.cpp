@@ -471,8 +471,6 @@ void FDrive::SaveScreenToFlash()
         return;
     }
 
-    Beeper::WaitForCompletion();
-
     HAL_BUS::Panel::ProhibitOtherActions();
 
 #pragma pack(push)
@@ -572,12 +570,19 @@ void FDrive::SaveScreenToFlash()
 
     uint8 pixels[Display::WIDTH];
 
+    Beeper::ResetCount();
+
     for(int row = Display::HEIGHT - 1; row >= 0; row--)
     {
         ReadRow((uint8)(row), pixels);
 
         FDrive::WriteToFile(pixels, Display::WIDTH, &structForWrite);
     }
+
+    int counter = Beeper::GetCount();
+    counter = counter;
+
+    LOG_WRITE("%d beeper", Beeper::GetCount());
 
     FDrive::CloseFile(&structForWrite);
 

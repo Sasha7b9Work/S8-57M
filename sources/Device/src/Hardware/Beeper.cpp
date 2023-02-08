@@ -36,6 +36,20 @@ namespace Beeper
     static void CalculateSine();
 
     static void CalculateTriangle();
+
+    static int num_count = 0;
+}
+
+
+void Beeper::ResetCount()
+{
+    num_count = 0;
+}
+
+
+int Beeper::GetCount()
+{
+    return num_count;
 }
 
 
@@ -133,6 +147,8 @@ void Beeper::SetWave()
 
 void Beeper::Beep(const TypeWave::E newTypeWave, const float newFreq, const float newAmpl, const int newDuration)
 {
+    num_count++;
+
     if (bellIsEnabled || soundWarnIsBeep || set.serv.SoundVolume() == 0)
     {
         return;
