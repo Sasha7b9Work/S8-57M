@@ -268,11 +268,11 @@ void BackBuffer::SendRow(int row)
 {
     uint8 *points = Display::GetBuffer() + row * Display::WIDTH;
 
-    uint8 data[Display::WIDTH + 2] = { Command::ReadRow, (uint8)(row) };
+    uint8 data[Display::WIDTH + 3] = { Command::Display_ReadRow, (uint8)row, (uint8)(row >> 8)};
 
-    std::memcpy(&data[2], points, Display::WIDTH);
+    std::memcpy(&data[3], points, Display::WIDTH);
 
-    HAL_BUS::SendToDevice(data, Display::WIDTH + 2);
+    HAL_BUS::SendToDevice(data, Display::WIDTH + 3);
 }
 
 

@@ -33,7 +33,7 @@ namespace FDrive
 
     static void CreateFileName(char name[256]);
 
-    static void ReadRow(uint8 row, uint8 pixels[Display::WIDTH]);
+    static void ReadRow(int row, uint8 pixels[Display::WIDTH]);
 }
 
 
@@ -571,16 +571,20 @@ void FDrive::SaveScreenToFlash()
     uint8 pixels[Display::WIDTH];
 
     Beeper::ResetCount();
+    DDecoder::Reset();
 
     for(int row = Display::HEIGHT - 1; row >= 0; row--)
     {
-        ReadRow((uint8)(row), pixels);
+        ReadRow(row, pixels);
 
         FDrive::WriteToFile(pixels, Display::WIDTH, &structForWrite);
     }
 
     int counter = Beeper::GetCount();
     counter = counter;
+
+    int num_bytes = DDecoder::GetNumBytes();
+    num_bytes = num_bytes;
 
     LOG_WRITE("%d beeper", Beeper::GetCount());
 
@@ -606,20 +610,20 @@ void FDrive::CreateFileName(char name[256])
 }
 
 
-void FDrive::ReadRow(uint8 row, uint8 pixels[Display::WIDTH])
+void FDrive::ReadRow(int row, uint8 pixels[Display::WIDTH])
 {
     while(DDecoder::Update())                                       // ќбрабатываем данные, которые прин€ты на данный момент
     {
     }
 
-    SBuffer(Command::ReadRow, row).Send();
+    SBuffer(Command::Display_ReadRow, Point2(row)).Send();
 
-    while(DDecoder::BytesInBuffer() < Display::WIDTH + 2)           // ќжидаем, пока панель пришлЄт запрошенные байты
+    while(DDecoder::BytesInBuffer() < Display::WIDTH + 3)           // ќжидаем, пока панель пришлЄт запрошенные байты
     {
         HAL_BUS::Panel::Receive();
     }
 
-    std::memcpy(pixels, DDecoder::Buffer() + 2, Display::WIDTH);
+    std::memcpy(pixels, DDecoder::Buffer() + 3, Display::WIDTH);
 }
 
 

@@ -27,11 +27,27 @@ namespace DDecoder
     static bool AddToConsole(uint8);
 
     static bool ButtonPress(uint8);
+
+    static int num_bytes = 0;
+}
+
+
+void DDecoder::Reset()
+{
+    num_bytes = 0;
+}
+
+
+int DDecoder::GetNumBytes()
+{
+    return num_bytes;
 }
 
 
 void DDecoder::AddData(uint8 data)
 {
+    num_bytes++;
+
     if (pointer < SIZE_BUFFER)
     {
         buffer[pointer++] = data;

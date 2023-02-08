@@ -22,8 +22,7 @@ namespace PDecoder
     // Текущий байт выполняемой функции
     static int step = 0;
 
-    // Обработка запроса на изображение экрана
-    static bool FuncScreen(uint8);
+    static bool FuncReadRow(uint8);
 
     static bool E(uint8) { return true; }
 
@@ -119,7 +118,7 @@ void PDecoder::AddData(uint8 data)
         SetPoint,
         DrawLine,
         DisplayBrightness,
-        FuncScreen,
+        FuncReadRow,
         DrawVPointLine,
         DrawHPointLine,
         SetMinWidthFont,
@@ -218,14 +217,22 @@ bool PDecoder::SetColor(uint8 data)
 }
 
 
-bool PDecoder::FuncScreen(uint8 data)
+bool PDecoder::FuncReadRow(uint8 data)
 {
+    static int row = 0;
+
     if (step == 0)
     {
         return false;
     }
+    else if (step == 1)
+    {
+        row = data;
 
-    BackBuffer::SendRow(data);
+        return false;
+    }
+
+    BackBuffer::SendRow(row + (data << 8));
 
     return true;
 }

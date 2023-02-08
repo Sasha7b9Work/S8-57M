@@ -9,6 +9,11 @@ typedef bool(*pFuncBU8)(uint8);
 
 namespace DDecoder
 {
+    void Reset();
+
+    int GetNumBytes();
+
+
     void AddData(uint8 data);
 
     // Возвращает true, если была обработка
