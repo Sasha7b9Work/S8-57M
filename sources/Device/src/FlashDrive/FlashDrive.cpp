@@ -38,33 +38,23 @@ namespace FDrive
 
 void FDrive::USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 {
-    LOG_WRITE("switch");
-
     switch(id)
     {
         case HOST_USER_SELECT_CONFIGURATION:
-            LOG_WRITE("HOST_USER_SELECT_CONFIGURATION");
             break;
 
         case HOST_USER_CLASS_ACTIVE:
-            LOG_WRITE("HOST_USER_CLASS_ACTIVE");
             needMount = 1;
-
-            LOG_WRITE("need mount");
-
             break;
 
         case HOST_USER_CLASS_SELECTED:
-            LOG_WRITE("HOST_USER_CLASS_SELECTED");
             break;
 
         case HOST_USER_CONNECTION:
-            LOG_WRITE("HOST_USER_CONNECTION");
             f_mount(NULL, (TCHAR const*)"", 0);
             break;
 
         case HOST_USER_DISCONNECTION:
-            LOG_WRITE("HOST_USER_DISCONNECTION");
             isConnected = false;
             Menu::ChangeStateFlashDrive();
             break;
