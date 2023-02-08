@@ -5,6 +5,7 @@
 #include "FlashDrive/FlashDrive.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
+#include "Hardware/Beeper.h"
 #include "Menu/Menu.h"
 #include "Osci/DeviceSettings.h"
 #include "usbh_diskio.h"
@@ -470,6 +471,8 @@ void FDrive::SaveScreenToFlash()
         return;
     }
 
+    Beeper::WaitForCompletion();
+
     HAL_BUS::Panel::ProhibitOtherActions();
 
 #pragma pack(push)
@@ -580,7 +583,6 @@ void FDrive::SaveScreenToFlash()
 
     DISPLAY_SHOW_WARNING("‘айл сохранЄн");
 
-
     HAL_BUS::Panel::AllowOtherActions();
 }
 
@@ -601,13 +603,13 @@ void FDrive::CreateFileName(char name[256])
 
 void FDrive::ReadRow(uint8 row, uint8 pixels[Display::WIDTH])
 {
-    while(DDecoder::Update())                       // ќбрабатываем данные, которые прин€ты на данный момент
+    while(DDecoder::Update())                                       // ќбрабатываем данные, которые прин€ты на данный момент
     {
     }
 
-    SBuffer(Command::Screen, row).Send();
+    SBuffer(Command::ReadRow, row).Send();
 
-    while(DDecoder::BytesInBuffer() < Display::WIDTH + 2)          // ќжидаем, пока панель пришлЄт запрошенные байты
+    while(DDecoder::BytesInBuffer() < Display::WIDTH + 2)           // ќжидаем, пока панель пришлЄт запрошенные байты
     {
         HAL_BUS::Panel::Receive();
     }

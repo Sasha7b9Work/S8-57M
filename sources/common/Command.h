@@ -71,7 +71,7 @@ struct Command
             Paint_SetPoint,         // 12 |              coord Point2              |                                                           |    4    |
             Paint_DrawLine,         // 13 |              coord0 Point2             |             coord1 Point2            |                    |    7    |
             Display_Brightness,     // 15 | €ркость     |                                                                                      |    2    |
-            Screen,                 // 16 |  numRow     |                                                                                      |    2    |
+            ReadRow,                // 16 |  numRow     |                                                                                      |    2    |
             Paint_VPointLine,       // 17 |              coord Point2              |   delta      |     count    |                             |    6    |
             Paint_HPointLine,       // 18 |              coord Point2              |   delta      |     count    |                             |    6    |
             Paint_SetMinWidthFont,  // 19 |   width     |                                                                                      |    2    |

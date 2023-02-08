@@ -268,7 +268,7 @@ void BackBuffer::SendRow(int row)
 {
     uint8 *points = Display::GetBuffer() + row * Display::WIDTH;
 
-    uint8 data[Display::WIDTH + 2] = { Command::Screen, (uint8)(row) };
+    uint8 data[Display::WIDTH + 2] = { Command::ReadRow, (uint8)(row) };
 
     std::memcpy(&data[2], points, Display::WIDTH);
 
