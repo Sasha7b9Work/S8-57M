@@ -4,6 +4,8 @@
 #include "Hardware/Keyboard.h"
 #include "Hardware/HAL/HAL.h"
 #include "Display/Text/Text.h"
+#include "Hardware/Timer.h"
+#include "Log.h"
 
 
 #define SL0 GPIO_PIN_2
@@ -145,6 +147,8 @@ void Keyboard::Update()
             {
                 if (timePress[rl][sl])                      // Если клавиша находится в нажатом положении
                 {
+                    Timer::PauseOnTime(1);
+
                     if (time - timePress[rl][sl] > 100)     // Если прошло более 100 мс с момента нажатия
                     {
                         if (!BUTTON_IS_PRESS(state))        // Если сейчас кнопка находится в отжатом состояини
@@ -184,10 +188,6 @@ void Keyboard::Update()
                     timePress[rl][sl] = time;
                     SendCommand(controls[rl][sl], Control::Action::Press);
                     prevRepeat = 0;
-                }
-                else
-                {
-                    // остальное не обрабатываем
                 }
             }
         }

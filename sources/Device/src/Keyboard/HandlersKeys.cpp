@@ -61,8 +61,6 @@ namespace Handlers
 
 void Handlers::Process(const KeyEvent &e)
 {
-    LOG_WRITE(Key(e.key).Name());
-
     event = e;
 
     static const pFuncVV func[Key::Count][4] =
