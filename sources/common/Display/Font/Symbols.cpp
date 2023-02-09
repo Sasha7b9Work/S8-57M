@@ -132,7 +132,7 @@ void Char::Draw10Symbols(int x, int y) const
 {
     uint8 symbol = ch;
 
-    int width = Symbol(symbol).Width();
+    int width = 16;
 
     for (int j = 0; j < 2; j++)
     {
