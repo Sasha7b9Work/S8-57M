@@ -59,42 +59,44 @@ namespace Handlers
 }
 
 
-void Handlers::Process(KeyEvent e)
+void Handlers::Process(const KeyEvent &e)
 {
+    LOG_WRITE(Key(e.key).Name());
+
     event = e;
 
     static const pFuncVV func[Key::Count][4] =
     { // Press       Repead       Release      Long
-        {Empty,      Empty,       Empty,       Empty},       // None       
-        {Empty,      Empty,       OnFunction,  Empty},       // Function   
-        {Empty,      Empty,       OnMeasures,  Empty},       // Measure    
-        {Empty,      Empty,       OnMemory,    Empty},       // Memory     
-        {Empty,      Empty,       OnService,   Empty},       // Service    
-        {Empty,      Empty,       OnChannelA,  OnChannelA},  // ChannelA   
-        {Empty,      Empty,       OnChannelB,  OnChannelB},  // ChannelB   
-        {Empty,      Empty,       OnTime,      OnTime},      // Time       
-        {OnStart,    Empty,       Empty,       Empty},       // Start      
-        {Empty,      Empty,       OnTrig,      OnTrig},      // Trig       
-        {Empty,      Empty,       OnDisplay,   Empty},       // Display    
-        {OnRangeA,   Empty,       Empty,       Empty},       // RangeMoreA 
-        {OnRangeA,   Empty,       Empty,       Empty},       // RangeLessA 
+        {Empty,      Empty,       Empty,       Empty},       // None
+        {Empty,      Empty,       OnFunction,  Empty},       // Function
+        {Empty,      Empty,       OnMeasures,  Empty},       // Measure
+        {Empty,      Empty,       OnMemory,    Empty},       // Memory
+        {Empty,      Empty,       OnService,   Empty},       // Service
+        {Empty,      Empty,       OnChannelA,  OnChannelA},  // ChannelA
+        {Empty,      Empty,       OnChannelB,  OnChannelB},  // ChannelB
+        {Empty,      Empty,       OnTime,      OnTime},      // Time
+        {OnStart,    Empty,       Empty,       Empty},       // Start
+        {Empty,      Empty,       OnTrig,      OnTrig},      // Trig
+        {Empty,      Empty,       OnDisplay,   Empty},       // Display
+        {OnRangeA,   Empty,       Empty,       Empty},       // RangeMoreA
+        {OnRangeA,   Empty,       Empty,       Empty},       // RangeLessA
         {OnRShiftA,  OnRShiftA,   Empty,       Empty},       // RShiftMoreA
         {OnRShiftA,  OnRShiftA,   Empty,       Empty},       // RShiftLessA
-        {OnRangeB,   Empty,       Empty,       Empty},       // RangeMoreB 
-        {OnRangeB,   Empty,       Empty,       Empty},       // RangeLessB 
+        {OnRangeB,   Empty,       Empty,       Empty},       // RangeMoreB
+        {OnRangeB,   Empty,       Empty,       Empty},       // RangeLessB
         {OnRShiftB,  OnRShiftB,   Empty,       Empty},       // RShiftMoreB
         {OnRShiftB,  OnRShiftB,   Empty,       Empty},       // RShiftLessB
         {OnTBase,    Empty,       Empty,       Empty},       // TBaseMore
         {OnTBase,    Empty,       Empty,       Empty},       // TBaseLess
-        {OnTShift,   OnTShift,    Empty,       Empty},       // TShiftMore 
-        {OnTShift,   OnTShift,    Empty,       Empty},       // TShiftLess 
+        {OnTShift,   OnTShift,    Empty,       Empty},       // TShiftMore
+        {OnTShift,   OnTShift,    Empty,       Empty},       // TShiftLess
         {OnTrigLev,  OnTrigLev,   Empty,       Empty},       // TrigLevMore
         {OnTrigLev,  OnTrigLev,   Empty,       Empty},       // TrigLevLess
         {OnArrow,    OnArrow,     OnArrow,     OnArrow},     // Left
         {OnArrow,    OnArrow,     OnArrow,     OnArrow},     // Right
         {OnArrow,    OnArrow,     OnArrow,     OnArrow},     // Up
         {OnArrow,    OnArrow,     OnArrow,     OnArrow},     // Down
-        {Empty,      Empty,       OnEnter,     OnEnter},     // Enter      
+        {Empty,      Empty,       OnEnter,     OnEnter},     // Enter
         {OnFX,       Empty,       OnFX,        OnFX},        // F1
         {OnFX,       Empty,       OnFX,        OnFX},        // F2
         {OnFX,       Empty,       OnFX,        OnFX},        // F3

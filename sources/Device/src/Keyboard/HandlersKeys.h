@@ -11,5 +11,5 @@ typedef void (*pFuncVI)(int);
 
 namespace Handlers
 {
-    void Process(KeyEvent);
+    void Process(const KeyEvent &);
 };
