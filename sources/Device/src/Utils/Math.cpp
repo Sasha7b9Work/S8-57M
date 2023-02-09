@@ -398,6 +398,11 @@ int Math::DigitsInIntPart(float value)
         return 2;
     }
 
+    if(isnan(value))
+    {
+        return 2;
+    }
+
     float absValue = std::fabsf(value);
 
     int num = 0;
