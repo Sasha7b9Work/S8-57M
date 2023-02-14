@@ -6,41 +6,55 @@
 #include "Hardware/HAL/HAL.h"
 
 
-struct TimerStruct
+namespace Timer
 {
-    pFuncVV func;           // Функция таймера
-    uint    dTms;           // Период срабатывания, мс
-    uint    timeNextMS;     // Время следующего срабатывания. Если == 0xffffffff, то таймер неактивен
-    bool    repeat;         // Если true, будет срабатывать, пока не будет вызвана функция Timer_Disable()
-    uint8   notUsed0;
-    uint8   notUsed1;
-    uint8   notUsed2;
-};
+    struct TimerStruct
+    {
+        pFuncVV func;           // Функция таймера
+        uint    dTms;           // Период срабатывания, мс
+        uint    timeNextMS;     // Время следующего срабатывания. Если == 0xffffffff, то таймер неактивен
+        bool    repeat;         // Если true, будет срабатывать, пока не будет вызвана функция Timer_Disable()
+        uint8   notUsed0;
+        uint8   notUsed1;
+        uint8   notUsed2;
+    };
 
 
-
-static TimerStruct timers[TypeTimer::Count];
-static uint timeStartLogging = 0;
-static uint timePrevPoint = 0;
-static bool busy = false;
-
+    static TimerStruct timers[TypeTimer::Count];
+    static uint timeStartLogging = 0;
+    static uint timePrevPoint = 0;
+    static bool busy = false;
+    static uint time_frame = 0;
 
 
 #undef TIME_NEXT
 #define TIME_NEXT(type) (timers[type].timeNextMS)
 
 
+    // Завести таймр, который остановится в timeStop мс
+    static void StartTIM(uint timeStop);
 
-// Завести таймр, который остановится в timeStop мс
-static void StartTIM(uint timeStop);
+    static void StopTIM();
+    // Возвращает время срабатывания ближайщего таймера, либо 0, если таймеров нет
+    static uint NearestTime();
+    // Настроить систему на таймер
+    static void TuneTIM(::TypeTimer::E type);
+}
 
-static void StopTIM();
-// Возвращает время срабатывания ближайщего таймера, либо 0, если таймеров нет
-static uint NearestTime();
-// Настроить систему на таймер
-static void TuneTIM(::TypeTimer::E type);
 
-bool ::Timer::IsRunning(::TypeTimer::E type)
+void Timer::StartFrame()
+{
+    time_frame = TIME_MS;
+}
+
+
+uint Timer::TimeFrame()
+{
+    return time_frame;
+}
+
+
+bool Timer::IsRunning(TypeTimer::E type)
 {
     return TIME_NEXT(type) != UINT_MAX; //-V2523
 }
@@ -154,7 +168,7 @@ void Timer::Enable(TypeTimer::E type)
 }
 
 
-static void TuneTIM(TypeTimer::E type)
+void Timer::TuneTIM(TypeTimer::E type)
 {
     TimerStruct *timer = &timers[type];
 
@@ -170,7 +184,7 @@ static void TuneTIM(TypeTimer::E type)
 }
 
 
-static uint NearestTime()
+uint Timer::NearestTime()
 {
     uint time = UINT_MAX; //-V2523
 
@@ -186,7 +200,7 @@ static uint NearestTime()
 }
 
 
-static void StartTIM(uint timeStopMS)
+void Timer::StartTIM(uint timeStopMS)
 {
     StopTIM();
 
@@ -201,7 +215,7 @@ static void StartTIM(uint timeStopMS)
 }
 
 
-static void StopTIM()
+void Timer::StopTIM()
 {
     HAL_TIM3::StopIT();
 }

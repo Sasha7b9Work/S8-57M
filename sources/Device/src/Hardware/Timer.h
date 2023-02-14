@@ -42,6 +42,15 @@ namespace Timer
 
     void DeInit();
 
+    // Запускает счётчик для точного измерения малых отрезков времени
+    void StartMultiMeasurement();
+
+    // Фиксирует время начала фрейма
+    void StartFrame();
+
+    // Возвращает время начала фрейма
+    uint TimeFrame();
+
     // Назначает таймеру timer функцию и время срабатывания
     void Set(TypeTimer::E type, pFuncVV func, uint dTms);
 
@@ -61,9 +70,6 @@ namespace Timer
     void PauseOnTime(uint timeMS);
 
     void PauseOnTicks(uint numTicks);
-
-    // Запускает счётчик для измерения малых отрезков времени
-    void StartMultiMeasurement();
 
     // Ожидать определённое число элементарных операция в цилке for
     void PauseOnOPS(uint ops);
