@@ -3,6 +3,11 @@
 #include "defines.h"
 
 
+/*
+* В шрифте Small вручную нужно установить ширину символа с кодом 32 в 1
+*/
+
+
 struct SymbolRow
 {
     SymbolRow(uint16 r);

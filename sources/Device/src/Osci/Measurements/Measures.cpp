@@ -37,10 +37,10 @@ static const StructMeasure s_meas[TypeMeasure::Count] =
     DEF_STRUCT_MEASURE("Длит-",        182 - 22),
     DEF_STRUCT_MEASURE("Скважн+",      192 - 22),
     DEF_STRUCT_MEASURE("Скважн-",      202 - 22),
-    DEF_STRUCT_MEASURE("Задержка\xa7", 212 - 22),
-    DEF_STRUCT_MEASURE("Задержка\xa6", 222 - 22),
-    DEF_STRUCT_MEASURE("Фаза\xa7",     212 - 22),
-    DEF_STRUCT_MEASURE("Фаза\xa6",     222 - 22)
+    DEF_STRUCT_MEASURE("Задержка\x81", 212 - 22),
+    DEF_STRUCT_MEASURE("Задержка\x80", 222 - 22),
+    DEF_STRUCT_MEASURE("Фаза\x81",     212 - 22),
+    DEF_STRUCT_MEASURE("Фаза\x80",     222 - 22)
 };
 
 
