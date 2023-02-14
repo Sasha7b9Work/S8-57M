@@ -1767,21 +1767,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Menu/Pages/PageHelp</GroupName>
-          <Files>
-            <File>
-              <FileName>HelpContent.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageHelp\HelpContent.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageHelp.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageHelp\PageHelp.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>Menu/Pages/PageMeasures</GroupName>
           <Files>
             <File>
@@ -4145,21 +4130,6 @@
               <FileName>PageFunction.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageFunction\PageFunction.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Menu/Pages/PageHelp</GroupName>
-          <Files>
-            <File>
-              <FileName>HelpContent.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageHelp\HelpContent.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageHelp.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageHelp\PageHelp.cpp</FilePath>
             </File>
           </Files>
         </Group>
