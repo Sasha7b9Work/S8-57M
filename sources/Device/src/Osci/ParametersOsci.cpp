@@ -230,36 +230,36 @@ pcharc TBase::ToString(TBase::E tBase)
     }
     tBases[Count] =
     {
-        StructTBase("2\x10нс"),
-        StructTBase("5\x10нс"),
-        StructTBase("10\x10нс"),
-        StructTBase("20\x10нс"),
-        StructTBase("50\x10нс"),
-        StructTBase("0.1\x10мкс"),
-        StructTBase("0.2\x10мкс"),
-        StructTBase("0.5\x10мкс"),
-        StructTBase("1\x10мкс"),
-        StructTBase("2\x10мкс"),
-        StructTBase("5\x10мкс"),
-        StructTBase("10\x10мкс"),
-        StructTBase("20\x10мкс"),
-        StructTBase("50\x10мкс"),
-        StructTBase("0.1\x10мс"),
-        StructTBase("0.2\x10мс"),
-        StructTBase("0.5\x10мс"),
-        StructTBase("1\x10мс"),
-        StructTBase("2\x10мс"),
-        StructTBase("5\x10мс"),
-        StructTBase("10\x10мс"),
-        StructTBase("20\x10мс"),
-        StructTBase("50\x10мс"),
-        StructTBase("0.1\x10с"),
-        StructTBase("0.2\x10с"),
-        StructTBase("0.5\x10с"),
-        StructTBase("1\x10с"),
-        StructTBase("2\x10с"),
-        StructTBase("5\x10с"),
-        StructTBase("10\x10с")
+        StructTBase("2 нс"),
+        StructTBase("5 нс"),
+        StructTBase("10 нс"),
+        StructTBase("20 нс"),
+        StructTBase("50 нс"),
+        StructTBase("0.1 мкс"),
+        StructTBase("0.2 мкс"),
+        StructTBase("0.5 мкс"),
+        StructTBase("1 мкс"),
+        StructTBase("2 мкс"),
+        StructTBase("5 мкс"),
+        StructTBase("10 мкс"),
+        StructTBase("20 мкс"),
+        StructTBase("50 мкс"),
+        StructTBase("0.1 мс"),
+        StructTBase("0.2 мс"),
+        StructTBase("0.5 мс"),
+        StructTBase("1 мс"),
+        StructTBase("2 мс"),
+        StructTBase("5 мс"),
+        StructTBase("10 мс"),
+        StructTBase("20 мс"),
+        StructTBase("50 мс"),
+        StructTBase("0.1 с"),
+        StructTBase("0.2 с"),
+        StructTBase("0.5 с"),
+        StructTBase("1 с"),
+        StructTBase("2 с"),
+        StructTBase("5 с"),
+        StructTBase("10 с")
     };
 
     return tBases[tBase].name;
@@ -282,30 +282,30 @@ void TBase::Set(TBase::E base)
         BIN_U8(00000000),  // -V2501  // 20ns    1       200MHz
         BIN_U8(00000000),  // -V2501  // 50ns    1       200MHz
         BIN_U8(00000000),  // -V2501  // 100ns   1       200MHz
-        BIN_U8(00100000),  // -V2501  // 200ns   2       100MHz
-        BIN_U8(00100001),  // -V2501  // 500ns   5       40MHz
-        BIN_U8(00100010),  // -V2501  // 1us     10      20MHz
-        BIN_U8(00100011),  // -V2501  // 2us     20      10MHz
-        BIN_U8(01000101),  // -V2501  // 5us     50      4MHz
-        BIN_U8(01000110),  // -V2501  // 10us    100     2MHz
-        BIN_U8(01000111),  // -V2501  // 20us    200     1MHz
-        BIN_U8(01001001),  // -V2501  // 50us    500     400kHz
-        BIN_U8(01001010),  // -V2501  // 100us   1k      200kHz
-        BIN_U8(01001011),  // -V2501  // 200us   2k      100kHz
-        BIN_U8(01001101),  // -V2501  // 500us   5k      40kHz
-        BIN_U8(01001110),  // -V2501  // 1ms     10k     20kHz
-        BIN_U8(01001111),  // -V2501  // 2ms     20k     10kHz
-        BIN_U8(01010001),  // -V2501  // 5ms     50k     4kHz
-        BIN_U8(01010010),  // -V2501  // 10ms    100k    2kHz
-        BIN_U8(01010011),  // -V2501  // 20ms    200k    1kHz
-        BIN_U8(01010101),  // -V2501  // 50ms    500k    400Hz
-        BIN_U8(01010110),  // -V2501  // 100ms   1M      200Hz
-        BIN_U8(01010111),  // -V2501  // 200ms   2M      100Hz
-        BIN_U8(01011001),  // -V2501  // 500ms   5M      40Hz
-        BIN_U8(01011010),  // -V2501  // 1s      10M     20Hz
-        BIN_U8(01011011),  // -V2501  // 2s      20M     10Hz
-        BIN_U8(01011101),  // -V2501  // 5s      50M     4Hz
-        BIN_U8(01011110)   // -V2501  // 10s     100M    2Hz
+        BIN_U8(00000000),  // -V2501  // 200ns   2       100MHz
+        BIN_U8(00100000),  // -V2501  // 500ns   5       40MHz
+        BIN_U8(00100001),  // -V2501  // 1us     10      20MHz
+        BIN_U8(00100010),  // -V2501  // 2us     20      10MHz
+        BIN_U8(00100101),  // -V2501  // 5us     50      4MHz
+        BIN_U8(00100110),  // -V2501  // 10us    100     2MHz
+        BIN_U8(00100111),  // -V2501  // 20us    200     1MHz
+        BIN_U8(00101001),  // -V2501  // 50us    500     400kHz
+        BIN_U8(00101010),  // -V2501  // 100us   1k      200kHz
+        BIN_U8(00101011),  // -V2501  // 200us   2k      100kHz
+        BIN_U8(00101101),  // -V2501  // 500us   5k      40kHz
+        BIN_U8(00101110),  // -V2501  // 1ms     10k     20kHz
+        BIN_U8(00101111),  // -V2501  // 2ms     20k     10kHz
+        BIN_U8(00110001),  // -V2501  // 5ms     50k     4kHz
+        BIN_U8(00110010),  // -V2501  // 10ms    100k    2kHz
+        BIN_U8(00110011),  // -V2501  // 20ms    200k    1kHz
+        BIN_U8(00110101),  // -V2501  // 50ms    500k    400Hz
+        BIN_U8(00110110),  // -V2501  // 100ms   1M      200Hz
+        BIN_U8(00110111),  // -V2501  // 200ms   2M      100Hz
+        BIN_U8(00111001),  // -V2501  // 500ms   5M      40Hz
+        BIN_U8(00111010),  // -V2501  // 1s      10M     20Hz
+        BIN_U8(00111011),  // -V2501  // 2s      20M     10Hz
+        BIN_U8(00111101),  // -V2501  // 5s      50M     4Hz
+        BIN_U8(00111110)   // -V2501  // 10s     100M    2Hz
     };
 
     Osci::ClearDataRand();

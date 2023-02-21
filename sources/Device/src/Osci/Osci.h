@@ -6,7 +6,7 @@
 
 
 #define OSCI_IN_MODE_P2P        (S_TIME_BASE >= TBase::MIN_P2P)
-#define OSCI_IN_MODE_RANDOMIZER (S_TIME_BASE <= TBase::_50ns)
+#define OSCI_IN_MODE_RANDOMIZER (S_TIME_BASE <= TBase::MAX_RAND)
 
 
 
