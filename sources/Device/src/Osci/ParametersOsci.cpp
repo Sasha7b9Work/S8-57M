@@ -23,10 +23,6 @@
 #endif
 
 
-//                                            2нс 5нс 10нс 20нс 50нс 100нс
-static const int deltaPoint[TBase::Count] = { 100, 40, 20,  10,  4,   2};
-
-
 static const int voltsInPixelInt[] =   // Коэффициент 20000
 {
     2,      // 2
@@ -758,7 +754,10 @@ void Range::Set(Ch::E ch, E range)
 
 int TBase::DeltaPoint()
 {
-    return OSCI_IN_MODE_RANDOMIZER ? deltaPoint[S_TIME_BASE] : 1;
+    //                                             2нс  5нс 10нс 20нс 50нс 100нс
+    static const int shift_point[TBase::Count] = { 100, 40, 20,  10,  4,   2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+
+    return shift_point[S_TIME_BASE];
 }
 
 

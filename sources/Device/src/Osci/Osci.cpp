@@ -400,9 +400,9 @@ bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *data)
 
     int step = infoRead.step;
 
-    uint8 *dataWrite = data + infoRead.posFirst;                                // —юда запишем первую считанную точку
+    uint8 *wr = data + infoRead.posFirst;                               // —юда запишем первую считанную точку
 
-    uint8 *interpolated = IntRAM::DataRand(ChA) + infoRead.posFirst;
+    uint8 *ipol = IntRAM::DataRand(ChA) + infoRead.posFirst;            // interpolated
 
     uint8 *last = data + ENumPointsFPGA::PointsInChannel();
 
@@ -410,29 +410,28 @@ bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *data)
 
     if(S_OSCI_AVERAGING_IS_ENABLED)
     {
-        uint8 *dataPointer = &data[infoRead.posFirst];              // ”казатель в переданном массиве
+        uint8 *dataPointer = &data[infoRead.posFirst];                  // ”казатель в переданном массиве
 
-        while(dataWrite < last)
+        while(wr < last)
         {
-            *dataWrite = HAL_BUS::FPGA::ReadA0();
-            *dataPointer = *dataWrite;
-            *interpolated = *dataWrite;
+            *wr = HAL_BUS::FPGA::ReadA0();
+            *dataPointer = *wr;
+            *ipol = *wr;
             
-            dataWrite += step;
+            wr += step;
             dataPointer += step;
-            interpolated += step;
+            ipol += step;
         }
     }
     else
     {
-        while(dataWrite < last)
+        while(wr < last)
         {
-            *dataWrite = HAL_BUS::FPGA::ReadA0();
-            *interpolated = *dataWrite;
+            *wr = HAL_BUS::FPGA::ReadA0();
+            *ipol = *wr;
 
-            dataWrite += step;
-            interpolated += step;
-
+            wr += step;
+            ipol += step;
         }
     }
 
@@ -487,11 +486,12 @@ StructReadRand RandShift::GetInfoForReadRand(ShiftPoint Tsm, const uint8 *addres
 {
     static const int add[] =
     {
-        150,    // 2 ns
-        75,     // 5 ns
-        30,     // 10 ns
-        15,     // 20 ns
-        3       // 50 ns
+        300,    // 2 ns
+        150,    // 5 ns
+        60,     // 10 ns
+        30,     // 20 ns
+        6,      // 50 ns
+        3       // 100 ns
     };
 
     StructReadRand structRand;
