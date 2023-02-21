@@ -137,7 +137,7 @@ static bool FindFrequency(Ch::E ch, float *outFreq, Range::E *outRange, ModeCoup
     TrigSource::Set(ch);
     TrigStartMode::Set(TrigStartMode::Wait);
     TrigLevel::Set(ch, 0);
-    TBase::Set(TBase::_100ns);
+    TBase::Set(TBase::_200ns);
     TShift::Set(0);
     RShift::Set(ch, 0);
     S_TRIG_INPUT = TrigInput::Full;

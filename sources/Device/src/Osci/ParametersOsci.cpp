@@ -23,8 +23,8 @@
 #endif
 
 
-//                                            2нс 5нс 10нс 20нс 50нс
-static const int deltaPoint[TBase::Count] = { 50, 20, 10,  5,   2 };
+//                                            2нс 5нс 10нс 20нс 50нс 100нс
+static const int deltaPoint[TBase::Count] = { 100, 40, 20,  10,  4,   2};
 
 
 static const int voltsInPixelInt[] =   // Коэффициент 20000
