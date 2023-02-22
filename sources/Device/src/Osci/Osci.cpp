@@ -482,7 +482,7 @@ ShiftPoint Gates::CalculateShiftPoint()
 }
 
 
-StructReadRand RandShift::GetInfoForReadRand(ShiftPoint Tsm, const uint8 *address)
+StructReadRand RandShift::GetInfoForReadRand(ShiftPoint shift, const uint8 *address)
 {
     static const int add[] =
     {
@@ -496,7 +496,7 @@ StructReadRand RandShift::GetInfoForReadRand(ShiftPoint Tsm, const uint8 *addres
 
     StructReadRand structRand;
 
-    if(Tsm.type != ShiftPoint::FAIL)
+    if(shift.type != ShiftPoint::FAIL)
     {
         int step = TBase::DeltaPoint();
 
@@ -509,7 +509,7 @@ StructReadRand RandShift::GetInfoForReadRand(ShiftPoint Tsm, const uint8 *addres
             addShift += step;
         }
 
-        int index = Tsm.shift - addShift - step - add[S_TIME_BASE];
+        int index = shift.shift - addShift - step - add[S_TIME_BASE];
 
         while(index < 0)
         {
