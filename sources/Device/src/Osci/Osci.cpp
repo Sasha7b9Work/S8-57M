@@ -387,7 +387,7 @@ void Osci::ReadData()
 }
 
 
-bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *data)
+bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *out)
 {
     ShiftPoint Tsm = gates.CalculateShiftPoint();
 
@@ -400,26 +400,26 @@ bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *data)
 
     int step = infoRead.step;
 
-    uint8 *wr = data + infoRead.posFirst;                               // —юда запишем первую считанную точку
+    uint8 *wr = out + infoRead.posFirst;                               // —юда запишем первую считанную точку
 
     uint8 *ipol = IntRAM::DataRand(ChA) + infoRead.posFirst;            // interpolated
 
-    uint8 *last = data + ENumPointsFPGA::PointsInChannel();
+    uint8 *last = out + ENumPointsFPGA::PointsInChannel();
 
     HAL_BUS::FPGA::SetAddrData(addr);
 
     if(S_OSCI_AVERAGING_IS_ENABLED)
     {
-        uint8 *dataPointer = &data[infoRead.posFirst];                  // ”казатель в переданном массиве
+        uint8 *data = &out[infoRead.posFirst];                  // ”казатель в переданном массиве
 
         while(wr < last)
         {
             *wr = HAL_BUS::FPGA::ReadA0();
-            *dataPointer = *wr;
+            *data = *wr;
             *ipol = *wr;
             
             wr += step;
-            dataPointer += step;
+            data += step;
             ipol += step;
         }
     }
