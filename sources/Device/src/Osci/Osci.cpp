@@ -389,14 +389,14 @@ void Osci::ReadData()
 
 bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *out)
 {
-    ShiftPoint Tsm = gates.CalculateShiftPoint();
+    ShiftPoint shift = gates.CalculateShiftPoint();
 
-    if(Tsm.type == ShiftPoint::FAIL)
+    if(shift.type == ShiftPoint::FAIL)
     {
         return false;
     }
 
-    StructReadRand infoRead = RandShift::GetInfoForReadRand(Tsm, addr);
+    StructReadRand infoRead = RandShift::GetInfoForReadRand(shift, addr);
 
     int step = infoRead.step;
 
