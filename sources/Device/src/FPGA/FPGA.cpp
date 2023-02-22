@@ -47,7 +47,7 @@ uint16 Osci::ReadLastRecord(Ch::E ch)
     {
         address = (uint16)(HAL_BUS::FPGA::Read(RD::LAST_RECORD_LO) + ((HAL_BUS::FPGA::Read(RD::LAST_RECORD_HI)) << 8));
 
-        static const uint16 deltas[8] = { 5, 5, 5, 5, 5, 10, 5, 2 };
+        static const uint16 deltas[TBase::Count] = { 5, 5, 5, 5, 5, 10, 5, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
         if (S_TIME_BASE <= TBase::_500ns)
         {

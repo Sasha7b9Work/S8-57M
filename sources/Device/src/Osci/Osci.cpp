@@ -34,8 +34,18 @@ namespace Osci
 
     bool ReadDataChannelRand(uint8 *address, uint8 *data);
 
-    // Здесь хранится адрес, начиная с которого будем читать данные по каналам. Если addrRead == 0xffff, то адрес вначале нужно считать
-    uint16 addrRead = 0xffff;
+
+    namespace AddrRead
+    {
+        // Здесь хранится адрес, начиная с которого будем читать данные по каналам. Если addrRead == 0xffff, то адрес вначале нужно считать
+        static uint16 addrRead = 0xffff;
+
+        uint16 Get() { return addrRead; }
+
+        void Set(uint16 addr) { addrRead = addr; }
+
+        void Reset() { addrRead = 0xffff; }
+    }
 }
 
 
@@ -117,7 +127,8 @@ void Osci::DeInit()
 void Osci::Start(bool)
 {
     FPGA::forcedStart = false;
-    addrRead = 0xffff;
+
+    AddrRead::Reset();
 
     Roller::Prepare();
 

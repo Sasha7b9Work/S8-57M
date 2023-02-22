@@ -14,7 +14,12 @@ namespace Osci
 
     bool ReadDataChannelRand(uint8 *address, uint8 *data);
 
-    extern uint16 addrRead;
+    namespace AddrRead
+    {
+        uint16 Get();
+
+        void Set(uint16);
+    }
 }
 
 
@@ -22,12 +27,12 @@ bool Osci::ReadDataChannel(Ch::E ch, uint8 *data)
 {
     int numPoints = ENumPointsFPGA::PointsInChannel();
 
-    if(addrRead == 0xffff)
+    if(AddrRead::Get() == 0xffff)
     {
-        addrRead = (uint16)(ReadLastRecord(ch) - (int)(numPoints) / TBase::DeltaPoint() - (OSCI_IN_MODE_RANDOMIZER ? 10 : 12));
+        AddrRead::Set((uint16)(ReadLastRecord(ch) - (int)(numPoints) / TBase::DeltaPoint() - (OSCI_IN_MODE_RANDOMIZER ? 10 : 12)));
     }
 
-    HAL_BUS::FPGA::Write16(WR::PRED_LO, (uint16)(addrRead));
+    HAL_BUS::FPGA::Write16(WR::PRED_LO, (uint16)AddrRead::Get());
     HAL_BUS::FPGA::Write8(WR::START_ADDR, 0xff);
 
     uint8 *a0 = (ch == ChA) ? RD::DATA_A : RD::DATA_B;  // -V566
