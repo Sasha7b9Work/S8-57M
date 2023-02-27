@@ -752,7 +752,7 @@ void Range::Set(Ch::E ch, E range)
 }
 
 
-int TBase::DeltaPoint()
+int TBase::DeltaPointRand()
 {
     //                                             2нс  5нс 10нс 20нс 50нс 100нс
     static const int shift_point[TBase::Count] = { 100, 40, 20,  10,  4,   2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };

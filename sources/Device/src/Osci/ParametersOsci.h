@@ -69,7 +69,7 @@ namespace TBase
     const E MIN_PEAK_DET = _5us;
 
     // Расстояние между точками в режиме рандомизатора
-    int DeltaPoint();
+    int DeltaPointRand();
 
     // Время между точками
     float TimePoint(TBase::E base);

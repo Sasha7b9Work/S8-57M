@@ -55,12 +55,7 @@ struct StructReadRand
     StructReadRand() : step(0), posFirst(0) { }
     int step;       // Шаг между точками
     int posFirst;   // Позиция первой считанной точки
-};
 
-
-// Структура для работы со смщещениями точек в рандомизаторе
-struct RandShift
-{
     // Возвращает данные, необходимые для чтения даннхы в режмиме рандомизатора.
     // Если Tsm == 0, то структура будет использоваться не для чтения данных, а для правильного усредения.
     static StructReadRand GetInfoForReadRand(ShiftPoint Tsm, const uint8 *address = nullptr);
@@ -178,7 +173,7 @@ void Osci::Update()
 
 static void UpdateFPGA()
 {
-    int number = (OSCI_IN_MODE_RANDOMIZER && !SampleType::IsReal()) ? TBase::DeltaPoint() : 1;
+    int number = (OSCI_IN_MODE_RANDOMIZER && !SampleType::IsReal()) ? TBase::DeltaPointRand() : 1;
 
     RAM::NewFrameForRandomize();
 
@@ -407,7 +402,9 @@ bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *out)
         return false;
     }
 
-    StructReadRand infoRead = RandShift::GetInfoForReadRand(shift, addr);
+    LOG_WRITE("shift = %d", shift.shift);
+
+    StructReadRand infoRead = StructReadRand::GetInfoForReadRand(shift, addr);
 
     int step = infoRead.step;
 
@@ -471,15 +468,15 @@ ShiftPoint Gates::CalculateShiftPoint()
 
     float tin = (float)(valueADC - min) / (max - min);
 
-    result.shift = (int)(tin * TBase::DeltaPoint());
+    result.shift = (int)(tin * TBase::DeltaPointRand());
 
     if(result.shift < 0)
     {
         result.shift = 0;
     }
-    else if(result.shift >= TBase::DeltaPoint())
+    else if(result.shift >= TBase::DeltaPointRand())
     {
-        result.shift = TBase::DeltaPoint() - 1;
+        result.shift = TBase::DeltaPointRand() - 1;
     }
 
     if(((valueADC > max - NRST_ENUM_GATE_MAX * 10) || (valueADC < min + NRST_ENUM_GATE_MIN * 10)) && (S_TIME_BASE < TBase::_10ns))
@@ -491,7 +488,7 @@ ShiftPoint Gates::CalculateShiftPoint()
 }
 
 
-StructReadRand RandShift::GetInfoForReadRand(ShiftPoint shift, const uint8 *address)
+StructReadRand StructReadRand::GetInfoForReadRand(ShiftPoint shift, const uint8 *address)
 {
     static const int add[] =
     {
@@ -507,7 +504,7 @@ StructReadRand RandShift::GetInfoForReadRand(ShiftPoint shift, const uint8 *addr
 
     if(shift.IsValid())
     {
-        int step = TBase::DeltaPoint();
+        int step = TBase::DeltaPointRand();
 
         structRand.step = step;
 
