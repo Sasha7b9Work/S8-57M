@@ -506,24 +506,50 @@ StructReadRand StructReadRand::GetInfoForReadRand(ShiftPoint shift, const uint8 
 
         irand.step = step;
 
-        int tshift = (int)(S_TIME_SHIFT % step);
-
-        if (tshift < 0)
+        if (S_TIME_BASE == TBase::_50ns)
         {
-            tshift += step;
+            irand.posFirst = shift.shift;
+
+            int tshift = (int)(S_TIME_SHIFT % step);
+
+            if (tshift < 0)
+            {
+                tshift += step;
+            }
+
+            irand.posFirst -= tshift;
+
+            irand.posFirst -= add[S_TIME_BASE];
+
+            while (irand.posFirst < 0)
+            {
+                irand.posFirst += step;
+
+                volatile uint8 d = *address;    // Эти строчки удалять нельзя - считываем и отбрасываем неиспользуемые точки
+                d = d;                          // 
+            }
         }
-
-        int index = shift.shift - tshift - step - add[S_TIME_BASE];
-
-        while(index < 0)
+        else
         {
-            index += step;
+            int tshift = (int)(S_TIME_SHIFT % step);
 
-            volatile uint8 d = *address;    // Эти строчки удалять нельзя - считываем и отбрасываем неиспользуемые точки
-            d = d;                          // 
+            if (tshift < 0)
+            {
+                tshift += step;
+            }
+
+            int index = shift.shift - tshift - step - add[S_TIME_BASE];
+
+            while (index < 0)
+            {
+                index += step;
+
+                volatile uint8 d = *address;    // Эти строчки удалять нельзя - считываем и отбрасываем неиспользуемые точки
+                d = d;                          // 
+            }
+
+            irand.posFirst = index;
         }
-
-        irand.posFirst = index;
     }
 
     return irand;
