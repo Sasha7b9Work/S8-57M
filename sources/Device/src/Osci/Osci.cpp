@@ -404,13 +404,13 @@ bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *out)
 
     LOG_WRITE("shift = %d", shift.shift);
 
-    StructReadRand infoRead = StructReadRand::GetInfoForReadRand(shift, addr);
+    StructReadRand iread = StructReadRand::GetInfoForReadRand(shift, addr);
 
-    int step = infoRead.step;
+    int step = iread.step;
 
-    uint8 *wr = out + infoRead.posFirst;                               // —юда запишем первую считанную точку
+    uint8 *wr = out + iread.posFirst;                               // —юда запишем первую считанную точку
 
-    uint8 *ipol = IntRAM::DataRand(ChA) + infoRead.posFirst;            // interpolated
+    uint8 *ipol = IntRAM::DataRand(ChA) + iread.posFirst;            // interpolated
 
     uint8 *last = out + ENumPointsFPGA::PointsInChannel();
 
@@ -418,7 +418,7 @@ bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *out)
 
     if(S_OSCI_AVERAGING_IS_ENABLED)
     {
-        uint8 *data = &out[infoRead.posFirst];                  // ”казатель в переданном массиве
+        uint8 *data = &out[iread.posFirst];                  // ”казатель в переданном массиве
 
         while(wr < last)
         {
