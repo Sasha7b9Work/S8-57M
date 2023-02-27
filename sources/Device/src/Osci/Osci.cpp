@@ -506,14 +506,14 @@ StructReadRand StructReadRand::GetInfoForReadRand(ShiftPoint shift, const uint8 
 
         irand.step = step;
 
-        int addShift = (int)(S_TIME_SHIFT % step);
+        int tshift = (int)(S_TIME_SHIFT % step);
 
-        if (addShift < 0)
+        if (tshift < 0)
         {
-            addShift += step;
+            tshift += step;
         }
 
-        int index = shift.shift - addShift - step - add[S_TIME_BASE];
+        int index = shift.shift - tshift - step - add[S_TIME_BASE];
 
         while(index < 0)
         {
