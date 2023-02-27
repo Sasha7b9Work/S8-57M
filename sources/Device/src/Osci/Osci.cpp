@@ -402,7 +402,7 @@ bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *out)
 {
     ShiftPoint shift = gates.CalculateShiftPoint();
 
-    if(shift.type == ShiftPoint::FAIL)
+    if(!shift.IsValid())
     {
         return false;
     }
@@ -452,7 +452,7 @@ bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *out)
 
 ShiftPoint Gates::CalculateShiftPoint()
 {
-    ShiftPoint result(ShiftPoint::READED, 0);
+    ShiftPoint result;
 
     uint16 min = 0;
     uint16 max = 0;
@@ -461,13 +461,11 @@ ShiftPoint Gates::CalculateShiftPoint()
 
     if(!Calculate(valueADC, &min, &max))
     {
-        result.type = ShiftPoint::FAIL;
         return result;
     }
 
     if(((valueADC > max - NRST_ENUM_GATE_MAX * 10) || (valueADC < min + NRST_ENUM_GATE_MIN * 10)) && (S_TIME_BASE > TBase::_5ns))
     {
-        result.type = ShiftPoint::FAIL;
         return result;
     }
 
@@ -486,7 +484,7 @@ ShiftPoint Gates::CalculateShiftPoint()
 
     if(((valueADC > max - NRST_ENUM_GATE_MAX * 10) || (valueADC < min + NRST_ENUM_GATE_MIN * 10)) && (S_TIME_BASE < TBase::_10ns))
     {
-        result.type = ShiftPoint::FAIL;
+        result.shift = 0xffffffff;
     }
 
     return result;
@@ -507,7 +505,7 @@ StructReadRand RandShift::GetInfoForReadRand(ShiftPoint shift, const uint8 *addr
 
     StructReadRand structRand;
 
-    if(shift.type != ShiftPoint::FAIL)
+    if(shift.IsValid())
     {
         int step = TBase::DeltaPoint();
 

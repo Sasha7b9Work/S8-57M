@@ -96,15 +96,9 @@ namespace Roller
 
 struct ShiftPoint
 {
-    enum E
-    {
-        FAIL,   // —мещение рассчитать не удалось, точки считывать не надо
-        READED  // Ќормально считанна€ точка
-    } type;
+    ShiftPoint() : shift(0xffffffff) {}
 
     int shift;
 
-    ShiftPoint(E t = FAIL, int s = 0) : type(t), shift(s)
-    {
-    }
+    bool IsValid() const { return shift != 0xffffffff; }
 };
