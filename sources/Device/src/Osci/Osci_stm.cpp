@@ -12,7 +12,7 @@ namespace Osci
     // „итать данные канала в пам€ить data
     bool ReadDataChannel(Ch::E ch, uint8 *data);
 
-    bool ReadDataChannelRand(uint8 *address, uint8 *data);
+    bool ReadDataChannelRand(Ch::E ch, uint8 *address, uint8 *data);
 
     namespace AddrRead
     {
@@ -42,7 +42,7 @@ bool Osci::ReadDataChannel(Ch::E ch, uint8 *data)
 
     if(OSCI_IN_MODE_RANDOMIZER)
     {
-        return ReadDataChannelRand(a1, data);
+        return ReadDataChannelRand(ch, a1, data);
     }
     else
     {

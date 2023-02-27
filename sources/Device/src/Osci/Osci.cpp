@@ -32,7 +32,7 @@ namespace Osci
     // „итать данные канала в пам€ить data
     bool ReadDataChannel(Ch::E ch, uint8 *data);
 
-    bool ReadDataChannelRand(uint8 *address, uint8 *data);
+    bool ReadDataChannelRand(Ch::E ch, uint8 *address, uint8 *data);
 
 
     namespace AddrRead
@@ -393,7 +393,7 @@ void Osci::ReadData()
 }
 
 
-bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *out)
+bool Osci::ReadDataChannelRand(Ch::E ch, uint8 *addr, uint8 *out)
 {
     ShiftPoint shift = gates.CalculateShiftPoint();
 
@@ -402,15 +402,13 @@ bool Osci::ReadDataChannelRand(uint8 *addr, uint8 *out)
         return false;
     }
 
-    LOG_WRITE("shift = %d", shift.shift);
-
     StructReadRand iread = StructReadRand::GetInfoForReadRand(shift, addr);
 
     int step = iread.step;
 
     uint8 *wr = out + iread.posFirst;                               // —юда запишем первую считанную точку
 
-    uint8 *ipol = IntRAM::DataRand(ChA) + iread.posFirst;            // interpolated
+    uint8 *ipol = IntRAM::DataRand(ch) + iread.posFirst;            // interpolated
 
     uint8 *last = out + ENumPointsFPGA::PointsInChannel();
 
@@ -500,13 +498,13 @@ StructReadRand StructReadRand::GetInfoForReadRand(ShiftPoint shift, const uint8 
         3       // 100 ns
     };
 
-    StructReadRand structRand;
+    StructReadRand irand;
 
     if(shift.IsValid())
     {
         int step = TBase::DeltaPointRand();
 
-        structRand.step = step;
+        irand.step = step;
 
         int addShift = (int)(S_TIME_SHIFT % step);
 
@@ -525,10 +523,10 @@ StructReadRand StructReadRand::GetInfoForReadRand(ShiftPoint shift, const uint8 
             d = d;                          // 
         }
 
-        structRand.posFirst = index;
+        irand.posFirst = index;
     }
 
-    return structRand;
+    return irand;
 }
 
 
