@@ -46,50 +46,49 @@ namespace Osci
 
         void Reset() { addrRead = 0xffff; }
     }
+
+    // Структура для хранения информации, необходимой для чтения в режиме рандомизатора
+    struct StructReadRand
+    {
+        StructReadRand() : step(0), posFirst(0) { }
+        int step;       // Шаг между точками
+        int posFirst;   // Позиция первой считанной точки
+
+        // Возвращает данные, необходимые для чтения даннхы в режмиме рандомизатора.
+        // Если Tsm == 0, то структура будет использоваться не для чтения данных, а для правильного усредения.
+        static StructReadRand GetInfoForReadRand(ShiftPoint Tsm, const uint8 *address = nullptr);
+    };
+
+
+    struct Gates
+    {
+        Gates() : minGate(0.0F), maxGate(0.0F) { }
+
+        ShiftPoint CalculateShiftPoint();
+
+    private:
+        static const int numberMeasuresForGates = 10000;
+        static const uint TIME_WAIT = 3000;
+        float minGate;
+        float maxGate;
+        // Здесь хранятся два наименьших и два наибольших значения из всех подаваемых в функцию Calculate
+        MinMax2 m;
+        // Пересчитать значения ворот
+        void RecalculateGates();
+
+        void CalculateWithoutGates(uint16 *min, uint16 *max);
+
+        bool Calculate(uint16 value, uint16 *min, uint16 *max);
+    };
+
+
+    static Gates gates;             // "Ворота" рандомизатора
+
+    static void UpdateFPGA();
+
+    // В зависимости от состояния флага готовности данных читает данные и возвращает флаг необходимости остановить процесс сбора информации
+    static bool ProcessFlagReady();
 }
-
-
-// Структура для хранения информации, необходимой для чтения в режиме рандомизатора
-struct StructReadRand
-{
-    StructReadRand() : step(0), posFirst(0) { }
-    int step;       // Шаг между точками
-    int posFirst;   // Позиция первой считанной точки
-
-    // Возвращает данные, необходимые для чтения даннхы в режмиме рандомизатора.
-    // Если Tsm == 0, то структура будет использоваться не для чтения данных, а для правильного усредения.
-    static StructReadRand GetInfoForReadRand(ShiftPoint Tsm, const uint8 *address = nullptr);
-};
-
-
-struct Gates
-{
-    Gates() : minGate(0.0F), maxGate(0.0F) { }
-
-    ShiftPoint CalculateShiftPoint();
-
-private:
-    static const int numberMeasuresForGates = 10000;
-    static const uint TIME_WAIT = 3000;
-    float minGate;
-    float maxGate;
-    // Здесь хранятся два наименьших и два наибольших значения из всех подаваемых в функцию Calculate
-    MinMax2 m;
-    // Пересчитать значения ворот
-    void RecalculateGates();
-
-    void CalculateWithoutGates(uint16 *min, uint16 *max);
-
-    bool Calculate(uint16 value, uint16 *min, uint16 *max);
-};
-
-
-static Gates gates;             // "Ворота" рандомизатора
-
-static void UpdateFPGA();
-
-// В зависимости от состояния флага готовности данных читает данные и возвращает флаг необходимости остановить процесс сбора информации
-static bool ProcessFlagReady();
 
 
 void Osci::Init()
@@ -171,7 +170,7 @@ void Osci::Update()
 }
 
 
-static void UpdateFPGA()
+void Osci::UpdateFPGA()
 {
     int number = (OSCI_IN_MODE_RANDOMIZER && !SampleType::IsReal()) ? TBase::DeltaPointRand() : 1;
 
@@ -232,7 +231,7 @@ static void UpdateFPGA()
 }
 
 
-static bool ProcessFlagReady()
+bool Osci::ProcessFlagReady()
 {
     bool needStop = false;
 
@@ -445,7 +444,7 @@ bool Osci::ReadDataChannelRand(Ch::E ch, uint8 *addr, uint8 *out)
 }
 
 
-ShiftPoint Gates::CalculateShiftPoint()
+ShiftPoint Osci::Gates::CalculateShiftPoint()
 {
     ShiftPoint result;
 
@@ -486,7 +485,7 @@ ShiftPoint Gates::CalculateShiftPoint()
 }
 
 
-StructReadRand StructReadRand::GetInfoForReadRand(ShiftPoint shift, const uint8 *address)
+Osci::StructReadRand Osci::StructReadRand::GetInfoForReadRand(ShiftPoint shift, const uint8 *address)
 {
     static const int add[] =
     {
@@ -532,7 +531,7 @@ StructReadRand StructReadRand::GetInfoForReadRand(ShiftPoint shift, const uint8 
 }
 
 
-bool Gates::Calculate(uint16 value, uint16 *min, uint16 *max) 
+bool Osci::Gates::Calculate(uint16 value, uint16 *min, uint16 *max) 
 {
     if(value < 250 || value > 4000)
     {
@@ -575,7 +574,7 @@ bool Gates::Calculate(uint16 value, uint16 *min, uint16 *max)
 }
 
 
-void Gates::RecalculateGates()
+void Osci::Gates::RecalculateGates()
 {
     minGate = 0.8F * minGate + m.Min() * 0.2F;
     maxGate = 0.8F * maxGate + m.Max() * 0.2F;
@@ -589,7 +588,7 @@ void Gates::RecalculateGates()
 }
 
 
-void Gates::CalculateWithoutGates(uint16 *min, uint16 *max)
+void Osci::Gates::CalculateWithoutGates(uint16 *min, uint16 *max)
 {
     if(minGate == 0.0F)
     {
