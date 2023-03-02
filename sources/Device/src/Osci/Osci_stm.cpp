@@ -55,8 +55,8 @@ bool Osci::ReadDataChannel(Ch::E ch, uint8 *data)
         {
             for(int i = 0; i < numPoints; i++)
             {
-                *p++ = HAL_BUS::FPGA::ReadA0();
                 *p++ = HAL_BUS::FPGA::ReadA1();
+                *p++ = HAL_BUS::FPGA::ReadA0();
             }
         }
         else
