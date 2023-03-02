@@ -108,7 +108,7 @@ void Osci::Init()
     FPGA::LoadCalibratorMode();
     HAL_PIO::Init(PIN_P2P, HMode::Input, HPull::Up);
     ChangedTrigStartMode();
-    Osci::Start(true);
+    Start(true);
 }
 
 
@@ -164,7 +164,7 @@ void Osci::Update()
 
     Reader::ReadDataFromRAM();
 
-    Osci::SendDataToSCPI();
+    SendDataToSCPI();
 
     AutoMeasurements::SetData();
 }
@@ -189,11 +189,11 @@ void Osci::UpdateFPGA()
     {
         FPGA::Flag::Read();
 
-        Osci::ProcessFlagPred();
+        ProcessFlagPred();
 
         if(ProcessFlagReady())
         {
-            Osci::Stop();
+            Stop();
             break;
         }
     }
@@ -239,7 +239,7 @@ bool Osci::ProcessFlagReady()
     {
         Timer::PauseOnTicks(5 * 90 * 20);
 
-        Osci::ReadData();
+        ReadData();
 
         if(S_TRIG_START_MODE_IS_SINGLE)
         {
@@ -249,7 +249,7 @@ bool Osci::ProcessFlagReady()
         else
         {
             Timer::PauseOnTicks(5 * 90 * 20);
-            Osci::Start(false);
+            Start(false);
         }
     }
 
@@ -375,7 +375,7 @@ void Osci::ClearDataRand()
 
 void Osci::ReadData()
 {
-    Osci::Stop();
+    Stop();
 
     DataSettings &ds = *RAM::PrepareForNewData();
 
