@@ -3,7 +3,7 @@
 #include "Osci/ParametersOsci.h"
 
 
-#define S_PEAK_DET          (set.time._peakDet)
+#define S_PEAK_DET          (set.time.peakDet)
 #define S_PEAK_DET_ENABLED  (S_PEAK_DET == PeakDetMode::Enabled)
 struct PeakDetMode
 {
@@ -20,7 +20,7 @@ struct PeakDetMode
 
 
 // Положение точки синхронизация на сигнале.
-#define S_TPOS              (set.time._tPos)
+#define S_TPOS              (set.time.tPos)
 #define S_TPOS_IS_LEFT      (S_TPOS == TPos::Left)
 #define S_TPOS_IS_CENTER    (S_TPOS == TPos::Center)
 struct TPos
@@ -44,7 +44,7 @@ struct TPos
 
 
 // Тип выборки для режима рандомизатора.
-#define S_RAND_SAMPLE_TYPE              (set.time._sampleType)
+#define S_RAND_SAMPLE_TYPE              (set.time.sampleType)
 struct SampleType
 {
     enum E
@@ -81,15 +81,15 @@ struct LinkingTShift
 };
 
 
-#define S_TIME_SHIFT    (set.time._shift)
+#define S_TIME_SHIFT    (set.time.shift)
 
  struct SettingsTime
 {
-    int                 _shift;
-    TBase::E            _base;
-    PeakDetMode::E      _peakDet;
-    TPos::E             _tPos;
-    SampleType::E       _sampleType;
+    int                 shift;
+    TBase::E            base;
+    PeakDetMode::E      peakDet;
+    TPos::E             tPos;
+    SampleType::E       sampleType;
     FunctionTime::E     _0;
     LinkingTShift::E    _1;  // Тип привязки смещения по горизонтали
 };

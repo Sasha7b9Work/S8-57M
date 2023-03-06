@@ -122,7 +122,7 @@ pchar SCPI_TBASE::FuncMode(pchar buffer)
 
 static void AnswerOffsetBase()
 {
-    String answer("%d", set.time._shift);
+    String answer("%d", set.time.shift);
     SCPI::SendAnswer(answer.c_str());
 }
 

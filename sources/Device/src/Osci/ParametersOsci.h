@@ -14,7 +14,7 @@ struct DataSettings;
 struct SettingsChannel;
 
 
-#define S_TIME_BASE (set.time._base)
+#define S_TIME_BASE (set.time.base)
 namespace TBase
 {
     enum E
