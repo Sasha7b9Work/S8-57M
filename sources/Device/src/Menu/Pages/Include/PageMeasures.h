@@ -83,7 +83,7 @@ struct SettingsAutoMeasures
 // Режим слежения курсоров.
 struct CursorsLookMode
 {
-#define S_CURS_LOOK_MODE(chan)              (set.curs._lookMode[chan])
+#define S_CURS_LOOK_MODE(chan)              (set.curs.lookMode[chan])
 #define S_CURS_LOOK_MODE_IS_VOLTAGE(chan)   (S_CURS_LOOK_MODE(chan) == CursorsLookMode::Voltage)
 #define S_CURS_LOOK_MODE_IS_TIME(chan)      (S_CURS_LOOK_MODE(chan) == CursorsLookMode::Time)
 #define S_CURS_LOOK_MODE_IS_BOTH(chan)      (S_CURS_LOOK_MODE(chan) == CursorsLookMode::Both)
@@ -100,7 +100,7 @@ struct CursorsLookMode
 // Какие курсоры сейчас активны. Какие активны, те и будут перемещаться по вращению ручки УСТАНОВКА.
 struct CursorsActive
 {
-#define S_CURS_ACTIVE       (set.curs._active)
+#define S_CURS_ACTIVE       (set.curs.active)
 #define S_CURS_ACTIVE_IS_T  (S_CURS_ACTIVE == CursorsActive::T)
 #define S_CURS_ACTIVE_IS_U  (S_CURS_ACTIVE == CursorsActive::U)
 
@@ -116,8 +116,8 @@ struct CursorsActive
 // Каким курсором управлять
 struct CursorsControl
 {
-#define S_CURS_CONTROL_U(chan)      (set.curs._cntrlU[chan])
-#define S_CURS_CONTROL_T(chan)      (set.curs._cntrlT[chan])
+#define S_CURS_CONTROL_U(chan)      (set.curs.cntrlU[chan])
+#define S_CURS_CONTROL_T(chan)      (set.curs.cntrlT[chan])
 
     enum E
     {
@@ -140,7 +140,7 @@ struct CursorsControl
 // Дискретность перемещения курсоров.
 struct CursorsMovement
 {
-#define S_CURS_MOVEMENT             (set.curs._movement)
+#define S_CURS_MOVEMENT             (set.curs.movement)
 #define S_CURS_MOVEMENT_IS_PIXELS   (S_CURS_MOVEMENT == CursorsMovement::Pixels)
 #define S_CURS_MOVEMENT_IS_PERCENTS (S_CURS_MOVEMENT == CursorsMovement::Percents)
 
@@ -152,38 +152,38 @@ struct CursorsMovement
 };
 
 
-#define S_CURS_SHOW                 (set.curs._showCursors)
-#define S_CURS_SHOW_FREQ            (set.curs._showFreq)
+#define S_CURS_SHOW                 (set.curs.showCursors)
+#define S_CURS_SHOW_FREQ            (set.curs.showFreq)
 
-#define S_CURS_SOURCE               (set.curs._source)
+#define S_CURS_SOURCE               (set.curs.source)
 #define S_CURS_SOURCE_IS_A          (S_CURS_SOURCE == ChA)
 
-#define S_CURS_DU_PERCENTS(chan)    (set.curs._deltaU100percents[chan])
-#define S_CURS_DT_PERCENTS(chan)    (set.curs._deltaT100percents[chan])
+#define S_CURS_DU_PERCENTS(chan)    (set.curs.deltaU100percents[chan])
+#define S_CURS_DT_PERCENTS(chan)    (set.curs.deltaT100percents[chan])
 
-#define S_CURS_POS_U(chan, num)     (set.curs._posCurU[chan][num])
+#define S_CURS_POS_U(chan, num)     (set.curs.posCurU[chan][num])
 #define S_CURS_POS_U0(chan)         (S_CURS_POS_U(chan, 0))
 #define S_CURS_POS_U1(chan)         (S_CURS_POS_U(chan, 1))
 
-#define S_CURS_POS_T(chan, num)     (set.curs._posCurT[chan][num])
+#define S_CURS_POS_T(chan, num)     (set.curs.posCurT[chan][num])
 #define S_CURS_POS_T0(chan)         (S_CURS_POS_T(chan, 0))
 #define S_CURS_POS_T1(chan)         (S_CURS_POS_T(chan, 1))
 
 
 struct SettingsCursorsMeasures
 {
-    bool               _showCursors;             // Показывать ли курсоры.
-    CursorsLookMode::E _lookMode[Ch::Count];   // Режимы слежения за курсорами для двух пар курсоров.
-    bool               _showFreq;                // Установленное в true значение, что нужно показывать на экране 1/dT между курсорами.
-    CursorsActive::E   _active;                  // Какие курсоры сейас активны.
-    Ch::E              _source;                  // Источник - к какому каналу относятся курсоры.
-    CursorsControl::E  _cntrlU[Ch::Count];     // Активные курсоры напряжения.
-    CursorsControl::E  _cntrlT[Ch::Count];     // Активные курсоры времени.
-    CursorsMovement::E _movement;                // Как перемещаться курсорам - по точкам или процентам.
-    float              _deltaU100percents[2];    // Расстояние между курсорами напряжения для 100%, для обоих каналов.
-    float              _deltaT100percents[2];    // Расстояние между курсорами времени для 100%, для обоих каналов.
-    float              _posCurU[Ch::Count][2]; // Текущие позиции курсоров напряжения обоих каналов.
-    float              _posCurT[Ch::Count][2]; // Текущие позиции курсоров времени обоих каналов.
+    bool               showCursors;             // Показывать ли курсоры.
+    CursorsLookMode::E lookMode[Ch::Count];   // Режимы слежения за курсорами для двух пар курсоров.
+    bool               showFreq;                // Установленное в true значение, что нужно показывать на экране 1/dT между курсорами.
+    CursorsActive::E   active;                  // Какие курсоры сейас активны.
+    Ch::E              source;                  // Источник - к какому каналу относятся курсоры.
+    CursorsControl::E  cntrlU[Ch::Count];     // Активные курсоры напряжения.
+    CursorsControl::E  cntrlT[Ch::Count];     // Активные курсоры времени.
+    CursorsMovement::E movement;                // Как перемещаться курсорам - по точкам или процентам.
+    float              deltaU100percents[2];    // Расстояние между курсорами напряжения для 100%, для обоих каналов.
+    float              deltaT100percents[2];    // Расстояние между курсорами времени для 100%, для обоих каналов.
+    float              posCurU[Ch::Count][2]; // Текущие позиции курсоров напряжения обоих каналов.
+    float              posCurT[Ch::Count][2]; // Текущие позиции курсоров времени обоих каналов.
 };
 
 
