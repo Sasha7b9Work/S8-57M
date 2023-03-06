@@ -11,7 +11,7 @@
 // Режим работы.
 struct ModeWork
 {
-#define S_MEM_MODE_WORK         (set.mem._modeWork)
+#define S_MEM_MODE_WORK         (set.mem.modeWork)
 #define S_MEM_MODE_WORK_IS_DIR  (S_MEM_MODE_WORK == ModeWork::Dir)
 #define S_MEM_MODE_WORK_IS_RAM  (S_MEM_MODE_WORK == ModeWork::RAM)
 #define S_MEM_MODE_WORK_IS_ROM  (S_MEM_MODE_WORK == ModeWork::ROM)
@@ -29,7 +29,7 @@ struct ModeWork
 // Что делать при нажатии кнопки ПАМЯТЬ.
 struct ModeBtnMemory
 {
-#define S_MEM_MODE_BTN_MEMORY           (set.mem._modeBtnMemory)
+#define S_MEM_MODE_BTN_MEMORY           (set.mem.modeBtnMemory)
 #define S_MEM_MODE_BTN_MEMORY_IS_SAVE   (S_MEM_MODE_BTN_MEMORY == ModeBtnMemory::Save)
 
     enum E
@@ -43,7 +43,7 @@ struct ModeBtnMemory
 // Как сохранять данные на флешку.
 struct ModeSaveSignal
 {
-#define S_MEM_MODE_SAVE_SIGNAL          (set.mem._modeSaveSignal)
+#define S_MEM_MODE_SAVE_SIGNAL          (set.mem.modeSaveSignal)
 #define S_MEM_MODE_SAVE_SIGNAL_IS_BMP   (S_MEM_MODE_SAVE_SIGNAL == ModeSaveSignal::BMP)
 
     enum E
@@ -69,7 +69,7 @@ struct ModeShowIntMem
 // Режим наименования файлов.
 struct FileNamingMode
 {
-#define S_MEM_FILE_NAMING_MODE              (set.mem._fileNamingMode)
+#define S_MEM_FILE_NAMING_MODE              (set.mem.fileNamingMode)
 #define S_MEM_FILE_NAMING_MODE_IS_MASK      (S_MEM_FILE_NAMING_MODE == FileNamingMode::Mask)
 #define S_MEM_FILE_NAMING_MODE_IS_MANUALLY  (S_MEM_FILE_NAMING_MODE == FileNamingMode::Manually)
 
@@ -84,7 +84,7 @@ struct FileNamingMode
 // Число точек сигнала, с которым идёт работа.
 struct ENumPointsFPGA
 {
-#define S_ENUMPOINTS_FPGA   (set.mem._enumPoints)
+#define S_ENUMPOINTS_FPGA   (set.mem.enumPoints)
 
     enum E
     {
@@ -102,7 +102,7 @@ struct ENumPointsFPGA
 // Какой сигнал показывать в режиме ПАМЯТЬ - ВНЕШН ЗУ
 struct TypeSignalROM
 {
-#define S_MEM_TYPE_SIGNAL_ROM               (set.mem._typeSignalROM)
+#define S_MEM_TYPE_SIGNAL_ROM               (set.mem.typeSignalROM)
 #define S_MEM_TYPE_SIGNAL_ROM_IS_CURRENT    (S_MEM_TYPE_SIGNAL_ROM == TypeSignalROM::Current)
 #define S_MEM_TYPE_SIGNAL_ROM_IS_RECORDED   (S_MEM_TYPE_SIGNAL_ROM == TypeSignalROM::Recorded)
 #define S_MEM_TYPE_SIGNAL_ROM_IS_BOTH       (S_MEM_TYPE_SIGNAL_ROM == TypeSignalROM::Both)
@@ -118,24 +118,24 @@ struct TypeSignalROM
 
 #define MAX_SYMBOLS_IN_FILE_NAME 35
 
-#define S_MEM_FILE_NAME             (set.mem._fileName)
-#define S_MEM_FILE_NAME_MASK        (set.mem._fileNameMask)
-#define S_MEM_FLASH_AUTO_CONNECT    (set.mem._flashAutoConnect)
-#define S_MEM_INDEX_CUR_SYMBOL_MASK (set.mem._indexCurSymbolNameMask)
+#define S_MEM_FILE_NAME             (set.mem.fileName)
+#define S_MEM_FILE_NAME_MASK        (set.mem.fileNameMask)
+#define S_MEM_FLASH_AUTO_CONNECT    (set.mem.flashAutoConnect)
+#define S_MEM_INDEX_CUR_SYMBOL_MASK (set.mem.indexCurSymbolNameMask)
 
 struct SettingsMemory
 {
-    ENumPointsFPGA::E   _enumPoints;                             // Число точек
-    ModeBtnMemory::E    _modeBtnMemory;
-    TypeSignalROM::E    _typeSignalROM;                          // Какой сигнал выводить в режиме ПАМЯТЬ-ВНУТР ЗУ
-    ModeWork::E         _modeWork;                               // Режим работы.
-    bool                _flashAutoConnect;                       // Если true, при подключении флешки автоматически выводится Файл-Менеджер.
-    int8                _indexCurSymbolNameMask;                 // Индекс текущего символа в режиме задания маски или выбора имени.
-    ModeSaveSignal::E   _modeSaveSignal;                         // В каком виде сохранять сигнал.
-    char                _fileName[MAX_SYMBOLS_IN_FILE_NAME];     // Имя файла для режима ручного задания.
+    ENumPointsFPGA::E   enumPoints;                             // Число точек
+    ModeBtnMemory::E    modeBtnMemory;
+    TypeSignalROM::E    typeSignalROM;                          // Какой сигнал выводить в режиме ПАМЯТЬ-ВНУТР ЗУ
+    ModeWork::E         modeWork;                               // Режим работы.
+    bool                flashAutoConnect;                       // Если true, при подключении флешки автоматически выводится Файл-Менеджер.
+    int8                indexCurSymbolNameMask;                 // Индекс текущего символа в режиме задания маски или выбора имени.
+    ModeSaveSignal::E   modeSaveSignal;                         // В каком виде сохранять сигнал.
+    char                fileName[MAX_SYMBOLS_IN_FILE_NAME];     // Имя файла для режима ручного задания.
     ModeShowIntMem::E   _;                                      // Что показывать в режиме ВНУТР ЗУ - считанный или записанный сигнал.
-    FileNamingMode::E   _fileNamingMode;                         // Режим именования файлов.
-    char                _fileNameMask[MAX_SYMBOLS_IN_FILE_NAME]; // \brief Здесь маска для автоматического именования файлов.
+    FileNamingMode::E   fileNamingMode;                         // Режим именования файлов.
+    char                fileNameMask[MAX_SYMBOLS_IN_FILE_NAME]; // \brief Здесь маска для автоматического именования файлов.
                         // \details Правила именования.\n
                         // \code
                         // %y('\x42') - год, %m('\x43') - месяц, %d('\x44') - день, %H('\x45') - часы, %M('\x46') - минуты, %S('\x47') - секунды

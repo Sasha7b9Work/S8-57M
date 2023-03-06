@@ -202,9 +202,9 @@ static pcharc length[] =
 
 static pchar FuncMemoryLength(pchar buffer)
 {
-    SCPI_REQUEST(SCPI::SendAnswer(length[set.mem._enumPoints]));
+    SCPI_REQUEST(SCPI::SendAnswer(length[set.mem.enumPoints]));
 
-    SCPI_PROCESS_ARRAY(length, set.mem._enumPoints = (ENumPointsFPGA::E)i);
+    SCPI_PROCESS_ARRAY(length, set.mem.enumPoints = (ENumPointsFPGA::E)i);
 }
 
 
