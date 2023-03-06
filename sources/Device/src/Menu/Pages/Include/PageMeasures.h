@@ -13,7 +13,7 @@
 // Сколько автоматических измерений помещается на экран
 struct MeasuresOnDisplay
 {
-#define S_MEAS_ON_DISPLAY           (set.meas._number)
+#define S_MEAS_ON_DISPLAY           (set.meas.number)
 #define S_MEAS_ON_DISPLAY_IS_6_1    (S_MEAS_ON_DISPLAY == MeasuresOnDisplay::_6_1)
 #define S_MEAS_ON_DISPLAY_IS_6_2    (S_MEAS_ON_DISPLAY == MeasuresOnDisplay::_6_2)
 
@@ -35,7 +35,7 @@ struct MeasuresOnDisplay
 
 struct MeasuresSource
 {
-#define S_MEAS_SOURCE           (set.meas._source)
+#define S_MEAS_SOURCE           (set.meas.source)
 #define S_MEAS_SOURCE_IS_A      (S_MEAS_SOURCE == MeasuresSource::A)
 #define S_MEAS_SOURCE_IS_B      (S_MEAS_SOURCE == MeasuresSource::B)
 #define S_MEAS_SOURCE_IS_A_B    (S_MEAS_SOURCE == MeasuresSource::A_B)
@@ -52,7 +52,7 @@ struct MeasuresSource
 // Сжимать ли сигналы при выводе измерений.
 struct MeasuresModeViewSignals
 {
-#define S_MEAS_MODE_VIEW_SIGNALS                (set.meas._modeViewSignals)
+#define S_MEAS_MODE_VIEW_SIGNALS                (set.meas.modeViewSignals)
 #define S_MEAS_MODE_VIEW_SIGNALS_IS_COMPRESS    (S_MEAS_MODE_VIEW_SIGNALS == MeasuresModeViewSignals::Compress)
 
     enum E
@@ -65,17 +65,17 @@ struct MeasuresModeViewSignals
 };
 
 
-#define S_MEAS_SHOW     (set.meas._show)
+#define S_MEAS_SHOW     (set.meas.show)
 
 
 struct SettingsAutoMeasures
 {
-    bool                        _show;              // Показывать ли измерения.
-    MeasuresOnDisplay::E        _number;            // Сколько измерений выводить.
-    MeasuresSource::E           _source;            // Для каких каналов выводить измерения.
-    MeasuresModeViewSignals::E  _modeViewSignals;   // Сжимать ли сигналы при выводе измерений.
-    TypeMeasure::E              _measures[15];      // Выбранные для индикации измерения.
-    TypeMeasure::E              _marked;            // Измерение, на которое нужно выводить маркеры.
+    bool                        show;              // Показывать ли измерения.
+    MeasuresOnDisplay::E        number;            // Сколько измерений выводить.
+    MeasuresSource::E           source;            // Для каких каналов выводить измерения.
+    MeasuresModeViewSignals::E  modeViewSignals;   // Сжимать ли сигналы при выводе измерений.
+    TypeMeasure::E              measures[15];      // Выбранные для индикации измерения.
+    TypeMeasure::E              marked;            // Измерение, на которое нужно выводить маркеры.
 };
 
 
