@@ -4,19 +4,19 @@
 #include "Menu/MenuItems.h"
 
 
-#define S_SERV_ENUM_VOLUME          (set.serv._enumVolume)
-#define S_SERV_SHOW_INFO_VOLTAGE    (set.serv._showInfoVoltage)
-#define S_SERV_TIME_DISABLE_DISPLAY (set.serv._timeDisableDisplay)
-#define S_SERV_TIME_DISABLE_POWER   (set.serv._timeDisablePower)
+#define S_SERV_ENUM_VOLUME          (set.serv.enumVolume)
+#define S_SERV_SHOW_INFO_VOLTAGE    (set.serv.showInfoVoltage)
+#define S_SERV_TIME_DISABLE_DISPLAY (set.serv.timeDisableDisplay)
+#define S_SERV_TIME_DISABLE_POWER   (set.serv.timeDisablePower)
 
 
 struct SettingsService
 {
-    Calibrator::Mode::E _calibratorMode;        // Режим работы калибратора.
-    uint8               _enumVolume;            // Громкость звука
-    bool                _showInfoVoltage;       // Показывать напряжение батареи на экране
-    int16               _timeDisableDisplay;    // Время отключения дисплея в минутах
-    int16               _timeDisablePower;      // Время отключения питания в минутах
+    Calibrator::Mode::E calibratorMode;         // Режим работы калибратора.
+    uint8               enumVolume;             // Громкость звука
+    bool                showInfoVoltage;        // Показывать напряжение батареи на экране
+    int16               timeDisableDisplay;     // Время отключения дисплея в минутах
+    int16               timeDisablePower;       // Время отключения питания в минутах
     uint8               SoundVolume();          // Возвращает значение от 0 (выкл) до 100 (макс)
 };
 

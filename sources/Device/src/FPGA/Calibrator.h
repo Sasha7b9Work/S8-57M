@@ -13,7 +13,7 @@ namespace Calibrator
 
     struct Mode
     {
-#define S_SERV_CALIBRATOR_MODE  (set.serv._calibratorMode)
+#define S_SERV_CALIBRATOR_MODE  (set.serv.calibratorMode)
 
         enum E
         {
