@@ -189,7 +189,7 @@ struct SettingsCursorsMeasures
 
 struct FuncModeDraw
 {
-#define S_MATH_MODE_DRAW                (set.math._modeDraw)
+#define S_MATH_MODE_DRAW                (set.math.modeDraw)
 #define S_MATH_MODE_DRAW_IS_SEPARATE    (S_MATH_MODE_DRAW == FuncModeDraw::Separate)
 #define S_MATH_MODE_DRAW_IS_DISABLED    (S_MATH_MODE_DRAW == FuncModeDraw::Disabled)
 
@@ -204,7 +204,7 @@ struct FuncModeDraw
 
 struct MathFunction
 {
-#define S_MATH_FUNCTION         (set.math._function)
+#define S_MATH_FUNCTION         (set.math.function)
 #define S_MATH_FUNCTION_IS_SUM  (S_MATH_FUNCTION == MathFunction::Sum)
 #define S_MATH_FUNCTION_IS_MUL  (S_MATH_FUNCTION == MathFunction::Mul)
 
@@ -218,7 +218,7 @@ struct MathFunction
 
 struct ModeRegSet
 {
-#define S_MATH_MODE_REG_SET             (set.math._modeRegSet)
+#define S_MATH_MODE_REG_SET             (set.math.modeRegSet)
 #define S_MATH_MODE_REG_SET_IS_RSHIFT   (S_MATH_MODE_REG_SET == ModeRegSet::RShift)
 #define S_MATH_MODE_REG_SET_IS_RANGE    (S_MATH_MODE_REG_SET == ModeRegSet::Range)
 
@@ -231,12 +231,12 @@ struct ModeRegSet
 
 struct SettingsMath
 { //-V802
-    FuncModeDraw::E _modeDraw;       // Раздельный или общий дисплей в режиме математической функции.
-    MathFunction::E _function;
-    ModeRegSet::E   _modeRegSet;     // Функция ручки УСТАНОВКА - масштаб по времени или смещение по вертикали.
-    Divider::E      _divider;
-    int16           _rShift;
-    Range::E        _range;
+    FuncModeDraw::E modeDraw;       // Раздельный или общий дисплей в режиме математической функции.
+    MathFunction::E function;
+    ModeRegSet::E   modeRegSet;     // Функция ручки УСТАНОВКА - масштаб по времени или смещение по вертикали.
+    Divider::E      divider;
+    int16           rShift;
+    Range::E        range;
 };
 
 
