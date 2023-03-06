@@ -216,13 +216,13 @@ void DisplayOsci::DrawingValueParameter::Disable()
 
 int16 DisplayOsci::ShiftInMemory::Get()
 {
-    return set.disp._shiftInMemory;
+    return set.disp.shiftInMemory;
 }
 
 
 void DisplayOsci::ShiftInMemory::Set(int16 shift)
 {
-    set.disp._shiftInMemory = shift;
+    set.disp.shiftInMemory = shift;
 }
 
 

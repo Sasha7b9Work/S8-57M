@@ -132,7 +132,7 @@ static pchar FuncAverages(pchar buffer)
 
 static pchar FuncBrightness(pchar buffer)
 {
-    SCPI_REQUEST(SCPI::SendAnswer(String("%d", set.disp._brightness).c_str()));
+    SCPI_REQUEST(SCPI::SendAnswer(String("%d", set.disp.brightness).c_str()));
 
     char *end_str = nullptr;
 

@@ -16,7 +16,7 @@ static void OnChanged_Brightness()
 void PageDisplay::SetBrightness(int value)
 {
     Math::Limitation(&value, 0, 100);
-    set.disp._brightness = (uint8)(value);
+    set.disp.brightness = (uint8)(value);
     OnChanged_Brightness();
 }
 
