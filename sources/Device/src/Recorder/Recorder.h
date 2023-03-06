@@ -23,7 +23,7 @@ namespace Recorder
     void StartListening();
 
     // Где хранятся данные
-#define S_REC_TYPE_MEMORY   (set.rec._typeMemory)
+#define S_REC_TYPE_MEMORY   (set.rec.typeMemory)
     struct TypeMemory
     {
         enum E
@@ -36,7 +36,7 @@ namespace Recorder
 
     
     // Используется при выборе оси
-#define S_REC_AXIS_MOVE     (set.rec._axisMove)
+#define S_REC_AXIS_MOVE     (set.rec.axisMove)
     struct Axis
     {
         enum E
@@ -48,7 +48,7 @@ namespace Recorder
 
     
     // Масшаб по времени
-#define S_REC_SCALE_X   (set.rec._scaleX)
+#define S_REC_SCALE_X   (set.rec.scaleX)
     struct ScaleX
     {
         enum E

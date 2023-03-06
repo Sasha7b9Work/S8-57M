@@ -64,7 +64,7 @@ DEF_CHOICE_2(cInfo,
     "",
     "Показывать",
     "Скрыть",
-    set.rec._showInfo, &PageRecorder::Show::self, Choice::Active, Choice::Changed, Choice::AfterDraw
+    set.rec.showInfo, &PageRecorder::Show::self, Choice::Active, Choice::Changed, Choice::AfterDraw
 )
 
 
