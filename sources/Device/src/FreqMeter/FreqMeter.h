@@ -46,7 +46,7 @@ namespace FreqMeter
     // Частота заполняющих импульсов для счёта частоты.
     struct FreqClc
     {
-#define S_FREQ_FREQ_CLC     (set.freq._freqClc)
+#define S_FREQ_FREQ_CLC     (set.freq.freqClc)
 
         enum E
         {
@@ -61,7 +61,7 @@ namespace FreqMeter
     // Количество периодов.
     struct NumberPeriods
     {
-#define S_FREQ_NUMBER_PERIODS   (set.freq._numberPeriods)
+#define S_FREQ_NUMBER_PERIODS   (set.freq.numberPeriods)
 
         enum E
         {
@@ -78,7 +78,7 @@ namespace FreqMeter
     // Что показывать - период или частоту
     struct ModeMeasure
     {
-#define S_FREQ_MODE_MEASURE                (set.freq._modeMeasure)
+#define S_FREQ_MODE_MEASURE                (set.freq.modeMeasure)
 #define S_FREQ_MODE_MEASURE_IS_FREQUENCY   (S_FREQ_MODE_MEASURE == FreqMeter::ModeMeasure::Frequency)
 #define S_FREQ_MODE_MEASURE_IS_PERIOD      (S_FREQ_MODE_MEASURE == FreqMeter::ModeMeasure::Period)
 
@@ -93,7 +93,7 @@ namespace FreqMeter
     // Время счёта периода.
     struct TimeCounting
     {
-#define S_FREQ_TIME_COUNTING            (set.freq._timeCounting)
+#define S_FREQ_TIME_COUNTING            (set.freq.timeCounting)
 #define S_FREQ_TIME_COUNTING_IS_100ms   (S_FREQ_TIME_COUNTING == FreqMeter::TimeCounting::_100ms)
 
         enum E
