@@ -184,7 +184,7 @@ static pchar FuncDisplayC(pchar buffer)
 
 static void SendAnswerForOffst(Ch::E ch)
 {
-    String answer("%d", set.ch[ch]._rShift / 2);
+    String answer("%d", set.ch[ch].rShift / 2);
     SCPI::SendAnswer(answer.c_str());
 }
 

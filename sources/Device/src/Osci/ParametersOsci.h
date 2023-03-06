@@ -77,7 +77,7 @@ namespace TBase
 
 
 // Делитель.
-#define S_DIVIDER(channel)  (set.ch[channel]._divider)
+#define S_DIVIDER(channel)  (set.ch[channel].divider)
 #define S_DIVIDER_A         S_DIVIDER(0)
 #define S_DIVIDER_B         S_DIVIDER(1)
 #define S_DIVIDER_MATH      (set.math._divider)
@@ -96,7 +96,7 @@ namespace Divider
 };
 
 
-#define S_RANGE(channel)    set.ch[channel]._range
+#define S_RANGE(channel)    set.ch[channel].range
 #define S_RANGE_A           S_RANGE(0)
 #define S_RANGE_B           S_RANGE(1)
 #define S_RANGE_MATH        set.math._range
@@ -163,7 +163,7 @@ namespace RShift
 };
 
 // Режим канала по входу.
-#define S_MODE_COUPLE(chan)         (set.ch[chan]._couple)
+#define S_MODE_COUPLE(chan)         (set.ch[chan].couple)
 #define S_MODE_COUPLE_A             S_MODE_COUPLE(ChA)
 #define S_MODE_COUPLE_B             S_MODE_COUPLE(ChB)
 #define S_MODE_COUPLE_IS_DC(chan)   (S_MODE_COUPLE(chan) == ModeCouple::DC)
@@ -183,7 +183,7 @@ namespace ModeCouple
 };
 
 
-#define S_BANDWIDTH(chan)           set.ch[chan]._bandwidth
+#define S_BANDWIDTH(chan)           set.ch[chan].bandwidth
 #define S_BANDWIDTH_IS_20MHz(chan)  (S_BANDWIDTH(chan) == Bandwidth::_20MHz)
 namespace Bandwidth
 {
