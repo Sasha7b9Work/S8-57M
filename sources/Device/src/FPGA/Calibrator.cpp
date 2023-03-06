@@ -95,7 +95,7 @@ bool Calibrator::BalanceChannel(Ch::E ch, bool showHint)
         BalanceRange(ch, (Range::E)range);
     }
 
-    std::memcpy(&oldNRST._exShift[ch][0], &NRST_EX_SHIFT(ch, 0), sizeof(NRST_EX_SHIFT(ch, 0)) * Range::Count);
+    std::memcpy(&oldNRST.exShift[ch][0], &NRST_EX_SHIFT(ch, 0), sizeof(NRST_EX_SHIFT(ch, 0)) * Range::Count);
 
     setNRST = oldNRST;
     set = old;
@@ -177,7 +177,7 @@ static bool StretchChannel(Ch::E ch)
 
     if (k > 0.0F)
     {
-        old._exStretch[ch] = k;
+        old.exStretch[ch] = k;
     }
 
     setNRST = old;

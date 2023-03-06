@@ -4,8 +4,8 @@
 #include "Settings/SettingsNRST.h"
 
 
-static int16 shift1 = setNRST._exShift[0][0];
-static int16 shift2 = setNRST._exShift[1][0];
+static int16 shift1 = setNRST.exShift[0][0];
+static int16 shift2 = setNRST.exShift[1][0];
 
 
 static void OnChange_Shift1()
