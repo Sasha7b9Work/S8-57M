@@ -32,8 +32,6 @@ struct ENumAverage
 #define S_OSCI_ENUM_AVERAGE_U16     ((uint16)(S_OSCI_ENUM_AVERAGE))
 #define S_OSCI_NUM_AVERAGE          (1 << S_OSCI_ENUM_AVERAGE)
 
-#define S_TEST_ENUM_AVERAGE         (set.test._enumAverage)
-
     enum E
     {
         _1,
