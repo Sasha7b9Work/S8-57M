@@ -39,7 +39,7 @@ void Rectangle::Draw(int x, int y, Color color)
     color.SetAsCurrent();
 
     memDC.DrawRectangle({ x, y, width + 1, height + 1 });
-    HAL_BUS::Panel::Send(nullptr, 0);                            // Это нужно лишь для того, чтобы регистратор читал точки
+    HAL_BUS::Panel::SendBuffer(nullptr, 0);                            // Это нужно лишь для того, чтобы регистратор читал точки
 }
 
 
@@ -80,7 +80,7 @@ int Text::DrawSmall(int x, int y, Color color)
     for (uint i = 0; i < numSymbols; i++)
     {
         x = DrawChar(x, y, text[i]); //-V2563
-        x += DFont::GetSpacing();
+        x += Font::GetSpacing();
     }
 
     return x;

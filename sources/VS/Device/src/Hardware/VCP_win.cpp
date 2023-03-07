@@ -7,8 +7,11 @@
 PCD_HandleTypeDef  handlePCD;
 
 
-bool VCP::connectedToUSB = false;
-bool VCP::cableUSBisConnected = false;
+namespace VCP
+{
+    bool VCP::cable_connected = false;
+    bool VCP::client_connected = false;
+}
 
 
 void VCP::Init()

@@ -42,7 +42,7 @@ public:
 
 private:
     wxTimer timer;
-    /// Таймер для "длинного нажатия" кнопок
+    // Таймер для "длинного нажатия" кнопок
     wxTimer timerLongPress;
 
     void DrawFPS();
@@ -50,6 +50,6 @@ private:
 
     void SaveSettings();
     void LoadSettings();
-    /// Установить размер и оптимальную позицию для окна приложения
+    // Установить размер и оптимальную позицию для окна приложения
     void SetPositionAndSize();
 };
