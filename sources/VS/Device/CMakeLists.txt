@@ -233,3 +233,6 @@ target_link_libraries(S8-57 WinMM.lib)
 target_link_libraries(S8-57 version.lib)
 target_link_libraries(S8-57 Imm32.Lib)
 target_link_libraries(S8-57 Setupapi.lib)
+
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND copy ..\\..\\ThirdParty\\lib\\vc_dll\\wxbase32ud_vc_custom.dll $(OutputPath) /Y)
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND copy ..\\..\\ThirdParty\\lib\\vc_dll\\wxmsw32ud_core_vc_custom.dll $(OutputPath) /Y)
