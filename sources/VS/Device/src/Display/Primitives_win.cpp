@@ -91,10 +91,12 @@ static int DrawChar(int eX, int eY, char s)
 {
     uint8 symbol = static_cast<uint8>(s);
 
-    int8 width = static_cast<int8>(DFont::GetWidth(symbol));
-    int8 height = static_cast<int8>(DFont::GetHeight());
+    int width = Symbol(symbol).Width();
 
-    int delta = DFont::IsBig() ? 0 : (9 - height);
+    /*
+    int height = Font::Height();
+
+    int delta = Font::IsBig() ? 0 : (9 - height);
 
     for (int row = 0; row < height; row++)
     {
@@ -112,6 +114,7 @@ static int DrawChar(int eX, int eY, char s)
             }
         }
     }
+    */
 
     return eX + width;
 }

@@ -23,7 +23,7 @@ void HAL_BUS::Init()
 }
 
 
-void HAL_BUS::Panel::Send(const uint8 *data, int num)
+void HAL_BUS::Panel::SendBuffer(const uint8 *data, int num)
 {
     if(data == nullptr)
     {
@@ -42,7 +42,7 @@ void HAL_BUS::Panel::Send(const uint8 *data, int num)
     }
     else if(*data == Command::Paint_SetTextSpacing)
     {
-        PFont::SetSpacing(*(data + 1)); //-V2563
+        Font::SetSpacing(*(data + 1)); //-V2563
     }
     else
     {
@@ -51,7 +51,7 @@ void HAL_BUS::Panel::Send(const uint8 *data, int num)
 }
 
 
-void HAL_BUS::Panel::Send(uint8)
+void HAL_BUS::Panel::SendByte(uint8)
 {
 
 }
@@ -65,7 +65,7 @@ bool HAL_BUS::Panel::Receive()
 }
 
 
-void HAL_BUS::Panel::Send(uint8 byte0, uint8 byte1)
+void HAL_BUS::Panel::SendBuffer(uint8 byte0, uint8 byte1)
 {
     uint8 data[2] = { byte0, byte1 };
 

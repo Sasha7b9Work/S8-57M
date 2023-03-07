@@ -8,7 +8,7 @@
 #include <cstring>
 
 
-uint16 Osci::addrRead = 0;
+//uint16 Osci::addrRead = 0;
 
 
 void FPGA::Init()
@@ -78,6 +78,7 @@ static bool GenerateNormalModeData(Ch::E ch, uint8 *data, int numBytes)
 }
 
 
+/*
 bool Osci::ReadDataChannel(Ch::E ch, uint8 *data) //-V2506
 {
     if (!S_CHANNEL_ENABLED(ch))
@@ -114,3 +115,4 @@ bool Osci::ReadDataChannel(Ch::E ch, uint8 *data) //-V2506
 
     return true;
 }
+*/

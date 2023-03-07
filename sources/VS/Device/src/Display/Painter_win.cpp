@@ -56,7 +56,7 @@ static void CreateFrame();
 // Создаёт все кнопки
 static void CreateButtons(Frame *frame);
 // Создаёт одну кнопку
-static void CreateButton(Key::E key, Frame *frame, const wxPoint &pos, const wxSize &size, pString title);
+static void CreateButton(Key::E key, Frame *frame, const wxPoint &pos, const wxSize &size, pchar title);
 // Создаёт кнопки для меню канала
 static void CreateButtonsChannel(Frame *frame, const char *title, int x, int y, Key::E keyChannel, Key::E keyRangeLess, Key::E keyRangeMore, Key::E keyRShiftLess, Key::E keyRShiftMore);
 // Создаёт кнопки группы синхронизации

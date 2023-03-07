@@ -428,7 +428,7 @@ void PageMemory::SaveSignalToFlashDrive()
     }
 }
 
-static void DrawSetName(int field)
+static void DrawSetName(int)
 {
     int x0 = Grid::Left() + 40;
     int y0 = Grid::Top() + 60;

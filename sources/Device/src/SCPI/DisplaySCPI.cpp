@@ -102,7 +102,7 @@ static pchar FuncAccumulation(pchar buffer)
 
 static void SetAverage(int i)
 {
-    static const ENumAverage::E ave[] =
+    static const ENumAverage::E _ave_[] =
     {
         ENumAverage::_128,
         ENumAverage::_16,
@@ -115,7 +115,7 @@ static void SetAverage(int i)
         ENumAverage::_4
     };
 
-    ENumAverage::Set(ave[i]);
+    ENumAverage::Set(_ave_[i]);
 }
 
 static pcharc averagesDirect[] = { " 1", " 2", " 4", " 8", " 16", " 32", " 64", " 128", " 256", "" };

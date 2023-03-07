@@ -373,7 +373,7 @@ void Page::DrawTitle(int y) const
 }
 
 
-void Page::DrawItems(int x, int y) const
+void Page::DrawItems(int x, int) const
 {
     if (NumItems() == 0)
     {

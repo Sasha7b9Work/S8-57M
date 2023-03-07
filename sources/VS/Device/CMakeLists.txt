@@ -76,6 +76,7 @@ add_compile_options(/wd5039)    # 'xxx': pointer or reference to potentially thr
 add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
 add_compile_options(/wd5219)
 add_compile_options(/wd5246)
+add_compile_options(/wd5264)    # 'variable-name': 'const' variable is not used
 add_compile_options(/wd26812)   # Prefer 'enum class' over 'enum' (Enum.3)
 
 file(GLOB COMMON                            ../../common/Command.h
@@ -92,7 +93,7 @@ file(GLOB VS_USBD                           ../../common/_VS/USBD/*)
 file(GLOB VS_USBH                           ../../common/_VS/USBH/*)
 file(GLOB FDRIVE                            ../../Device/src/FlashDrive/*)
 file(GLOB FREQMETER                         ../../Device/src/FreqMeter/*)
-file(GLOB _GUI                              src/GUI/*.h src/GUI/*.cpp src/GUI/*.c)
+file(GLOB GUI                               src/GUI/*.h src/GUI/*.cpp src/GUI/*.c)
 file(GLOB GUI_DIALOGS                       src/GUI/Dialogs/*)
 file(GLOB KEYBOARD                          ../../Device/src/Keyboard/*)
 file(GLOB MENU                              ../../Device/src/Menu/*.h ../../Device/src/Menu/*.cpp)
@@ -111,7 +112,7 @@ file(GLOB MULTIMETER                        ../../Device/src/Multimeter/*)
 file(GLOB OSCI_DISPLAY                      ../../Device/src/Osci/Display/*)
 file(GLOB OSCI_MATH                         ../../Device/src/Osci/Math/*)
 file(GLOB OSCI_MEASUREMENTS                 ../../Device/src/Osci/Measurements/*)
-file(GLOB _SCPI                             ../../Device/src/SCPI/*)
+file(GLOB SCPI                              ../../Device/src/SCPI/*)
 file(GLOB TEST                              ../../Device/src/Test/*)
 file(GLOB TESTER                            ../../Device/src/Tester/*)
 file(GLOB UTILS                             ../../Device/src/Utils/*)
@@ -135,12 +136,8 @@ file(GLOB DISPLAY                           ../../Device/src/Display/Colors.*
                                             ../../Device/src/Display/Symbols.h
                                             ../../Device/src/Display/Warnings.*)
 file(GLOB DISPLAY_FONT                      ../../common/Display/Font/AdvancedFont_d.*
-                                            ../../common/Display/Font/font5.inc
-                                            ../../common/Display/Font/font8.inc
-                                            ../../common/Display/Font/Font_d.h
-                                            ../../common/Display/Font/Font_d.cpp
-                                            ../../Panel/src/Display/Font/Font_p.h)
-file(GLOB _FPGA                             ../../Device/src/FPGA/AD9286.*
+                                            ../../common/Display/Font/*.h)
+file(GLOB FPGA                              ../../Device/src/FPGA/AD9286.*
                                             ../../Device/src/FPGA/Calibrator.*
                                             ../../Device/src/FPGA/Context.*
                                             ../../Device/src/FPGA/ContextFreqMeter.*
@@ -207,55 +204,55 @@ file(GLOB SETTINGS                          ../../Device/src/Settings/Settings.*
                                                          src/Settings/Settings_win.cpp
                                             ../../Device/src/Settings/ParametersOsci.*)
 
-source_group(common                              FILES ${COMMON})
-source_group(_VS                                 FILES ${VS})
-source_group(_VS\\CMSIS                          FILES ${VS_CMSIS})
-source_group(_VS\\FatFS                          FILES ${VS_FATFS})
-source_group(_VS\\HAL                            FILES ${VS_HAL})
-source_group(_VS\\HAL\\Legacy                    FILES ${VS_HAL_LEGACY})
-source_group(_VS\\USBD                           FILES ${VS_USBD})
-source_group(_VS\\USBH                           FILES ${VS_USBH})
-source_group(FDrive                              FILES ${FDRIVE})
-source_group(FreqMeter                           FILES ${FREQMETER})
-source_group(GUI                                 FILES ${_GUI})
-source_group(GUI\\Dialogs                        FILES ${GUI_DIALOGS})
-source_group(Keyboard                            FILES ${KEYBOARD})
-source_group(Menu                                FILES ${MENU})
-source_group(Menu\\Pages                         FILES ${MENU_PAGES})
-source_group(Menu\\Pages\\Include                FILES ${MENU_PAGES_INCLUDE})
-source_group(Menu\\Pages\\PageDisplay            FILES ${MENU_PAGES_PAGEDISPLAY})
-source_group(Menu\\Pages\\PageFunction           FILES ${MENU_PAGES_PAGEFUNCTION})
-source_group(Menu\\Pages\\PageRecorder           FILES ${MENU_PAGES_PAGERECORDER})
-source_group(Menu\\Pages\\PageHelp               FILES ${MENU_PAGES_PAGEHELP})
-source_group(Menu\\Pages\\PageMeasures           FILES ${MENU_PAGES_PAGEMEASURES})
-source_group(Menu\\Pages\\PageMemory             FILES ${MENU_PAGES_PAGEMEMORY})
-source_group(Menu\\Pages\\PageService            FILES ${MENU_PAGES_PAGESERVICE})
-source_group(Menu\\Pages\\PageService\\PageDebug FILES ${MENU_PAGES_PAGESERVICE_PAGE_DEBUG})
-source_group(Menu\\Pages\\PageTrig               FILES ${MENU_PAGES_PAGETRIG})
-source_group(Multimeter                          FILES ${MULTIMETER})
-source_group(Osci\\Display                       FILES ${OSCI_DISPLAY})
-source_group(Osci\\Math                          FILES ${OSCI_MATH})
-source_group(Osci\\Measurements                  FILES ${OSCI_MEASUREMENTS})
-source_group(SCPI                                FILES ${_SCPI})
-source_group(Test                                FILES ${TEST})
-source_group(Tester                              FILES ${TESTER})
-source_group(Utils                               FILES ${UTILS})
-source_group(src                                 FILES ${SRC})
-source_group(Display                             FILES ${DISPLAY})
-source_group(Display\\Font                       FILES ${DISPLAY_FONT})
-source_group(FPGA                                FILES ${_FPGA})
-source_group(Hardware                            FILES ${HARDWARE})
-source_group(Hardware\\HAL                       FILES ${HARDWARE_HAL})
-source_group(Hardware\\Memory                    FILES ${HARDWARE_MEMORY})
-source_group(Osci                                FILES ${OSCI})
-source_group(Recorder                            FILES ${RECORDER})
-source_group(Settings                            FILES ${SETTINGS})
+source_group(common                             FILES ${COMMON})
+source_group(_VS                                FILES ${VS})
+source_group(_VS/CMSIS                          FILES ${VS_CMSIS})
+source_group(_VS/FatFS                          FILES ${VS_FATFS})
+source_group(_VS/HAL                            FILES ${VS_HAL})
+source_group(_VS/HAL/Legacy                     FILES ${VS_HAL_LEGACY})
+source_group(_VS/USBD                           FILES ${VS_USBD})
+source_group(_VS/USBH                           FILES ${VS_USBH})
+source_group(Display                            FILES ${DISPLAY})
+source_group(Display/Font                       FILES ${DISPLAY_FONT})
+source_group(FDrive                             FILES ${FDRIVE})
+source_group(FreqMeter                          FILES ${FREQMETER})
+source_group(GUI                                FILES ${GUI})
+source_group(GUI/Dialogs                        FILES ${GUI_DIALOGS})
+source_group(Keyboard                           FILES ${KEYBOARD})
+source_group(Menu                               FILES ${MENU})
+source_group(Menu/Pages                         FILES ${MENU_PAGES})
+source_group(Menu/Pages/Include                 FILES ${MENU_PAGES_INCLUDE})
+source_group(Menu/Pages/PageDisplay             FILES ${MENU_PAGES_PAGEDISPLAY})
+source_group(Menu/Pages/PageFunction            FILES ${MENU_PAGES_PAGEFUNCTION})
+source_group(Menu/Pages/PageRecorder            FILES ${MENU_PAGES_PAGERECORDER})
+source_group(Menu/Pages/PageHelp                FILES ${MENU_PAGES_PAGEHELP})
+source_group(Menu/Pages/PageMeasures            FILES ${MENU_PAGES_PAGEMEASURES})
+source_group(Menu/Pages/PageMemory              FILES ${MENU_PAGES_PAGEMEMORY})
+source_group(Menu/Pages/PageService             FILES ${MENU_PAGES_PAGESERVICE})
+source_group(Menu/Pages/PageService/PageDebug   FILES ${MENU_PAGES_PAGESERVICE_PAGE_DEBUG})
+source_group(Menu/Pages/PageTrig                FILES ${MENU_PAGES_PAGETRIG})
+source_group(Multimeter                         FILES ${MULTIMETER})
+source_group(Osci/Display                       FILES ${OSCI_DISPLAY})
+source_group(Osci/Math                          FILES ${OSCI_MATH})
+source_group(Osci/Measurements                  FILES ${OSCI_MEASUREMENTS})
+source_group(SCPI                               FILES ${SCPI})
+source_group(Test                               FILES ${TEST})
+source_group(Tester                             FILES ${TESTER})
+source_group(Utils                              FILES ${UTILS})
+source_group(src                                FILES ${SRC})
+source_group(FPGA                               FILES ${FPGA})
+source_group(Hardware                           FILES ${HARDWARE})
+source_group(Hardware/HAL                       FILES ${HARDWARE_HAL})
+source_group(Hardware/Memory                    FILES ${HARDWARE_MEMORY})
+source_group(Osci                               FILES ${OSCI})
+source_group(Recorder                           FILES ${RECORDER})
+source_group(Settings                           FILES ${SETTINGS})
 
-add_executable(S8-57 ${COMMON} ${VS} ${VS_CMSIS} ${VS_FATFS} ${VS_HAL} ${VS_HAL_LEGACY} ${VS_USBD} ${VS_USBH} ${FDRIVE} ${FREQMETER} ${_GUI}
+add_executable(S8-57 ${COMMON} ${VS} ${VS_CMSIS} ${VS_FATFS} ${VS_HAL} ${VS_HAL_LEGACY} ${VS_USBD} ${VS_USBH} ${FDRIVE} ${FREQMETER} ${GUI}
                      ${GUI_DIALOGS} ${KEYBOARD} ${MENU} ${MENU_PAGES} ${MENU_PAGES_INCLUDE} ${MENU_PAGES_PAGEDISPLAY} ${MENU_PAGES_PAGEFUNCTION}
                      ${MENU_PAGES_PAGERECORDER} ${MENU_PAGES_PAGEHELP} ${MENU_PAGES_PAGEMEASURES} ${MENU_PAGES_PAGEMEMORY} ${MENU_PAGES_PAGESERVICE}
-                     ${MENU_PAGES_PAGESERVICE_PAGE_DEBUG} ${MENU_PAGES_PAGETRIG} ${MULTIMETER} ${OSCI_DISPLAY} ${OSCI_MATH} ${OSCI_MEASUREMENTS} ${_SCPI}
-                     ${TEST} ${TESTER} ${UTILS} ${SRC} ${DISPLAY} ${DISPLAY_FONT} ${_FPGA} ${HARDWARE} ${HARDWARE_HAL} ${HARDWARE_MEMORY} ${OSCI} ${RECORDER}
+                     ${MENU_PAGES_PAGESERVICE_PAGE_DEBUG} ${MENU_PAGES_PAGETRIG} ${MULTIMETER} ${OSCI_DISPLAY} ${OSCI_MATH} ${OSCI_MEASUREMENTS} ${SCPI}
+                     ${TEST} ${TESTER} ${UTILS} ${SRC} ${DISPLAY} ${DISPLAY_FONT} ${FPGA} ${HARDWARE} ${HARDWARE_HAL} ${HARDWARE_MEMORY} ${OSCI} ${RECORDER}
                      ${SETTINGS})
 
 #target_link_libraries(S8-57 ../../../ThirdParty/wxWidgets/generated/lib/vc_dll/wxbase31ud)
