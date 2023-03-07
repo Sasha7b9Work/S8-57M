@@ -1,1 +1,1 @@
-start ..\..\generated\GUI\RES-Network-GUI.sln
+start ..\..\generated\GUI\S8-57_GUI.sln
