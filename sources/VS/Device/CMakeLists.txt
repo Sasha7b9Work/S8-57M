@@ -24,39 +24,6 @@ add_definitions(-DSTM32F437xx -DWXUSINGDLL -DGUI -DDEVICE)
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -Wall")
 
-# Older cmake versions don't support string(APPEND ...) provide a workaround
-macro(wx_string_append var str)
-    set(${var} ${${var}}${str})
-endmacro()
-
-set(MSVC_LIB_USE "/MDd")
-set(MSVC_LIB_REPLACE "/MTd")
-
-if(${CMAKE_BUILD_TYPE} STREQUAL Release)
-    set(MSVC_LIB_USE "/MTd")
-    set(MSVC_LIB_REPLACE "/MDd")
-endif()
-
-# Set MSVC runtime flags for all configurations
-foreach(cfg "" ${CMAKE_CONFIGURATION_TYPES})
-    set(c_flag_var CMAKE_C_FLAGS)
-    set(cxx_flag_var CMAKE_CXX_FLAGS)
-    if(cfg)
-        string(TOUPPER ${cfg} cfg_upper)
-        wx_string_append(c_flag_var "_${cfg_upper}")
-        wx_string_append(cxx_flag_var "_${cfg_upper}")
-    endif()
-    if(${c_flag_var} MATCHES ${MSVC_LIB_REPLACE})
-        string(REPLACE ${MSVC_LIB_REPLACE} ${MSVC_LIB_USE} ${c_flag_var} "${${c_flag_var}}")
-        set(${c_flag_var} ${${c_flag_var}} CACHE STRING
-        "Flags used by the C compiler during ${cfg_upper} builds." FORCE)
-    endif()
-    if(${cxx_flag_var} MATCHES ${MSVC_LIB_REPLACE})
-        string(REPLACE ${MSVC_LIB_REPLACE} ${MSVC_LIB_USE} ${cxx_flag_var} "${${cxx_flag_var}}")
-        set(${cxx_flag_var} ${${cxx_flag_var}} CACHE STRING
-        "Flags used by the CXX compiler during ${cfg_upper} builds." FORCE)
-    endif()
-endforeach()
 
 add_compile_options(/wd4201)    # nonstandard extension used: nameless struct/union
 add_compile_options(/wd4464)    # relative include path contains '..'
@@ -247,12 +214,15 @@ source_group(Osci                               FILES ${OSCI})
 source_group(Recorder                           FILES ${RECORDER})
 source_group(Settings                           FILES ${SETTINGS})
 
-add_executable(S8-57 ${COMMON} ${VS} ${VS_CMSIS} ${VS_FATFS} ${VS_HAL} ${VS_HAL_LEGACY} ${VS_USBD} ${VS_USBH} ${FDRIVE} ${FREQMETER} ${GUI}
+add_executable(${PROJECT_NAME} ${COMMON} ${VS} ${VS_CMSIS} ${VS_FATFS} ${VS_HAL} ${VS_HAL_LEGACY} ${VS_USBD} ${VS_USBH} ${FDRIVE} ${FREQMETER} ${GUI}
                      ${GUI_DIALOGS} ${KEYBOARD} ${MENU} ${MENU_PAGES} ${MENU_PAGES_INCLUDE} ${MENU_PAGES_PAGEDISPLAY} ${MENU_PAGES_PAGEFUNCTION}
                      ${MENU_PAGES_PAGERECORDER} ${MENU_PAGES_PAGEHELP} ${MENU_PAGES_PAGEMEASURES} ${MENU_PAGES_PAGEMEMORY} ${MENU_PAGES_PAGESERVICE}
                      ${MENU_PAGES_PAGESERVICE_PAGE_DEBUG} ${MENU_PAGES_PAGETRIG} ${MULTIMETER} ${OSCI_DISPLAY} ${OSCI_MATH} ${OSCI_MEASUREMENTS} ${SCPI}
                      ${TEST} ${TESTER} ${UTILS} ${SRC} ${DISPLAY} ${DISPLAY_FONT} ${FPGA} ${HARDWARE} ${HARDWARE_HAL} ${HARDWARE_MEMORY} ${OSCI} ${RECORDER}
                      ${SETTINGS})
+
+set_property(TARGET ${PROJECT_NAME} PROPERTY
+    MSVC_RUNTIME_LIBRARY "MultiThreadedDebugDLL")
 
 target_link_libraries(S8-57 ../../ThirdParty/lib/vc_dll/wxbase32ud)
 target_link_libraries(S8-57 ../../ThirdParty/lib/vc_dll/wxmsw32ud_core)
