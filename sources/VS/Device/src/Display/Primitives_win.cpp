@@ -15,9 +15,9 @@ extern wxMemoryDC memDC;
 static int DrawChar(int x, int y, char symbol);
 
 static int DrawBigChar(int eX, int eY, int size, char _symbol);
-/// Нарисовать одну горизонтальную лиинию из count точек c расстоянием delta между соседнимит точками
+// Нарисовать одну горизонтальную лиинию из count точек c расстоянием delta между соседнимит точками
 static void DrawHPointLine(int x, int y, int count, int delta);
-/// Нарисовать одну вертикальную лиинию из count точек c расстоянием delta между соседнимит точками
+// Нарисовать одну вертикальную лиинию из count точек c расстоянием delta между соседнимит точками
 static void DrawVPointLine(int x, int y, int count, int delta);
 
 

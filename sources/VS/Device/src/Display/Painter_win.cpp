@@ -38,28 +38,28 @@
 
 
 static wxBitmap bitmapButton(Display::WIDTH, Display::HEIGHT);
-/// Здесь будем рисовать
+// Здесь будем рисовать
 wxMemoryDC memDC;
 
-/// Здесь хранятся указатели на кнопки
+// Здесь хранятся указатели на кнопки
 static wxButton *buttons[Key::Count] = { nullptr };
-/// Цвета
+// Цвета
 static uint colors[256];
 
 static bool needStartTimerLong = false;
 static bool needStopTimerLong = false;
-/// Здесь имя нажатой кнопки
+// Здесь имя нажатой кнопки
 static Key::E pressedKey = Key::None;
 
-/// Создаёт окно приложения. Возвращает хэндл виджета для отрисовки
+// Создаёт окно приложения. Возвращает хэндл виджета для отрисовки
 static void CreateFrame();
-/// Создаёт все кнопки
+// Создаёт все кнопки
 static void CreateButtons(Frame *frame);
-/// Создаёт одну кнопку
+// Создаёт одну кнопку
 static void CreateButton(Key::E key, Frame *frame, const wxPoint &pos, const wxSize &size, pString title);
-/// Создаёт кнопки для меню канала
+// Создаёт кнопки для меню канала
 static void CreateButtonsChannel(Frame *frame, const char *title, int x, int y, Key::E keyChannel, Key::E keyRangeLess, Key::E keyRangeMore, Key::E keyRShiftLess, Key::E keyRShiftMore);
-/// Создаёт кнопки группы синхронизации
+// Создаёт кнопки группы синхронизации
 static void CreateButtonsTrig(Frame *frame, int x, int y);
 
 

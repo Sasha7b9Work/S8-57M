@@ -280,7 +280,7 @@ void Frame::OnAbout(wxCommandEvent& WXUNUSED(event))
 }
 
 
-/// Получить разрешение максимального имеющегося в системе монитора
+// Получить разрешение максимального имеющегося в системе монитора
 static wxRect GetMaxDisplay()
 {
     wxRect result = { 0, 0, 0, 0 };

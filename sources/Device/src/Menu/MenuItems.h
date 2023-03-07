@@ -46,7 +46,7 @@ struct TypeItem
 };
 
 
-//// Item ///
+/// Item ///
 class Item
 {
 public:
@@ -152,7 +152,7 @@ public:
 };
 
 
-//// Page ///
+/// Page ///
 struct DataPage
 {
     uint8               name;               // Имя из перечисления Page::Name
@@ -436,7 +436,7 @@ public:
 };
 
 
-///// GovernorColor ///
+//// GovernorColor ///
 struct DataGovernorColor
 {
     ColorType *ct;                 // Структура для описания цвета.

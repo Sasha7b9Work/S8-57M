@@ -82,7 +82,7 @@ static void SetIfValid(double *parameter, const wxTextCtrl *tc)
     }
 }
 
-/// Присвоить значеение параметру parameter из tc, если оно действительное
+// Присвоить значеение параметру parameter из tc, если оно действительное
 static void SetIfValid(double parameter[2], wxTextCtrl *tc[2])
 {
     SetIfValid(&parameter[0], tc[0]);
