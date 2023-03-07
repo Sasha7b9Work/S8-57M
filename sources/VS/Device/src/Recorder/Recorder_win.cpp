@@ -35,7 +35,7 @@ bool RecorderHAL::ReadyPoint() //-V2506
 }
 
 
-uint8 RecorderHAL::ReadData(Chan::E ch)
+uint8 RecorderHAL::ReadData(Ch::E ch)
 {
     static float start[2] = { 0.0F, 250.0F };
 

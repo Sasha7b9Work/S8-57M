@@ -35,7 +35,7 @@ static float NextNoise()
 }
 
 
-static bool GenerateNormalModeData(Chan::E ch, uint8 *data, int numBytes)
+static bool GenerateNormalModeData(Ch::E ch, uint8 *data, int numBytes)
 {
     static const double kOffset[Range::Count] =
     {
@@ -78,7 +78,7 @@ static bool GenerateNormalModeData(Chan::E ch, uint8 *data, int numBytes)
 }
 
 
-bool Osci::ReadDataChannel(Chan::E ch, uint8 *data) //-V2506
+bool Osci::ReadDataChannel(Ch::E ch, uint8 *data) //-V2506
 {
     if (!S_CHANNEL_ENABLED(ch))
     {

@@ -46,7 +46,7 @@ uint8 HAL_BUS::FPGA::ReadA0()
 {
     static uint prevTime = TIME_MS;
 
-    Chan::E ch = (addrData0 == RD::DATA_A || addrData0 == RD::DATA_A_PEAK_MIN) ? Chan::A : Chan::B;
+    Ch::E ch = (addrData0 == RD::DATA_A || addrData0 == RD::DATA_A_PEAK_MIN) ? Chan::A : Chan::B;
 
     double freq = TuneGeneratorDialog::frequency[ch];
 

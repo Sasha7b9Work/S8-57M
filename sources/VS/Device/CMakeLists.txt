@@ -15,9 +15,9 @@ include_directories(../../VS/Device/src
                     ../../common/_VS/USBD
                     ../../common/_VS/USBH
                     ../../common/Display/Font
-                    ../../ThirdParty/wxWidgets/include
-                    ../../ThirdParty/wxWidgets/generated/lib/vc_dll/mswud
-                    ../../ThirdParty/wxWidgets/generated/lib/vc_lib/mswu
+                    ../../VS/ThirdParty/wxWidgets/include
+                    ../../generated/ThirdParty/lib/vc_dll/mswud
+                    ../../generated/ThirdParty/lib/vc_lib/mswu
 )
                     
 add_definitions(-DSTM32F437xx -DWXUSINGDLL -DGUI -DDEVICE)
@@ -139,8 +139,7 @@ file(GLOB DISPLAY_FONT                      ../../common/Display/Font/AdvancedFo
                                             ../../common/Display/Font/font8.inc
                                             ../../common/Display/Font/Font_d.h
                                             ../../common/Display/Font/Font_d.cpp
-                                            ../../Panel/src/Display/Font/Font_p.h
-                                                        src/Display/Font/Font_p_win.cpp)
+                                            ../../Panel/src/Display/Font/Font_p.h)
 file(GLOB _FPGA                             ../../Device/src/FPGA/AD9286.*
                                             ../../Device/src/FPGA/Calibrator.*
                                             ../../Device/src/FPGA/Context.*
@@ -166,7 +165,6 @@ file(GLOB HARDWARE_HAL                      ../../Device/src/Hardware/HAL/HAL.h
                                             ../../Device/src/Hardware/HAL/HAL_ADC3.cpp
                                             ../../Device/src/Hardware/HAL/HAL_CRC32.cpp
                                             ../../Device/src/Hardware/HAL/HAL_DAC1.cpp
-                                                         src/Hardware/HAL/HAL_DAC2_win.cpp
                                                          src/Hardware/HAL/HAL_FSMC_win.cpp
                                                          src/Hardware/HAL/HAL_FSMC_PAN_win.cpp
                                                          src/Hardware/HAL/HAL_IWDG_win.cpp
