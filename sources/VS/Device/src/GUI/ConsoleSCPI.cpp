@@ -39,7 +39,7 @@ ConsoleSCPI::ConsoleSCPI(wxFrame *parent) : wxFrame(parent, wxID_ANY, wxT("SCPI"
     line->Bind(wxEVT_KEY_DOWN, &ConsoleSCPI::OnTextControlKeyDown, this, ID_LINE);
     Bind(wxEVT_CLOSE_WINDOW, &ConsoleSCPI::OnClose, this);
 
-    Show();
+    wxFrame::Show();
 
     if (ComPort::Open())
     {

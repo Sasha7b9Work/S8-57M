@@ -158,10 +158,10 @@ Frame::Frame(const wxString& title)
     menuBar->Append(fileMenu, "Файл");
     menuBar->Append(toolsMenu, "Инструменты");
 
-    SetMenuBar(menuBar);
+    wxFrame::SetMenuBar(menuBar);
 
-    CreateStatusBar(2);
-    SetStatusText("Welcome to wxWidgets!");
+    wxFrame::CreateStatusBar(2);
+    wxFrame::SetStatusText("Welcome to wxWidgets!");
 
     Bind(wxEVT_MENU, &Frame::OnSize, this, FILE_SIZE);
     Bind(wxEVT_MENU, &Frame::OnQuit, this, FILE_QUIT);

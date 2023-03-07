@@ -106,7 +106,7 @@ float ExtRAM::Test2()
         bufferIN[x] = (uint8)(std::rand());
     }
 
-    uint8 *address = Begin() + (std::rand() % (500 * 1024));
+    uint8 *address = Begin() + std::rand();
 
     Write(bufferIN, SIZE, address);
 

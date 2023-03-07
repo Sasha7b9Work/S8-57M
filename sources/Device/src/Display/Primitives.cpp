@@ -322,7 +322,7 @@ static bool FindNextTransfer(pchar letters, int8 *lettersInSyllable)
 #define VOWEL       0   // Гласная
 #define CONSONANT   1   // Согласная
 
-    *lettersInSyllable = (int8)std::strlen(letters);
+    *lettersInSyllable = (int8)std::strlen(letters); //-V1029
 
     if (std::strlen(letters) <= 3) //-V1051
     {
