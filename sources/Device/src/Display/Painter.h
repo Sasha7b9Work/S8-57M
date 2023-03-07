@@ -6,6 +6,8 @@
 
 namespace Painter
 {
+    void Init();
+
     void BeginScene(int num_field, Color color);
 
     int CurrentField();

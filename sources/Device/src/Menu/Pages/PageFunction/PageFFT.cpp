@@ -138,7 +138,7 @@ static bool IsActive_FFT()
     return S_MATH_MODE_DRAW_IS_DISABLED;
 }
 
-static void OnOpenClose_FFT(bool open)
+static void OnOpenClose_FFT(bool)
 {
     if (!IsActive_FFT())
     {

@@ -79,7 +79,7 @@ int Text::DrawSmall(int x, int y, Color color)
 
     for (uint i = 0; i < numSymbols; i++)
     {
-        x = DrawChar(x, y, text[i]); //-V2563
+        x = DrawChar(x, y, text[i]);
         x += Font::GetSpacing();
     }
 
@@ -87,7 +87,7 @@ int Text::DrawSmall(int x, int y, Color color)
 }
 
 
-static int DrawChar(int eX, int eY, char s)
+static int DrawChar(int eX, int, char s)
 {
     uint8 symbol = static_cast<uint8>(s);
 
@@ -126,7 +126,7 @@ void MultiHPointLine::Draw(int x, Color color)
 
     for (int i = 0; i < numLines; i++)
     {
-        DrawHPointLine(x, y[i], count, delta); //-V2563
+        DrawHPointLine(x, y[i], count, delta);
     }
 }
 
@@ -147,7 +147,7 @@ void MultiVPointLine::Draw(int y, Color color)
 
     for (int i = 0; i < numLines; i++)
     {
-        DrawVPointLine(x0[i], y, count, delta); //-V2563
+        DrawVPointLine(x0[i], y, count, delta);
     }
 }
 

@@ -31,7 +31,7 @@ void HAL_BUS::Panel::SendBuffer(const uint8 *data, int num)
     }
     else if(num == 2 && *data == Command::Paint_SetColor)
     {
-        uint color = COLOR(data[1]); //-V2563
+        uint color = COLOR(data[1]);
         uint8 b = static_cast<uint8>(color);
         uint8 g = static_cast<uint8>(color >> 8);
         uint8 r = static_cast<uint8>(color >> 16);
@@ -42,7 +42,7 @@ void HAL_BUS::Panel::SendBuffer(const uint8 *data, int num)
     }
     else if(*data == Command::Paint_SetTextSpacing)
     {
-        Font::SetSpacing(*(data + 1)); //-V2563
+        Font::SetSpacing(*(data + 1));
     }
     else
     {
@@ -65,12 +65,14 @@ bool HAL_BUS::Panel::Receive()
 }
 
 
+/*
 void HAL_BUS::Panel::SendBuffer(uint8 byte0, uint8 byte1)
 {
     uint8 data[2] = { byte0, byte1 };
 
     Send(data, 2);
 }
+*/
 
 
 bool HAL_BUS::Panel::InInteraction()

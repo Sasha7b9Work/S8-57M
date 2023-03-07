@@ -53,12 +53,16 @@ static Key::E pressedKey = Key::None;
 
 // Создаёт окно приложения. Возвращает хэндл виджета для отрисовки
 static void CreateFrame();
+
 // Создаёт все кнопки
 static void CreateButtons(Frame *frame);
+
 // Создаёт одну кнопку
 static void CreateButton(Key::E key, Frame *frame, const wxPoint &pos, const wxSize &size, pchar title);
+
 // Создаёт кнопки для меню канала
 static void CreateButtonsChannel(Frame *frame, const char *title, int x, int y, Key::E keyChannel, Key::E keyRangeLess, Key::E keyRangeMore, Key::E keyRShiftLess, Key::E keyRShiftMore);
+
 // Создаёт кнопки группы синхронизации
 static void CreateButtonsTrig(Frame *frame, int x, int y);
 
@@ -87,13 +91,14 @@ public:
 static Screen *screen = nullptr;
 
 
+/*
 void Painter::Init()
 {
     CreateFrame();
 }
+*/
 
-
-void Painter::BeginScene(Color color)
+void Painter::BeginScene(int, Color color)
 {
     memDC.SelectObject(bitmapButton);
     wxBrush brush({ 0, 0, 0 }, wxTRANSPARENT);
@@ -109,13 +114,19 @@ void Painter::EndScene()
 }
 
 
+void Painter::Init()
+{
+    CreateFrame();
+}
+
+
 static void CreateFrame()
 {
-    Frame *frame = new Frame(""); //-V2511
+    Frame *frame = new Frame("");
 
-    wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL); //-V2511
+    wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
 
-    screen = new Screen(frame); //-V2511
+    screen = new Screen(frame);
 
     sizer->Add(screen);
 
@@ -211,9 +222,9 @@ static void CreateButtons(Frame *frame)
 }
 
 
-static void CreateButton(Key::E key, Frame *frame, const wxPoint &pos, const wxSize &size, pString title)
+static void CreateButton(Key::E key, Frame *frame, const wxPoint &pos, const wxSize &size, pchar title)
 {
-    wxButton *button = new wxButton(frame, static_cast<wxWindowID>(key), title, pos, size); //-V2511
+    wxButton *button = new wxButton(frame, static_cast<wxWindowID>(key), title, pos, size);
 
     button->Connect(static_cast<wxWindowID>(key), wxEVT_LEFT_DOWN, wxCommandEventHandler(Frame::OnDown));
     button->Connect(static_cast<wxWindowID>(key), wxEVT_LEFT_UP, wxCommandEventHandler(Frame::OnUp));
@@ -309,10 +320,4 @@ void Frame::HandlerEvents()
         timerLongPress.Stop();
         needStopTimerLong = false;
     }
-}
-
-
-void Painter::DrawTesterData(uint8, Color, const uint16 *, const uint8 *)
-{
-
 }

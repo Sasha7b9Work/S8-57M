@@ -27,7 +27,7 @@ void VCP::SendDataAsynch(const uint8 *text, int)
 
 
 
-static int Position0D(const char *message) //-V2506
+static int Position0D(const char *message)
 {
     int position = 0;
 

@@ -6,8 +6,14 @@
 #include "Utils/Math.h"
 
 
-//uint8 *HAL_BUS::FPGA::addrData0 = nullptr;
-//uint8 *HAL_BUS::FPGA::addrData1 = nullptr;
+namespace HAL_BUS
+{
+    namespace FPGA
+    {
+        static uint8 *addrData0 = nullptr;
+        static uint8 *addrData1 = nullptr;
+    }
+}
 
 
 HAL_BUS::Mode::E HAL_BUS::mode = HAL_BUS::Mode::FSMC;
@@ -23,12 +29,12 @@ void HAL_BUS::FPGA::Write16(uint8 *, uint16)
 }
 
 
-uint8 HAL_BUS::FPGA::Read(const uint8 *address) //-V2506
+uint8 HAL_BUS::FPGA::Read(const uint8 *address)
 {
-    if (address == RD::DATA_A || (address == RD::DATA_A + 1) || //-V2563
-        address == RD::DATA_B || (address == RD::DATA_B + 1)) //-V2563
+    if (address == RD::DATA_A || (address == RD::DATA_A + 1) ||
+        address == RD::DATA_B || (address == RD::DATA_B + 1))
     {
-        return RecorderHAL::ReadData((address == RD::DATA_A) || (address == RD::DATA_A + 1) ? Chan::A : Chan::B); //-V2563
+        return RecorderHAL::ReadData((address == RD::DATA_A) || (address == RD::DATA_A + 1) ? Ch::A : Ch::B);
     }
 
     return 0;
@@ -46,7 +52,7 @@ uint8 HAL_BUS::FPGA::ReadA0()
 {
     static uint prevTime = TIME_MS;
 
-    Ch::E ch = (addrData0 == RD::DATA_A || addrData0 == RD::DATA_A_PEAK_MIN) ? Chan::A : Chan::B;
+    Ch::E ch = (addrData0 == RD::DATA_A || addrData0 == RD::DATA_A_PEAK_MIN) ? Ch::A : Ch::B;
 
     double freq = TuneGeneratorDialog::frequency[ch];
 

@@ -71,7 +71,7 @@ static bool GenerateNormalModeData(Ch::E ch, uint8 *data, int numBytes)
 
         LIMITATION(value, static_cast<float>(VALUE::MIN), static_cast<float>(VALUE::MAX));
 
-        data[i] = static_cast<uint8>(value); //-V2563
+        data[i] = static_cast<uint8>(value);
     }
 
     return true;
@@ -79,7 +79,7 @@ static bool GenerateNormalModeData(Ch::E ch, uint8 *data, int numBytes)
 
 
 /*
-bool Osci::ReadDataChannel(Ch::E ch, uint8 *data) //-V2506
+bool Osci::ReadDataChannel(Ch::E ch, uint8 *data)
 {
     if (!S_CHANNEL_ENABLED(ch))
     {
@@ -110,7 +110,7 @@ bool Osci::ReadDataChannel(Ch::E ch, uint8 *data) //-V2506
 
         LIMITATION(value, static_cast<float>(VALUE::MIN), static_cast<float>(VALUE::MAX));
 
-        data[i] = static_cast<uint8>(value); //-V2563
+        data[i] = static_cast<uint8>(value);
     }
 
     return true;

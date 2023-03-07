@@ -5,7 +5,7 @@
 #include "Settings/Settings.h"
 
 
-bool OsciHAL::ReadyPoint() //-V2506
+bool OsciHAL::ReadyPoint()
 {
     static uint timeLastRead = 0;   // Время последнего чтения точки
 

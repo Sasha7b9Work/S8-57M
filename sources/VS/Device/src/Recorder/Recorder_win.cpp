@@ -10,7 +10,7 @@
 #include <cmath>
 
 
-bool RecorderHAL::ReadyPoint() //-V2506
+bool RecorderHAL::ReadyPoint()
 {
     static uint timeLastRead = 0;   // Время предыдущего чтения точки
 
