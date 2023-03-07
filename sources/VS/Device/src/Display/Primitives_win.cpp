@@ -160,3 +160,9 @@ static void DrawVPointLine(int x, int y, int count, int delta)
         y += delta;
     }
 }
+
+
+void VCursor::Draw(int, int)
+{
+//    SBuffer(Command::Paint_DrawVCursor, Point2(x, y), Point2(height, skip)).Send();;
+}

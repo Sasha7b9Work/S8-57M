@@ -91,6 +91,18 @@ file(GLOB VS_HAL                            ../../common/_VS/HAL/*)
 file(GLOB VS_HAL_LEGACY                     ../../common/_VS/HAL/Legacy/*)
 file(GLOB VS_USBD                           ../../common/_VS/USBD/*)
 file(GLOB VS_USBH                           ../../common/_VS/USBH/*)
+file(GLOB DISPLAY                           ../../Device/src/Display/Colors.*
+                                            ../../Device/src/Display/Console.*
+                                            ../../Device/src/Display/Display.*
+                                            ../../Device/src/Display/Primitives.*
+                                                         src/Display/Primitives_win.cpp
+                                            ../../Device/src/Display/Grid.*
+                                            ../../Device/src/Display/Painter.h
+                                                         src/Display/Painter_win.cpp
+                                            ../../Device/src/Display/PainterMem.*
+                                            ../../Device/src/Display/Symbols.h
+                                            ../../Device/src/Display/Warnings.*)
+file(GLOB DISPLAY_FONT                      ../../common/Display/Font/*.*   )
 file(GLOB FDRIVE                            ../../Device/src/FlashDrive/*)
 file(GLOB FREQMETER                         ../../Device/src/FreqMeter/*)
 file(GLOB GUI                               src/GUI/*.h src/GUI/*.cpp src/GUI/*.c)
@@ -124,19 +136,6 @@ file(GLOB SRC                               ../../Device/src/defines.*
                                                          src/main_win.cpp
                                             ../../Device/src/MessageMgr.*
                                             ../../Device/src/tables.*)
-file(GLOB DISPLAY                           ../../Device/src/Display/Colors.*
-                                            ../../Device/src/Display/Console.*
-                                            ../../Device/src/Display/Display.*
-                                            ../../Device/src/Display/Primitives.*
-                                                         src/Display/Primitives_win.cpp
-                                            ../../Device/src/Display/Grid.*
-                                            ../../Device/src/Display/Painter.h
-                                                         src/Display/Painter_win.cpp
-                                            ../../Device/src/Display/PainterMem.*
-                                            ../../Device/src/Display/Symbols.h
-                                            ../../Device/src/Display/Warnings.*)
-file(GLOB DISPLAY_FONT                      ../../common/Display/Font/AdvancedFont_d.*
-                                            ../../common/Display/Font/*.h)
 file(GLOB FPGA                              ../../Device/src/FPGA/AD9286.*
                                             ../../Device/src/FPGA/Calibrator.*
                                             ../../Device/src/FPGA/Context.*
@@ -255,8 +254,6 @@ add_executable(S8-57 ${COMMON} ${VS} ${VS_CMSIS} ${VS_FATFS} ${VS_HAL} ${VS_HAL_
                      ${TEST} ${TESTER} ${UTILS} ${SRC} ${DISPLAY} ${DISPLAY_FONT} ${FPGA} ${HARDWARE} ${HARDWARE_HAL} ${HARDWARE_MEMORY} ${OSCI} ${RECORDER}
                      ${SETTINGS})
 
-#target_link_libraries(S8-57 ../../../ThirdParty/wxWidgets/generated/lib/vc_dll/wxbase31ud)
-#target_link_libraries(S8-57 ../../../ThirdParty/wxWidgets/generated/lib/vc_dll/wxmsw31ud_core)
 target_link_libraries(S8-57 ../../ThirdParty/lib/vc_dll/wxbase32ud)
 target_link_libraries(S8-57 ../../ThirdParty/lib/vc_dll/wxmsw32ud_core)
 target_link_libraries(S8-57 ../../ThirdParty/lib/vc_dll/wxpngd)

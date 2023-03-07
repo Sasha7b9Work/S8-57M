@@ -23,6 +23,12 @@ void HAL_BUS::Init()
 }
 
 
+void SBuffer::Send() const
+{
+
+}
+
+
 void HAL_BUS::Panel::SendBuffer(const uint8 *data, int num)
 {
     if(data == nullptr)

@@ -3,6 +3,14 @@
 #include "Osci/Osci_win.h"
 #include "Osci/ParametersOsci.h"
 #include "Settings/Settings.h"
+#include "Osci/Osci.h"
+
+
+namespace Osci
+{
+    // „итать данные канала в пам€ить data
+    bool ReadDataChannel(Ch::E ch, uint8 *data);
+}
 
 
 bool OsciHAL::ReadyPoint()
@@ -15,5 +23,11 @@ bool OsciHAL::ReadyPoint()
         return true;
     }
 
+    return false;
+}
+
+
+bool Osci::ReadDataChannel(Ch::E, uint8 *)
+{
     return false;
 }

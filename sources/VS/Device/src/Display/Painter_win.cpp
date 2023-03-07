@@ -67,6 +67,17 @@ static void CreateButtonsChannel(Frame *frame, const char *title, int x, int y, 
 static void CreateButtonsTrig(Frame *frame, int x, int y);
 
 
+namespace Painter
+{
+    static int field = 0;
+
+    int CurrentField()
+    {
+        return field;
+    }
+}
+
+
 class Screen : public wxPanel
 {
 public:
