@@ -61,7 +61,7 @@ namespace TBase
     void Change(int delta);
 
     // С этого значения должен включаться режим поточечного вывода
-    const E MIN_P2P = _10ms;
+    const E MIN_P2P = _50ms;
 
     const E MAX_RAND = _100ns;
 
