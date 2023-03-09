@@ -57,16 +57,33 @@ void Roller::ReadPoint()
         if ((flag & 1) == 0)
         {
             HAL_BUS::FPGA::SetAddrData(RD::DATA_A, RD::DATA_A + 1);
-            uint8 d1 = HAL_BUS::FPGA::ReadA1();
-            uint8 d0 = HAL_BUS::FPGA::ReadA0();
-            BitSet16 dataA(d1, d0);
+            uint8 a1 = HAL_BUS::FPGA::ReadA1();
+            uint8 a0 = HAL_BUS::FPGA::ReadA0();
 
             HAL_BUS::FPGA::SetAddrData(RD::DATA_B, RD::DATA_B + 1);
-            d1 = HAL_BUS::FPGA::ReadA1();
-            d0 = HAL_BUS::FPGA::ReadA0();
-            BitSet16 dataB(d1, d0);
+            uint8 b1 = HAL_BUS::FPGA::ReadA1();
+            uint8 b0 = HAL_BUS::FPGA::ReadA0();
 
-            addPoint(dataA, dataB);
+            if (S_PEAK_DET_ENABLED)
+            {
+                static uint8 prev_a = 127;
+                static uint8 prev_b = 128;
+
+                BitSet16 dataA(a1, prev_a);
+                BitSet16 dataB(b1, prev_b);
+
+                addPoint(dataA, dataB);
+
+                prev_a = a0;
+                prev_b = b0;
+            }
+            else
+            {
+                BitSet16 dataA(a1, a0);
+                BitSet16 dataB(b1, b0);
+
+                addPoint(dataA, dataB);
+            }
         }
     }
 }
