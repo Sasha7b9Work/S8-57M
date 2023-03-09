@@ -69,8 +69,8 @@ void Roller::ReadPoint()
                 static uint8 prev_a = 127;
                 static uint8 prev_b = 128;
 
-                BitSet16 dataA(a1, prev_a);
-                BitSet16 dataB(b1, prev_b);
+                BitSet16 dataA(prev_a, a1);
+                BitSet16 dataB(prev_b, b1);
 
                 addPoint(dataA, dataB);
 
