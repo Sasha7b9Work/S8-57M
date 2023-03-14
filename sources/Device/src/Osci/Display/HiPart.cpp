@@ -450,6 +450,6 @@ void DisplayOsci::HiPart::DrawPeakDet(int x, int y)
 {
     if (PeakDetMode().IsEnabled())
     {
-        SymbolUGO(SymbolUGO::PEAK_DET_LEFT).Draw(x, y, Color::FILL);
+//        SymbolUGO(SymbolUGO::PEAK_DET_LEFT).Draw(x, y, Color::FILL);
     }
 }
