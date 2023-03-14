@@ -124,7 +124,7 @@ void Osci::Start(bool)
 
     AddrRead::Reset();
 
-    Roller::Prepare();
+    Roller::Event::OnStart();
 
     FPGA::GiveStart(FPGA::pred, FPGA::post);
 

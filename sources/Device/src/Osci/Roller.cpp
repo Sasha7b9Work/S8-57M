@@ -33,7 +33,7 @@ namespace Roller
 }
 
 
-void Roller::Prepare()
+void Roller::Event::OnStart()
 {
     if(!OSCI_IN_MODE_P2P)
     {
@@ -45,6 +45,36 @@ void Roller::Prepare()
     firstOnDisplay = -1;
 
     addPoint = PEAKDET_ENABLED(ds) ? AddPointPeakDetEnabled : AddPointPeakDetDisabled;
+}
+
+
+bool Roller::NeedDraw()
+{
+    if (!OSCI_IN_MODE_P2P)
+    {
+        return false;
+    }
+
+    if (RAM::NumberDatas() == 0)
+    {
+        return true;
+    }
+
+    DataSettings *last = RAM::Get(0);
+
+    if (!last->IsEquals(*ds))
+    {
+        return true;
+    }
+
+    if (S_TRIG_START_MODE_IS_AUTO)
+    {
+        return (TIME_MS - last->timeMS > 1000);
+    }
+    else
+    {
+        return !last->IsEquals(*ds);
+    }
 }
 
 
@@ -126,36 +156,6 @@ void Roller::AddPointPeakDetDisabled(BitSet16 dataA, BitSet16 dataB)
 DataSettings *Roller::GetDS()
 {
     return ds;
-}
-
-
-bool Roller::NeedDraw()
-{
-    if(!OSCI_IN_MODE_P2P)
-    {
-        return false;
-    }
-
-    if(RAM::NumberDatas() == 0)
-    {
-        return true;
-    }
-
-    DataSettings *last = RAM::Get(0);
-
-    if(!last->IsEquals(*ds))
-    {
-        return true;
-    }
-
-    if(S_TRIG_START_MODE_IS_AUTO)
-    {
-        return (TIME_MS - last->timeMS > 1000);
-    }
-    else
-    {
-        return !last->IsEquals(*ds);
-    }
 }
 
 
