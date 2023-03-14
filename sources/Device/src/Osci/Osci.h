@@ -93,6 +93,9 @@ namespace Roller
     {
         // Событие на старт
         void OnStart();
+
+        // Событие на чтение данных
+        void OnReadData();
     }
 };
 

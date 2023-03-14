@@ -30,6 +30,11 @@ namespace Roller
 
     // С этой точки следует начинать отрисовку текущего поточечного фрейма. Если firstOnDisplay == -1, то нужно запомнить текущую точку в качестве первой выводимой
     static int firstOnDisplay = -1;
+
+    // Нужно отрисовывать в поточечном виде для ждущего режиме
+    static bool need_draw_for_wait = true;
+
+    static DataSettings data_settings;
 }
 
 
@@ -44,7 +49,17 @@ void Roller::Event::OnStart()
     currentPoint = 0;
     firstOnDisplay = -1;
 
+    need_draw_for_wait = !data_settings.IsEquals(*ds);
+
     addPoint = PEAKDET_ENABLED(ds) ? AddPointPeakDetEnabled : AddPointPeakDetDisabled;
+
+    data_settings = *ds;
+}
+
+
+void Roller::Event::OnReadData()
+{
+    need_draw_for_wait = false;
 }
 
 
@@ -73,7 +88,7 @@ bool Roller::NeedDraw()
     }
     else
     {
-        return !last->IsEquals(*ds);
+        return need_draw_for_wait;
     }
 }
 

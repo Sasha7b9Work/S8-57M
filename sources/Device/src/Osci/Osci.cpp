@@ -193,6 +193,7 @@ void Osci::UpdateFPGA()
 
         if(ProcessFlagReady())
         {
+            Roller::Event::OnReadData();
             Stop();
             break;
         }
