@@ -24,3 +24,5 @@ sources/Panel/Objects/
 sources/Panel/Listings-Debug/
 sources/Panel/Objects-Debug/
 sources/Panel/DebugConfig/
+
+sources/examples/CDC_Standalone/MDK-ARM/STM32469I-EVAL_USBD-HS-IN-FS/
