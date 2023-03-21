@@ -81,13 +81,15 @@ static bool NeedLoadRShift(Ch::E ch)
     static Range::E prevRanges[Ch::Count] = { Range::Count, Range::Count };
     static int16 prevShift[Ch::Count] = { -1000, -1000 };
 
-    if((prevShift[ch] == S_RSHIFT(ch)) && (prevRanges[ch] == S_RANGE(ch)))
+    int16 shift = S_RSHIFT(ch) + NRST_EX_SHIFT(ch, S_RANGE(ch));
+
+    if((prevShift[ch] == shift) && (prevRanges[ch] == S_RANGE(ch)))
     {
         result = false;
     }
 
     prevRanges[ch] = S_RANGE(ch);
-    prevShift[ch] = S_RSHIFT(ch);
+    prevShift[ch] = shift;
 
     return result;
 }
@@ -107,6 +109,8 @@ void RShift::Load(Ch::E ch)
     int16 shift = S_RSHIFT(ch) + HARDWARE_ZERO;
 
     shift += NRST_EX_SHIFT(ch, S_RANGE(ch));
+
+    LOG_WRITE("%d : %d", (int)ch, shift);
 
     Osci::CircuitController::Write(PIN_SPI3_CS1, (uint16)(mask[ch] | (shift << 2)));
 

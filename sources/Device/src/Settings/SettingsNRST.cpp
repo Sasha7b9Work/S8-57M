@@ -20,6 +20,8 @@ static const SettingsNRST defaultNRST =
 SettingsNRST setNRST = defaultNRST;
 
 
+int8 SettingsNRST::Shift::saved[Ch::Count][Range::Count];
+
 void SettingsNRST::Init()
 {
     SettingsNRST *saved = ROM::NRST::GetSaved();
@@ -85,4 +87,29 @@ void SettingsNRST::ResetExtraStretch()
 {
     NRST_EX_STRETCH(ChA) = 1.0F;
     NRST_EX_STRETCH(ChB) = 1.0F;
+}
+
+
+void SettingsNRST::Shift::Clear()
+{
+    for (int ch = 0; ch < Ch::Count; ch++)
+    {
+        for (int range = 0; range < Range::Count; range++)
+        {
+            saved[ch][range] = setNRST.exShift[ch][range];
+            setNRST.exShift[ch][range] = 0;
+        }
+    }
+}
+
+
+void SettingsNRST::Shift::Restore()
+{
+    for (int ch = 0; ch < Ch::Count; ch++)
+    {
+        for (int range = 0; range < Range::Count; range++)
+        {
+            setNRST.exShift[ch][range] = saved[ch][range];
+        }
+    }
 }

@@ -29,11 +29,8 @@ bool Osci::ReadDataChannel(Ch::E ch, uint8 *data)
 
     if(AddrRead::Get() == 0xffff)
     {
-//        uint16 last_record = ReadLastRecord(ch);
         uint16 address = (uint16)(ReadLastRecord(ch) - (int)(numPoints) / TBase::DeltaPointRand() - (OSCI_IN_MODE_RANDOMIZER ? 10 : 12));
         AddrRead::Set(address);
-
-//        LOG_WRITE("%d %d %d", last_record, address, last_record - address);
     }
 
     HAL_BUS::FPGA::Write16(WR::PRED_LO, (uint16)AddrRead::Get());
