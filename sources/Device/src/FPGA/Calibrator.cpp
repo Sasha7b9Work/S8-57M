@@ -130,10 +130,7 @@ void Calibrator::BalanceRange(Ch::E ch, Range::E range)
 
     RShift::Set(ch, 0);
 
-    for (int i = 0; i < 2 * 10000000; i++)
-    {
-        i++;
-    }
+    TimeMeterMS().WaitMS(100);
 
     Osci::Start(false);
 
@@ -156,16 +153,10 @@ void Calibrator::BalanceRange(Ch::E ch, Range::E range)
         }
     }
 
-    float delta = std::fabsf(sum / numPoints - 127.0F);
+    float delta = sum / numPoints - 127.0F;
 
-    if (delta > 0.0F)
-    {
-        NRST_EX_SHIFT(ch, range) = (int8)(delta * 400.0F / 125.0F + 0.5F);
-    }
-    else
-    {
-        NRST_EX_SHIFT(ch, range) = (int8)(delta * 400.0F / 125.0F - 0.5F);
-    }
+    NRST_EX_SHIFT(ch, range) = -(int8)(delta * 400.0F / 250.0F + 0.5F);
+    LOG_WRITE("range %d : delta %f : %d", (int)range, delta, (int8)(delta * 400.0F / 250.0F + 0.5F));
 }
 
 

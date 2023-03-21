@@ -105,6 +105,15 @@ struct TimeMeterMS
         time_reset = TIME_MS;
     }
 
+    void WaitMS(uint ms)
+    {
+        uint time_exit = TIME_MS + ms;
+
+        while (TIME_MS < time_exit)
+        {
+        }
+    }
+
 private:
     uint time_reset;
 };
