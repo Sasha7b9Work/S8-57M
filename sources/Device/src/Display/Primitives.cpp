@@ -523,7 +523,7 @@ int Text::DrawInRectWithTransfers(int eX, int eY, int eWidth, int eHeight, Color
             }
         }
         x = left;
-        y += 9;
+        y += Font::Height() + 2;
     }
 
     return y;

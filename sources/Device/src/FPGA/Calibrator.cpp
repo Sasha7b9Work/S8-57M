@@ -55,7 +55,7 @@ void Calibrator::Calibrate()
 static bool CalibrateChannel(Ch::E ch)
 {
     Display::Message::ShowAndWaitKey(ch == ChA ?  "Подключите встроенный калибратор ко входу 1 и нажмите любую кнопку" :
-                                                      "Подключите встроенный калибратор ко входу 2 и нажмите любую кнопку", true);
+                                                  "Подключите встроенный калибратор ко входу 2 и нажмите любую кнопку", true);
 
     Display::Message::Show(ch == ChA ? "Калибрую канал 1" : "Калибрую канал 2", true);
 

@@ -182,10 +182,10 @@ void Display::Message::Func()
             time = (100 - time);
         }
 
-        int width = 200;
-        int height = 80;
-        int x = 160 - width / 2;
-        int y = 120 - height / 2;
+        int width = 300;
+        int height = 120;
+        int x = Display::WIDTH / 2 - width / 2;
+        int y = Display::HEIGHT / 2 - height / 2;
 
         Region(width, height).Fill(x, y, Color::BACK);
         Rectangle(width, height).Draw(x, y, Color::FILL);
