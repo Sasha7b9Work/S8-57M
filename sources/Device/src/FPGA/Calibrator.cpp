@@ -9,6 +9,10 @@
 #include "Osci/Osci.h"
 #include "Settings/SettingsNRST.h"
 #include "Hardware/HAL/HAL_PIO.h"
+#include "Display/Painter.h"
+#include "Display/Primitives.h"
+#include "common/Decoder_d.h"
+#include "Keyboard/BufferButtons.h"
 #include <cmath>
 #include <cstring>
 #include <cstdio>
@@ -27,6 +31,8 @@ namespace Calibrator
 
     // Найти коэффициент растяжки канала
     static float FindStretchChannel(Ch::E ch);
+
+    static void ShowParameters();
 }
 
 
@@ -46,6 +52,8 @@ void Calibrator::Calibrate()
     {
         Display::Message::ShowAndWaitKey("Калибровка канала 2 не прошла. Нажмите любую кнопку.", true);
     }
+
+    ShowParameters();
 
     Display::Message::ShowAndWaitKey("Калибровка завершена. Нажмите любую кнопку.", true);
 
@@ -258,4 +266,36 @@ float Calibrator::FindStretchChannel(Ch::E ch)
     float max = (float)sumMAX / numMAX;
 
     return patternDelta / (max - min);
+}
+
+
+void Calibrator::ShowParameters()
+{
+    for (int i = 0; i < 5; i++)
+    {
+        Painter::BeginScene(i, Color::BACK);
+
+        for (int ch = 0; ch < Ch::Count; ch++)
+        {
+            for (int range = 0; range < Range::Count; range++)
+            {
+                String("%d", NRST_EX_SHIFT(ch, range)).Draw(50 + range * 30, 50 + ch * 30, Color::FILL);
+            }
+        }
+
+        Painter::EndScene();
+    }
+
+    BufferButtons::Clear();
+
+    DDecoder::Update();
+
+    while (BufferButtons::IsEmpty())
+    {
+        while (HAL_BUS::Panel::Receive())
+        {
+        };
+
+        DDecoder::Update();
+    }
 }
