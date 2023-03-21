@@ -14,17 +14,20 @@
 #include <cstdio>
 
 
-// Откалибровать канал Ch
-static bool CalibrateChannel(Ch::E ch);
+namespace Calibrator
+{
+    // Откалибровать канал Ch
+    static bool CalibrateChannel(Ch::E ch);
 
-// Балансировать канал на одном диапазоне
-static void BalanceRange(Ch::E ch, Range::E range);
+    // Балансировать канал на одном диапазоне
+    static void BalanceRange(Ch::E ch, Range::E range);
 
-// "Растянуть" канал
-static bool StretchChannel(Ch::E ch);
+    // "Растянуть" канал
+    static bool StretchChannel(Ch::E ch);
 
-// Найти коэффициент растяжки канала
-static float FindStretchChannel(Ch::E ch);
+    // Найти коэффициент растяжки канала
+    static float FindStretchChannel(Ch::E ch);
+}
 
 
 void Calibrator::Calibrate()
@@ -52,7 +55,7 @@ void Calibrator::Calibrate()
 }
 
 
-static bool CalibrateChannel(Ch::E ch)
+bool Calibrator::CalibrateChannel(Ch::E ch)
 {
     Display::Message::ShowAndWaitKey(ch == ChA ?  "Подключите встроенный калибратор ко входу 1 и нажмите любую кнопку" :
                                                   "Подключите встроенный калибратор ко входу 2 и нажмите любую кнопку", true);
@@ -111,7 +114,7 @@ bool Calibrator::BalanceChannel(Ch::E ch, bool showHint)
 }
 
 
-static void BalanceRange(Ch::E ch, Range::E range)
+void Calibrator::BalanceRange(Ch::E ch, Range::E range)
 {
     Osci::Stop();
 
@@ -158,7 +161,7 @@ static void BalanceRange(Ch::E ch, Range::E range)
 }
 
 
-static bool StretchChannel(Ch::E ch)
+bool Calibrator::StretchChannel(Ch::E ch)
 {
     SettingsNRST old = setNRST;
 
@@ -188,7 +191,7 @@ static bool StretchChannel(Ch::E ch)
 }
 
 
-static float FindStretchChannel(Ch::E ch)
+float Calibrator::FindStretchChannel(Ch::E ch)
 {
 #define NUM_POINTS 300
     
