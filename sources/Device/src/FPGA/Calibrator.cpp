@@ -41,7 +41,7 @@ void Calibrator::Calibrate()
     Settings old = set;
 
     setNRST.ResetExtraStretch();
-    setNRST.SetExtraShift(0);
+    SettingsNRST::Shift::Clear();
 
     if (!CalibrateChannel(ChA))
     {
@@ -84,7 +84,7 @@ bool Calibrator::BalanceChannel(Ch::E ch, bool showHint)
 
     SettingsNRST oldNRST = setNRST;
 
-    setNRST.SetExtraShift(0);
+    SettingsNRST::Shift::Clear();
 
     static const pcharc messages[Ch::Count] =
     {
@@ -298,4 +298,5 @@ void Calibrator::ShowParameters()
 
         DDecoder::Update();
     }
+
 }

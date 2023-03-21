@@ -10,7 +10,7 @@ static int16 shift2 = setNRST.exShift[1][0];
 
 static void OnChange_Shift1()
 {
-    setNRST.SetExtraShift((int8)shift1);
+//    setNRST.SetExtraShift((int8)shift1);
 }
 
 DEF_GOVERNOR( gExShift1,
@@ -22,7 +22,7 @@ DEF_GOVERNOR( gExShift1,
 
 static void OnChange_Shift2()
 {
-    setNRST.SetExtraShift((int8)shift2);
+//    setNRST.SetExtraShift((int8)shift2);
 }
 
 

@@ -71,18 +71,6 @@ bool SettingsNRST::operator!=(const SettingsNRST &rhs)
 }
 
 
-void SettingsNRST::SetExtraShift(int8 shift)
-{
-    for(int ch = 0; ch < Ch::Count; ch++)
-    {
-        for(int range = 0; range < Range::Count; range++)
-        {
-            NRST_EX_SHIFT(ch, range) = shift;
-        }
-    }
-}
-
-
 void SettingsNRST::ResetExtraStretch()
 {
     NRST_EX_STRETCH(ChA) = 1.0F;
