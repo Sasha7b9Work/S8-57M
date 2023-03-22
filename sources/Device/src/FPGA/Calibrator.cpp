@@ -155,8 +155,9 @@ void Calibrator::BalanceRange(Ch::E ch, Range::E range)
 
     float delta = sum / numPoints - 127.0F;
 
-    NRST_EX_SHIFT(ch, range) = -(int8)(delta * 400.0F / 250.0F + 0.5F);
-    LOG_WRITE("range %d : delta %f : %d", (int)range, delta, (int8)(delta * 400.0F / 250.0F + 0.5F));
+    int8 shift = -(int8)(delta * 400.0F / 250.0F + 0.5F);
+
+    NRST_EX_SHIFT(ch, range) = shift;
 }
 
 
@@ -235,19 +236,15 @@ float Calibrator::FindStretchChannel(Ch::E ch)
     {
         data = *a1;
 
-        if(data < VALUE::MIN + 64)
+        if(data < VALUE::MIN + 150)
         {
             sumMIN += data;
             numMIN++;
         }
-        else if(data > VALUE::MAX - 64)
+        else if(data > VALUE::MAX - 150)
         {
             sumMAX += data;
             numMAX++;
-        }
-        else
-        {
-            return -1.0F;
         }
     }
 
@@ -272,6 +269,8 @@ void Calibrator::ShowParameters()
             {
                 String("%d", NRST_EX_SHIFT(ch, range)).Draw(50 + range * 30, 50 + ch * 30, Color::FILL);
             }
+
+            String("%f", NRST_EX_STRETCH(ch)).Draw(500, 50 + ch * 30);
         }
 
         Painter::EndScene();
