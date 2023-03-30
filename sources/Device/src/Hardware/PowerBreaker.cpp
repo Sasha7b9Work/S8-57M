@@ -4,6 +4,7 @@
 #include "Display/Display.h"
 #include "Hardware/Battery.h"
 #include "Hardware/PowerBreaker.h"
+#include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL_PIO.h"
 #include "Keyboard/BufferButtons.h"
 #include "Settings/Settings.h"
@@ -36,6 +37,8 @@ static void DisablePowerIfBatteryDischarged()
 {
     if (Battery::GetVoltage() < Battery::SHUTDOWN_VOLTAGE)
     {
+        Timer::PauseOnTime(1000);
+
         HAL_PIO::Reset(PIN_POWER);
     }
 }
