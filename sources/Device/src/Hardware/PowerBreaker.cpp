@@ -37,7 +37,7 @@ static void DisablePowerIfBatteryDischarged()
 {
     if (Battery::GetVoltage() < Battery::SHUTDOWN_VOLTAGE)
     {
-        Timer::PauseOnTime(1000);
+//        Timer::PauseOnTime(1000);
 
         HAL_PIO::Reset(PIN_POWER);
     }
