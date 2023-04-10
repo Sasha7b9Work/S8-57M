@@ -21,7 +21,7 @@ static void DisableDisplayIfTimeout();
 void PowerBreaker::Init()
 {
     HAL_PIO::Init(PIN_POWER, HMode::Output_PP, HPull::Up);
-    HAL_PIO::Set(PIN_POWER);
+    HAL_PIO::Reset(PIN_POWER);
 }
 
 
@@ -39,7 +39,7 @@ static void DisablePowerIfBatteryDischarged()
     {
 //        Timer::PauseOnTime(1000);
 
-        HAL_PIO::Reset(PIN_POWER);
+//        HAL_PIO::Reset(PIN_POWER);
     }
 }
 

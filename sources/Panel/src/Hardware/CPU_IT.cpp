@@ -93,6 +93,10 @@ extern "C" {
         /* USER CODE END EXTI9_5_IRQn 1 */
     }
 
+    void LTDC_IRQHandler(void)
+    {
+    }
+
 #ifdef __cplusplus
 }
 #endif

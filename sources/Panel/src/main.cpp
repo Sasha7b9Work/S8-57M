@@ -16,14 +16,22 @@ int main()
 
     while (1)
     {
+        DEBUG_POINT;
+
         static uint prevTime = 0;
 
+        DEBUG_POINT;
+
         HAL_BUS::Update();
+
+        DEBUG_POINT;
 
         if (TIME_MS - prevTime > 2)
         {
             Keyboard::Update();
             prevTime = TIME_MS;
         }
+
+        DEBUG_POINT;
     }
 }
