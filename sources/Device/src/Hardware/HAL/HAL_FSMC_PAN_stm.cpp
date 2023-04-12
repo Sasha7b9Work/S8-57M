@@ -243,7 +243,7 @@ void HAL_BUS::Panel::SendBuffer(const uint8 *data, int size)
         //while(in_ready.IsPassive()) {}   // И ожидаем сигнал панели о том, что она свободна
         //while(HAL_PIO::Read(HPort::_A, HPin::_7) == 1) { };
         volatile uint state = GPIOA->IDR & GPIO_PIN_7;
-        while (state)
+        while (state && meter.ElapsedTime() < 100)
         {
             state = GPIOA->IDR & GPIO_PIN_7;
         }
@@ -253,7 +253,7 @@ void HAL_BUS::Panel::SendBuffer(const uint8 *data, int size)
 
         //while(in_ready.IsActive()) {}    // Переключение PIN_PAN_READY в неактивное состояние означает, что панель приняла данные и обрабатывает их
         state = GPIOA->IDR & GPIO_PIN_7;
-        while (state == 0)
+        while (state == 0 && meter.ElapsedTime() < 100)
         {
             state = GPIOA->IDR & GPIO_PIN_7;
         }
