@@ -200,13 +200,15 @@ void HAL_BUS::Panel::SendByte(uint8 byte)
 
 void HAL_BUS::Panel::SendBuffer(const uint8 *data, int size)
 {
+    TimeMeterMS meter;
+
     num_bytes += size;
 
     uint start = TIME_TICKS;
 
     if (!(GPIOA->IDR & GPIO_PIN_7) && !(GPIOC->IDR & GPIO_PIN_4)) //-V2570
     {
-        while (Receive()) {}
+        while (Receive() && meter.ElapsedTime() < 100) {}
     }
 
     interactionWithPanel = true;
