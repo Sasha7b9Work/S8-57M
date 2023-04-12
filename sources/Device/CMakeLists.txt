@@ -38,81 +38,64 @@ add_compile_options(/wd5219)    # implicit conversion from 'xxx' to 'float', pos
 add_compile_options(/wd5220)    # a non-static data member with a volatile qualified type no longer implies
 add_compile_options(/wd5264)    # 'xxx': 'const' variable is not used
 
-file(GLOB LIBS_FATFS    ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/ff.*
-                        ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/diskio.*
-                        ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/ff_gen_drv.*
-                        ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/ff_gen_drv.*
-                        ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/option/ccsbcs.c
-                        ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/option/syscall.c)
+file(GLOB LIBS_FATFS    ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/*.*
+                        ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/option/*.*)
 
 file(GLOB LIBS_HAL      ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.h
                         ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.c)
 
-file(GLOB LIBS_USBD     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ioreq.h
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/usbd_cdc.h
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c)
+file(GLOB LIBS_USBD     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/*.*
+                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/*.*
+                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/*.*)
 
-file(GLOB LIBS_USBH     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_core.c
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_ctlreq.c
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ioreq.h
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_ioreq.c
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_pipes.h
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_pipes.c
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc.h
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc.c
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc_bot.h
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_bot.c
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/usbh_msc_scsi.h
-                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/usbh_msc_scsi.c)
+file(GLOB LIBS_USBH     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc/*.*
+                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Src/*.*
+                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc/*.*
+                        ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Src/*.*)
 
-file(GLOB VS                               ../common/_VS/*.h ../common/_VS/*.cpp)
+file(GLOB VS                               ../common/_VS/*.*)
 file(GLOB VS_STD_INCLUDES                  ../common/_VS/std_includes/*)
 
-file(GLOB HARDWARE                         src/Hardware/*.h src/Hardware/*.cpp)
-file(GLOB HARDWARE_CMSIS                   src/Hardware/CMSIS/*)
-file(GLOB HARDWARE_HAL                     src/Hardware/HAL/*)
-file(GLOB HARDWARE_MEMORY                  src/Hardware/Memory/*)
-file(GLOB HARDWARE_USBD                    src/Hardware/USBD/*)
-file(GLOB HARDWARE_USBH                    src/Hardware/USBH/*)
-file(GLOB DOC                              ../doc/*)
+file(GLOB HARDWARE                         src/Hardware/*.*)
+file(GLOB HARDWARE_CMSIS                   src/Hardware/CMSIS/*.*)
+file(GLOB HARDWARE_HAL                     src/Hardware/HAL/*.*)
+file(GLOB HARDWARE_MEMORY                  src/Hardware/Memory/*.*)
+file(GLOB HARDWARE_USBD                    src/Hardware/USBD/*.*)
+file(GLOB HARDWARE_USBH                    src/Hardware/USBH/*.*)
+file(GLOB DOC                              ../doc/*.*)
 file(GLOB COMMON                           ../common/Command.h
                                            ../common/common_defines.h
                                            ../common/Decoder_d.h
                                            ../common/Decoder_d.cpp
                                            ../common/Message.h
                                            ../common/Message.cpp)
-file(GLOB SRC                              src/*.h src/*.cpp)
-file(GLOB DISPLAY                          src/Display/*.h src/Display/*.cpp)
-file(GLOB DISPLAY_FONT                     ../common/Display/Font/*)
-file(GLOB FLASHDRIVE                       src/FlashDrive/*)
-file(GLOB FPGA                             src/FPGA/*)
-file(GLOB FREQMETER                        src/FreqMeter/*)
-file(GLOB KEYBOARD                         src/Keyboard/*)
-file(GLOB MENU                             src/Menu/*.h src/Menu/*.cpp)
-file(GLOB MENU_PAGES                       src/Menu/Pages/*.h src/Menu/Pages/*.cpp)
-file(GLOB MENU_PAGES_INCLUDE               src/Menu/Pages/Include/*)
-file(GLOB MENU_PAGES_PAGEDISPLAY           src/Menu/Pages/PageDisplay/*)
-file(GLOB MENU_PAGES_PAGEFUNCTION          src/Menu/Pages/PageFunction/*)
-file(GLOB MENU_PAGES_PAGERECORDER          src/Menu/Pages/PageRecorder/*)
-file(GLOB MENU_PAGES_PAGEMEASURES          src/Menu/Pages/PageMeasures/*)
-file(GLOB MENU_PAGES_PAGEMEMORY            src/Menu/Pages/PageMemory/*)
-file(GLOB MENU_PAGES_PAGESERVICE           src/Menu/Pages/PageService/*.h src/Menu/Pages/PageService/*.cpp)
-file(GLOB MENU_PAGES_PAGESERVICE_PAGEDEBUG src/Menu/Pages/PageService/PageDebug/*)
-file(GLOB MENU_PAGES_PAGETRIG              src/Menu/Pages/PageTrig/*)
-file(GLOB OSCI                             src/Osci/*.h src/Osci/*.cpp)
-file(GLOB OSCI_DISPLAY                     src/Osci/Display/*)
-file(GLOB OSCI_MATH                        src/Osci/Math/*)
-file(GLOB OSCI_MEASUREMENTS                src/Osci/Measurements/*)
-file(GLOB RECORDER                         src/Recorder/*)
-file(GLOB SCPI                             src/SCPI/*)
-file(GLOB SETTINGS                         src/Settings/*)
-file(GLOB TEST                             src/Test/*)
-file(GLOB UTILS                            src/Utils/*)
+file(GLOB SRC                              src/*.*)
+file(GLOB DISPLAY                          src/Display/*.*)
+file(GLOB DISPLAY_FONT                     ../common/Display/Font/*.*)
+file(GLOB FLASHDRIVE                       src/FlashDrive/*.*)
+file(GLOB FPGA                             src/FPGA/*.*)
+file(GLOB FREQMETER                        src/FreqMeter/*.*)
+file(GLOB KEYBOARD                         src/Keyboard/*.*)
+file(GLOB MENU                             src/Menu/*.*)
+file(GLOB MENU_PAGES                       src/Menu/Pages/*.*)
+file(GLOB MENU_PAGES_INCLUDE               src/Menu/Pages/Include/*.*)
+file(GLOB MENU_PAGES_PAGEDISPLAY           src/Menu/Pages/PageDisplay/*.*)
+file(GLOB MENU_PAGES_PAGEFUNCTION          src/Menu/Pages/PageFunction/*.*)
+file(GLOB MENU_PAGES_PAGERECORDER          src/Menu/Pages/PageRecorder/*.*)
+file(GLOB MENU_PAGES_PAGEMEASURES          src/Menu/Pages/PageMeasures/*.*)
+file(GLOB MENU_PAGES_PAGEMEMORY            src/Menu/Pages/PageMemory/*.*)
+file(GLOB MENU_PAGES_PAGESERVICE           src/Menu/Pages/PageService/*.*)
+file(GLOB MENU_PAGES_PAGESERVICE_PAGEDEBUG src/Menu/Pages/PageService/PageDebug/*.*)
+file(GLOB MENU_PAGES_PAGETRIG              src/Menu/Pages/PageTrig/*.*)
+file(GLOB OSCI                             src/Osci/*.*)
+file(GLOB OSCI_DISPLAY                     src/Osci/Display/*.*)
+file(GLOB OSCI_MATH                        src/Osci/Math/*.*)
+file(GLOB OSCI_MEASUREMENTS                src/Osci/Measurements/*.*)
+file(GLOB RECORDER                         src/Recorder/*.*)
+file(GLOB SCPI                             src/SCPI/*.*)
+file(GLOB SETTINGS                         src/Settings/*.*)
+file(GLOB TEST                             src/Test/*.*)
+file(GLOB UTILS                            src/Utils/*.*)
 
 set_source_files_properties(${LIBS_FATFS} ${LIBS_HAL} ${LIBS_USBD} ${LIBS_USBH} PROPERTIES HEADER_FILE_ONLY TRUE)
 
